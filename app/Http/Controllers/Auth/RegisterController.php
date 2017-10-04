@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\Auth\RegisterRequest;
+use App\User;
+use Client;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
@@ -23,49 +26,90 @@ class RegisterController extends Controller
     use RegistersUsers;
 
     /**
-     * Where to redirect users after registration.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/home';
-
-    /**
      * Create a new controller instance.
      *
      * @return void
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('auth.api', ['except' => 'register']);
     }
 
     /**
-     * Get a validator for an incoming registration request.
+     * Show the application registration form simple.
      *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
+     * @return \Illuminate\Http\Response
      */
-    protected function validator(array $data)
+    public function simple()
     {
-        return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6|confirmed',
-        ]);
+        return $this->form('auth.register-simple');
     }
 
     /**
-     * Create a new user instance after a valid registration.
+     * Show the application registration form complete.
      *
-     * @param  array  $data
-     * @return User
+     * @return \Illuminate\Http\Response
      */
-    protected function create(array $data)
+    public function complete()
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-        ]);
+        return $this->form('auth.register-complete');
+    }
+
+    /**
+     * Handle a registration request for the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function register(RegisterRequest $request)
+    {
+        $response = Client::setEndpoint('auth/register-simple')
+            ->setHeaders(['Authorization' => session('authenticate.token')])
+            ->setBody($this->setRequest($request->all()))
+            ->post('multipart');
+    }
+
+    /**
+     * [setRequest description]
+     * 
+     * @param array $data
+     */
+    public function setRequest(array $data)
+    {
+        $requests = [];
+        foreach ($data as $key => $value) {
+            if ( is_array($value) ) return $this->setRequest($value);
+            if ( is_file($value) ) {
+                $requests[] = ['name' => $key, 'contents' => fopen($value->getRealPath(), 'r')];
+                continue;
+            }
+            $requests[] = ['name' => $key, 'contents' => $value];
+        }
+
+        return $requests;
+    }
+
+    /**
+     * Get form register
+     * 
+     * @param  string $form
+     * @return \Illuminate\Http\Response
+     */
+    public function form($form)
+    {
+        // dd($this->profile());
+        return view( $form, $this->profile() );
+    }
+
+    /**
+     * Get profile of customer
+     * 
+     * @return array
+     */
+    public function profile()
+    {
+        return Client::setEndpoint('profile')
+            ->setHeaders(['Authorization' => session('authenticate.token')])
+            ->get()['contents'];
     }
 }
