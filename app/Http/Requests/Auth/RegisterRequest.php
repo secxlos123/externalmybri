@@ -2,10 +2,13 @@
 
 namespace App\Http\Requests\Auth;
 
+use App\Classes\Traits\Profileble;
 use Illuminate\Foundation\Http\FormRequest;
 
 class RegisterRequest extends FormRequest
 {
+    use Profileble;
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -23,7 +26,50 @@ class RegisterRequest extends FormRequest
      */
     public function rules()
     {
+        if ( ! $this->profile() ) {
+            return $this->registerRules();
+        }
+
+        if ( ! $this->profile()['is_simple'] ) {
+            return $this->simpleRules();
+        }
+
+        if ( ! $this->profile()['is_completed'] ) {
+            return $this->completeRules();
+        }
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function simpleRules()
+    {
         return $this->personal();
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function completeRules()
+    {
+        return $this->personal();
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function registerRules()
+    {
+        return [
+            'email' => 'required|email',
+            'password' => 'required|confirmed|min:8'
+        ];
     }
 
     /**

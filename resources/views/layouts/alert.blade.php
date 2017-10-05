@@ -13,7 +13,13 @@
 @if( session('error-register') )
 	<div class="alert alert-danger">
 		{!! session('error-register') !!}
-	</div>				
+	</div>
+@endif
+
+@if( session('error-forgot-password') )
+	<div class="alert alert-danger">
+		{!! session('error-forgot-password') !!}
+	</div>
 @endif
 
 @if (false)

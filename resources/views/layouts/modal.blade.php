@@ -19,6 +19,7 @@
                                             Daftar
                                         </a>
                                     </li>
+                                    <li role="presentation" class=""></li>
                                 </ul>
                                 <!-- Nav tabs end -->
 
@@ -41,6 +42,16 @@
                                         @endif
 
                                         @include('auth.register')
+
+                                    </div>
+
+                                    <div role="tabpanel" class="tab-pane fade" id="reset">
+
+                                        @if (session('error-forgot-password'))
+                                            @include('layouts.alert')
+                                        @endif
+
+                                        @include('auth.forgot-password')
 
                                     </div>
                                 </div>

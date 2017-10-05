@@ -4,6 +4,8 @@
 
 @include('auth._form-register-simple')
 
+{!! Form::hidden('register', 'complete') !!}
+
 <div class="row">
     @include('customer.profile.form.employee')
 </div>

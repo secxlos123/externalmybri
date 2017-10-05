@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Classes\Traits\Profileble;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
+use Client;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
-use Client;
 
 class LoginController extends Controller
 {
@@ -21,7 +22,7 @@ class LoginController extends Controller
     |
     */
 
-    use AuthenticatesUsers;
+    use AuthenticatesUsers, Profileble;
 
     /**
      * Where to redirect users after login.
@@ -81,14 +82,31 @@ class LoginController extends Controller
      */
     protected function redirectIfCustomer()
     {
-        if ( ! session('authenticate.is_register_simple') ) {
+        if ( ! $this->profile()['is_simple'] ) {
             return redirect()->route('auth.register.simple');
         }
 
-        if ( ! session('authenticate.is_register_completed') ) {
+        if ( ! $this->profile()['is_completed'] ) {
             return redirect()->route('auth.register.complete');
         }
 
         return redirect()->route('homepage');
+    }
+
+    /**
+     * Log the user out of the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function logout(Request $request)
+    {
+        Client::setEndpoint('auth/logout')
+            ->setHeaders([ 'Authorization' => session('authenticate.token') ])
+            ->deleted();
+        
+        $this->guard()->logout();
+        $request->session()->invalidate();
+        return redirect('/');
     }
 }

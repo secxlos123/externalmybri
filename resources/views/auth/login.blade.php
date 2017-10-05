@@ -11,7 +11,7 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="col-sm-6 col-sm-offset-6 text-right">
-                <a id="linkforgotpassword" href="javascript:void(0)" class="lost-pass">Lupa Password?</a>
+                <a href="#reset" aria-controls="reset" id="btn-reset" role="tab" data-toggle="tab" class="lost-pass">Lupa Password?</a>
             </div>
         </div>
     </div>

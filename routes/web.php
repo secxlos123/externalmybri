@@ -55,5 +55,10 @@ Route::group(['namespace' => 'Auth', 'as' => 'auth.'], function () {
 	/**
 	 * This route for send request login
 	 */
+	Route::post('password/reset', 'ForgotPasswordController@reset')->name('password.reset');
+
+	/**
+	 * This route for send request login
+	 */
 	Route::delete('logout', 'LoginController@logout')->name('logout');
 });

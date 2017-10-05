@@ -90,7 +90,12 @@
     {!! Html::script('assets/js/functions.js') !!}
 
     {!! Html::script('vendor/jsvalidation/js/jsvalidation.js') !!}
-    {!! JsValidator::formRequest(App\Http\Requests\Auth\LoginRequest::class, '#form-login') !!}
+    
+    @if ( ! session('authenticate') )
+        {!! JsValidator::formRequest(App\Http\Requests\Auth\LoginRequest::class, '#form-login') !!}
+        {!! JsValidator::formRequest(App\Http\Requests\Auth\RegisterRequest::class, '#form-register-store') !!}
+        {!! JsValidator::formRequest(App\Http\Requests\Auth\ForgotPasswordRequest::class, '#form-reset-password') !!}
+    @endif
 
     @if (session('error-login'))
         <script type="text/javascript">
@@ -116,14 +121,29 @@
         </script>
     @endif
 
+    @if (session('error-forgot-password'))
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#login-register').modal('show');
+                $('#masuk, #daftar').removeClass('active in');
+                $('.masuk, .daftar').removeClass('active');
+                $('#reset').addClass('active in');
+            });
+        </script>
+    @endif
+
     <script type="text/javascript">
         $('#login-register').on('hide.bs.modal', function () {
-            $('#daftar').removeClass('active in');
+            $('#daftar, #reset').removeClass('active in');
             $('.daftar').removeClass('active');
             $('#masuk').addClass('active in');
             $('.masuk').addClass('active');
             $('.keyword-input').val('');
             $('.alert, .help-block').remove();
+        });
+
+        $('#btn-reset').on('click', function () {
+            $('.masuk').removeClass('active');
         });
     </script>
 

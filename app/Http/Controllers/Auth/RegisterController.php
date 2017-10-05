@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Classes\Traits\Profileble;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\RegisterRequest;
 use App\User;
@@ -23,7 +24,7 @@ class RegisterController extends Controller
     |
     */
 
-    use RegistersUsers;
+    use RegistersUsers, Profileble;
 
     /**
      * Create a new controller instance.
@@ -63,14 +64,22 @@ class RegisterController extends Controller
      */
     public function register(RegisterRequest $request)
     {
-        $response = Client::setEndpoint('auth/register-simple')
-            ->setHeaders(['Authorization' => session('authenticate.token')])
-            ->setBody($this->setRequest($request->all()))
-            ->post('multipart');
+        if ( 'register' == $request->input('register') ) {
+            $response = Client::setEndpoint('auth/register')
+                ->setBody( $request->only( ['email', 'password'] ) )
+                ->post();
+        } else {
+            $response = Client::setEndpoint("auth/register-{$request->input('register')}")
+                ->setHeaders(['Authorization' => session('authenticate.token')])
+                ->setBody($this->setRequest($request->all()))
+                ->post('multipart');
+        }
+
+        return redirect()->route('homepage');
     }
 
     /**
-     * [setRequest description]
+     * Handle for mapping request
      * 
      * @param array $data
      */
@@ -85,7 +94,6 @@ class RegisterController extends Controller
             }
             $requests[] = ['name' => $key, 'contents' => $value];
         }
-
         return $requests;
     }
 
@@ -97,19 +105,6 @@ class RegisterController extends Controller
      */
     public function form($form)
     {
-        // dd($this->profile());
         return view( $form, $this->profile() );
-    }
-
-    /**
-     * Get profile of customer
-     * 
-     * @return array
-     */
-    public function profile()
-    {
-        return Client::setEndpoint('profile')
-            ->setHeaders(['Authorization' => session('authenticate.token')])
-            ->get()['contents'];
     }
 }

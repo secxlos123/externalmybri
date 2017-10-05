@@ -1,6 +1,7 @@
 @extends('auth._form-register')
 
 @section('_form-register')
+	{!! Form::hidden('register', 'simple') !!}
     @include('auth._form-register-simple')
 @endsection
 
