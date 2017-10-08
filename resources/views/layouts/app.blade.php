@@ -34,16 +34,11 @@
 
     <!-- Page Banner Start-->
     @if ( ! request()->is('/') )
-        <section class="page-banner padding bg_white">
+        <section class="page-banner padding bg_light">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 text-center">
-                        <h1 class="text-uppercase">Form Registrasi</h1>
-                        <p>Isilah data valid Anda untuk melanjutkan proses pendaftaran.</p>
-                        <ol class="breadcrumb text-center">
-                            <li><a href="#">Pengajuan Kredit</a></li>
-                            <li class="active">Registrasi</li>
-                        </ol>
+                        @yield('breadcrumb')
                     </div>
                 </div>
             </div>
@@ -61,8 +56,6 @@
     </footer>
     <!-- Footer end -->
 
-    <!-- Modal -->
-    @include('layouts.modal')
 
     <!-- This is main script -->
     {!! Html::script('assets/js/jquery-2.1.4.js') !!}
@@ -92,6 +85,9 @@
     {!! Html::script('vendor/jsvalidation/js/jsvalidation.js') !!}
     
     @if ( ! session('authenticate') )
+        <!-- Modal -->
+        @include('layouts.modal')
+        
         {!! JsValidator::formRequest(App\Http\Requests\Auth\LoginRequest::class, '#form-login') !!}
         {!! JsValidator::formRequest(App\Http\Requests\Auth\RegisterRequest::class, '#form-register-store') !!}
         {!! JsValidator::formRequest(App\Http\Requests\Auth\ForgotPasswordRequest::class, '#form-reset-password') !!}

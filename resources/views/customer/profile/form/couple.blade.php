@@ -28,11 +28,23 @@
                         <div class="form-group">
                             <label class="col-md-3 control-label">Tempat Lahir *</label>
                             <div class="col-md-9">
-                                {!! Form::select('personal[couple_birth_place_id]', ['' => ''], old('personal[couple_birth_place_id]'), [
-                                    'class' => 'form-control select2 cities',
-                                    'data-placeholder' => 'Pilih Kota',
-                                    'data-option' => $personal['couple_birth_place_id'],
-                                ]) !!}
+                                @if ( $personal['couple_birth_place_id'] )
+
+                                    {!! Form::text('personal[couple_birth_place_id]', $personal['couple_birth_place'], [
+                                        'class' => 'form-control', 'disabled'
+                                    ]) !!}
+                                    {!! Form::hidden('personal[couple_birth_place_id]', $personal['couple_birth_place_id']) !!}
+
+                                @else
+
+                                    {!! Form::select('personal[couple_birth_place_id]', ['' => ''], old('personal[couple_birth_place_id]'), [
+                                        'class' => 'form-control select2 cities',
+                                        'data-placeholder' => 'Pilih Kota',
+                                        'data-option' => $personal['couple_birth_place_id'],
+                                    ]) !!}
+                                    
+                                @endif
+                            
                             </div>
                         </div>
                         <div class="form-group">

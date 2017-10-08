@@ -105,6 +105,6 @@ class RegisterController extends Controller
      */
     public function form($form)
     {
-        return view( $form, $this->profile() );
+        return view( $form, $this->customer() );
     }
 }

@@ -32,7 +32,7 @@
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
                         <i class="fa fa-bars"></i>
                     </button>
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" href="{!! request()->is('/') || request()->is('dev/dashboard') ? '#' : url('/') !!}">
                         {!! Html::image('assets/images/logo/my_rbi_logo_square_blue.png', '', [
                             'class' => 'logo'
                         ]) !!}
@@ -40,21 +40,7 @@
                 </div>
                 <div class="collapse navbar-collapse" id="navbar-menu">
                     <ul class="nav navbar-nav" data-in="fadeIn" data-out="fadeOut">
-                        <li>
-                            <a href="#">Home </a>
-                        </li>
-                        <li>
-                            <a href="#">Daftar Properti</a>
-                        </li>
-                        <li>
-                            <a href="#">Simulasi Kredit</a>
-                        </li>
-                        <li class="active">
-                            <a href="#">Developer</a>
-                        </li>
-                        <li>
-                            <a href="#">Pengajuan Kredit</a>
-                        </li>
+                        @include('layouts.main-menu')
                     </ul>
                 </div>
             </div>

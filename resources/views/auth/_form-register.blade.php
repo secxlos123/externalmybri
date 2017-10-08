@@ -2,6 +2,15 @@
 
 @section('title', 'Lengkapi Data Diri')
 
+@section('breadcrumb')
+	<h1 class="text-uppercase">Form Registrasi</h1>
+	<p>Isilah data valid Anda untuk melanjutkan proses pendaftaran.</p>
+	<ol class="breadcrumb text-center">
+	    <li><a href="#">Pengajuan Kredit</a></li>
+	    <li class="active">Registrasi</li>
+	</ol>
+@endsection
+
 @section('content')
 
 {!! Form::open([

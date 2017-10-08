@@ -69,7 +69,7 @@ class LoginController extends Controller
     protected function redirectToRole()
     {
         switch ( session('authenticate.role') ) {
-            case 'developer' : return view('welcome');
+            case 'developer' : return redirect()->route('developer.index');
             case 'customer'  : return $this->redirectIfCustomer();
             default : return $this->redirectIfCustomer();
         }

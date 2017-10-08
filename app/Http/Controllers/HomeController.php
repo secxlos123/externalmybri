@@ -13,6 +13,10 @@ class HomeController extends Controller
      */
     public function index()
     {
+    	if ( 'developer' == session('authenticate.role') ) {
+            return redirect()->route('developer.index');
+        }
+        
     	return view('home.index');
     }
 }
