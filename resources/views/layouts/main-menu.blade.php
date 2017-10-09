@@ -26,8 +26,11 @@
         <ul class="dropdown-menu animated fadeOut">
             <li><a href="{!! route('developer.proyek.index') !!}">Proyek</a></li>
             <li><a href="{!! route('developer.proyek-type.index') !!}">Proyek Type</a></li>
-            <li><a href="javascript:void(0)">Proyek Unit</a></li>
+            <li><a href="{!! route('developer.proyek.index-item') !!}">Proyek Unit</a></li>
         </ul>
+    </li>
+    <li>
+        <a href="javascript:void(0)">Developer</a>
     </li>
     <li>
         <a href="javascript:void(0)">Contact User</a>

@@ -25,4 +25,14 @@ Route::group(['prefix' => 'dropdown', 'as' => 'dropdown.'], function () {
 	 * This route for get form registration simple
 	 */
 	Route::get('citizenships', 'DropdownController@citizenships')->name('citizenships');
+
+	/**
+	 * This route for get form registration simple
+	 */
+	Route::get('types', 'DropdownController@types')->name('prop_types');
+
+	/**
+	 * This route for get form registration simple
+	 */
+	Route::get('property', 'DropdownController@properties')->name('property');
 });
