@@ -58,4 +58,40 @@ Route::group([
 		 */
 		Route::get('tambah', 'PropertyController@create')->name('create');
 	});
+
+	/**
+	 * This route for group for manage project or property
+	 */
+	Route::group(['prefix' => 'proyek-type', 'as' => 'proyek-type.'], function () {
+
+		/**
+		 * This route for showing list property of developer
+		 */
+		Route::get('/', 'PropertyTypeController@index')->name('index');
+
+		/**
+		 * This route for showing list property of developer
+		 */
+		Route::post('/', 'PropertyController@store')->name('store');
+
+		/**
+		 * This route for showing list property of developer
+		 */
+		Route::get('{slug}/detail', 'PropertyTypeController@show')->name('show');
+
+		/**
+		 * This route for showing list property of developer
+		 */
+		Route::get('{slug}/edit', 'PropertyTypeController@edit')->name('edit');
+
+		/**
+		 * This route for showing list property of developer
+		 */
+		Route::match(['put', 'patch'], '{slug}', 'PropertyController@update')->name('update');
+
+		/**
+		 * This route for showing list property of developer
+		 */
+		Route::get('tambah', 'PropertyController@create')->name('create');
+	});
 });
