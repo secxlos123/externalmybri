@@ -55,12 +55,15 @@
 @push('scripts')
 	{!! Html::script('assets/js/bootstrap-datepicker.min.js') !!}
 	{!! Html::script('assets/js/select2.min.js') !!}
+    
+    <!-- You can edit this script on resouces/asset/js/dropdown.js -->
+    <!-- After that you run in console or terminal or cmd "npm run production" -->
+    {!! Html::script('js/dropdown.min.js') !!}
     {!! JsValidator::formRequest(App\Http\Requests\Auth\RegisterRequest::class, '#form-register-full') !!}
 
 	<script type="text/javascript">
 		$(document).ready(function () {
 			$('#status').trigger('change');
-			cities();
 		});
 
 		$('#status').on('change', function (e) {
@@ -69,7 +72,7 @@
 			} else {
 				$('#couple_content').attr('disabled', true).attr('hidden', true);
 			}
-			cities();
+			$('.cities').dropdown('cities');
 		});
 
 		$('.datepicker-date').datepicker({
@@ -77,55 +80,8 @@
 	        autoclose: true,
 	        endDate: '-20y'
 		});
-
-		function cities() {
-			$('.cities').select2({
-	            witdh : '100%',
-	            allowClear: true,
-	            ajax: {
-	                url: '/dropdown/cities',
-	                dataType: 'json',
-	                delay: 250,
-	                data: function (params) {
-	                    return {
-	                        name: params.term,
-	                        page: params.page || 1
-	                    };
-	                },
-	                processResults: results,
-	                cache: true
-	            },
-	        });
-		}
-
-
-		$('.citizenships').select2({
-            witdh : '100%',
-            allowClear: true,
-            ajax: {
-                url: '/dropdown/citizenships',
-                dataType: 'json',
-                delay: 250,
-                data: function (params) {
-                    return {
-                        name: params.term,
-                        page: params.page || 1
-                    };
-                },
-                processResults: results,
-                cache: true
-            },
-        });
-
-        function results(data, params) {
-        	params.page = params.page || 1;
-
-        	return {
-        		results: data.results.data,
-        		pagination: {
-        			more: (params.page * data.results.per_page) < data.results.total
-        		}
-        	};
-        }
+		
+		$('.cities').dropdown('cities');
+		$('.citizenships').dropdown('citizenships');
 	</script>
 @endpush

@@ -10,6 +10,8 @@
                     element.prop('type') === 'checkbox' || element.prop('type') === 'radio') {
                     error.insertAfter(element.parent());
                     // else just place the validation message immediatly after the input
+                } else if ( element.hasClass('select2') ) {
+                    error.insertAfter(element.parent().find('.select2-container--default'));
                 } else {
                     error.insertAfter(element);
                 }

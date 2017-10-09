@@ -91,6 +91,21 @@
         {!! JsValidator::formRequest(App\Http\Requests\Auth\LoginRequest::class, '#form-login') !!}
         {!! JsValidator::formRequest(App\Http\Requests\Auth\RegisterRequest::class, '#form-register-store') !!}
         {!! JsValidator::formRequest(App\Http\Requests\Auth\ForgotPasswordRequest::class, '#form-reset-password') !!}
+        
+        <script type="text/javascript">
+            $('#login-register').on('hide.bs.modal', function () {
+                $('#daftar, #reset').removeClass('active in');
+                $('.daftar').removeClass('active');
+                $('#masuk').addClass('active in');
+                $('.masuk').addClass('active');
+                $('.keyword-input').val('');
+                $('.alert, .help-block').remove();
+            });
+
+            $('#btn-reset').on('click', function () {
+                $('.masuk').removeClass('active');
+            });
+        </script>
     @endif
 
     @if (session('error-login'))
@@ -127,21 +142,6 @@
             });
         </script>
     @endif
-
-    <script type="text/javascript">
-        $('#login-register').on('hide.bs.modal', function () {
-            $('#daftar, #reset').removeClass('active in');
-            $('.daftar').removeClass('active');
-            $('#masuk').addClass('active in');
-            $('.masuk').addClass('active');
-            $('.keyword-input').val('');
-            $('.alert, .help-block').remove();
-        });
-
-        $('#btn-reset').on('click', function () {
-            $('.masuk').removeClass('active');
-        });
-    </script>
 
     <!-- This is place for dynamis scripts per page -->
     @stack('scripts')
