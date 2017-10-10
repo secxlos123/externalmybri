@@ -18,52 +18,11 @@
 			<div class="col-md-12">
 				<h2 class="text-uppercase bottom20">Manajemen Unit</h2>
 				<div class="btn-project bottom10">
-					<a class="btn btn-primary" href="#filter" role="button" data-toggle="collapse">
-						<i class="fa fa-filter"></i> Filter
-					</a>
-					<a class="btn btn-primary" href="{!! route('developer.proyek.create-item') !!}" role="button">
+					<a class="btn btn-primary" href="{!! route('developer.proyek-item.create') !!}" role="button">
 						<i class="fa fa-plus"></i> Tambah Unit
 					</a>
 				</div>
-				<div id="filter" class="collapse bottom20 top20">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="panel panel-default">
-                                <div class="panel-body">
-                                    <form class="form-horizontal" role="form">
-                                        <div class="form-group">
-                                            <label class="col-sm-4 control-label">Kota :</label>
-                                            <div class="col-sm-8">
-                                                {!! Form::select('cities', ['' => ''], old('cities'), [
-                                                    'class' => 'select2 cities',
-                                                    'data-placeholder' => '-- Pilih Kota --',
-                                                    'style' => 'width: 100%'
-                                                ]) !!}
-                                            </div>
-                                        </div>
-                                    </form>
-                                    <div class="text-right">
-                                        <a href="javascript:void(0)" id="btn-filter" class="btn btn-primary">Filter</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="table-responsive">
-	                <table class="table table-striped table-bordered unit-list" id="datatable">
-	                    <thead class="bg-blue">
-	                        <tr>
-	                            <th>Property ID</th>
-	                            <th>Address</th>
-	                            <th>Price</th>
-	                            <th>Available</th>
-	                            <th>Status</th>
-	                            <th>Aksi</th>
-	                        </tr>
-	                    </thead>
-	                </table>
-                </div>
+                @include('developer.property_item.table')
 			</div>
 		</div>
 	</div>

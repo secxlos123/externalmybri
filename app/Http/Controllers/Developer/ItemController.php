@@ -65,7 +65,7 @@ class ItemController extends Controller
             return redirect()->back()->withInput();
         }
 
-        return redirect()->route('developer.proyek.index-item');
+        return redirect()->route('developer.proyek-item.index');
     }
 
     /**
@@ -76,15 +76,14 @@ class ItemController extends Controller
      */
     public function show($id)
     {
-        $property = Client::setEndpoint("property-item/{id}")
+        $property = Client::setEndpoint("property-item/".$id)
             ->setHeaders([
                 'Authorization' => session('authenticate.token')
             ])->get();
-        dd($property);
+        $property = $property['contents'];
+        // dd($property);
 
-        return view("developer.proyek.show-item", [
-            'property' => (object) $property['contents']
-        ]);
+        return view("developer.property_item.show", compact('property'));
     }
 
     /**
@@ -95,7 +94,14 @@ class ItemController extends Controller
      */
     public function edit($id)
     {
-        //
+        $property = Client::setEndpoint("property-item/".$id)
+            ->setHeaders([
+                'Authorization' => session('authenticate.token')
+            ])->get();
+        $property = $property['contents'];
+        // dd($property);
+
+        return view("developer.property_item.edit", compact(['property', 'id']));
     }
 
     /**
@@ -146,8 +152,8 @@ class ItemController extends Controller
 
         foreach ($units['contents']['data'] as $key => $unit) {
             $unit['action'] = view('layouts.actions', [
-                'show' => route('developer.proyek.show-item', $unit['id']),
-                'edit' => route('developer.proyek.edit-item', $unit['id'])
+                'show' => route('developer.proyek-item.show', $unit['id']),
+                'edit' => route('developer.proyek-item.edit', $unit['id'])
             ])->render();
             $units['contents']['data'][$key] = $unit;
         }
@@ -185,17 +191,5 @@ class ItemController extends Controller
             }
         }
         return $results;
-    }
-
-    /**
-     * Get property from API
-     *
-     * @param  string $slug
-     * @param  string $view
-     * @return \Illuminate\Http\Response
-     */
-    public function property($property_item, $view)
-    {
-
     }
 }

@@ -17,12 +17,15 @@
         <div class="single-query form-group bottom20
             {{ $errors->has('price') ? ' has-error' : '' }}">
             {!! Form::label('price', 'Harga') !!}
+            <div class="input-group">
+            <span class="input-group-addon">Rp</span>
             {!! Form::text('price', old('price'), [
-                'class' => 'keyword-input numericOnly currency-rp',
+                'class' => 'form-control numericOnly',
                 'placeholder' => 'Masukkan harga properti',
                 'maxlength' => '12'
             ]) !!}
-
+            <span class="input-group-addon">,00</span>
+            </div>
             @if ($errors->has('price'))
                 <span class="help-block">
                     <strong>{{ $errors->first('price') }}</strong>
@@ -90,6 +93,18 @@
                     <strong>{{ $errors->first('photo') }}</strong>
                 </span>
             @endif
-      </div>
+        </div>
+        <div class="form-group custom-uploader">
+            <label>Upload Foto</label>
+            <div class="file_uploader bottom20">
+                <form id="upload-widget" method="post" action="/upload" class="dropzone">
+                    <div class="dz-default dz-message">
+                        <span>
+                            <i class="fa fa-plus-circle"></i> Klik di sini untuk mengunggah foto
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 </div>

@@ -1,40 +1,40 @@
 @extends('layouts.app')
 
-@section('title', 'Tambah Unit')
+@section('title', 'Rubah Unit')
 
 @section('breadcrumb')
-    <h1 class="text-uppercase">Tambah Unit</h1>
+    <h1 class="text-uppercase">Rubah Unit</h1>
     <p>Kelola unit anda di sini.</p>
     <ol class="breadcrumb text-center">
-        <li><a href="{!! route('developer.proyek-item.index') !!}">List Unit</a></li>
-        <li class="active">Tambah Unit</li>
+        <li><a href="{!! route('developer.proyek.index') !!}">List Unit</a></li>
+        <li class="active">Rubah Unit</li>
     </ol>
 @endsection
 
 @section( 'content' )
     <section id="property" class="padding listing1">
         <div class="container">
-            {!! Form::open([
-                'route' => 'developer.proyek-item.store',
-                'class' => 'callus submit_property', 'id' => 'form-property-item',
-                'enctype' => 'multipart/form-data'
+            {!! Form::model($property, [
+                'route' => ['developer.proyek-item.update'],
+                'class' => 'callus submit_property dropzone', 'id' => 'form-property',
+                'enctype' => 'multipart/form-data', 'method' => 'PUT'
             ]) !!}
                 <div class="row">
                     <div class="col-md-12">
-                        <h2 class="text-uppercase bottom40">Tambah Proyek Properti</h2>
+                        <h2 class="text-uppercase bottom40">Rubah Unit Properti</h2>
                         <div class="panel panel-blue">
                             <div class="panel-heading">
-                                <h3 class="panel-title text-uppercase">Data Proyek</h3>
+                                <h3 class="panel-title text-uppercase">Data Unit</h3>
                             </div>
                             <div class="panel-body">
-                                @include('developer.property_item._form')
+                                @include( 'developer.property_item._form', [ 'property' => $property ] )
                             </div>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="pull-right">
                             <button type="submit" class="btn btn-success waves-light waves-effect w-md m-b-20">
-                                <i class="mdi mdi-content-save"></i> Simpan
+                                <i class="mdi mdi-content-save"></i> Rubah
                             </button>
                         </div>
                     </div>
@@ -46,17 +46,20 @@
 
 @push( 'styles' )
     {!! Html::style( 'assets/css/select2.min.css' ) !!}
+    {!! Html::style( 'assets/css/dropzone.min.css' ) !!}
 @endpush
 
 @push( 'scripts' )
     {!! Html::script( 'assets/js/select2.min.js' ) !!}
+    {!! Html::script( 'assets/js/dropzone.min.js' ) !!}
 
     <!-- You can edit this script on resouces/asset/js/dropdown.js -->
     <!-- After that you run in console or terminal or cmd "npm run production" -->
-    {!! JsValidator::formRequest(App\Http\Requests\Developer\Property\CreateRequest::class, '#form-property-item') !!}
+    {!! Html::script( 'js/dropdown.min.js' ) !!}
+    {!! JsValidator::formRequest(App\Http\Requests\Developer\Property\CreateRequest::class, '#form-property') !!}
 
     <!-- Laravel Javascript Validation -->
-    <script type="text/javascript">
+     <script type="text/javascript">
         $('.status').select2({});
 
         $('.cities').dropdown('cities');

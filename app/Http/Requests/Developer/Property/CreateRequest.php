@@ -35,6 +35,8 @@ class CreateRequest extends FormRequest
             'longitude' => 'required',
             'description' => 'required',
             'facilities'  => 'required',
+            'price'  => 'required',
+            'status' => 'required'
         ];
     }
 }
