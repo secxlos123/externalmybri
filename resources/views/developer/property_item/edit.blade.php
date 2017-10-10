@@ -6,7 +6,7 @@
     <h1 class="text-uppercase">Rubah Unit</h1>
     <p>Kelola unit anda di sini.</p>
     <ol class="breadcrumb text-center">
-        <li><a href="{!! route('developer.proyek.index') !!}">List Unit</a></li>
+        <li><a href="{!! route('developer.proyek-item.index') !!}">List Unit</a></li>
         <li class="active">Rubah Unit</li>
     </ol>
 @endsection
