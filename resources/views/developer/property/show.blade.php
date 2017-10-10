@@ -96,7 +96,7 @@
                                         <h3 class="panel-title text-uppercase">List Tipe Properti</h3>
                                     </div>
                                     <div class="panel-body">
-                                        {{-- @include('developer.types._table') --}}
+                                        @include('developer.property_type._table')
                                     </div>
                                 </div>
                             </div>
@@ -118,7 +118,9 @@
             margin-bottom: 20px;
         }
     </style>
+    @stack('parent-style')
 @endpush
 
 @push('scripts')
+    @stack('parent-script')
 @endpush

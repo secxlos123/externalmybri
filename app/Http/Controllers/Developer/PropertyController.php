@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Developer;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Developer\PropertyTypeController;
 use App\Http\Requests\Developer\Property\CreateRequest;
 use Client;
 use Illuminate\Http\Request;
@@ -10,7 +11,7 @@ use Illuminate\Http\Request;
 class PropertyController extends Controller
 {
     /**
-     * Avaliable columns datatables
+     * Avaliable columns property datatables
      * 
      * @var array
      */
@@ -73,8 +74,12 @@ class PropertyController extends Controller
      * @param  string $slug
      * @return \Illuminate\Http\Response
      */
-    public function show($slug)
+    public function show(Request $request, $slug)
     {
+        if ( $request->ajax() ) {
+            return app(PropertyTypeController::class)->datatables($request, $slug);
+        }
+
         return $this->property($slug, 'show');
     }
 
@@ -176,7 +181,6 @@ class PropertyController extends Controller
 
         return response()->json($properties['contents']);
     }
-
 
     /**
      * Get property from API
