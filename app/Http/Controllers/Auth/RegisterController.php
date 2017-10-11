@@ -33,7 +33,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth.api', ['except' => ['register', 'actived'] ]);
+        $this->middleware('auth.api', ['except' => ['register', 'activated', 'activate'] ]);
     }
 
     /**
@@ -109,20 +109,30 @@ class RegisterController extends Controller
     }
 
     /**
-     * [actived description]
+     * Activate user
      * 
-     * @param  [type] $userId [description]
-     * @param  [type] $code   [description]
-     * @return [type]         [description]
+     * @param  string $userId
+     * @param  string $code
+     * @return \Illuminate\Http\Response
      */
-    public function actived($userId, $code)
+    public function activate($userId, $code)
     {
         $response = Client::setEndpoint('activate')->setBody(['user_id' => $userId, 'code' => $code])->post();
 
         if ( in_array($response['code'], [200, 201]) ) {
-            return view('auth.actived');
+            return redirect()->route('auth.activated');
         }
 
         return redirect()->route('homepage');
+    }
+
+    /**
+     * Show view after activated
+     * 
+     * @return \Illuminate\Http\Response
+     */
+    public function activated()
+    {
+        return view('auth.actived');
     }
 }

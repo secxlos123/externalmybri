@@ -60,7 +60,12 @@ Route::group(['namespace' => 'Auth', 'as' => 'auth.'], function () {
 	/**
 	 * This route for get form registration simple
 	 */
-	Route::get('actived/{user_id}/{code}', 'RegisterController@actived')->name('actived');
+	Route::get('activate/{user_id}/{code}', 'RegisterController@activate')->name('activate');
+
+	/**
+	 * This route for get form registration simple
+	 */
+	Route::get('activated', 'RegisterController@activated')->name('activated');
 
 	/**
 	 * This route for send request login
