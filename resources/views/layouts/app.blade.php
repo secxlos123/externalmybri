@@ -49,7 +49,7 @@
     @yield('content')
 
     <!-- Footer -->
-    <footer class="footer_third">
+    <footer class="footer_third absolute-fix">
         <div class="container">
             @include('layouts.footer')
         </div>

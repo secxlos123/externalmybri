@@ -18,7 +18,7 @@ Route::post('upload', function (Request $request) {
 });
 
 Route::get('test', function (Request $request) {
-	return view('test');
+	return view('auth.actived');
 });
 
 /**
@@ -56,6 +56,11 @@ Route::group(['namespace' => 'Auth', 'as' => 'auth.'], function () {
 		 */
 		Route::get('complete', 'RegisterController@complete')->name('complete');
 	});
+
+	/**
+	 * This route for get form registration simple
+	 */
+	Route::get('actived/{user_id}/{code}', 'RegisterController@actived')->name('actived');
 
 	/**
 	 * This route for send request login

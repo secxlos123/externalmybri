@@ -107,4 +107,22 @@ class RegisterController extends Controller
     {
         return view( $form, $this->customer() );
     }
+
+    /**
+     * [actived description]
+     * 
+     * @param  [type] $userId [description]
+     * @param  [type] $code   [description]
+     * @return [type]         [description]
+     */
+    public function actived($userId, $code)
+    {
+        $response = Client::setBody(['user_id' => $user_id, 'code' => $code])->post();
+
+        if ( in_array($response['code'], [200, 201]) ) {
+            return view('auth.actived');
+        }
+
+        return redirect()->route('homepage');
+    }
 }
