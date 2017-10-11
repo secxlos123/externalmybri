@@ -73,7 +73,7 @@ Route::group([
 		/**
 		 * This route for showing list property of developer
 		 */
-		Route::post('/', 'PropertyController@store')->name('store');
+		Route::post('/', 'PropertyTypeController@store')->name('store');
 
 		/**
 		 * This route for showing list property of developer
@@ -93,7 +93,7 @@ Route::group([
 		/**
 		 * This route for showing list property of developer
 		 */
-		Route::get('tambah', 'PropertyController@create')->name('create');
+		Route::get('tambah', 'PropertyTypeController@create')->name('create');
 	});
 
 	/**

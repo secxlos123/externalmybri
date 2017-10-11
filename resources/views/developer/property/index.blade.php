@@ -16,7 +16,6 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<h2 class="text-uppercase bottom20">Manajemen Proyek</h2>
 				<div class="btn-project bottom10">
 					<a class="btn btn-primary" href="#filter" role="button" data-toggle="collapse">
 						<i class="fa fa-filter"></i> Filter

@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-12">
         <div class="add-btn bottom10 top20">
-            <a href="javascript:void(0)" class="btn btn-primary">
+            <a href="{!! route('developer.proyek-type.create') !!}" class="btn btn-primary">
                 <i class="fa fa-plus"></i> Tambah Tipe Properti
             </a>
         </div>

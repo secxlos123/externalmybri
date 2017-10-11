@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Http\Request;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,6 +12,14 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::post('upload', function (Request $request) {
+	dd($request->all());
+});
+
+Route::get('test', function (Request $request) {
+	return view('test');
+});
 
 /**
  * This route for handle homepage

@@ -40,7 +40,9 @@ class PropertyTypeController extends Controller
      */
     public function create()
     {
-        //
+        return view( 'developer.property_type.create' , [
+            'photos' => session('photos') ?: []
+        ]);
     }
 
     /**
@@ -154,6 +156,8 @@ class PropertyTypeController extends Controller
             ->setHeaders([
                 'Authorization' => session('authenticate.token')
             ])->get();
+
+        session(['photos' => $type['contents']['photos']]);
 
         return view("developer.property_type.{$view}", [
             'type' => (object) $type['contents']
