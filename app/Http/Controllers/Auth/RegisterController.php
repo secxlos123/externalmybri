@@ -117,7 +117,7 @@ class RegisterController extends Controller
      */
     public function actived($userId, $code)
     {
-        $response = Client::setBody(['user_id' => $user_id, 'code' => $code])->post();
+        $response = Client::setEndpoint('activate')->setBody(['user_id' => $user_id, 'code' => $code])->post();
 
         if ( in_array($response['code'], [200, 201]) ) {
             return view('auth.actived');
