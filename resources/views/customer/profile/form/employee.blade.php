@@ -9,11 +9,11 @@
                     <div class="form-group">
                         <label class="col-md-4 control-label">Jenis Pekerjaan *:</label>
                         <div class="col-md-8">
-                            <select id="work_type" name="work_type" class="form-control">
-                                <option value="">-- Pilih --</option>
-                                <option>Pegawai Swasta</option>
-                                <option>Pegawai Negeri</option>
-                            </select>
+                            {!! Form::select('work_type', ['' => ''], old('work_type'), [
+                                'class' => 'select2 work_type',
+                                'data-placeholder' => '-- Pilih Pekerjaan --',
+                                'style' => 'width: 100%'
+                            ]) !!}
                         </div>
                     </div>
                     <div class="form-group">

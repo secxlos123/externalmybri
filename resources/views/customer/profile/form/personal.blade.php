@@ -6,7 +6,7 @@
 		<div class="panel-body">
 			<div class="row">
 				<div class="col-md-6">
-					
+
 					<div class="form-group">
 						<label class="col-md-3 control-label">NIK *</label>
 						<div class="col-md-9">
@@ -15,7 +15,7 @@
 							]) !!}
 						</div>
 					</div>
-					
+
 					<div class="form-group">
 						<label class="col-md-3 control-label">Nama Depan *</label>
 						<div class="col-md-9">
@@ -24,7 +24,7 @@
 							]) !!}
 						</div>
 					</div>
-					
+
 					<div class="form-group">
 						<label class="col-md-3 control-label">Nama Belakang </label>
 						<div class="col-md-9">
@@ -33,7 +33,7 @@
 							]) !!}
 						</div>
 					</div>
-					
+
 					<div class="form-group">
 						<label class="col-md-3 control-label">Tempat Lahir *</label>
 						<div class="col-md-9">
@@ -53,10 +53,10 @@
 								]) !!}
 
 							@endif
-
+							<input type="hidden" name="birth_place" id="birth_place" value="">
 						</div>
 					</div>
-					
+
 					<div class="form-group">
 						<label class="col-md-3 control-label">Tanggal Lahir *</label>
 						<div class="col-md-9">
@@ -68,7 +68,7 @@
 							</div>
 						</div>
 					</div>
-					
+
 					<div class="form-group">
 						<label class="col-md-3 control-label">Alamat *</label>
 						<div class="col-md-9">
@@ -79,7 +79,7 @@
 							]) !!}
 						</div>
 					</div>
-					
+
 					<div class="form-group">
 						<label class="col-md-3 control-label">Kota *</label>
 						<div class="col-md-9">
@@ -97,7 +97,7 @@
 									'class' => 'form-control select2 cities',
 									'data-placeholder' => 'Pilih Kota',
 								]) !!}
-								
+
 							@endif
 
 						</div>
@@ -105,7 +105,7 @@
 				</div>
 
 				<div class="col-md-6">
-					
+
 					<div class="form-group">
 						<label class="col-md-5 control-label">Jenis Kelamin *</label>
 						<div class="col-md-7">
@@ -118,7 +118,7 @@
 							]) !!}
 						</div>
 					</div>
-					
+
 					<div class="form-group">
 						<label class="col-md-5 control-label">Kewarganegaraan *</label>
 						<div class="col-md-7">
@@ -134,14 +134,14 @@
 
 								{!! Form::select('personal[citizenship_id]', ['' => ''], old('personal[citizenship_id]'), [
 									'class' => 'form-control select2 citizenships',
-									'data-placeholder' => 'Pilih Kota',
+									'data-placeholder' => 'Pilih Negara',
 								]) !!}
-								
+
 							@endif
-							
+
 						</div>
 					</div>
-					
+
 					<div class="form-group">
 						<label class="col-md-5 control-label">Status Pernikahan *</label>
 						<div class="col-md-7">
@@ -155,7 +155,7 @@
 							]) !!}
 						</div>
 					</div>
-					
+
 					<div class="form-group">
 						<label class="col-md-5 control-label">Status Tempat Tinggal *</label>
 						<div class="col-md-7">
@@ -168,7 +168,7 @@
 							]) !!}
 						</div>
 					</div>
-					
+
 					<div class="form-group">
 						<label class="col-md-5 control-label">Email </label>
 						<div class="col-md-7">
@@ -177,7 +177,7 @@
 							]) !!}
 						</div>
 					</div>
-					
+
 					<div class="form-group">
 						<label class="col-md-5 control-label">No Telepon *</label>
 						<div class="col-md-7">

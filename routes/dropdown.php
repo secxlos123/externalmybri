@@ -35,4 +35,15 @@ Route::group(['prefix' => 'dropdown', 'as' => 'dropdown.'], function () {
 	 * This route for get form registration simple
 	 */
 	Route::get('property', 'DropdownController@properties')->name('property');
+
+	/**
+	 * This route for get form registration simple
+	 */
+	Route::get('jobFields', 'DropdownController@jobFields')->name('jobFields');
+
+	/**
+	 * This route for get form registration simple
+	 */
+	Route::get('jobTypes', 'DropdownController@jobTypes')->name('jobTypes');
+
 });
