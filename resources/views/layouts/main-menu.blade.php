@@ -30,7 +30,7 @@
         </ul>
     </li>
     <li>
-        <a href="javascript:void(0)">Developer</a>
+        <a href="{!! route('developer.developer.index') !!}">Developer</a>
     </li>
     <li>
         <a href="javascript:void(0)">Contact User</a>
