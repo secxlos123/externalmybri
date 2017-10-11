@@ -49,6 +49,7 @@ trait Profileble
     {
         $personal = [];
         foreach ($data as $key => $value) {
+            \Log::info("key : {$key}");
             $personal[$key] = $value;
 
             if ( in_array($key, ['birth_date', 'couple_birth_date']) ) {
@@ -56,7 +57,7 @@ trait Profileble
             }
 
             if ('status' === $key) {
-                $personal[$key] = $this->status[$value];
+                $personal[$key] = $value ? $this->status[$value] : '';
             }
         }
         return $personal;
