@@ -103,31 +103,66 @@ Route::group([
 		/**
 		 * This route for showing list item of developer
 		 */
-		Route::get('/item', 'ItemController@index')->name('index');
+		Route::get('/', 'ItemController@index')->name('index');
 
 		/**
 		 * This route for showing list property of developer
 		 */
-		Route::post('/item', 'ItemController@store')->name('store');
+		Route::post('/', 'ItemController@store')->name('store');
 
 		/**
 		 * This route for showing list item of developer
 		 */
-		Route::get('{slug}/detail-item', 'ItemController@show')->name('show');
+		Route::get('{slug}/detail', 'ItemController@show')->name('show');
 
 		/**
 		 * This route for showing list item of developer
 		 */
-		Route::get('{slug}/edit-item', 'ItemController@edit')->name('edit');
+		Route::get('{slug}/edit', 'ItemController@edit')->name('edit');
 
 		/**
 		 * This route for showing list item of developer
 		 */
-		Route::get('tambah-item', 'ItemController@create')->name('create');
+		Route::get('tambah', 'ItemController@create')->name('create');
 
 		/**
 		 * This route for showing list property of developer
 		 */
-		Route::post('edit-item', 'ItemController@update')->name('update');
+		Route::match(['put', 'patch'], '{slug}', 'ItemController@update')->name('update');
+	});
+
+	/**
+	 * This route for group for manage project or property
+	 */
+	Route::group(['prefix' => 'developer', 'as' => 'developer.'], function () {
+		/**
+		 * This route for showing list developer of developer
+		 */
+		Route::get('/', 'DeveloperController@index')->name('index');
+
+		/**
+		 * This route for showing list developer of developer
+		 */
+		Route::post('/', 'DeveloperController@store')->name('store');
+
+		/**
+		 * This route for showing list Developer of developer
+		 */
+		Route::get('{slug}/detail', 'DeveloperController@show')->name('show');
+
+		/**
+		 * This route for showing list Developer of developer
+		 */
+		Route::get('{slug}/edit', 'DeveloperController@edit')->name('edit');
+
+		/**
+		 * This route for showing list Developer of developer
+		 */
+		Route::get('tambah', 'DeveloperController@create')->name('create');
+
+		/**
+		 * This route for showing list developer of developer
+		 */
+		Route::match(['put', 'patch'], '{slug}', 'DeveloperController@update')->name('update');
 	});
 });
