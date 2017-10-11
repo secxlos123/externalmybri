@@ -8,14 +8,14 @@ trait Profileble
 {
     /**
      * Avaliable status of user
-     * 
+     *
      * @var array
      */
     protected $status = ['Belum Menikah' => 0, 'Menikah' => 1, 'Janda' => 2, 'Duda' => 2];
 
 	/**
      * Get profile of user
-     * 
+     *
      * @return array|null
      */
     public function profile()
@@ -29,7 +29,7 @@ trait Profileble
 
     /**
      * Get profile of customer
-     * 
+     *
      * @return array
      */
     public function customer()
@@ -41,12 +41,13 @@ trait Profileble
 
     /**
      * Get personal data of customer
-     * 
+     *
      * @param  array  $data
      * @return array
      */
     public function personal(array $data)
     {
+        // dd($data);
         $personal = [];
         foreach ($data as $key => $value) {
             \Log::info("key : {$key}");
@@ -57,7 +58,7 @@ trait Profileble
             }
 
             if ('status' === $key) {
-                $personal[$key] = $value ? $this->status[$value] : '';
+                $personal[$key] = ($value) ? $value : '';
             }
         }
         return $personal;

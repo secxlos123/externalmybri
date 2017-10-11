@@ -18,4 +18,8 @@
     @include('customer.profile.form.contact')
 </div>
 
+<div class="row">
+    @include('customer.profile.form.support_data')
+</div>
+
 @endsection

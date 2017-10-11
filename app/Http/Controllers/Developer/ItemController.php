@@ -113,14 +113,13 @@ class ItemController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // dd($request->all());
         $property = Client::setEndpoint("property-item/".$id)
             ->setHeaders([
                 'Authorization' => session('authenticate.token')
             ])
             ->setBody($this->setMultipart($request->all()))
             ->put('multipart');
-        // dd($property);
+
         if ($property['code'] != 200) {
             return redirect()->back()->withInput();
         }

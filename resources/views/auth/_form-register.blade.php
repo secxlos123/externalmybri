@@ -32,7 +32,7 @@
 					<div class="pull-right">
 
 						@yield('btn-action')
-						
+
 						<i class="mdi mdi-content-save">
 							<button type="submit" class="btn btn-success waves-light waves-effect w-md m-b-20">
 								Simpan
@@ -55,7 +55,7 @@
 @push('scripts')
 	{!! Html::script('assets/js/bootstrap-datepicker.min.js') !!}
 	{!! Html::script('assets/js/select2.min.js') !!}
-    
+
     <!-- You can edit this script on resouces/asset/js/dropdown.js -->
     <!-- After that you run in console or terminal or cmd "npm run production" -->
     {!! Html::script('js/dropdown.min.js') !!}
@@ -64,6 +64,44 @@
 	<script type="text/javascript">
 		$(document).ready(function () {
 			$('#status').trigger('change');
+			$(".numericOnly").keydown(function (e) {
+	            // Allow: backspace, delete, tab, escape, enter and .
+	            if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+	                 // Allow: Ctrl+A
+	                (e.keyCode == 65 && e.ctrlKey === true) ||
+	                 // Allow: Ctrl+C
+	                (e.keyCode == 67 && e.ctrlKey === true) ||
+	                 // Allow: Ctrl+X
+	                (e.keyCode == 88 && e.ctrlKey === true) ||
+	                // Allow: backspace
+	                (e.keyCode === 320 && e.ctrlKey === true) ||
+	                 // Allow: home, end, left, right
+	                (e.keyCode >= 35 && e.keyCode <= 39)) {
+	                     // let it happen, don't do anything
+	                     return;
+	            }
+	            // Ensure that it is a number and stop the keypress
+	            if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+	                    e.preventDefault();
+	            }
+	        });
+	        Inputmask.extendAliases({
+                rupiah: {
+                    // prefix: "Rp ",
+                    radixPoint: ",",
+                    groupSeparator: ".",
+                    alias: "numeric",
+                    placeholder: "0",
+                    autoGroup: !0,
+                    digits: 2,
+                    digitsOptional: !1,
+                    clearMaskOnLostFocus: !1,
+                    rightAlign: false
+                }
+            });
+            $(document).ready(function() {
+                $('.currency-rp').inputmask({ alias : "rupiah" });
+            });
 		});
 
 		$('#status').on('change', function (e) {
@@ -80,8 +118,10 @@
 	        autoclose: true,
 	        endDate: '-20y'
 		});
-		
+
 		$('.cities').dropdown('cities');
 		$('.citizenships').dropdown('citizenships');
+		$('.job_type').dropdown('jobTypes');
+
 	</script>
 @endpush

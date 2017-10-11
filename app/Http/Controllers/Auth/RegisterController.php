@@ -64,6 +64,7 @@ class RegisterController extends Controller
      */
     public function register(RegisterRequest $request)
     {
+        // print_r($request->all());
         if ( 'register' == $request->input('register') ) {
             $response = Client::setEndpoint('auth/register')
                 ->setBody( $request->only( ['email', 'password'] ) )
@@ -74,32 +75,48 @@ class RegisterController extends Controller
                 ->setBody($this->setRequest($request->all()))
                 ->post('multipart');
         }
+        // dd($response);
 
         return redirect()->route('homepage');
     }
 
     /**
      * Handle for mapping request
-     * 
+     *
      * @param array $data
      */
     public function setRequest(array $data)
     {
         $requests = [];
+
         foreach ($data as $key => $value) {
-            if ( is_array($value) ) return $this->setRequest($value);
-            if ( is_file($value) ) {
-                $requests[] = ['name' => $key, 'contents' => fopen($value->getRealPath(), 'r')];
-                continue;
+            if ( is_array($value) ) {
+                foreach ($value as $otherKey => $otherValue) {
+                    if ( ! is_array($otherValue) ) {
+                        $requests[] = ['name' => $otherKey, 'contents' => $otherValue];
+                    } else {
+                        if ( is_file($otherValue) ) {
+                            $requests[] = ['name' => $otherKey, 'contents' => fopen($otherValue->getRealPath(), 'r')];
+                            continue;
+                        }
+                    }
+                }
+            }else{
+                if ( is_file($value) ) {
+                    $requests[] = ['name' => $key, 'contents' => fopen($value->getRealPath(), 'r')];
+                    continue;
+                }
+                $requests[] = ['name' => $key, 'contents' => $value];
             }
-            $requests[] = ['name' => $key, 'contents' => $value];
         }
+
+        // dd($requests);
         return $requests;
     }
 
     /**
      * Get form register
-     * 
+     *
      * @param  string $form
      * @return \Illuminate\Http\Response
      */
@@ -110,7 +127,7 @@ class RegisterController extends Controller
 
     /**
      * Activate user
-     * 
+     *
      * @param  string $userId
      * @param  string $code
      * @return \Illuminate\Http\Response
@@ -128,7 +145,7 @@ class RegisterController extends Controller
 
     /**
      * Show view after activated
-     * 
+     *
      * @return \Illuminate\Http\Response
      */
     public function activated()
