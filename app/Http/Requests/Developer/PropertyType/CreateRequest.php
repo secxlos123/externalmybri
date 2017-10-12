@@ -23,12 +23,7 @@ class CreateRequest extends FormRequest
      */
     public function rules()
     {
-        $image = strtolower( $this->method() ) == 'post' 
-            ? [] 
-            // ? ['uploaded.*' => 'required'] 
-            : [];
-
-        return array_merge([
+        return [
             'name'  => 'required',
             'price' => 'required|numeric',
             'bathroom'  => 'required|numeric|between:0,4',
@@ -40,6 +35,6 @@ class CreateRequest extends FormRequest
             'certificate'   => 'required',
             'building_area' => 'required|numeric',
             'electrical_power'  => 'required',
-        ], $image);
+        ];
     }
 }
