@@ -23,7 +23,10 @@ class CreateRequest extends FormRequest
      */
     public function rules()
     {
-        $image = strtolower( $this->method() ) == 'post' ? ['uploaded.*' => 'required'] : [];
+        $image = strtolower( $this->method() ) == 'post' 
+            ? [] 
+            // ? ['uploaded.*' => 'required'] 
+            : [];
 
         return array_merge([
             'name'  => 'required',
