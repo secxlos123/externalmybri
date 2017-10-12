@@ -7937,3 +7937,8 @@ li.drop-dash:hover > ul.dropdown-dashboard {
     object-fit: cover;
     height: 672px;
 }
+
+.property_item .image img {
+    object-fit: cover;
+    height: 248px;
+}
