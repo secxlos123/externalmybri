@@ -35,11 +35,6 @@ class CreateRequest extends FormRequest
             'longitude' => 'required',
             'description' => 'required',
             'facilities'  => 'required',
-            'price'  => 'required',
-            'status' => 'required',
-            'email' => 'required|email',
-            'join_date' => 'required',
-            'birth_date' => 'required'
         ];
     }
 }

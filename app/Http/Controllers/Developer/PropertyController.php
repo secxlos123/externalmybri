@@ -12,7 +12,7 @@ class PropertyController extends Controller
 {
     /**
      * Avaliable columns property datatables
-     * 
+     *
      * @var array
      */
     protected $columns = [
@@ -48,7 +48,7 @@ class PropertyController extends Controller
 
     /**
      * [store description]
-     * 
+     *
      * @param  Request $request [description]
      * @return \Illuminate\Http\Response
      */
@@ -59,7 +59,7 @@ class PropertyController extends Controller
 
     /**
      * Show detail of property
-     * 
+     *
      * @param  string $slug
      * @return \Illuminate\Http\Response
      */
@@ -74,7 +74,7 @@ class PropertyController extends Controller
 
     /**
      * Show detail of property
-     * 
+     *
      * @param  string $slug
      * @return \Illuminate\Http\Response
      */
@@ -85,7 +85,7 @@ class PropertyController extends Controller
 
     /**
      * Show detail of property
-     * 
+     *
      * @param  string $slug
      * @return \Illuminate\Http\Response
      */
@@ -96,9 +96,9 @@ class PropertyController extends Controller
 
     /**
      * Initial for datatable property / project
-     * 
-     * @param  Request $request 
-     * @return \Illuminate\Http\Response         
+     *
+     * @param  Request $request
+     * @return \Illuminate\Http\Response
      */
     public function datatables(Request $request)
     {
@@ -127,7 +127,7 @@ class PropertyController extends Controller
         $properties['contents']['draw'] = $request->input('draw');
         $properties['contents']['recordsTotal'] = $properties['contents']['total'];
         $properties['contents']['recordsFiltered'] = $properties['contents']['total'];
-        
+
         unset(
             $properties['contents']['path'],
             $properties['contents']['prev_page_url'],
@@ -139,7 +139,7 @@ class PropertyController extends Controller
 
     /**
      * Get property from API
-     * 
+     *
      * @param  string $slug
      * @param  string $view
      * @return \Illuminate\Http\Response
@@ -157,12 +157,12 @@ class PropertyController extends Controller
     }
 
     /**
-     * Handling for create and update property type
-     * 
-     * @param  Request $request 
+     * Handling for create and update property
+     *
+     * @param  Request $request
      * @param  string  $endpoint
-     * @param  string  $method  
-     * @return \Illuminate\Http\Response          
+     * @param  string  $method
+     * @return \Illuminate\Http\Response
      */
     public function storeOrUpdate(Request $request, $endpoint, $method)
     {
@@ -175,6 +175,6 @@ class PropertyController extends Controller
             return redirect()->back()->withInput()->withError($response['descriptions']);
         }
 
-        return redirect()->route('developer.proyek-type.index');
+        return redirect()->route('developer.proyek.index');
     }
 }
