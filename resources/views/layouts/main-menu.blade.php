@@ -3,24 +3,27 @@
 </li>
 
 @if ( 'customer' == session('authenticate.role') || ! session('authenticate') )
+
+    <!-- @start You can remove this condition if this module already -->
+    @if (false)
+        <li>
+            <a href="javascript:void(0)">Daftar Properti</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)">Simulasi Kredit</a>
+        </li>
+        <li class="active">
+            <a href="javascript:void(0)">Developer</a>
+        </li>
+    @endif
+    <!-- @end You can remove this condition if this module already -->
+
     <li>
-        <a href="javascript:void(0)">Daftar Properti</a>
-    </li>
-    <li>
-        <a href="javascript:void(0)">Simulasi Kredit</a>
-    </li>
-    <li class="active">
-        <a href="javascript:void(0)">Developer</a>
-    </li>
-    <li>
-        <a href="javascript:void(0)">Pengajuan Kredit</a>
+        <a href="{!! session('authenticate') ? '' : 'javascript:void(0)' !!}" class="submission-of-credit">Pengajuan Kredit</a>
     </li>
 @endif
 
 @if ( 'developer' == session('authenticate.role') )
-    <li>
-        <a href="javascript:void(0)">Profil</a>
-    </li>
     <li class="dropdown">
         <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">Properti</a>
         <ul class="dropdown-menu animated fadeOut">
@@ -29,10 +32,19 @@
             <li><a href="{!! route('developer.proyek-item.index') !!}">Proyek Unit</a></li>
         </ul>
     </li>
-    <li>
-        <a href="{!! route('developer.developer.index') !!}">Developer</a>
-    </li>
-    <li>
-        <a href="javascript:void(0)">Contact User</a>
-    </li>
+
+    <!-- @start You can remove this condition if this module already -->
+    @if (false)
+        <li>
+            <a href="javascript:void(0)">Profil</a>
+        </li>
+        <li>
+            <a href="{!! route('developer.developer.index') !!}">Developer</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)">Contact User</a>
+        </li>
+    @endif
+    <!-- @end You can remove this condition if this module already -->
+    
 @endif

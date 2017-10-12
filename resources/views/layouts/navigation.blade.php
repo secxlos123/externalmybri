@@ -4,7 +4,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <p>BRI Melayani dengan Sepenuh Hati</p>
+                    <p>BRI Melayani dengan Setulus Hati</p>
                 </div>
                 <div class="col-md-8 text-right">
                     @include('layouts.top-menu')

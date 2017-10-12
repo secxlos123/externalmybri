@@ -17,6 +17,14 @@
         <div class="container">
             @include('home.gallery')
         </div>
+        <div class="container hide denied">
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <h2 class="uppercase">Tidak dapat mencari lokasi PROPERTI terdekat</h2>
+                    <p class="heading_space">Hidupkan GPS pada brower anda agar dapat melihat daftar PROPERTI terdekat.</p>
+                </div>
+            </div>
+        </div>
     </section>
     <!-- This is content of list projects / properties end -->
 
@@ -56,25 +64,20 @@
 <!-- This is scripts for this page -->
 @push('scripts')
     <script type="text/javascript">
-        this.getLocation();
 
-        function getLocation() {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(showPosition);
-            } else { 
-                alert("Geolocation is not supported by this browser.");
+        navigator.geolocation.watchPosition(properties, permission_handling);
+
+        function permission_handling(error) {
+            if (error.code == error.PERMISSION_DENIED){
+                $('#property .container').addClass('hide');
+                $('.denied').removeClass('hide');
             }
         }
 
-        function showPosition(position) {
+        function properties(position) {
             $.ajax({
                 url: '/properties',
-                data: {
-                    lat: position.coords.latitude,
-                    long: position.coords.longitude,
-                },
-                beforeSend: function () {
-                }
+                data: { lat: position.coords.latitude, long: position.coords.longitude}
             })
             .done(function (response) {
                 $('#content-galery').html(response);

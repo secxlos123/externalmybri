@@ -11,7 +11,7 @@
                     {!! Html::image('assets/images/product/kpr.png', 'KPR') !!}
                     <div class="img-info">
                         <h3>KPR</h3>
-                        <span>Kredit Perumahan Rakyat</span>
+                        <span>Kredit Pemilikan Rumah</span>
 
                         <p class="top20 bottom30">
                             KPR BRI memberikan solusi dan kemudahan dalam memiliki hunian yang anda inginkan.

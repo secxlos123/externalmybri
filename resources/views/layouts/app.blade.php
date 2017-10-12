@@ -105,6 +105,10 @@
             $('#btn-reset').on('click', function () {
                 $('.masuk').removeClass('active');
             });
+
+            $('.submission-of-credit').on('click', function () {
+                $('#login-register').modal('show');
+            });
         </script>
     @endif
 

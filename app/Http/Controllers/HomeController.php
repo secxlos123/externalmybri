@@ -16,7 +16,16 @@ class HomeController extends Controller
     	if ( 'developer' == session('authenticate.role') ) {
             return redirect()->route('developer.index');
         }
-        
-    	return view('home.index');
+
+        $results = \Client::setEndpoint('developers')->get();
+        $developers = collect([]);
+
+        if ($results['code'] == 200) {
+            collect($results['contents']['data'])->filter(function ($developer) use (&$developers) {
+                return $developers->push( array_only($developer, ['image', 'company_name']) );
+            });
+        }
+
+    	return view('home.index', compact('developers'));
     }
 }
