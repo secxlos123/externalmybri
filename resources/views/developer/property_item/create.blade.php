@@ -21,10 +21,10 @@
             ]) !!}
                 <div class="row">
                     <div class="col-md-12">
-                        <h2 class="text-uppercase bottom40">Tambah Proyek Properti</h2>
+                        <h2 class="text-uppercase bottom40">Tambah Properti Unit</h2>
                         <div class="panel panel-blue">
                             <div class="panel-heading">
-                                <h3 class="panel-title text-uppercase">Data Proyek</h3>
+                                <h3 class="panel-title text-uppercase">Data Properti Unit</h3>
                             </div>
                             <div class="panel-body">
                                 @include('developer.property_item._form')
