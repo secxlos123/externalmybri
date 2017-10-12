@@ -98,23 +98,6 @@ class RegisterRequest extends FormRequest
             'personal.couple_birth_place_id'    => 'required_if:personal.status,1',
             'personal.couple_birth_date'        => 'required_if:personal.status,1|date',
             'personal.couple_identity'          => 'required_if:personal.status,1|image|max:1024',
-            'job_type'                          => 'required',
-            'work'                              => 'required',
-            'company_name'                      => 'required',
-            'work_field'                        => 'required',
-            'position'                          => 'required',
-            'work_duration'                     => 'required',
-            'office_address'                    => 'required',
-            'salary'                            => 'required|numeric',
-            'other_salary'                      => 'required|numeric',
-            'loan_installment'                  => 'required|numeric',
-            'dependent_amount'                  => 'required|numeric',
-            'phone'                             => 'required|numeric',
-            'mobile_phone'                      => 'required|numeric|digits:12',
-            'emergency_contact'                 => 'required|numeric|digits:12',
-            'emergency_relation'                => 'required',
-            'npwp'                              => 'required|image|max:1024',
-            'customer'                          => 'required|image|max:1024'
         ];
     }
 
