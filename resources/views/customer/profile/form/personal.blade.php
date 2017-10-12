@@ -40,7 +40,7 @@
 
 							@if ( $personal['birth_place_id'] )
 
-								{!! Form::text('personal[birth_place_id]', $personal['birth_place'], [
+								{!! Form::text('personal[birth_place_id]', $personal['birth_place_id'], [
 									'class' => 'form-control', 'disabled'
 								]) !!}
 								{!! Form::hidden('personal[birth_place_id]', $personal['birth_place_id']) !!}
@@ -53,7 +53,7 @@
 								]) !!}
 
 							@endif
-							<input type="hidden" name="birth_place" id="birth_place" value="">
+							<input type="hidden" name="birth_place" id="birth_place" value="{{$personal['birth_place_id']}}">
 						</div>
 					</div>
 
@@ -99,7 +99,7 @@
 								]) !!}
 
 							@endif
-
+							<input type="hidden" name="city" id="city" value="{{$personal['city_id']}}">
 						</div>
 					</div>
 				</div>
@@ -138,7 +138,7 @@
 								]) !!}
 
 							@endif
-
+							<input type="hidden" name="citizenship" id="citizenship" value="{{$personal['citizenship_id']}}">
 						</div>
 					</div>
 

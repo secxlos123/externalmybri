@@ -56,7 +56,7 @@ class RegisterRequest extends FormRequest
      */
     public function completeRules()
     {
-        return $this->personal();
+        return $this->personalComplete();
     }
 
     /**
@@ -98,7 +98,36 @@ class RegisterRequest extends FormRequest
             'personal.couple_birth_place_id'    => 'required_if:personal.status,1',
             'personal.couple_birth_date'        => 'required_if:personal.status,1|date',
             'personal.couple_identity'          => 'required_if:personal.status,1|image|max:1024',
-            'job_type'                          => 'required',
+        ];
+    }
+
+    /**
+     * Get the validation rules for personal data
+     *
+     * @return array
+     */
+    public function personalComplete()
+    {
+        return [
+            'personal.nik'              => 'required|numeric|digits:16',
+            'personal.first_name'       => 'required',
+            'personal.mobile_phone'     => 'required|numeric|digits:12',
+            'personal.birth_place_id'   => 'required',
+            'personal.birth_date'       => 'required|date',
+            'personal.address'          => 'required',
+            'personal.city_id'          => 'required',
+            'personal.gender'           => 'required|in:L,P',
+            'personal.citizenship_id'   => 'required',
+            'personal.status'           => 'required|in:0,1,2',
+            'personal.address_status'   => 'required|in:menetap,sementara',
+            'personal.mother_name'      => 'required',
+            'personal.identity'         => 'required|image|max:1024',
+            'personal.couple_nik'       => 'required_if:personal.status,1|numeric|digits:16',
+            'personal.couple_name'      => 'required_if:personal.status,1',
+            'personal.couple_birth_place_id'    => 'required_if:personal.status,1',
+            'personal.couple_birth_date'        => 'required_if:personal.status,1|date',
+            'personal.couple_identity'          => 'required_if:personal.status,1|image|max:1024',
+            'work_type'                          => 'required',
             'work'                              => 'required',
             'company_name'                      => 'required',
             'work_field'                        => 'required',

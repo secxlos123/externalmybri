@@ -94,11 +94,10 @@ class RegisterController extends Controller
                 foreach ($value as $otherKey => $otherValue) {
                     if ( ! is_array($otherValue) ) {
                         $requests[] = ['name' => $otherKey, 'contents' => $otherValue];
-                    } else {
-                        if ( is_file($otherValue) ) {
-                            $requests[] = ['name' => $otherKey, 'contents' => fopen($otherValue->getRealPath(), 'r')];
-                            continue;
-                        }
+                    }
+                    if ( is_file($otherValue) ) {
+                        $requests[] = ['name' => $otherKey, 'contents' => fopen($otherValue->getRealPath(), 'r')];
+                        continue;
                     }
                 }
             }else{
