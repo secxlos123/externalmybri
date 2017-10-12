@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Developer\PropertyItem\CreateRequest;
 use Client;
+use Storage;
 use Illuminate\Support\Facades\Log;
 
 class ItemController extends Controller
@@ -82,7 +83,14 @@ class ItemController extends Controller
      */
     public function edit($id)
     {
-        return $this->storeOrUpdate($request, 'property-item/{$id}', 'post');
+        $property = Client::setEndpoint("property-item/".$id)
+            ->setHeaders([
+                'Authorization' => session('authenticate.token')
+            ])->get();
+        $property = $property['contents'];
+        // dd($property);
+
+        return view("developer.property_item.edit", compact(['property', 'id']));
     }
 
     /**
@@ -94,18 +102,7 @@ class ItemController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $property = Client::setEndpoint("property-item/".$id)
-            ->setHeaders([
-                'Authorization' => session('authenticate.token')
-            ])
-            ->setBody($this->setMultipart($request->all()))
-            ->put('multipart');
-
-        if ($property['code'] != 200) {
-            return redirect()->back()->withInput();
-        }
-
-        return redirect()->route('developer.proyek-item.index');
+        return $this->storeOrUpdate($request, 'property-item/'.$id, 'post');
     }
 
     /**
@@ -203,7 +200,7 @@ class ItemController extends Controller
                 ->setHeaders(['Authorization' => session('authenticate.token')])
                 ->setBody(array_to_multipart($request->all()))
                 ->{$method}('multipart');
-        dd($response);
+        // dd($response);
         if ( ! in_array($response['code'], [200, 201]) ) {
             Storage::disk('property-item')->deleteDirectory($dir);
             return redirect()->back()->withInput()->withError($response['descriptions']);
