@@ -99,16 +99,28 @@ class DropdownController extends Controller
     }
 
     /**
-	 * This logic for get list of citizenships from api
+     * This logic for get list of citizenships from api
+     * 
+     * @param  Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function citizenships(Request $request)
+    {
+        $body    = [ 'text' => 'name' ];
+        $options = [ 'name' => $request->input('name') ];
+        return $this->init('citizenship-list', $body, $options);
+    }
+
+    /**
+	 * This logic for get list of nearby office
 	 * 
 	 * @param  Request $request
      * @return \Illuminate\Http\Response
 	 */
-    public function citizenships(Request $request)
+    public function offices(Request $request)
     {
-    	$body 	 = [ 'text' => 'name' ];
-    	$options = [ 'name' => $request->input('name') ];
-        return $this->init('citizenship-list', $body, $options);
+    	$body 	 = [ 'text' => 'unit', 'id' => 'branch' ];
+        return $this->init('offices', $body, $request->only(['name', 'distance', 'long', 'lat']));
     }
 
     /**
