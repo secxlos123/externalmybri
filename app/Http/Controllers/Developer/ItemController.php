@@ -53,19 +53,7 @@ class ItemController extends Controller
      */
     public function store(CreateRequest $request)
     {
-        $property = Client::setEndpoint('property-item')
-            ->setHeaders([
-                'Authorization' => session('authenticate.token')
-            ])
-            ->setBody($this->setMultipart($request->all()))
-            ->post('multipart');
-        // dd($property);
-
-        if ($property['code'] != 201) {
-            return redirect()->back()->withInput();
-        }
-
-        return redirect()->route('developer.proyek-item.index');
+        return $this->storeOrUpdate($request, 'property-item', 'post');
     }
 
     /**
@@ -94,14 +82,7 @@ class ItemController extends Controller
      */
     public function edit($id)
     {
-        $property = Client::setEndpoint("property-item/".$id)
-            ->setHeaders([
-                'Authorization' => session('authenticate.token')
-            ])->get();
-        $property = $property['contents'];
-        // dd($property);
-
-        return view("developer.property_item.edit", compact(['property', 'id']));
+        return $this->storeOrUpdate($request, 'property-item/{$id}', 'post');
     }
 
     /**
@@ -205,32 +186,29 @@ class ItemController extends Controller
     }
 
 
-    public function post_upload()
+    /**
+     * Handling for create and update property type
+     *
+     * @param  Request $request
+     * @param  string  $endpoint
+     * @param  string  $method
+     * @return \Illuminate\Http\Response
+     */
+    public function storeOrUpdate(Request $request, $endpoint, $method)
     {
-        $input = Input::all();
-        $rules = array(
-            'file' => 'image|max:3000',
-        );
+        $dir = "tmp/{$request->get('_token')}";
+        extract_dir_to_request($request, $dir, 'property-item');
 
-        $validation = Validator::make($input, $rules);
-
-        if ($validation->fails())
-        {
-            return Response::make($validation->errors->first(), 400);
+        $response = Client::setEndpoint($endpoint)
+                ->setHeaders(['Authorization' => session('authenticate.token')])
+                ->setBody(array_to_multipart($request->all()))
+                ->{$method}('multipart');
+        dd($response);
+        if ( ! in_array($response['code'], [200, 201]) ) {
+            Storage::disk('property-item')->deleteDirectory($dir);
+            return redirect()->back()->withInput()->withError($response['descriptions']);
         }
 
-        $file = Input::file('file');
-
-        $extension = File::extension($file['name']);
-        $directory = path('public').'uploads/'.sha1(time());
-        $filename = sha1(time().time()).".{$extension}";
-
-        $upload_success = Input::upload('file', $directory, $filename);
-
-        if( $upload_success ) {
-            return Response::json('success', 200);
-        } else {
-            return Response::json('error', 400);
-        }
+        return redirect()->route('developer.proyek-item.index');
     }
 }
