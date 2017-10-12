@@ -76,7 +76,6 @@ if (! function_exists('extract_dir_to_request')) {
 	        }
 
 	        $request->replace($request->except(['_token', 'uploaded']));
-	        $storage->deleteDirectory($dir);
 		}
 	}
 }

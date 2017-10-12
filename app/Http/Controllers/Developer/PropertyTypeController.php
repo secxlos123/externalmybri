@@ -177,7 +177,8 @@ class PropertyTypeController extends Controller
      */
     public function storeOrUpdate(Request $request, $endpoint, $method)
     {
-        extract_dir_to_request($request, "tmp/{$request->get('_token')}", 'property_types');
+        $dir = "tmp/{$request->get('_token')}";
+        extract_dir_to_request($request, $dir, 'property_types');
 
         $response = Client::setEndpoint($endpoint)
                 ->setHeaders(['Authorization' => session('authenticate.token')])
@@ -185,6 +186,7 @@ class PropertyTypeController extends Controller
                 ->{$method}('multipart');
 
         if ( ! in_array($response['code'], [200, 201]) ) {
+            Storage::disk('property_types')->deleteDirectory($dir);
             return redirect()->back()->withInput()->withError($response['descriptions']);
         }
 
