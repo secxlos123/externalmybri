@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Developer;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Developer\Property\CreateRequest;
+use App\Http\Requests\Developer\PropertyItem\CreateRequest;
 use Client;
 use Illuminate\Support\Facades\Log;
 
@@ -51,7 +51,7 @@ class ItemController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateRequest $request)
     {
         $property = Client::setEndpoint('property-item')
             ->setHeaders([
