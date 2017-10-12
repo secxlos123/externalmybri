@@ -50,18 +50,18 @@
                         </div>
 
                         <div class="property_meta bg-black bottom40">
-                            <!-- @todo change to have items -->
                             <span>Stock <b>{!! $type->items_count !!}</b> Unit</span>
 
-                            <!-- @todo change to have price -->
                             <span>Mulai Dari : <b>Rp. {!! number_format($type->price, 0, '.', ',') !!}</b></span>
                         </div>
 
-                        <h2 class="text-uppercase bottom20">Fasilitas (Dari table project)</h2>
-                        <p class="bottom20">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras et dui vestibulum, bibendum purus sit amet, vulputate mauris. Ut adipiscing gravida tincidunt. Duis euismod placerat rhoncus. Phasellus mollis imperdiet placerat. Sed ac turpis nisl. Mauris at ante mauris. Aliquam posuere fermentum lorem, a aliquam mauris rutrum a. Curabitur sit amet pretium lectus, nec consequat orci. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis et metus in libero sollicitudin venenatis eu sed enim. Nam felis lorem, suscipit ac nisl ac, iaculis dapibus tellus. Cras ante justo, aliquet quis placerat nec, molestie id turpis. </p>
-                        <div class="text-it-p bottom20 top-inherit">
-                            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.</p>
-                        </div>
+                        <fieldset hidden>
+                            <h2 class="text-uppercase bottom20">Fasilitas (Dari table project)</h2>
+                            <p class="bottom20">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras et dui vestibulum, bibendum purus sit amet, vulputate mauris. Ut adipiscing gravida tincidunt. Duis euismod placerat rhoncus. Phasellus mollis imperdiet placerat. Sed ac turpis nisl. Mauris at ante mauris. Aliquam posuere fermentum lorem, a aliquam mauris rutrum a. Curabitur sit amet pretium lectus, nec consequat orci. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis et metus in libero sollicitudin venenatis eu sed enim. Nam felis lorem, suscipit ac nisl ac, iaculis dapibus tellus. Cras ante justo, aliquet quis placerat nec, molestie id turpis. </p>
+                            <div class="text-it-p bottom20 top-inherit">
+                                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.</p>
+                            </div>
+                        </fieldset>
 
                         <!--About Us -->
                         <section id="about" class="bottom40">
@@ -119,38 +119,9 @@
                         </section>
                         <!--About & Counters-->
 
-                        <h2 class="text-uppercase bottom20">PIC</h2>
-                        <div class="row">
-                            <div class="col-sm-4 bottom40">
-                                <div class="agent_wrap">
-                                    <div class="image">
-                                        {!! Html::image('assets/images/agen/agent-one.jpg', 'Agents') !!}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-4 bottom40">
-                                <div class="agent_wrap">
-                                    <h3>John Doe</h3>
-                                    <p class="bottom30">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh tempor cum soluta nobis consectetuer adipiscing eleifend option congue nihil imperdiet doming…</p>
-                                    <table class="agent_contact table">
-                                        <tbody>
-                                            <tr class="bottom10">
-                                                <td><strong>Telepon:</strong></td>
-                                                <td class="text-right">022 75023456</td>
-                                            </tr>
-                                            <tr class="bottom10">
-                                                <td><strong>HP:</strong></td>
-                                                <td class="text-right">0812 3456 7890</td>
-                                            </tr>
-                                            <tr>
-                                                <td><strong>Alamat Email:</strong></td>
-                                                <td class="text-right"><a href="#.">johndoe@domain.com</a></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
+                        <!-- @todo to update relation with user cause pic is user have account -->
+                        @include('developer.fake-pic')
+                        <!-- @endtodo to update relation with user cause pic is user have account -->
 
                         <div class="row">
                             <div class="col-md-12">
@@ -159,37 +130,7 @@
                                         <h3 class="panel-title text-uppercase">List Unit Properti</h3>
                                     </div>
                                     <div class="panel-body">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="add-btn bottom10 top20">
-                                                    <a href="#" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah Unit Properti</a>
-                                                </div>
-                                                <table class="table table-striped table-bordered project-list">
-                                                    <thead class="bg-blue">
-                                                        <tr>
-                                                            <th>No </th>
-                                                            <th>Alamat </th>
-                                                            <th>Harga </th>
-                                                            <th>Status </th>
-                                                            <th>Foto </th>
-                                                            <th>Aksi</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>1</td>
-                                                            <td>Blok D/24</td>
-                                                            <td>Rp. 200.000.000</td>
-                                                            <td>Available</td>
-                                                            <td><img src="images/property-details/house-3-s.jpg" class="img-responsive"></td>
-                                                            <td>
-                                                                <a href="#" class="btn btn-default">Detail</a>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
+                                        @include('developer.property_item._table')
                                     </div>
                                 </div>
                             </div>

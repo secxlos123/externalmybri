@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Developer;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Developer\PropertyType\CreateRequest;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Illuminate\Http\Request;
+use Storage;
 use Client;
 
 class PropertyTypeController extends Controller
@@ -40,9 +43,7 @@ class PropertyTypeController extends Controller
      */
     public function create()
     {
-        return view( 'developer.property_type.create' , [
-            'photos' => session('photos') ?: []
-        ]);
+        return view( 'developer.property_type.create' );
     }
 
     /**
@@ -51,9 +52,9 @@ class PropertyTypeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateRequest $request)
     {
-        //
+        return $this->storeOrUpdate($request, 'property-type', 'post');
     }
 
     /**
@@ -62,8 +63,12 @@ class PropertyTypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($slug)
+    public function show(Request $request, $slug)
     {
+        if ( $request->ajax() ) {
+            return app(ItemController::class)->datatables($request, $slug);
+        }
+
         return $this->type($slug, 'show');
     }
 
@@ -75,7 +80,7 @@ class PropertyTypeController extends Controller
      */
     public function edit($slug)
     {
-        //
+        return $this->type($slug, 'edit');
     }
 
     /**
@@ -85,9 +90,9 @@ class PropertyTypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CreateRequest $request, $slug)
     {
-        //
+        return $this->storeOrUpdate($request, "property-type/{$slug}", 'put');
     }
 
     /**
@@ -125,7 +130,7 @@ class PropertyTypeController extends Controller
         foreach ($types['contents']['data'] as $key => $type) {
             $type['action'] = view('layouts.actions', [
                 'show' => route('developer.proyek-type.show', $type['slug']),
-                // 'edit' => route('developer.proyek-type.edit', $type['slug'])
+                'edit' => route('developer.proyek-type.edit', $type['slug'])
             ])->render();
             $types['contents']['data'][$key] = $type;
         }
@@ -157,10 +162,32 @@ class PropertyTypeController extends Controller
                 'Authorization' => session('authenticate.token')
             ])->get();
 
-        session(['photos' => $type['contents']['photos']]);
-
         return view("developer.property_type.{$view}", [
             'type' => (object) $type['contents']
         ]);
+    }
+
+    /**
+     * Handling for create and update property type
+     * 
+     * @param  Request $request 
+     * @param  string  $endpoint
+     * @param  string  $method  
+     * @return \Illuminate\Http\Response          
+     */
+    public function storeOrUpdate(Request $request, $endpoint, $method)
+    {
+        extract_dir_to_request($request, "tmp/{$request->get('_token')}", 'property_types');
+
+        $response = Client::setEndpoint($endpoint)
+                ->setHeaders(['Authorization' => session('authenticate.token')])
+                ->setBody(array_to_multipart($request->all()))
+                ->{$method}('multipart');
+
+        if ( ! in_array($response['code'], [200, 201]) ) {
+            return redirect()->back()->withInput()->withError($response['descriptions']);
+        }
+
+        return redirect()->route('developer.proyek-type.index');
     }
 }

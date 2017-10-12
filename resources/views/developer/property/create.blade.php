@@ -43,38 +43,3 @@
         </div>
     </section>
 @endsection
-
-@push( 'styles' )
-    {!! Html::style( 'assets/css/select2.min.css' ) !!}
-    {!! Html::script( 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAIijm1ewAfeBNX3Np3mlTDZnsCl1u9dtE&libraries=places' ) !!}
-
-    <style type="text/css">
-        .map {
-            width: 100%;
-            height: 400px;
-        }
-    </style>
-@endpush
-
-@push( 'scripts' )
-    {!! Html::script( 'assets/js/jquery.gmaps.js' ) !!}
-    {!! Html::script( 'assets/js/ckeditor/ckeditor.js' ) !!}
-    {!! Html::script( 'assets/js/select2.min.js' ) !!}
-
-    <!-- You can edit this script on resouces/asset/js/dropdown.js -->
-    <!-- After that you run in console or terminal or cmd "npm run production" -->
-    {!! Html::script( 'js/dropdown.min.js' ) !!}
-    {!! JsValidator::formRequest(App\Http\Requests\Developer\Property\CreateRequest::class, '#form-property') !!}
-
-    <!-- Laravel Javascript Validation -->
-    <script type="text/javascript">
-        CKEDITOR.replace( 'txtEditor' );
-        CKEDITOR.replace( 'txtEditor2' );
-
-        $('select').select2({
-            allowClear: true,
-        });
-
-        $('.cities').dropdown('cities');
-    </script>
-@endpush

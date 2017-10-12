@@ -54,18 +54,7 @@ class PropertyController extends Controller
      */
     public function store(CreateRequest $request)
     {
-        $property = Client::setEndpoint('property')
-            ->setHeaders([
-                'Authorization' => session('authenticate.token')
-            ])
-            ->setBody($this->setMultipart($request->all()))
-            ->post('multipart');
-
-        if ($property['code'] != 201) {
-            return redirect()->back()->withInput();
-        }
-
-        return redirect()->route('developer.proyek.index');
+        return $this->storeOrUpdate($request, 'property', 'post');
     }
 
     /**
@@ -102,41 +91,7 @@ class PropertyController extends Controller
      */
     public function update(CreateRequest $request, $slug)
     {
-        $property = Client::setEndpoint("property/{$slug}")
-            ->setHeaders([
-                'Authorization' => session('authenticate.token')
-            ])
-            ->setBody($this->setMultipart($request->all()))
-            ->put('multipart');
-
-        if ($property['code'] != 200) {
-            return redirect()->back()->withInput();
-        }
-
-        return redirect()->route('developer.proyek.index');
-    }
-
-    /**
-     * [setMultipart description]
-     * 
-     * @param array  $inputs [description]
-     * @param string $parent [description]
-     */
-    public function setMultipart( array $inputs = [], $parent = '')
-    {
-        $results = [];
-        foreach ($inputs as $name => $value) {
-            if ( is_array($value) ) {
-                return $this->setMultipart($value, $name);
-            } elseif ( is_file($value) ) {
-                $results[] = ['name' => $parent ? "{$parent}[{$name}]" : $name, 'contents' => fopen($value->getRealPath(), 'r') ];
-            } elseif ( in_array($name, ['description', 'facilities']) ) {
-                $results[] = ['name' => $parent ? "{$parent}[{$name}]" : $name, 'contents' => htmlspecialchars($value) ];
-            } else {
-                $results[] = ['name' => $parent ? "{$parent}[{$name}]" : $name, 'contents' => $value];
-            }
-        }
-        return $results;
+        return $this->storeOrUpdate($request, "property/{$slug}", 'put');
     }
 
     /**
@@ -199,5 +154,27 @@ class PropertyController extends Controller
         return view("developer.property.{$view}", [
             'property' => (object) $property['contents']
         ]);
+    }
+
+    /**
+     * Handling for create and update property type
+     * 
+     * @param  Request $request 
+     * @param  string  $endpoint
+     * @param  string  $method  
+     * @return \Illuminate\Http\Response          
+     */
+    public function storeOrUpdate(Request $request, $endpoint, $method)
+    {
+        $response = Client::setEndpoint($endpoint)
+                ->setHeaders(['Authorization' => session('authenticate.token')])
+                ->setBody(array_to_multipart($request->all()))
+                ->{$method}('multipart');
+
+        if ( ! in_array($response['code'], [200, 201]) ) {
+            return redirect()->back()->withInput()->withError($response['descriptions']);
+        }
+
+        return redirect()->route('developer.proyek-type.index');
     }
 }

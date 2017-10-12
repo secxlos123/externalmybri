@@ -47,7 +47,6 @@ trait Profileble
      */
     public function personal(array $data)
     {
-        // dd($data);
         $personal = [];
         foreach ($data as $key => $value) {
             $personal[$key] = $value;
