@@ -6,5 +6,5 @@
 @endsection
 
 @section('btn-action')
-    <a href="" class="btn btn-default waves-light waves-effect w-md m-b-20">Lewati</a>
+    <a href="{!! route('homepage') !!}" class="btn btn-default waves-light waves-effect w-md m-b-20">Lewati</a>
 @endsection
