@@ -37,12 +37,11 @@
             {{ $errors->has('status') ? ' has-error' : '' }}">
             {!! Form::label('status', 'Status') !!}
             {!! Form::select('status', [
-                '' => '',
+                '' => '-- Pilih Status --',
                 'new' => 'Baru',
                 'second' => 'Bekas'
                 ], old('status'), [
-                'class' => 'select2 status',
-                'data-placeholder' => '-- Pilih Status --'
+                'class' => 'status',
             ]) !!}
 
             @if ($errors->has('status'))
@@ -53,11 +52,11 @@
         </div>
     </div>
     <div class="col-md-5">
-        <div class="single-query form-group bottom20
+         <div class="single-query form-group bottom20
             {{ $errors->has('property') ? ' has-error' : '' }}">
             {!! Form::label('property', 'Property') !!}
             {!! Form::select('property', [], old('property'), [
-                'class' => 'select2 property',
+                'class' => 'select2 properties',
                 'data-placeholder' => '-- Pilih Property --'
             ]) !!}
 
@@ -81,30 +80,38 @@
                 </span>
             @endif
         </div>
-        <div class="form-group custom-uploader {{ $errors->has('photo') ? ' has-error' : '' }}">
-            {!! Form::label('photo', 'Foto', ['class' => 'col-md-4 control-label']) !!}
-            <div class="col-md-8">
-                {!! Form::file('photo', old('photo'), ['class' => 'filestyle']) !!}
-            </div>
-
-            <div class="clearfix"></div>
-            @if ($errors->has('photo'))
-                <span class="help-block">
-                    <strong>{{ $errors->first('photo') }}</strong>
-                </span>
-            @endif
-        </div>
-        <div class="form-group custom-uploader">
-            <label>Upload Foto</label>
-            <div class="file_uploader bottom20">
-                <form id="upload-widget" method="post" action="/upload" class="dropzone">
-                    <div class="dz-default dz-message">
-                        <span>
-                            <i class="fa fa-plus-circle"></i> Klik di sini untuk mengunggah foto
-                        </span>
-                    </div>
-                </form>
-            </div>
+        <div class="single-query form-group bottom20">
+            @include('forms.dropzone', ['btn' => true])
         </div>
     </div>
+    <div class="col-md-10 col-md-offset-1">
+        @include('forms.dropzone', ['form' => true])
+    </div>
 </div>
+
+@push( 'styles' )
+    {!! Html::style( 'assets/css/dropzone.min.css' ) !!}
+    {!! Html::style( 'assets/css/select2.min.css' ) !!}
+    {!! Html::style( 'css/style-dropzone.min.css' ) !!}
+@endpush
+
+@push( 'scripts' )
+    {!! Html::script( 'assets/js/dropzone.min.js' ) !!}
+    {!! Html::script( 'assets/js/select2.min.js' ) !!}
+
+    <!-- You can edit this script on resouces/asset/js/dropdown.js -->
+    <!-- After that you run in console or terminal or cmd "npm run production" -->
+    {!! Html::script( 'js/dropdown.min.js' ) !!}
+    {!! Html::script( 'js/main-dropzone.min.js' ) !!}
+    {!! JsValidator::formRequest(App\Http\Requests\Developer\PropertyItem\CreateRequest::class, '#form-property-item') !!}
+
+    <!-- Laravel Javascript Validation -->
+    <script type="text/javascript">
+        $('.properties').dropdown('property');
+
+        $('.properties').on('change', function(){
+            var id = $(this).val();
+            $('.property_type').dropdown('types', {prop_id : id});
+        });
+    </script>
+@endpush
