@@ -63,6 +63,10 @@
 
 	<script type="text/javascript">
 		$(document).ready(function () {
+			$('.cities').on('change', function(){
+				var place = $('select.cities option:last-child').text();
+				$('#birth_place').val(place);
+			});
 			$('#status').trigger('change');
 			$(".numericOnly").keydown(function (e) {
 	            // Allow: backspace, delete, tab, escape, enter and .
@@ -85,23 +89,6 @@
 	                    e.preventDefault();
 	            }
 	        });
-	        Inputmask.extendAliases({
-                rupiah: {
-                    // prefix: "Rp ",
-                    radixPoint: ",",
-                    groupSeparator: ".",
-                    alias: "numeric",
-                    placeholder: "0",
-                    autoGroup: !0,
-                    digits: 2,
-                    digitsOptional: !1,
-                    clearMaskOnLostFocus: !1,
-                    rightAlign: false
-                }
-            });
-            $(document).ready(function() {
-                $('.currency-rp').inputmask({ alias : "rupiah" });
-            });
 		});
 
 		$('#status').on('change', function (e) {
@@ -121,7 +108,7 @@
 
 		$('.cities').dropdown('cities');
 		$('.citizenships').dropdown('citizenships');
-		$('.job_type').dropdown('jobTypes');
+		$('.work_type').dropdown('jobTypes');
 
 	</script>
 @endpush
