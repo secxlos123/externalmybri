@@ -46,4 +46,9 @@ Route::group(['prefix' => 'dropdown', 'as' => 'dropdown.'], function () {
 	 */
 	Route::get('jobTypes', 'DropdownController@jobTypes')->name('jobTypes');
 
+	/**
+	 * This route for get form registration simple
+	 */
+	Route::get('offices', 'DropdownController@offices')->name('offices');
+
 });

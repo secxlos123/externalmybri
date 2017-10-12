@@ -1,6 +1,5 @@
 <div class="row">
 	<div class="col-md-12">
-		<h2 class="text-uppercase bottom20">Manajemen Unit</h2>
 		<div class="btn-project bottom10">
 			<a class="btn btn-primary" href="{!! route('developer.proyek-item.create') !!}" role="button">
 				<i class="fa fa-plus"></i> Tambah Unit

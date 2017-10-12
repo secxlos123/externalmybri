@@ -88,7 +88,7 @@ Route::group([
 		/**
 		 * This route for showing list property of developer
 		 */
-		Route::match(['put', 'patch'], '{slug}', 'PropertyController@update')->name('update');
+		Route::match(['put', 'patch'], '{slug}', 'PropertyTypeController@update')->name('update');
 
 		/**
 		 * This route for showing list property of developer

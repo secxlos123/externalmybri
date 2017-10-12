@@ -13,9 +13,6 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::post('upload', function (Request $request) {
-	dd($request->all());
-});
 
 Route::get('test', function (Request $request) {
 	return view('auth.actived');
@@ -25,6 +22,11 @@ Route::get('test', function (Request $request) {
  * This route for handle homepage
  */
 Route::get('/', 'HomeController@index')->name('homepage');
+
+/**
+ * This route for handle upload dropzone
+ */
+Route::post('upload', 'UploadController@upload');
 
 /**
  * This route for handle homepage

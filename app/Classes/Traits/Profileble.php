@@ -47,10 +47,8 @@ trait Profileble
      */
     public function personal(array $data)
     {
-        // dd($data);
         $personal = [];
         foreach ($data as $key => $value) {
-            \Log::info("key : {$key}");
             $personal[$key] = $value;
 
             if ( in_array($key, ['birth_date', 'couple_birth_date']) ) {
