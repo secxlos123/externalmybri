@@ -89,6 +89,23 @@
     {!! Html::script('assets/js/functions.js') !!}
 
     {!! Html::script('vendor/jsvalidation/js/jsvalidation.js') !!}
+    {!! Html::script('assets/js/jquery.inputmask.bundle.min.js') !!}
+    {!! Html::script('assets/js/inputmask.numeric.extensions.js') !!}
+
+    <script type="text/javascript">
+        Inputmask.extendAliases({
+            rupiah : {
+                radixPoint: ",",
+                groupSeparator: ".",
+                alias: "numeric",
+                autoGroup: true,
+                rightAlign: false,
+                clearIncomplete: true,
+            }
+        });
+
+        $('.currency').inputmask({ alias : "rupiah" });
+    </script>
     
     @if ( ! session('authenticate') )
         <!-- Modal -->

@@ -8,6 +8,19 @@ use Client;
 class DropdownController extends Controller
 {
 	/**
+     * This logic for get list of developer from api
+     * 
+     * @param  Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function developers(Request $request)
+    {
+        $body    = [ 'id' => 'dev_id', 'text' => 'company_name' ];
+        $options = [ 'search' => $request->input('name') ];
+        return $this->init('developers', $body, $options);
+    }
+
+    /**
 	 * This logic for get list of properties from api
 	 * 
 	 * @param  Request $request
@@ -16,7 +29,7 @@ class DropdownController extends Controller
     public function properties(Request $request)
     {
     	$body 	 = [ 'id' => 'prop_id', 'text' => 'prop_name' ];
-    	$options = [ 'dev_id' => $request->input('dev_id'), 'search' => $request->input('name') ];
+    	$options = [ 'dev_id' => $request->input('dev_id'), 'search' => $request->input('name'), 'dropdown' => true ];
         return $this->init('property', $body, $options);
     }
 
@@ -29,7 +42,7 @@ class DropdownController extends Controller
     public function types(Request $request)
     {
     	$body 	 = [ 'id' => 'id', 'text' => 'name' ];
-    	$options = [ 'property_id' => $request->input('prop_id'), 'search' => $request->input('name') ];
+    	$options = [ 'property_id' => $request->input('prop_id'), 'search' => $request->input('name'), 'dropdown' => true ];
         return $this->init('property-type', $body, $options);
     }
 
@@ -42,7 +55,11 @@ class DropdownController extends Controller
     public function units(Request $request)
     {
     	$body 	 = [ 'id' => 'id', 'text' => 'address' ];
-    	$options = [ 'property_type_id' => $request->input('prop_type_id'), 'search' => $request->input('name') ];
+    	$options = [
+            'property_type_id' => $request->input('prop_type_id'),
+            'search' => $request->input('name'),
+            'dropdown' => true
+        ];
         return $this->init('property-item', $body, $options);
     }
 

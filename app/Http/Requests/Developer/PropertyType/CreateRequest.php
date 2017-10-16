@@ -25,7 +25,7 @@ class CreateRequest extends FormRequest
     {
         return [
             'name'  => 'required',
-            'price' => 'required|numeric',
+            'price' => 'required',
             'bathroom'  => 'required|numeric|between:0,4',
             'bedroom'   => 'required|numeric|between:0,4',
             'floors'    => 'required|numeric|between:0,4',
@@ -36,5 +36,16 @@ class CreateRequest extends FormRequest
             'building_area' => 'required|numeric',
             'electrical_power'  => 'required',
         ];
+    }
+
+    /**
+     * Get the validator instance for the request.
+     *
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function getValidatorInstance()
+    {
+        $this->merge([ 'price' => str_replace('.', '', $this->input('price')) ]);
+        return parent::getValidatorInstance();
     }
 }

@@ -4,7 +4,7 @@
  * @author Candra Sudirman <candra.s@smooets.com>
  */
 (function( $ ){
-	$.fn.numeric = function( max = null ) {
+	$.fn.numeric = function( max = null, min = null ) {
 		this.on('keydown keypress change keyup', function (e) {
 	        if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
 	            (e.keyCode == 65 && e.ctrlKey === true) ||
@@ -24,6 +24,13 @@
 		            $(this).val(max).trigger('change');
 		            max = null;
 		        }
+	        }
+
+	        if (min != null) {
+	        	if ($(this).val() < min) {
+	        		$(this).val(min).trigger('change');
+	        		min = null;
+	        	}
 	        }
 	    });
 

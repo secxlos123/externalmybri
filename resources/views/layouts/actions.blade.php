@@ -1,26 +1,21 @@
-<div class="btn-group">
-    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Aksi <span class="caret"></span>
-    </button>
-    <ul class="dropdown-menu dropdown-menu-right">
+<div class="btn-group" role="group" aria-label="Second group">
 
-        @if ( isset($show) )
-            <li>
-                <a href="{!! $show !!}">Detail</a>
-            </li>
-        @endif
+    @if ( isset($show) )
+        <a href="{!! $show !!}" class="btn btn-default" title="Lihat Detail">
+            <i class="glyphicon glyphicon-eye-open"></i>
+        </a>
+    @endif
 
-        @if ( isset($edit) )
-            <li>
-                <a href="{!! $edit !!}">Edit</a>
-            </li>
-        @endif
+    @if ( isset($edit) )
+        <a href="{!! $edit !!}" class="btn btn-default" title="Edit">
+            <i class="glyphicon glyphicon-pencil"></i>
+        </a>
+    @endif
 
-        @if ( isset($delete) )
-            <li role="separator" class="divider"></li>
-            <li>
-                <a href="#">Hapus</a>
-            </li>
-        @endif
-    </ul>
+    @if ( isset($delete) )
+        <a href="javascript:void(0)" class="btn btn-default" title="Hapus">
+            <i class="glyphicon glyphicon-remove"></i>
+        </a>
+    @endif
+
 </div>

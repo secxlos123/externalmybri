@@ -105,9 +105,8 @@
                                         <strong data-to="{!! $type->bedroom !!}">0</strong>
                                     </div>
                                     <div class="col-md-3 col-sm-4 col-xs-6 counters-item heading_space">
-                                        <i class="fa fa-check"></i>
+                                        <i class="fa {!! $type->carport ? 'fa-check' : 'fa-times' !!}"></i>
                                         <p>Garasi</p>
-                                        <strong data-to="{!! $type->carport !!}">0</strong>
                                     </div>
                                     <div class="col-md-3 col-sm-4 col-xs-6 counters-item heading_space">
                                         <i class="fa {!! $type->certificate ? 'fa-check' : 'fa-times' !!}"></i>

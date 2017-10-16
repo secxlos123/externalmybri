@@ -31,6 +31,7 @@ class PropertyTypeController extends Controller
      */
     public function index(Request $request)
     {
+        \Log::info($request->all());
         if ( $request->ajax() ) return $this->datatables($request);
 
         return view( 'developer.property_type.index' );
@@ -121,6 +122,10 @@ class PropertyTypeController extends Controller
                 'Authorization' => session('authenticate.token')
             ])
             ->setQuery([
+                'surface_area' => $request->input('surface_area'),
+                'building_area'=> $request->input('building_area'),
+                'proyek_type'  => $request->input('proyek_type'),
+                'certificate'  => $request->input('certificate'),
                 'page'  => $request->input('page'),
                 'sort'  => $this->columns[$sort['column']] .'|'. $sort['dir'],
                 'search'=> $request->input('search.value'),

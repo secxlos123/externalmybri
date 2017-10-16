@@ -21,7 +21,7 @@
         maxFiles: 5,
         parallelUploads: 5,
         maxFilesize: 1,
-        autoQueue: false,
+        // autoQueue: false,
         autoDiscover: false,
         withCredentials: true,
         previewTemplate: previewTemplate,
