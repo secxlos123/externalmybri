@@ -12,11 +12,11 @@
 @endsection
 
 @section( 'content' )
-    <section id="property" class="padding listing1">
+    <section id="proyek-type" class="padding listing1">
         <div class="container">
-            {!! Form::model($property, [
-                'route' => ['developer.proyek-item.update', $id],
-                'class' => 'callus submit_property', 'id' => 'form-property-item',
+            {!! Form::model($unit, [
+                'route' => ['developer.proyek-item.update', $unit->id],
+                'class' => 'callus submit_property', 'id' => 'form-proyek-item',
                 'enctype' => 'multipart/form-data', 'method' => 'PUT'
             ]) !!}
                 <div class="row">
@@ -27,7 +27,13 @@
                                 <h3 class="panel-title text-uppercase">Data Unit</h3>
                             </div>
                             <div class="panel-body">
-                                @include( 'developer.property_item._form', [ 'property' => $property ] )
+                                @include( 'developer.property_item._form')
+
+                                @foreach($unit->photos as $key => $photo)
+                                    {!! Html::image($photo, 'image', [
+                                        'class' => 'photoable hide', 'data-name' => "Foto-{$key}"
+                                    ]) !!}
+                                @endforeach
                             </div>
                         </div>
                     </div>

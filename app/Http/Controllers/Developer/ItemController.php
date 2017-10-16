@@ -81,16 +81,17 @@ class ItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($slug)
     {
-        $property = Client::setEndpoint("property-item/".$id)
-            ->setHeaders([
-                'Authorization' => session('authenticate.token')
-            ])->get();
-        $property = $property['contents'];
+        // $property = Client::setEndpoint("property-item/".$id)
+        //     ->setHeaders([
+        //         'Authorization' => session('authenticate.token')
+        //     ])->get();
+        // $property = $property['contents'];
         // dd($property);
 
-        return view("developer.property_item.edit", compact(['property', 'id']));
+        // return view("developer.property_item.edit", compact(['property', 'id']));
+        return $this->item($slug, 'edit');
     }
 
     /**
@@ -102,7 +103,7 @@ class ItemController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return $this->storeOrUpdate($request, 'property-item/'.$id, 'post');
+        return $this->storeOrUpdate($request, 'property-item/'.$id, 'put');
     }
 
     /**
@@ -114,6 +115,25 @@ class ItemController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * Get property item from API
+     *
+     * @param  string $slug
+     * @param  string $view
+     * @return \Illuminate\Http\Response
+     */
+    public function item($slug, $view)
+    {
+        $unit = Client::setEndpoint("property-item/{$slug}")
+            ->setHeaders([
+                'Authorization' => session('authenticate.token')
+            ])->get();
+        // dd($unit);
+        return view("developer.property_item.{$view}", [
+            'unit' => (object) $unit['contents']
+        ]);
     }
 
     /**
@@ -184,7 +204,7 @@ class ItemController extends Controller
 
 
     /**
-     * Handling for create and update property type
+     * Handling for create and update property item
      *
      * @param  Request $request
      * @param  string  $endpoint
@@ -195,12 +215,13 @@ class ItemController extends Controller
     {
         $dir = "tmp/{$request->get('_token')}";
         extract_dir_to_request($request, $dir, 'property-item');
-
+        print_r($request->all());
+        print_r(array_to_multipart($request->all()));
         $response = Client::setEndpoint($endpoint)
                 ->setHeaders(['Authorization' => session('authenticate.token')])
                 ->setBody(array_to_multipart($request->all()))
                 ->{$method}('multipart');
-        // dd($response);
+        dd($response);
         if ( ! in_array($response['code'], [200, 201]) ) {
             Storage::disk('property-item')->deleteDirectory($dir);
             return redirect()->back()->withInput()->withError($response['descriptions']);

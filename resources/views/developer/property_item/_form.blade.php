@@ -103,7 +103,7 @@
     <!-- After that you run in console or terminal or cmd "npm run production" -->
     {!! Html::script( 'js/dropdown.min.js' ) !!}
     {!! Html::script( 'js/main-dropzone.min.js' ) !!}
-    {!! JsValidator::formRequest(App\Http\Requests\Developer\PropertyItem\CreateRequest::class, '#form-property-item') !!}
+    {!! JsValidator::formRequest(App\Http\Requests\Developer\PropertyItem\CreateRequest::class, '#form-proyek-item') !!}
 
     <!-- Laravel Javascript Validation -->
     <script type="text/javascript">
