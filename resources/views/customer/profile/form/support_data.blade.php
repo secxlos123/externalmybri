@@ -17,7 +17,7 @@
 					<div class="form-group identity">
 						<label class="col-md-5 control-label">Foto Nasabah *</label>
 						<div class="col-md-7">
-							<input name="customer" type="file" id="customer" class="customer" data-placeholder="Tidak ada file">
+							<input name="image" type="file" id="image" class="image" data-placeholder="Tidak ada file">
 						</div>
 					</div>
 
