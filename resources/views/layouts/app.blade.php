@@ -112,7 +112,7 @@
                 $('.masuk').removeClass('active');
             });
 
-            $('.submission-of-credit').on('click', function () {
+            $('.submission-of-credit, .btn-sign').on('click', function () {
                 $('#login-register').modal('show');
             });
         </script>

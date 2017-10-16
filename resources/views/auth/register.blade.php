@@ -3,6 +3,10 @@
     {!! Form::hidden('register', 'register') !!}
 
     <div class="single-query form-group col-sm-12">
+        {!! Form::text('fullname', old('fullname'), [ 'class' => 'keyword-input', 'placeholder' => 'Nama Lengkap' ]) !!}
+    </div>
+
+    <div class="single-query form-group col-sm-12">
         {!! Form::email('email', old('email'), [ 'class' => 'keyword-input', 'placeholder' => 'Email' ]) !!}
     </div>
 

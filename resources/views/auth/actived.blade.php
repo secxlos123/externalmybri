@@ -15,7 +15,7 @@
                     <h3>Akun terverifikasi.</h3>
                     <p>Akun Anda telah terverifikasi.</p>
                     <div class="erro-button">
-                        <a href="#." class="btn-blue">Lihat Profil</a>
+                        <a href="javascript:void(0)" class="btn-blue btn-sign">Masuk</a>
                     </div>
                 </div>
             </div>
