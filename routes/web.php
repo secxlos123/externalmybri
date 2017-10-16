@@ -16,6 +16,7 @@ use Illuminate\Http\Request;
 
 Route::get('test', function (Request $request) {
 	return view('auth.actived');
+	return view('eforms.index');
 });
 
 /**
@@ -68,6 +69,11 @@ Route::group(['namespace' => 'Auth', 'as' => 'auth.'], function () {
 	 * This route for get form registration simple
 	 */
 	Route::get('activated', 'RegisterController@activated')->name('activated');
+
+	/**
+	 * This route for get form registration simple
+	 */
+	Route::get('successed', 'RegisterController@successed')->name('successed');
 
 	/**
 	 * This route for send request login

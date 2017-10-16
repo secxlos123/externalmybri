@@ -33,7 +33,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth.api', ['except' => ['register', 'activated', 'activate'] ]);
+        $this->middleware('auth.api', ['except' => ['register', 'activated', 'activate', 'successed'] ]);
     }
 
     /**
@@ -64,20 +64,20 @@ class RegisterController extends Controller
      */
     public function register(RegisterRequest $request)
     {
-        // print_r($request->all());
         if ( 'register' == $request->input('register') ) {
             $response = Client::setEndpoint('auth/register')
                 ->setBody( $request->only( ['email', 'password'] ) )
                 ->post();
+            $route = 'auth.successed';
         } else {
             $response = Client::setEndpoint("auth/register-{$request->input('register')}")
                 ->setHeaders(['Authorization' => session('authenticate.token')])
                 ->setBody($this->setRequest($request->all()))
                 ->post('multipart');
+            $route = 'homepage';
         }
-        // dd($response);
 
-        return redirect()->route('homepage');
+        return redirect()->route($route);
     }
 
     /**
@@ -109,7 +109,6 @@ class RegisterController extends Controller
             }
         }
 
-        // dd($requests);
         return $requests;
     }
 
@@ -150,5 +149,15 @@ class RegisterController extends Controller
     public function activated()
     {
         return view('auth.actived');
+    }
+
+    /**
+     * Show view after success
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function successed()
+    {
+        return view('auth.success-register');
     }
 }

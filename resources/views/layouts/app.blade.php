@@ -34,7 +34,7 @@
     <!-- Header end -->
 
     <!-- Page Banner Start-->
-    @if ( ! request()->is('/') )
+    @if ( ! request()->is('/') && ! request()->is('successed') && ! request()->is('activated') )
         <section class="page-banner padding bg_light">
             <div class="container">
                 <div class="row">
