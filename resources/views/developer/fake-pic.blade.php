@@ -1,4 +1,4 @@
-<h2 class="text-uppercase bottom20">PIC</h2>
+<h2 class="text-uppercase bottom20">Agent / Sales</h2>
 <div class="row">
     <div class="col-sm-4 bottom40">
         <div class="agent_wrap">

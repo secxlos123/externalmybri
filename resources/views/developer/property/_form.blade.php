@@ -49,10 +49,10 @@
     <div class="col-md-5">
         <div class="single-query form-group bottom20
             {{ $errors->has('pic_name') ? ' has-error' : '' }}">
-            {!! Form::label('pic_name', 'Nama PIC') !!}
+            {!! Form::label('pic_name', 'Nama Agent / Sales') !!}
             {!! Form::text('pic_name', old('pic_name'), [
                 'class' => 'keyword-input',
-                'placeholder' => 'Masukkan nama pic'
+                'placeholder' => 'Masukkan nama agent / sales'
             ]) !!}
 
             @if ($errors->has('pic_name'))
@@ -63,10 +63,10 @@
         </div>
         <div class="single-query form-group bottom20
             {{ $errors->has('pic_phone') ? ' has-error' : '' }}">
-            {!! Form::label('pic_phone', 'Nomor HP PIC') !!}
+            {!! Form::label('pic_phone', 'Nomor HP Agent / Sales') !!}
             {!! Form::text('pic_phone', old('pic_phone'), [
                 'class' => 'keyword-input numeric',
-                'placeholder' => 'Masukkan nomor hp pic',
+                'placeholder' => 'Masukkan nomor hp agent / sales',
                 'maxlength' => 12
             ]) !!}
 

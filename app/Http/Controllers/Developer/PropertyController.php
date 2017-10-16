@@ -109,6 +109,8 @@ class PropertyController extends Controller
             ])
             ->setQuery([
                 'prop_city_id' => $request->input('city'),
+                'name'  => $request->input('name_proyek'),
+                'pic'   => $request->input('agent'),
                 'types' => $request->input('types'),
                 'items' => $request->input('items'),
                 'sort'  => $this->columns[$sort['column']] .'|'. $sort['dir'],

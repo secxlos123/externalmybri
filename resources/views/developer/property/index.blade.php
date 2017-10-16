@@ -40,6 +40,24 @@
                                                 ]) !!}
                                             </div>
                                         </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-4 control-label">Nama Proyek :</label>
+                                            <div class="col-sm-8">
+                                                {!! Form::text('name_proyek', old('name_proyek'), [
+                                                    'class' => 'form-control', 'id' => 'name_proyek',
+                                                    'placeholder' => 'Masukan nama proyek'
+                                                ]) !!}
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-4 control-label">Agent / Sales :</label>
+                                            <div class="col-sm-8">
+                                                {!! Form::text('agent', old('agent'), [
+                                                    'class' => 'form-control', 'id' => 'agent',
+                                                    'placeholder' => 'Masukan nama agent / sales'
+                                                ]) !!}
+                                            </div>
+                                        </div>
                                     </form>
                                     <div class="text-right">
                                         <a href="javascript:void(0)" id="btn-filter" class="btn btn-primary">Filter</a>
@@ -57,7 +75,7 @@
 	                            <th>Kota</th>
 	                            <th>Jumlah Tipe</th>
 	                            <th>Jumlah Unit</th>
-	                            <th>PIC</th>
+	                            <th>Agent / Sales</th>
 	                            <th>Telepon</th>
 	                            <th>Aksi</th>
 	                        </tr>
@@ -109,6 +127,8 @@
                     );
 
                     d.city = $('.cities').val();
+                    d.name_proyek = $('#name_proyek').val();
+                    d.agent = $('#agent').val();
                 }
             },
             aoColumns : [
