@@ -31,7 +31,8 @@
         acceptedFiles: ".png,.jpg,.jpeg",
         params : {
             _token : $('input[name=_token]').val(),
-            removed : []
+            removed : [],
+            disk : $('input[name=disk]').val()
         },
         init: function() {
             var self = this;

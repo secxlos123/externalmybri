@@ -1,3 +1,5 @@
 {
-  "/js/main-dropzone.min.js": "/js/main-dropzone.min.js"
+  "/js/numeric.min.js": "/js/numeric.min.js",
+  "/js/main-dropzone.min.js": "/js/main-dropzone.min.js",
+  "/js/dropdown.min.js": "/js/dropdown.min.js"
 }

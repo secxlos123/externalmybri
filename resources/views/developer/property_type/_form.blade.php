@@ -1,3 +1,5 @@
+{!! Form::hidden('disk', 'property_types') !!}
+
 <div class="row top20">
     <div class="col-md-5 col-md-offset-1">
         <div class="single-query form-group bottom20
@@ -163,11 +165,11 @@
             @endif
         </div>
         <div class="single-query form-group bottom20">
-            @include('forms.dropzone', ['btn' => true])
+            @include('additional-forms.dropzone', ['btn' => true])
         </div>
     </div>
     <div class="col-md-10 col-md-offset-1">
-        @include('forms.dropzone', ['form' => true])
+        @include('additional-forms.dropzone', ['form' => true])
     </div>
 </div>
 

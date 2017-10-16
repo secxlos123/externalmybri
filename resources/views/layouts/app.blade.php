@@ -11,11 +11,12 @@
     {!! Html::style('assets/css/font-awesome.min.css') !!}
     {!! Html::style('assets/css/owl.carousel.css') !!}
     {!! Html::style('assets/css/owl.transitions.css') !!}
-    {!! Html::style('assets/css/style.css') !!}
-    {!! Html::favicon('assets/images/favicon.png') !!}
 
     <!-- This is place for dynamis stylesheet per page -->
     @stack('styles')
+
+    {!! Html::style('assets/css/style.css') !!}
+    {!! Html::favicon('assets/images/favicon.png') !!}
 </head>
 
 <body>

@@ -34,6 +34,16 @@ Route::group(['prefix' => 'dropdown', 'as' => 'dropdown.'], function () {
 	/**
 	 * This route for get form registration simple
 	 */
+	Route::get('developer', 'DropdownController@developers')->name('developer');
+
+	/**
+	 * This route for get form registration simple
+	 */
+	Route::get('items', 'DropdownController@units')->name('item');
+
+	/**
+	 * This route for get form registration simple
+	 */
 	Route::get('property', 'DropdownController@properties')->name('property');
 
 	/**

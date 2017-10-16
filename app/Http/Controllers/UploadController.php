@@ -15,8 +15,10 @@ class UploadController extends Controller
 	 */
     public function upload(Request $request)
     {
+        $disk = $request->get('disk', '');
+        
     	if ( count($request->file('files')) == 5 ) {
-    		Storage::deleteDirectory('public/property_types/tmp/'.$request->get('_token'));
+    		Storage::disk($disk)->deleteDirectory('tmp/'.$request->get('_token'));
     	} else {
     		$this->remove($request);
     	}
@@ -24,7 +26,7 @@ class UploadController extends Controller
     	$json['files'] = collect([]);
         foreach ($request->file('files', []) as $photo) {
         	$filename = rand().'.'.$photo->getClientOriginalExtension();
-            $path = $photo->storeAs('tmp/'.$request->get('_token'), $filename, 'property_types');
+            $path = $photo->storeAs('tmp/'.$request->get('_token'), $filename, $disk);
             $json['files']->push([
                 'name' => $filename,
                 'size' => $photo->getSize(),
@@ -41,15 +43,16 @@ class UploadController extends Controller
      */
     public function remove(Request $request)
     {
+        $disk    = $request->get('disk', '');
     	$removes = explode(',', $request->input('removed'));
     	$todoRemove = [];
 
     	foreach ($removes as $remove) {
 	    	$file = "tmp/{$request->get('_token')}/$remove";
-	    	$dirOrFile = public_path("storage/property_types/{$file}");
+	    	$dirOrFile = public_path("storage/{$disk}/{$file}");
     		if ( file_exists($dirOrFile) && ! is_dir($dirOrFile) ) $todoRemove[] = $file;
     	}
 
-    	return Storage::disk('property_types')->delete($todoRemove);
+    	return Storage::disk($disk)->delete($todoRemove);
     }
 }

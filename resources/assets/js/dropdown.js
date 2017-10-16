@@ -6,7 +6,7 @@
 (function( $ ){
 	$.fn.dropdown = function( type, options ) {
 		this.select2({
-			witdh : '100%',
+			width : '100%',
 			allowClear: true,
 			ajax: {
 				url: `/dropdown/${type}`,
@@ -22,6 +22,8 @@
 				cache: true
 			},
 		});
+		
+		return this;
 	};
 
 	function results(data, params) {
