@@ -144,7 +144,7 @@ class RegisterRequest extends FormRequest
             'emergency_contact'                 => 'required|numeric|digits:12',
             'emergency_relation'                => 'required',
             'npwp'                              => 'required|image|max:1024',
-            'customer'                          => 'required|image|max:1024'
+            'image'                          => 'required|image|max:1024'
         ];
     }
 
