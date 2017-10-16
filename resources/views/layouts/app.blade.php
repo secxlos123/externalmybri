@@ -17,6 +17,11 @@
 
     {!! Html::style('assets/css/style.css') !!}
     {!! Html::favicon('assets/images/favicon.png') !!}
+    <style type="text/css">
+        .keyword-input {
+            text-transform: unset !important;
+        }
+    </style>
 </head>
 
 <body>

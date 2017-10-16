@@ -53,10 +53,6 @@
         /*
          * @endtodo remove if simulation credit is work
          */
-        
-        .keyword-input {
-            text-transform: unset !important;
-        }
     </style>
 @endpush
 <!-- This is styles for this page end -->
