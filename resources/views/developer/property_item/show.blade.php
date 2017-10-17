@@ -17,27 +17,27 @@
             <div class="col-md-12 listing1 property-details">
                 <div class="row title-box">
                     <div class="col-md-9 p-0 b-r-1">
-                        <h2 class="text-uppercase">Nama Unit Properti</h2>
-                        <p><i class="fa fa-map-marker"></i> {{$property['address']}}</p>
+                        <h2 class="text-uppercase">{!! $unit->property_name . ' | ' . $unit->property_type_name !!}</h2>
+                        <p><i class="fa fa-map-marker"></i> {{$unit->address}}</p>
                     </div>
                     <div class="col-md-3 p-0">
                         <div class="dev pull-right">
                             <p>Harga:</p>
-                            <h2><a href="#">Rp. {{number_format($property['price'])}}</a></h2>
+                            <h2><a href="#">Rp. {{number_format($unit->price, 0, ',', '.')}}</a></h2>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
                         <div id="property-d-1" class="owl-carousel single">
-                        @foreach($property['photos'] as $photo)
+                        @foreach($unit->photos as $photo)
                             <div class="item">
                                 <img src="{{$photo}}" alt="image"/>
                             </div>
                         @endforeach
                         </div>
                         <div id="property-d-1-2" class="owl-carousel single">
-                        @foreach($property['photos'] as $photo)
+                        @foreach($unit->photos as $photo)
                             <div class="item">
                                 <img src="{{$photo}}" alt="image"/>
                             </div>
@@ -45,8 +45,8 @@
                         </div>
                         <div class="property_meta bg-black bottom40">
                             <!-- <span>4800 m<sup>2</sup></span> -->
-                            <span>Nama Projek: <b> Projek 1</b></span>
-                            <span>Status: <b>{{($property['is_available']) ? 'Available' : 'Not Available'}}</b></span>
+                            <span>Nama Projek: <b> {!! $unit->property_name . ' | ' . $unit->property_type_name !!}</b></span>
+                            <span>Status: <b>{{($unit->is_available) ? 'Available' : 'Not Available'}}</b></span>
                         </div>
 
                         <h2 class="text-uppercase bottom20">Deskripsi Unit</h2>

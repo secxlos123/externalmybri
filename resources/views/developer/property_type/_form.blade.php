@@ -177,6 +177,8 @@
             </div>
         </div>
 
+        <div class="clearfix"></div>
+
         <div class="single-query form-group bottom20
             {{ $errors->has('carport') ? ' has-error' : '' }}">
             {!! Form::label('carport', 'Garasi') !!}
@@ -216,13 +218,11 @@
     <!-- You can edit this script on resouces/asset/js/dropdown.js -->
     <!-- After that you run in console or terminal or cmd "npm run production" -->
     {!! Html::script( 'js/dropdown.min.js' ) !!}
-    {!! Html::script( 'js/numeric.min.js' ) !!}
     {!! Html::script( 'js/main-dropzone.min.js' ) !!}
     {!! JsValidator::formRequest(App\Http\Requests\Developer\PropertyType\CreateRequest::class, '#form-proyek-type') !!}
 
     <!-- Laravel Javascript Validation -->
     <script type="text/javascript">
-        $('.numeric').numeric();
         $('.select2').select2({ witdh : '100%' });
         $('.properties').dropdown('property');
     </script>

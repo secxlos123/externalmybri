@@ -65,13 +65,7 @@ class ItemController extends Controller
      */
     public function show($id)
     {
-        $property = Client::setEndpoint("property-item/".$id)
-            ->setHeaders([
-                'Authorization' => session('authenticate.token')
-            ])->get();
-        $property = $property['contents'];
-
-        return view("developer.property_item.show", compact('property'));
+        return $this->item($id, 'show');
     }
 
     /**
@@ -80,9 +74,9 @@ class ItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($slug)
+    public function edit($id)
     {
-        return $this->item($slug, 'edit');
+        return $this->item($id, 'edit');
     }
 
     /**
@@ -92,7 +86,7 @@ class ItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CreateRequest $request, $id)
     {
         return $this->storeOrUpdate($request, 'property-item/'.$id, 'put');
     }
@@ -111,17 +105,17 @@ class ItemController extends Controller
     /**
      * Get property item from API
      *
-     * @param  string $slug
+     * @param  string $id
      * @param  string $view
      * @return \Illuminate\Http\Response
      */
-    public function item($slug, $view)
+    public function item($id, $view)
     {
-        $unit = Client::setEndpoint("property-item/{$slug}")
+        $unit = Client::setEndpoint("property-item/{$id}")
             ->setHeaders([
                 'Authorization' => session('authenticate.token')
             ])->get();
-        // dd($unit);
+
         return view("developer.property_item.{$view}", [
             'unit' => (object) $unit['contents']
         ]);
@@ -151,6 +145,9 @@ class ItemController extends Controller
             ->get();
 
         foreach ($units['contents']['data'] as $key => $unit) {
+            $unit['is_available']  = $unit['is_available'] ? 'Avaliable' : 'Not Avaliable';
+            $unit['status'] = $unit['status'] == 'new' ? 'Baru' : 'Bekas';
+            $unit['price']  = 'Rp. ' . number_format($unit['price'], 0, ',', '.');
             $unit['action'] = view('layouts.actions', [
                 'show' => route('developer.proyek-item.show', $unit['id']),
                 'edit' => route('developer.proyek-item.edit', $unit['id'])
@@ -168,29 +165,6 @@ class ItemController extends Controller
             $units['contents']['next_page_url']
         );
         return response()->json($units['contents']);
-    }
-
-    /**
-     * [setMultipart description]
-     *
-     * @param array  $inputs [description]
-     * @param string $parent [description]
-     */
-    public function setMultipart( array $inputs = [], $parent = '')
-    {
-        $results = [];
-        foreach ($inputs as $name => $value) {
-            if ( is_array($value) ) {
-                return $this->setMultipart($value, $name);
-            } elseif ( is_file($value) ) {
-                $results[] = ['name' => $parent ? "{$parent}[{$name}]" : $name, 'contents' => fopen($value->getRealPath(), 'r') ];
-            } elseif ( in_array($name, ['description', 'facilities']) ) {
-                $results[] = ['name' => $parent ? "{$parent}[{$name}]" : $name, 'contents' => htmlspecialchars($value) ];
-            } else {
-                $results[] = ['name' => $parent ? "{$parent}[{$name}]" : $name, 'contents' => $value];
-            }
-        }
-        return $results;
     }
 
 

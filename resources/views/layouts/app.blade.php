@@ -91,6 +91,7 @@
     {!! Html::script('vendor/jsvalidation/js/jsvalidation.js') !!}
     {!! Html::script('assets/js/jquery.inputmask.bundle.min.js') !!}
     {!! Html::script('assets/js/inputmask.numeric.extensions.js') !!}
+    {!! Html::script('js/numeric.min.js') !!}
 
     <script type="text/javascript">
         Inputmask.extendAliases({
@@ -103,7 +104,7 @@
                 clearIncomplete: true,
             }
         });
-
+        $('.numeric').numeric();
         $('.currency').inputmask({ alias : "rupiah" });
     </script>
     

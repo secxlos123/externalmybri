@@ -13,10 +13,10 @@
 				<i class="fa fa-building-o"></i>Properti Saya
 			</a>
 		</li>
-		
+
 		<li>
 			<a href="javascript:void(0)">
-				<i class="fa fa-user"></i>Profile
+				<i class="fa fa-user"></i> {!! session('authenticate.fullname') ?: 'Profile' !!}
 			</a>
 		</li>
 	@endif
@@ -29,6 +29,12 @@
 			</li>
 		</a>
 	@else
+		<li>
+			<a href="javascript:void(0)">
+				<i class="fa fa-user"></i> {!! session('authenticate.fullname') !!}
+			</a>
+		</li>
+		
 		<a href="javascript:void(0)" onclick="document.getElementById('form-logout').submit();">
 			<li class="last-icon login-pop">
 				<i class="fa fa-lock"></i> Keluar

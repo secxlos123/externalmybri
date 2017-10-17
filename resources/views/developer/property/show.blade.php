@@ -22,17 +22,15 @@
                         <p><i class="fa fa-map-marker"></i> {!! $property->address !!}</p>
                     </div>
 
-                    <!-- @todo to update restapi get detail property -->
                     <div class="col-md-3 dev-logo text-right">
-                        <img src="{{asset('assets/images/logo/logo_dummy.png')}}" class="img-thumbnail img-responsive">
+                        {!! Html::image($property->developer_logo, 'logo', ['class' => 'img-thumbnail img-responsive']) !!}
                     </div>
                     <div class="col-md-3 p-0">
                         <div class="dev pull-right">
                             <p>Oleh:</p>
-                            <h2><a href="#">{!! $property->developer !!}</a></h2>
+                            <h2><a href="#">{!! $property->developer_name !!}</a></h2>
                         </div>
                     </div>
-                    <!-- @endtodo to update restapi get detail property -->
 
                 </div>
 

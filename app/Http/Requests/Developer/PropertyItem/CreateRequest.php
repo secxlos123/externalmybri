@@ -24,11 +24,22 @@ class CreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'address' => 'required',
             'price'  => 'required',
             'status' => 'required',
-            'property' => 'required',
+            'address' => 'required',
+            'property'=> 'required',
             'property_type_id' => 'required',
         ];
+    }
+
+    /**
+     * Get the validator instance for the request.
+     *
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function getValidatorInstance()
+    {
+        $this->merge([ 'price' => str_replace('.', '', $this->input('price')) ]);
+        return parent::getValidatorInstance();
     }
 }

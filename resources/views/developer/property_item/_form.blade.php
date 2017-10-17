@@ -2,11 +2,110 @@
 
 <div class="row top20">
     <div class="col-md-5 col-md-offset-1">
-        <div class="single-query form-group bottom20
-            {{ $errors->has('address') ? ' has-error' : '' }}">
+         
+         <div class="single-query form-group bottom20 {{ $errors->has('property') ? ' has-error' : '' }}">
+            {!! Form::label('property', 'Proyek') !!}
+            
+            @if ( ! isset($unit->property_id) )
+                {!! Form::select('property', ['' => ''], old('property'), [
+                    'class' => 'select2 properties',
+                    'data-placeholder' => 'Pilih Proyek'
+                ]) !!}
+            @else
+                {!! Form::text('property_name', old('property_name'), ['class' => 'keyword-input', 'disabled']) !!}
+            @endif
+
+
+            @if ($errors->has('property'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('property') }}</strong>
+                </span>
+            @endif
+        </div>
+
+        <div class="single-query form-group bottom20 {{ $errors->has('property_type_id') ? ' has-error' : '' }}">
+            {!! Form::label('property_type_id', 'Tipe Proyek') !!}
+            
+            @if ( ! isset($unit->property_type_id) )
+                {!! Form::select('property_type_id', ['' => ''], old('property_type_id'), [
+                    'class' => 'select2 property_type',
+                    'data-placeholder' => 'Pilih Tipe Proyek'
+                ]) !!}
+            @else
+                {!! Form::text('property_type_name', old('property_type_name'), ['class' => 'keyword-input', 'disabled']) !!}
+                {!! Form::hidden('property_type_id') !!}
+            @endif
+
+
+            @if ($errors->has('property_type_id'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('property_type_id') }}</strong>
+                </span>
+            @endif
+        </div>
+
+    </div>
+
+    <div class="col-md-5">
+        <div class="single-query form-group bottom20 {{ $errors->has('price') ? ' has-error' : '' }}">
+            {!! Form::label('price', 'Harga') !!}
+
+            <div class="input-group">
+                <span class="input-group-addon">Rp</span>
+                {!! Form::text('price', old('price'), [
+                    'class' => 'form-control numeric currency',
+                    'placeholder' => 'Masukkan harga properti',
+                    'maxlength' => 15
+                ]) !!}
+            </div>
+
+            @if ($errors->has('price'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('price') }}</strong>
+                </span>
+            @endif
+        </div>
+
+        <div class="single-query form-group bottom20 {{ $errors->has('status') ? ' has-error' : '' }}">
+            {!! Form::label('status', 'Status') !!}
+            {!! Form::select('status', [
+                'new' => 'Baru',
+                'second' => 'Bekas'
+            ], old('status'), [
+                'class' => 'select2 status',
+            ]) !!}
+
+            @if ($errors->has('status'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('status') }}</strong>
+                </span>
+            @endif
+        </div>
+
+        @if ( isset($unit->id) )
+            <div class="single-query form-group bottom20 {{ $errors->has('is_available') ? ' has-error' : '' }}">
+                {!! Form::label('is_available', 'Is Avaliable') !!}
+                {!! Form::select('is_available', [
+                    '0' => 'Not Avaliable',
+                    '1' => 'Avaliable'
+                ], old('is_available'), [
+                    'class' => 'select2 is_available',
+                ]) !!}
+
+                @if ($errors->has('is_available'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('is_available') }}</strong>
+                    </span>
+                @endif
+            </div>
+        @endif
+    </div>
+    
+    <div class="col-md-10 col-md-offset-1">
+        <div class="single-query form-group bottom20 {{ $errors->has('address') ? ' has-error' : '' }}">
             {!! Form::label('address', 'Alamat') !!}
-            {!! Form::text('address', old('address'), [
-                'class' => 'keyword-input',
+            {!! Form::textarea('address', old('address'), [
+                'class' => 'form-control keyword-input', 'rows' => 3,
                 'placeholder' => 'Masukkan alamat properti'
             ]) !!}
 
@@ -16,77 +115,11 @@
                 </span>
             @endif
         </div>
-        <div class="single-query form-group bottom20
-            {{ $errors->has('price') ? ' has-error' : '' }}">
-            {!! Form::label('price', 'Harga') !!}
-            <div class="input-group">
-            <span class="input-group-addon">Rp</span>
-            {!! Form::text('price', old('price'), [
-                'class' => 'form-control numericOnly',
-                'placeholder' => 'Masukkan harga properti',
-                'maxlength' => '12'
-            ]) !!}
-            <span class="input-group-addon">,00</span>
-            </div>
-            @if ($errors->has('price'))
-                <span class="help-block">
-                    <strong>{{ $errors->first('price') }}</strong>
-                </span>
-            @endif
-        </div>
 
-        <div class="single-query form-group bottom20
-            {{ $errors->has('status') ? ' has-error' : '' }}">
-            {!! Form::label('status', 'Status') !!}
-            {!! Form::select('status', [
-                '' => '-- Pilih Status --',
-                'new' => 'Baru',
-                'second' => 'Bekas'
-                ], old('status'), [
-                'class' => 'status',
-            ]) !!}
-
-            @if ($errors->has('status'))
-                <span class="help-block">
-                    <strong>{{ $errors->first('status') }}</strong>
-                </span>
-            @endif
-        </div>
-    </div>
-    <div class="col-md-5">
-         <div class="single-query form-group bottom20
-            {{ $errors->has('property') ? ' has-error' : '' }}">
-            {!! Form::label('property', 'Property') !!}
-            {!! Form::select('property', [], old('property'), [
-                'class' => 'select2 properties',
-                'data-placeholder' => '-- Pilih Property --'
-            ]) !!}
-
-            @if ($errors->has('property'))
-                <span class="help-block">
-                    <strong>{{ $errors->first('property') }}</strong>
-                </span>
-            @endif
-        </div>
-        <div class="single-query form-group bottom20
-            {{ $errors->has('property_type_id') ? ' has-error' : '' }}">
-            {!! Form::label('property_type_id', 'Property Type') !!}
-            {!! Form::select('property_type_id', [], old('property_type_id'), [
-                'class' => 'select2 property_type',
-                'data-placeholder' => '-- Pilih Property Type --'
-            ]) !!}
-
-            @if ($errors->has('property_type_id'))
-                <span class="help-block">
-                    <strong>{{ $errors->first('property_type_id') }}</strong>
-                </span>
-            @endif
-        </div>
         <div class="single-query form-group bottom20">
             @include('additional-forms.dropzone', ['btn' => true])
         </div>
-    </div>
-    <div class="col-md-10 col-md-offset-1">
+
         @include('additional-forms.dropzone', ['form' => true])
     </div>
 </div>
@@ -109,11 +142,19 @@
 
     <!-- Laravel Javascript Validation -->
     <script type="text/javascript">
-        $('.properties').dropdown('property');
+        $('.select2').select2({width: '100%'});
 
-        $('.properties').on('change', function(){
+        $('.properties').dropdown('property')
+            .on('select2:select', set_property_type)
+            .on('select2:unselect', unset_property_type);
+
+        function set_property_type(e) {
             var id = $(this).val();
-            $('.property_type').dropdown('types', {prop_id : id});
-        });
+            $('.property_type').empty().dropdown('types', {prop_id : id});
+        }
+
+        function unset_property_type(e) {
+            $('.property_type').empty().select2({width: '100%'});
+        }
     </script>
 @endpush

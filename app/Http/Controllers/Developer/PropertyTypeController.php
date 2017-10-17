@@ -31,7 +31,6 @@ class PropertyTypeController extends Controller
      */
     public function index(Request $request)
     {
-        \Log::info($request->all());
         if ( $request->ajax() ) return $this->datatables($request);
 
         return view( 'developer.property_type.index' );

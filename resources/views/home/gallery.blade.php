@@ -7,6 +7,8 @@
 
 <div class="row" id="content-galery"></div>
 
-<div class="col-sm-12 text-center top20">
-    <a href="javascript:void(0)" class="btn-dark uppercase margin40">Lihat Semua Properti</a>
-</div>
+@if (false)
+	<div class="col-sm-12 text-center top20">
+	    <a href="javascript:void(0)" class="btn-dark uppercase margin40">Lihat Semua Properti</a>
+	</div>
+@endif

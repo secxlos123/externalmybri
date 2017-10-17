@@ -9,7 +9,7 @@
             <table class="table table-striped table-bordered unit-list" id="datatable">
                 <thead class="bg-blue">
                     <tr>
-                        <th>Property ID</th>
+                        <th>Tipe Proyek</th>
                         <th>Address</th>
                         <th>Price</th>
                         <th>Available</th>
@@ -54,7 +54,7 @@
                 }
             },
             aoColumns : [
-                { data: 'property_type_id', name: 'property_type_id' },
+                { data: 'property_type_name', name: 'property_type_name' },
                 { data: 'address', name: 'address' },
                 { data: 'price', name: 'price' },
                 { data: 'is_available', name: 'is_available' },

@@ -14,9 +14,7 @@
 
     <!-- This is content of list projects / properties -->
     <section id="property" class="padding grey listing1">
-        <div class="container">
-            @include('home.gallery')
-        </div>
+        <div class="container" id="content-galery"></div>
         <div class="container hide denied">
             <div class="row">
                 <div class="col-sm-12 text-center">
@@ -47,9 +45,9 @@
         .tp_overlay{
             background-color: transparent !important;
         }
-        .tp_overlay .topbar{
+        /*.tp_overlay .topbar{
             background-color: transparent !important;
-        }
+        }*/
         /*
          * @endtodo remove if simulation credit is work
          */
@@ -60,7 +58,6 @@
 <!-- This is scripts for this page -->
 @push('scripts')
     <script type="text/javascript">
-
         navigator.geolocation.watchPosition(properties, permission_handling);
 
         function permission_handling(error) {
