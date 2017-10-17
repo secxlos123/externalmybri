@@ -14,7 +14,7 @@ class PropertyController extends Controller
      */
     public function index(Request $request)
     {
-        $properties = Client::setEndpoint('properties')
+        $properties = Client::setEndpoint('nearby-properties')
             ->setQuery([
                 'lat' => $request->input('lat'), 
                 'long' => $request->input('long'), 
