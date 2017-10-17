@@ -23,6 +23,20 @@ class Client
     protected $endpoint;
 
     /**
+     * The Endpoint instance.
+     *
+     * @var string
+     */
+    protected $uri;
+
+    /**
+     * The Endpoint instance.
+     *
+     * @var string
+     */
+    protected $base = 'eks/';
+
+    /**
      * The headers that will be sent when call the API.
      *
      * @var array
@@ -54,6 +68,8 @@ class Client
         $this->http = $http;
 
         $this->headers = $this->headers();
+
+        $this->uri = config('restapi.uri');
     }
 
     /**
@@ -71,11 +87,23 @@ class Client
     /**
      * The headers that will be sent when call the API.
      *
-     * @var array
+     * @var string
      */
     public function uri()
     {
-        return config('restapi.uri').$this->endpoint;
+        return $this->uri . $this->base . $this->endpoint;
+    }
+
+    /**
+     * The headers that will be sent when call the API.
+     *
+     * @var string
+     */
+    public function setBase($base)
+    {
+        $this->base = "{$base}/";
+
+        return $this;
     }
 
     /**
@@ -191,7 +219,6 @@ class Client
             $body = $e->getResponse()->getBody();
             $response = json_decode($body->getContents(), true);
         } catch (ServerException $e) {
-            \Log::info($e->getRequest()->getBody());
             abort(500);
         }
 
