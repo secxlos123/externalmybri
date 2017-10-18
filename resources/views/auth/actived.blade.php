@@ -3,10 +3,9 @@
 @section('title', 'Verifikasi Akun')
 
 @section('content')
-<section id="error-404" class="padding">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
+    <section id="error-404" class="has-single-page">
+        <div class="container">
+            <div class="single-page">
                 <div class="error-image">
                     {!! Html::image('assets/images/lock-reg.png', 'image', ['class' => 'img-responsive']) !!}
                 </div>
@@ -20,6 +19,5 @@
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 @endsection
