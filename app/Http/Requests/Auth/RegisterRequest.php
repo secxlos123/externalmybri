@@ -68,7 +68,8 @@ class RegisterRequest extends FormRequest
     {
         return [
             'email' => 'required|email',
-            'fullname' => 'required',
+            'fullname' => 'required|string|min:4',
+            'phone' => 'nullable|string|regex:/^[0-9]+$/|max:15',
             'password' => 'required|confirmed|min:8'
         ];
     }

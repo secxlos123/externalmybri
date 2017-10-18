@@ -65,11 +65,13 @@ class RegisterController extends Controller
     public function register(RegisterRequest $request)
     {
         if ( 'register' == $request->input('register') ) {
-            list($first_name, $last_name) = explode(' ', $request->input('fullname'));
+            $splitName = explode(' ', $request->input('fullname'));
+            $first_name = $splitName[0];
+            $last_name = !empty($splitName[1]) ? $splitName[1] : '';
             $request->merge(compact('first_name', 'last_name'));
             
             $response = Client::setEndpoint('auth/register')
-                ->setBody( $request->only( ['email', 'password', 'first_name', 'last_name'] ) )
+                ->setBody( $request->only( ['email', 'password', 'first_name', 'last_name','phone'] ) )
                 ->post();
             $route = 'auth.successed';
         } else {

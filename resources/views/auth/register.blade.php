@@ -11,6 +11,10 @@
     </div>
 
     <div class="single-query form-group col-sm-12">
+        {!! Form::text('phone', old('phone'), [ 'class' => 'keyword-input', 'placeholder' => 'Phone ( Optional )' ]) !!}
+    </div>
+
+    <div class="single-query form-group col-sm-12">
         {!! Form::password('password', [ 'class' => 'keyword-input', 'placeholder' => 'Kata Sandi' ]) !!}
     </div>
 
