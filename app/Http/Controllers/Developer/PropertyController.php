@@ -172,8 +172,11 @@ class PropertyController extends Controller
                 ->setHeaders(['Authorization' => session('authenticate.token')])
                 ->setBody(array_to_multipart($request->all()))
                 ->{$method}('multipart');
-
+        // dd($response);
         if ( ! in_array($response['code'], [200, 201]) ) {
+            if (isset($response['contents']['name']) || $response['contents']['name']) {
+                \Session::flash('flash_message','Nama proyek telah digunakan');
+            }
             return redirect()->back()->withInput()->withError($response['descriptions']);
         }
 

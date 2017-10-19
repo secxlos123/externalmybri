@@ -1,3 +1,6 @@
+@if(Session::has('flash_message'))
+    <div class="alert alert-danger"><em> {!! session('flash_message') !!}</em></div>
+@endif
 <div class="row top20">
     <div class="col-md-5 col-md-offset-1">
         <div class="single-query form-group bottom20
@@ -14,7 +17,7 @@
                 </span>
             @endif
         </div>
-        <div class="single-query form-group bottom20 
+        <div class="single-query form-group bottom20
             {{ $errors->has('city_id') ? ' has-error' : '' }}">
             {!! Form::label('city_id', 'Kota') !!}
             {!! Form::select('city_id', ['' => ''], old('cities'), [
@@ -29,7 +32,7 @@
             @endif
         </div>
 
-        <div class="single-query form-group bottom20 
+        <div class="single-query form-group bottom20
             {{ $errors->has('category') ? ' has-error' : '' }}">
             {!! Form::label('category', 'Kategori') !!}
             {!! Form::select('category', [
@@ -67,7 +70,8 @@
             {!! Form::text('pic_phone', old('pic_phone'), [
                 'class' => 'keyword-input numeric',
                 'placeholder' => 'Masukkan nomor hp agent / sales',
-                'maxlength' => 12
+                'maxlength' => 16,
+                'minlength' => 9
             ]) !!}
 
             @if ($errors->has('pic_phone'))
@@ -96,7 +100,7 @@
     <div class="col-md-10 col-md-offset-1 {{ $errors->has('address') ? ' has-error' : '' }}">
         <h3 class="bottom10">Alamat Proyek</h3>
         <input id="searchInput" class="input-controls" type="text" placeholder="Masukkan lokasi properti">
-        
+
         <div class="map" id="map"></div>
 
         <div class="form-group m-t-20">
@@ -183,5 +187,11 @@
         });
 
         $('.cities').dropdown('cities');
+
+        $(".checkHightlights").click(function (){
+            $('html, body').animate({
+                scrollTop: $("section#property").offset().top
+            }, 2000);
+        });
     </script>
 @endpush

@@ -45,7 +45,7 @@ class DeveloperController extends Controller
            ->setBody($request->all())
            ->post();
         // dd($client);
-        return redirect()->route('developer.developer-agent.index');
+        return redirect()->route('developer.developer.index');
     }
 
     /**
@@ -86,7 +86,7 @@ class DeveloperController extends Controller
             ->setBody($request->all())
             ->put();
         // dd($client);
-        return redirect()->route('developer.developer-agent.index');
+        return redirect()->route('developer.developer.index');
     }
 
     /**

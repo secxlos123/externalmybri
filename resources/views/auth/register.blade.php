@@ -1,5 +1,15 @@
+@if(Session::has('flash_message'))
+    <div class="alert alert-danger"><em> {!! session('flash_message') !!}</em></div>
+    <script>
+        $(function() {
+            $('#login-register').modal('show');
+            $('ul.nav-tabs li').removeClass('active');
+            $('ul.nav-tabs li.daftar a').trigger("click");
+        });
+    </script>
+@endif
 {!! Form::open(['route' => 'auth.register.store', 'class' => 'callus clearfix', 'id' => 'form-register-store']) !!}
-    
+
     {!! Form::hidden('register', 'register') !!}
 
     <div class="single-query form-group col-sm-12">
@@ -11,7 +21,11 @@
     </div>
 
     <div class="single-query form-group col-sm-12">
-        {!! Form::text('phone', old('phone'), [ 'class' => 'keyword-input', 'placeholder' => 'Phone ( Optional )' ]) !!}
+        {!! Form::text('phone', old('phone'), [
+        'class' => 'keyword-input',
+        'placeholder' => 'Phone ( Optional )',
+        'maxlength' => 16,
+        'minlength' => 9]) !!}
     </div>
 
     <div class="single-query form-group col-sm-12">
