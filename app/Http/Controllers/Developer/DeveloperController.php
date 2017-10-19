@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Developer;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Client;
 
 class DeveloperController extends Controller
 {
@@ -37,7 +38,14 @@ class DeveloperController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        $client = Client::setEndpoint('developer-agent')
+           ->setHeaders([
+                'Authorization' => session('authenticate.token')
+            ])
+           ->setBody($request->all())
+           ->post();
+        // dd($client);
+        return redirect()->route('developer.developer-agent.index');
     }
 
     /**
@@ -71,7 +79,14 @@ class DeveloperController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd($request->all());
+        $client = Client::setEndpoint('developer-agent/'.$id)
+            ->setHeaders([
+                'Authorization' => session('authenticate.token')
+            ])
+            ->setBody($request->all())
+            ->put();
+        // dd($client);
+        return redirect()->route('developer.developer-agent.index');
     }
 
     /**
@@ -94,37 +109,32 @@ class DeveloperController extends Controller
     public function datatables(Request $request)
     {
         $sort = $request->input('order.0');
-        $units = Client::setEndpoint('property-item')
+        $dev = Client::setEndpoint('developer-agent')
             ->setHeaders([
                 'Authorization' => session('authenticate.token')
             ])
-            // ->setQuery([
-            //     'property_type_id' => $request->input('property_type_id'),
-            //     'is_available' => $request->input('is_available'),
-            //     'status' => $request->input('status'),
-            //     'price' => $request->input('price'),
-            //     'sort'  => $this->columns[$sort['column']] .'|'. $sort['dir'],
-            //     'search'=> $request->input('search.value'),
-            // ])
+            ->setQuery([
+                'search'=> $request->input('search.value')
+            ])
             ->get();
 
-        foreach ($units['contents']['data'] as $key => $unit) {
-            $unit['action'] = view('layouts.actions', [
-                'show' => route('developer.developer.show', $unit['id']),
-                'edit' => route('developer.developer.edit', $unit['id'])
+        foreach ($dev['contents']['data'] as $key => $value) {
+            $value['action'] = view('layouts.actions', [
+                'show' => route('developer.developer-agent.show', $value['id']),
+                'edit' => route('developer.developer-agent.edit', $value['id'])
             ])->render();
-            $units['contents']['data'][$key] = $unit;
+            $dev['contents']['data'][$key] = $value;
         }
 
-        $units['contents']['draw'] = $request->input('draw');
-        $units['contents']['recordsTotal'] = $units['contents']['total'];
-        $units['contents']['recordsFiltered'] = $units['contents']['total'];
+        $dev['contents']['draw'] = $request->input('draw');
+        $dev['contents']['recordsTotal'] = $dev['contents']['total'];
+        $dev['contents']['recordsFiltered'] = $dev['contents']['total'];
 
         unset(
-            $units['contents']['path'],
-            $units['contents']['prev_page_url'],
-            $units['contents']['next_page_url']
+            $dev['contents']['path'],
+            $dev['contents']['prev_page_url'],
+            $dev['contents']['next_page_url']
         );
-        return response()->json($units['contents']);
+        return response()->json($dev['contents']);
     }
 }
