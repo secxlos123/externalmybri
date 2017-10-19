@@ -17,7 +17,7 @@ class DropdownController extends Controller
     {
         $body    = [ 'id' => 'dev_id', 'text' => 'company_name' ];
         $options = [ 'search' => $request->input('name') ];
-        return $this->init('developers', $body, $options);
+        return $this->init('developers', $body, $options, 'common');
     }
 
     /**
@@ -30,7 +30,7 @@ class DropdownController extends Controller
     {
     	$body 	 = [ 'id' => 'prop_id', 'text' => 'prop_name' ];
     	$options = [ 'dev_id' => $request->input('dev_id'), 'search' => $request->input('name'), 'dropdown' => true ];
-        return $this->init('property', $body, $options);
+        return $this->init('property', $body, $options, 'common');
     }
 
     /**
@@ -43,7 +43,7 @@ class DropdownController extends Controller
     {
     	$body 	 = [ 'id' => 'id', 'text' => 'name' ];
     	$options = [ 'property_id' => $request->input('prop_id'), 'search' => $request->input('name'), 'dropdown' => true ];
-        return $this->init('property-type', $body, $options);
+        return $this->init('property-type', $body, $options, 'common');
     }
 
     /**
@@ -60,7 +60,7 @@ class DropdownController extends Controller
             'search' => $request->input('name'),
             'dropdown' => true
         ];
-        return $this->init('property-item', $body, $options);
+        return $this->init('property-item', $body, $options, 'common');
     }
 
     /**
@@ -148,9 +148,9 @@ class DropdownController extends Controller
      * @param  array  $options  
      * @return \Illuminate\Http\Response         
      */
-    public function init($endpoint, array $body, array $options = [])
+    public function init($endpoint, array $body, array $options = [], $base = 'eks')
     {
-    	$results = Client::setEndpoint($endpoint)
+    	$results = Client::setBase($base)->setEndpoint($endpoint)
         	->setHeaders( [ 'Authorization' => session('authenticate.token') ] )
             ->setQuery( array_merge(['page' => request()->get('page', 1) ], $options) )
             ->get();
