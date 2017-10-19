@@ -174,7 +174,7 @@ class PropertyController extends Controller
                 ->{$method}('multipart');
         // dd($response);
         if ( ! in_array($response['code'], [200, 201]) ) {
-            if (isset($response['contents']['name']) || $response['contents']['name']) {
+            if ($response['code'] == 422) {
                 \Session::flash('flash_message','Nama proyek telah digunakan');
             }
             return redirect()->back()->withInput()->withError($response['descriptions']);
