@@ -28,7 +28,7 @@ class CreateRequest extends FormRequest
             'city_id'   => 'required',
             'category'  => 'required|in:0,1,2',
             'pic_name'  => 'required',
-            'pic_phone' => 'required|digits_between:9,16|numeric',
+            'pic_phone' => 'required|alpha_num|min:9|max:16',
             'photo'     => 'required|image|max:1024',
             'address'   => 'required',
             'latitude'  => 'required',
