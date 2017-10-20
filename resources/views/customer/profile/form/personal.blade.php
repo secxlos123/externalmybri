@@ -147,9 +147,9 @@
 						<div class="col-md-7">
 							{!! Form::select('personal[status]', [
 								''  => '-- Pilih --',
-								'0' => 'Belum Menikah',
-								'1' => 'Menikah',
-								'2' => 'Janda / Duda',
+								'1' => 'Belum Menikah',
+								'2' => 'Menikah',
+								'3' => 'Janda / Duda',
 							], $personal['status'], [
 								'class' => 'form-control', 'id' => 'status'
 							]) !!}
@@ -161,8 +161,9 @@
 						<div class="col-md-7">
 							{!! Form::select('personal[address_status]', [
 								''  => '-- Pilih --',
-								'menetap' => 'Permanen',
-								'sementara' => 'Sementara',
+								'0' => 'Milik Sendiri',
+								'1' => 'Milik Orang Tua / Mertua / Rumah Dinas',
+								'3' => 'Tinggal di Rumah Kontrakan',
 							], $personal['address_status'], [
 								'class' => 'form-control',
 							]) !!}

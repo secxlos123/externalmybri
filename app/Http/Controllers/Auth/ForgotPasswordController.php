@@ -48,6 +48,16 @@ class ForgotPasswordController extends Controller
             ]);
         }
 
-        return redirect()->route('homepage');
+        return redirect()->route('auth.password.success');
+    }
+
+    /**
+     * Handle a reset password request for the application.
+     * 
+     * @return \Illuminate\Http\Response        
+     */
+    public function successForgot()
+    {
+        return view('auth.success-forgot');
     }
 }

@@ -39,7 +39,11 @@
     <!-- Header end -->
 
     <!-- Page Banner Start-->
-    @if ( ! request()->is('/') && ! request()->is('successed') && ! request()->is('activated') )
+    @if ( ! request()->is('/')
+        && ! request()->is('successed')
+        && ! request()->is('activated')
+        && ! request()->is('password/success')  )
+
         <section class="page-banner padding bg_light">
             <div class="container">
                 <div class="row">
@@ -94,18 +98,20 @@
     {!! Html::script('js/numeric.min.js') !!}
 
     <script type="text/javascript">
-        Inputmask.extendAliases({
-            rupiah : {
-                radixPoint: ",",
-                groupSeparator: ".",
-                alias: "numeric",
-                autoGroup: true,
-                rightAlign: false,
-                clearIncomplete: true,
-            }
+        $(document).ready(function () {
+            Inputmask.extendAliases({
+                rupiah : {
+                    radixPoint: ",",
+                    groupSeparator: ".",
+                    alias: "numeric",
+                    autoGroup: true,
+                    rightAlign: false,
+                    clearIncomplete: true,
+                }
+            });
+            $('.numeric').numeric();
+            $('.currency').inputmask({ alias : "rupiah" });
         });
-        $('.numeric').numeric();
-        $('.currency').inputmask({ alias : "rupiah" });
     </script>
     
     @if ( ! session('authenticate') )

@@ -52,7 +52,7 @@
                         <p class="bottom30">{!! $property->facilities !!}</p>
 
                         <!-- @todo to update relation with user cause pic is user have account -->
-                        @include('developer.fake-pic')
+                        {{-- @include('developer.fake-pic') --}}
                         <!-- @endtodo to update relation with user cause pic is user have account -->
 
                         <div class="row">
