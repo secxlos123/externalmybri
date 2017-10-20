@@ -19,7 +19,7 @@
     <!-- @end You can remove this condition if this module already -->
 
     <li>
-        <a href="{!! session('authenticate') ? '' : 'javascript:void(0)' !!}" class="submission-of-credit">Pengajuan Kredit</a>
+        <a href="{!! session('authenticate') ? route('eform.index') : 'javascript:void(0)' !!}" class="submission-of-credit">Pengajuan Kredit</a>
     </li>
 @endif
 

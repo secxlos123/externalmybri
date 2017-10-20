@@ -15,7 +15,7 @@ use Illuminate\Http\Request;
 
 
 Route::get('test', function (Request $request) {
-	return view('auth.actived');
+	// return view('auth.actived');
 	return view('eforms.index');
 });
 
@@ -33,6 +33,11 @@ Route::post('upload', 'UploadController@upload');
  * This route for handle homepage
  */
 Route::get('properties', 'PropertyController@index')->name('properties');
+
+/**
+ * This route for handle homepage
+ */
+Route::resource('eform', 'EformController');
 
 /**
  * This route grup for authenticate
@@ -84,6 +89,11 @@ Route::group(['namespace' => 'Auth', 'as' => 'auth.'], function () {
 	 * This route for send request login
 	 */
 	Route::post('password/reset', 'ForgotPasswordController@reset')->name('password.reset');
+
+	/**
+	 * This route for send request login
+	 */
+	Route::get('password/success', 'ForgotPasswordController@successForgot')->name('password.success');
 
 	/**
 	 * This route for send request login

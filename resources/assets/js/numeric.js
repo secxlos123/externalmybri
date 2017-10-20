@@ -14,23 +14,23 @@
 	            (e.keyCode >= 35 && e.keyCode <= 39)) {
 	            return;
 	        }
-	        
+
+			if (max != null) {
+				if ($(this).val() > max) {
+					$(this).val(max).trigger('change');
+				}
+				return;
+			}
+
+			if (min != null) {
+				if ($(this).val() < min) {
+					$(this).val(min).trigger('change');
+				}
+				return;
+			}
+
 	        if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
 	            e.preventDefault();
-	        }
-
-	        if (max != null) {
-		        if ($(this).val() > max) {
-		            $(this).val(max).trigger('change');
-		            max = null;
-		        }
-	        }
-
-	        if (min != null) {
-	        	if ($(this).val() < min) {
-	        		$(this).val(min).trigger('change');
-	        		min = null;
-	        	}
 	        }
 	    });
 
