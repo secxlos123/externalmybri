@@ -105,6 +105,7 @@
                     groupSeparator: ".",
                     alias: "numeric",
                     autoGroup: true,
+                    digits: 2,
                     rightAlign: false,
                     clearIncomplete: true,
                 }

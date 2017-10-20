@@ -7973,3 +7973,54 @@ li.drop-dash:hover > ul.dropdown-dashboard {
     float: right;
 }
 
+.top50 {
+   margin-top: 50px }
+
+.col-sm-3.text-center .image {
+   margin-bottom: 15px;
+} 
+
+
+.no-padding {
+   padding: 0;
+}
+
+.single-query.form-group .intro {
+   margin-bottom: 25px;
+}
+
+.for-long-year .input-group .input-group-addon {
+   border-radius: 0;
+}
+
+.top40 {
+   margin-top: 40px;
+}
+
+.for-filter-eform .form-group .add-btn.top20 {
+   float: right;
+}
+
+.has-finansial .form-horizontal.panel-body:nth-of-type(2) {
+   margin-top: 10px;
+}
+
+.has-finansial .form-horizontal.panel-body h4 {
+   color: #cccccc;
+   margin-bottom: 15px;
+
+}
+
+.has-finansial fieldset {
+   padding: .35em .625em .75em;
+   margin: 0 2px;
+   border: 1px solid #e5e5e5;
+
+}
+
+.has-finansial legend {
+    border-bottom: none;
+    width: auto;
+    font-size: 16px;
+    font-weight: bold;
+}

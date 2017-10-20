@@ -23,6 +23,14 @@
                 </div>
             </div>
         </div>
+        <div class="container hide error-server">
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <h2 class="uppercase">Maaf lokasi PROPERTI terdekat sendang mengalami gangguan</h2>
+                    <p class="heading_space">Silahkan coba beberapa saat lagi.</p>
+                </div>
+            </div>
+        </div>
     </section>
     <!-- This is content of list projects / properties end -->
 
@@ -76,7 +84,7 @@
                 $('#content-galery').html(response);
             })
             .fail(function (response) {
-                console.log(response);
+                $('.error-server').removeClass('hide');
             });
         }
     </script>

@@ -61,7 +61,7 @@
                 <div class="input-group">
                     <span class="input-group-addon">Rp</span>
                     {!! Form::text('price', old('price'), [
-                        'id' => 'price', 'class' => 'currency form-control calculate', 'maxlength' => 24, 'readonly'
+                        'id' => 'price', 'class' => 'currency form-control calculate', 'maxlength' => 15, 'readonly'
                     ]) !!}
                 </div>
             </div>
@@ -70,8 +70,9 @@
             <label class="control-label col-md-4">Luas Bangunan *</label>
             <div class="col-md-8">
                 <div class="input-group">
-                    {!! Form::number('building_area', old('building_area'), [
-                        'id' => 'building_area', 'class' => 'form-control calculate', 'readonly'
+                    {!! Form::text('building_area', old('building_area'), [
+                        'id' => 'building_area', 'class' => 'form-control numeric calculate', 'readonly',
+                        'maxlength' => 4
                     ]) !!}
                     <span class="input-group-addon">m<sup>2</sup></span>
                 </div>
@@ -120,7 +121,7 @@
                 <div class="input-group">
                     <span class="input-group-addon">Rp</span>
                     {!! Form::text('down_payment',old('down_payment'), [
-                        'class' => 'form-control currency', 'id' => 'down_payment', 'disabled'
+                        'class' => 'form-control currency', 'id' => 'down_payment', 'disabled', 'maxlength' => 15
                     ]) !!}
                 </div>
             </div>
@@ -132,7 +133,7 @@
                 <div class="input-group">
                     <span class="input-group-addon">Rp</span>
                     {!! Form::text('request_amount',old('request_amount'), [
-                        'class' => 'form-control currency', 'id' => 'request_amount', 'disabled'
+                        'class' => 'form-control currency', 'id' => 'request_amount', 'disabled', 'maxlength' => 15
                     ]) !!}
                 </div>
             </div>

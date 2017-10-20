@@ -7,58 +7,72 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label class="col-md-4 control-label">Jenis Pekerjaan *:</label>
+                        <label class="col-md-4 control-label">Bidang Pekerjaan *</label>
                         <div class="col-md-8">
-                            {!! Form::select('work_type', ['' => ''], old('work_type'), [
-                                'class' => 'select2 work_type',
-                                'data-placeholder' => '-- Pilih Pekerjaan --',
-                                'style' => 'width: 100%'
+                            {!! Form::select('work_field', ['' => ''], old('work_field'), [
+                                'class' => 'select2 job-fields',
+                                'data-placeholder' => 'Pilih Bidang Pekerjaan',
                             ]) !!}
                         </div>
                     </div>
+
                     <div class="form-group">
-                        <label class="col-md-4 control-label">Pekerjaan *:</label>
+                        <label class="col-md-4 control-label">Jenis Pekerjaan *</label>
                         <div class="col-md-8">
-                            <input name="work" type="text" class="form-control">
+                            {!! Form::select('work_type', ['' => ''], old('work_type'), [
+                                'class' => 'select2 job-types',
+                                'data-placeholder' => 'Pilih Jenis Pekerjaan',
+                            ]) !!}
                         </div>
                     </div>
+
                     <div class="form-group">
-                        <label class="col-md-4 control-label">Nama Perusahaan *:</label>
+                        <label class="col-md-4 control-label">Pekerjaan *</label>
                         <div class="col-md-8">
-                            <input name="company_name" type="text" class="form-control">
+                            {!! Form::select('work', ['' => ''], old('work'), [
+                                'class' => 'select2 jobs',
+                                'data-placeholder' => 'Pilih Pekerjaan',
+                            ]) !!}
                         </div>
                     </div>
+
                     <div class="form-group">
-                        <label class="col-md-4 control-label">Bidang Pekerjaan *:</label>
+                        <label class="col-md-4 control-label">Nama Perusahaan *</label>
                         <div class="col-md-8">
-                            <input name="work_field" type="text" class="form-control">
+                            {!! Form::text('company_name', old('company_name'), ['class' => 'form-control']) !!}
                         </div>
                     </div>
+
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label class="col-md-4 control-label">Jabatan *:</label>
+                        <label class="col-md-4 control-label">Jabatan *</label>
                         <div class="col-md-8">
-                            <input name="position" type="text" class="form-control">
+                            {!! Form::text('position', old('position'), ['class' => 'form-control']) !!}
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-4 control-label">Lama Kerja *:</label>
+                        <label class="col-md-4 control-label">Lama Kerja *</label>
                         <div class="col-md-8">
-                            <div class="col-md-4">
-                                <input type="number" class="form-control" name="work_duration" maxlength="3" min="0">
+                            <div class="input-group">
+                                {!! Form::text('year_old', old('year_old'), [
+                                    'class' => 'form-control numeric', 'maxlength' => 2
+                                ]) !!}
+                                <span class="input-group-addon">Tahun</span>
+
+                                {!! Form::text('mount_old', old('mount_old'), [
+                                    'class' => 'form-control numeric', 'maxlength' => 2
+                                ]) !!}
+                                <span class="input-group-addon">Bulan</span>
                             </div>
-                            <label class="col-md-2 control-label">Tahun</label>
-                            <div class="col-md-4">
-                                <input type="number" class="form-control" name="work_duration" maxlength="2" min="0" max="11">
-                            </div>
-                            <label class="col-md-1 control-label">Bulan</label>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-4 control-label">Alamat Kantor *:</label>
+                        <label class="col-md-4 control-label">Alamat Kantor *</label>
                         <div class="col-md-8">
-                            <textarea name="office_address" class="form-control" rows="3"></textarea>
+                            {!! Form::textarea('office_address', old('office_address'), [
+                                'class' => 'form-control', 'rows' => 3, 'style' => 'resize: none;'
+                            ]) !!}
                         </div>
                     </div>
                 </div>

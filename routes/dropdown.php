@@ -49,12 +49,17 @@ Route::group(['prefix' => 'dropdown', 'as' => 'dropdown.'], function () {
 	/**
 	 * This route for get form registration simple
 	 */
-	Route::get('jobFields', 'DropdownController@jobFields')->name('jobFields');
+	Route::get('jobs', 'DropdownController@jobFields')->name('jobs');
 
 	/**
 	 * This route for get form registration simple
 	 */
-	Route::get('jobTypes', 'DropdownController@jobTypes')->name('jobTypes');
+	Route::get('job-fields', 'DropdownController@jobFields')->name('job-fields');
+
+	/**
+	 * This route for get form registration simple
+	 */
+	Route::get('job-types', 'DropdownController@jobTypes')->name('job-types');
 
 	/**
 	 * This route for get form registration simple

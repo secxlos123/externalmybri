@@ -60,12 +60,9 @@
 </div>
 
 @push( 'parent-styles' )
-    {!! Html::style( 'assets/css/select2.min.css' ) !!}
 @endpush
 
 @push( 'parent-scripts' )
-    {!! Html::script( 'assets/js/select2.min.js' ) !!}
-    {!! Html::script( 'js/dropdown.min.js' ) !!}
     {!! Html::script( 'js/numeric.min.js' ) !!}
 
     <script type="text/javascript">
@@ -85,8 +82,6 @@
             $request_amount = $('#request_amount')
             $select = $('.types-select, .units-select')
             $dp = $('#dp');
-
-            $('.select2').select2({width: '100%'});
 
             $developers
                 .dropdown('developer')

@@ -54,6 +54,7 @@
 @push('styles')
     {!! Html::style('assets/css/jquery.steps.css') !!}
     {!! Html::style('assets/css/bootstrap-datepicker.min.css') !!}
+    {!! Html::style('assets/css/select2.min.css') !!}
     @stack('parent-styles')
 @endpush
 
@@ -61,5 +62,10 @@
     {!! Html::script('assets/js/jquery.steps.js') !!}
     <!-- This script for init jquery steps you can replace this script with your logic -->
     {!! Html::script('assets/js/jquery.wizard-init.js') !!}
+    {!! Html::script('assets/js/select2.min.js') !!}
+    {!! Html::script('js/dropdown.min.js') !!}
+    <script type="text/javascript">
+        $('.select2').select2({width: '100%'});
+    </script>
     @stack('parent-scripts')
 @endpush
