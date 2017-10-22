@@ -37,7 +37,17 @@ Route::get('properties', 'PropertyController@index')->name('properties');
 /**
  * This route for handle homepage
  */
-Route::resource('eform', 'EformController');
+Route::resource('eform', 'EformController', ['middleware' => ['auth.api'] ]);
+
+/**
+ * This route for get form registration simple
+ */
+Route::get('eform/{token}/{status}', 'EformController@verify')->name('eform.verify');
+
+/**
+ * This route for get form registration simple
+ */
+Route::get('eform/konfrimasi', 'EformController@confirmation')->name('eform.confirmation');
 
 /**
  * This route grup for authenticate

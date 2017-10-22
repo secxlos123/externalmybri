@@ -188,10 +188,10 @@
 
         $('.cities').dropdown('cities');
 
-        $(".checkHightlights").click(function (){
-            $('html, body').animate({
-                scrollTop: $("section#property").offset().top
-            }, 2000);
-        });
+        // $(".checkHightlights").click(function (){
+        //     $('html, body').animate({
+        //         scrollTop: $("section#property").offset().top
+        //     }, 2000);
+        // });
     </script>
 @endpush

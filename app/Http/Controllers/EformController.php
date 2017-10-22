@@ -89,4 +89,14 @@ class EformController extends Controller
     {
         //
     }
+
+    public function verify(Request $request, $token, $status)
+    {
+        return redirect()->route('eform.confirmation');
+    }
+
+    public function confirmation()
+    {
+        return view('eforms.confirmation');
+    }
 }

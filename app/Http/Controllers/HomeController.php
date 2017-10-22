@@ -26,6 +26,7 @@ class HomeController extends Controller
             });
         }
 
+        config(['jsvalidation.focus_on_error' => false]);
     	return view('home.index', compact('developers'));
     }
 }
