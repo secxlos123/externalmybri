@@ -90,13 +90,34 @@ class EformController extends Controller
         //
     }
 
+    /**
+     * Update status verification data customer
+     *
+     * @param  Request  $request
+     * @param  string   $token
+     * @param  string   $status
+     * @return \Illuminate\Http\Response
+     */
     public function verify(Request $request, $token, $status)
     {
-        return redirect()->route('eform.confirmation');
+        $response = Client::setEndpoint("eform/{$token}/{$status}")->get();
+
+        if ($response['code'] == 200) {
+            return redirect()->route('eform.confirmation', $status);
+        }
+
+        abort(404, 'Halaman tidak ditemukan.');
     }
 
+    /**
+     * Show page confirmation for customer if
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function confirmation()
     {
-        return view('eforms.confirmation');
+        return view('eforms.confirmation', [
+            'status' => request()->get('status', 'reject')
+        ]);
     }
 }
