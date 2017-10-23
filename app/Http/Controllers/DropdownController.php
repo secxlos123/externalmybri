@@ -30,7 +30,7 @@ class DropdownController extends Controller
     {
     	$body 	 = [ 'id' => 'prop_id', 'text' => 'prop_name' ];
     	$options = [ 'dev_id' => $request->input('dev_id'), 'search' => $request->input('name'), 'dropdown' => true ];
-        return $this->init('property', $body, $options, 'common');
+        return $this->init('property', $body, $options, $this->base());
     }
 
     /**
@@ -43,7 +43,7 @@ class DropdownController extends Controller
     {
     	$body 	 = [ 'id' => 'id', 'text' => 'name' ];
     	$options = [ 'property_id' => $request->input('prop_id'), 'search' => $request->input('name'), 'dropdown' => true ];
-        return $this->init('property-type', $body, $options, 'common');
+        return $this->init('property-type', $body, $options, $this->base());
     }
 
     /**
@@ -60,7 +60,8 @@ class DropdownController extends Controller
             'search' => $request->input('name'),
             'dropdown' => true
         ];
-        return $this->init('property-item', $body, $options, 'common');
+
+        return $this->init('property-item', $body, $options, $this->base());
     }
 
     /**
@@ -138,6 +139,16 @@ class DropdownController extends Controller
     {
     	$body 	 = [ 'text' => 'unit', 'id' => 'branch' ];
         return $this->init('offices', $body, $request->only(['name', 'distance', 'long', 'lat']));
+    }
+
+    /**
+     * This checking for role user
+     * 
+     * @return string
+     */
+    private function base()
+    {
+        return session('authenticate.role') == 'developer' ? 'eks' : 'common';
     }
 
     /**
