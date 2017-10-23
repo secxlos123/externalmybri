@@ -2,13 +2,45 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Classes\Traits\Profileble;
+use App\Http\Requests\EformRequest;
 use Client;
+use Illuminate\Http\Request;
 
 class EformController extends Controller
 {
     use Profileble;
+
+    /**
+     * Avaliable data customer simple
+     *
+     * @var array
+     */
+    protected $simple = [
+        'nik', 'first_name', 'last_name', 'birth_place_id', 'birth_date', 'address', 'city_id', 'gender',
+        'citizenship_id', 'status', 'address_status', 'mobile_phone', 'mother_name', 'identity',
+    ];
+
+    /**
+     * Avaliable data customer complete
+     *
+     * @var array
+     */
+    protected $complete = [
+        'birth_place', 'work_field','work_type', 'work', 'company_name', 'position', 'work_year', 'work_mount',
+        'office_address', 'salary', 'other_salary', 'loan_installment', 'dependent_amount', 'emergency_name',
+        'emergency_contact', 'emergency_relation'
+    ];
+
+    /**
+     * Avaliable data eform
+     *
+     * @var array
+     */
+    protected $eform = [
+        'product_type', 'status_property', 'developer', 'property', 'price', 'building_area', 'home_location', 'year',
+        'active_kpr', 'dp', 'request_amount', 'nik', 'branch_id', 'appointment_date', 'address', 'longitude', 'latitude'
+    ];
 
     /**
      * Display a listing of the resource.
@@ -21,17 +53,10 @@ class EformController extends Controller
             return 'Hallo Developer....';
         }
 
-        return view('eforms.index', $this->customer());
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        config(['jsvalidation.focus_on_error' => false]);
+        return view('eforms.index', [
+            'customer' => (object) $this->customer()
+        ]);
     }
 
     /**
@@ -40,54 +65,25 @@ class EformController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EformRequest $request)
     {
-        //
-    }
+        try {
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+            if (session('authenticate.role') == 'customer') {
+                // This is update customer data if customer created eform
+                $customer = $this->registered($request);
+            }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+            // This is submit application eform to Api
+            $eform = $this->postToApi($request->only($this->eform), 'eforms');
+        } catch (\Exception $e) {
+            // redirect back if having error from server Api
+            $message = is_json($e->getMessage()) ? json_decode($e->getMessage()) : $e->getMessage();
+            return redirect()->back()->withInput()->withError($message);
+        }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        // redirect to route eform.index if success created eform
+        return redirect()->route('eform.index')->withSuccess($eform['descriptions']);
     }
 
     /**
@@ -119,5 +115,47 @@ class EformController extends Controller
         return view('eforms.confirmation', [
             'status' => request()->get('status', 'reject')
         ]);
+    }
+
+    /**
+     * This is for mapping data customer if customer have change profile
+     * 
+     * @param  Request $request [description]
+     * @return array | throw
+     */
+    public function registered(Request $request)
+    {
+        if ($request->input('selector') == '1') {
+            $endpoint = 'simple';
+            $customer = $this->simple;
+        } else {
+            $endpoint = 'complete';
+            $customer = array_merge($this->simple, $this->complete);
+            $request->merge([ 'birth_place' => $request->input('birth_place_id') ]);
+            unset($customer['birth_place_id']);
+        }
+
+        return $this->postToApi($request->only($customer), "auth/register-{$endpoint}");
+    }
+
+    /**
+     * This function for execution post to Api 
+     * 
+     * @param  array  $data    
+     * @param  string $endpoint
+     * @return array | throw
+     */
+    public function postToApi(array $data, $endpoint)
+    {
+        $response = Client::setEndpoint($endpoint)
+            ->setHeaders(['Authorization' => session('authenticate.token')])
+            ->setBody(array_to_multipart($data))
+            ->post('multipart');
+
+        if ( ! in_array($response['code'], [200, 201]) ) {
+            throw new \Exception(json_encode($response['contents']), $response['code']);
+        }
+
+        return $response;
     }
 }

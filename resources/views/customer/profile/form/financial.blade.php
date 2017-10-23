@@ -61,7 +61,7 @@
 
                         <div class="col-md-12">
                             <div class="">
-                                <input id="checkbox1" type="checkbox" data-parsley-multiple="groups" data-parsley-mincheck="2">
+                                <input id="checkbox1" name="is_join" type="checkbox">
                                 <label for="checkbox1"> Joint Income </label>
                             </div>
                         </div>

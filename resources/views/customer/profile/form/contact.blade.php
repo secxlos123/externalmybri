@@ -10,14 +10,14 @@
                     <div class="form-group">
                         <label class="col-md-4 control-label">Nama</label>
                         <div class="col-md-8">
-                            {!! Form::text('name', old('name'), ['class' => 'form-control']) !!}
+                            {!! Form::text('emergency_name', old('emergency_name'), ['class' => 'form-control']) !!}
                         </div>
                     </div>
                     
                     <div class="form-group">
                         <label class="col-md-4 control-label">No. Handphone </label>
                         <div class="col-md-8">
-                            {!! Form::text('name', old('name'), [
+                            {!! Form::text('emergency_contact', old('emergency_contact'), [
                                 'class' => 'form-control numeric', 'minlength' => 9, 'maxlength' => 16
                             ]) !!}
                         </div>

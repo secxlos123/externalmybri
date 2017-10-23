@@ -4,49 +4,66 @@
         <p class="text-muted m-b-30 font-13">
             Tentukan Waktu Pertemuan
         </p>
-        <form class="form-horizontal" role="form">
-            <div class="form-group">
-                <label class="control-label col-md-4">Tanggal :</label>
-                <div class="col-md-8">
-                    <div class="input-group">
-                        <input type="text" class="form-control" id="datepicker-autoclose">
-                        <span class="input-group-addon b-0"><i class="fa fa-calendar"></i></span>
-                    </div>
+        <div class="form-group">
+            <label class="control-label col-md-4">Tanggal :</label>
+            <div class="col-md-8">
+                <div class="input-group">
+                    {!! Form::text('appointment_date', old('appointment_date'), [
+                        'class' => 'form-control datepicker-autoclose'
+                    ]) !!}
+                    <span class="input-group-addon b-0"><i class="fa fa-calendar"></i></span>
                 </div>
             </div>
-            <div class="form-group">
-                <label class="control-label col-md-4">Pukul :</label>
-                <div class="col-md-8">
-                    <div class="input-group">
-                        <input type="text" class="form-control" id="timepicker2">
-                        <span class="input-group-addon b-0"><i class="fa fa-clock-o"></i></span>
-                    </div>
-                </div>
-            </div>
-        </form>
+        </div>
     </div>
 </div>
+
 <div class="row">
     <div class="col-md-12">
         <h4 class="m-t-0 header-title"><b>Lokasi</b></h4>
         <p class="text-muted m-b-30 font-13">
             Tentukan lokasi/tempat Pertemuan
         </p>
-        <input id="searchInput" class="input-controls" type="text" placeholder="Masukkan nama tempat atau nama jalan untuk lokasi pertemuan">
-        <div class="map" id="map" style="width: 100%; height: 400px;"></div>
+        <input id="searchInput" class="input-controls" type="text" placeholder="Masukkan lokasi properti">
+
+        <div class="map" id="map"></div>
+
         <div class="form-group m-t-20">
-            <div class="col-md-6">
-                <label class="control-label">Lokasi</label>
-                <textarea name="location" id="location" class="form-control" readonly="" rows="3"></textarea>
-            </div>
-            <div class="col-md-3">
-                <label class="control-label">Latitude</label>
-                <input type="text" name="lat" id="lat" class="form-control" readonly="">
-            </div>
-            <div class="col-md-3">
-                <label class="control-label">Longitude</label>
-                <input type="text" name="lng" id="lng" class="form-control" readonly="">
-            </div>
+            {!! Form::textarea('address', old('address'), [
+                'class' => 'form-control', 'id' => 'location',
+                'rows' => 3, 'style' => 'resize: none'
+            ]) !!}
+
+            {!! Form::hidden('latitude', old('latitude'), ['id' => 'lat']) !!}
+            {!! Form::hidden('longitude', old('longitude'), ['id' => 'lng']) !!}
+
+            @if ($errors->has('address'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('address') }}</strong>
+                </span>
+            @endif
         </div>
     </div>
 </div>
+
+@push( 'parent-styles' )
+    {!! Html::script('https://maps.googleapis.com/maps/api/js?key=AIzaSyAIijm1ewAfeBNX3Np3mlTDZnsCl1u9dtE&libraries=places') !!}
+    <style type="text/css">
+        .map {
+            width: 100%;
+            height: 400px;
+        }
+    </style>
+@endpush
+
+@push( 'parent-scripts' )
+    {!! Html::script('assets/js/jquery.gmaps.js') !!}
+    
+    <script type="text/javascript">
+        $('.datepicker-autoclose').datepicker({
+            format: 'dd-mm-yyyy',
+            autoclose: true,
+            startDate: '0days'
+        });
+    </script>
+@endpush

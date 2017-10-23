@@ -36,7 +36,11 @@ trait Profileble
     {
         $profile = $this->profile();
         $profile['personal'] = $this->personal($profile['personal']);
-        return $profile;
+
+        return array_merge_recursive(
+            $profile['personal'], $profile['work'], $profile['financial'], 
+            $profile['contact'], $profile['other']
+        );
     }
 
     /**
@@ -57,6 +61,10 @@ trait Profileble
 
             if ('status' === $key) {
                 $personal[$key] = ($value) ? $value : '';
+            }
+
+            if ('gender' === $key) {
+                $personal[$key] = ($value == 'Laki-laki') ? 'L' : 'P';
             }
         }
         return $personal;
