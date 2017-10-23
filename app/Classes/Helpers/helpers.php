@@ -5,11 +5,11 @@ use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 if (! function_exists('array_to_multipart')) {
-	
+
     /**
      * Convert array to format multipart/form-data.
      *
-     * @param  array $array 
+     * @param  array $array
      * @param  string|null $parent
      * @return array
      */
@@ -32,7 +32,7 @@ if (! function_exists('array_to_multipart')) {
 }
 
 if (! function_exists('string_to_uploaded_file')) {
-	
+
     /**
      * Convert string path to object uploaded file.
      *
@@ -49,7 +49,7 @@ if (! function_exists('string_to_uploaded_file')) {
 }
 
 if (! function_exists('extract_dir_to_request')) {
-    
+
     /**
      * Extract directory and merge to request
      *
@@ -81,16 +81,34 @@ if (! function_exists('extract_dir_to_request')) {
 }
 
 if (! function_exists('is_json')) {
-	
+
     /**
      * Check if variable is valid json
      *
      * @param  string $dir
      * @return boolean
-     */    
+     */
     function is_json($string)
     {
         json_decode($string);
         return (json_last_error() == JSON_ERROR_NONE);
+    }
+}
+
+if (! function_exists('image_checker')) {
+
+    /**
+     * Check if variable is valid json
+     *
+     * @param  string $dir
+     * @return boolean
+     */
+    function image_checker($path = null)
+    {
+        if (is_null($path)) {
+            return $link="http://127.0.0.1:8001/img/noimage.jpg";
+        }else{
+            return $path;
+        }
     }
 }

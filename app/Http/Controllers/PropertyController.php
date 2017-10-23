@@ -102,14 +102,15 @@ class PropertyController extends Controller
                 'limit' => $request->input('limit'),
                 'page' => ($request->input('page')) ? $request->input('page') : 1,
                 'prop_city_id' => ($request->input('prop_city_id')) ? $request->input('prop_city_id') : null,
-                'dev_id' => ($request->input('dev_id')) ? $request->input('dev_id') : null
+                'dev_id' => ($request->input('dev_id')) ? $request->input('dev_id') : null,
+                'without_independent' => true
             ])
             ->get();
 
         \Log::info($results);
         // return view('home.property.index', compact('results'));
         return response()->json(
-            view('home.property._content-property', [ 'results' => $results['contents'] ])->render()
+            view('property._content-property', [ 'results' => $results['contents'] ])->render()
         );
     }
 
@@ -119,11 +120,12 @@ class PropertyController extends Controller
             ->setEndpoint('property')
             ->setQuery([
                 'limit' => 6,
-                'page' => 1
+                'page' => 1,
+                'without_independent' => true
             ])
             ->get();
 
         $results = $results['contents'];
-        return view('home.property.index', compact('results'));
+        return view('property.index', compact('results'));
     }
 }

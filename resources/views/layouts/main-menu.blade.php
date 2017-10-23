@@ -7,9 +7,6 @@
     <!-- @start You can remove this condition if this module already -->
     @if (false)
         <li>
-            <a href="javascript:void(0)">Daftar Properti</a>
-        </li>
-        <li>
             <a href="javascript:void(0)">Simulasi Kredit</a>
         </li>
         <li class="active">
@@ -18,6 +15,9 @@
     @endif
     <!-- @end You can remove this condition if this module already -->
 
+    <li>
+        <a href="{!! route('all-properties') !!}">Daftar Properti</a>
+    </li>
     <li>
         <a href="{!! session('authenticate') ? route('eform.index') : 'javascript:void(0)' !!}" class="submission-of-credit">Pengajuan Kredit</a>
     </li>
@@ -46,5 +46,5 @@
         </li>
     @endif
     <!-- @end You can remove this condition if this module already -->
-    
+
 @endif
