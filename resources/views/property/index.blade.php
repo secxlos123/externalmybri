@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-sm-12 text-center">
                 <h2 class="uppercase">Filter Pencarian</h2>
-                <p class="heading_space">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+                <p class="heading_space"></p>
             </div>
         </div>
         <div class="row">
@@ -88,18 +88,8 @@
             $('.city_id').dropdown('cities');
             $('.developer').dropdown('developer');
 
-            $('a#buttonPage').on('click', function(){
-                console.log($(this).data('id'));
-                var page = $(this).data('id');
-                var dev = $('.developer').val();
-                var city = $('.city_id').val();
-                loadData(page, dev, city);
-            });
-
             function loadData(nextPage, dev=null, city=null)
             {
-                $('ul.pager li').removeClass('active');
-                $('ul.pager li#'+nextPage).addClass('active');
                 $.ajax({
                     url: '/get-all-properties',
                     data:   {
