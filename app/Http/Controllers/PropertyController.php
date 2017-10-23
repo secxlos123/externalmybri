@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Client;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class PropertyController extends Controller
 {
@@ -16,8 +17,8 @@ class PropertyController extends Controller
     {
         $properties = Client::setBase('common')->setEndpoint('nearby-properties')
             ->setQuery([
-                'lat' => $request->input('lat'), 
-                'long' => $request->input('long'), 
+                'lat' => $request->input('lat'),
+                'long' => $request->input('long'),
             ])
             ->get();
 
@@ -90,5 +91,39 @@ class PropertyController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    public function listProperty(Request $request)
+    {
+        $results = Client::setBase('common')
+            ->setEndpoint('property')
+            ->setQuery([
+                'limit' => $request->input('limit'),
+                'page' => ($request->input('page')) ? $request->input('page') : 1,
+                'prop_city_id' => ($request->input('prop_city_id')) ? $request->input('prop_city_id') : null,
+                'dev_id' => ($request->input('dev_id')) ? $request->input('dev_id') : null
+            ])
+            ->get();
+
+        \Log::info($results);
+        // return view('home.property.index', compact('results'));
+        return response()->json(
+            view('home.property._content-property', [ 'results' => $results['contents'] ])->render()
+        );
+    }
+
+    public function pageProperty()
+    {
+        $results = Client::setBase('common')
+            ->setEndpoint('property')
+            ->setQuery([
+                'limit' => 6,
+                'page' => 1
+            ])
+            ->get();
+
+        $results = $results['contents'];
+        return view('home.property.index', compact('results'));
     }
 }

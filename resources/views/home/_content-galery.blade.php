@@ -44,7 +44,7 @@
 
 @if ( count($properties) != 0 )
     <div class="col-sm-12 text-center">
-        <a href="javascript:void(0)" class="btn-dark uppercase">Lihat Semua Properti</a>
+        <a href="{!! route('properties.index') !!}" class="btn-dark uppercase">Lihat Semua Properti</a>
     </div>
 @endif
 

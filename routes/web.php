@@ -37,6 +37,16 @@ Route::get('properties', 'PropertyController@index')->name('properties');
 /**
  * This route for handle homepage
  */
+Route::get('daftar-proyek', 'PropertyController@pageProperty')->name('all-properties');
+
+/**
+ * This route for handle homepage
+ */
+Route::get('get-all-properties', 'PropertyController@listProperty')->name('get-list-property');
+
+/**
+ * This route for handle homepage
+ */
 Route::resource('eform', 'EformController', ['middleware' => ['auth.api'] ]);
 
 /**
