@@ -17,7 +17,10 @@ class HomeController extends Controller
             return redirect()->route('developer.index');
         }
 
-        $results = \Client::setBase('common')->setEndpoint('developers')->get();
+        $results = \Client::setBase('common')
+            ->setQuery(['without_independent' => true])
+            ->setEndpoint('developers')->get();
+            
         $developers = collect([]);
 
         if ($results['code'] == 200) {

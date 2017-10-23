@@ -88,8 +88,8 @@
             <thead class="bg-blue">
                 <tr>
                     <th>Nama Tipe</th>
-                    <th>Luas Tanah (m<sup>2</sup>)</th>
                     <th>Luas Bangunan (m<sup>2</sup>)</th>
+                    <th>Luas Tanah (m<sup>2</sup>)</th>
                     <th>Sertifikat</th>
                     <th>Stok</th>
                     <th>Aksi</th>
