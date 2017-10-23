@@ -1,10 +1,12 @@
-<div class="row">
-    <div class="col-md-12">
-        @include('eforms.products._product-description')
+@if (false)
+    <div class="row">
+        <div class="col-md-12">
+            @include('eforms.products._product-description')
+        </div>
     </div>
-</div>
 
-<hr>
+    <hr>
+@endif
 
 <div class="row">
     <div class="col-md-6">
@@ -105,7 +107,7 @@
             <label class="control-label col-md-4">KPR Aktif ke *</label>
             <div class="col-md-8">
                 {!! Form::select('active_kpr', [ '1' => '1', '2' => '2', '3' => '> 2' ], old('active_kpr'), [
-                    'class' => 'form-control calculate', 'id' => 'active_kpr'
+                    'class' => 'form-control select2 calculate', 'id' => 'active_kpr'
                 ]) !!}
             </div>
         </div>
@@ -117,11 +119,16 @@
                         'class' => 'form-control numeric calculate currency', 'id' => 'dp', 'maxlength' => 3
                     ]) !!}
                     <span class="input-group-addon">%</span>
-                </div><br>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <div class="col-md-offset-4 col-md-8">
                 <div class="input-group">
                     <span class="input-group-addon">Rp</span>
                     {!! Form::text('down_payment',old('down_payment'), [
-                        'class' => 'form-control currency', 'id' => 'down_payment', 'disabled', 'maxlength' => 15
+                        'class' => 'form-control currency', 'id' => 'down_payment', 'readonly', 'maxlength' => 15
                     ]) !!}
                 </div>
             </div>
@@ -133,7 +140,7 @@
                 <div class="input-group">
                     <span class="input-group-addon">Rp</span>
                     {!! Form::text('request_amount',old('request_amount'), [
-                        'class' => 'form-control currency', 'id' => 'request_amount', 'disabled', 'maxlength' => 15
+                        'class' => 'form-control currency', 'id' => 'request_amount', 'readonly', 'maxlength' => 15
                     ]) !!}
                 </div>
             </div>

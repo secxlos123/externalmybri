@@ -2,20 +2,10 @@
 
 namespace App\Http\Requests\Developer\PropertyItem;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\BaseRequest as FormRequest;
 
 class CreateRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize()
-    {
-        return true;
-    }
-
     /**
      * Get the validation rules that apply to the request.
      *
@@ -30,16 +20,5 @@ class CreateRequest extends FormRequest
             'property'=> 'required',
             'property_type_id' => 'required',
         ];
-    }
-
-    /**
-     * Get the validator instance for the request.
-     *
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function getValidatorInstance()
-    {
-        $this->merge([ 'price' => str_replace('.', '', $this->input('price')) ]);
-        return parent::getValidatorInstance();
     }
 }

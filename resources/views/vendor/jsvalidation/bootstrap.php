@@ -15,6 +15,10 @@
                 } else {
                     error.insertAfter(element);
                 }
+
+                if ( element.hasClass('options') ) {
+                    error.insertAfter(element.parents('ul'));
+                }
             },
             highlight: function(element) {
                 $(element).closest('.form-group').removeClass('has-success').addClass('has-error'); // add the Bootstrap error class to the control group

@@ -49,7 +49,7 @@ if (! function_exists('string_to_uploaded_file')) {
 }
 
 if (! function_exists('extract_dir_to_request')) {
-	
+    
     /**
      * Extract directory and merge to request
      *
@@ -59,23 +59,38 @@ if (! function_exists('extract_dir_to_request')) {
      * @param  string $param
      * @return void
      */
-	function extract_dir_to_request(Request $request, $dir, $drive, $param = 'photos')
-	{
+    function extract_dir_to_request(Request $request, $dir, $drive, $param = 'photos')
+    {
         if ( array_key_exists($drive, config('filesystems.disks')) ) {
-	        $storage = Storage::disk($drive);
-	        $photos  = $storage->allFiles($dir);
+            $storage = Storage::disk($drive);
+            $photos  = $storage->allFiles($dir);
 
-	        foreach ($photos as $key => $photo) {
-	            $file = str_replace("{$dir}/", '', $photo);
-	            if ( ! in_array($file, $request->get('uploaded', [])) ) {
-	                unset( $photos[$key] );
-	                continue;
-	            }
-	            $files[] = string_to_uploaded_file( public_path("storage/{$drive}/{$photo}") );
-	            $request->merge( [ $param =>  $files ] );
-	        }
+            foreach ($photos as $key => $photo) {
+                $file = str_replace("{$dir}/", '', $photo);
+                if ( ! in_array($file, $request->get('uploaded', [])) ) {
+                    unset( $photos[$key] );
+                    continue;
+                }
+                $files[] = string_to_uploaded_file( public_path("storage/{$drive}/{$photo}") );
+                $request->merge( [ $param =>  $files ] );
+            }
 
-	        $request->replace($request->except(['_token', 'uploaded']));
-		}
-	}
+            $request->replace($request->except(['_token', 'uploaded']));
+        }
+    }
+}
+
+if (! function_exists('is_json')) {
+	
+    /**
+     * Check if variable is valid json
+     *
+     * @param  string $dir
+     * @return boolean
+     */    
+    function is_json($string)
+    {
+        json_decode($string);
+        return (json_last_error() == JSON_ERROR_NONE);
+    }
 }

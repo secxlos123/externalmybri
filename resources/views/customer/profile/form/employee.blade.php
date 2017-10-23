@@ -55,12 +55,12 @@
                         <label class="col-md-4 control-label">Lama Kerja *</label>
                         <div class="col-md-8">
                             <div class="input-group">
-                                {!! Form::text('year_old', old('year_old'), [
+                                {!! Form::text('work_year', old('work_year'), [
                                     'class' => 'form-control numeric', 'maxlength' => 2
                                 ]) !!}
                                 <span class="input-group-addon">Tahun</span>
 
-                                {!! Form::text('mount_old', old('mount_old'), [
+                                {!! Form::text('work_mount', old('work_mount'), [
                                     'class' => 'form-control numeric', 'maxlength' => 2
                                 ]) !!}
                                 <span class="input-group-addon">Bulan</span>

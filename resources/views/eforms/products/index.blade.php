@@ -30,6 +30,8 @@
                     <div id="kpr" class="tab-pane active">
                         @include('eforms.products._kpr')
                         {!! Form::hidden('category', 0, ['id' => 'category-hide']) !!}
+                        {!! Form::hidden('product_type', 'kpr') !!}
+                        {!! Form::hidden('status_property', 'new') !!}
                     </div>
                     
                     @if (false)
