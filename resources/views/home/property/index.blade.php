@@ -102,8 +102,7 @@
                 $('ul.pager li#'+nextPage).addClass('active');
                 $.ajax({
                     url: '/get-all-properties',
-                    data: function() {
-                        return
+                    data: {
                         limit: 6,
                         page: nextPage,
                         dev_id: dev,
