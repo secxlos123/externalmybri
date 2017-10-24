@@ -86,7 +86,7 @@ class DropdownController extends Controller
     public function jobs(Request $request)
     {
     	$body 	 = [ 'text' => 'name' ];
-    	$options = [ 'name' => $request->input('name') ];
+    	$options = [ 'search' => $request->input('name') ];
         return $this->init('job-list', $body, $options);
     }
 
@@ -99,8 +99,21 @@ class DropdownController extends Controller
     public function jobTypes(Request $request)
     {
     	$body 	 = [ 'text' => 'name' ];
-    	$options = [ 'name' => $request->input('name') ];
+    	$options = [ 'search' => $request->input('name') ];
         return $this->init('job-type-list', $body, $options);
+    }
+
+    /**
+     * This logic for get list of job fields from api
+     * 
+     * @param  Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function jobFields(Request $request)
+    {
+        $body    = [ 'text' => 'name' ];
+        $options = [ 'search' => $request->input('name') ];
+        return $this->init('job-field-list', $body, $options);
     }
 
     /**
@@ -109,11 +122,11 @@ class DropdownController extends Controller
 	 * @param  Request $request
      * @return \Illuminate\Http\Response
 	 */
-    public function jobFields(Request $request)
+    public function positions(Request $request)
     {
     	$body 	 = [ 'text' => 'name' ];
-    	$options = [ 'name' => $request->input('name') ];
-        return $this->init('job-field-list', $body, $options);
+    	$options = [ 'search' => $request->input('name') ];
+        return $this->init('positions', $body, $options);
     }
 
     /**
