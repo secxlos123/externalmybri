@@ -74,7 +74,7 @@
                         <div class="col-md-6">
                             <div class="form-group ktp_couple_preview">
                                 <div class="col-md-12 col-md-offset-2">
-                                    {!! Html::image($customer->couple_identity, 'KTP Pasangan', [
+                                    {!! Html::image($customer->couple_identity ?: 'assets/images/no-image.jpg', 'KTP Pasangan', [
                                         'class' => 'img-responsive', 'width' => 300, 'id' => 'ktp_couple_preview',
                                         'data-src' => asset('assets/images/no-image.jpg')
                                     ]) !!}
