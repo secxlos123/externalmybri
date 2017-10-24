@@ -23,7 +23,8 @@
     });
     function loadData(nextPage, dev=null, city=null)
     {
-        $('body').addClass("loading");
+        $('.contentProperty').html("");
+        $('.contentProperty').append("<div style=\"height: 60px;margin: auto;padding: 10px;\"><div class=\"loader-page\" id=\"loader-page\"></div></div>");
         $.ajax({
             url: '/get-all-properties',
             data: {
@@ -36,7 +37,6 @@
         .done(function (response) {
             $('.contentProperty').html("");
             $('.contentProperty').html(response);
-            $('body').removeClass("loading");
         })
         .fail(function (response) {
             $('.error-server').removeClass('hide');

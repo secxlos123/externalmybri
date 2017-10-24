@@ -64,40 +64,22 @@
             </div>
         </div>
         <div class="contentProperty">
-
         </div>
 </section>
-<div class="modal-loading-page"><!-- Place at bottom of page --></div>
 @endsection
 
 <!-- This is styles for this page -->
 @push('styles')
     {!! Html::style( 'assets/css/select2.min.css' ) !!}
     <style type="text/css">
-        .modal-loading-page {
-            display:    none;
-            position:   fixed;
-            z-index:    1000;
-            top:        0;
-            left:       0;
-            height:     100%;
-            width:      100%;
-            background: rgba( 255, 255, 255, .8 )
-                        url('http://i.stack.imgur.com/FhHRx.gif')
-                        50% 50%
-                        no-repeat;
-        }
-
-        /* When the body has the loading class, we turn
-           the scrollbar off with overflow:hidden */
-        body.loading {
-            overflow: hidden;
-        }
-
-        /* Anytime the body has the loading class, our
-           modal element will be visible */
-        body.loading .modal-loading-page {
-            display: block;
+        .loader-page {
+            left: 0px;
+            top: 0px;
+            margin-left: 48%;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background: url('http://127.0.0.1:8001/img/load.gif') no-repeat;
         }
     </style>
 @endpush
@@ -125,7 +107,8 @@
         });
         function loadData(nextPage, dev=null, city=null)
         {
-            $('body').addClass("loading");
+            $('.contentProperty').html("");
+            $('.contentProperty').append("<div style=\"height: 60px;margin: auto;padding: 10px;\"><div class=\"loader-page\" id=\"loader-page\"></div></div>");
             $.ajax({
                 url: '/get-all-properties',
                 data:   {
@@ -133,18 +116,11 @@
                         page: nextPage,
                         dev_id: dev,
                         prop_city_id: city
-                    },
-                ajaxStart: function() {
-                    $('body').addClass("loading");
-                },
-                ajaxStop: function() {
-                    $('body').removeClass("loading");
-                }
+                    }
             })
             .done(function (response) {
                 $('.contentProperty').html("");
                 $('.contentProperty').html(response);
-                $('body').removeClass("loading");
             })
             .fail(function (response) {
                 $('.error-server').removeClass('hide');

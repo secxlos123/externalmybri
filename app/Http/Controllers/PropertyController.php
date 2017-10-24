@@ -15,15 +15,16 @@ class PropertyController extends Controller
      */
     public function index(Request $request)
     {
+        // $location = $this->getLocation();
         $properties = Client::setBase('common')->setEndpoint('nearby-properties')
             ->setQuery([
                 'lat' => $request->input('lat'),
                 'long' => $request->input('long'),
             ])
             ->get();
-
+        // return $properties;
         return response()->json(
-            view('home._content-galery', [ 'properties' => $properties['contents'] ])->render()
+            view('property._content-property', [ 'results' => $properties['contents'] ])->render()
         );
     }
 
@@ -128,7 +129,7 @@ class PropertyController extends Controller
                 'lat' => $location->latitude
             ])
             ->get();
-        // dd($results);
+
         $results = $results['contents'];
         return view('property.index', compact('results'));
     }

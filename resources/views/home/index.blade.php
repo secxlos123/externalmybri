@@ -26,7 +26,7 @@
         <div class="container hide error-server">
             <div class="row">
                 <div class="col-sm-12 text-center">
-                    <h2 class="uppercase">Maaf lokasi PROPERTI terdekat sendang mengalami gangguan</h2>
+                    <h2 class="uppercase">Maaf lokasi PROPERTI terdekat sedang mengalami gangguan</h2>
                     <p class="heading_space">Silahkan coba beberapa saat lagi.</p>
                 </div>
             </div>
