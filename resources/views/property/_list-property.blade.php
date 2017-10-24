@@ -6,7 +6,7 @@
                 <div class="price clearfix">
                     <span class="tag pull-right">Rp. {{$value['prop_price']}},-</span>
                 </div>
-                <span class="tag_t">{{$value['distance']}} Km</span>
+                <span class="tag_t">{{(isset($value['distance'])) ? $value['distance'] : '0'}} Km</span>
                 <span class="tag_l">PT. Gaisan Propertindo</span>
             </div>
             <div class="proerty_content">
