@@ -125,7 +125,7 @@ class DropdownController extends Controller
     public function citizenships(Request $request)
     {
         $body    = [ 'text' => 'name' ];
-        $options = [ 'name' => $request->input('name') ];
+        $options = [ 'search' => $request->input('name') ];
         return $this->init('citizenship-list', $body, $options);
     }
 
