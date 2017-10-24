@@ -66,12 +66,40 @@
         <div class="contentProperty">
 
         </div>
-    </section>
+</section>
+<div class="modal"><!-- Place at bottom of page --></div>
 @endsection
 
 <!-- This is styles for this page -->
 @push('styles')
     {!! Html::style( 'assets/css/select2.min.css' ) !!}
+    <style type="text/css">
+        .modal {
+            display:    none;
+            position:   fixed;
+            z-index:    1000;
+            top:        0;
+            left:       0;
+            height:     100%;
+            width:      100%;
+            background: rgba( 255, 255, 255, .8 )
+                        url('http://i.stack.imgur.com/FhHRx.gif')
+                        50% 50%
+                        no-repeat;
+        }
+
+        /* When the body has the loading class, we turn
+           the scrollbar off with overflow:hidden */
+        body.loading {
+            overflow: hidden;
+        }
+
+        /* Anytime the body has the loading class, our
+           modal element will be visible */
+        body.loading .modal {
+            display: block;
+        }
+    </style>
 @endpush
 <!-- This is styles for this page end -->
 
@@ -83,6 +111,7 @@
     {!! Html::script( 'js/dropdown.min.js' ) !!}
     <script type="text/javascript">
         $( document ).ready(function() {
+            $('body').addClass("loading");
             $('.select2').select2({ witdh : '100%' });
             loadData(1);
             $('.city_id').dropdown('cities');
@@ -102,11 +131,17 @@
                 .done(function (response) {
                     $('.contentProperty').html("");
                     $('.contentProperty').html(response);
+                    $('body').removeClass("loading");
                 })
                 .fail(function (response) {
                     $('.error-server').removeClass('hide');
                 });
             }
+
+            $(document).on({
+                ajaxStart: function() { $('body').addClass("loading");    },
+                ajaxStop: function() { $('body').removeClass("loading"); }
+            });
 
             $('#findProperty').on('click', function(){
                 var dev = $('.developer').val();

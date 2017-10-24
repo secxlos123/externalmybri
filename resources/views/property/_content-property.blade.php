@@ -21,6 +21,7 @@
         $('ul.pager li#'+id).removeClass('active');
         loadData(page, dev, city);
     });
+
     function loadData(nextPage, dev=null, city=null)
     {
         $.ajax({
