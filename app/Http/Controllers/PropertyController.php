@@ -96,6 +96,7 @@ class PropertyController extends Controller
 
     public function listProperty(Request $request)
     {
+        $location = $this->getLocation();
         $results = Client::setBase('common')
             ->setEndpoint('property')
             ->setQuery([
@@ -103,12 +104,12 @@ class PropertyController extends Controller
                 'page' => ($request->input('page')) ? $request->input('page') : 1,
                 'prop_city_id' => ($request->input('prop_city_id')) ? $request->input('prop_city_id') : null,
                 'dev_id' => ($request->input('dev_id')) ? $request->input('dev_id') : null,
-                'without_independent' => true
+                'without_independent' => true,
+                'long' => $location->longitude,
+                'lat' => $location->latitude
             ])
             ->get();
 
-        \Log::info($results);
-        // return view('home.property.index', compact('results'));
         return response()->json(
             view('property._content-property', [ 'results' => $results['contents'] ])->render()
         );
@@ -116,16 +117,27 @@ class PropertyController extends Controller
 
     public function pageProperty()
     {
+        $location = $this->getLocation();
         $results = Client::setBase('common')
             ->setEndpoint('property')
             ->setQuery([
                 'limit' => 6,
                 'page' => 1,
-                'without_independent' => true
+                'without_independent' => true,
+                'long' => $location->longitude,
+                'lat' => $location->latitude
             ])
             ->get();
-
+        // dd($results);
         $results = $results['contents'];
         return view('property.index', compact('results'));
+    }
+
+    public function getLocation()
+    {
+        $client = new \GuzzleHttp\Client();
+        $res = $client->request('GET', 'http://freegeoip.net/json');
+        $location = json_decode( $res->getBody()->getContents() );
+        return $location;
     }
 }
