@@ -21,9 +21,9 @@
         $('ul.pager li#'+id).removeClass('active');
         loadData(page, dev, city);
     });
-
     function loadData(nextPage, dev=null, city=null)
     {
+        $('body').addClass("loading");
         $.ajax({
             url: '/get-all-properties',
             data: {
@@ -36,6 +36,7 @@
         .done(function (response) {
             $('.contentProperty').html("");
             $('.contentProperty').html(response);
+            $('body').removeClass("loading");
         })
         .fail(function (response) {
             $('.error-server').removeClass('hide');

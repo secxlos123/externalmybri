@@ -2,7 +2,7 @@
     <div class="col-md-4 bottom30">
         <div class="property_item">
             <div class="image">
-                <a href="#"><img src="{{image_checker($value['prop_photo'])}}" alt="latest property" cl)ass="img-responsive"></a>
+                <a href="#"><img src="{{image_checker($value['prop_photo'])}}" alt="latest property" class="img-responsive"></a>
                 <div class="price clearfix">
                     <span class="tag pull-right">Rp. {{$value['prop_price']}},-</span>
                 </div>

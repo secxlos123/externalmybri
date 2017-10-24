@@ -67,14 +67,14 @@
 
         </div>
 </section>
-<div class="modal"><!-- Place at bottom of page --></div>
+<div class="modal-loading-page"><!-- Place at bottom of page --></div>
 @endsection
 
 <!-- This is styles for this page -->
 @push('styles')
     {!! Html::style( 'assets/css/select2.min.css' ) !!}
     <style type="text/css">
-        .modal {
+        .modal-loading-page {
             display:    none;
             position:   fixed;
             z-index:    1000;
@@ -96,7 +96,7 @@
 
         /* Anytime the body has the loading class, our
            modal element will be visible */
-        body.loading .modal {
+        body.loading .modal-loading-page {
             display: block;
         }
     </style>
@@ -111,37 +111,11 @@
     {!! Html::script( 'js/dropdown.min.js' ) !!}
     <script type="text/javascript">
         $( document ).ready(function() {
-            $('body').addClass("loading");
             $('.select2').select2({ witdh : '100%' });
             loadData(1);
             $('.city_id').dropdown('cities');
             $('.developer').dropdown('developer');
 
-            function loadData(nextPage, dev=null, city=null)
-            {
-                $.ajax({
-                    url: '/get-all-properties',
-                    data:   {
-                            limit: 6,
-                            page: nextPage,
-                            dev_id: dev,
-                            prop_city_id: city
-                        }
-                })
-                .done(function (response) {
-                    $('.contentProperty').html("");
-                    $('.contentProperty').html(response);
-                    $('body').removeClass("loading");
-                })
-                .fail(function (response) {
-                    $('.error-server').removeClass('hide');
-                });
-            }
-
-            $(document).on({
-                ajaxStart: function() { $('body').addClass("loading");    },
-                ajaxStop: function() { $('body').removeClass("loading"); }
-            });
 
             $('#findProperty').on('click', function(){
                 var dev = $('.developer').val();
@@ -149,6 +123,33 @@
                 loadData(1, dev, city);
             });
         });
+        function loadData(nextPage, dev=null, city=null)
+        {
+            $('body').addClass("loading");
+            $.ajax({
+                url: '/get-all-properties',
+                data:   {
+                        limit: 6,
+                        page: nextPage,
+                        dev_id: dev,
+                        prop_city_id: city
+                    },
+                ajaxStart: function() {
+                    $('body').addClass("loading");
+                },
+                ajaxStop: function() {
+                    $('body').removeClass("loading");
+                }
+            })
+            .done(function (response) {
+                $('.contentProperty').html("");
+                $('.contentProperty').html(response);
+                $('body').removeClass("loading");
+            })
+            .fail(function (response) {
+                $('.error-server').removeClass('hide');
+            });
+        }
     </script>
 @endpush
 <!-- This is scripts for this page end -->
