@@ -49,7 +49,7 @@ Route::group(['prefix' => 'dropdown', 'as' => 'dropdown.'], function () {
 	/**
 	 * This route for get form registration simple
 	 */
-	Route::get('jobs', 'DropdownController@jobFields')->name('jobs');
+	Route::get('jobs', 'DropdownController@jobs')->name('jobs');
 
 	/**
 	 * This route for get form registration simple
@@ -65,5 +65,10 @@ Route::group(['prefix' => 'dropdown', 'as' => 'dropdown.'], function () {
 	 * This route for get form registration simple
 	 */
 	Route::get('offices', 'DropdownController@offices')->name('offices');
+
+	/**
+	 * This route for get form registration simple
+	 */
+	Route::get('positions', 'DropdownController@positions')->name('positions');
 
 });

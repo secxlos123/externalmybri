@@ -14,7 +14,7 @@
                         <h3>Terima kasih telah menyetujui verifikasi data Anda.</h3>
                         <p>Selanjutnya kami akan memproses pengajuan Aplikasi e-Form anda.</p>
                     @else
-                        <h3>Mohon maaf ada kesalahan data yang diinputkan oleh Account Officer kami.</h3>
+                        <h3>Mohon maaf ada kesalahan data yang diinputkan.</h3>
                         <p>Account Officer kami segera akan mengupdate data Abda.</p>
                     @endif
                 </div>

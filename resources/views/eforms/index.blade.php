@@ -17,6 +17,19 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
+                    
+                    <div class="card-box">
+                        @if ( $errors->any() )
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{!! $error !!}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                    </div>
+
                     <div class="card-box">
                         {!! Form::model($customer, [
                             'route' => 'eform.store', 'id' => 'app-eform',
@@ -75,15 +88,15 @@
             bodyTag: "section",
             transitionEffect: "slideLeft",
             onStepChanging: function (event, currentIndex, newIndex) {
+                return true;
                 return currentIndex > newIndex ? true : $form_container.valid();
             },
             onStepChanged: function (event, currentIndex, priorIndex) {
                 // reinit gmaps
-                google.maps.event.trigger(map, 'resize');
+                // google.maps.event.trigger(map, 'resize');
             },
             onFinishing: function (event, currentIndex) { 
-                return true;
-                // return $form_container.valid();
+                return $form_container.valid();
             }, 
             onFinished: function (event, currentIndex) {
                $form_container.submit();

@@ -12,7 +12,9 @@ class BaseRequest extends FormRequest
      * @var array
      */
     protected $currency = [
-        'price', 'request_amount', 'down_payment'
+        'price', 'request_amount', 'down_payment', 'salary', 'other_salary', 
+        'loan_installment', 'dependent_amount', 'salary_couple', 'other_salary_couple',
+        'loan_installment_couple'
     ];
 
     /**

@@ -29,7 +29,7 @@ class EformController extends Controller
     protected $complete = [
         'birth_place', 'work_field','work_type', 'work', 'company_name', 'position', 'work_year', 'work_mount',
         'office_address', 'salary', 'other_salary', 'loan_installment', 'dependent_amount', 'emergency_name',
-        'emergency_contact', 'emergency_relation'
+        'emergency_contact', 'emergency_relation', 'citizenship', 'city', 'work_duration', 'phone'
     ];
 
     /**
@@ -77,13 +77,14 @@ class EformController extends Controller
             // This is submit application eform to Api
             $eform = $this->postToApi($request->only($this->eform), 'eforms');
         } catch (\Exception $e) {
+            \Log::info($e->getMessage());
             // redirect back if having error from server Api
             $message = is_json($e->getMessage()) ? json_decode($e->getMessage()) : $e->getMessage();
-            return redirect()->back()->withInput()->withError($message);
+            return redirect()->back()->withInput()->withErrors($message);
         }
 
         // redirect to route eform.index if success created eform
-        return redirect()->route('eform.index')->withSuccess($eform['descriptions']);
+        return redirect()->route('eform.success')->withSuccess($eform['contents']);
     }
 
     /**
@@ -99,7 +100,7 @@ class EformController extends Controller
         $response = Client::setEndpoint("eform/{$token}/{$status}")->get();
 
         if ($response['code'] == 200) {
-            return redirect()->route('eform.confirmation', $status);
+            return redirect()->route('eform.confirmation')->withSuccess($status);
         }
 
         abort(404, 'Halaman tidak ditemukan.');
@@ -112,9 +113,17 @@ class EformController extends Controller
      */
     public function confirmation()
     {
-        return view('eforms.confirmation', [
-            'status' => request()->get('status', 'reject')
-        ]);
+        return session('success') ? view('eforms.confirmation', ['status' => session('success.status')]) : redirect('/');
+    }
+
+    /**
+     * Show page success submit eform
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function success()
+    {
+        return session('success') ? view('eforms.success') : redirect('/');
     }
 
     /**
@@ -131,8 +140,15 @@ class EformController extends Controller
         } else {
             $endpoint = 'complete';
             $customer = array_merge($this->simple, $this->complete);
-            $request->merge([ 'birth_place' => $request->input('birth_place_id') ]);
-            unset($customer['birth_place_id']);
+
+            $request->merge([ 
+                'city' => $request->input('city_id'),
+                'birth_place' => $request->input('birth_place_id'),
+                'citizenship' => $request->input('citizenship_id'),
+                'work_duration' => (int) $request->input('work_year') + ( (int) $request->input('work_mount') / 12 ),
+            ]);
+            
+            unset( $customer['birth_place_id'], $customer['city_id'], $customer['citizenship_id'] );
         }
 
         return $this->postToApi($request->only($customer), "auth/register-{$endpoint}");

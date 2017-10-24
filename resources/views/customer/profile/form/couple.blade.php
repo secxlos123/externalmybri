@@ -26,7 +26,7 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label">Tempat Lahir *</label>
                             <div class="col-md-8">
-                                @if ( isset($customer->couple_birth_place_id) )
+                                @if ( isset($customer->couple_birth_place_id) && $customer->couple_birth_place_id )
 
                                     {!! Form::text('couple_birth_place_id', old('couple_birth_place'), [
                                         'class' => 'form-control', 'disabled'
@@ -69,7 +69,7 @@
                         </div>
                     </div>
 
-                    @if ( isset($customer->couple_identity) )
+                    @if ( isset($customer->couple_identity) && $customer->couple_identity )
 
                         <div class="col-md-6">
                             <div class="form-group ktp_couple_preview">
