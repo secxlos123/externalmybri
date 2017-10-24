@@ -64,14 +64,24 @@
             </div>
         </div>
         <div class="contentProperty">
-
         </div>
-    </section>
+</section>
 @endsection
 
 <!-- This is styles for this page -->
 @push('styles')
     {!! Html::style( 'assets/css/select2.min.css' ) !!}
+    <style type="text/css">
+        .loader-page {
+            left: 0px;
+            top: 0px;
+            margin-left: 48%;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background: url('http://127.0.0.1:8001/img/load.gif') no-repeat;
+        }
+    </style>
 @endpush
 <!-- This is styles for this page end -->
 
@@ -88,25 +98,6 @@
             $('.city_id').dropdown('cities');
             $('.developer').dropdown('developer');
 
-            function loadData(nextPage, dev=null, city=null)
-            {
-                $.ajax({
-                    url: '/get-all-properties',
-                    data:   {
-                            limit: 6,
-                            page: nextPage,
-                            dev_id: dev,
-                            prop_city_id: city
-                        }
-                })
-                .done(function (response) {
-                    $('.contentProperty').html("");
-                    $('.contentProperty').html(response);
-                })
-                .fail(function (response) {
-                    $('.error-server').removeClass('hide');
-                });
-            }
 
             $('#findProperty').on('click', function(){
                 var dev = $('.developer').val();
@@ -114,6 +105,27 @@
                 loadData(1, dev, city);
             });
         });
+        function loadData(nextPage, dev=null, city=null)
+        {
+            $('.contentProperty').html("");
+            $('.contentProperty').append("<div style=\"height: 60px;margin: auto;padding: 10px;\"><div class=\"loader-page\" id=\"loader-page\"></div></div>");
+            $.ajax({
+                url: '/get-all-properties',
+                data:   {
+                        limit: 6,
+                        page: nextPage,
+                        dev_id: dev,
+                        prop_city_id: city
+                    }
+            })
+            .done(function (response) {
+                $('.contentProperty').html("");
+                $('.contentProperty').html(response);
+            })
+            .fail(function (response) {
+                $('.error-server').removeClass('hide');
+            });
+        }
     </script>
 @endpush
 <!-- This is scripts for this page end -->

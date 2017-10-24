@@ -106,7 +106,7 @@ if (! function_exists('image_checker')) {
     function image_checker($path = null)
     {
         if (is_null($path)) {
-            return $link="http://127.0.0.1:8001/img/noimage.jpg";
+            return $link="https://mybri-api.stagingapps.net/img/noimage.jpg";
         }else{
             return $path;
         }
