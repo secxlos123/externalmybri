@@ -106,7 +106,7 @@
         <div class="form-group">
             <label class="control-label col-md-4">KPR Aktif ke *</label>
             <div class="col-md-8">
-                {!! Form::select('active_kpr', [ '1' => '1', '2' => '2', '3' => '> 2' ], old('active_kpr'), [
+                {!! Form::select('active_kpr', [ '' => 'Pilih', '1' => '1', '2' => '2', '3' => '> 2' ], old('active_kpr'), [
                     'class' => 'form-control select2 calculate', 'id' => 'active_kpr'
                 ]) !!}
             </div>

@@ -216,7 +216,7 @@
                     <div class="col-md-6">
 						<div class="form-group ktp_preview">
 	                    	<div class="col-md-12 col-md-offset-2">
-	                    		{!! Html::image($customer->identity, 'KTP Pasangan', [
+	                    		{!! Html::image($customer->identity ?: 'assets/images/no-image.jpg', 'KTP', [
 	                                'class' => 'img-responsive', 'width' => 300, 'id' => 'ktp_preview',
 	                                'data-src' => asset('assets/images/no-image.jpg')
 	                            ]) !!}
@@ -229,7 +229,7 @@
                     <div class="col-md-6">
 						<div class="form-group hide ktp_preview">
 	                    	<div class="col-md-12 col-md-offset-2">
-	                    		{!! Html::image('assets/images/no-image.jpg', 'KTP Pasangan', [
+	                    		{!! Html::image('assets/images/no-image.jpg', 'KTP', [
 	                                'class' => 'img-responsive', 'width' => 300, 'id' => 'ktp_preview',
 	                                'data-src' => asset('assets/images/no-image.jpg')
 	                            ]) !!}

@@ -75,14 +75,15 @@
             bodyTag: "section",
             transitionEffect: "slideLeft",
             onStepChanging: function (event, currentIndex, newIndex) {
-                return $form_container.valid();
+                return currentIndex > newIndex ? true : $form_container.valid();
             },
             onStepChanged: function (event, currentIndex, priorIndex) {
                 // reinit gmaps
                 google.maps.event.trigger(map, 'resize');
             },
             onFinishing: function (event, currentIndex) { 
-                return $form_container.valid();
+                return true;
+                // return $form_container.valid();
             }, 
             onFinished: function (event, currentIndex) {
                $form_container.submit();
