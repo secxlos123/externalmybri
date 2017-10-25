@@ -36,6 +36,7 @@ trait Profileble
     {
         $profile = $this->profile();
         $profile['personal'] = $this->personal($profile['personal']);
+        $profile['personal']['is_simple'] = $profile['is_simple'] ? 1 : 0;
 
         return array_merge_recursive(
             $profile['personal'], $profile['work'], $profile['financial'], 

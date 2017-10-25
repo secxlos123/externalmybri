@@ -1,8 +1,24 @@
+<fieldset id="simple-data">
+	<div class="row">
+		@include('customer.profile.form.personal')
+	</div>
+
+	<div class="row">
+		@include('customer.profile.form.couple')
+	</div>
+</fieldset>
+
 <div class="row">
 	<div class="col-md-12">
 		<div class="panel panel-blue">
 			<div class="panel-heading" data-toggle="collapse" data-target="#demo">
-				<h3 class="panel-title text-uppercase">Pengisian Kelengkapan Data : <b class="btn-pilih"></b></h3>
+				<h3 class="panel-title text-uppercase">
+					Pengisian Kelengkapan Data : <b class="btn-pilih"></b>
+
+					<div class="pull-right">
+						<i class="fa fa-chevron-down" aria-hidden="true"></i>
+					</div>
+				</h3>
 			</div>
 			<div id="demo" class="panel-collapse collapse in">
 				<div class="panel-body">
@@ -27,7 +43,7 @@
 											</li>
 
 											<li style="display: inline-block;">
-												<input type="radio" id="medium" value="1" name="selector" class="options">
+												<input type="radio" id="medium" checked="checked" value="1" name="selector" class="options">
 												<label for="medium">Isi data dibantu oleh petugas</label>
 												<div class="radiobutton"></div>
 											</li>
@@ -43,16 +59,6 @@
 		</div>
 	</div>
 </div>
-
-<fieldset id="simple-data" hidden disabled>
-	<div class="row">
-		@include('customer.profile.form.personal')
-	</div>
-
-	<div class="row">
-		@include('customer.profile.form.couple')
-	</div>
-</fieldset>
 
 <fieldset id="complete-data" hidden disabled>
 	<div class="row">
@@ -70,7 +76,7 @@
 
 @push( 'parent-styles' )
 	<style type="text/css">
-		.panel-heading.collapsed {
+		.panel-heading {
 			cursor: pointer;
 		}
 		.options {
@@ -95,20 +101,27 @@
 		dropdowns.map(init_dropdown);
 		current_status_customer();
 
+		$('.collapse').on('hidden.bs.collapse', toggle_icon);
+		$('.collapse').on('shown.bs.collapse', toggle_icon);
+
 		$('.options').on('click', function () {
 			var text = $(this).next().text().toLocaleUpperCase();
 			$('.btn-pilih').removeClass('hide').text(text);
 			$('#demo').collapse('hide');
-			$('#simple-data, #complete-data').attr('hidden', true);
+			$('#complete-data').attr('hidden', true).attr('disabled', true);
 
 			if ($(this).attr('id') == 'full') {
-				$('#simple-data, #complete-data').removeAttr('hidden disabled');
-			} else {
-				$('#simple-data').removeAttr('hidden disabled');
+				$('#complete-data').removeAttr('hidden disabled');
 			}
-		});
+		}).trigger('click');
 
 		$('#status').on('change', current_status_customer);
+		
+		$('#work_mount').on('change', function () {
+			if ($(this).val() > 11) {
+				$(this).val(11);
+			}
+		});
 
 		$('#checkbox1').on('change', function () {
 			if ($(this).is(':checked')) {
@@ -145,7 +158,8 @@
 		}
 
 		function init_dropdown(value, index) {
-			$(`${value.class}`).dropdown(`${value.endpoint}`);
+			var opt = $(`${value.class}`).data('option');
+			$(`${value.class}`).dropdown(`${value.endpoint}`).select2('val', 0);
 		}
 
 		function read_url(input, target) {
@@ -154,6 +168,13 @@
 				$(target).attr('src', e.target.result);
 			}
 			reader.readAsDataURL(input);
+		}
+
+		function toggle_icon(e) {
+			$(e.target)
+				.prev('.panel-heading')
+				.find(".fa")
+				.toggleClass('fa-chevron-down fa-chevron-left');
 		}
 
 	</script>

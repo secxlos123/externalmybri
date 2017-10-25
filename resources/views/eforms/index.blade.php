@@ -35,6 +35,8 @@
                             'route' => 'eform.store', 'id' => 'app-eform',
                             'class' => 'form-horizontal', 'enctype' => 'multipart/form-data'
                         ]) !!}
+
+                            {!! Form::hidden('is_simple', old('is_simple')) !!}
                             <div>
                                 <h3>Produk</h3>
                                 <section>
@@ -89,7 +91,7 @@
             transitionEffect: "slideLeft",
             onStepChanging: function (event, currentIndex, newIndex) {
                 return true;
-                return currentIndex > newIndex ? true : $form_container.valid();
+                // return currentIndex > newIndex ? true : $form_container.valid();
             },
             onStepChanged: function (event, currentIndex, priorIndex) {
                 // reinit gmaps

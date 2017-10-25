@@ -18,7 +18,8 @@ class EformController extends Controller
      */
     protected $simple = [
         'nik', 'first_name', 'last_name', 'birth_place_id', 'birth_date', 'address', 'city_id', 'gender',
-        'citizenship_id', 'status', 'address_status', 'mobile_phone', 'mother_name', 'identity',
+        'citizenship_id', 'status', 'address_status', 'mobile_phone', 'mother_name', 'identity', 'couple_nik',
+        'couple_name', 'couple_birth_place_id', 'couple_birth_date', 'couple_identity', 'is_simple'
     ];
 
     /**
@@ -29,7 +30,8 @@ class EformController extends Controller
     protected $complete = [
         'birth_place', 'work_field','work_type', 'work', 'company_name', 'position', 'work_year', 'work_mount',
         'office_address', 'salary', 'other_salary', 'loan_installment', 'dependent_amount', 'emergency_name',
-        'emergency_contact', 'emergency_relation', 'citizenship', 'city', 'work_duration', 'phone'
+        'emergency_contact', 'emergency_relation', 'citizenship', 'city', 'work_duration', 'phone', 'salary_couple',
+        'other_salary_couple', 'loan_installment_couple'
     ];
 
     /**
@@ -69,12 +71,14 @@ class EformController extends Controller
     {
         try {
 
+
             if (session('authenticate.role') == 'customer') {
                 // This is update customer data if customer created eform
                 $customer = $this->registered($request);
             }
 
             // This is submit application eform to Api
+            \Log::info($request->only($this->eform));
             $eform = $this->postToApi($request->only($this->eform), 'eforms');
         } catch (\Exception $e) {
             \Log::info($e->getMessage());
@@ -150,6 +154,19 @@ class EformController extends Controller
             
             unset( $customer['birth_place_id'], $customer['city_id'], $customer['citizenship_id'] );
         }
+
+        if ( $request->input('is_simple') == '1' ) {
+            unset($customer['identity']);
+        }
+
+        if ( $request->input('status') != '2' ) {
+            unset( 
+                $customer['couple_identity'], $customer['couple_name'], $customer['couple_nik'],
+                $customer['couple_birth_date'], $customer['couple_birth_place_id']
+            );
+        }
+
+        \Log::info($request->only($customer));
 
         return $this->postToApi($request->only($customer), "auth/register-{$endpoint}");
     }

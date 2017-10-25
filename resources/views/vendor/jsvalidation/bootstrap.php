@@ -16,6 +16,10 @@
                     error.insertAfter(element);
                 }
 
+                if ( element.hasClass('filestyle') ) {
+                    error.insertAfter(element.parent().find('.bootstrap-filestyle'));
+                }
+
                 if ( element.hasClass('options') ) {
                     error.insertAfter(element.parents('ul'));
                 }

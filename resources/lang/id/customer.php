@@ -17,7 +17,8 @@ return [
         'nik'               => 'NIK',
         'first_name'        => 'Nama Depan',
         'last_name'         => 'Nama Belakang',
-        'mobile_phone'      => 'No Telepon',
+        'phone'             => 'No Telepon',
+        'mobile_phone'      => 'No Handphone',
         'birth_place_id'    => 'Tempat Lahir',
         'birth_date'        => 'Tanggal Lahir',
         'address'           => 'Alamat',
@@ -34,6 +35,33 @@ return [
         'couple_birth_place_id' => 'Tempat Lahir',
         'couple_birth_date'     => 'Tanggal Lahir',
         'couple_identity'       => 'Foto KTP',
-    ]
+    ],
 
+    'contact' => [
+        'emergency_name'     => 'Nama',
+        'emergency_contact'  => 'No. Handphone',
+        'emergency_relation' => 'Hubungan',
+    ],
+
+    'employee' => [
+        'work_field'    => 'Bidang Pekerjaan',
+        'work_type'     => 'Jenis Pekerjaan',
+        'work'          => 'Pekerjaan',
+        'position'      => 'Jabatan',
+        'company_name'  => 'Nama Perusahaan',
+        'work_year'     => 'Lama Kerja Tahun',
+        'work_mount'    => 'Lama Kerja Bulan',
+        'office_address'=> 'Alamat Kantor',
+    ],
+
+    'financial' => [
+        'salary'            => 'Gaji / Pendapatan',
+        'other_salary'      => 'Pendapatan Lain',
+        'loan_installment'  => 'Angsuran Pinjaman Lainnya',
+        'dependent_amount'  => 'Jumlah Tanggungan',
+        'is_join'           => 'Joint Income',
+        'salary_couple'     => 'Gaji / Pendapatan',
+        'other_salary_couple' => 'Pendapatan Lain',
+        'loan_installment_couple' => 'Angsuran Pinjaman Lainnya',
+    ]
 ];

@@ -46,8 +46,9 @@ class EformRequest extends FormRequest
             'product_type'      => 'required',
             'status_property'   => 'required',
             'appointment_date'  => 'required',
-            'latitude'          => 'required',
-            'longitude'         => 'required',
+            'request_amount'    => 'required',
+            // 'latitude'          => 'required',
+            // 'longitude'         => 'required',
             'branch_id'         => 'required',
         ];
     }
@@ -75,11 +76,11 @@ class EformRequest extends FormRequest
             'phone'             => 'required|numeric|digits_between:9,16',
             'mobile_phone'      => 'required|numeric|digits_between:9,16',
             'mother_name'       => 'required',
-            'identity'          => 'required|image|max:1024',
+            'identity'          => 'required_if:is_simple,0|image|max:1024',
             'couple_nik'        => 'required_if:status,2|numeric|digits:16',
             'couple_name'       => 'required_if:status,2',
             'couple_birth_date' => 'required_if:status,2',
-            'couple_identity'   => 'required_if:status,2|image|max:1024',
+            'couple_identity'   => 'required_if:status,2|required_if:is_simple,0|image|max:1024',
             'couple_birth_place_id' => 'required_if:status,2',
         ];
     }
@@ -111,5 +112,38 @@ class EformRequest extends FormRequest
             'other_salary_couple' => 'required_with:is_join',
             'loan_installment_couple' => 'required_with:is_join',
         ];
+    }
+
+    /**
+     * Get custom attributes for validator errors.
+     *
+     * @return array
+     */
+    public function attributes()
+    {
+        $langs = array_merge_recursive(
+            trans('customer.personal'), trans('customer.financial'),
+            trans('customer.employee'), trans('customer.contact'), trans('eform')
+        );
+        $attributes = [];
+
+        foreach ($this->rules() as $key => $rule) {
+            if (array_key_exists($key, $langs)) {
+                $attributes[$key] = strtolower($langs[$key]);
+            }
+        }
+
+        return $attributes;
+    }
+
+    /**
+     * Get the validator instance for the request.
+     *
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function getValidatorInstance()
+    {
+        $this->merge(['latitude' => '-6.2773', 'longitude' => '106.66101']);
+        return parent::getValidatorInstance();
     }
 }
