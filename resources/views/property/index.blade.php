@@ -79,7 +79,7 @@
             width: 100%;
             height: 100%;
             z-index: 9999;
-            background: url('http://127.0.0.1:8001/img/load.gif') no-repeat;
+            background: url('/assets/images/load.gif') no-repeat;
         }
     </style>
 @endpush
@@ -92,7 +92,11 @@
     <!-- After that you run in console or terminal or cmd "npm run production" -->
     {!! Html::script( 'js/dropdown.min.js' ) !!}
     <script type="text/javascript">
+        var long = "";
+        var lat = "";
         $( document ).ready(function() {
+            navigator.geolocation.getCurrentPosition(showPosition);
+
             $('.select2').select2({ witdh : '100%' });
             loadData(1);
             $('.city_id').dropdown('cities');
@@ -105,6 +109,13 @@
                 loadData(1, dev, city);
             });
         });
+
+        function showPosition(position) {
+            lat = position.coords.latitude;
+            long = position.coords.longitude;
+            // console.log(UserCoords);//Works
+        }
+
         function loadData(nextPage, dev=null, city=null)
         {
             $('.contentProperty').html("");
@@ -115,7 +126,9 @@
                         limit: 6,
                         page: nextPage,
                         dev_id: dev,
-                        prop_city_id: city
+                        prop_city_id: city,
+                        long: long,
+                        lat: lat
                     }
             })
             .done(function (response) {
@@ -123,7 +136,15 @@
                 $('.contentProperty').html(response);
             })
             .fail(function (response) {
-                $('.error-server').removeClass('hide');
+                $('.contentProperty').html("");
+                $('.contentProperty').html("<div class=\"container hide denied\">"
+                    +"<div class=\"row\">"
+                        +"<div class=\"col-sm-12 text-center\">"
+                            +"<h2 class=\"uppercase\">Tidak dapat mencari lokasi PROPERTI</h2>"
+                            +"<p class=\"heading_space\">Hidupkan GPS pada brower anda agar dapat melihat daftar PROPERTI terdekat.</p>"
+                        +"</div>"
+                    +"</div>"
+                +"</div>");
             });
         }
     </script>

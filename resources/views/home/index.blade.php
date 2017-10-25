@@ -69,6 +69,7 @@
         navigator.geolocation.watchPosition(properties, permission_handling);
 
         function permission_handling(error) {
+            console.log(error);
             if (error.code == error.PERMISSION_DENIED){
                 $('#property .container').addClass('hide');
                 $('.denied').removeClass('hide');

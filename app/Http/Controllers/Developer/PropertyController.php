@@ -154,7 +154,8 @@ class PropertyController extends Controller
             ])->get();
 
         return view("developer.property.{$view}", [
-            'property' => (object) $property['contents']
+            'property' => (object) $property['contents'],
+            'role' => 'developer'
         ]);
     }
 

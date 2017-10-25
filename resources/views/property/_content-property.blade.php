@@ -12,12 +12,11 @@
 
 <script type="text/javascript">
     $('a#buttonPage').on('click', function(){
-        // console.log($(this).data('id'));
         var page = $(this).data('id');
         var dev = $('.developer').val();
         var city = $('.city_id').val();
         var id = $('ul.pager li[class=active]').text();
-        console.log(id);
+        // console.log(id);
         $('ul.pager li#'+id).removeClass('active');
         loadData(page, dev, city);
     });
@@ -39,7 +38,14 @@
             $('.contentProperty').html(response);
         })
         .fail(function (response) {
-            $('.error-server').removeClass('hide');
+            $('.contentProperty').html("<div class=\"container hide denied\">"
+                +"<div class=\"row\">"
+                    +"<div class=\"col-sm-12 text-center\">"
+                        +"<h2 class=\"uppercase\">Tidak dapat mencari lokasi PROPERTI terdekat</h2>"
+                        +"<p class=\"heading_space\">Hidupkan GPS pada brower anda agar dapat melihat daftar PROPERTI terdekat.</p>"
+                    +"</div>"
+                +"</div>"
+            +"</div>");
         });
     }
 </script>

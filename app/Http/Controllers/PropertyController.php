@@ -24,7 +24,7 @@ class PropertyController extends Controller
             ->get();
         // return $properties;
         return response()->json(
-            view('property._content-property', [ 'results' => $properties['contents'] ])->render()
+            view('property._list-property', [ 'results' => $properties['contents'] ])->render()
         );
     }
 
@@ -97,7 +97,6 @@ class PropertyController extends Controller
 
     public function listProperty(Request $request)
     {
-        $location = $this->getLocation();
         $results = Client::setBase('common')
             ->setEndpoint('property')
             ->setQuery([
@@ -106,8 +105,8 @@ class PropertyController extends Controller
                 'prop_city_id' => ($request->input('prop_city_id')) ? $request->input('prop_city_id') : null,
                 'dev_id' => ($request->input('dev_id')) ? $request->input('dev_id') : null,
                 'without_independent' => true,
-                'long' => $location->longitude,
-                'lat' => $location->latitude
+                'long' => ($request->input('long')) ? $request->input('long') : null,
+                'lat' => ($request->input('lat')) ? $request->input('lat') : null
             ])
             ->get();
 
@@ -118,20 +117,7 @@ class PropertyController extends Controller
 
     public function pageProperty()
     {
-        $location = $this->getLocation();
-        $results = Client::setBase('common')
-            ->setEndpoint('property')
-            ->setQuery([
-                'limit' => 6,
-                'page' => 1,
-                'without_independent' => true,
-                'long' => $location->longitude,
-                'lat' => $location->latitude
-            ])
-            ->get();
-
-        $results = $results['contents'];
-        return view('property.index', compact('results'));
+        return view('property.index');
     }
 
     public function getLocation()
@@ -140,5 +126,35 @@ class PropertyController extends Controller
         $res = $client->request('GET', 'http://freegeoip.net/json');
         $location = json_decode( $res->getBody()->getContents() );
         return $location;
+    }
+
+    public function detailProperty($slug)
+    {
+        $results = Client::setBase('common')
+            ->setEndpoint('property/'.$slug)
+            ->get();
+        // dd($results);
+        // $property = $results['contents'];
+        // return view('property.show', compact('property'));
+        return view("developer.property.show", [
+            'property' => (object) $results['contents'],
+            'role' => 'customer'
+        ]);
+    }
+
+    public function getPropertyType(Request $request)
+    {
+        $results = Client::setBase('common')
+            ->setEndpoint('property-type')
+            ->setQuery([
+                'property_id' => $request->property_id,
+                'limit' => $request->limit,
+                'page' => $request->page
+                ])
+            ->get();
+        // dd($results);
+        return response()->json(
+            view('property._property-type-detail-section', [ 'results' => $results['contents'] ])->render()
+        );
     }
 }

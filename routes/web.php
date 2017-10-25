@@ -34,6 +34,17 @@ Route::post('upload', 'UploadController@upload');
  */
 Route::get('properties', 'PropertyController@index')->name('properties');
 
+
+/**
+ * This route for handle homepage
+ */
+Route::get('rincian-property/{property}', 'PropertyController@detailProperty')->name('detail-properties');
+
+/**
+ * This route for handle homepage
+ */
+Route::get('get-tipe-property', 'PropertyController@getPropertyType')->name('type-properties');
+
 /**
  * This route for handle homepage
  */
