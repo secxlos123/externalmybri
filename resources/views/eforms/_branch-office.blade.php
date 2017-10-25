@@ -17,19 +17,21 @@
             </div>
         </div>
 
-        <div class="form-group col-md-12">
-            <label class="control-label">Kantor Cabang BRI *</label>
-            {!! Form::select('branch_id', ['' => ''], old('branch_id'), [
-                'class' => 'form-control select2 offices',
-                'data-placeholder' => 'Pilih Kota'
-            ]) !!}
-        </div>
+        <div id="office-area" hidden>
+            <div class="form-group col-md-12">
+                <label class="control-label">Kantor Cabang BRI *</label>
+                {!! Form::select('branch_id', ['' => ''], old('branch_id'), [
+                    'class' => 'form-control select2 offices',
+                    'data-placeholder' => 'Pilih Kota'
+                ]) !!}
+            </div>
 
-        <div class="form-group col-md-12">
-            <label class="control-label">Alamat Kantor Cabang BRI</label>
-            {!! Form::textarea('branch_office_address', old('branch_office_address'), [
-                'class' => 'form-control', 'rows' => 3, 'style' => 'resize: none', 'disabled', 'id' => 'branch_office_address'
-            ]) !!}
+            <div class="form-group col-md-12">
+                <label class="control-label">Alamat Kantor Cabang BRI</label>
+                {!! Form::textarea('branch_office_address', old('branch_office_address'), [
+                    'class' => 'form-control', 'rows' => 3, 'style' => 'resize: none', 'disabled', 'id' => 'branch_office_address'
+                ]) !!}
+            </div>
         </div>
     </div>
 </div>
@@ -75,15 +77,18 @@
         $long = $('#long');
         $range = $('#range');
         $offices = $('.offices');
+        $office_area = $('#office-area');
         $distance_office = $('#distance-office');
         $distance_office.html($range.val());
 
         $range.on('input change', function () {
             $offices.empty().select2({width : '100%'}).trigger('select2:unselect');
             $distance_office.html($(this).val());
+            $office_area.attr('hidden', true);
         });
 
         $('.btn-find').on('click', function () {
+            $office_area.removeAttr('hidden');
             $offices.dropdown('offices', {
                 lat  : $lat.val(),
                 long : $long.val(),

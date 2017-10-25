@@ -38,7 +38,7 @@
 						<label class="col-md-4 control-label">Tempat Lahir *</label>
 						<div class="col-md-8">
 
-							@if ( isset($customer->birth_place_id) )
+							@if ( isset($customer->birth_place_id) && $customer->birth_place_id )
 
 								{!! Form::text('birth_place', old('birth_place'), [
 									'class' => 'form-control', 'disabled'
@@ -84,7 +84,7 @@
 						<label class="col-md-4 control-label">Kota *</label>
 						<div class="col-md-8">
 
-							@if ( isset($customer->city_id) )
+							@if ( isset($customer->city_id) && $customer->city_id )
 
 								{!! Form::text('city', old('city'), [
 									'class' => 'form-control', 'disabled'
@@ -94,7 +94,7 @@
 							@else
 
 								{!! Form::select('city_id', ['' => ''], old('city_id'), [
-									'class' => 'form-control select2 cities',
+									'class' => 'form-control select2 cities', 'data-option' => old('city_id'),
 									'data-placeholder' => 'Pilih Kota',
 								]) !!}
 
@@ -122,7 +122,7 @@
 						<label class="col-md-5 control-label">Kewarganegaraan *</label>
 						<div class="col-md-7">
 
-							@if ( isset($customer->citizenship_id) )
+							@if ( isset($customer->citizenship_id) && $customer->citizenship_id )
 
 								{!! Form::text('citizenship', old('citizenship'), [
 									'class' => 'form-control', 'disabled'
@@ -132,7 +132,7 @@
 							@else
 
 								{!! Form::select('citizenship_id', ['' => ''], old('citizenship_id'), [
-									'class' => 'form-control select2 citizenships',
+									'class' => 'form-control select2 citizenships', 'data-option' => old('citizenship_id'), 
 									'data-placeholder' => 'Pilih Negara',
 								]) !!}
 
@@ -178,6 +178,15 @@
 
 					<div class="form-group">
 						<label class="col-md-5 control-label">No Telepon *</label>
+						<div class="col-md-7">
+							{!! Form::text('phone', old('phone'), [
+								'class' => 'form-control numeric', 'maxlength' => 16, 'minlength' => 9
+							]) !!}
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-md-5 control-label">No Handphone *</label>
 						<div class="col-md-7">
 							{!! Form::text('mobile_phone', old('mobile_phone'), [
 								'class' => 'form-control numeric', 'maxlength' => 16, 'minlength' => 9

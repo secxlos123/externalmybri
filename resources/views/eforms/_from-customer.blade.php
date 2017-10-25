@@ -44,7 +44,7 @@
 	</div>
 </div>
 
-<fieldset id="simple-data" hidden>
+<fieldset id="simple-data" hidden disabled>
 	<div class="row">
 		@include('customer.profile.form.personal')
 	</div>
@@ -54,7 +54,7 @@
 	</div>
 </fieldset>
 
-<fieldset id="complete-data" hidden>
+<fieldset id="complete-data" hidden disabled>
 	<div class="row">
 		@include('customer.profile.form.employee')
 	</div>
@@ -83,11 +83,16 @@
     {!! Html::script('assets/js/bootstrap-filestyle.min.js') !!}
 
 	<script type="text/javascript">
-		$('.cities').dropdown('cities');
-		$('.citizenships').dropdown('citizenships');
-		$('.job-fields').dropdown('job-fields');
-		$('.job-types').dropdown('job-types');
-		$('.jobs').dropdown('jobs');
+		var dropdowns = [
+			{class: '.cities', endpoint: 'cities'},
+			{class: '.citizenships', endpoint: 'citizenships'},
+			{class: '.job-fields', endpoint: 'job-fields'},
+			{class: '.job-types', endpoint: 'job-types'},
+			{class: '.jobs', endpoint: 'jobs'},
+			{class: '.positions', endpoint: 'positions'},
+		];
+
+		dropdowns.map(init_dropdown);
 		current_status_customer();
 
 		$('.options').on('click', function () {
@@ -97,9 +102,9 @@
 			$('#simple-data, #complete-data').attr('hidden', true);
 
 			if ($(this).attr('id') == 'full') {
-				$('#simple-data, #complete-data').removeAttr('hidden');
+				$('#simple-data, #complete-data').removeAttr('hidden disabled');
 			} else {
-				$('#simple-data').removeAttr('hidden');
+				$('#simple-data').removeAttr('hidden disabled');
 			}
 		});
 
@@ -137,6 +142,10 @@
 				$('#checkbox1').attr('checked', false);
 				$('#couple_content, #joint-income, #couple-financial').attr('disabled', true).attr('hidden', true);
 			}
+		}
+
+		function init_dropdown(value, index) {
+			$(`${value.class}`).dropdown(`${value.endpoint}`);
 		}
 
 		function read_url(input, target) {

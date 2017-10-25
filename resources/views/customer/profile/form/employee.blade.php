@@ -37,18 +37,21 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="col-md-4 control-label">Nama Perusahaan *</label>
+                        <label class="col-md-4 control-label">Jabatan *</label>
                         <div class="col-md-8">
-                            {!! Form::text('company_name', old('company_name'), ['class' => 'form-control']) !!}
+                            {!! Form::select('position', ['' => ''], old('position'), [
+                                'class' => 'select2 positions',
+                                'data-placeholder' => 'Pilih Jabatan',
+                            ]) !!}
                         </div>
                     </div>
 
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label class="col-md-4 control-label">Jabatan *</label>
+                        <label class="col-md-4 control-label">Nama Perusahaan *</label>
                         <div class="col-md-8">
-                            {!! Form::text('position', old('position'), ['class' => 'form-control']) !!}
+                            {!! Form::text('company_name', old('company_name'), ['class' => 'form-control']) !!}
                         </div>
                     </div>
                     <div class="form-group">

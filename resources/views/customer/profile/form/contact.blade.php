@@ -8,14 +8,14 @@
                 <div class="col-md-6">
                     
                     <div class="form-group">
-                        <label class="col-md-4 control-label">Nama</label>
+                        <label class="col-md-4 control-label">Nama *</label>
                         <div class="col-md-8">
                             {!! Form::text('emergency_name', old('emergency_name'), ['class' => 'form-control']) !!}
                         </div>
                     </div>
                     
                     <div class="form-group">
-                        <label class="col-md-4 control-label">No. Handphone </label>
+                        <label class="col-md-4 control-label">No. Handphone *</label>
                         <div class="col-md-8">
                             {!! Form::text('emergency_contact', old('emergency_contact'), [
                                 'class' => 'form-control numeric', 'minlength' => 9, 'maxlength' => 16
@@ -27,7 +27,7 @@
                 <div class="col-md-6">
 
                     <div class="form-group">
-                        <label class="col-md-5 control-label">Hubungan</label>
+                        <label class="col-md-5 control-label">Hubungan *</label>
                         <div class="col-md-7">
                             {!! Form::text('emergency_relation', old('emergency_relation'), ['class' => 'form-control']) !!}
                         </div>

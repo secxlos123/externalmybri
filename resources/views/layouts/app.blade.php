@@ -41,6 +41,8 @@
     <!-- Page Banner Start-->
     @if ( ! request()->is('/')
         && ! request()->is('successed')
+        && ! request()->is('eform/konfrimasi')
+        && ! request()->is('eform/success')
         && ! request()->is('activated')
         && ! request()->is('password/success')  )
 

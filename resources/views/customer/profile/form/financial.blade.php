@@ -21,7 +21,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-md-4 control-label">Pendapatan Lain </label>
+                                <label class="col-md-4 control-label">Pendapatan Lain *</label>
                                 <div class="col-md-8">
                                     <div class="input-group">
                                         <span class="input-group-addon">Rp</span>
@@ -35,7 +35,7 @@
 
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="col-md-5 control-label">Angsuran Pinjaman Lainnya</label>
+                                <label class="col-md-5 control-label">Angsuran Pinjaman Lainnya *</label>
                                 <div class="col-md-7">
                                     <div class="input-group">
                                         <span class="input-group-addon">Rp</span>
@@ -82,7 +82,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-md-4 control-label">Pendapatan Lain </label>
+                                <label class="col-md-4 control-label">Pendapatan Lain *</label>
                                 <div class="col-md-8">
                                     <div class="input-group">
                                         <span class="input-group-addon">Rp</span>
@@ -95,7 +95,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="col-md-5 control-label">Angsuran Pinjaman Lainnya</label>
+                                <label class="col-md-5 control-label">Angsuran Pinjaman Lainnya *</label>
                                 <div class="col-md-7">
                                     <div class="input-group">
                                         <span class="input-group-addon">Rp</span>
