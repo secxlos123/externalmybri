@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests\Developer\Property;
 
-class CreateRequest extends BaseRequest
+class UpdateRequest extends BaseRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -11,6 +11,8 @@ class CreateRequest extends BaseRequest
      */
     public function rules()
     {
-        return parent::rules();
+        return array_merge(
+            parent::rules(), ['photo' => 'image|max:1024']
+        );
     }
 }

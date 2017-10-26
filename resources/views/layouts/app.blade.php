@@ -113,9 +113,29 @@
                     clearIncomplete: true,
                 }
             });
+            
+            $('.filestyle').on('change', function () {
+                var target = $(this).data('target');
+                $(`.${target}`).removeClass('hide');
+
+                if ($(this).val() != '') {
+                    read_url($(this).prop('files')[0], `#${target}`);
+                } else {
+                    $(`#${target}`).attr('src', $(`#${target}`).data('src'));
+                }
+            });
+
             $('.numeric').numeric();
             $('.currency').inputmask({ alias : "rupiah" });
         });
+
+        function read_url(input, target) {
+            let reader = new FileReader();
+            reader.onload = function (e) {
+                $(target).attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input);
+        }
     </script>
 
     @if ( ! session('authenticate') )
