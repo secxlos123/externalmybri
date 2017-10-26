@@ -21,11 +21,10 @@
     </div>
 
     <div class="single-query form-group col-sm-12">
-        {!! Form::text('phone', old('phone'), [
-        'class' => 'keyword-input',
-        'placeholder' => 'Phone ( Optional )',
-        'maxlength' => 16,
-        'minlength' => 9]) !!}
+        {!! Form::text('mobile_phone', old('mobile_phone'), [
+            'class' => 'keyword-input', 'placeholder' => 'No Handphone ( Optional )',
+            'maxlength' => 16, 'minlength' => 9
+        ]) !!}
     </div>
 
     <div class="single-query form-group col-sm-12">
