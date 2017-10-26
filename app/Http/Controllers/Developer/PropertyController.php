@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Developer;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Developer\PropertyTypeController;
 use App\Http\Requests\Developer\Property\CreateRequest;
+use App\Http\Requests\Developer\Property\UpdateRequest;
 use Client;
 use Illuminate\Http\Request;
 
@@ -89,7 +90,7 @@ class PropertyController extends Controller
      * @param  string $slug
      * @return \Illuminate\Http\Response
      */
-    public function update(CreateRequest $request, $slug)
+    public function update(UpdateRequest $request, $slug)
     {
         return $this->storeOrUpdate($request, "property/{$slug}", 'put');
     }
