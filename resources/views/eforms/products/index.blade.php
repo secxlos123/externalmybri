@@ -133,6 +133,7 @@
         function set_property(e) {
             var data = e.params.data;
 
+            $('#developer_name').val(data.company_name);
             $properties
                 .empty()
                 .dropdown('property', { dev_id: data.dev_id })
@@ -154,6 +155,7 @@
         }
 
         function unset_property() {
+            $('#developer_name').val('');
             $price.val(0).attr('readonly', true).trigger('change');
             $building_area.val(0).attr('readonly', true).trigger('change');
             $home_location.val('').attr('readonly', true).trigger('change');
@@ -164,6 +166,7 @@
 
         function set_property_type(e) {
             var data = e.params.data;
+            $('#property_name').val(data.prop_name);
 
             $category.val(data.prop_category).trigger('change');
             $types
@@ -174,6 +177,7 @@
         }
 
         function unset_property_type() {
+            $('#property_name').val('');
             $category.val(0).trigger('change');
             $types.empty().select2({width: '100%'}).trigger('change');
             unset_property_item();
@@ -181,6 +185,8 @@
 
         function set_property_item(e) {
             var data = e.params.data;
+
+            $('#property_type_name').val(data.name);
             $building_area.val(data.building_area).trigger('change');
             
             $items
@@ -191,17 +197,20 @@
         }
 
         function unset_property_item() {
+            $('#property_type_name').val('');
             $building_area.val(0).trigger('change');
             $items.empty().select2({width: '100%'}).trigger('change');
         }
 
         function set_additional_data(e) {
             var data = e.params.data;
+            $('#property_item_name').val(data.address);
             $price.val(data.price).trigger('change');
             $home_location.val(data.address).trigger('change');
         }
 
         function unset_additional_data() {
+            $('#property_item_name').val('');
             $price.val(0).trigger('change');
             $home_location.val('').trigger('change');
         }

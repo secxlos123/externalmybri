@@ -16,8 +16,11 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label">Bidang Pekerjaan *</label>
                             <div class="col-md-8">
-                                {!! Form::select('work_field', ['' => ''], old('work_field'), [
+                                {!! Form::select('work_field', ['' => ''] + [
+                                    $customer->work_field_id => $customer->work_field
+                                ], old('work_field'), [
                                     'class' => 'select2 job-fields',
+                                    'data-option' => $customer->work_field_id,
                                     'data-placeholder' => 'Pilih Bidang Pekerjaan',
                                 ]) !!}
                             </div>
@@ -26,8 +29,11 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label">Jenis Pekerjaan *</label>
                             <div class="col-md-8">
-                                {!! Form::select('work_type', ['' => ''], old('work_type'), [
+                                {!! Form::select('work_type', ['' => ''] + [
+                                    $customer->type_id => $customer->type_id
+                                ], old('work_type'), [
                                     'class' => 'select2 job-types',
+                                    'data-option' => $customer->type_id,
                                     'data-placeholder' => 'Pilih Jenis Pekerjaan',
                                 ]) !!}
                             </div>
@@ -36,8 +42,11 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label">Pekerjaan *</label>
                             <div class="col-md-8">
-                                {!! Form::select('work', ['' => ''], old('work'), [
+                                {!! Form::select('work', ['' => ''] + [
+                                    $customer->work_id => $customer->work
+                                ], old('work'), [
                                     'class' => 'select2 jobs',
+                                    'data-option' => $customer->work_id,
                                     'data-placeholder' => 'Pilih Pekerjaan',
                                 ]) !!}
                             </div>
@@ -46,8 +55,11 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label">Jabatan *</label>
                             <div class="col-md-8">
-                                {!! Form::select('position', ['' => ''], old('position'), [
+                                {!! Form::select('position', ['' => ''] + [
+                                    $customer->position_id => $customer->position
+                                ], old('position'), [
                                     'class' => 'select2 positions',
+                                    'data-option' => $customer->position_id,
                                     'data-placeholder' => 'Pilih Jabatan',
                                 ]) !!}
                             </div>
@@ -65,12 +77,12 @@
                             <label class="col-md-4 control-label">Lama Kerja *</label>
                             <div class="col-md-8">
                                 <div class="input-group">
-                                    {!! Form::text('work_year', old('work_year'), [
+                                    {!! Form::text('work_duration', old('work_duration'), [
                                         'class' => 'form-control numeric', 'maxlength' => 2
                                     ]) !!}
                                     <span class="input-group-addon">Tahun</span>
 
-                                    {!! Form::text('work_mount', old('work_mount'), [
+                                    {!! Form::text('work_duration_month', old('work_duration_month'), [
                                         'class' => 'form-control numeric', 'maxlength' => 2, 'id' => 'work_mount'
                                     ]) !!}
                                     <span class="input-group-addon">Bulan</span>

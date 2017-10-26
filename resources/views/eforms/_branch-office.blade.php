@@ -17,11 +17,15 @@
             </div>
         </div>
 
-        <div id="office-area" hidden>
+        <div id="office-area" {!! $errors->has('branch_id') ? '' : 'hidden' !!}>
+            {!! Form::hidden('branch_name', old('branch_name'), ['id' => 'branch_name']) !!}
             <div class="form-group col-md-12">
                 <label class="control-label">Kantor Cabang BRI *</label>
-                {!! Form::select('branch_id', ['' => ''], old('branch_id'), [
+                {!! Form::select('branch_id', ['' => ''] + [
+                    old('branch_id') => old('branch_name')
+                ], old('branch_id'), [
                     'class' => 'form-control select2 offices',
+                    'data-option' => old('branch_id'),
                     'data-placeholder' => 'Pilih Kota'
                 ]) !!}
             </div>
@@ -96,10 +100,11 @@
             })
             .on('select2:select', function (e) {
                 var data = e.params.data;
+                $('#branch_name').val(data.unit);
                 $('#branch_office_address').val(data.address);
             })
             .on('select2:unselect', function (e) {
-                $('#branch_office_address').val('');
+                $('#branch_office_address, #branch_name').val('');
             });
         });
     </script>

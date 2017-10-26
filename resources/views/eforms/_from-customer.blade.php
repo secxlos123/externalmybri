@@ -90,6 +90,7 @@
 
 	<script type="text/javascript">
 		var dropdowns = [
+			{class: '.birth_place', endpoint: 'cities'},
 			{class: '.cities', endpoint: 'cities'},
 			{class: '.citizenships', endpoint: 'citizenships'},
 			{class: '.job-fields', endpoint: 'job-fields'},
@@ -159,7 +160,7 @@
 
 		function init_dropdown(value, index) {
 			var opt = $(`${value.class}`).data('option');
-			$(`${value.class}`).dropdown(`${value.endpoint}`).select2('val', 0);
+			$(`${value.class}`).dropdown(`${value.endpoint}`).val(opt).trigger('change');
 		}
 
 		function read_url(input, target) {

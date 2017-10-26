@@ -49,8 +49,8 @@ return [
         'work'          => 'Pekerjaan',
         'position'      => 'Jabatan',
         'company_name'  => 'Nama Perusahaan',
-        'work_year'     => 'Lama Kerja Tahun',
-        'work_mount'    => 'Lama Kerja Bulan',
+        'work_duration' => 'Lama Kerja Tahun',
+        'work_duration_month' => 'Lama Kerja Bulan',
         'office_address'=> 'Alamat Kantor',
     ],
 

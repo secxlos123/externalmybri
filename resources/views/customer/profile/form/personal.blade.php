@@ -45,22 +45,13 @@
 							<label class="col-md-4 control-label">Tempat Lahir *</label>
 							<div class="col-md-8">
 
-								{{-- @if ( isset($customer->birth_place_id) && $customer->birth_place_id )
-
-									{!! Form::text('birth_place', old('birth_place'), [
-										'class' => 'form-control', 'disabled'
-									]) !!}
-									{!! Form::hidden('birth_place_id', old('birth_place_id')) !!}
-
-								@else --}}
-
-									{!! Form::select('birth_place_id', ['' => ''], old('birth_place_id'), [
-										'class' => 'form-control select2 cities',
-										'data-option' => $customer->birth_place_id,
-										'data-placeholder' => 'Pilih Kota'
-									]) !!}
-
-								{{-- @endif --}}
+								{!! Form::select('birth_place_id', ['' => ''] + [
+									$customer->birth_place_id => $customer->birth_place
+								], old('birth_place_id'), [
+									'class' => 'form-control select2 birth_place',
+									'data-option' => $customer->birth_place_id,
+									'data-placeholder' => 'Pilih Kota'
+								]) !!}
 
 							</div>
 						</div>
@@ -101,7 +92,9 @@
 
 								@else --}}
 
-									{!! Form::select('city_id', ['' => ''], old('city_id'), [
+									{!! Form::select('city_id', ['' => ''] + [
+										$customer->city_id => $customer->city
+									], old('city_id'), [
 										'class' => 'form-control select2 cities',
 										'data-option' => $customer->city_id,
 										'data-placeholder' => 'Pilih Kota',
@@ -140,7 +133,9 @@
 
 								@else --}}
 
-									{!! Form::select('citizenship_id', ['' => ''], old('citizenship_id'), [
+									{!! Form::select('citizenship_id', ['' => ''] + [
+										$customer->citizenship_id => $customer->citizenship
+									], old('citizenship_id'), [
 										'class' => 'form-control select2 citizenships',
 										'data-option' => $customer->citizenship_id, 
 										'data-placeholder' => 'Pilih Negara',

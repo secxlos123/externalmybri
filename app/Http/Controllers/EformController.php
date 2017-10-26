@@ -28,10 +28,10 @@ class EformController extends Controller
      * @var array
      */
     protected $complete = [
-        'birth_place', 'work_field','work_type', 'work', 'company_name', 'position', 'work_year', 'work_mount',
-        'office_address', 'salary', 'other_salary', 'loan_installment', 'dependent_amount', 'emergency_name',
+        'birth_place', 'work_field','work_type', 'work', 'company_name', 'position', 'office_address',
+        'salary', 'other_salary', 'loan_installment', 'dependent_amount', 'emergency_name',
         'emergency_contact', 'emergency_relation', 'citizenship', 'city', 'work_duration', 'phone', 'salary_couple',
-        'other_salary_couple', 'loan_installment_couple'
+        'other_salary_couple', 'loan_installment_couple', 'work_duration_month', 'work_duration'
     ];
 
     /**
@@ -70,7 +70,6 @@ class EformController extends Controller
     public function store(EformRequest $request)
     {
         try {
-
 
             if (session('authenticate.role') == 'customer') {
                 // This is update customer data if customer created eform
@@ -149,7 +148,6 @@ class EformController extends Controller
                 'city' => $request->input('city_id'),
                 'birth_place' => $request->input('birth_place_id'),
                 'citizenship' => $request->input('citizenship_id'),
-                'work_duration' => (int) $request->input('work_year') + ( (int) $request->input('work_mount') / 12 ),
             ]);
             
             unset( $customer['birth_place_id'], $customer['city_id'], $customer['citizenship_id'] );
