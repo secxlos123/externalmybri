@@ -38,20 +38,28 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <div id="property-d-1" class="owl-carousel single">
-                        @foreach($unit->photos as $photo)
-                            <div class="item">
-                                <img src="{{image_checker($photo)}}" alt="image"/>
+                        @if(!isset($unit->photos[0]))
+                            <div class="single">
+                                <div class="item">
+                                    <img src="{{image_checker()}}" style="width: 100%;" alt="image"/>
+                                </div>
                             </div>
-                        @endforeach
-                        </div>
-                        <div id="property-d-1-2" class="owl-carousel single">
-                        @foreach($unit->photos as $photo)
-                            <div class="item">
-                                <img src="{{image_checker($photo)}}" alt="image"/>
+                        @else
+                            <div id="property-d-1" class="owl-carousel single">
+                            @foreach($unit->photos as $photo)
+                                <div class="item">
+                                    <img src="{{image_checker($photo)}}" alt="image"/>
+                                </div>
+                            @endforeach
                             </div>
-                        @endforeach
-                        </div>
+                            <div id="property-d-1-2" class="owl-carousel single">
+                            @foreach($unit->photos as $photo)
+                                <div class="item">
+                                    <img src="{{image_checker($photo)}}" alt="image"/>
+                                </div>
+                            @endforeach
+                            </div>
+                        @endif
                         <div class="property_meta bg-black bottom40">
                             <!-- <span>4800 m<sup>2</sup></span> -->
                             <span>Nama Projek: <b> {!! $unit->property_name . ' | ' . $unit->property_type_name !!}</b></span>

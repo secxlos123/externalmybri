@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>  
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -16,6 +16,7 @@
     @stack('styles')
 
     {!! Html::style('assets/css/style.css') !!}
+    {!! Html::style('assets/css/custom.css') !!}
     {!! Html::favicon('assets/images/favicon.png') !!}
     <style type="text/css">
         .keyword-input {
@@ -25,7 +26,7 @@
 </head>
 
 <body>
-    
+
     <!-- This is present on homepage only -->
     @if ( request()->is('/') )
         @include('home.banner')
@@ -116,15 +117,15 @@
             $('.currency').inputmask({ alias : "rupiah" });
         });
     </script>
-    
+
     @if ( ! session('authenticate') )
         <!-- Modal -->
         @include('layouts.modal')
-        
+
         {!! JsValidator::formRequest(App\Http\Requests\Auth\LoginRequest::class, '#form-login') !!}
         {!! JsValidator::formRequest(App\Http\Requests\Auth\RegisterRequest::class, '#form-register-store') !!}
         {!! JsValidator::formRequest(App\Http\Requests\Auth\ForgotPasswordRequest::class, '#form-reset-password') !!}
-        
+
         <script type="text/javascript">
             $('#login-register').on('hide.bs.modal', function () {
                 $('#daftar, #reset').removeClass('active in');

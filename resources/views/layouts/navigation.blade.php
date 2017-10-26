@@ -33,7 +33,7 @@
                         <i class="fa fa-bars"></i>
                     </button>
                     <a class="navbar-brand" href="{!! request()->is('/') || request()->is('dev/dashboard') ? '#' : url('/') !!}">
-                        {!! Html::image('assets/images/logo/my_rbi_logo_square_blue.png', '', [
+                        {!! Html::image('assets/images/logo/Logo-Website.png', '', [
                             'class' => 'logo'
                         ]) !!}
                     </a>

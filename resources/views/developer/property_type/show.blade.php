@@ -43,20 +43,28 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <div id="property-d-1" class="owl-carousel single">
-                            @foreach ($type->photos as $photo)
+                        @if(!isset($type->photos[0]))
+                            <div class="single">
                                 <div class="item">
-                                    {!! Html::image($photo, 'image') !!}
+                                    <img src="{{image_checker()}}" style="width: 100%;" alt="image"/>
                                 </div>
-                            @endforeach
-                        </div>
-                        <div id="property-d-1-2" class="owl-carousel single">
-                            @foreach ($type->photos as $photo)
-                                <div class="item">
-                                    {!! Html::image($photo, 'image') !!}
-                                </div>
-                            @endforeach
-                        </div>
+                            </div>
+                        @else
+                            <div id="property-d-1" class="owl-carousel single">
+                                @foreach ($type->photos as $photo)
+                                    <div class="item">
+                                        {!! Html::image($photo, 'image') !!}
+                                    </div>
+                                @endforeach
+                            </div>
+                            <div id="property-d-1-2" class="owl-carousel single">
+                                @foreach ($type->photos as $photo)
+                                    <div class="item">
+                                        {!! Html::image($photo, 'image') !!}
+                                    </div>
+                                @endforeach
+                            </div>
+                        @endif
 
                         <div class="property_meta bg-black bottom40">
                             <span>Stock <b>{!! $type->items_count !!}</b> Unit</span>
@@ -144,14 +152,7 @@
                             </div>
                         </div>
                         @else
-                        <div class="pagination-property">
-                            <a href="javascript:;" class="btn" id="button-left"><i class="fa fa-angle-left"></i></a>
-                            <a href="javascript:;" class="btn" id="button-right"><i class="fa fa-angle-right"></i></a>
-                        </div>
-                        <h2 class="text-uppercase bottom20">Unit Property</h2>
-                        <div class="container my-pro list-t-border bottom40" id="content-unit">
-
-                        </div>
+                            @include('property-type._section-unit')
                         @endif
 
                     </div>
@@ -164,70 +165,12 @@
 
 @push('styles')
     @stack('parent-style')
-    <style type="text/css">
-        .loader-page {
-            left: 0px;
-            top: 0px;
-            margin-left: 48%;
-            width: 100%;
-            height: 100%;
-            z-index: 9999;
-            background: url('/assets/images/load.gif') no-repeat;
-        }
-        .pagination-property .btn {
-            border: 1px solid #d5dadf;
-            border-radius: 4px;
-            color: #777;
-            font-size: 16px;
-            width: 42px;
-        }
-        .pagination-property {
-            float: right;
-        }
-    </style>
+    @include('property-type.style-code')
 @endpush
 
 @push('scripts')
     @stack('parent-script')
-    <script type="text/javascript">
-        $( document ).ready(function() {
-            loadDataPropUnit(1);
-            $("#button-left").on('click', function(){
-                var curPage = $("#current-page").val();
-                if (curPage > 1) {
-                    curPage--;
-                    loadDataPropUnit(curPage);
-                }
-            });
-
-            $("#button-right").on('click', function(){
-                var curPage = $("#current-page").val();
-                var total = $("#last-page").val();
-                if (curPage < total) {
-                    curPage++;
-                    loadDataPropUnit(curPage);
-                }
-            });
-            function loadDataPropUnit(nextPage)
-            {
-                $('#content-unit').html("");
-                $('#content-unit').append("<div style=\"height: 60px;margin: auto;padding: 10px;\"><div class=\"loader-page\" id=\"loader-page\"></div></div>");
-                $.ajax({
-                    url: '/get-unit-property',
-                    data:   {
-                        property_type_id: "{{$type->id}}",
-                        limit: 5,
-                        page:nextPage
-                    }
-                })
-                .done(function (response) {
-                    $('#content-unit').html("");
-                    $('#content-unit').html(response);
-                })
-                .fail(function (response) {
-
-                });
-            }
-        });
-    </script>
+    @if ($role == 'customer')
+        @include('property-type.script-code')
+    @endif
 @endpush

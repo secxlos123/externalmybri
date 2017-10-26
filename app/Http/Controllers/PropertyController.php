@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Client;
-use Illuminate\Pagination\LengthAwarePaginator;
 
 class PropertyController extends Controller
 {
@@ -15,14 +14,13 @@ class PropertyController extends Controller
      */
     public function index(Request $request)
     {
-        // $location = $this->getLocation();
         $properties = Client::setBase('common')->setEndpoint('nearby-properties')
             ->setQuery([
                 'lat' => $request->input('lat'),
                 'long' => $request->input('long'),
             ])
             ->get();
-        // return $properties;
+
         return response()->json(
             view('property._list-property', [ 'results' => $properties['contents'] ])->render()
         );
@@ -94,7 +92,12 @@ class PropertyController extends Controller
         //
     }
 
-
+    /**
+     * Get list of property for from API
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function listProperty(Request $request)
     {
         $results = Client::setBase('common')
@@ -115,33 +118,40 @@ class PropertyController extends Controller
         );
     }
 
+    /**
+     * Display a listing of the property.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function pageProperty()
     {
         return view('property.index');
     }
 
-    public function getLocation()
-    {
-        $client = new \GuzzleHttp\Client();
-        $res = $client->request('GET', 'http://freegeoip.net/json');
-        $location = json_decode( $res->getBody()->getContents() );
-        return $location;
-    }
-
+    /**
+     * Display a detail page of property.
+     *
+     * @param string $slug
+     * @return \Illuminate\Http\Response
+     */
     public function detailProperty($slug)
     {
         $results = Client::setBase('common')
             ->setEndpoint('property/'.$slug)
             ->get();
-        // dd($results);
-        // $property = $results['contents'];
-        // return view('property.show', compact('property'));
+
         return view("developer.property.show", [
             'property' => (object) $results['contents'],
             'role' => 'customer'
         ]);
     }
 
+    /**
+     * Get and display list of property type from API.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function getPropertyType(Request $request)
     {
         $results = Client::setBase('common')
@@ -152,24 +162,36 @@ class PropertyController extends Controller
                 'page' => $request->page
                 ])
             ->get();
-        // dd($results);
+
         return response()->json(
             view('property._property-type-detail-section', [ 'results' => $results['contents'] ])->render()
         );
     }
 
+    /**
+     * Get and display a detail page of property type.
+     *
+     * @param  string  $slug
+     * @return \Illuminate\Http\Response
+     */
     public function detailPropertyType($slug)
     {
         $results = Client::setBase('common')
             ->setEndpoint('property-type/'.$slug)
             ->get();
-        // dd($results);
+
         return view("developer.property_type.show", [
             'type' => (object) $results['contents'],
             'role' => 'customer'
         ]);
     }
 
+    /**
+     * Get and display list of property unit from API.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function getDetailPropertyType(Request $request)
     {
         $results = Client::setBase('common')
@@ -180,18 +202,24 @@ class PropertyController extends Controller
                 'page' => $request->page
                 ])
             ->get();
-        // dd($results);
+
         return response()->json(
             view('property-type._property-unit-detail-section', [ 'results' => $results['contents'] ])->render()
         );
     }
 
+    /**
+     * Get and display detail of property unit from API.
+     *
+     * @param  int $slug
+     * @return \Illuminate\Http\Response
+     */
     public function detailPropertyUnit($slug)
     {
         $results = Client::setBase('common')
             ->setEndpoint('property-item/'.$slug)
             ->get();
-        // dd($results);
+
         return view("developer.property_item.show", [
             'unit' => (object) $results['contents'],
             'role' => 'customer'

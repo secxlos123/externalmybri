@@ -47,7 +47,7 @@
                     <div class="col-md-12">
 
                         <div class="single">
-                            <img src="{!! $property->photo !!}" class="img-property" alt="image"/>
+                            <img src="{!! image_checker($property->photo) !!}" class="img-property" alt="image"/>
                         </div>
 
                         <!-- @todo to update database and add new field description -->
@@ -78,24 +78,7 @@
                                 </div>
                             </div>
                         @else
-                            <div class="pagination-property">
-                            <a href="javascript:;" class="btn" id="button-left"><i class="fa fa-angle-left"></i></a>
-                            <a href="javascript:;" class="btn" id="button-right"><i class="fa fa-angle-right"></i></a>
-                            </div>
-                            <h2 class="text-uppercase">Tipe Property</h2>
-                            <p class="bottom20 custom-title-property"></p>
-                            <div class="row content-type">
-
-                            </div>
-
-                            <div class="social-networks bottom40">
-                                <div class="social-icons-2">
-                                    <span class="share-it">Bagikan Property</span>
-                                    <span><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i> Facebook</a></span>
-                                    <span><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</a></span>
-                                    <span><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i> Google +</a></span>
-                                </div>
-                            </div>
+                            @include('property._section-type')
                         @endif
 
                     </div>
@@ -113,74 +96,14 @@
             max-width: 100%;
             margin-bottom: 20px;
         }
-        .pagination-property .btn {
-            border: 1px solid #d5dadf;
-            border-radius: 4px;
-            color: #777;
-            font-size: 16px;
-            width: 42px;
-        }
-        .pagination-property {
-            float: right;
-        }
-        .loader-page {
-            left: 0px;
-            top: 0px;
-            margin-left: 48%;
-            width: 100%;
-            height: 100%;
-            z-index: 9999;
-            background: url('/assets/images/load.gif') no-repeat;
-        }
     </style>
     @stack('parent-style')
+    @include('property.style-code')
 @endpush
 
 @push('scripts')
     @stack('parent-script')
     @if ($role == 'customer')
-    <script type="text/javascript">
-        $( document ).ready(function() {
-            loadDataPropType(1);
-            $("#button-left").on('click', function(){
-                var curPage = $("#current-page").val();
-                if (curPage > 1) {
-                    curPage--;
-                    loadDataPropType(curPage);
-                }
-            });
-
-            $("#button-right").on('click', function(){
-                var curPage = $("#current-page").val();
-                var total = $("#last-page").val();
-                if (curPage < total) {
-                    curPage++;
-                    loadDataPropType(curPage);
-                }
-            });
-
-            function loadDataPropType(nextPage)
-            {
-                $('.content-type').html("");
-                $('.content-type').append("<div style=\"height: 60px;margin: auto;padding: 10px;\"><div class=\"loader-page\" id=\"loader-page\"></div></div>");
-                $.ajax({
-                    url: '/get-tipe-property',
-                    data:   {
-                        property_id: "{{$property->id}}",
-                        limit: 3,
-                        page:nextPage
-                    }
-                })
-                .done(function (response) {
-                    // console.log(response);
-                    $('.content-type').html("");
-                    $('.content-type').html(response);
-                })
-                .fail(function (response) {
-
-                });
-            }
-        });
-    </script>
+    @include('property.script-code')
     @endif
 @endpush
