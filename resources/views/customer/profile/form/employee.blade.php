@@ -17,10 +17,10 @@
                             <label class="col-md-4 control-label">Bidang Pekerjaan *</label>
                             <div class="col-md-8">
                                 {!! Form::select('work_field', ['' => ''] + [
-                                    $customer->work_field_id => $customer->work_field
+                                    $customer->work_field_id ?: old('work_field') => $customer->work_field ?: old('work_field_name')
                                 ], old('work_field'), [
                                     'class' => 'select2 job-fields',
-                                    'data-option' => $customer->work_field_id,
+                                    'data-option' => $customer->work_field_id ?: old('work_field'),
                                     'data-placeholder' => 'Pilih Bidang Pekerjaan',
                                 ]) !!}
                             </div>
@@ -30,10 +30,10 @@
                             <label class="col-md-4 control-label">Jenis Pekerjaan *</label>
                             <div class="col-md-8">
                                 {!! Form::select('work_type', ['' => ''] + [
-                                    $customer->type_id => $customer->type_id
+                                    $customer->type_id ?: old('work_type') => $customer->type_id ?: old('work_type_name')
                                 ], old('work_type'), [
                                     'class' => 'select2 job-types',
-                                    'data-option' => $customer->type_id,
+                                    'data-option' => $customer->type_id ?: old('work_type'),
                                     'data-placeholder' => 'Pilih Jenis Pekerjaan',
                                 ]) !!}
                             </div>
@@ -43,10 +43,10 @@
                             <label class="col-md-4 control-label">Pekerjaan *</label>
                             <div class="col-md-8">
                                 {!! Form::select('work', ['' => ''] + [
-                                    $customer->work_id => $customer->work
+                                    $customer->work_id ?: old('work') => $customer->work ?: old('work_name')
                                 ], old('work'), [
                                     'class' => 'select2 jobs',
-                                    'data-option' => $customer->work_id,
+                                    'data-option' => $customer->work_id ?: old('work'),
                                     'data-placeholder' => 'Pilih Pekerjaan',
                                 ]) !!}
                             </div>
@@ -56,10 +56,10 @@
                             <label class="col-md-4 control-label">Jabatan *</label>
                             <div class="col-md-8">
                                 {!! Form::select('position', ['' => ''] + [
-                                    $customer->position_id => $customer->position
+                                    $customer->position_id ?: old('position') => $customer->position ?: old('position_name')
                                 ], old('position'), [
                                     'class' => 'select2 positions',
-                                    'data-option' => $customer->position_id,
+                                    'data-option' => $customer->position_id ?: old('position'),
                                     'data-placeholder' => 'Pilih Jabatan',
                                 ]) !!}
                             </div>

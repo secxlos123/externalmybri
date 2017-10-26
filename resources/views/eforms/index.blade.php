@@ -36,7 +36,32 @@
                             'class' => 'form-horizontal', 'enctype' => 'multipart/form-data'
                         ]) !!}
 
-                            {!! Form::hidden('is_simple', old('is_simple')) !!}
+                            <fieldset hidden>
+                                {!! Form::text('is_simple', old('is_simple')) !!}
+                                {!! Form::text('developer_name', old('developer_name'), [
+                                    'id' => 'developer_name'
+                                ]) !!}
+                                {!! Form::text('property_name', old('property_name'), [
+                                    'id' => 'property_name'
+                                ]) !!}
+                                {!! Form::text('property_type_name', old('property_type_name'), [
+                                    'id' => 'property_type_name'
+                                ]) !!}
+                                {!! Form::text('property_item_name', old('property_item_name'), [
+                                    'id' => 'property_item_name'
+                                ]) !!}
+
+                                {!! Form::text('work_field_name', old('work_field_name'), ['id' => 'work_field_name']) !!}
+                                {!! Form::text('work_type_name', old('work_type_name'), ['id' => 'work_type_name']) !!}
+                                {!! Form::text('work_name', old('work_name'), ['id' => 'work_name']) !!}
+                                {!! Form::text('position_name', old('position_name'), ['id' => 'position_name']) !!}
+                                {!! Form::text('birth_place', old('birth_place'), ['id' => 'birth_place']) !!}
+                                {!! Form::text('city_name', old('city_name'), ['id' => 'city_name']) !!}
+                                {!! Form::text('citizenship', old('citizenship'), ['id' => 'citizenship']) !!}
+                                {!! Form::text('couple_birth_place', old('couple_birth_place'), [
+                                    'id' => 'couple_birth_place'
+                                ]) !!}
+                            </fieldset>
                             <div>
                                 <h3>Produk</h3>
                                 <section>
@@ -90,8 +115,7 @@
             bodyTag: "section",
             transitionEffect: "slideLeft",
             onStepChanging: function (event, currentIndex, newIndex) {
-                return true;
-                // return currentIndex > newIndex ? true : $form_container.valid();
+                return currentIndex > newIndex ? true : $form_container.valid();
             },
             onStepChanged: function (event, currentIndex, priorIndex) {
                 // reinit gmaps

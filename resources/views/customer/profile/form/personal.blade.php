@@ -44,15 +44,13 @@
 						<div class="form-group">
 							<label class="col-md-4 control-label">Tempat Lahir *</label>
 							<div class="col-md-8">
-
 								{!! Form::select('birth_place_id', ['' => ''] + [
-									$customer->birth_place_id => $customer->birth_place
+									$customer->birth_place_id ?: old('birth_place_id') => $customer->birth_place ?: old('birth_place'),
 								], old('birth_place_id'), [
 									'class' => 'form-control select2 birth_place',
-									'data-option' => $customer->birth_place_id,
+									'data-option' => $customer->birth_place_id ?: old('birth_place_id'),
 									'data-placeholder' => 'Pilih Kota'
 								]) !!}
-
 							</div>
 						</div>
 
@@ -82,26 +80,13 @@
 						<div class="form-group">
 							<label class="col-md-4 control-label">Kota *</label>
 							<div class="col-md-8">
-
-								{{-- @if ( isset($customer->city_id) && $customer->city_id )
-
-									{!! Form::text('city', old('city'), [
-										'class' => 'form-control', 'disabled'
-									]) !!}
-									{!! Form::hidden('city_id', old('city_id')) !!}
-
-								@else --}}
-
-									{!! Form::select('city_id', ['' => ''] + [
-										$customer->city_id => $customer->city
-									], old('city_id'), [
-										'class' => 'form-control select2 cities',
-										'data-option' => $customer->city_id,
-										'data-placeholder' => 'Pilih Kota',
-									]) !!}
-
-								{{-- @endif --}}
-
+								{!! Form::select('city_id', ['' => ''] + [
+									$customer->city_id ?: old('city_id') => $customer->city ?: old('city_name')
+								], old('city_id'), [
+									'class' => 'form-control select2 cities',
+									'data-option' => $customer->city_id ?: old('city_id'),
+									'data-placeholder' => 'Pilih Kota',
+								]) !!}
 							</div>
 						</div>
 					</div>
@@ -123,26 +108,13 @@
 						<div class="form-group">
 							<label class="col-md-5 control-label">Kewarganegaraan *</label>
 							<div class="col-md-7">
-
-								{{-- @if ( isset($customer->citizenship_id) && $customer->citizenship_id )
-
-									{!! Form::text('citizenship', old('citizenship'), [
-										'class' => 'form-control', 'disabled'
-									]) !!}
-									{!! Form::hidden('citizenship_id', old('citizenship_id')) !!}
-
-								@else --}}
-
-									{!! Form::select('citizenship_id', ['' => ''] + [
-										$customer->citizenship_id => $customer->citizenship
-									], old('citizenship_id'), [
-										'class' => 'form-control select2 citizenships',
-										'data-option' => $customer->citizenship_id, 
-										'data-placeholder' => 'Pilih Negara',
-									]) !!}
-
-								{{-- @endif --}}
-
+								{!! Form::select('citizenship_id', ['' => ''] + [
+									$customer->citizenship_id ?: old('citizenship_id') => $customer->citizenship ?: old('citizenship')
+								], old('citizenship_id'), [
+									'class' => 'form-control select2 citizenships',
+									'data-option' => $customer->citizenship_id ?: old('citizenship_id'), 
+									'data-placeholder' => 'Pilih Negara',
+								]) !!}
 							</div>
 						</div>
 
@@ -185,7 +157,7 @@
 							<label class="col-md-5 control-label">No Telepon *</label>
 							<div class="col-md-7">
 								{!! Form::text('phone', old('phone'), [
-									'class' => 'form-control numeric', 'maxlength' => 16, 'minlength' => 9
+									'class' => 'form-control numeric', 'maxlength' => 16, 'minlength' => 7
 								]) !!}
 							</div>
 						</div>
