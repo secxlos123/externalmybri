@@ -43,6 +43,21 @@ Route::get('rincian-property/{property}', 'PropertyController@detailProperty')->
 /**
  * This route for handle homepage
  */
+Route::get('rincian-property-type/{property}', 'PropertyController@detailPropertyType')->name('detail-properties-type');
+
+/**
+ * This route for handle homepage
+ */
+Route::get('rincian-property-unit/{property}', 'PropertyController@detailPropertyUnit')->name('detail-properties-unit');
+
+/**
+ * This route for handle homepage
+ */
+Route::get('get-unit-property', 'PropertyController@getDetailPropertyType')->name('get-detail-properties-type');
+
+/**
+ * This route for handle homepage
+ */
 Route::get('get-tipe-property', 'PropertyController@getPropertyType')->name('type-properties');
 
 /**

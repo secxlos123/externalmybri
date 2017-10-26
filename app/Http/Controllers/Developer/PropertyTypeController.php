@@ -13,7 +13,7 @@ class PropertyTypeController extends Controller
 {
     /**
      * Avaliable columns items datatables
-     * 
+     *
      * @var array
      */
     protected $columns = [
@@ -108,9 +108,9 @@ class PropertyTypeController extends Controller
 
     /**
      * Initial for datatable property type
-     * 
-     * @param  Request $request 
-     * @return \Illuminate\Http\Response         
+     *
+     * @param  Request $request
+     * @return \Illuminate\Http\Response
      */
     public function datatables(Request $request, $slug = null)
     {
@@ -142,7 +142,7 @@ class PropertyTypeController extends Controller
         $types['contents']['draw'] = $request->input('draw');
         $types['contents']['recordsTotal'] = $types['contents']['total'];
         $types['contents']['recordsFiltered'] = $types['contents']['total'];
-        
+
         unset(
             $types['contents']['path'],
             $types['contents']['prev_page_url'],
@@ -154,7 +154,7 @@ class PropertyTypeController extends Controller
 
     /**
      * Get property type from API
-     * 
+     *
      * @param  string $slug
      * @param  string $view
      * @return \Illuminate\Http\Response
@@ -167,17 +167,18 @@ class PropertyTypeController extends Controller
             ])->get();
 
         return view("developer.property_type.{$view}", [
-            'type' => (object) $type['contents']
+            'type' => (object) $type['contents'],
+            'role' => 'developer'
         ]);
     }
 
     /**
      * Handling for create and update property type
-     * 
-     * @param  Request $request 
+     *
+     * @param  Request $request
      * @param  string  $endpoint
-     * @param  string  $method  
-     * @return \Illuminate\Http\Response          
+     * @param  string  $method
+     * @return \Illuminate\Http\Response
      */
     public function storeOrUpdate(Request $request, $endpoint, $method)
     {

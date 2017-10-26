@@ -157,4 +157,44 @@ class PropertyController extends Controller
             view('property._property-type-detail-section', [ 'results' => $results['contents'] ])->render()
         );
     }
+
+    public function detailPropertyType($slug)
+    {
+        $results = Client::setBase('common')
+            ->setEndpoint('property-type/'.$slug)
+            ->get();
+        // dd($results);
+        return view("developer.property_type.show", [
+            'type' => (object) $results['contents'],
+            'role' => 'customer'
+        ]);
+    }
+
+    public function getDetailPropertyType(Request $request)
+    {
+        $results = Client::setBase('common')
+            ->setEndpoint('property-item')
+            ->setQuery([
+                'property_type_id' => $request->property_type_id,
+                'limit' => $request->limit,
+                'page' => $request->page
+                ])
+            ->get();
+        // dd($results);
+        return response()->json(
+            view('property-type._property-unit-detail-section', [ 'results' => $results['contents'] ])->render()
+        );
+    }
+
+    public function detailPropertyUnit($slug)
+    {
+        $results = Client::setBase('common')
+            ->setEndpoint('property-item/'.$slug)
+            ->get();
+        // dd($results);
+        return view("developer.property_item.show", [
+            'unit' => (object) $results['contents'],
+            'role' => 'customer'
+        ]);
+    }
 }

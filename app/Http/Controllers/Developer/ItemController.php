@@ -117,7 +117,8 @@ class ItemController extends Controller
             ])->get();
 
         return view("developer.property_item.{$view}", [
-            'unit' => (object) $unit['contents']
+            'unit' => (object) $unit['contents'],
+            'role' => 'developer'
         ]);
     }
 

@@ -4,7 +4,7 @@
             <div class="image">
                 <a href="{{ url('rincian-property/'.$value['prop_slug']) }}"><img src="{{image_checker($value['prop_photo'])}}" alt="latest property" class="img-responsive"></a>
                 <div class="price clearfix">
-                    <span class="tag pull-right">Rp. {{$value['prop_price']}},-</span>
+                    <span class="tag pull-right">Rp. {{number_format($value['prop_price'], 2)}}</span>
                 </div>
                 <span class="tag_t">{{(isset($value['distance'])) ? $value['distance'] : '0'}} Km</span>
                 <span class="tag_l" style="display: none;">PT. Gaisan Propertindo</span>

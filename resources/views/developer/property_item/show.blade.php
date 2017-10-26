@@ -3,11 +3,20 @@
 @section('title', 'Detail Unit')
 
 @section('breadcrumb')
+    @if ($role == 'developer')
 	<h1 class="text-uppercase">Detail Unit</h1>
 	<ol class="breadcrumb text-center">
 	    <li><a href="{!! route('developer.proyek-item.index') !!}">List Unit</a></li>
 	    <li class="active">Detail Unit</li>
 	</ol>
+    @else
+    <h1 class="text-uppercase">Detail Unit Properti</h1>
+    <p>Dapatkan properti idaman Anda.</p>
+    <ol class="breadcrumb text-center">
+        <li><a href="{!! url('daftar-proyek') !!}">List Properti</a></li>
+        <li class="active">Detail Properti</li>
+    </ol>
+    @endif
 @endsection
 
 @section('content')
@@ -32,27 +41,29 @@
                         <div id="property-d-1" class="owl-carousel single">
                         @foreach($unit->photos as $photo)
                             <div class="item">
-                                <img src="{{$photo}}" alt="image"/>
+                                <img src="{{image_checker($photo)}}" alt="image"/>
                             </div>
                         @endforeach
                         </div>
                         <div id="property-d-1-2" class="owl-carousel single">
                         @foreach($unit->photos as $photo)
                             <div class="item">
-                                <img src="{{$photo}}" alt="image"/>
+                                <img src="{{image_checker($photo)}}" alt="image"/>
                             </div>
                         @endforeach
                         </div>
                         <div class="property_meta bg-black bottom40">
                             <!-- <span>4800 m<sup>2</sup></span> -->
                             <span>Nama Projek: <b> {!! $unit->property_name . ' | ' . $unit->property_type_name !!}</b></span>
-                            <span>Status: <b>{{($unit->is_available) ? 'Available' : 'Not Available'}}</b></span>
+                            <span>Status: <b>{{($unit->is_available == 1) ? 'Available' : 'Not Available'}}</b></span>
                         </div>
 
+                        <div style="display: none;">
                         <h2 class="text-uppercase bottom20">Deskripsi Unit</h2>
                         <p class="bottom20">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras et dui vestibulum, bibendum purus sit amet, vulputate mauris. Ut adipiscing gravida tincidunt. Duis euismod placerat rhoncus. Phasellus mollis imperdiet placerat. Sed ac turpis nisl. Mauris at ante mauris. Aliquam posuere fermentum lorem, a aliquam mauris rutrum a. Curabitur sit amet pretium lectus, nec consequat orci. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis et metus in libero sollicitudin venenatis eu sed enim. Nam felis lorem, suscipit ac nisl ac, iaculis dapibus tellus. Cras ante justo, aliquet quis placerat nec, molestie id turpis. </p>
                         <div class="text-it-p bottom40 top-inherit">
                             <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.</p>
+                        </div>
                         </div>
 
                         <div class="btn-group btn-group-justified m-b-10">

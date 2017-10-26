@@ -14,12 +14,23 @@
 
     <!-- This is content of list projects / properties -->
     <section id="property" class="padding grey listing1">
-        <div class="container" id="content-galery"></div>
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <h2 class="uppercase">DAFTAR PROPERTI TERDEKAT</h2>
+                <p class="heading_space">Kami Memiliki Beberapa Properti terdekat di Area ini.</p>
+            </div>
+        </div>
+        <div class="container" id="content-galery">
+            <div style="height: 60px;margin: auto;padding: 10px;">
+                <div class="loader-page" id="loader-page">
+                </div>
+            </div>
+        </div>
         <div class="container hide denied">
             <div class="row">
                 <div class="col-sm-12 text-center">
                     <h2 class="uppercase">Tidak dapat mencari lokasi PROPERTI terdekat</h2>
-                    <p class="heading_space">Hidupkan GPS pada brower anda agar dapat melihat daftar PROPERTI terdekat.</p>
+                    <p class="heading_space">Hidupkan GPS pada browser anda agar dapat melihat daftar PROPERTI terdekat.</p>
                 </div>
             </div>
         </div>
@@ -53,6 +64,15 @@
         .tp_overlay{
             background-color: transparent !important;
         }
+        .loader-page {
+            left: 0px;
+            top: 0px;
+            margin-left: 48%;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background: url('/assets/images/load.gif') no-repeat;
+        }
         /*.tp_overlay .topbar{
             background-color: transparent !important;
         }*/
@@ -73,6 +93,9 @@
             if (error.code == error.PERMISSION_DENIED){
                 $('#property .container').addClass('hide');
                 $('.denied').removeClass('hide');
+            }else{
+                $('#content-galery').hide();
+                $('.denied').removeClass('hide');
             }
         }
 
@@ -85,6 +108,7 @@
                 $('#content-galery').html(response);
             })
             .fail(function (response) {
+                $('#content-galery').hide();
                 $('.error-server').removeClass('hide');
             });
         }
