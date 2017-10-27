@@ -1,6 +1,6 @@
 <div class="row bottom30">
-    @foreach($results['data'] as $property)
-        @include('property._list-property', $property)
+    @foreach($results['data'] as $key => $value)
+         @include('property._content-list-property')
     @endforeach
 </div>
 
@@ -20,9 +20,9 @@
         var id = $('ul.pager li[class=active]').text();
         // console.log(id);
         $('ul.pager li#'+id).removeClass('active');
-        loadData(page, dev, city);
+        loadDataPage(page, dev, city);
     });
-    function loadData(nextPage, dev=null, city=null)
+    function loadDataPage(nextPage, dev=null, city=null)
     {
         $('.contentProperty').html("");
         $('.contentProperty').append("<div style=\"height: 60px;margin: auto;padding: 10px;\"><div class=\"loader-page\" id=\"loader-page\"></div></div>");
