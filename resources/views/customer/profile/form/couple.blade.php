@@ -33,23 +33,13 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Tempat Lahir *</label>
                                 <div class="col-md-8">
-                                    @if ( isset($customer->couple_birth_place_id) && $customer->couple_birth_place_id )
-
-                                        {!! Form::text('couple_birth_place_id', old('couple_birth_place'), [
-                                            'class' => 'form-control', 'disabled'
-                                        ]) !!}
-                                        {!! Form::hidden('couple_birth_place_id', old('couple_birth_place_id')) !!}
-
-                                    @else
-
-                                        {!! Form::select('couple_birth_place_id', ['' => ''], old('couple_birth_place_id'), [
-                                            'class' => 'form-control select2 cities',
-                                            'data-placeholder' => 'Pilih Kota',
-                                            'data-option' => 'couple_birth_place_id',
-                                        ]) !!}
-                                        
-                                    @endif
-                                
+                                    {!! Form::select('couple_birth_place_id', ['' => ''] + [
+                                        $customer->couple_birth_place_id ?: old('couple_birth_place_id') => $customer->birth_place ?: old('couple_birth_place'),
+                                    ], old('couple_birth_place_id'), [
+                                        'class' => 'form-control select2 couple_birth',
+                                        'data-placeholder' => 'Pilih Kota',
+                                        'data-option' => old('couple_birth_place_id'),
+                                    ]) !!}                                
                                 </div>
                             </div>
                             <div class="form-group">

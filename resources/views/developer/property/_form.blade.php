@@ -1,6 +1,3 @@
-@if(Session::has('flash_message'))
-    <div class="alert alert-danger"><em> {!! session('flash_message') !!}</em></div>
-@endif
 <div class="row top20">
     <div class="col-md-5 col-md-offset-1">
         <div class="single-query form-group bottom20
@@ -20,10 +17,15 @@
         <div class="single-query form-group bottom20
             {{ $errors->has('city_id') ? ' has-error' : '' }}">
             {!! Form::label('city_id', 'Kota') !!}
-            {!! Form::select('city_id', ['' => ''], old('cities'), [
+            {!! Form::select('city_id', ['' => ''] + [
+                isset($property->city_id) ? $property->city_id : old('city_id') => 
+                isset($property->city_name) ? $property->city_name : old('city_name') 
+            ], old('cities'), [
                 'class' => 'select2 cities',
+                'data-option' => old('city_id'),
                 'data-placeholder' => '-- Pilih Kota --',
             ]) !!}
+            {!! Form::hidden('city_name', old('city_name'), ['id' => 'city_name']) !!}
 
             @if ($errors->has('city_id'))
                 <span class="help-block">
@@ -80,19 +82,41 @@
                 </span>
             @endif
         </div>
-        <div class="form-group custom-uploader {{ $errors->has('photo') ? ' has-error' : '' }}">
-            {!! Form::label('photo', 'Foto', ['class' => 'col-md-4 control-label']) !!}
-            <div class="col-md-8">
-                {!! Form::file('photo', old('photo'), ['class' => 'filestyle']) !!}
-            </div>
+        <div class="form-group">
+            {!! Form::label('photo', 'Foto') !!}
+            {!! Form::file('photo', [
+                'class' => 'filestyle', 'data-target' => 'ktp_preview',
+                'data-buttontext' => 'Unggah', 'data-buttonname' => 'btn-default',
+                'data-iconname' => 'fa fa-cloud-upload', 'data-placeholder' => 'Tidak ada file' 
+            ]) !!}
 
-            <div class="clearfix"></div>
             @if ($errors->has('photo'))
                 <span class="help-block">
                     <strong>{{ $errors->first('photo') }}</strong>
                 </span>
             @endif
-      </div>
+        </div>
+
+        @if ( isset($property->photo) )
+
+            <div class="form-group ktp_preview">
+                {!! Html::image($property->photo ?: 'assets/images/no-image.jpg', 'KTP', [
+                    'class' => 'img-responsive', 'id' => 'ktp_preview', 'style' => 'max-height: 300px; width: 100%',
+                    'data-src' => asset('assets/images/no-image.jpg')
+                ]) !!}
+            </div>
+
+        @else
+            
+            <div class="form-group ktp_preview">
+                {!! Html::image('assets/images/no-image.jpg', 'KTP', [
+                    'class' => 'img-responsive', 'id' => 'ktp_preview', 'style' => 'max-height: 300px; width: 100%',
+                    'data-src' => asset('assets/images/no-image.jpg')
+                ]) !!}
+            </div>
+
+        @endif
+
     </div>
 </div>
 
@@ -164,6 +188,9 @@
             width: 100%;
             height: 400px;
         }
+        label.btn.btn-default {
+            padding: 11px;
+        } 
     </style>
 @endpush
 
@@ -171,6 +198,7 @@
     {!! Html::script( 'assets/js/jquery.gmaps.js' ) !!}
     {!! Html::script( 'assets/js/ckeditor/ckeditor.js' ) !!}
     {!! Html::script( 'assets/js/select2.min.js' ) !!}
+    {!! Html::script( 'assets/js/bootstrap-filestyle.min.js' ) !!}
 
     <!-- You can edit this script on resouces/asset/js/dropdown.js -->
     <!-- After that you run in console or terminal or cmd "npm run production" -->
@@ -181,17 +209,17 @@
     <script type="text/javascript">
         CKEDITOR.replace( 'txtEditor' );
         CKEDITOR.replace( 'txtEditor2' );
+        $('select').select2({allowClear: true});
 
-        $('select').select2({
-            allowClear: true,
-        });
-
-        $('.cities').dropdown('cities');
-
-        // $(".checkHightlights").click(function (){
-        //     $('html, body').animate({
-        //         scrollTop: $("section#property").offset().top
-        //     }, 2000);
-        // });
+        $('.cities').dropdown('cities')
+            .on('select2:select', function(e) {
+                var data = e.params.data;
+                $('#city_name').val(data.name);
+            })
+            .on('select2:unselect', function (e) {
+                $('#city_name').val('');
+            })
+            .val($('.cities').data('option'))
+            .trigger('change');
     </script>
 @endpush

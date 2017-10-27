@@ -45,6 +45,16 @@ class EformController extends Controller
     ];
 
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth.api', ['except' => 'verify']);
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -56,8 +66,11 @@ class EformController extends Controller
         }
 
         config(['jsvalidation.focus_on_error' => false]);
+        $customer = $this->customer();
+        session(['is_simple' => $customer['is_simple'] ]);
+
         return view('eforms.index', [
-            'customer' => (object) $this->customer()
+            'customer' => (object) $customer
         ]);
     }
 

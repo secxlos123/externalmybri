@@ -7,10 +7,6 @@
 
     <hr>
 @endif
-{!! Form::hidden('developer_name', old('developer_name'), ['id' => 'developer_name']) !!}
-{!! Form::hidden('property_name', old('property_name'), ['id' => 'property_name']) !!}
-{!! Form::hidden('property_type_name', old('property_type_name'), ['id' => 'property_type_name']) !!}
-{!! Form::hidden('property_item_name', old('property_item_name'), ['id' => 'property_item_name']) !!}
 <div class="row">
     <div class="col-md-6">
         <div class="form-group">

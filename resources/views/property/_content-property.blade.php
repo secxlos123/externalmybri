@@ -1,5 +1,7 @@
 <div class="row bottom30">
-@include('property._list-property')
+    @foreach($results['data'] as $property)
+        @include('property._list-property', $property)
+    @endforeach
 </div>
 
 <div class="padding_bottom text-center">

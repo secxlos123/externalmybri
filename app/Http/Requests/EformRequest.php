@@ -13,6 +13,7 @@ class EformRequest extends FormRequest
      */
     public function rules()
     {
+        \Log::info($this->all());
         $rules = [];
 
         if (session('authenticate.role') != 'developer-sales') {
@@ -60,7 +61,7 @@ class EformRequest extends FormRequest
      */
     public function rulesCustomerSimple()
     {
-        return [
+        $rules = [
             'selector'          => 'required',
             'nik'               => 'required|numeric|digits:16',
             'first_name'        => 'required',
@@ -73,16 +74,23 @@ class EformRequest extends FormRequest
             'citizenship_id'    => 'required',
             'status'            => 'required|in:1,2,3',
             'address_status'    => 'required|in:0,1,3',
-            'phone'             => 'required|numeric|digits_between:9,16',
+            'phone'             => 'required|numeric|digits_between:7,16',
             'mobile_phone'      => 'required|numeric|digits_between:9,16',
-            'mother_name'       => 'required',
-            'identity'          => 'required_if:is_simple,0|image|max:1024',
+            'mother_name'       => 'required',  
             'couple_nik'        => 'required_if:status,2|numeric|digits:16',
             'couple_name'       => 'required_if:status,2',
             'couple_birth_date' => 'required_if:status,2',
-            'couple_identity'   => 'required_if:status,2|required_if:is_simple,0|image|max:1024',
             'couple_birth_place_id' => 'required_if:status,2',
+            'identity'          => 'image|max:1024',
+            'couple_identity'   => 'required_if:status,2|image|max:1024',
         ];
+
+        if ( session('is_simple') == '0' ) {
+            $rules['identity']          = 'required|image|max:1024';
+            $rules['couple_identity']   = 'required_if:status,2|required|image|max:1024';
+        }
+
+        return $rules;
     }
 
     /**

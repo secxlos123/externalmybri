@@ -89,14 +89,16 @@
     {!! Html::script('assets/js/bootstrap-filestyle.min.js') !!}
 
 	<script type="text/javascript">
+		
 		var dropdowns = [
-			{class: '.birth_place', endpoint: 'cities'},
-			{class: '.cities', endpoint: 'cities'},
-			{class: '.citizenships', endpoint: 'citizenships'},
-			{class: '.job-fields', endpoint: 'job-fields'},
-			{class: '.job-types', endpoint: 'job-types'},
-			{class: '.jobs', endpoint: 'jobs'},
-			{class: '.positions', endpoint: 'positions'},
+			{class: '.birth_place', endpoint: 'cities', hidden: '#birth_place'},
+			{class: '.cities', endpoint: 'cities', hidden: '#city_name'},
+			{class: '.couple_birth', endpoint: 'cities', hidden: '#couple_birth_place'},
+			{class: '.citizenships', endpoint: 'citizenships', hidden: '#citizenship'},
+			{class: '.job-fields', endpoint: 'job-fields', hidden: '#work_field_name'},
+			{class: '.job-types', endpoint: 'job-types', hidden: '#work_type_name'},
+			{class: '.jobs', endpoint: 'jobs', hidden: '#work_name'},
+			{class: '.positions', endpoint: 'positions', hidden: '#position_name'},
 		];
 
 		dropdowns.map(init_dropdown);
@@ -114,7 +116,7 @@
 			if ($(this).attr('id') == 'full') {
 				$('#complete-data').removeAttr('hidden disabled');
 			}
-		}).trigger('click');
+		});
 
 		$('#status').on('change', current_status_customer);
 		
@@ -138,17 +140,6 @@
 	        endDate: '-20y'
 		});
 
-		$('.filestyle').on('change', function () {
-			var target = $(this).data('target');
-			$(`.${target}`).removeClass('hide');
-
-			if ($(this).val() != '') {
-				read_url($(this).prop('files')[0], `#${target}`);
-			} else {
-				$(`#${target}`).attr('src', $(`#${target}`).data('src'));
-			}
-		});
-
 		function current_status_customer() {
 			if ($('#status').val() == '2') {
 				$('#couple_content, #joint-income').removeAttr('disabled hidden');
@@ -160,15 +151,18 @@
 
 		function init_dropdown(value, index) {
 			var opt = $(`${value.class}`).data('option');
-			$(`${value.class}`).dropdown(`${value.endpoint}`).val(opt).trigger('change');
-		}
-
-		function read_url(input, target) {
-			let reader = new FileReader();
-			reader.onload = function (e) {
-				$(target).attr('src', e.target.result);
-			}
-			reader.readAsDataURL(input);
+			$(`${value.class}`).dropdown(`${value.endpoint}`)
+				.on('select2:select', function (e) {
+					var data = e.params.data;
+					console.log(value.hidden, data);
+					$(`${value.hidden}`).val(data.name);
+				})
+				.on('select2:unselect', function (e) {
+					console.log(value.hidden, data);
+					$(`${value.hidden}`).val('');
+				})
+				.val(opt)
+				.trigger('change');
 		}
 
 		function toggle_icon(e) {

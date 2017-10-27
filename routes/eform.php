@@ -14,7 +14,7 @@
 /**
  * This route grup for eform need authenticate for access
  */
-Route::group([ 'prefix' => 'eform', 'as' => 'eform.', 'middleware' => ['auth.api'] ], function () {
+Route::group([ 'prefix' => 'eform', 'as' => 'eform.' ], function () {
 
 	/**
 	 * This route for submit form application

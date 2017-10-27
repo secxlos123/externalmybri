@@ -9,7 +9,7 @@
 
 <div class="row">
 
-    @foreach ($properties as $property)
+    @foreach ($properties as $value)
         @include('property._content-list-property')
     @endforeach
 

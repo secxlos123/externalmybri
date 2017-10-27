@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Developer;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Developer\PropertyTypeController;
 use App\Http\Requests\Developer\Property\CreateRequest;
+use App\Http\Requests\Developer\Property\UpdateRequest;
 use Client;
 use Illuminate\Http\Request;
 
@@ -89,7 +90,7 @@ class PropertyController extends Controller
      * @param  string $slug
      * @return \Illuminate\Http\Response
      */
-    public function update(CreateRequest $request, $slug)
+    public function update(UpdateRequest $request, $slug)
     {
         return $this->storeOrUpdate($request, "property/{$slug}", 'put');
     }
@@ -169,16 +170,19 @@ class PropertyController extends Controller
      */
     public function storeOrUpdate(Request $request, $endpoint, $method)
     {
-        $response = Client::setEndpoint($endpoint)
-                ->setHeaders(['Authorization' => session('authenticate.token')])
-                ->setBody(array_to_multipart($request->all()))
-                ->{$method}('multipart');
-        // dd($response);
-        if ( ! in_array($response['code'], [200, 201]) ) {
-            if ($response['code'] == 422) {
-                \Session::flash('flash_message','Nama proyek telah digunakan');
+        try {
+            $response = Client::setEndpoint($endpoint)
+                    ->setHeaders(['Authorization' => session('authenticate.token')])
+                    ->setBody(array_to_multipart($request->all()))
+                    ->{$method}('multipart');
+
+            if ( ! in_array($response['code'], [200, 201]) ) {
+                throw new \Exception(json_encode($response['contents']), $response['code']);
             }
-            return redirect()->back()->withInput()->withError($response['descriptions']);
+            
+        } catch (\Exception $e) {
+            $message = is_json($e->getMessage()) ? json_decode($e->getMessage()) : $e->getMessage();
+            return redirect()->back()->withInput()->withErrors($message);
         }
 
         return redirect()->route('developer.proyek.index');
