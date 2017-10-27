@@ -6,9 +6,11 @@
 
 <div class="padding_bottom text-center">
     <ul class="pager">
+        @if ($results['last_page'] > 1)
         <?php for ($i=1; $i <= $results['last_page']; $i++) { ?>
             <li id="{{$i}}" class="{{($i == $results['current_page']) ? 'active' : ''}}"><a href="javascript:;" id="buttonPage" data-id="{{$i}}">{{$i}}</a></li>
         <?php } ?>
+        @endif
     </ul>
 </div>
 

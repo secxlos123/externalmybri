@@ -89,7 +89,6 @@
         navigator.geolocation.watchPosition(properties, permission_handling);
 
         function permission_handling(error) {
-            console.log(error);
             if (error.code == error.PERMISSION_DENIED){
                 $('#text-nearby-property').addClass('hide');
                 $('#property .container').addClass('hide');

@@ -15,7 +15,7 @@
     @endif
     <!-- @end You can remove this condition if this module already -->
 
-    <li>
+    <li class="{!! request()->is('daftar-proyek') ? 'active' : '' !!}">
         <a href="{!! route('all-properties') !!}">Daftar Properti</a>
     </li>
     <li>
