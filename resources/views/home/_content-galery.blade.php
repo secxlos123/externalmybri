@@ -31,7 +31,7 @@
                 <div class="proerty_content">
                     <div class="proerty_text">
                         <h3 class="captlize">
-                            <a href="javascript:void(0)">{!! $property['prop_name'] !!}</a>
+                            <a href="{{ url('rincian-property/'.$value['prop_slug']) }}">{!! $property['prop_name'] !!}</a>
                         </h3>
                         <p>{!! $property['prop_city_name'] !!}</p>
                     </div>
