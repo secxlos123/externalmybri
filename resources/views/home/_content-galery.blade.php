@@ -14,7 +14,7 @@
             <div class="property_item">
                 <div class="image">
 
-                    <a href="{{ url('rincian-property/'.$value['prop_slug']) }}">
+                    <a href="{{ url('rincian-property/'.$property['prop_slug']) }}">
                         {!! Html::image($property['prop_photo'], $property['prop_name'], [
                             'class' => 'img-responsive'
                         ]) !!}
@@ -24,14 +24,14 @@
                         <span class="tag pull-right">Rp. {!! number_format($property['prop_price'], 0, ',', '.') !!},-</span>
                     </div>
 
-                    <span class="tag_t">{{(isset($property['prop_distance'])) ? $value['distance'] : '0'}} Km</span>
+                    <span class="tag_t">{{(isset($property['prop_distance'])) ? $property['distance'] : '0'}} Km</span>
                     <span class="tag_l">{!! $property['prop_developer_name'] !!}</span>
 
                 </div>
                 <div class="proerty_content">
                     <div class="proerty_text">
                         <h3 class="captlize">
-                            <a href="{{ url('rincian-property/'.$value['prop_slug']) }}">{!! $property['prop_name'] !!}</a>
+                            <a href="{{ url('rincian-property/'.$property['prop_slug']) }}">{!! $property['prop_name'] !!}</a>
                         </h3>
                         <p>{!! $property['prop_city_name'] !!}</p>
                     </div>
