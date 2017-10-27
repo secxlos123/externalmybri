@@ -76,7 +76,7 @@
 
                         <div class="btn-group btn-group-justified m-b-10">
                             <a class="btn waves-effect waves-light btn-lg agree" role="button">Simulasi KPR</a>
-                            <a class="btn waves-effect waves-light btn-lg disagree" role="button">Ajukan KPR</a>
+                            <a class="btn waves-effect waves-light btn-lg disagree button-ajukan" role="button" href="{{ session('authenticate') ? url('eform').$action : 'javascript:void(0)'}}">Ajukan KPR</a>
                         </div>
                     </div>
                 </div>
@@ -91,4 +91,9 @@
 @endpush
 
 @push('scripts')
+    <script type="text/javascript">
+        $('.button-ajukan').on('click', function(){
+            if (true) {}
+        });
+    </script>
 @endpush

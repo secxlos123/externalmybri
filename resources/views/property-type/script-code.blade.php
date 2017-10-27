@@ -37,5 +37,8 @@
 
             });
         }
+        $('.check-login').on('click', function(){
+            $('#login-register').modal('show');
+        });
     });
 </script>

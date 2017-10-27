@@ -143,7 +143,9 @@ class PropertyController extends Controller
         if (isset($results['contents']['developer_id']) && isset($results['contents']['developer_name'])) {
             \Session([
                 'dev_id' => $results['contents']['developer_id'],
-                'dev_name' => $results['contents']['developer_name']
+                'dev_name' => $results['contents']['developer_name'],
+                'prop_id' => $results['contents']['id'],
+                'prop_name' => $results['contents']['name']
                 ]);
         }
         return view("developer.property.show", [
@@ -185,7 +187,7 @@ class PropertyController extends Controller
         $results = Client::setBase('common')
             ->setEndpoint('property-type/'.$slug)
             ->get();
-
+        // dd($results);
         return view("developer.property_type.show", [
             'type' => (object) $results['contents'],
             'role' => 'customer'
@@ -208,6 +210,7 @@ class PropertyController extends Controller
                 'page' => $request->page
                 ])
             ->get();
+        // dd($results);
 
         return response()->json(
             view('property-type._property-unit-detail-section', [ 'results' => $results['contents'] ])->render()
@@ -226,9 +229,14 @@ class PropertyController extends Controller
             ->setEndpoint('property-item/'.$slug)
             ->get();
 
+        $unit = (object) $results['contents'];
+        $action = '?property_id='.$unit->property_id.'&property_name='.$unit->property_name.'&property_type_id='.$unit->property_type_id.'&property_type_name='.$unit->property_type_name.'&property_item_id='.$unit->id.'&developer_id='.\Session::get('dev_id').'&developer_name='.\Session::get('dev_name');
+        // print_r($action);
+        // die();
         return view("developer.property_item.show", [
             'unit' => (object) $results['contents'],
-            'role' => 'customer'
+            'role' => 'customer',
+            'action' => $action
         ]);
     }
 }

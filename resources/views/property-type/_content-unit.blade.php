@@ -16,7 +16,7 @@
         <div class="col-md-2">
             <div class="select-pro-list text-center">
                 <button type="submit" class="btn-blue border_radius">Simulasi KPR</button>
-                <button type="submit" class="btn-blue border_radius">Ajukan KPR</button>
+                <a href="{{ session('authenticate') ? url('eform').'?property_id='.Session::get('prop_id').'&property_name='.Session::get('prop_name').'&property_type_id='.$units['property_type_id'].'&property_type_name='.$units['property_type_name'].'&property_item_id='.$units['id'].'&developer_id='.Session::get('dev_id').'&developer_name='.Session::get('dev_name') : 'javascript:void(0)'}}" class="button-kpr check-login">Ajukan KPR</a>
             </div>
         </div>
     </div>
