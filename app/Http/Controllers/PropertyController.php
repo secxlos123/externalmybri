@@ -22,7 +22,7 @@ class PropertyController extends Controller
             ->get();
 
         return response()->json(
-            view('property._list-property', [ 'results' => $properties['contents'] ])->render()
+            view('home._content-galery', [ 'properties' => $properties['contents'] ])->render()
         );
     }
 
@@ -140,6 +140,12 @@ class PropertyController extends Controller
             ->setEndpoint('property/'.$slug)
             ->get();
 
+        if (isset($results['contents']['developer_id']) && isset($results['contents']['developer_name'])) {
+            \Session([
+                'dev_id' => $results['contents']['developer_id'],
+                'dev_name' => $results['contents']['developer_name']
+                ]);
+        }
         return view("developer.property.show", [
             'property' => (object) $results['contents'],
             'role' => 'customer'
