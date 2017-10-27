@@ -14,7 +14,7 @@
 
     <!-- This is content of list projects / properties -->
     <section id="property" class="padding grey listing1">
-        <div class="row">
+        <div class="row" id="text-nearby-property">
             <div class="col-sm-12 text-center">
                 <h2 class="uppercase">DAFTAR PROPERTI TERDEKAT</h2>
                 <p class="heading_space">Kami Memiliki Beberapa Properti terdekat di Area ini.</p>
@@ -91,9 +91,11 @@
         function permission_handling(error) {
             console.log(error);
             if (error.code == error.PERMISSION_DENIED){
+                $('#text-nearby-property').addClass('hide');
                 $('#property .container').addClass('hide');
                 $('.denied').removeClass('hide');
             }else{
+                $('#text-nearby-property').addClass('hide');
                 $('#content-galery').hide();
                 $('.denied').removeClass('hide');
             }
@@ -109,6 +111,7 @@
             })
             .fail(function (response) {
                 $('#content-galery').hide();
+                $('#text-nearby-property').addClass('hide');
                 $('.error-server').removeClass('hide');
             });
         }

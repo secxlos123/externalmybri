@@ -20,7 +20,7 @@ class HomeController extends Controller
         $results = \Client::setBase('common')
             ->setQuery(['without_independent' => true])
             ->setEndpoint('developers')->get();
-            
+
         $developers = collect([]);
 
         if ($results['code'] == 200) {
@@ -31,5 +31,15 @@ class HomeController extends Controller
 
         config(['jsvalidation.focus_on_error' => false]);
     	return view('home.index', compact('developers'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function detailProduct()
+    {
+        return view('product.index');
     }
 }

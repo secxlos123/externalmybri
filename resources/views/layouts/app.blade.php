@@ -45,7 +45,8 @@
         && ! request()->is('eform/konfrimasi')
         && ! request()->is('eform/sukses')
         && ! request()->is('activated')
-        && ! request()->is('password/success')  )
+        && ! request()->is('password/success')
+        && ! request()->is('rincian-produk') )
 
         <section class="page-banner padding bg_light">
             <div class="container">
@@ -113,7 +114,7 @@
                     clearIncomplete: true,
                 }
             });
-            
+
             $('.filestyle').on('change', function () {
                 var target = $(this).data('target');
                 $(`.${target}`).removeClass('hide');

@@ -17,7 +17,7 @@
                             KPR BRI memberikan solusi dan kemudahan dalam memiliki hunian yang anda inginkan.
                         </p>
                         <hr>
-                        <a class="btn-more" href="javascript:void(0)">
+                        <a class="btn-more" href="{{url('rincian-produk')}}">
                             <i>{!! Html::image('assets/images/arrow-yellow.png', 'arrow') !!}</i>
                             <span>Lihat Detail Produk</span>
                             <i>{!! Html::image('assets/images/arrow-yellow.png', 'arrow') !!}</i>

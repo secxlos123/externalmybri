@@ -60,6 +60,12 @@ Route::get('get-unit-property', 'PropertyController@getDetailPropertyType')->nam
  */
 Route::get('get-tipe-property', 'PropertyController@getPropertyType')->name('type-properties');
 
+
+/**
+ * This route for handle homepage
+ */
+Route::get('rincian-produk', 'HomeController@detailProduct')->name('detail-product');
+
 /**
  * This route for handle homepage
  */
