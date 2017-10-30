@@ -24,12 +24,14 @@ if (! function_exists('array_to_multipart')) {
             if ( is_array($value) ) {
                 $is_array = array_to_multipart($value, $key);
             } else if ( is_file($value) ) {
-                $requests[] = $attribute['contents'] = fopen($value->getRealPath(), 'r');
+                $attribute['contents'] = fopen($value->getRealPath(), 'r');
             } else if ( in_array($key, $dates) ) {
-                $requests[] = $attribute['contents'] = date('Y-m-d', strtotime($value));
+                $attribute['contents'] = date('Y-m-d', strtotime($value));
             } else {
-                $requests[] = $attribute['contents'] = $value;
+                $attribute['contents'] = $value;
             }
+            
+            $requests[] = $attribute;
         }
 
         return array_merge_recursive($requests, $is_array);
