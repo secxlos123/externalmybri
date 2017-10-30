@@ -15,15 +15,20 @@ if (! function_exists('array_to_multipart')) {
      */
 	function array_to_multipart(array $array, $parent = '')
 	{
-		$requests = []; $is_array = [];
+        $dates    = ['birth_date', 'couple_birth_date', 'appointment_date'];
+        $requests = []; $is_array = [];
 
         foreach ($array as $key => $value) {
+            $attribute['name'] = $parent ? "{$parent}[{$key}]" : $key;
+
             if ( is_array($value) ) {
                 $is_array = array_to_multipart($value, $key);
             } else if ( is_file($value) ) {
-                $requests[] = ['name' => $parent ? "{$parent}[{$key}]" : $key, 'contents' => fopen($value->getRealPath(), 'r') ];
+                $requests[] = $attribute['contents'] = fopen($value->getRealPath(), 'r');
+            } else if ( in_array($key, $dates) ) {
+                $requests[] = $attribute['contents'] = date('Y-m-d', strtotime($value));
             } else {
-                $requests[] = ['name' => $parent ? "{$parent}[{$key}]" : $key, 'contents' => $value];
+                $requests[] = $attribute['contents'] = $value;
             }
         }
 

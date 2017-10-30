@@ -119,9 +119,7 @@
             },
             onStepChanged: function (event, currentIndex, priorIndex) {
                 // reinit gmaps
-                navigator.geolocation.watchPosition(function () {
-                    google.maps.event.trigger(map, 'resize');
-                });
+                google.maps.event.trigger(map, 'resize');
             },
             onFinishing: function (event, currentIndex) { 
                 return $form_container.valid();
