@@ -3,19 +3,19 @@
 @section('title', 'Detail Proyek')
 
 @section('breadcrumb')
-    @if ($role == 'developer')
-	<h1 class="text-uppercase">Detail Proyek</h1>
-	<ol class="breadcrumb text-center">
-	    <li><a href="{!! route('developer.proyek.index') !!}">List Proyek</a></li>
-	    <li class="active">Detail Proyek</li>
-	</ol>
+   	<h1 class="text-uppercase">Detail Proyek</h1>
+
+    @if (session('authenticate.role') == 'developer')
+    	<ol class="breadcrumb text-center">
+    	    <li><a href="{!! route('developer.proyek.index') !!}">List Proyek</a></li>
+    	    <li class="active">Detail Proyek</li>
+    	</ol>
     @else
-    <h1 class="text-uppercase">Detail Properti</h1>
-    <p>Dapatkan properti idaman Anda.</p>
-    <ol class="breadcrumb text-center">
-        <li><a href="{!! url('daftar-proyek') !!}">List Properti</a></li>
-        <li class="active">Detail Properti</li>
-    </ol>
+        <p>Dapatkan properti idaman Anda.</p>
+        <ol class="breadcrumb text-center">
+            <li><a href="{!! url('daftar-proyek') !!}">List Properti</a></li>
+            <li class="active">Detail Properti</li>
+        </ol>
     @endif
 @endsection
 
@@ -64,7 +64,7 @@
                         {{-- @include('developer.fake-pic') --}}
                         <!-- @endtodo to update relation with user cause pic is user have account -->
 
-                        @if ($role == 'developer')
+                        @if (session('authenticate.role') == 'developer')
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="panel panel-blue">
@@ -103,7 +103,8 @@
 
 @push('scripts')
     @stack('parent-script')
-    @if ($role == 'customer')
-    @include('property.script-code')
+
+    @if (session('authenticate.role') != 'developer')
+        @include('property.script-code')
     @endif
 @endpush

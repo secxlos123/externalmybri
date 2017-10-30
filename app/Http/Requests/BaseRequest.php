@@ -40,7 +40,7 @@ class BaseRequest extends FormRequest
 
             // Remove currency format
             if (in_array($key, $this->currency)) {
-                $requests[$key] = str_replace('.', '', $request);
+                $requests[$key] = str_replace('.', '', str_replace(',', '.', $request));
             }
         }
 

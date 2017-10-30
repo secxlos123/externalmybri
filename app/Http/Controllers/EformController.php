@@ -51,7 +51,7 @@ class EformController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth.api', ['except' => 'verify']);
+        $this->middleware('auth.api', ['except' => [ 'verify', 'confirmation' ] ]);
     }
 
     /**
@@ -59,18 +59,15 @@ class EformController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         if ( 'developer' == session('authenticate.role') ) {
             return 'Hallo Developer....';
         }
 
         config(['jsvalidation.focus_on_error' => false]);
-        $customer = $this->customer();
-        session(['is_simple' => $customer['is_simple'] ]);
-
         return view('eforms.index', [
-            'customer' => (object) $customer
+            'customer' => (object) $this->customer()
         ]);
     }
 
@@ -90,10 +87,8 @@ class EformController extends Controller
             }
 
             // This is submit application eform to Api
-            \Log::info($request->only($this->eform));
             $eform = $this->postToApi($request->only($this->eform), 'eforms');
         } catch (\Exception $e) {
-            \Log::info($e->getMessage());
             // redirect back if having error from server Api
             $message = is_json($e->getMessage()) ? json_decode($e->getMessage()) : $e->getMessage();
             return redirect()->back()->withInput()->withErrors($message);
@@ -115,8 +110,10 @@ class EformController extends Controller
     {
         $response = Client::setEndpoint("eform/{$token}/{$status}")->get();
 
-        if ($response['code'] == 200) {
-            return redirect()->route('eform.confirmation')->withSuccess($status);
+        if (in_array( $response['code'], [200, 201] )) {
+            return redirect()->route('eform.confirmation')->withSuccess(
+                compact('status')
+            );
         }
 
         abort(404, 'Halaman tidak ditemukan.');
@@ -166,7 +163,7 @@ class EformController extends Controller
             unset( $customer['birth_place_id'], $customer['city_id'], $customer['citizenship_id'] );
         }
 
-        if ( $request->input('is_simple') == '1' ) {
+        if ( $request->input('is_simple') == '1' || ! $request->file('identity') ) {
             unset($customer['identity']);
         }
 

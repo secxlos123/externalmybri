@@ -12,6 +12,17 @@
 @endsection
 
 @section( 'content' )
+    <div class="card-box">
+        @if ( $errors->any() )
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{!! $error !!}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+    </div>
     <section id="property" class="padding listing1">
         <div class="container">
             {!! Form::model($property, [

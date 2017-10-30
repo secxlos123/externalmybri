@@ -13,7 +13,6 @@ class EformRequest extends FormRequest
      */
     public function rules()
     {
-        \Log::info($this->all());
         $rules = [];
 
         if (session('authenticate.role') != 'developer-sales') {
@@ -81,14 +80,9 @@ class EformRequest extends FormRequest
             'couple_name'       => 'required_if:status,2',
             'couple_birth_date' => 'required_if:status,2',
             'couple_birth_place_id' => 'required_if:status,2',
-            'identity'          => 'image|max:1024',
+            'identity'          => 'required_if:is_simple,0|image|max:1024',
             'couple_identity'   => 'required_if:status,2|image|max:1024',
         ];
-
-        if ( session('is_simple') == '0' ) {
-            $rules['identity']          = 'required|image|max:1024';
-            $rules['couple_identity']   = 'required_if:status,2|required|image|max:1024';
-        }
 
         return $rules;
     }

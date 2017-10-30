@@ -27,4 +27,15 @@ class BaseRequest extends FormRequest
             'facilities'  => 'required',
         ];
     }
+
+    /**
+     * Get the validator instance for the request.
+     *
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function getValidatorInstance()
+    {
+        $this->merge(['latitude' => '-6.2773', 'longitude' => '106.66101']);
+        return parent::getValidatorInstance();
+    }
 }

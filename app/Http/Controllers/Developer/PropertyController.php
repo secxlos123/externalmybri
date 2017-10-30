@@ -44,7 +44,7 @@ class PropertyController extends Controller
      */
     public function create()
     {
-        return view( 'developer.property.create' );
+        return $this->property('create');
     }
 
     /**
@@ -70,7 +70,7 @@ class PropertyController extends Controller
             return app(PropertyTypeController::class)->datatables($request, $slug);
         }
 
-        return $this->property($slug, 'show');
+        return $this->property('show', $slug);
     }
 
     /**
@@ -81,7 +81,7 @@ class PropertyController extends Controller
      */
     public function edit($slug)
     {
-        return $this->property($slug, 'edit');
+        return $this->property('edit', $slug);
     }
 
     /**
@@ -147,16 +147,19 @@ class PropertyController extends Controller
      * @param  string $view
      * @return \Illuminate\Http\Response
      */
-    public function property($slug, $view)
+    public function property($view, $slug = null)
     {
-        $property = Client::setEndpoint("property/{$slug}")
-            ->setHeaders([
-                'Authorization' => session('authenticate.token')
-            ])->get();
+        if ( $slug ) {
+            $property = Client::setEndpoint("property/{$slug}")
+                ->setHeaders([
+                    'Authorization' => session('authenticate.token')
+                ])->get();
+
+        }
 
         return view("developer.property.{$view}", [
-            'property' => (object) $property['contents'],
-            'role' => 'developer'
+            'property' => $slug ? (object) $property['contents'] : (object) null,
+            'validation' => $slug ? UpdateRequest::class : CreateRequest::class 
         ]);
     }
 
@@ -177,7 +180,8 @@ class PropertyController extends Controller
                     ->{$method}('multipart');
 
             if ( ! in_array($response['code'], [200, 201]) ) {
-                throw new \Exception(json_encode($response['contents']), $response['code']);
+                $messages = count($response['contents']) > 0 ? json_encode($response['contents']) : $response['descriptions'];
+                throw new \Exception($messages, $response['code']);
             }
             
         } catch (\Exception $e) {

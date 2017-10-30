@@ -22,7 +22,7 @@
                 isset($property->city_name) ? $property->city_name : old('city_name') 
             ], old('cities'), [
                 'class' => 'select2 cities',
-                'data-option' => old('city_id'),
+                'data-option' => isset($property->city_id) ? $property->city_id : old('city_id'),
                 'data-placeholder' => '-- Pilih Kota --',
             ]) !!}
             {!! Form::hidden('city_name', old('city_name'), ['id' => 'city_name']) !!}
@@ -203,7 +203,7 @@
     <!-- You can edit this script on resouces/asset/js/dropdown.js -->
     <!-- After that you run in console or terminal or cmd "npm run production" -->
     {!! Html::script( 'js/dropdown.min.js' ) !!}
-    {!! JsValidator::formRequest(App\Http\Requests\Developer\Property\CreateRequest::class, '#form-property') !!}
+    {!! JsValidator::formRequest($validation, '#form-property') !!}
 
     <!-- Laravel Javascript Validation -->
     <script type="text/javascript">

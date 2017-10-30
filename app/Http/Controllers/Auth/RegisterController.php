@@ -71,13 +71,14 @@ class RegisterController extends Controller
             $request->merge(compact('first_name', 'last_name'));
 
             $response = Client::setEndpoint('auth/register')
-                ->setBody( $request->only( ['email', 'password', 'first_name', 'last_name','phone'] ) )
+                ->setBody( $request->only( ['email', 'password', 'first_name', 'last_name','mobile_phone'] ) )
                 ->post();
-            // dd($response);
+
             if ($response['code'] == 422) {
                 \Session::flash('flash_message','Email telah digunakan!');
                 return redirect()->back()->withInput();
             }
+            
             $route = 'auth.successed';
         } else {
             $response = Client::setEndpoint("auth/register-{$request->input('register')}")
