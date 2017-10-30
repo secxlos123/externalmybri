@@ -137,19 +137,4 @@ class EformRequest extends FormRequest
 
         return $attributes;
     }
-
-    /**
-     * Get the validator instance for the request.
-     *
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function getValidatorInstance()
-    {
-        $this->merge([
-            'latitude' => $this->get('latitude', '-6.2773'),
-            'longitude' => $this->get('longitude', '106.66101')
-        ]);
-        
-        return parent::getValidatorInstance();
-    }
 }

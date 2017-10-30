@@ -34,10 +34,21 @@ class BaseRequest extends FormRequest
      */
     protected function getValidatorInstance()
     {
+        $this->defaultLatLong();
+        $this->removeFormatCurrency();
+        return parent::getValidatorInstance();
+    }
+
+    /**
+     * Remove format of currency
+     * 
+     * @return void
+     */
+    public function removeFormatCurrency()
+    {
         $requests = $this->all();
 
         foreach ($requests as $key => $request) {
-
             // Remove currency format
             if (in_array($key, $this->currency)) {
                 $requests[$key] = str_replace('.', '', str_replace(',', '.', $request));
@@ -45,6 +56,20 @@ class BaseRequest extends FormRequest
         }
 
         $this->replace($requests);
-        return parent::getValidatorInstance();
+    }
+
+    /**
+     * Set default Latitude or Longitude
+     * 
+     * @return void
+     */
+    public function defaultLatLong()
+    {
+        if ($this->has('latitude') || $this->has('longitude')) {
+            $this->merge([
+                'latitude' => $this->get('latitude', '-6.2773'),
+                'longitude' => $this->get('longitude', '106.66101')
+            ]);
+        }
     }
 }
