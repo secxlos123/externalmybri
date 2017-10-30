@@ -47,8 +47,8 @@ class EformRequest extends FormRequest
             'status_property'   => 'required',
             'appointment_date'  => 'required',
             'request_amount'    => 'required',
-            // 'latitude'          => 'required',
-            // 'longitude'         => 'required',
+            'latitude'          => 'required',
+            'longitude'         => 'required',
             'branch_id'         => 'required',
         ];
     }
@@ -145,7 +145,11 @@ class EformRequest extends FormRequest
      */
     protected function getValidatorInstance()
     {
-        $this->merge(['latitude' => '-6.2773', 'longitude' => '106.66101']);
+        $this->merge([
+            'latitude' => $this->get('latitude', '-6.2773'),
+            'longitude' => $this->get('longitude', '106.66101')
+        ]);
+        
         return parent::getValidatorInstance();
     }
 }
