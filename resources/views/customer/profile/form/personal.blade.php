@@ -3,7 +3,7 @@
 		<div class="panel-heading" data-toggle="collapse" data-target="#profile-customer">
 			<h3 class="panel-title text-uppercase">
 				Data Pribadi
-				
+
 				<div class="pull-right">
 					<i class="fa fa-chevron-down" aria-hidden="true"></i>
 				</div>
@@ -27,7 +27,8 @@
 							<label class="col-md-4 control-label">Nama Depan *</label>
 							<div class="col-md-8">
 								{!! Form::text('first_name', old('first_name'), [
-									'class' => 'form-control'
+									'class' => 'form-control',
+									'style' => "text-transform:uppercase"
 								]) !!}
 							</div>
 						</div>
@@ -36,7 +37,8 @@
 							<label class="col-md-4 control-label">Nama Belakang </label>
 							<div class="col-md-8">
 								{!! Form::text('last_name', old('last_name'), [
-									'class' => 'form-control'
+									'class' => 'form-control',
+									'style' => "text-transform:uppercase"
 								]) !!}
 							</div>
 						</div>
@@ -112,7 +114,7 @@
 									$customer->citizenship_id ?: old('citizenship_id') => $customer->citizenship ?: old('citizenship')
 								], old('citizenship_id'), [
 									'class' => 'form-control select2 citizenships',
-									'data-option' => $customer->citizenship_id ?: old('citizenship_id'), 
+									'data-option' => $customer->citizenship_id ?: old('citizenship_id'),
 									'data-placeholder' => 'Pilih Negara',
 								]) !!}
 							</div>
@@ -191,7 +193,7 @@
 	                        	{!! Form::file('identity', [
 	                                'class' => 'filestyle', 'data-target' => 'ktp_preview',
 	                                'data-buttontext' => 'Unggah', 'data-buttonname' => 'btn-default',
-	                                'data-iconname' => 'fa fa-cloud-upload', 'data-placeholder' => 'Tidak ada file' 
+	                                'data-iconname' => 'fa fa-cloud-upload', 'data-placeholder' => 'Tidak ada file'
 	                            ]) !!}
 	                        </div>
 	                    </div>
@@ -211,7 +213,7 @@
 						</div>
 
 	                @else
-	                    
+
 	                    <div class="col-md-6">
 							<div class="form-group hide ktp_preview">
 		                    	<div class="col-md-12 col-md-offset-2">

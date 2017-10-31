@@ -18,8 +18,8 @@
             {{ $errors->has('city_id') ? ' has-error' : '' }}">
             {!! Form::label('city_id', 'Kota') !!}
             {!! Form::select('city_id', ['' => ''] + [
-                isset($property->city_id) ? $property->city_id : old('city_id') => 
-                isset($property->city_name) ? $property->city_name : old('city_name') 
+                isset($property->city_id) ? $property->city_id : old('city_id') =>
+                isset($property->city_name) ? $property->city_name : old('city_name')
             ], old('cities'), [
                 'class' => 'select2 cities',
                 'data-option' => isset($property->city_id) ? $property->city_id : old('city_id'),
@@ -50,14 +50,28 @@
                 </span>
             @endif
         </div>
+         <div class="single-query form-group bottom20
+            {{ $errors->has('pks_number') ? ' has-error' : '' }}">
+           {!! Form::label('pks_number', 'Nomor PKS') !!}
+            {!! Form::text('pks_number', old('pks_number'), [
+                'class' => 'keyword-input',
+                'placeholder' => 'Nomor PKS'
+            ]) !!}
+
+            @if ($errors->has('pks_number'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('pks_number') }}</strong>
+                </span>
+            @endif
+        </div>
     </div>
     <div class="col-md-5">
         <div class="single-query form-group bottom20
             {{ $errors->has('pic_name') ? ' has-error' : '' }}">
-            {!! Form::label('pic_name', 'Nama Agent / Sales') !!}
+            {!! Form::label('pic_name', 'Nama PIC Project') !!}
             {!! Form::text('pic_name', old('pic_name'), [
                 'class' => 'keyword-input',
-                'placeholder' => 'Masukkan nama agent / sales'
+                'placeholder' => 'Masukkan nama PIC Project'
             ]) !!}
 
             @if ($errors->has('pic_name'))
@@ -68,10 +82,10 @@
         </div>
         <div class="single-query form-group bottom20
             {{ $errors->has('pic_phone') ? ' has-error' : '' }}">
-            {!! Form::label('pic_phone', 'Nomor HP Agent / Sales') !!}
+            {!! Form::label('pic_phone', 'Nomor HP PIC Project') !!}
             {!! Form::text('pic_phone', old('pic_phone'), [
                 'class' => 'keyword-input numeric',
-                'placeholder' => 'Masukkan nomor hp agent / sales',
+                'placeholder' => 'Masukkan nomor hp PIC Project',
                 'maxlength' => 16,
                 'minlength' => 9
             ]) !!}
@@ -87,7 +101,7 @@
             {!! Form::file('photo', [
                 'class' => 'filestyle', 'data-target' => 'ktp_preview',
                 'data-buttontext' => 'Unggah', 'data-buttonname' => 'btn-default',
-                'data-iconname' => 'fa fa-cloud-upload', 'data-placeholder' => 'Tidak ada file' 
+                'data-iconname' => 'fa fa-cloud-upload', 'data-placeholder' => 'Tidak ada file'
             ]) !!}
 
             @if ($errors->has('photo'))
@@ -107,7 +121,7 @@
             </div>
 
         @else
-            
+
             <div class="form-group ktp_preview">
                 {!! Html::image('assets/images/no-image.jpg', 'KTP', [
                     'class' => 'img-responsive', 'id' => 'ktp_preview', 'style' => 'max-height: 300px; width: 100%',
@@ -190,7 +204,7 @@
         }
         label.btn.btn-default {
             padding: 11px;
-        } 
+        }
     </style>
 @endpush
 

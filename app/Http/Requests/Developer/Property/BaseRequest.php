@@ -17,6 +17,7 @@ class BaseRequest extends FormRequest
             'name'      => 'required',
             'city_id'   => 'required',
             'category'  => 'required|in:0,1,2',
+            'pks_number'=> 'required',
             'pic_name'  => 'required',
             'pic_phone' => 'required|numeric|digits_between:9,16',
             'photo'     => 'required|image|max:1024',
