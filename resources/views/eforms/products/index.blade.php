@@ -91,12 +91,15 @@
                 .on('select2:select', set_property);
 
             $year.on('change', function () {
+                console.log('1');
                 if ( $(this).val() > 240 ) {
                     $(this).val(240);
+                    return;
                 }
 
                 if ( $(this).val() < 12) {
                     $(this).val(12);
+                    return;
                 }
             });
 
