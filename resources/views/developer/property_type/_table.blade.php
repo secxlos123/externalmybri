@@ -44,14 +44,14 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-4 control-label">Luas Tanah :</label>
-                                        <div class="col-sm-8">
+                                        <div class="col-sm-8 surface">
                                             <div class="input-group">
                                                 {!! Form::text('min_surface_area', old('min_surface_area'), [
-                                                    'class' => 'form-control min_surface',
+                                                    'class' => 'form-control min_surface numeric',
                                                 ]) !!}
                                                 <span class="input-group-addon">s/d</span>
                                                 {!! Form::text('max_surface_area', old('max_surface_area'), [
-                                                    'class' => 'form-control max_surface',
+                                                    'class' => 'form-control max_surface numeric',
                                                 ]) !!}
                                                 <span class="input-group-addon">m<sup>2</sup></span>
                                             </div>
@@ -59,14 +59,14 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-4 control-label">Luas Bangunan :</label>
-                                        <div class="col-sm-8">
+                                        <div class="col-sm-8 building">
                                             <div class="input-group">
                                                 {!! Form::text('min_building_area', old('min_building_area'), [
-                                                    'class' => 'form-control min_building',
+                                                    'class' => 'form-control min_building numeric',
                                                 ]) !!}
                                                 <span class="input-group-addon">s/d</span>
                                                 {!! Form::text('max_building_area', old('max_building_area'), [
-                                                    'class' => 'form-control max_building',
+                                                    'class' => 'form-control max_building numeric',
                                                 ]) !!}
                                                 <span class="input-group-addon">m<sup>2</sup></span>
                                             </div>
@@ -159,20 +159,69 @@
         });
 
         $certificate.select2({allowClear: true, width: '100%'});
-        $('#btn-filter').on('click', function () { table.fnDraw(); });
-        $min_surface.numeric(null, 0).on('change', set_max);
-        $min_building.numeric(null, 0).on('change', set_max);
+        $('#btn-filter').on('click', function (event) {
+            if (filterRange('building')) {
+                if (filterRange('surface')) {
+                    table.fnDraw();
+                }
+            }
+        });
+        // $min_surface.numeric(null, 0).on('change', set_max);
+        // $min_building.numeric(null, 0).on('change', set_max);
 
-        function set_max(e) {
-            value   = parseInt($(this).val());
-            var min = ! isNaN(value) ? value : null;
-            $max_field = $(e.target).hasClass('min_surface') ? $max_surface : $max_building;
-            $max_field.val(min).numeric(null, min).on('change', set_value_max);
-        }
+        // function set_max(e) {
+        //     value   = parseInt($(this).val());
+        //     var min = ! isNaN(value) ? value : null;
+        //     $max_field = $(e.target).hasClass('min_surface') ? $max_surface : $max_building;
+        //     $max_field.val(min).numeric(null, min).on('change', set_value_max);
+        // }
 
-        function set_value_max(e) {
-            var val = parseInt($(this).val());
-            if (val < value) $(this).val(value).trigger('change');
+        // function set_value_max(e) {
+        //     var val = parseInt($(this).val());
+        //     if (val < value) $(this).val(value).trigger('change');
+        // }
+
+        function filterRange(tag)
+        {
+            if (tag == 'building') {
+                $min_var = $min_building;
+                $max_var = $max_building;
+            }else{
+                $min_var = $min_surface;
+                $max_var = $max_surface;
+            }
+
+            if ($min_var.val()) {
+                if (!$max_var.val()) {
+                    $('div.'+tag+' span.messageError').remove();
+                    $('div.'+tag).append("<span style=\"color:#B0413E;\" class=\"messageError\">Nilai maksimum harus diisi.</span>");
+                    return false;
+                }else{
+                    if ($min_var.val() > $max_var.val()) {
+                        $('div.'+tag+' span.messageError').remove();
+                        $('div.'+tag).append("<span style=\"color:#B0413E;\" class=\"messageError\">Nilai maksimum harus lebih besar dari minimum.</span>");
+                        return false;
+                    }else{
+                        $('div.'+tag+' span.messageError').remove();
+                        return true;
+                    }
+                }
+            }else{
+                if ($max_var.val()) {
+                    $('div.'+tag+' span.messageError').remove();
+                    $('div.'+tag).append("<span style=\"color:#B0413E;\" class=\"messageError\">Nilai Minimum harus diisi.</span>");
+                    return false;
+                }else{
+                    if ($min_var.val() > $max_var.val()) {
+                        $('div.'+tag+' span.messageError').remove();
+                        $('div.'+tag).append("<span style=\"color:#B0413E;\" class=\"messageError\">Nilai maksimum harus lebih besar dari minimum.</span>");
+                        return false;
+                    }else{
+                        $('div.'+tag+' span.messageError').remove();
+                        return true;
+                    }
+                }
+            }
         }
 
     </script>

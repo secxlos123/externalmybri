@@ -2,10 +2,10 @@
 
 <div class="row top20">
     <div class="col-md-5 col-md-offset-1">
-         
+
          <div class="single-query form-group bottom20 {{ $errors->has('property') ? ' has-error' : '' }}">
             {!! Form::label('property', 'Proyek') !!}
-            
+
             @if ( ! isset($unit->property_id) )
                 {!! Form::select('property', ['' => ''], old('property'), [
                     'class' => 'select2 properties',
@@ -13,6 +13,7 @@
                 ]) !!}
             @else
                 {!! Form::text('property_name', old('property_name'), ['class' => 'keyword-input', 'disabled']) !!}
+                {!! Form::hidden('property', @$unit->property_id ,old('property_id')) !!}
             @endif
 
 
@@ -25,7 +26,7 @@
 
         <div class="single-query form-group bottom20 {{ $errors->has('property_type_id') ? ' has-error' : '' }}">
             {!! Form::label('property_type_id', 'Tipe Proyek') !!}
-            
+
             @if ( ! isset($unit->property_type_id) )
                 {!! Form::select('property_type_id', ['' => ''], old('property_type_id'), [
                     'class' => 'select2 property_type',
@@ -100,7 +101,7 @@
             </div>
         @endif
     </div>
-    
+
     <div class="col-md-10 col-md-offset-1">
         <div class="single-query form-group bottom20 {{ $errors->has('address') ? ' has-error' : '' }}">
             {!! Form::label('address', 'Alamat') !!}
