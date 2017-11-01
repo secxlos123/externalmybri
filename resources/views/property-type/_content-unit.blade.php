@@ -7,7 +7,7 @@
             <div class="feature-p-text">
                 <h4>{{$units['property_type_name']}}</h4>
                 <p>{{$units['address']}}</p>
-                <span><b>Status:</b>  {{($units['is_available'] == 1) ? 'Available' : 'Not Available'}}</span><br>
+                <span><b>Status:</b>  {{($units['is_available'] == 1) ? 'Tersedia' : 'Tidak Tersedia'}}</span><br>
                 <div class="button-my-pro-list">
                     <a href="{{ url('rincian-property-unit/'.$units['id']) }}">Rp. {{number_format($units['price'])}}</a>
                 </div>
@@ -16,8 +16,14 @@
         <div class="col-md-2">
             <div class="select-pro-list text-center">
                 <button type="submit" class="btn-blue border_radius">Simulasi KPR</button>
-                <a href="{{ session('authenticate') ? url('eform').'?property_id='.Session::get('prop_id').'&property_name='.Session::get('prop_name').'&property_type_id='.$units['property_type_id'].'&property_type_name='.$units['property_type_name'].'&property_item_id='.$units['id'].'&developer_id='.Session::get('dev_id').'&developer_name='.Session::get('dev_name') : 'javascript:void(0)'}}" class="button-kpr check-login">Ajukan KPR</a>
+                <a href="{{ session('authenticate') ? url('eform').'?property_id='.Session::get('prop_id').'&property_name='.Session::get('prop_name').'&property_type_id='.$units['property_type_id'].'&property_type_name='.$units['property_type_name'].'&property_item_id='.$units['id'].'&developer_id='.$units['developer_id'].'&developer_name='.$units['developer_name'] : 'javascript:void(0)'}}" class="button-kpr {{ session('authenticate') ? '' : 'btn-login'}}">Ajukan KPR</a>
             </div>
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    $('.btn-login').on('click', function(){
+        $('#login-register').modal('show')
+    });
+</script>
