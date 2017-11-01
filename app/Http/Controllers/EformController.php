@@ -141,7 +141,7 @@ class EformController extends Controller
 
     /**
      * This is for mapping data customer if customer have change profile
-     * 
+     *
      * @param  Request $request [description]
      * @return array | throw
      */
@@ -154,12 +154,12 @@ class EformController extends Controller
             $endpoint = 'complete';
             $customer = array_merge($this->simple, $this->complete);
 
-            $request->merge([ 
+            $request->merge([
                 'city' => $request->input('city_id'),
                 'birth_place' => $request->input('birth_place_id'),
                 'citizenship' => $request->input('citizenship_id'),
             ]);
-            
+
             unset( $customer['birth_place_id'], $customer['city_id'], $customer['citizenship_id'] );
         }
 
@@ -168,7 +168,7 @@ class EformController extends Controller
         }
 
         if ( $request->input('status') != '2' ) {
-            unset( 
+            unset(
                 $customer['couple_identity'], $customer['couple_name'], $customer['couple_nik'],
                 $customer['couple_birth_date'], $customer['couple_birth_place_id']
             );
@@ -180,9 +180,9 @@ class EformController extends Controller
     }
 
     /**
-     * This function for execution post to Api 
-     * 
-     * @param  array  $data    
+     * This function for execution post to Api
+     *
+     * @param  array  $data
      * @param  string $endpoint
      * @return array | throw
      */

@@ -191,6 +191,7 @@
                 var rangePrice = $('.rangePrice div.leftLabel').text()+'|'+$('.rangePrice div.rightLabel').text();
                 var rangeLand = $('.rangeLand div.leftLabel').text()+'|'+$('.rangeLand div.rightLabel').text();
                 var rangeBuild = $('.rangeBuild div.leftLabel').text()+'|'+$('.rangeBuild div.rightLabel').text();
+                var type = $('.property_type').val();
                 var category = $('.category').val();
                 var bedroom = $('.bedroom').val();
                 var bathroom = $('.bathroom').val();
@@ -203,7 +204,7 @@
                     bathroom++;
                 }
                 // console.log(bathroom);
-                loadData(1, dev, city, rangePrice, rangeLand, rangeBuild, category, bedroom, bathroom, garage);
+                loadData(1, dev, city, rangePrice, rangeLand, rangeBuild, category, bedroom, bathroom, garage, type);
             });
 
             $('.property_type').empty().dropdown('types');
@@ -239,7 +240,7 @@
             long = position.coords.longitude;
         }
 
-        function loadData(nextPage, dev=null, city=null, price=null, land=null, build=null, category=null, bedroom=null, bathroom=null, garage=null)
+        function loadData(nextPage, dev=null, city=null, price=null, land=null, build=null, category=null, bedroom=null, bathroom=null, garage=null, type=null)
         {
             console.log(price);
             $('.contentProperty').html("");
@@ -259,7 +260,8 @@
                         building: build,
                         bedroom: bedroom,
                         bathroom: bathroom,
-                        carport: garage
+                        carport: garage,
+                        prop_type: type
                     }
             })
             .done(function (response) {
