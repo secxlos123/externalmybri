@@ -109,7 +109,15 @@ class PropertyController extends Controller
                 'dev_id' => ($request->input('dev_id')) ? $request->input('dev_id') : null,
                 'without_independent' => true,
                 'long' => ($request->input('long')) ? $request->input('long') : null,
-                'lat' => ($request->input('lat')) ? $request->input('lat') : null
+                'lat' => ($request->input('lat')) ? $request->input('lat') : null,
+                'price' => ($request->input('price')) ? $request->input('price') : null,
+                'category' => ($request->input('category')) ? $request->input('category') : null,
+                'bedroom' => ($request->input('bedroom')) ? $request->input('bedroom') : null,
+                'bathroom' => ($request->input('bathroom')) ? $request->input('bathroom') : null,
+                'carport' => ($request->input('carport')) ? $request->input('carport') : null,
+                'surface_area' => ($request->input('land')) ? $request->input('land') : null,
+                'building_area' => ($request->input('building')) ? $request->input('building') : null,
+                'prop_type' => ($request->input('prop_type')) ? $request->input('prop_type') : null
             ])
             ->get();
 
@@ -140,14 +148,6 @@ class PropertyController extends Controller
             ->setEndpoint('property/'.$slug)
             ->get();
 
-        if (isset($results['contents']['developer_id']) && isset($results['contents']['developer_name'])) {
-            \Session([
-                'dev_id' => $results['contents']['developer_id'],
-                'dev_name' => $results['contents']['developer_name'],
-                'prop_id' => $results['contents']['id'],
-                'prop_name' => $results['contents']['name']
-                ]);
-        }
         return view("developer.property.show", [
             'property' => (object) $results['contents'],
             'role' => 'customer'
@@ -229,7 +229,7 @@ class PropertyController extends Controller
             ->get();
 
         $unit = (object) $results['contents'];
-        $action = '?property_id='.$unit->property_id.'&property_name='.$unit->property_name.'&property_type_id='.$unit->property_type_id.'&property_type_name='.$unit->property_type_name.'&property_item_id='.$unit->id.'&developer_id='.\Session::get('dev_id').'&developer_name='.\Session::get('dev_name');
+        $action = '?property_id='.$unit->property_id.'&property_name='.$unit->property_name.'&property_type_id='.$unit->property_type_id.'&property_type_name='.$unit->property_type_name.'&property_item_id='.$unit->id.'&developer_id='.$unit->developer_id.'&developer_name='.$unit->developer_name;
 
         return view("developer.property_item.show", [
             'unit' => (object) $results['contents'],
