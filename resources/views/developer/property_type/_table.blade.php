@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-12">
         <div class="add-btn bottom10 top20">
-        
+
             @if ( request()->is('dev/proyek-type') )
                 <a class="btn btn-primary" href="#filter" role="button" data-toggle="collapse">
                     <i class="fa fa-filter"></i> Filter
@@ -12,9 +12,8 @@
                 <i class="fa fa-plus"></i> Tambah Tipe Properti
             </a>
         </div>
-        
-        @if ( request()->is('dev/proyek-type') )
-            <div id="filter" class="collapse bottom20 top20">
+
+            <div id="filter" class="collapse bottom20 top20" {{(request()->is('dev/proyek-type'))? 'hidden' : ''}}>
                 <div class="row">
                     <div class="col-md-6">
                         <div class="panel panel-default">
@@ -82,7 +81,6 @@
                     </div>
                 </div>
             </div>
-        @endif
 
         <table class="table table-striped table-bordered project-list" id="datatable">
             <thead class="bg-blue">
@@ -139,10 +137,10 @@
                         Math.max(0, Math.round(d.start / api.page.len())),
                         api.page.info().pages
                     ) + 1;
-                    
-                    if ($min_surface.val() != '' || $max_surface.val() != '') 
+
+                    if ($min_surface.val() != '' || $max_surface.val() != '')
                         d.surface_area  = $min_surface.val() + '|' + $max_surface.val();
-                    
+
                     if ($min_building.val() != '' || $max_building.val() != '')
                         d.building_area = $min_building.val() + '|' + $max_building.val();
 
