@@ -89,22 +89,38 @@
                                         <i class="fa fa-check"></i>
                                         <p>Luas Tanah (m<sup>2</sup>)</p>
                                         <!-- Set Your Number here. i,e. data-to="56" -->
-                                        <strong data-to="{!! $type->surface_area !!}">0</strong>
+                                        @if ($type->surface_area <= 0)
+                                            <strong>0</strong>
+                                        @else
+                                            <strong data-to="{!! $type->surface_area !!}">0</strong>
+                                        @endif
                                     </div>
                                     <div class="col-md-3 col-sm-4 col-xs-6 counters-item heading_space">
                                         <i class="fa fa-check"></i>
                                         <p>Luas Bangunan (m<sup>2</sup>)</p>
-                                        <strong data-to="{!! $type->building_area !!}">0</strong>
+                                        @if ($type->building_area <= 0)
+                                            <strong>0</strong>
+                                        @else
+                                            <strong data-to="{!! $type->building_area !!}">0</strong>
+                                        @endif
                                     </div>
                                     <div class="col-md-3 col-sm-4 col-xs-6 counters-item heading_space">
                                         <i class="fa fa-check"></i>
                                         <p>Jumlah Lantai</p>
-                                        <strong data-to="{!! $type->floors !!}">0</strong>
+                                        @if ($type->floors <= 0)
+                                            <strong>0</strong>
+                                        @else
+                                            <strong data-to="{!! $type->floors !!}">0</strong>
+                                        @endif
                                     </div>
                                     <div class="col-md-3 col-sm-4 col-xs-6 counters-item heading_space">
                                         <i class="fa fa-check"></i>
                                         <p>Daya Listrik (watt)</p>
-                                        <strong data-to="{!! $type->electrical_power !!}">0</strong>
+                                        @if ($type->electrical_power <= 0)
+                                            <strong>0</strong>
+                                        @else
+                                            <strong data-to="{!! $type->electrical_power !!}">0</strong>
+                                        @endif
                                     </div>
                                 </div>
 
@@ -114,12 +130,20 @@
                                         <i class="fa fa-check"></i>
                                         <p>Kamar Mandi</p>
                                         <!-- Set Your Number here. i,e. data-to="56" -->
-                                        <strong data-to="{!! $type->bathroom !!}">0</strong>
+                                        @if ($type->bathroom <= 0)
+                                            <strong>0</strong>
+                                        @else
+                                            <strong data-to="{!! $type->bathroom !!}">0</strong>
+                                        @endif
                                     </div>
                                     <div class="col-md-3 col-sm-4 col-xs-6 counters-item heading_space">
                                         <i class="fa fa-check"></i>
                                         <p>Kamar Tidur</p>
-                                        <strong data-to="{!! $type->bedroom !!}">0</strong>
+                                        @if ($type->bedroom <= 0)
+                                            <strong>0</strong>
+                                        @else
+                                            <strong data-to="{{ $type->bedroom }}">0</strong>
+                                        @endif
                                     </div>
                                     <div class="col-md-3 col-sm-4 col-xs-6 counters-item heading_space">
                                         <i class="fa {!! $type->carport ? 'fa-check' : 'fa-times' !!}"></i>
