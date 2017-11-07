@@ -165,4 +165,16 @@ Route::group([
 		 */
 		Route::match(['put', 'patch'], '{slug}', 'DeveloperController@update')->name('update');
 	});
+
+	Route::group(['prefix' => 'profile', 'as' => 'profile.'], function () {
+		/**
+		 * This route for handle homepage
+		 */
+		Route::get('/', 'ProfileController@index')->name('index');
+
+		/**
+		 * This route for update of profile developer
+		 */
+		Route::match(['put', 'patch'], 'update', 'ProfileController@update')->name('update');
+	});
 });
