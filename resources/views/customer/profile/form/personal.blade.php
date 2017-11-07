@@ -204,10 +204,13 @@
 	                    <div class="col-md-6">
 							<div class="form-group ktp_preview">
 		                    	<div class="col-md-12 col-md-offset-2">
-		                    		{!! Html::image($customer->identity ?: 'assets/images/no-image.jpg', 'KTP', [
+		                    		{!! Html::image($customer->identity ? $customer->identity : 'assets/images/no-image.jpg', 'KTP', [
 		                                'class' => 'img-responsive', 'width' => 300, 'id' => 'ktp_preview',
 		                                'data-src' => asset('assets/images/no-image.jpg')
 		                            ]) !!}
+		                            @if ( null !== old('nik') )
+		                            	<br/>Harap Upload Ulang Foto KTP
+		                            @endif
 		                    	</div>
 		                    </div>
 						</div>
@@ -221,6 +224,9 @@
 		                                'class' => 'img-responsive', 'width' => 300, 'id' => 'ktp_preview',
 		                                'data-src' => asset('assets/images/no-image.jpg')
 		                            ]) !!}
+		                            @if ( null !== old('nik') )
+		                            	<br/>Harap Upload Ulang Foto KTP
+		                            @endif
 		                    	</div>
 		                    </div>
 						</div>
