@@ -16,11 +16,11 @@ function successMaps(position) {
 }
 
 function errorMaps(msg) {
-    alert('error: ' + msg);
+    console.log(msg);
+    // alert('error: ' + msg);
     // google.maps.event.addDomListener(window, 'load', initialize(107.578095, -6.935808));
     document.getElementById('lat').value = -6.293069;
     document.getElementById('lng').value = 106.667392;
-    google.maps.event.addDomListener(window, 'load', initialize(107.578095, -6.935808));
 }
 
 function initialize(longBase, latBase) {
