@@ -29,7 +29,7 @@
         <div class="map" id="map"></div>
 
         <div class="form-group m-t-20">
-            {!! Form::textarea('address', old('address'), [
+            {!! Form::textarea('address_location', old('address_location'), [
                 'class' => 'form-control', 'id' => 'location',
                 'rows' => 3, 'style' => 'resize: none'
             ]) !!}
@@ -37,9 +37,9 @@
             {!! Form::hidden('latitude', old('latitude'), ['id' => 'lat']) !!}
             {!! Form::hidden('longitude', old('longitude'), ['id' => 'lng']) !!}
 
-            @if ($errors->has('address'))
+            @if ($errors->has('address_location'))
                 <span class="help-block">
-                    <strong>{{ $errors->first('address') }}</strong>
+                    <strong>{{ $errors->first('address_location') }}</strong>
                 </span>
             @endif
         </div>
