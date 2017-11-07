@@ -36,7 +36,8 @@ class BaseRequest extends FormRequest
             'status'           => 'required|in:0,1,2',
             'address_status'   => 'required',
             'mother_name'      => 'required',
-            'identity'         => 'required|image|max:1024'
+            'identity'         => 'required|image|max:1024',
+            'company_name'     => 'required'
         ];
     }
 }
