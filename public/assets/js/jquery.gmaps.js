@@ -9,16 +9,16 @@ function successMaps(position) {
         window
         , 'load'
         , initialize(
-            106.667392//position.coords.longitude
-            , -6.293069//, position.coords.latitude
+            position.coords.longitude
+            , position.coords.latitude
             )
         );
 }
 
 function errorMaps(msg) {
-    alert('error: ' + msg);
-    // google.maps.event.addDomListener(window, 'load', initialize(107.578095, -6.935808));
-    google.maps.event.addDomListener(window, 'load', initialize(107.578095, -6.935808));
+    console.log(msg);
+    document.getElementById('lat').value = -6.217458;
+    document.getElementById('lng').value = 106.813880;
 }
 
 function initialize(longBase, latBase) {
