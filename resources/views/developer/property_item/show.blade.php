@@ -3,7 +3,7 @@
 @section('title', 'Detail Unit')
 
 @section('breadcrumb')
-    @if ($role == 'developer')
+    @if (session('authenticate.role') == 'developer')
 	<h1 class="text-uppercase">Detail Unit</h1>
 	<ol class="breadcrumb text-center">
 	    <li><a href="{!! route('developer.proyek-item.index') !!}">List Unit</a></li>
