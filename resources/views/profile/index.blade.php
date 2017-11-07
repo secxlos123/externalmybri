@@ -69,7 +69,7 @@
     <!-- You can edit this script on resouces/asset/js/dropdown.js -->
     <!-- After that you run in console or terminal or cmd "npm run production" -->
     {!! Html::script('js/dropdown.min.js') !!}
-    {!! JsValidator::formRequest(App\Http\Requests\Developer\Profile\ChangePasswordRequest::class, '#form-change-password-store') !!}
+    {!! JsValidator::formRequest(App\Http\Requests\Developer\Profile\BaseRequest::class, '#form-change-password-store') !!}
 
     <script type="text/javascript">
         $('.datepicker-autoclose').datepicker({
@@ -83,5 +83,6 @@
         $('.positions').dropdown('positions');
         $('.jobs').dropdown('jobs');
     </script>
+    @stack('parent-scripts')
 @endpush
 <!-- This is scripts for this page end-->

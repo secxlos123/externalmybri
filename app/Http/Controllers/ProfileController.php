@@ -20,7 +20,7 @@ class ProfileController extends Controller
                 'Authorization' => session('authenticate.token')
             ])
             ->get();
-        dd($results);
+        // dd($results);
         return view('profile.index', [
             'results' => $results['contents'],
             'type' => 'view'
@@ -92,8 +92,8 @@ class ProfileController extends Controller
             ->setHeaders([
                 'Authorization' => session('authenticate.token')
             ])
-            ->setBody($request->all())
-            ->put();
+            ->setBody(array_to_multipart($request->all()))
+            ->put('multipart');
         // dd($results);
         return redirect()->route('profile.index-profile');;
     }

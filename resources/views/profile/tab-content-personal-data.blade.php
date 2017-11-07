@@ -76,3 +76,7 @@
     </div> -->
 </div>
 {!! Form::close() !!}
+
+@push( 'parent-scripts' )
+    {!! JsValidator::formRequest(App\Http\Requests\Developer\Profile\ChangePasswordRequest::class, '#form-personal-data-customer') !!}
+@endpush
