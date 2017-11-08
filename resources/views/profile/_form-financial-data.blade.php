@@ -3,22 +3,30 @@
         <div class="single-query form-group bottom20">
             <label>Gaji / Pendapatan (*)</label>
             <div class="input-group">
+            @if ($type != 'view')
                 <span class="input-group-addon">Rp</span>
-                {!! Form::text('salary', old('salary'), [
+                {!! Form::text('salary', (old('salary')) ? old('salary') : @$results['financial']['salary'], [
                     'class' => 'form-control numeric currency', 'maxlength' => 15
                 ]) !!}
                 <span class="input-group-addon">,00</span>
+            @else
+                Rp. {{($results['financial']['salary']) ? number_format($results['financial']['salary'], 2) : '0.00'}}
+            @endif
             </div>
 
         </div>
         <div class="single-query form-group bottom20">
             <label>Pendapatan Lain (*)</label>
             <div class="input-group">
+            @if ($type != 'view')
                 <span class="input-group-addon">Rp</span>
-                {!! Form::text('other_salary', old('other_salary'), [
+                {!! Form::text('other_salary', (old('other_salary')) ? old('other_salary') : @$results['financial']['other_salary'], [
                     'class' => 'form-control numeric currency', 'maxlength' => 15
                 ]) !!}
                 <span class="input-group-addon">,00</span>
+            @else
+                Rp. {{($results['financial']['other_salary']) ? number_format($results['financial']['other_salary'], 2) : '0.00'}}
+            @endif
             </div>
         </div>
     </div>
@@ -27,21 +35,29 @@
         <div class="single-query form-group bottom20">
             <label>Angsuran Pinjaman (*)</label>
             <div class="input-group">
+            @if ($type != 'view')
                 <span class="input-group-addon">Rp</span>
-                {!! Form::text('loan_installment', old('loan_installment'), [
+                {!! Form::text('loan_installment', (old('loan_installment')) ? old('loan_installment') : @$results['financial']['loan_installment'], [
                     'class' => 'form-control numeric currency', 'maxlength' => 15
                 ]) !!}
                 <span class="input-group-addon">,00</span>
+            @else
+                Rp. {{($results['financial']['loan_installment']) ? number_format($results['financial']['loan_installment'], 2) : '0.00'}}
+            @endif
             </div>
         </div>
         <div class="single-query form-group bottom20">
             <label>Jumlah Tanggungan (*)</label>
             <div class="input-group">
+            @if ($type != 'view')
                 <span class="input-group-addon">Rp</span>
-                {!! Form::text('dependent_amount', old('dependent_amount'), [
+                {!! Form::text('dependent_amount', (old('dependent_amount')) ? old('dependent_amount') : @$results['financial']['dependent_amount'], [
                     'class' => 'form-control numeric currency', 'maxlength' => 15
                 ]) !!}
                 <span class="input-group-addon">,00</span>
+            @else
+                Rp. {{($results['financial']['dependent_amount']) ? number_format($results['financial']['dependent_amount'], 2) : '0.00'}}
+            @endif
             </div>
         </div>
     </div>

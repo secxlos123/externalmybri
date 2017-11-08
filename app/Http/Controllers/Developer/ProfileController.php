@@ -73,6 +73,7 @@ class ProfileController extends Controller
                 'Authorization' => session('authenticate.token')
             ])
             ->get();
+
         return view('profile.index', [
             'results' => $results['contents'],
             'type' => 'edit'
@@ -86,8 +87,22 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $type)
     {
+        $results = Client::setEndpoint('profile/update/'.$type)
+            ->setHeaders([
+                'Authorization' => session('authenticate.token')
+            ])
+            ->setBody(array_to_multipart($request->all()))
+            ->put('multipart');
+
+        if (isset($results['code']) && $results['code'] == 200) {
+            \Session::flash('flash_message', $results['descriptions']);
+        }else{
+            \Session::flash('error_flash_message', $results['descriptions']);
+        }
+
+        return redirect()->route('developer.profile.index-profile');;
     }
 
     /**

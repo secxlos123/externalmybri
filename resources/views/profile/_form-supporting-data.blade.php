@@ -1,13 +1,41 @@
 <div class="row top20">
     <div class="col-md-6">
         <div class="single-query form-group bottom20">
+            @if ($type != 'view')
             <label>Foto NPWP</label>
-            <img src="{{isset($results['other']['npwp']) ? image_checker($results['other']['npwp']) : image_checker()}}" class="img-responsive" alt="">
+                {!! Form::file('npwp', [
+                    'class' => 'filestyle', 'data-target' => 'npwp_preview',
+                    'data-buttontext' => 'Unggah', 'data-buttonname' => 'btn-default',
+                    'data-iconname' => 'fa fa-cloud-upload', 'data-placeholder' => 'Tidak ada file'
+                ]) !!}
+            @endif
+
+            @if ( isset($results['other']['npwp']) && $results['other']['npwp'])
+
+                <div class="single-query form-group bottom20">
+                    <label>Foto NPWP</label>
+                    {!! Html::image(image_checker($results['other']['npwp']), 'npwp', [
+                        'class' => 'img-responsive', 'width' => 300, 'id' => 'npwp_preview',
+                        'data-src' => asset('assets/images/no-image.jpg')
+                    ]) !!}
+                </div>
+
+            @else
+
+                <div class="single-query form-group bottom20">
+                    <label>Foto NPWP</label>
+                    {!! Html::image(image_checker(), 'npwp', [
+                        'class' => 'img-responsive', 'width' => 300, 'id' => 'npwp_preview',
+                        'data-src' => asset('assets/images/no-image.jpg')
+                    ]) !!}
+                </div>
+
+            @endif
         </div>
     </div>
     <div class="col-md-6">
     </div>
-    @if ($type != 'view'  || session('authenticate.role') != 'developer')
+    @if ($type != 'view')
     <div class="col-md-12">
         <div class="pull-right">
             <a href="{{(session('authenticate.role') == 'developer') ? url('dev/profile') : url('profile')}}" class="btn btn-default waves-light waves-effect w-md m-b-20">Batalkan</a>

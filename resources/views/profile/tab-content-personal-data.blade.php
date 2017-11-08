@@ -39,39 +39,62 @@
     </li> -->
 </ul>
 
-@if (session('authenticate.role') == 'developer')
-    {!! Form::model($results, [
-        'route' => ['developer.profile.update'],
-        'class' => 'callus', 'id' => 'form-personal-data-developer',
-        'enctype' => 'multipart/form-data'
-    ]) !!}
-@else
-    {!! Form::model($results, [
-        'route' => ['profile.update'],
-        'class' => 'callus', 'id' => 'form-personal-data-customer',
-        'enctype' => 'multipart/form-data'
-    ]) !!}
-@endif
 <div class="tab-content no-padding">
     @if (session('authenticate.role') != 'developer')
     <div class="tab-pane active" id="home-b1">
-        @include('profile._form-personal-data')
+        {!! Form::open([
+            'route' => ['profile.update', 'personal'],
+            'class' => 'callus', 'id' => 'form-personal-data-customer-personal',
+            'enctype' => 'multipart/form-data', 'method' => 'PUT'
+        ]) !!}
+            @include('profile._form-personal-data')
+        {!! Form::close() !!}
     </div>
     <div class="tab-pane" id="profile-b1">
-        @include('profile._form-work-data')
+        {!! Form::open([
+            'route' => ['profile.update', 'work'],
+            'class' => 'callus', 'id' => 'form-personal-data-customer-work',
+            'enctype' => 'multipart/form-data', 'method' => 'PUT'
+        ]) !!}
+            @include('profile._form-work-data')
+        {!! Form::close() !!}
     </div>
     <div class="tab-pane" id="messages-b1">
-        @include('profile._form-financial-data')
+        {!! Form::open([
+            'route' => ['profile.update', 'financial'],
+            'class' => 'callus', 'id' => 'form-personal-data-customer-financial',
+            'method' => 'PUT'
+        ]) !!}
+            @include('profile._form-financial-data')
+        {!! Form::close() !!}
     </div>
     <div class="tab-pane" id="contact-b1">
-        @include('profile._form-contact-person')
+        {!! Form::open([
+            'route' => ['profile.update', 'contact'],
+            'class' => 'callus', 'id' => 'form-personal-data-customer-contact',
+            'method' => 'PUT'
+        ]) !!}
+            @include('profile._form-contact-person')
+        {!! Form::close() !!}
     </div>
     <div class="tab-pane" id="support-b1">
-        @include('profile._form-supporting-data')
+        {!! Form::open([
+            'route' => ['profile.update', 'support'],
+            'class' => 'callus', 'id' => 'form-personal-data-customer-support',
+            'enctype' => 'multipart/form-data', 'method' => 'PUT'
+        ]) !!}
+            @include('profile._form-supporting-data')
+        {!! Form::close() !!}
     </div>
     @else
     <div class="tab-pane active" id="home-b1">
-        @include('profile.developer._form-personal-data')
+        {!! Form::model($results, [
+            'route' => ['developer.profile.update', 'personal'],
+            'class' => 'callus', 'id' => 'form-personal-data-developer-personal',
+            'enctype' => 'multipart/form-data', 'method' => 'PUT'
+        ]) !!}
+            @include('profile.developer._form-personal-data')
+        {!! Form::close() !!}
     </div>
     @endif
     <!-- <div class="tab-pane" id="settings-b1">
@@ -82,5 +105,10 @@
 {!! Form::close() !!}
 
 @push( 'parent-scripts' )
-    {!! JsValidator::formRequest(App\Http\Requests\Developer\Profile\BaseRequest::class, '#form-personal-data-customer') !!}
+    {!! JsValidator::formRequest(App\Http\Requests\Developer\Profile\PersonalRequest::class, '#form-personal-data-customer-personal') !!}
+    {!! JsValidator::formRequest(App\Http\Requests\Developer\Profile\WorkRequest::class, '#form-personal-data-customer-work') !!}
+    {!! JsValidator::formRequest(App\Http\Requests\Developer\Profile\FinancialRequest::class, '#form-personal-data-customer-financial') !!}
+    {!! JsValidator::formRequest(App\Http\Requests\Developer\Profile\ContactRequest::class, '#form-personal-data-customer-contact') !!}
+    {!! JsValidator::formRequest(App\Http\Requests\Developer\Profile\SupportRequest::class, '#form-personal-data-customer-support') !!}
+    {!! JsValidator::formRequest(App\Http\Requests\Developer\Profile\Developer\PersonalRequest::class, '#form-personal-data-developer-personal') !!}
 @endpush

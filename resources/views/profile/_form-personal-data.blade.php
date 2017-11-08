@@ -2,7 +2,7 @@
     <div class="col-md-6">
         <div class="single-query form-group bottom20">
             <label>NIK (*)</label>
-            @if ($type != 'view' && session('authenticate.role') != 'developer')
+            @if ($type != 'view')
                 {!! Form::text('nik', (old('nik')) ? old('nik') : @$results['personal']['nik'], [
                     'class' => 'form-control numeric', 'maxlength' => 16,
                 ]) !!}
@@ -12,7 +12,7 @@
         </div>
         <div class="single-query form-group bottom20">
             <label>Nama (*)</label>
-            @if ($type != 'view' && session('authenticate.role') != 'developer')
+            @if ($type != 'view')
                 {!! Form::text('name', @$results['personal']['first_name'].' '.@$results['personal']['last_name'], [
                     'class' => 'form-control',
                     'style' => "text-transform:uppercase;"
@@ -25,7 +25,7 @@
         </div>
         <div class="single-query form-group bottom20">
             <label>Tempat lahir (*)</label>
-            @if ($type != 'view' && session('authenticate.role') != 'developer')
+            @if ($type != 'view')
             {!! Form::select('birth_place_id', [@$results['personal']['birth_place_id'] => @$results['personal']['birth_place_']], old('birth_place_id'), [
                 'class' => 'form-control select2 cities',
                 'data-placeholder' => 'Pilih Kota',
@@ -40,7 +40,7 @@
             <label>Tanggal lahir (*)</label>
             <div>
                 <div class="input-group">
-                    @if ($type != 'view' && session('authenticate.role') != 'developer')
+                    @if ($type != 'view')
                     {!! Form::text('birth_date', (old('birth_date')) ? old('birth_date') : @$results['personal']['birth_date'], [
                     'class' => 'form-control datepicker-autoclose'
                     ]) !!}
@@ -55,7 +55,7 @@
         </div>
         <div class="single-query form-group bottom20">
             <label>Alamat (*)</label>
-            @if ($type != 'view' && session('authenticate.role') != 'developer')
+            @if ($type != 'view')
                 {!! Form::textarea('address', (old('address')) ? old('address') : @$results['personal']['address'], [
                     'class' => 'form-control',
                     'rows'  => 3,
@@ -69,7 +69,7 @@
         </div>
         <div class="single-query form-group bottom20">
             <label>Kota (*)</label>
-            @if ($type != 'view' && session('authenticate.role') != 'developer')
+            @if ($type != 'view')
             {!! Form::select('city_id', ['' => ''], (old('city_id')) ? old('city_id') : @$results['personal']['city_id'], [
                 'class' => 'form-control select2 cities',
                 'data-placeholder' => 'Pilih Kota',
@@ -84,7 +84,7 @@
     <div class="col-md-6">
         <div class="single-query form-group bottom20">
             <label>Jenis Kelamin (*)</label>
-            @if ($type != 'view' && session('authenticate.role') != 'developer')
+            @if ($type != 'view')
             {!! Form::select('gender', [
                 'L' => 'Laki-laki',
                 'P' => 'Perempuan',
@@ -100,7 +100,7 @@
 
         <div class="single-query form-group bottom20">
             <label>Kewarganegaraan (*)</label>
-            @if ($type != 'view' && session('authenticate.role') != 'developer')
+            @if ($type != 'view')
             {!! Form::select('citizenship_id', ['' => ''], (old('citizenship_id')) ? old('citizenship_id') : $results['personal']['citizenship_id'], [
                 'class' => 'form-control select2 citizenships',
                 'data-placeholder' => 'Pilih Negara',
@@ -114,7 +114,7 @@
 
         <div class="single-query form-group bottom20">
             <label>Status Pernikahan (*)</label>
-            @if ($type != 'view' && session('authenticate.role') != 'developer')
+            @if ($type != 'view')
             {!! Form::select('status', [
                 '1' => 'Belum Menikah',
                 '2' => 'Menikah',
@@ -131,7 +131,7 @@
 
         <div class="single-query form-group bottom20">
             <label>Status Tempat Tinggal (*)</label>
-            @if ($type != 'view' && session('authenticate.role') != 'developer')
+            @if ($type != 'view')
             {!! Form::select('address_status', [
                 '0' => 'Milik Sendiri',
                 '1' => 'Milik Orang Tua / Mertua atau Rumah Dinas',
@@ -147,7 +147,7 @@
         </div>
         <div class="single-query form-group bottom20">
             <label>Email</label>
-            @if ($type != 'view' && session('authenticate.role') != 'developer')
+            @if ($type != 'view')
             {!! Form::email('email', (old('email')) ? old('email') : $results['personal']['email'], [
                 'class' => 'form-control', 'readonly', 'style' => 'text-transform: none;'
             ]) !!}
@@ -160,7 +160,7 @@
 
         <div class="single-query form-group bottom20">
             <label>No Telepon</label>
-            @if ($type != 'view' && session('authenticate.role') != 'developer')
+            @if ($type != 'view')
             {!! Form::text('phone', old('phone'), [
                 'class' => 'form-control numeric', 'maxlength' => 16, 'minlength' => 7
             ]) !!}
@@ -173,7 +173,7 @@
 
          <div class="single-query form-group bottom20">
             <label>No Hendphone</label>
-            @if ($type != 'view' && session('authenticate.role') != 'developer')
+            @if ($type != 'view')
             {!! Form::text('mobile_phone', old('mobile_phone'), [
                 'class' => 'form-control numeric', 'maxlength' => 16, 'minlength' => 7
             ]) !!}
@@ -186,7 +186,7 @@
 
         <div class="single-query form-group bottom20">
             <label>Nama Ibu Kandung</label>
-            @if ($type != 'view' && session('authenticate.role') != 'developer')
+            @if ($type != 'view')
             {!! Form::text('mother_name', (old('mother_name')) ? old('mother_name') : @$results['personal']['mother_name'], [
                 'class' => 'form-control'
             ]) !!}
@@ -196,7 +196,7 @@
             </span>
             @endif
         </div>
-        @if ($type != 'view' && session('authenticate.role') != 'developer')
+        @if ($type != 'view')
         <div class="single-query form-group bottom20 has-upload-file">
             <label>Foto KTP</label>
             {!! Form::file('identity', [
@@ -229,7 +229,7 @@
 
         @endif
     </div>
-    @if ($type != 'view' && session('authenticate.role') != 'developer')
+    @if ($type != 'view')
     <div class="col-md-12">
         <div class="pull-right">
             <a href="{{(session('authenticate.role') == 'developer') ? url('dev/profile') : url('profile')}}" class="btn btn-default waves-light waves-effect w-md m-b-20">Batalkan</a>

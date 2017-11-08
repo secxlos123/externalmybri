@@ -69,7 +69,7 @@
         </div>
 
          <div class="single-query form-group bottom20">
-            <label>No Hendphone</label>
+            <label>No Hendphone (*)</label>
             @if ($type != 'view')
             {!! Form::text('mobile_phone', (old('mobile_phone')) ? old('mobile_phone') : @$results['mobile_phone'], [
                 'class' => 'form-control numeric', 'maxlength' => 16, 'minlength' => 7
@@ -83,8 +83,8 @@
 
         @if ($type != 'view')
         <div class="single-query form-group bottom20 has-upload-file">
-            <label>Foto</label>
-            {!! Form::file('identity', [
+            <label>Foto (*)</label>
+            {!! Form::file('image', [
                 'class' => 'filestyle', 'data-target' => 'ktp_preview',
                 'data-buttontext' => 'Unggah', 'data-buttonname' => 'btn-default',
                 'data-iconname' => 'fa fa-cloud-upload', 'data-placeholder' => 'Tidak ada file'
@@ -96,7 +96,7 @@
 
             <div class="single-query form-group bottom20">
                 <label>Foto</label>
-                {!! Html::image(image_checker(), 'Foto', [
+                {!! Html::image(image_checker(@$results['image']), 'Foto', [
                     'class' => 'img-responsive', 'width' => 300, 'id' => 'ktp_preview',
                     'data-src' => asset('assets/images/no-image.jpg')
                 ]) !!}

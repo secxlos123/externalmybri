@@ -20,7 +20,7 @@ class ProfileController extends Controller
                 'Authorization' => session('authenticate.token')
             ])
             ->get();
-        // dd($results);
+
         return view('profile.index', [
             'results' => $results['contents'],
             'type' => 'view'
@@ -86,15 +86,21 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, $type)
     {
-        $results = Client::setEndpoint('profile/update')
+        $results = Client::setEndpoint('profile/update/'.$type)
             ->setHeaders([
                 'Authorization' => session('authenticate.token')
             ])
             ->setBody(array_to_multipart($request->all()))
             ->put('multipart');
-        // dd($results);
+
+        if (isset($results['code']) && $results['code'] == 200) {
+            \Session::flash('flash_message', $results['descriptions']);
+        }else{
+            \Session::flash('error_flash_message', $results['descriptions']);
+        }
+
         return redirect()->route('profile.index-profile');;
     }
 
@@ -128,10 +134,11 @@ class ProfileController extends Controller
             ])
             ->put();
 
-        if (isset($results['code']) && $results['code'] == 400) {
+        if (isset($results['code']) && $results['code'] == 200) {
             \Session::flash('flash_message', $results['descriptions']);
             return redirect()->back();
         }
+        \Session::flash('error_flash_message', $results['descriptions']);
         return redirect()->back()->withInput();
     }
 }

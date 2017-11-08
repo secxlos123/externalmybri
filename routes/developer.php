@@ -185,6 +185,6 @@ Route::group([
 		/**
 		 * This route for update of profile developer
 		 */
-		Route::match(['put', 'patch'], 'update', 'ProfileController@update')->name('update');
+		Route::match(['put', 'patch'], '{type}', 'ProfileController@update')->name('update');
 	});
 });

@@ -15,6 +15,8 @@
                     <h4>&nbsp;</h4>
                     @if(Session::has('flash_message'))
                         <div class="alert alert-success"><em> {!! session('flash_message') !!}</em></div>
+                    @elseif(Session::has('error_flash_message'))
+                        <div class="alert alert-danger"><em> {!! session('error_flash_message') !!}</em></div>
                     @endif
                     <div class="col-md-12 text-center">
                         <div class="agent_wrap profile-saya">

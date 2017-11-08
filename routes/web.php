@@ -100,7 +100,7 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.', 'middleware' => ['auth.
 	/**
 	 * This route for update data personal
 	 */
-	Route::match(['put', 'patch'], 'ProfileController@update')->name('update');
+	Route::match(['put', 'patch'], '{type}', 'ProfileController@update')->name('update');
 });
 
 /**
