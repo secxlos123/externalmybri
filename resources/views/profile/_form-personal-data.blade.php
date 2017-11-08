@@ -211,7 +211,7 @@
 
             <div class="single-query form-group bottom20">
                 <label>Foto KTP</label>
-                {!! Html::image(image_checker($results->identity), 'KTP', [
+                {!! Html::image(image_checker($results['other']['identity']), 'KTP', [
                     'class' => 'img-responsive', 'width' => 300, 'id' => 'ktp_preview',
                     'data-src' => asset('assets/images/no-image.jpg')
                 ]) !!}
