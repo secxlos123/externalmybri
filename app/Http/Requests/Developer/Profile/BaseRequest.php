@@ -26,7 +26,7 @@ class BaseRequest extends FormRequest
         return [
             'nik'              => 'required|numeric|digits:16',
             'first_name'       => 'required',
-            'mobile_phone'     => 'required|alpha_numeric|min:9|max:16',
+            'mobile_phone'     => 'required|numeric|digits_between:9,16',
             'birth_place_id'   => 'required',
             'birth_date'       => 'required|date',
             'address'          => 'required',
