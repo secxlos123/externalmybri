@@ -15,7 +15,7 @@
  * This route grup for developer
  */
 Route::group([
-	'prefix' => 'dev', 'as' => 'developer.', 'namespace' => 'Developer', 'middleware' => ['auth.api']
+	'prefix' => 'dev', 'as' => 'developer.', 'namespace' => 'Developer', 'middleware' => ['auth.api', 'HasAccess:developer']
 ], function () {
 
 	/**
@@ -171,6 +171,16 @@ Route::group([
 		 * This route for handle homepage
 		 */
 		Route::get('/', 'ProfileController@index')->name('index');
+
+		/**
+		 * This route for handle homepage
+		 */
+		Route::get('/ubah', 'ProfileController@edit')->name('edit');
+
+		/**
+		 * This route for send request change password
+		 */
+		Route::post('password/change-password', 'ProfileController@changePassword')->name('change-password');
 
 		/**
 		 * This route for update of profile developer

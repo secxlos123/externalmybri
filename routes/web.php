@@ -79,7 +79,7 @@ Route::get('get-all-properties', 'PropertyController@listProperty')->name('get-l
 /**
  * This route for handle customer profile
  */
-Route::group(['prefix' => 'profile', 'as' => 'profile.', 'middleware' => ['auth.api']], function () {
+Route::group(['prefix' => 'profile', 'as' => 'profile.', 'middleware' => ['auth.api', 'HasAccess:customer']], function () {
 
 	/**
 	 * This route for send request profile data
@@ -100,7 +100,7 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.', 'middleware' => ['auth.
 	/**
 	 * This route for update data personal
 	 */
-	Route::post('/update', 'ProfileController@update')->name('update');
+	Route::match(['put', 'patch'], 'ProfileController@update')->name('update');
 });
 
 /**
