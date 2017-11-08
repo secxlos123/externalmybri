@@ -33,7 +33,7 @@ class BaseRequest extends FormRequest
             'city_id'          => 'required',
             'gender'           => 'required|in:L,P',
             'citizenship_id'   => 'required',
-            'status'           => 'required|in:0,1,2',
+            'status'           => 'required|in:1,2,3',
             'address_status'   => 'required',
             'mother_name'      => 'required',
             'identity'         => 'required|image|max:1024',
