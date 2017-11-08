@@ -19,3 +19,12 @@
     </section>
 @endsection
 
+@push('styles')
+<style type="text/css">
+    footer.footer_third.absolute-fix {
+        bottom: 0px !important;
+        position: absolute;
+        width: -webkit-fill-available;
+    }
+</style>
+@endpush

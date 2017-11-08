@@ -5,6 +5,7 @@
             <span class="hidden-xs">Data Pribadi</span>
         </a>
     </li>
+    @if (session('authenticate.role') != 'developer')
     <li class="">
         <a href="#profile-b1" data-toggle="tab" aria-expanded="true">
             <span class="visible-xs"><i class="fa fa-user"></i></span>
@@ -17,7 +18,6 @@
             <span class="hidden-xs">Data Finansial</span>
         </a>
     </li>
-    @if (session('authenticate.role') != 'developer')
     <li class="">
         <a href="#contact-b1" data-toggle="tab" aria-expanded="false">
             <span class="visible-xs"><i class="fa fa-cog"></i></span>
@@ -53,6 +53,7 @@
     ]) !!}
 @endif
 <div class="tab-content no-padding">
+    @if (session('authenticate.role') != 'developer')
     <div class="tab-pane active" id="home-b1">
         @include('profile._form-personal-data')
     </div>
@@ -62,12 +63,15 @@
     <div class="tab-pane" id="messages-b1">
         @include('profile._form-financial-data')
     </div>
-    @if (session('authenticate.role') != 'developer')
     <div class="tab-pane" id="contact-b1">
         @include('profile._form-contact-person')
     </div>
     <div class="tab-pane" id="support-b1">
         @include('profile._form-supporting-data')
+    </div>
+    @else
+    <div class="tab-pane active" id="home-b1">
+        @include('profile.developer._form-personal-data')
     </div>
     @endif
     <!-- <div class="tab-pane" id="settings-b1">

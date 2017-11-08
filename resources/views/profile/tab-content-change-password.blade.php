@@ -1,4 +1,8 @@
-{!! Form::open(['route' => 'profile.change-password', 'class' => 'callus clearfix', 'id' => 'form-change-password-store']) !!}
+@if (session('authenticate.role') != 'developer')
+    {!! Form::open(['route' => 'profile.change-password', 'class' => 'callus clearfix', 'id' => 'form-change-password-store']) !!}
+@else
+    {!! Form::open(['route' => 'developer.profile.change-password', 'class' => 'callus clearfix', 'id' => 'form-change-password-store']) !!}
+@endif
     <div class="col-md-12">
         <div class="single-query form-group bottom20">
             <label>Password Lama (*)</label>

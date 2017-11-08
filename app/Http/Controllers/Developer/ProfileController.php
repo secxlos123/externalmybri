@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Developer;
 
 use Illuminate\Http\Request;
+use Client;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Developer\Profile\ChangePasswordRequest;
 
 class ProfileController extends Controller
 {
@@ -14,9 +16,14 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        $results = [];
+        $results = Client::setEndpoint('profile')
+            ->setHeaders([
+                'Authorization' => session('authenticate.token')
+            ])
+            ->get();
+        // dd($results);
         return view('profile.index', [
-            'results' => $results,
+            'results' => $results['contents'],
             'type' => 'view'
             ]);
     }
@@ -59,9 +66,17 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit()
     {
-        //
+        $results = Client::setEndpoint('profile')
+            ->setHeaders([
+                'Authorization' => session('authenticate.token')
+            ])
+            ->get();
+        return view('profile.index', [
+            'results' => $results['contents'],
+            'type' => 'edit'
+            ]);
     }
 
     /**
@@ -73,11 +88,6 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $results = [];
-        return view('profile.index', [
-            'results' => $results,
-            'type' => 'edit'
-            ]);
     }
 
     /**
@@ -89,5 +99,32 @@ class ProfileController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * change password with new one.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function changePassword(ChangePasswordRequest $request)
+    {
+        $results = Client::setEndpoint('profile/password')
+            ->setHeaders([
+                'Authorization' => session('authenticate.token')
+            ])
+            ->setQuery([
+                'old_password' => $request->old_password,
+                'password' => $request->password,
+                'password_confirmation' => $request->password_confirmation
+            ])
+            ->put();
+
+        if (isset($results['code']) && $results['code'] == 200) {
+            \Session::flash('flash_message', $results['descriptions']);
+            return redirect()->back();
+        }
+        \Session::flash('flash_message', $results['descriptions']);
+        return redirect()->back()->withInput();
     }
 }

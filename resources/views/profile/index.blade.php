@@ -19,7 +19,11 @@
                     <div class="col-md-12 text-center">
                         <div class="agent_wrap profile-saya">
                             <div class="image img-thumbnail">
+                            @if (session('authenticate.role') != 'developer')
                                 <img src="{{(isset($results['other']['image'])) ? image_checker($results['other']['image']) : image_checker()}}" alt="Agents">
+                            @else
+                                <img src="{{(isset($results['image'])) ? image_checker($results['image']) : image_checker()}}" alt="Agents">
+                            @endif
                             </div>
                         </div>
                         <h3>{!! session('authenticate.fullname') !!}</h3>

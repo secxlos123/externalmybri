@@ -11,7 +11,7 @@
             @endif
         </div>
         <div class="single-query form-group bottom20">
-            <label>Nama Depan (*)</label>
+            <label>Nama (*)</label>
             @if ($type != 'view' && session('authenticate.role') != 'developer')
                 {!! Form::text('name', @$results['personal']['first_name'].' '.@$results['personal']['last_name'], [
                     'class' => 'form-control',
