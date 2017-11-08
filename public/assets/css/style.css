@@ -8113,3 +8113,16 @@ li.has-dropdown {
 .homePage .has-dropdown .has-dropdown-content>ul>li>a:hover {
     background: #f1f1f1;
 }
+.wrapper .tp_overlay {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+.tp_overlay .topbar {
+    background: transparent;
+}
+.tp_overlay .topbar .breadcrumb_top {
+    background-color: #fff;
+}
+.tp_overlay .topbar .breadcrumb_top {
+    padding: 0 0 0 0px;
+}
