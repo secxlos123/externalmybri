@@ -73,7 +73,7 @@ class ProfileController extends Controller
                 'Authorization' => session('authenticate.token')
             ])
             ->get();
-
+        // dd($results);
         return view('profile.index', [
             'results' => $results['contents'],
             'type' => 'edit'
@@ -89,7 +89,7 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $type)
     {
-        $results = Client::setEndpoint('profile/update/'.$type)
+        $results = Client::setEndpoint('profile/update')
             ->setHeaders([
                 'Authorization' => session('authenticate.token')
             ])
