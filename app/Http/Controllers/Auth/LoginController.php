@@ -71,8 +71,18 @@ class LoginController extends Controller
         switch ( session('authenticate.role') ) {
             case 'developer' : return redirect()->route('developer.index');
             case 'customer'  : return $this->redirectIfCustomer();
+            case 'others'    : return redirect()->route('developer.index');
             default : return $this->redirectIfCustomer();
         }
+    }
+    /**
+     * This check if customer have a register complete or not
+     * 
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
+     */
+    protected function redirectIfOther()
+    {
+        return redirect()->route('pihakke3.index');
     }
 
     /**

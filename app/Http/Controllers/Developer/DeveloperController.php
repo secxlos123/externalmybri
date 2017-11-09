@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Developer;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\Developer\Agent\BaseRequest;
+use App\Http\Requests\Developer\Agent\CreateRequest;
+use App\Http\Requests\Developer\Agent\UpdateRequest;
 use App\Http\Controllers\Controller;
 use Client;
 
@@ -27,6 +30,7 @@ class DeveloperController extends Controller
      */
     public function create()
     {
+        config(['jsvalidation.focus_on_error' => true]);
         return view( 'developer.developer.create' );
     }
 
@@ -137,4 +141,11 @@ class DeveloperController extends Controller
         );
         return response()->json($dev['contents']);
     }
+
+    // public function table()
+    // {
+    //     $data = Client::setEndpoint('developer-agent')->setHeaders(['Authorization' => session('authenticate.token')])->get();
+    //     // return $data;
+    //        return view( 'developer.developer.index', compact('data'));
+    // }
 }
