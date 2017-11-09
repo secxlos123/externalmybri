@@ -135,11 +135,11 @@
         <div class="single-query form-group bottom20">
             <label>Status Tempat Tinggal (*)</label>
             @if ($type != 'view')
-            {!! Form::select('address_status_id', [
+            {!! Form::select('address_status', [
                 '0' => 'Milik Sendiri',
                 '1' => 'Milik Orang Tua / Mertua atau Rumah Dinas',
                 '3' => 'Tinggal di Rumah Kontrakan',
-            ], (old('address_status')) ? old('address_status') : $results['personal']['address_status_id'], [
+            ], (old('address_status_id')) ? old('address_status_id') : $results['personal']['address_status_id'], [
                 'class' => 'form-control select2 address_status', 'id'=> 'address_status'
             ]) !!}
             <input type="hidden" name="address_status_name" id="address_status" value="{{@$results['personal']['address_status']}}">
