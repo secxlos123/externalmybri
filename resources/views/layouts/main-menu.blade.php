@@ -32,6 +32,9 @@
             <li><a href="{!! route('developer.proyek-item.index') !!}">Proyek Unit</a></li>
         </ul>
     </li>
+      <li>
+            <a href="{!! route('developer.developer.index') !!}">Developer</a>
+    </li>
 
     <!-- @start You can remove this condition if this module already -->
     @if (false)
