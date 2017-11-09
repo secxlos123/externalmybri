@@ -127,7 +127,7 @@
 									'1' => 'Belum Menikah',
 									'2' => 'Menikah',
 									'3' => 'Janda / Duda',
-								], old('status'), [
+								], (isset($customer->status_id) ? $customer->status_id : old('status')), [
 									'class' => 'form-control select2', 'id' => 'status'
 								]) !!}
 							</div>
@@ -140,7 +140,7 @@
 									'0' => 'Milik Sendiri',
 									'1' => 'Milik Orang Tua / Mertua atau Rumah Dinas',
 									'3' => 'Tinggal di Rumah Kontrakan',
-								], old('address_status'), [
+								], (isset($customer->address_status_id) ? $customer->address_status_id : old('address_status')), [
 									'class' => 'form-control select2',
 								]) !!}
 							</div>
