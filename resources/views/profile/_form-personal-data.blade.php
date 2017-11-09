@@ -91,7 +91,7 @@
                 'L' => 'Laki-laki',
                 'P' => 'Perempuan',
             ], (old('gender')) ? old('gender') : ($results['personal']['gender'] == 'Laki-laki' || $results['personal']['gender'] == 'L') ? 'L' : 'P', [
-                'class' => 'form-control select2', 'id' => 'gender'
+                'class' => 'form-control select2 gender', 'id' => 'gender'
             ]) !!}
             @else
             <span class="form-control" style="border: 0px;">
