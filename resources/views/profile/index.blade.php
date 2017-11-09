@@ -34,7 +34,7 @@
                                 @endif
                             </div>
                         </div>
-                        <h3>{!! session('authenticate.fullname') !!}</h3>
+                        <h3>{!! @$results['personal']['name'] !!}</h3>
                     </div>
 
                     <div class="row">
@@ -44,7 +44,7 @@
                                     <a href="#data-pribadi" data-toggle="tab" aria-expanded="true">DATA PRIBADI</a>
                                 </li>
                                 <li class="">
-                                    <a href="#change-password" data-toggle="tab" aria-expanded="false">Ubah Kata Sandi</a>
+                                    <a href="#change-password" data-toggle="tab" aria-expanded="false">UBAH KATA SANDI</a>
                                 </li>
                             </ul>
                             <div class="tab-content br-n pn">

@@ -92,7 +92,7 @@ class ProfileController extends Controller
             ->setHeaders([
                 'Authorization' => session('authenticate.token')
             ])
-            ->setBody(array_to_multipart($request->all()))
+            ->setBody(array_to_multipart($request->except('birth_place_name', 'city', 'citizenship', 'status_name', 'address_status_name')))
             ->put('multipart');
 
         if (isset($results['code']) && $results['code'] == 200) {

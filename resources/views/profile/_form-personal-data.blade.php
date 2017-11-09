@@ -14,11 +14,10 @@
             <label>Nama (*)</label>
             @if ($type != 'view')
                 {!! Form::text('name', @$results['personal']['first_name'].' '.@$results['personal']['last_name'], [
-                    'class' => 'form-control',
-                    'style' => "text-transform:uppercase;"
+                    'class' => 'form-control'
                 ]) !!}
             @else
-                <span class="form-control" style="border: 0px;text-transform: uppercase;">
+                <span class="form-control" style="border: 0px">
                     {{isset($results['personal']['first_name']) ? $results['personal']['first_name'].' '.$results['personal']['last_name'] : ''}}
                 </span>
             @endif
@@ -26,7 +25,7 @@
         <div class="single-query form-group bottom20">
             <label>Tempat lahir (*)</label>
             @if ($type != 'view')
-            {!! Form::select('birth_place_id', [@$results['personal']['birth_place_id'] => @$results['personal']['birth_place_']], old('birth_place_id'), [
+            {!! Form::select('birth_place_id', [@$results['personal']['birth_place_id'] => @$results['personal']['birth_place']], old('birth_place_id'), [
                 'class' => 'form-control select2 cities birth_place',
                 'data-placeholder' => 'Pilih Kota',
             ]) !!}
@@ -118,14 +117,14 @@
         <div class="single-query form-group bottom20">
             <label>Status Pernikahan (*)</label>
             @if ($type != 'view')
-            {!! Form::select('status_id', [
+            {!! Form::select('status', [
                 '1' => 'Belum Menikah',
                 '2' => 'Menikah',
                 '3' => 'Janda / Duda',
             ], (old('status')) ? old('status') : $results['personal']['status_id'], [
-                'class' => 'form-control select2 status', 'id' => 'status_id'
+                'class' => 'form-control select2 status', 'id' => 'status'
             ]) !!}
-            <input type="hidden" name="status" id="status" value="{{@$results['personal']['status']}}">
+            <input type="hidden" name="status_name" id="status" value="{{@$results['personal']['status']}}">
             @else
             <span class="form-control" style="border: 0px;">
                 {{isset($results['personal']['status']) ? $results['personal']['status'] : ''}}
@@ -140,10 +139,10 @@
                 '0' => 'Milik Sendiri',
                 '1' => 'Milik Orang Tua / Mertua atau Rumah Dinas',
                 '3' => 'Tinggal di Rumah Kontrakan',
-            ], (old('address_status_id')) ? old('address_status_id') : $results['personal']['address_status_id'], [
-                'class' => 'form-control select2 address_status', 'id'=> 'address_status_id'
+            ], (old('address_status')) ? old('address_status') : $results['personal']['address_status_id'], [
+                'class' => 'form-control select2 address_status', 'id'=> 'address_status'
             ]) !!}
-            <input type="hidden" name="address_status" id="address_status" value="{{@$results['personal']['address_status']}}">
+            <input type="hidden" name="address_status_name" id="address_status" value="{{@$results['personal']['address_status']}}">
             @else
             <span class="form-control" style="border: 0px;">
                 {{isset($results['personal']['address_status']) ? $results['personal']['address_status'] : ''}}

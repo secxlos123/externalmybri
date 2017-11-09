@@ -43,4 +43,6 @@
         </div>
     </div>
     @endif
+
+    {!! Form::hidden('cif_number', '-', ['class' => 'form-control']) !!}
 </div>

@@ -29,4 +29,6 @@
 	    , 'data-placeholder' => 'Tidak ada file'
 	]) !!}
 
+	{!! Form::hidden('cif_number', '-', ['class' => 'form-control']) !!}
+
 {!! Form::close() !!}
