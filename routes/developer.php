@@ -148,12 +148,12 @@ Route::group([
 		/**
 		 * This route for showing list Developer of developer
 		 */
-		Route::get('{slug}/detail', 'DeveloperController@show')->name('show');
+		Route::get('edit/{id}', 'DeveloperController@show')->name('show');
 
 		/**
 		 * This route for showing list Developer of developer
 		 */
-		Route::get('{slug}/edit', 'DeveloperController@edit')->name('edit');
+		Route::put('/{slug}', 'DeveloperController@update')->name('update');
 
 		/**
 		 * This route for showing list Developer of developer
@@ -161,9 +161,20 @@ Route::group([
 		Route::get('tambah', 'DeveloperController@create')->name('create');
 
 		/**
+		 * This route for showing list Developer of developer
+		 */
+		Route::get('tables', 'DeveloperController@table')->name('table');
+
+		/**
 		 * This route for showing list developer of developer
 		 */
 		Route::match(['put', 'patch'], '{slug}', 'DeveloperController@update')->name('update');
+
+		/**
+		* This route for banned agent developer
+		*/
+		Route::put('banned/{id}', 'DeveloperController@deactive')->name('deactive');
+
 	});
 
 	Route::group(['prefix' => 'profile', 'as' => 'profile.'], function () {

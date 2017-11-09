@@ -3,20 +3,21 @@
 @section('title', 'Rubah Developer')
 
 @section('breadcrumb')
-    <h1 class="text-uppercase">Rubah Developer</h1>
+    <h1 class="text-uppercase">Rubah Data Agen Developer</h1>
     <p>Kelola developer anda di sini.</p>
     <ol class="breadcrumb text-center">
         <li><a href="{!! route('developer.proyek.index') !!}">List Developer</a></li>
-        <li class="active">Rubah Developer</li>
+        <li class="active">Rubah Data Agen Developer</li>
     </ol>
 @endsection
 
 @section( 'content' )
-    <section id="property" class="padding listing1">
+    <section class="padding listing1">
         <div class="container">
-            {!! Form::model($property, [
+        <?php $id = $data['contents']['userdeveloper']['user_id'] ;?>
+            {!! Form::model($data, [
                 'route' => ['developer.developer.update', $id],
-                'class' => 'callus submit_property', 'id' => 'form-property',
+                'class' => 'callus submit_property', 'id' => 'form-property-edit',
                 'enctype' => 'multipart/form-data', 'method' => 'PUT'
             ]) !!}
                 <div class="row">
@@ -27,7 +28,7 @@
                                 <h3 class="panel-title text-uppercase">Data Developer</h3>
                             </div>
                             <div class="panel-body">
-                                @include( 'developer.property._form', [ 'property' => $property ] )
+                                @include( 'developer.developer._form', [ 'developer' => $data ] )
                             </div>
                         </div>
                     </div>
@@ -49,11 +50,17 @@
 @endpush
 
 @push( 'scripts' )
+    <script src="{{asset('assets/js/bootstrap-datepicker.min.js')}}"></script>
+    <script src="{{asset('assets/js/jquery.date-pickers.init.js')}}"></script>
     <!-- You can edit this script on resouces/asset/js/dropdown.js -->
     <!-- After that you run in console or terminal or cmd "npm run production" -->
-    {!! JsValidator::formRequest(App\Http\Requests\Developer\Property\CreateRequest::class, '#form-property') !!}
+    {!! JsValidator::formRequest(App\Http\Requests\Developer\Agent\CreateRequest::class, '#form-property-edit') !!}
 
     <!-- Laravel Javascript Validation -->
     <script type="text/javascript">
+    $( ".datepicker-date-born" ).datepicker({dateFormat: 'yyyy-mm-dd', endDate: '-17y'});
+    </script>
+    <script type="text/javascript">
+    $( ".datepicker-date-join" ).datepicker({dateFormat: 'yyyy-mm-dd'});
     </script>
 @endpush

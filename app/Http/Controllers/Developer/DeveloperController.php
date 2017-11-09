@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Developer;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\Developer\Agent\BaseRequest;
+use App\Http\Requests\Developer\Agent\CreateRequest;
+use App\Http\Requests\Developer\Agent\UpdateRequest;
 use App\Http\Controllers\Controller;
 use Client;
 
@@ -15,9 +18,11 @@ class DeveloperController extends Controller
      */
     public function index(Request $request)
     {
-        if ( $request->ajax() ) return $this->datatables($request);
+        // if ( $request->ajax() ) return $this->datatables($request);
 
-        return view( 'developer.developer.index' );
+        // return view( 'developer.developer.index' );
+          $data = Client::setEndpoint('developer-agent')->setHeaders(['Authorization' => session('authenticate.token')])->get();
+        return view( 'developer.developer.index', compact('data'));
     }
 
     /**
@@ -27,6 +32,7 @@ class DeveloperController extends Controller
      */
     public function create()
     {
+        config(['jsvalidation.focus_on_error' => true]);
         return view( 'developer.developer.create' );
     }
 
@@ -56,7 +62,12 @@ class DeveloperController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = Client::setEndpoint('developer-agent/'.$id)
+                ->setHeaders([
+                    'Authorization' => session('authenticate.token')
+                    ])   
+                ->get();
+        return view('developer.developer.edit', compact('data'));
     }
 
     /**
@@ -79,13 +90,14 @@ class DeveloperController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $input = $request->all();
         $client = Client::setEndpoint('developer-agent/'.$id)
             ->setHeaders([
                 'Authorization' => session('authenticate.token')
             ])
-            ->setBody($request->all())
+            ->setBody($input)
             ->put();
-        // dd($client);
+       
         return redirect()->route('developer.developer.index');
     }
 
@@ -137,4 +149,21 @@ class DeveloperController extends Controller
         );
         return response()->json($dev['contents']);
     }
+    /**
+     * This Function for Deactive and Active user login
+     * @param Request $request
+     * @return \Illuminate\Http\Response
+     */
+     public function deactive(Request $request, $id)
+     { 
+        $userid = $request->all();
+        $client = Client::setEndpoint('developer-agent/banned/'.$id)
+                ->setHeaders([
+                    'Authorization' => session('authenticate.token')
+                    ])
+                ->setBody($userid)
+                ->put();
+                return redirect()->route('developer.developer.index');
+
+     }
 }
