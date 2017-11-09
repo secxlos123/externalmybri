@@ -82,7 +82,7 @@
                                     <div class="col-md-8">
                                         <div class="input-group">
                                             <span class="input-group-addon">Rp</span>
-                                            {!! Form::text('salary_couple', old('salary_couple'), [
+                                            {!! Form::text('couple_salary', old('couple_salary'), [
                                                 'class' => 'form-control numeric currency', 'maxlength' => 15
                                             ]) !!}
                                         </div>
@@ -93,7 +93,7 @@
                                     <div class="col-md-8">
                                         <div class="input-group">
                                             <span class="input-group-addon">Rp</span>
-                                            {!! Form::text('other_salary_couple', old('other_salary_couple'), [
+                                            {!! Form::text('couple_other_salary', old('couple_other_salary'), [
                                                 'class' => 'form-control numeric currency', 'maxlength' => 15
                                             ]) !!}
                                         </div>
@@ -106,7 +106,7 @@
                                     <div class="col-md-7">
                                         <div class="input-group">
                                             <span class="input-group-addon">Rp</span>
-                                            {!! Form::text('loan_installment_couple', old('loan_installment_couple'), [
+                                            {!! Form::text('couple_loan_installment', old('couple_loan_installment'), [
                                                 'class' => 'form-control numeric currency', 'maxlength' => 15
                                             ]) !!}
                                         </div>

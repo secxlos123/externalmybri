@@ -60,8 +60,8 @@ return [
         'loan_installment'  => 'Angsuran Pinjaman Lainnya',
         'dependent_amount'  => 'Jumlah Tanggungan',
         'is_join'           => 'Joint Income',
-        'salary_couple'     => 'Gaji / Pendapatan',
-        'other_salary_couple' => 'Pendapatan Lain',
-        'loan_installment_couple' => 'Angsuran Pinjaman Lainnya',
+        'couple_salary'     => 'Gaji / Pendapatan',
+        'couple_other_salary' => 'Pendapatan Lain',
+        'couple_loan_installment' => 'Angsuran Pinjaman Lainnya',
     ]
 ];

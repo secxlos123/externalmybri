@@ -29,8 +29,8 @@ class EformController extends Controller
     protected $complete = [
         'birth_place', 'work_field','work_type', 'work', 'company_name', 'position', 'office_address',
         'salary', 'other_salary', 'loan_installment', 'dependent_amount', 'emergency_name',
-        'emergency_contact', 'emergency_relation', 'city', 'work_duration', 'phone', 'salary_couple',
-        'other_salary_couple', 'loan_installment_couple', 'work_duration_month', 'work_duration',
+        'emergency_contact', 'emergency_relation', 'city', 'work_duration', 'phone', 'couple_salary',
+        'couple_other_salary', 'couple_loan_installment', 'work_duration_month', 'work_duration',
         'citizenship_id', 'citizenship', 'work_field_name', 'work_type_name', 'work_name', 'position', 'position_name'
     ];
 

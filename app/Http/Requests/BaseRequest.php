@@ -13,8 +13,8 @@ class BaseRequest extends FormRequest
      */
     protected $currency = [
         'price', 'request_amount', 'down_payment', 'salary', 'other_salary', 
-        'loan_installment', 'dependent_amount', 'salary_couple', 'other_salary_couple',
-        'loan_installment_couple'
+        'loan_installment', 'dependent_amount', 'couple_salary', 'couple_other_salary',
+        'couple_loan_installment'
     ];
 
     /**

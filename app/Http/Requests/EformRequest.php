@@ -111,9 +111,9 @@ class EformRequest extends FormRequest
             'emergency_name'    => 'required_if:selector,0',
             'emergency_contact' => 'required_if:selector,0|numeric|digits_between:9,16',
             'emergency_relation'=> 'required_if:selector,0',
-            'salary_couple'     => 'required_with:is_join',
-            'other_salary_couple' => 'required_with:is_join',
-            'loan_installment_couple' => 'required_with:is_join',
+            'couple_salary'     => 'required_with:is_join',
+            'couple_other_salary' => 'required_with:is_join',
+            'couple_loan_installment' => 'required_with:is_join',
         ];
     }
 
