@@ -149,12 +149,6 @@
             var value = $(this).select2('data')[0]['text'];
             $('#address_status').attr('value', value);
         });
-        $('.gender').on('change', function () {
-            var value = $(this).select2('data')[0]['text'];
-            $('#gender').attr('value', value);
-        });
-
-
 
     </script>
 @endpush

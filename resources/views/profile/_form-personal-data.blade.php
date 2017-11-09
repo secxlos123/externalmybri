@@ -87,13 +87,12 @@
         <div class="single-query form-group bottom20">
             <label>Jenis Kelamin (*)</label>
             @if ($type != 'view')
-            {!! Form::select('gender_id', [
+            {!! Form::select('gender', [
                 'L' => 'Laki-laki',
                 'P' => 'Perempuan',
             ], (old('gender')) ? old('gender') : ($results['personal']['gender'] == 'Laki-laki' || $results['personal']['gender'] == 'L') ? 'L' : 'P', [
-                'class' => 'form-control select2 gender', 'id' => 'gender_id'
+                'class' => 'form-control select2', 'id' => 'gender'
             ]) !!}
-            <input type="hidden" name="gender" id="gender" value="{{@$results['personal']['gender']}}">
             @else
             <span class="form-control" style="border: 0px;">
                 {{isset($results['personal']['gender']) ? $results['personal']['gender'] : ''}}
