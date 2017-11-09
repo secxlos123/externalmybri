@@ -29,7 +29,6 @@
                 'class' => 'form-control select2 cities birth_place',
                 'data-placeholder' => 'Pilih Kota',
             ]) !!}
-            <input type="hidden" name="birth_place" id="birth_place" value="{{@$results['personal']['birth_place']}}">
             @else
             <span class="form-control" style="border: 0px;">
                 {{isset($results['personal']['birth_place']) ? $results['personal']['birth_place'] : ''}}
@@ -74,7 +73,6 @@
                 'class' => 'form-control select2 cities city',
                 'data-placeholder' => 'Pilih Kota',
             ]) !!}
-            <input type="hidden" name="city" id="city_text" value="{{@$results['personal']['city']}}">
             @else
             <span class="form-control" style="border: 0px;">
                 {{isset($results['personal']['city']) ? $results['personal']['city'] : ''}}
@@ -124,7 +122,6 @@
             ], (old('status')) ? old('status') : $results['personal']['status_id'], [
                 'class' => 'form-control select2 status', 'id' => 'status'
             ]) !!}
-            <input type="hidden" name="status_name" id="status" value="{{@$results['personal']['status']}}">
             @else
             <span class="form-control" style="border: 0px;">
                 {{isset($results['personal']['status']) ? $results['personal']['status'] : ''}}
@@ -142,7 +139,6 @@
             ], (old('address_status_id')) ? old('address_status_id') : $results['personal']['address_status_id'], [
                 'class' => 'form-control select2 address_status', 'id'=> 'address_status'
             ]) !!}
-            <input type="hidden" name="address_status_name" id="address_status" value="{{@$results['personal']['address_status']}}">
             @else
             <span class="form-control" style="border: 0px;">
                 {{isset($results['personal']['address_status']) ? $results['personal']['address_status'] : ''}}
