@@ -21,11 +21,17 @@
                     <div class="col-md-12 text-center">
                         <div class="agent_wrap profile-saya">
                             <div class="image img-thumbnail">
-                            @if (session('authenticate.role') != 'developer')
-                                <img src="{{(isset($results['other']['image'])) ? image_checker($results['other']['image']) : image_checker()}}" alt="Agents">
-                            @else
-                                <img src="{{(isset($results['image'])) ? image_checker($results['image']) : image_checker()}}" alt="Agents">
-                            @endif
+                                @if ($type != 'view')
+                                    @include('profile._form-avatar-data')
+
+                                @else
+                                    @if (session('authenticate.role') != 'developer')
+                                        <img src="{{(isset($results['other']['image'])) ? image_checker($results['other']['image']) : image_checker()}}" alt="Agents">
+                                    @else
+                                        <img src="{{(isset($results['image'])) ? image_checker($results['image']) : image_checker()}}" alt="Agents">
+                                    @endif
+
+                                @endif
                             </div>
                         </div>
                         <h3>{!! session('authenticate.fullname') !!}</h3>
@@ -89,6 +95,16 @@
         $('.positions').dropdown('positions');
         $('.jobs').dropdown('jobs');
         $('.jobFields').dropdown('job-fields');
+    </script>
+
+    <script type="text/javascript">
+        $(document).on('click', '#image_preview', function(){
+            $("input[name='image']").click();
+        });
+
+        $(document).on('change', 'input[name="image"]', function(){
+            $("#form-personal-data-customer-avatar").submit();
+        });
     </script>
     @stack('parent-scripts')
 @endpush
