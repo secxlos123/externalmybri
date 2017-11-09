@@ -3,7 +3,7 @@
 @section('title', 'Detail Proyek Tipe')
 
 @section('breadcrumb')
-    @if ($role)
+    @if (session('authenticate.role') == 'developer')
 	<h1 class="text-uppercase">Detail Proyek Tipe</h1>
 	<ol class="breadcrumb text-center">
 	    <li><a href="{!! route('developer.proyek-type.index') !!}">List Proyek Tipe</a></li>
@@ -162,7 +162,7 @@
                         <!-- @todo to update relation with user cause pic is user have account -->
                         {{-- @include('developer.fake-pic') --}}
                         <!-- @endtodo to update relation with user cause pic is user have account -->
-                        @if ($role == 'developer')
+                        @if (session('authenticate.role') == 'developer')
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="panel panel-blue">
@@ -194,7 +194,7 @@
 
 @push('scripts')
     @stack('parent-script')
-    @if ($role == 'customer')
+    @if (session('authenticate.role') != 'developer')
         @include('property-type.script-code')
     @endif
 @endpush

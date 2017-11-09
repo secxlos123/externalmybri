@@ -40,8 +40,8 @@ class EformController extends Controller
      * @var array
      */
     protected $eform = [
-        'product_type', 'status_property', 'developer', 'property', 'price', 'building_area', 'home_location', 'year',
-        'active_kpr', 'dp', 'request_amount', 'nik', 'branch_id', 'appointment_date', 'address', 'longitude', 'latitude'
+        'product_type', 'status_property', 'developer', 'developer_name', 'property', 'property_name', 'price', 'building_area', 'home_location', 'year',
+        'active_kpr', 'dp', 'request_amount', 'nik', 'branch_id', 'appointment_date', 'address_location', 'longitude', 'latitude'
     ];
 
     /**
@@ -80,7 +80,7 @@ class EformController extends Controller
     public function store(EformRequest $request)
     {
         try {
-
+            \Log::info($request->all());
             if (session('authenticate.role') == 'customer') {
                 // This is update customer data if customer created eform
                 $customer = $this->registered($request);
@@ -188,6 +188,9 @@ class EformController extends Controller
      */
     public function postToApi(array $data, $endpoint)
     {
+        if (isset($data['address_location'])) {
+            $data['address'] = $data['address_location'];
+        }
         $response = Client::setEndpoint($endpoint)
             ->setHeaders(['Authorization' => session('authenticate.token')])
             ->setBody(array_to_multipart($data))

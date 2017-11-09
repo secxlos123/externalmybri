@@ -12,7 +12,7 @@
 <div class="tp_overlay">
 
     <!-- Top menu -->
-    <div class="topbar clearfix">
+    <div class="topbar clearfix homePage">
         @include('layouts.top-menu')
     </div>
     <!-- Top menu end -->

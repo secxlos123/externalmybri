@@ -15,7 +15,7 @@
  * This route grup for developer
  */
 Route::group([
-	'prefix' => 'dev', 'as' => 'developer.', 'namespace' => 'Developer', 'middleware' => ['auth.api']
+	'prefix' => 'dev', 'as' => 'developer.', 'namespace' => 'Developer', 'middleware' => ['auth.api', 'HasAccess:developer']
 ], function () {
 
 	/**
@@ -175,5 +175,27 @@ Route::group([
 		*/
 		Route::put('banned/{id}', 'DeveloperController@deactive')->name('deactive');
 
+	});
+
+	Route::group(['prefix' => 'profile', 'as' => 'profile.'], function () {
+		/**
+		 * This route for handle homepage
+		 */
+		Route::get('/', 'ProfileController@index')->name('index');
+
+		/**
+		 * This route for handle homepage
+		 */
+		Route::get('/ubah', 'ProfileController@edit')->name('edit');
+
+		/**
+		 * This route for send request change password
+		 */
+		Route::post('password/change-password', 'ProfileController@changePassword')->name('change-password');
+
+		/**
+		 * This route for update of profile developer
+		 */
+		Route::match(['put', 'patch'], '{type}', 'ProfileController@update')->name('update');
 	});
 });

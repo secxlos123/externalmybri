@@ -17,7 +17,7 @@
             </div>
         </div>
 
-        <div id="office-area" {!! $errors->has('branch_id') ? '' : 'hidden' !!}>
+        <div id="office-area" {!! null !== old('branch_name') ? '' : 'hidden' !!}>
             {!! Form::hidden('branch_name', old('branch_name'), ['id' => 'branch_name']) !!}
             <div class="form-group col-md-12">
                 <label class="control-label">Kantor Cabang BRI *</label>
@@ -33,7 +33,7 @@
             <div class="form-group col-md-12">
                 <label class="control-label">Alamat Kantor Cabang BRI</label>
                 {!! Form::textarea('branch_office_address', old('branch_office_address'), [
-                    'class' => 'form-control', 'rows' => 3, 'style' => 'resize: none', 'disabled', 'id' => 'branch_office_address'
+                    'class' => 'form-control', 'rows' => 3, 'style' => 'resize: none', 'readonly', 'id' => 'branch_office_address'
                 ]) !!}
             </div>
         </div>

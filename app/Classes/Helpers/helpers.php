@@ -28,10 +28,12 @@ if (! function_exists('array_to_multipart')) {
                     $attribute['contents'] = fopen($value->getRealPath(), 'r');
                 } else if ( in_array($key, $dates) ) {
                     $attribute['contents'] = date('Y-m-d', strtotime($value));
+                } else if ( in_array($attribute['name'], ['salary', 'other_salary', 'loan_installment', 'dependent_amount']) ) {
+                    $attribute['contents'] = str_replace('.', '' , $value);
                 } else {
                     $attribute['contents'] = $value;
                 }
-            
+
                 $requests[] = $attribute;
             }
         }
@@ -115,7 +117,7 @@ if (! function_exists('image_checker')) {
     function image_checker($path = null)
     {
         if (is_null($path)) {
-            return $link="https://mybri-api.stagingapps.net/img/noimage.jpg";
+            return $link=env('API_URL')."/img/noimage.jpg";
         }else{
             return $path;
         }

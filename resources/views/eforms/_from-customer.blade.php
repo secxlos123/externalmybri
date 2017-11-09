@@ -1,3 +1,9 @@
+@if ( null !== old('selector') )
+	@php( $checked = old('selector') )
+@else
+	@php( $checked = 1 )
+@endif
+
 <fieldset id="simple-data">
 	<div class="row">
 		@include('customer.profile.form.personal')
@@ -13,7 +19,7 @@
 		<div class="panel panel-blue">
 			<div class="panel-heading" data-toggle="collapse" data-target="#demo">
 				<h3 class="panel-title text-uppercase">
-					Pengisian Kelengkapan Data : <b class="btn-pilih"></b>
+					Pengisian Kelengkapan Data : <b class="btn-pilih">{{ $checked == 1 ? 'Isi data dibantu oleh petugas' : 'Isi data sendiri' }}</b>
 
 					<div class="pull-right">
 						<i class="fa fa-chevron-down" aria-hidden="true"></i>
@@ -37,13 +43,13 @@
 									<div class="row for-charginG-data form-group">
 										<ul>
 											<li style="display: inline-block;">
-												<input type="radio" id="full" value="0" name="selector" class="options">
+												<input type="radio" id="full" value="0" name="selector" class="options" {{ $checked == 0 ? 'checked' : '' }} >
 												<label for="full">Isi data sendiri</label>
 												<div class="radiobutton"></div>
 											</li>
 
 											<li style="display: inline-block;">
-												<input type="radio" id="medium" checked="checked" value="1" name="selector" class="options">
+												<input type="radio" id="medium" value="1" name="selector" class="options" {{ $checked == 1 ? 'checked' : '' }}>
 												<label for="medium">Isi data dibantu oleh petugas</label>
 												<div class="radiobutton"></div>
 											</li>
@@ -60,7 +66,7 @@
 	</div>
 </div>
 
-<fieldset id="complete-data" hidden disabled>
+<fieldset id="complete-data" {{ $checked == 1 ? 'hidden' : '' }} disabled>
 	<div class="row">
 		@include('customer.profile.form.employee')
 	</div>
@@ -117,6 +123,10 @@
 				$('#complete-data').removeAttr('hidden disabled');
 			}
 		});
+
+		@if ($checked == 0)
+			$('#complete-data').removeAttr('hidden disabled');
+		@endif
 
 		$('#status').on('change', current_status_customer);
 		
