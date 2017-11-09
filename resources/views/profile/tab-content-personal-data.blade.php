@@ -111,4 +111,50 @@
     {!! JsValidator::formRequest(App\Http\Requests\Developer\Profile\ContactRequest::class, '#form-personal-data-customer-contact') !!}
     {!! JsValidator::formRequest(App\Http\Requests\Developer\Profile\SupportRequest::class, '#form-personal-data-customer-support') !!}
     {!! JsValidator::formRequest(App\Http\Requests\Developer\Profile\Developer\PersonalRequest::class, '#form-personal-data-developer-personal') !!}
+    <script type="text/javascript">
+        $('.jobFields').on('change', function () {
+            var value = $(this).select2('data')[0]['name'];
+            $('#work_field').attr('value', value);
+        });
+        $('.work_type').on('change', function () {
+            var value = $(this).select2('data')[0]['name'];
+            $('#work_type').attr('value', value);
+        });
+        $('.jobs').on('change', function () {
+            var value = $(this).select2('data')[0]['name'];
+            $('#work_job').attr('value', value);
+        });
+        $('.positions').on('change', function () {
+            var value = $(this).select2('data')[0]['name'];
+            $('#position').attr('value', value);
+        });
+
+        $('.birth_place').on('change', function () {
+            var value = $(this).select2('data')[0]['name'];
+            $('#birth_place').attr('value', value);
+        });
+        $('.city').on('change', function () {
+            var value = $(this).select2('data')[0]['name'];
+            $('#city_text').attr('value', value);
+        });
+        $('.citizenships').on('change', function () {
+            var value = $(this).select2('data')[0]['name'];
+            $('#citizenship').attr('value', value);
+        });
+        $('.status').on('change', function () {
+            var value = $(this).select2('data')[0]['text'];
+            $('#status').attr('value', value);
+        });
+        $('.address_status').on('change', function () {
+            var value = $(this).select2('data')[0]['text'];
+            $('#address_status').attr('value', value);
+        });
+        $('.gender').on('change', function () {
+            var value = $(this).select2('data')[0]['text'];
+            $('#gender').attr('value', value);
+        });
+
+
+
+    </script>
 @endpush

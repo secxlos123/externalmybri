@@ -7,6 +7,7 @@
                 'class' => 'form-control select2 work_type',
                 'data-placeholder' => 'Pilih Jenis Pekerjaan',
             ]) !!}
+            <input type="hidden" name="type" id="work_type">
             @else
             <span class="form-control" style="border: 0px;">
                 {{isset($results['work']['type']) ? $results['work']['type'] : ''}}
@@ -20,6 +21,7 @@
                 'class' => 'form-control select2 jobs',
                 'data-placeholder' => 'Pilih Pekerjaan',
             ]) !!}
+            <input type="hidden" name="work" id="work_job">
             @else
             <span class="form-control" style="border: 0px;">
                 {{isset($results['work']['work']) ? $results['work']['work'] : ''}}
@@ -46,6 +48,7 @@
                 'class' => 'form-control select2 positions',
                 'data-placeholder' => 'Pilih Jabatan',
             ]) !!}
+            <input type="hidden" name="position" id="position">
             @else
             <span class="form-control" style="border: 0px;">
                 {{isset($results['work']['position']) ? $results['work']['position'] : ''}}
@@ -53,15 +56,16 @@
             @endif
         </div>
         <div class="single-query form-group bottom20">
-            <label>Kewarganegaraan (*)</label>
+            <label>Bidang Pekerjaan (*)</label>
             @if ($type != 'view')
-            {!! Form::select('citizenship_id', ['' => ''], old('citizenship_id'), [
-                'class' => 'form-control select2 citizenships',
-                'data-placeholder' => 'Pilih Negara',
+            {!! Form::select('work_field_id', ['' => ''], old('work_field_id'), [
+                'class' => 'form-control select2 jobFields',
+                'data-placeholder' => 'Pilih Bidang',
             ]) !!}
+            <input type="hidden" name="work_field" id="work_field">
             @else
             <span class="form-control" style="border: 0px;">
-                {{isset($results['personal']['citizenship']) ? $results['personal']['citizenship'] : ''}}
+                {{isset($results['personal']['work_field']) ? $results['personal']['work_field'] : ''}}
             </span>
             @endif
         </div>

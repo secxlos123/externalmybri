@@ -82,12 +82,13 @@
             format: 'dd-mm-yyyy',
             autoclose: true,
         });
-        $('#address_status, #status, #gender').select2();
+        $('.address_status, .status, .gender').select2();
         $('.cities').dropdown('cities');
         $('.citizenships').dropdown('citizenships');
         $('.work_type').dropdown('job-types');
         $('.positions').dropdown('positions');
         $('.jobs').dropdown('jobs');
+        $('.jobFields').dropdown('job-fields');
     </script>
     @stack('parent-scripts')
 @endpush
