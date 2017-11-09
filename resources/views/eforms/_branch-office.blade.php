@@ -17,7 +17,7 @@
             </div>
         </div>
 
-        <div id="office-area" {!! $errors->has('branch_id') ? '' : 'hidden' !!}>
+        <div id="office-area" {!! null !== old('branch_name') ? '' : 'hidden' !!}>
             {!! Form::hidden('branch_name', old('branch_name'), ['id' => 'branch_name']) !!}
             <div class="form-group col-md-12">
                 <label class="control-label">Kantor Cabang BRI *</label>
@@ -33,7 +33,7 @@
             <div class="form-group col-md-12">
                 <label class="control-label">Alamat Kantor Cabang BRI</label>
                 {!! Form::textarea('branch_office_address', old('branch_office_address'), [
-                    'class' => 'form-control', 'rows' => 3, 'style' => 'resize: none', 'disabled', 'id' => 'branch_office_address'
+                    'class' => 'form-control', 'rows' => 3, 'style' => 'resize: none', 'readonly', 'id' => 'branch_office_address'
                 ]) !!}
             </div>
         </div>
@@ -47,7 +47,7 @@
             -webkit-appearance: none;
             width: 100%;
             height: 15px;
-            border-radius: 5px;   
+            border-radius: 5px;
             background: #d3d3d3;
             outline: none;
             opacity: 0.7;
@@ -60,7 +60,7 @@
             appearance: none;
             width: 25px;
             height: 25px;
-            border-radius: 50%; 
+            border-radius: 50%;
             background: #4CAF50;
             cursor: pointer;
         }
@@ -78,7 +78,7 @@
 @push( 'parent-scripts' )
     <script type="text/javascript">
         $lat = $('#lat');
-        $long = $('#long');
+        $long = $('#lng');
         $range = $('#range');
         $offices = $('.offices');
         $office_area = $('#office-area');
@@ -93,10 +93,11 @@
 
         $('.btn-find').on('click', function () {
             $office_area.removeAttr('hidden');
+
             $offices.dropdown('offices', {
                 lat  : $lat.val(),
                 long : $long.val(),
-                distance : $distance_office.val(),
+                distance : $distance_office.text(),
             })
             .on('select2:select', function (e) {
                 var data = e.params.data;

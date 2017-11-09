@@ -17,5 +17,5 @@ a.button-kpr {
 }
 
 a.button-kpr:hover {
-	background-color: #1f1d22;
+	background-color: #1f1d22 !important;
 }

@@ -10,7 +10,7 @@
             <p><span>Tersedia:</span>{{ $types['items']}} Unit <span>|</span> <span>Harga:</span> Rp {{number_format($types['price'], 2)}}</p>
             <p class="bottom20"></p>
             <a class="btn-more" href="{{ url('rincian-property-type/'.$types['slug']) }}">
-                <i>{!! Html::image('assets/images/arrowl.png', 'arrow') !!}</i><span>Lihat Detail</span><i>{!! Html::image('assets/images/arrowr.png', 'arrow') !!}</i>
+                <i>{!! Html::image('assets/images/arrowl.png', 'arrow') !!}</i><span>Lihat Unit Property</span><i>{!! Html::image('assets/images/arrowr.png', 'arrow') !!}</i>
             </a>
         </div>
     </div>

@@ -3,7 +3,7 @@
 @section('title', 'Detail Proyek Tipe')
 
 @section('breadcrumb')
-    @if ($role)
+    @if (session('authenticate.role') == 'developer')
 	<h1 class="text-uppercase">Detail Proyek Tipe</h1>
 	<ol class="breadcrumb text-center">
 	    <li><a href="{!! route('developer.proyek-type.index') !!}">List Proyek Tipe</a></li>
@@ -53,14 +53,14 @@
                             <div id="property-d-1" class="owl-carousel single">
                                 @foreach ($type->photos as $photo)
                                     <div class="item">
-                                        {!! Html::image($photo, 'image') !!}
+                                        {!! Html::image(image_checker($photo), 'image') !!}
                                     </div>
                                 @endforeach
                             </div>
                             <div id="property-d-1-2" class="owl-carousel single">
                                 @foreach ($type->photos as $photo)
                                     <div class="item">
-                                        {!! Html::image($photo, 'image') !!}
+                                        {!! Html::image(image_checker($photo), 'image') !!}
                                     </div>
                                 @endforeach
                             </div>
@@ -89,22 +89,38 @@
                                         <i class="fa fa-check"></i>
                                         <p>Luas Tanah (m<sup>2</sup>)</p>
                                         <!-- Set Your Number here. i,e. data-to="56" -->
-                                        <strong data-to="{!! $type->surface_area !!}">0</strong>
+                                        @if ($type->surface_area <= 0)
+                                            <strong>0</strong>
+                                        @else
+                                            <strong data-to="{!! $type->surface_area !!}">0</strong>
+                                        @endif
                                     </div>
                                     <div class="col-md-3 col-sm-4 col-xs-6 counters-item heading_space">
                                         <i class="fa fa-check"></i>
                                         <p>Luas Bangunan (m<sup>2</sup>)</p>
-                                        <strong data-to="{!! $type->building_area !!}">0</strong>
+                                        @if ($type->building_area <= 0)
+                                            <strong>0</strong>
+                                        @else
+                                            <strong data-to="{!! $type->building_area !!}">0</strong>
+                                        @endif
                                     </div>
                                     <div class="col-md-3 col-sm-4 col-xs-6 counters-item heading_space">
                                         <i class="fa fa-check"></i>
                                         <p>Jumlah Lantai</p>
-                                        <strong data-to="{!! $type->floors !!}">0</strong>
+                                        @if ($type->floors <= 0)
+                                            <strong>0</strong>
+                                        @else
+                                            <strong data-to="{!! $type->floors !!}">0</strong>
+                                        @endif
                                     </div>
                                     <div class="col-md-3 col-sm-4 col-xs-6 counters-item heading_space">
                                         <i class="fa fa-check"></i>
                                         <p>Daya Listrik (watt)</p>
-                                        <strong data-to="{!! $type->electrical_power !!}">0</strong>
+                                        @if ($type->electrical_power <= 0)
+                                            <strong>0</strong>
+                                        @else
+                                            <strong data-to="{!! $type->electrical_power !!}">0</strong>
+                                        @endif
                                     </div>
                                 </div>
 
@@ -114,12 +130,20 @@
                                         <i class="fa fa-check"></i>
                                         <p>Kamar Mandi</p>
                                         <!-- Set Your Number here. i,e. data-to="56" -->
-                                        <strong data-to="{!! $type->bathroom !!}">0</strong>
+                                        @if ($type->bathroom <= 0)
+                                            <strong>0</strong>
+                                        @else
+                                            <strong data-to="{!! $type->bathroom !!}">0</strong>
+                                        @endif
                                     </div>
                                     <div class="col-md-3 col-sm-4 col-xs-6 counters-item heading_space">
                                         <i class="fa fa-check"></i>
                                         <p>Kamar Tidur</p>
-                                        <strong data-to="{!! $type->bedroom !!}">0</strong>
+                                        @if ($type->bedroom <= 0)
+                                            <strong>0</strong>
+                                        @else
+                                            <strong data-to="{{ $type->bedroom }}">0</strong>
+                                        @endif
                                     </div>
                                     <div class="col-md-3 col-sm-4 col-xs-6 counters-item heading_space">
                                         <i class="fa {!! $type->carport ? 'fa-check' : 'fa-times' !!}"></i>
@@ -138,7 +162,7 @@
                         <!-- @todo to update relation with user cause pic is user have account -->
                         {{-- @include('developer.fake-pic') --}}
                         <!-- @endtodo to update relation with user cause pic is user have account -->
-                        @if ($role == 'developer')
+                        @if (session('authenticate.role') == 'developer')
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="panel panel-blue">
@@ -170,7 +194,7 @@
 
 @push('scripts')
     @stack('parent-script')
-    @if ($role == 'customer')
+    @if (session('authenticate.role') != 'developer')
         @include('property-type.script-code')
     @endif
 @endpush

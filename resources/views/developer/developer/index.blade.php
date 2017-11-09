@@ -3,7 +3,7 @@
 @section('title', 'Manajemen Developer')
 
 @section('breadcrumb')
-	<h1 class="text-uppercase">Manajemen Developer</h1>
+	<h1 class="text-uppercase">Manajemen Agen Developer</h1>
 	<p>Kelola Developer anda di sini.</p>
 	<ol class="breadcrumb text-center">
 	    <li><a href="{!! url('/') !!}">Dashboard</a></li>

@@ -3,7 +3,7 @@
 @section('title', 'Detail Unit')
 
 @section('breadcrumb')
-    @if ($role == 'developer')
+    @if (session('authenticate.role') == 'developer')
 	<h1 class="text-uppercase">Detail Unit</h1>
 	<ol class="breadcrumb text-center">
 	    <li><a href="{!! route('developer.proyek-item.index') !!}">List Unit</a></li>
@@ -74,10 +74,12 @@
                         </div>
                         </div>
 
-                        <div class="btn-group btn-group-justified m-b-10">
-                            <a class="btn waves-effect waves-light btn-lg agree" role="button">Simulasi KPR</a>
-                            <a class="btn waves-effect waves-light btn-lg disagree button-ajukan" role="button" href="{{ session('authenticate') ? url('eform').$action : 'javascript:void(0)'}}">Ajukan KPR</a>
-                        </div>
+                        @if (session('authenticate.role') != 'developer')
+                            <div class="btn-group btn-group-justified m-b-10">
+                                <a class="btn waves-effect waves-light btn-lg agree" role="button">Simulasi KPR</a>
+                                <a class="btn waves-effect waves-light btn-lg disagree {{ session('authenticate') ? '' : 'btn-sign'}}" role="button" href="{{ session('authenticate') ? url('eform').$action : 'javascript:void(0)'}}">Ajukan KPR</a>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -87,13 +89,7 @@
 @endsection
 
 @push('styles')
-
 @endpush
 
 @push('scripts')
-    <script type="text/javascript">
-        $('.button-ajukan').on('click', function(){
-            if (true) {}
-        });
-    </script>
 @endpush

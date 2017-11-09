@@ -3,7 +3,7 @@
 		<div class="panel-heading" data-toggle="collapse" data-target="#profile-customer">
 			<h3 class="panel-title text-uppercase">
 				Data Pribadi
-				
+
 				<div class="pull-right">
 					<i class="fa fa-chevron-down" aria-hidden="true"></i>
 				</div>
@@ -27,7 +27,8 @@
 							<label class="col-md-4 control-label">Nama Depan *</label>
 							<div class="col-md-8">
 								{!! Form::text('first_name', old('first_name'), [
-									'class' => 'form-control'
+									'class' => 'form-control',
+									'style' => "text-transform:uppercase"
 								]) !!}
 							</div>
 						</div>
@@ -36,7 +37,8 @@
 							<label class="col-md-4 control-label">Nama Belakang </label>
 							<div class="col-md-8">
 								{!! Form::text('last_name', old('last_name'), [
-									'class' => 'form-control'
+									'class' => 'form-control',
+									'style' => "text-transform:uppercase"
 								]) !!}
 							</div>
 						</div>
@@ -112,7 +114,7 @@
 									$customer->citizenship_id ?: old('citizenship_id') => $customer->citizenship ?: old('citizenship')
 								], old('citizenship_id'), [
 									'class' => 'form-control select2 citizenships',
-									'data-option' => $customer->citizenship_id ?: old('citizenship_id'), 
+									'data-option' => $customer->citizenship_id ?: old('citizenship_id'),
 									'data-placeholder' => 'Pilih Negara',
 								]) !!}
 							</div>
@@ -125,7 +127,7 @@
 									'1' => 'Belum Menikah',
 									'2' => 'Menikah',
 									'3' => 'Janda / Duda',
-								], old('status'), [
+								], (isset($customer->status_id) ? $customer->status_id : old('status')), [
 									'class' => 'form-control select2', 'id' => 'status'
 								]) !!}
 							</div>
@@ -138,7 +140,7 @@
 									'0' => 'Milik Sendiri',
 									'1' => 'Milik Orang Tua / Mertua atau Rumah Dinas',
 									'3' => 'Tinggal di Rumah Kontrakan',
-								], old('address_status'), [
+								], (isset($customer->address_status_id) ? $customer->address_status_id : old('address_status')), [
 									'class' => 'form-control select2',
 								]) !!}
 							</div>
@@ -191,7 +193,7 @@
 	                        	{!! Form::file('identity', [
 	                                'class' => 'filestyle', 'data-target' => 'ktp_preview',
 	                                'data-buttontext' => 'Unggah', 'data-buttonname' => 'btn-default',
-	                                'data-iconname' => 'fa fa-cloud-upload', 'data-placeholder' => 'Tidak ada file' 
+	                                'data-iconname' => 'fa fa-cloud-upload', 'data-placeholder' => 'Tidak ada file'
 	                            ]) !!}
 	                        </div>
 	                    </div>
@@ -202,16 +204,19 @@
 	                    <div class="col-md-6">
 							<div class="form-group ktp_preview">
 		                    	<div class="col-md-12 col-md-offset-2">
-		                    		{!! Html::image($customer->identity ?: 'assets/images/no-image.jpg', 'KTP', [
+		                    		{!! Html::image($customer->identity ? $customer->identity : 'assets/images/no-image.jpg', 'KTP', [
 		                                'class' => 'img-responsive', 'width' => 300, 'id' => 'ktp_preview',
 		                                'data-src' => asset('assets/images/no-image.jpg')
 		                            ]) !!}
+		                            @if ( null !== old('nik') )
+		                            	<br/>Harap Upload Ulang Foto KTP
+		                            @endif
 		                    	</div>
 		                    </div>
 						</div>
 
 	                @else
-	                    
+
 	                    <div class="col-md-6">
 							<div class="form-group hide ktp_preview">
 		                    	<div class="col-md-12 col-md-offset-2">
@@ -219,6 +224,9 @@
 		                                'class' => 'img-responsive', 'width' => 300, 'id' => 'ktp_preview',
 		                                'data-src' => asset('assets/images/no-image.jpg')
 		                            ]) !!}
+		                            @if ( null !== old('nik') )
+		                            	<br/>Harap Upload Ulang Foto KTP
+		                            @endif
 		                    	</div>
 		                    </div>
 						</div>

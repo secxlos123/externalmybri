@@ -37,7 +37,7 @@
 
             });
         }
-        $('.check-login').on('click', function(){
+        $('.btn-sign').on('click', function(){
             $('#login-register').modal('show');
         });
     });

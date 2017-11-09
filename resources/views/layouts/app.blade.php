@@ -46,7 +46,8 @@
         && ! request()->is('eform/sukses')
         && ! request()->is('activated')
         && ! request()->is('password/success')
-        && ! request()->is('rincian-produk') )
+        && ! request()->is('rincian-produk')
+        && ! request()->is('daftar-proyek') )
 
         <section class="page-banner padding bg_light">
             <div class="container">

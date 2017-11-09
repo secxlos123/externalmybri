@@ -49,6 +49,7 @@ class EformRequest extends FormRequest
             'request_amount'    => 'required',
             'latitude'          => 'required',
             'longitude'         => 'required',
+            'address_location'  => 'required',
             'branch_id'         => 'required',
         ];
     }

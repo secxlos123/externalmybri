@@ -77,6 +77,33 @@ Route::get('daftar-proyek', 'PropertyController@pageProperty')->name('all-proper
 Route::get('get-all-properties', 'PropertyController@listProperty')->name('get-list-property');
 
 /**
+ * This route for handle customer profile
+ */
+Route::group(['prefix' => 'profile', 'as' => 'profile.', 'middleware' => ['auth.api', 'HasAccess:customer']], function () {
+
+	/**
+	 * This route for send request profile data
+	 */
+	Route::get('/', 'ProfileController@index')->name('index-profile');
+
+	/**
+	 * This route for send request change password
+	 */
+	Route::post('password/change-password', 'ProfileController@changePassword')->name('change-password');
+
+	/**
+	 * This route to show field edit data profile
+	 */
+	Route::get('/ubah', 'ProfileController@edit')->name('edit');
+
+
+	/**
+	 * This route for update data personal
+	 */
+	Route::match(['put', 'patch'], '{type}', 'ProfileController@update')->name('update');
+});
+
+/**
  * This route grup for authenticate
  */
 Route::group(['namespace' => 'Auth', 'as' => 'auth.'], function () {
@@ -136,4 +163,5 @@ Route::group(['namespace' => 'Auth', 'as' => 'auth.'], function () {
 	 * This route for send request login
 	 */
 	Route::delete('logout', 'LoginController@logout')->name('logout');
+
 });

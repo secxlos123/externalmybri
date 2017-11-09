@@ -17,9 +17,8 @@ class EformController extends Controller
      * @var array
      */
     protected $simple = [
-        'nik', 'first_name', 'last_name', 'birth_place_id', 'birth_date', 'address', 'city_id', 'gender',
-        'citizenship_id', 'status', 'address_status', 'mobile_phone', 'mother_name', 'identity', 'couple_nik',
-        'couple_name', 'couple_birth_place_id', 'couple_birth_date', 'couple_identity', 'is_simple'
+        'nik', 'first_name', 'last_name', 'birth_place_id', 'birth_date', 'address', 'city_id', 'gender', 'status', 'address_status', 'mobile_phone', 'mother_name', 'identity', 'couple_nik',
+        'couple_name', 'couple_birth_place_id', 'couple_birth_date', 'couple_identity', 'is_simple', 'work_field','work_type', 'work', 'work_field_name', 'work_type_name', 'work_name', 'position', 'position_name', 'citizenship_id', 'citizenship'
     ];
 
     /**
@@ -30,8 +29,9 @@ class EformController extends Controller
     protected $complete = [
         'birth_place', 'work_field','work_type', 'work', 'company_name', 'position', 'office_address',
         'salary', 'other_salary', 'loan_installment', 'dependent_amount', 'emergency_name',
-        'emergency_contact', 'emergency_relation', 'citizenship', 'city', 'work_duration', 'phone', 'salary_couple',
-        'other_salary_couple', 'loan_installment_couple', 'work_duration_month', 'work_duration'
+        'emergency_contact', 'emergency_relation', 'city', 'work_duration', 'phone', 'salary_couple',
+        'other_salary_couple', 'loan_installment_couple', 'work_duration_month', 'work_duration',
+        'citizenship_id', 'citizenship', 'work_field_name', 'work_type_name', 'work_name', 'position', 'position_name'
     ];
 
     /**
@@ -40,8 +40,8 @@ class EformController extends Controller
      * @var array
      */
     protected $eform = [
-        'product_type', 'status_property', 'developer', 'property', 'price', 'building_area', 'home_location', 'year',
-        'active_kpr', 'dp', 'request_amount', 'nik', 'branch_id', 'appointment_date', 'address', 'longitude', 'latitude'
+        'product_type', 'status_property', 'developer', 'developer_name', 'property', 'property_name', 'price', 'building_area', 'home_location', 'year',
+        'active_kpr', 'dp', 'request_amount', 'nik', 'branch_id', 'appointment_date', 'address_location', 'longitude', 'latitude'
     ];
 
     /**
@@ -80,7 +80,7 @@ class EformController extends Controller
     public function store(EformRequest $request)
     {
         try {
-
+            \Log::info($request->all());
             if (session('authenticate.role') == 'customer') {
                 // This is update customer data if customer created eform
                 $customer = $this->registered($request);
@@ -141,7 +141,7 @@ class EformController extends Controller
 
     /**
      * This is for mapping data customer if customer have change profile
-     * 
+     *
      * @param  Request $request [description]
      * @return array | throw
      */
@@ -153,14 +153,6 @@ class EformController extends Controller
         } else {
             $endpoint = 'complete';
             $customer = array_merge($this->simple, $this->complete);
-
-            $request->merge([ 
-                'city' => $request->input('city_id'),
-                'birth_place' => $request->input('birth_place_id'),
-                'citizenship' => $request->input('citizenship_id'),
-            ]);
-            
-            unset( $customer['birth_place_id'], $customer['city_id'], $customer['citizenship_id'] );
         }
 
         if ( $request->input('is_simple') == '1' || ! $request->file('identity') ) {
@@ -168,7 +160,7 @@ class EformController extends Controller
         }
 
         if ( $request->input('status') != '2' ) {
-            unset( 
+            unset(
                 $customer['couple_identity'], $customer['couple_name'], $customer['couple_nik'],
                 $customer['couple_birth_date'], $customer['couple_birth_place_id']
             );
@@ -180,14 +172,17 @@ class EformController extends Controller
     }
 
     /**
-     * This function for execution post to Api 
-     * 
-     * @param  array  $data    
+     * This function for execution post to Api
+     *
+     * @param  array  $data
      * @param  string $endpoint
      * @return array | throw
      */
     public function postToApi(array $data, $endpoint)
     {
+        if (isset($data['address_location'])) {
+            $data['address'] = $data['address_location'];
+        }
         $response = Client::setEndpoint($endpoint)
             ->setHeaders(['Authorization' => session('authenticate.token')])
             ->setBody(array_to_multipart($data))

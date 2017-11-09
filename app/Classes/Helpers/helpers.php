@@ -19,19 +19,23 @@ if (! function_exists('array_to_multipart')) {
         $requests = []; $is_array = [];
 
         foreach ($array as $key => $value) {
-            $attribute['name'] = $parent ? "{$parent}[{$key}]" : $key;
+            if ( ! is_null($value) ) {
+                $attribute['name'] = $parent ? "{$parent}[{$key}]" : $key;
 
-            if ( is_array($value) ) {
-                $is_array = array_to_multipart($value, $key);
-            } else if ( is_file($value) ) {
-                $attribute['contents'] = fopen($value->getRealPath(), 'r');
-            } else if ( in_array($key, $dates) ) {
-                $attribute['contents'] = date('Y-m-d', strtotime($value));
-            } else {
-                $attribute['contents'] = $value;
+                if ( is_array($value) ) {
+                    $is_array = array_to_multipart($value, $key);
+                } else if ( is_file($value) ) {
+                    $attribute['contents'] = fopen($value->getRealPath(), 'r');
+                } else if ( in_array($key, $dates) ) {
+                    $attribute['contents'] = date('Y-m-d', strtotime($value));
+                } else if ( in_array($attribute['name'], ['salary', 'other_salary', 'loan_installment', 'dependent_amount']) ) {
+                    $attribute['contents'] = str_replace('.', '' , $value);
+                } else {
+                    $attribute['contents'] = $value;
+                }
+
+                $requests[] = $attribute;
             }
-            
-            $requests[] = $attribute;
         }
 
         return array_merge_recursive($requests, $is_array);
@@ -113,9 +117,30 @@ if (! function_exists('image_checker')) {
     function image_checker($path = null)
     {
         if (is_null($path)) {
-            return $link="https://mybri-api.stagingapps.net/img/noimage.jpg";
+            return $link=env('API_URL')."/img/noimage.jpg";
         }else{
             return $path;
         }
+    }
+}
+
+if (! function_exists('sd')) {
+
+    /**
+     * Dump the passed variables and end the script.
+     *
+     * @param  mixed
+     * @return void
+     */
+    function sd(...$args)
+    {
+        echo "<pre>";
+
+        foreach ($args as $x) {
+            print_r($x);
+            echo PHP_EOL;
+        }
+
+        die(1);
     }
 }
