@@ -168,6 +168,7 @@
 					$(`${value.hidden}`).val(data.name);
 				})
 				.on('select2:unselect', function (e) {
+					var data = e.params.data;
 					console.log(value.hidden, data);
 					$(`${value.hidden}`).val('');
 				})
