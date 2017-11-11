@@ -14,11 +14,10 @@
             <label>Nama (*)</label>
             @if ($type != 'view')
                 {!! Form::text('name', @$results['personal']['first_name'].' '.@$results['personal']['last_name'], [
-                    'class' => 'form-control',
-                    'style' => "text-transform:uppercase;"
+                    'class' => 'form-control'
                 ]) !!}
             @else
-                <span class="form-control" style="border: 0px;text-transform: uppercase;">
+                <span class="form-control" style="border: 0px">
                     {{isset($results['personal']['first_name']) ? $results['personal']['first_name'].' '.$results['personal']['last_name'] : ''}}
                 </span>
             @endif
@@ -26,11 +25,10 @@
         <div class="single-query form-group bottom20">
             <label>Tempat lahir (*)</label>
             @if ($type != 'view')
-            {!! Form::select('birth_place_id', [@$results['personal']['birth_place_id'] => @$results['personal']['birth_place_']], old('birth_place_id'), [
+            {!! Form::select('birth_place_id', [@$results['personal']['birth_place_id'] => @$results['personal']['birth_place']], old('birth_place_id'), [
                 'class' => 'form-control select2 cities birth_place',
                 'data-placeholder' => 'Pilih Kota',
             ]) !!}
-            <input type="hidden" name="birth_place" id="birth_place" value="{{@$results['personal']['birth_place']}}">
             @else
             <span class="form-control" style="border: 0px;">
                 {{isset($results['personal']['birth_place']) ? $results['personal']['birth_place'] : ''}}
@@ -75,7 +73,6 @@
                 'class' => 'form-control select2 cities city',
                 'data-placeholder' => 'Pilih Kota',
             ]) !!}
-            <input type="hidden" name="city" id="city_text" value="{{@$results['personal']['city']}}">
             @else
             <span class="form-control" style="border: 0px;">
                 {{isset($results['personal']['city']) ? $results['personal']['city'] : ''}}
@@ -118,14 +115,13 @@
         <div class="single-query form-group bottom20">
             <label>Status Pernikahan (*)</label>
             @if ($type != 'view')
-            {!! Form::select('status_id', [
+            {!! Form::select('status', [
                 '1' => 'Belum Menikah',
                 '2' => 'Menikah',
                 '3' => 'Janda / Duda',
             ], (old('status')) ? old('status') : $results['personal']['status_id'], [
-                'class' => 'form-control select2 status', 'id' => 'status_id'
+                'class' => 'form-control select2 status', 'id' => 'status'
             ]) !!}
-            <input type="hidden" name="status" id="status" value="{{@$results['personal']['status']}}">
             @else
             <span class="form-control" style="border: 0px;">
                 {{isset($results['personal']['status']) ? $results['personal']['status'] : ''}}
@@ -136,14 +132,13 @@
         <div class="single-query form-group bottom20">
             <label>Status Tempat Tinggal (*)</label>
             @if ($type != 'view')
-            {!! Form::select('address_status_id', [
+            {!! Form::select('address_status', [
                 '0' => 'Milik Sendiri',
                 '1' => 'Milik Orang Tua / Mertua atau Rumah Dinas',
                 '3' => 'Tinggal di Rumah Kontrakan',
             ], (old('address_status_id')) ? old('address_status_id') : $results['personal']['address_status_id'], [
-                'class' => 'form-control select2 address_status', 'id'=> 'address_status_id'
+                'class' => 'form-control select2 address_status', 'id'=> 'address_status'
             ]) !!}
-            <input type="hidden" name="address_status" id="address_status" value="{{@$results['personal']['address_status']}}">
             @else
             <span class="form-control" style="border: 0px;">
                 {{isset($results['personal']['address_status']) ? $results['personal']['address_status'] : ''}}
@@ -177,7 +172,7 @@
         </div>
 
          <div class="single-query form-group bottom20">
-            <label>No Hendphone</label>
+            <label>No Handphone</label>
             @if ($type != 'view')
             {!! Form::text('mobile_phone', old('mobile_phone'), [
                 'class' => 'form-control numeric', 'maxlength' => 16, 'minlength' => 7

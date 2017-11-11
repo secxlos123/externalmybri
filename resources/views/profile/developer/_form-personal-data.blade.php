@@ -69,7 +69,7 @@
         </div>
 
          <div class="single-query form-group bottom20">
-            <label>No Hendphone (*)</label>
+            <label>No Handphone (*)</label>
             @if ($type != 'view')
             {!! Form::text('mobile_phone', (old('mobile_phone')) ? old('mobile_phone') : @$results['mobile_phone'], [
                 'class' => 'form-control numeric', 'maxlength' => 16, 'minlength' => 7

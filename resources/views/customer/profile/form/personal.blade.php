@@ -27,8 +27,7 @@
 							<label class="col-md-4 control-label">Nama Depan *</label>
 							<div class="col-md-8">
 								{!! Form::text('first_name', old('first_name'), [
-									'class' => 'form-control',
-									'style' => "text-transform:uppercase"
+									'class' => 'form-control'
 								]) !!}
 							</div>
 						</div>
@@ -37,8 +36,7 @@
 							<label class="col-md-4 control-label">Nama Belakang </label>
 							<div class="col-md-8">
 								{!! Form::text('last_name', old('last_name'), [
-									'class' => 'form-control',
-									'style' => "text-transform:uppercase"
+									'class' => 'form-control'
 								]) !!}
 							</div>
 						</div>
