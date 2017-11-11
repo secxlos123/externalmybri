@@ -34,9 +34,9 @@ $name     = $result['first_name']." ".$result['last_name'];
             {{ $errors->has('email') ? ' has-error' : '' }}">
             {!! Form::label('email', 'Email') !!}
             {!! Form::text('email', $result['email'], [
-                'class' => 'keyword-input',
-                'placeholder' => 'Masukkan email developer',
-                'readonly' => 'readonly'
+                'class' => 'form-control valid',
+                'readonly' => 'readonly',
+                'style' => 'background:lavender'
             ]) !!}
 
             @if ($errors->has('email'))
