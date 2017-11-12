@@ -17,7 +17,7 @@
                             <legend>Nasabah</legend>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="col-md-4 control-label">Gaji / Pendapatan *</label>
+                                    <label title ="Take Home Pay Per Bulan" class="col-md-4 control-label">Gaji / Pendapatan *</label>
                                     <div class="col-md-8">
                                         <div class="input-group">
                                             <span class="input-group-addon">Rp</span>
@@ -28,7 +28,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-md-4 control-label">Pendapatan Lain *</label>
+                                    <label title ="Rata-Rata Per Bulan" class="col-md-4 control-label">Pendapatan Lain *</label>
                                     <div class="col-md-8">
                                         <div class="input-group">
                                             <span class="input-group-addon">Rp</span>
@@ -53,7 +53,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-md-5 control-label">Jumlah Tanggungan *</label>
+                                    <label title ="Anak Dalam Tanggungan" class="col-md-5 control-label">Jumlah Tanggungan *</label>
                                     <div class="col-md-7">
                                         {!! Form::text('dependent_amount', old('dependent_amount'), [
                                             'class' => 'form-control numeric', 'maxlength' => 2
@@ -78,7 +78,7 @@
                             <legend>Pasangan</legend>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="col-md-4 control-label">Gaji / Pendapatan *</label>
+                                    <label title ="Take Home Pay Per Bulan" class="col-md-4 control-label">Gaji / Pendapatan *</label>
                                     <div class="col-md-8">
                                         <div class="input-group">
                                             <span class="input-group-addon">Rp</span>
@@ -89,7 +89,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-md-4 control-label">Pendapatan Lain *</label>
+                                    <label title ="Rata-Rata Per Bulan" class="col-md-4 control-label">Pendapatan Lain *</label>
                                     <div class="col-md-8">
                                         <div class="input-group">
                                             <span class="input-group-addon">Rp</span>
