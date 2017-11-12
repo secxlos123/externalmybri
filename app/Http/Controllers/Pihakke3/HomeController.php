@@ -16,4 +16,5 @@ class HomeController extends Controller
     {
         return view('pihakke3.home.index');
     }
+
 }

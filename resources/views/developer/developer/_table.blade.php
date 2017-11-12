@@ -14,7 +14,7 @@
 		<h2 class="text-uppercase bottom20">Manajemen Agen Developer</h2>
 		<div class="btn-project bottom10">
 			<a class="btn btn-primary" href="{!! route('developer.developer.create') !!}" role="button">
-				<i class="fa fa-plus"></i> Tambah Developer
+				<i class="fa fa-plus"></i> Tambah Agen Developer
 			</a>
 		</div>
         <div class="table-responsive">
@@ -43,18 +43,23 @@
                         <td><center><a href="{{ url('dev/developer/edit/'.$value['user_id']) }}" class="btn btn-primary" role="button"><i class="fa fa-edit"></i> Edit</a></center></td>
                         <td>
                         
-       {!! Form::open([
+<!--        {!! Form::open([
             'route' => ['developer.developer.deactive', $value["user_id"]] ,
-            'method' => 'PUT'     
-        ]) !!}
+            'method' => 'PUT',
+            'id'    => 'alert'     
+        ]) !!} -->
+        <form action="{{ url('dev/developer/banned/'.$value['user_id']) }}" id="falert{{$value['user_id']}}" method="POST">
+        <input type="hidden" name="_method" value="PUT">
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
         @if($value['is_actived'] == true)
         {!! Form::hidden('is_actived', 'f', [ 'class' => '' ]) !!}
-        <center><input type="submit" class="btn btn-warning" value="Banned"></center>
+        <center><input type="submit" class="btn btn-warning" id="alert{{ $value['user_id'] }}" value="Banned"></center>
         @elseif($value['is_actived'] == false)
         {!! Form::hidden('is_actived', 't', [ 'class' => '' ]) !!}
-        <center><input type="submit" class="btn btn-success" value="Reactived"></center>
+        <center><input type="submit" class="btn btn-success" id="reactive{{ $value['user_id'] }}" value="Reactived"></center>
         @endif
-        {!! Form::close() !!}
+     <!--    {!! Form::close() !!} -->
+        </form>
                         </td>
                     </tr>
                 <?php endforeach ?>
@@ -72,46 +77,8 @@
 @push('parent-script')
     {!! Html::script('assets/js/jquery.dataTables.min.js') !!}
     {!! Html::script('assets/js/dataTables.bootstrap.js') !!}
+    {!! Html::script('assets/js/bootbox.min.js') !!}
 
-  <!--   <script type="text/javascript">
-        var table = $('#datatable').dataTable({
-            processing : true,
-            serverSide : true,
-            lengthMenu: [
-                [ 10, 25, 50, -1 ],
-                [ '10', '25', '50', 'All' ]
-            ],
-            language : {
-                infoFiltered : '(disaring dari _MAX_ data keseluruhan)'
-            },
-            ajax : {
-                data : function(d, settings){
-
-                    var api = new $.fn.dataTable.Api('#datatable');
-
-                    d.page = Math.min(
-                        Math.max(0, Math.round(d.start / api.page.len())),
-                        api.page.info().pages
-                    );
-                }
-            },
-             columns:[
-            { data:'id' , name:'id'},
-            { data:'user_id' , name:'user_id'},
-            { data:'birth_date' , name:'birth_date'},
-            { data:'join_date' , name:'join_date'},
-            { data:'admin_developer_id' , name:'admin_developer_id'}
-            ],
-            aoColumns : [
-                { data: 'name', name: 'name' },
-                { data: 'email', name: 'email' },
-                { data: 'price', name: 'price' },
-                { data: 'is_available', name: 'is_available' },
-                { data: 'status', name: 'status' },
-                { data: 'action', name: 'action', bSortable: false },
-            ],
-        });
-    </script> -->
     <script type="text/javascript">
         $(document).ready(function() {
     $('#datatable').DataTable( {
@@ -121,12 +88,33 @@
             ],
         "initComplete": function () {
             var api = this.api();
-            // api.$('td').click( function () {
-            //     api.search( this.innerHTML ).draw();
-               
-            // } );
         }
     } );
 } );
     </script>
+    <?php foreach ($data['contents']['data'] as $key => $value){ ?>
+    <script type="text/javascript">
+    $(document).on("click", "#alert{{ $value['user_id'] }}", function(e){
+       e.preventDefault();
+        bootbox.confirm("Yakin untuk Banned Agen Developer ini", function(confirmed){
+                if(confirmed)
+                {
+                   $("form#falert{{$value['user_id']}}").submit();
+                };
+        
+    });
+});
+    </script>
+    <script type="text/javascript">
+        $(document).on("click", "#reactive{{ $value['user_id'] }}", function(e){
+            e.preventDefault();
+            bootbox.confirm("Yakin untuk Mengaktifkan kembali Agen Developer ini", function(confirmed){
+                if(confirmed)
+                {
+                    $("form#falert{{$value['user_id']}}").submit();
+                }
+            });
+        });
+    </script>
+    <?php } ;?>
 @endpush
