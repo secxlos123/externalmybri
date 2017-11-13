@@ -79,7 +79,7 @@
     </div>
     <div class="tab-pane" id="support-b1">
         {!! Form::open([
-            'route' => ['profile.update', 'support'],
+            'route' => ['profile.update', 'other'],
             'class' => 'callus', 'id' => 'form-personal-data-customer-support',
             'enctype' => 'multipart/form-data', 'method' => 'PUT'
         ]) !!}
@@ -149,6 +149,10 @@
             var value = $(this).select2('data')[0]['text'];
             $('#address_status').attr('value', value);
         });
+
+        $( document ).ready(function() {
+        });
+
 
     </script>
 @endpush
