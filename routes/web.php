@@ -104,6 +104,17 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.', 'middleware' => ['auth.
 });
 
 /**
+ * This route for handle customer profile
+ */
+Route::group(['prefix' => 'schedule', 'as' => 'schedule.', 'middleware' => ['auth.api', 'HasAccess:customer']], function () {
+
+	/**
+	 * This route for send request profile data
+	 */
+	Route::get('/', 'ScheduleController@index')->name('index-schedule');
+});
+
+/**
  * This route grup for authenticate
  */
 Route::group(['namespace' => 'Auth', 'as' => 'auth.'], function () {

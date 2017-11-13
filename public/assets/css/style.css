@@ -8126,3 +8126,18 @@ li.has-dropdown {
 .tp_overlay .topbar .breadcrumb_top {
     padding: 0 0 0 0px;
 }
+
+.fc-event.fc-draggable, .fc-event[href], .fc-popover .fc-header .fc-close {
+    cursor: pointer;
+    padding: 8px;
+    text-align: center;
+    /*margin: 2px;*/
+}
+
+.fc-header.fc-widget-header .fc-title {
+    margin: 5px;
+}
+
+.title-calender h4 {
+    margin-bottom: 5px;
+}

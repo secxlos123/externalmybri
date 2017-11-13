@@ -33,8 +33,8 @@ class PersonalRequest extends FormRequest
             'city_id'          => 'required',
             'gender'           => 'required|in:L,P',
             'citizenship_id'   => 'required',
-            'status'           => 'required|in:1,2,3',
-            'address_status'   => 'required',
+            'status_id'        => 'required|in:1,2,3',
+            'address_status_id'=> 'required|in:0,1,3',
             'mother_name'      => 'required',
             'identity'         => 'required|image|max:1024'
         ];

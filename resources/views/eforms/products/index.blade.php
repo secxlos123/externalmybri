@@ -33,7 +33,7 @@
                         {!! Form::hidden('product_type', 'kpr') !!}
                         {!! Form::hidden('status_property', 'new') !!}
                     </div>
-                    
+
                     @if (false)
                         <div id="kkb" class="tab-pane">
                             @include('eforms.products._kkb')
@@ -69,6 +69,7 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
+            whenDataExists();
             // declare variable
             $category   = $('#category-hide')
             $developers = $('.developers')
@@ -131,6 +132,18 @@
                 $down_payment.val(payment);
                 $request_amount.val(fix_price - payment);
             });
+
+            function whenDataExists()
+            {
+                var address = "{{$param['property_item_address']}}";
+                var price = "{{$param['property_item_price']}}";
+                $('#building_area').val($('#sess_building_area').val()).trigger('change');
+                $('#category-hide').val($('#sess_prop_category').val()).trigger('change');
+                $('#property_item_name').val(address).trigger('change');
+                $('#price').val(price).trigger('change');
+                $('#home_location').val(address).trigger('change');
+            }
+
         });
 
         function set_property(e) {
@@ -143,6 +156,7 @@
                 .on('select2:unselect, change', unset_property_type)
                 .on('select2:select', set_property_type);
 
+            console.log(data);
             if (data.bri != '1') {
                 $select.removeClass('hide');
                 $price.val(0).attr('readonly', true).trigger('change');
@@ -191,7 +205,7 @@
 
             $('#property_type_name').val(data.name);
             $building_area.val(data.building_area).trigger('change');
-            
+
             $items
                 .empty()
                 .dropdown('items', { prop_type_id: data.id })
@@ -255,5 +269,6 @@
                 default  : $dp.data('min', 20).val(20).trigger('change');
             }
         }
+
     </script>
 @endpush
