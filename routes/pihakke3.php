@@ -29,6 +29,13 @@ Route::group([
 		 */
 		Route::get('/', 'ProfileController@index')->name('index');
 
+		Route::get('/city', 'ProfileController@getCity')->name('city');
+
+		/**
+		 * This route for handle pihak ke 3 request update data to admin
+		 */
+		Route::put('/reqUpdate', 'ProfileController@requpdate')->name('requpdate');
+
 		/**
 		 * This route for handle homepage
 		 */

@@ -51,3 +51,7 @@
     <!-- @end You can remove this condition if this module already -->
 
 @endif
+@if('others' == session('authenticate.role'))
+<li><a href="#">Tracking</a></li>
+
+@endif

@@ -39,7 +39,11 @@
 			<div class="has-dropdown-content">
 				<ul>
 					<!-- <li><a href="#"><i class="fa fa-heart"></i> Favorit</a></li> -->
+					@if('others' == session('authenticate.role'))
+					<li><a href="{{('others' == session('authenticate.role')) ? url('pihakke3/profile/ubah') : url('profile/ubah')}}"><i class="fa fa-edit"></i> Edit Profile</a></li>
+					@else
 					<li><a href="{{('developer' == session('authenticate.role')) ? url('dev/profile/ubah') : url('profile/ubah')}}""><i class="fa fa-edit"></i> Edit Profile</a></li>
+					@endif
 					<li><a href="javascript:void(0)" onclick="document.getElementById('form-logout').submit();"><i class="fa fa-sign-out"></i> Keluar</a></li>
 				</ul>
 			</div>
