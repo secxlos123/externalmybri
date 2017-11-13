@@ -88,11 +88,32 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $type)
     {
+        $baseRequest = $request->all();
+
+        \Log::info($baseRequest);
+
+        $baseArray = array (
+            'job_type_id' => 'type_id', 'job_type_name' => 'type'
+            , 'job_id' => 'work_id', 'job_name' => 'work'
+            , 'job_field_id' => 'work_field_id', 'job_field_name' => 'work_field'
+            , 'position_name' => 'position', 'position'=>'position_id'
+            ,'citizenship_name' => 'citizenship'
+        );
+
+        foreach ($baseArray as $target => $base) {
+            if ( isset($baseRequest[$base]) ) {
+                $baseRequest[$target] = $baseRequest[$base];
+                unset($baseRequest[$base]);
+            }
+        }
+        \Log::info("=======================================================");
+        \Log::info($baseRequest);
+
         $results = Client::setEndpoint('profile/update/'.$type)
             ->setHeaders([
                 'Authorization' => session('authenticate.token')
             ])
-            ->setBody(array_to_multipart($request->except('birth_place','birth_place_name', 'city', 'citizenship', 'status_name', 'address_status_name')))
+            ->setBody(array_to_multipart($baseRequest))
             ->put('multipart');
             \Log::info($results);
         if (isset($results['code']) && $results['code'] == 200) {
@@ -101,7 +122,7 @@ class ProfileController extends Controller
             \Session::flash('error_flash_message', $results['descriptions']);
         }
 
-        return redirect()->route('profile.index-profile');;
+        return redirect()->route('profile.edit');;
     }
 
     /**

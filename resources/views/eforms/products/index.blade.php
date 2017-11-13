@@ -82,9 +82,10 @@
             $home_location = $('#home_location')
             $down_payment = $('#down_payment')
             $request_amount = $('#request_amount')
-            $select = $('.types-select, .units-select')
+            $select = $('.property-select, .types-select, .units-select')
+            $kpr = $('.kpr_type_property, .kpr_type')
             $dp = $('#dp');
-
+            $kpr.addClass('hide');
             $developers
                 .dropdown('developer')
                 .on('select2:unselect, change', unset_property)
@@ -145,12 +146,14 @@
 
             if (data.bri != '1') {
                 $select.removeClass('hide');
+                $kpr.addClass('hide');
                 $price.val(0).attr('readonly', true).trigger('change');
                 $building_area.val(0).attr('readonly', true).trigger('change');
                 $home_location.val('').attr('readonly', true).trigger('change');
                 return;
             }
 
+            $kpr.removeClass('hide');
             $select.addClass('hide');
             $price.removeAttr('readonly');
             $building_area.removeAttr('readonly');

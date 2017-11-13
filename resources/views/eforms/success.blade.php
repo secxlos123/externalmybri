@@ -11,7 +11,7 @@
                 </div>
                 <div class="error-text">
                     <h1>Selamat</h1>
-                    <h3>Pengajuan Anda Telah Berhasil Diajukan.</h3>
+                    <h3>Pengajuan Kredit Anda Telah Berhasil Dikirim</h3>
                     <p>Petugas Kami Akan Memproses Pengajuan Anda Lebih Lanjut</p>
                     <div class="erro-button hide">
                         <a href="#." class="btn-blue">Lihat Profil</a>

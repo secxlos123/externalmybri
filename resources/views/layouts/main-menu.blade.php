@@ -1,5 +1,13 @@
 <li class="{!! request()->is('/') || request()->is('dev/dashboard') ? 'active' : '' !!}">
-    <a href="{!! request()->is('/') || request()->is('dev/dashboard') ? '#' : url('/') !!}">Home </a>
+    <a href="{!! request()->is('/') || request()->is('dev/dashboard') ? '#' : url('/') !!}">Beranda </a>
+</li>
+
+<li class="">
+    <a href="#">Tentang Kami </a>
+</li>
+
+<li class="">
+    <a href="#">Produk </a>
 </li>
 
 @if ( 'customer' == session('authenticate.role') || ! session('authenticate') )
@@ -14,12 +22,12 @@
         </li>
     @endif
     <!-- @end You can remove this condition if this module already -->
+    <li>
+        <a href="{!! session('authenticate') ? route('eform.index') : 'javascript:void(0)' !!}" class="submission-of-credit">Pengajuan Kredit</a>
+    </li>
 
     <li class="{!! request()->is('daftar-proyek') ? 'active' : '' !!}">
         <a href="{!! route('all-properties') !!}">Daftar Properti</a>
-    </li>
-    <li>
-        <a href="{!! session('authenticate') ? route('eform.index') : 'javascript:void(0)' !!}" class="submission-of-credit">Pengajuan Kredit</a>
     </li>
 @endif
 

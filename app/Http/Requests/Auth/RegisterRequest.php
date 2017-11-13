@@ -130,7 +130,7 @@ class RegisterRequest extends FormRequest
             'other_salary'                      => 'required|numeric',
             'loan_installment'                  => 'required|numeric',
             'dependent_amount'                  => 'required|numeric',
-            'phone'                             => 'required|numeric',
+            // 'phone'                             => 'required|numeric',
             'mobile_phone'                      => 'required|numeric|digits:12',
             'emergency_contact'                 => 'required|numeric|digits:12',
             'emergency_relation'                => 'required',

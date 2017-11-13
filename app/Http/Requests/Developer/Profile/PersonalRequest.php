@@ -36,7 +36,7 @@ class PersonalRequest extends FormRequest
             'status'           => 'required|in:1,2,3',
             'address_status'   => 'required',
             'mother_name'      => 'required',
-            'identity'         => 'required|image|max:1024'
+            'identity'         => 'image|max:1024'
         ];
     }
 }

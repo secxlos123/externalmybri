@@ -35,11 +35,11 @@
 		</a>
 	@else
 		<li class="has-dropdown">
-			<a href="{{('developer' == session('authenticate.role')) ? url('dev/profile') : url('profile')}}"><i class="fa fa-user"></i> {!! session('authenticate.fullname') !!}</a>
+			<a href="#" onclick="return false;"><i class="fa fa-user"></i> {!! session('authenticate.fullname') !!}</a>
 			<div class="has-dropdown-content">
 				<ul>
 					<!-- <li><a href="#"><i class="fa fa-heart"></i> Favorit</a></li> -->
-					<li><a href="{{('developer' == session('authenticate.role')) ? url('dev/profile/ubah') : url('profile/ubah')}}""><i class="fa fa-edit"></i> Edit Profile</a></li>
+					<li><a href="{{('developer' == session('authenticate.role')) ? url('dev/profile') : url('profile')}}""><i class="fa fa-edit"></i> Lihat Profile</a></li>
 					<li><a href="javascript:void(0)" onclick="document.getElementById('form-logout').submit();"><i class="fa fa-sign-out"></i> Keluar</a></li>
 				</ul>
 			</div>

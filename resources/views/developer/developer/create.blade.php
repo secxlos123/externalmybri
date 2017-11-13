@@ -32,7 +32,7 @@
                     </div>
                     <div class="col-md-12">
                         <div class="pull-right">
-                            <button type="submit" class="btn btn-success waves-light waves-effect w-md m-b-20">
+                            <button type="submit" class="btn btn-orange waves-light waves-effect w-md m-b-20">
                                 <i class="mdi mdi-content-save"></i> Simpan
                             </button>
                         </div>

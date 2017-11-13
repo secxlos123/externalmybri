@@ -24,7 +24,7 @@
         <p class="text-muted m-b-30 font-13">
             Tentukan lokasi/tempat Pertemuan
         </p>
-        <input id="searchInput" class="input-controls" type="text" placeholder="Masukkan lokasi properti">
+        <input id="searchInput" class="input-controls" type="text" placeholder="Masukkan lokasi pertemuan">
 
         <div class="map" id="map"></div>
 

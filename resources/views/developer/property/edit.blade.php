@@ -32,7 +32,7 @@
             ]) !!}
                 <div class="row">
                     <div class="col-md-12">
-                        <h2 class="text-uppercase bottom40">Rubah Proyek Properti</h2>
+                        <h2 class="text-uppercase bottom40">Ubah Proyek Properti</h2>
                         <div class="panel panel-blue">
                             <div class="panel-heading">
                                 <h3 class="panel-title text-uppercase">Data Proyek</h3>
@@ -44,8 +44,8 @@
                     </div>
                     <div class="col-md-12">
                         <div class="pull-right">
-                            <button type="submit" class="btn btn-success waves-light waves-effect w-md m-b-20">
-                                <i class="mdi mdi-content-save"></i> Rubah
+                            <button type="submit" class="btn btn-orange waves-light waves-effect w-md m-b-20">
+                                <i class="mdi mdi-content-save"></i> Ubah
                             </button>
                         </div>
                     </div>

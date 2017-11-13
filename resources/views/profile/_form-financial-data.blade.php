@@ -1,7 +1,7 @@
 <div class="row top20">
     <div class="col-md-6">
         <div class="single-query form-group bottom20">
-            <label>Gaji / Pendapatan (*)</label>
+            <label title ="Take Home Pay Per Bulan" >Gaji / Pendapatan (*)</label>
             <div class="input-group">
             @if ($type != 'view')
                 <span class="input-group-addon">Rp</span>
@@ -16,7 +16,7 @@
 
         </div>
         <div class="single-query form-group bottom20">
-            <label>Pendapatan Lain (*)</label>
+            <label title ="Rata-Rata Per Bulan" >Pendapatan Lain (*)</label>
             <div class="input-group">
             @if ($type != 'view')
                 <span class="input-group-addon">Rp</span>
@@ -47,7 +47,7 @@
             </div>
         </div>
         <div class="single-query form-group bottom20">
-            <label>Jumlah Tanggungan (*)</label>
+            <label title ="Anak Dalam Tanggungan" >Jumlah Tanggungan (*)</label>
             <div class="input-group">
             @if ($type != 'view')
                 <span class="input-group-addon">Rp</span>
@@ -61,14 +61,20 @@
             </div>
         </div>
     </div>
-    @if ($type != 'view' || session('authenticate.role') != 'developer')
-    <div class="col-md-12">
-        <div class="pull-right">
-            <a href="{{(session('authenticate.role') == 'developer') ? url('dev/profile') : url('profile')}}" class="btn btn-default waves-light waves-effect w-md m-b-20">Batalkan</a>
-            <button type="submit" class="btn btn-success waves-light waves-effect w-md m-b-20"><i class="mdi mdi-content-save"></i> Simpan</button>
+    @if ($type != 'view')
+        <div class="col-md-12">
+            <div class="pull-right">
+                <a href="{{(session('authenticate.role') == 'developer') ? url('dev/profile') : url('profile')}}" class="btn btn-default waves-light waves-effect w-md m-b-20">Batalkan</a>
+                <button type="submit" class="btn btn-orange waves-light waves-effect w-md m-b-20"><i class="mdi mdi-content-save"></i> Simpan</button>
+                {!! Form::hidden('cif_number', '-', ['class' => 'form-control']) !!}
+            </div>
         </div>
-    </div>
+    @else
+        <div class="col-md-12">
+            <div class="pull-right">
+                <a href="{{(session('authenticate.role') == 'developer') ? url('dev/profile/ubah') : url('profile/ubah')}}" class="btn btn-primary waves-light waves-effect w-md m-b-20">Ubah</a>
+            </div>
+        </div>
     @endif
 
-    {!! Form::hidden('cif_number', '-', ['class' => 'form-control']) !!}
 </div>
