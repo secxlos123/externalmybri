@@ -12,8 +12,8 @@
         <div class="form-group">
             <label class="control-label col-md-4">Developer *</label>
             <div class="col-md-8">
-                {!! Form::select('developer', ['' => ''] + [
-                   old('developer') => old('developer_name') 
+                {!! Form::select('developer', isset($param['developer_id']) ? [@$param['developer_id'] => @$param['developer_name']] : [''=>''] + [
+                   old('developer') => old('developer_name')
                 ], old('developer'), [
                     'class' => 'select2 developers ',
                     'data-option' => old('developer'),
@@ -55,7 +55,7 @@
         <div class="form-group property-select">
             <label class="control-label col-md-4">Nama Proyek *</label>
             <div class="col-md-8">
-                {!! Form::select('property', ['' => ''] + [
+                {!! Form::select('property', isset($param['property_id']) ? [@$param['property_id']=>@$param['property_name']] : ['' => ''] + [
                     old('property') => old('property_name')
                 ], old('property'), [
                     'class' => 'select2 properties',
@@ -70,8 +70,8 @@
         <div class="form-group types-select">
             <label class="control-label col-md-4">Tipe Properti *</label>
             <div class="col-md-8">
-                {!! Form::select('property_type', ['' => ''] + [
-                   old('property_type') => old('property_type_name') 
+                {!! Form::select('property_type', isset($param['property_type_id']) ? [@$param['property_type_id']=>@$param['property_type_name']] : ['' => ''] + [
+                   old('property_type') => old('property_type_name')
                 ], old('property_type'), [
                     'class' => 'select2 types',
                     'data' => old('property_type'),
@@ -82,7 +82,7 @@
         <div class="form-group units-select">
             <label class="control-label col-md-4">Unit Properti *</label>
             <div class="col-md-8">
-                {!! Form::select('property_item', ['' => ''] + [
+                {!! Form::select('property_item', isset($param['property_item_address']) ? [@$param['property_item_id']=>@$param['property_item_address']] : ['' => ''] + [
                     old('property_item') => old('property_item_name')
                 ], old('property_item'), [
                     'class' => 'select2 items',
@@ -130,7 +130,7 @@
                     'style' => 'resize: none;'
                 ]) !!}
             </div>
-        </div>   
+        </div>
     </div>
 
     <div class="col-md-6">
@@ -164,7 +164,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="form-group">
             <div class="col-md-offset-4 col-md-8">
                 <div class="input-group">

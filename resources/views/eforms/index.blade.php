@@ -17,7 +17,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    
+
                     <div class="card-box">
                         @if ( $errors->any() )
                             <div class="alert alert-danger">
@@ -37,6 +37,10 @@
                         ]) !!}
 
                             <fieldset hidden>
+                                <input type="text" name="sess_prop_category" id="sess_prop_category" value="{{@Session::get('prop_id_bri')}}">
+                                <input type="text" name="sess_bri" id="sess_bri" value="{{Session::get('category')}}">
+                                <input type="text" name="sess_building_area" id="sess_building_area" value="{{Session::get('building_area')}}">
+
                                 {!! Form::text('is_simple', old('is_simple')) !!}
                                 {!! Form::text('developer_name', old('developer_name'), [
                                     'id' => 'developer_name'
@@ -86,7 +90,7 @@
                         {!! Form::close() !!}
                     </div>
                 </div>
-            </div>  
+            </div>
         </div>
     </div>
 </section>
@@ -121,9 +125,9 @@
                 // reinit gmaps
                 google.maps.event.trigger(map, 'resize');
             },
-            onFinishing: function (event, currentIndex) { 
+            onFinishing: function (event, currentIndex) {
                 return $form_container.valid();
-            }, 
+            },
             onFinished: function (event, currentIndex) {
                $form_container.submit();
             }

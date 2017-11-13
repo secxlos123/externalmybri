@@ -67,7 +67,8 @@ class EformController extends Controller
 
         config(['jsvalidation.focus_on_error' => false]);
         return view('eforms.index', [
-            'customer' => (object) $this->customer()
+            'customer' => (object) $this->customer(),
+            'param' => $request->all()
         ]);
     }
 

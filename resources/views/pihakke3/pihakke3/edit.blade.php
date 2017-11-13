@@ -6,6 +6,11 @@
 <section id="property" class="padding listing1">
   <div class="container">   
     <div class="row">
+    @if(Session::has('flash_message'))
+                        <div class="alert alert-success"><em> {!! session('flash_message') !!}</em></div>
+                    @elseif(Session::has('error_flash_message'))
+                        <div class="alert alert-danger"><em> {!! session('error_flash_message') !!}</em></div>
+          @endif
       <div class="panel panel-blue">
         <div class="panel-heading">
           <h3 class="panel-title text-uppercase">Profil Saya</h3>
@@ -31,3 +36,6 @@
   </div>
 </section>
 @endsection
+@push('scripts')
+{!! JsValidator::formRequest(App\Http\Requests\Pihakke3\Profile\CreateRequest::class, '#form-pihakke3-edit') !!}
+@endpush
