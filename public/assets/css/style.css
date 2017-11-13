@@ -8141,3 +8141,33 @@ li.has-dropdown {
 .title-calender h4 {
     margin-bottom: 5px;
 }
+
+.csm-attr {
+    height: 70px;
+    background: #F7941E;
+    color: #fff;
+}
+
+.csm-attr .upper-column.info-box {
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0;
+    padding: 0 25px;
+}
+
+.attr-nav.csm-attr:hover {
+    background-color: #e48718;
+    color: #fff;
+
+}
+
+.csm-footer .icons {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -30px;
+}
+
+.csm-footer .copyright_simple p {
+    padding: 15px;
+}

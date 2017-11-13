@@ -28,11 +28,11 @@
 	<!-- This menu is hidden cause this fiture not present -->
 
 	@if ( ! session('authenticate') )
-		<a href="javascript:void(0)" data-toggle="modal" data-target="#login-register">
+		<!-- <a href="javascript:void(0)" data-toggle="modal" data-target="#login-register">
 			<li class="last-icon login-pop">
 				<i class="fa fa-lock"></i> Masuk / Daftar
 			</li>
-		</a>
+		</a> -->
 	@else
 		<li class="has-dropdown">
 			<a href="#" onclick="return false;"><i class="fa fa-user"></i> {!! session('authenticate.fullname') !!}</a>

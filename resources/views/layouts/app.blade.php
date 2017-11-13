@@ -64,7 +64,8 @@
     @yield('content')
 
     <!-- Footer -->
-    <footer class="footer_third absolute-fix">
+    <footer class="footer_third absolute-fix csm-footer">
+        <div class="icons">{!! Html::image('assets/images/logo/callbri.png') !!}</div>
         <div class="container">
             @include('layouts.footer')
         </div>
@@ -101,6 +102,8 @@
     {!! Html::script('assets/js/jquery.inputmask.bundle.min.js') !!}
     {!! Html::script('assets/js/inputmask.numeric.extensions.js') !!}
     {!! Html::script('js/numeric.min.js') !!}
+
+
 
     <script type="text/javascript">
         $(document).ready(function () {

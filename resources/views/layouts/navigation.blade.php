@@ -21,13 +21,13 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
-                <div class="attr-nav">
-                    <div class="upper-column info-box first">
-                        <div class="icons">
-                            {!! Html::image('assets/images/logo/callbri.png') !!}
+                @if ( ! session('authenticate') )
+                    <a href="javascript:void(0)" data-toggle="modal" data-target="#login-register" class="attr-nav csm-attr">
+                        <div class="upper-column info-box first">
+                            <i class="fa fa-lock"></i> Masuk / Daftar
                         </div>
-                    </div>
-                </div>
+                    </a>
+                @endif
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
                         <i class="fa fa-bars"></i>
