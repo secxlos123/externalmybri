@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Client;
 
 class ScheduleController extends Controller
 {
@@ -13,6 +14,12 @@ class ScheduleController extends Controller
      */
     public function index()
     {
+        $results = Client::setEndpoint('schedule')
+            ->setHeaders([
+                'Authorization' => session('authenticate.token')
+            ])
+            ->get();
+        // dd($results);
         return view('scheduling.index');
     }
 
@@ -23,7 +30,12 @@ class ScheduleController extends Controller
      */
     public function create()
     {
-        //
+        $client = new \GuzzleHttp\Client();
+        $res = $client->get('https://private-694ba-mybri.apiary-mock.com/api/v1/eks/schedule?month=10&year=2017');
+        // echo $res->getStatusCode();
+        // echo $res->getBody();
+        // json_decode($res->getBody()));
+        return response()->json(json_decode($res->getBody())->contents);
     }
 
     /**
