@@ -22,3 +22,6 @@ a.button-kpr:hover {
 .csm-attr {
     height: 88px;
 }
+.homePage .has-dropdown-content {
+    right: 12px;
+}

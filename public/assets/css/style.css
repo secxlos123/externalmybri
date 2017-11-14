@@ -8171,3 +8171,27 @@ li.has-dropdown {
 .csm-footer .copyright_simple p {
     padding: 15px;
 }
+
+.csm-attr .dropdown {
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 25px 0;
+}
+
+.no-bg {
+    background:inherit;
+}
+
+.attr-nav.csm-attr.no-bg {
+    color: #000;
+}
+
+.attr-nav.csm-attr.no-bg:hover {
+    background-color: inherit;
+    color: #F7941E;
+}
+
+.attr-nav.csm-attr .dropdown-menu {
+    max-width: 150px !important;
+    min-width: 90px !important;
+}
