@@ -145,6 +145,26 @@
                 $('#home_location').val(address).trigger('change');
             }
 
+            //set time period validation
+            var timeoutID = null;
+            $year.keyup(function(e) {
+                clearTimeout(timeoutID);
+                timeoutID = setTimeout(function(){timePeriod()}, 1000);
+            });
+
+            function timePeriod()
+            {
+                if(parseInt($year.val().replace( /[^0-9]/g, '' )) <= 12){
+                    $year.val('12');
+                }else if($year.val() >= 240){
+                    $year.val('240');
+                    var val = $year.val();
+                }else if($year.val() == ''){
+                    $year.val('12');
+                    var val = $year.val();
+                }
+            }
+
         });
 
         function set_property(e) {
