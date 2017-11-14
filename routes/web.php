@@ -109,10 +109,14 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.', 'middleware' => ['auth.
 Route::group(['prefix' => 'schedule', 'as' => 'schedule.', 'middleware' => ['auth.api', 'HasAccess:customer']], function () {
 
 	/**
-	 * This route for send request profile data
+	 * This route for send request schedule data
 	 */
 	Route::get('/', 'ScheduleController@index')->name('index-schedule');
 });
+	/**
+	 * This route for send request form create data
+	 */
+	Route::get('/create-form', 'ScheduleController@create')->name('create-form');
 
 /**
  * This route grup for authenticate

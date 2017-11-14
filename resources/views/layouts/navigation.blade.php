@@ -21,13 +21,13 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
-                <div class="attr-nav">
-                    <div class="upper-column info-box first">
-                        <div class="icons">
-                            {!! Html::image('assets/images/logo/callbri.png') !!}
+                @if ( ! session('authenticate') )
+                    <a href="javascript:void(0)" data-toggle="modal" data-target="#login-register" class="attr-nav csm-attr">
+                        <div class="upper-column info-box first">
+                            <i class="fa fa-lock"></i> Masuk / Daftar
                         </div>
-                    </div>
-                </div>
+                    </a>
+                @endif
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
                         <i class="fa fa-bars"></i>
@@ -38,6 +38,24 @@
                         ]) !!}
                     </a>
                 </div>
+                @if(session('authenticate'))
+                <ul class="attr-nav csm-attr no-bg">
+                    <li class="dropdown">
+                        <a href="{{('developer' == session('authenticate.role')) ? url('dev/profile') : url('profile')}}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> {!! session('authenticate.fullname') !!} <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <!-- <li><a href="#"><i class="fa fa-heart"></i> Favorit</a></li> -->
+                            <li><a href="{{('developer' == session('authenticate.role')) ? url('dev/profile') : url('profile')}}"><i class="fa fa-edit"></i> Edit Profile</a></li>
+                            <li><a href="javascript:void(0)" onclick="document.getElementById('form-logout').submit();"><i class="fa fa-sign-out"></i> Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                {!! Form::open([
+                    'route' => 'auth.logout', 'method' => 'DELETE',
+                    'style' => 'display: none;', 'id' => 'form-logout'
+                ]) !!}
+                {!! Form::close() !!}
+                @endif
                 <div class="collapse navbar-collapse" id="navbar-menu">
                     <ul class="nav navbar-nav" data-in="fadeIn" data-out="fadeOut">
                         @include('layouts.main-menu')
