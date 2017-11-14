@@ -28,7 +28,7 @@ class PersonalRequest extends FormRequest
             'address'          => 'required',
             'city_id'          => 'required',
             'mobile_phone'     => 'required',
-            'image'            => 'required|image|max:1024'
+            'image'            => 'image|max:1024'
         ];
     }
 }

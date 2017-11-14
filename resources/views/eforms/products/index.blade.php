@@ -83,9 +83,10 @@
             $home_location = $('#home_location')
             $down_payment = $('#down_payment')
             $request_amount = $('#request_amount')
-            $select = $('.types-select, .units-select')
+            $select = $('.property-select, .types-select, .units-select')
+            $kpr = $('.kpr_type_property, .kpr_type')
             $dp = $('#dp');
-
+            $kpr.addClass('hide');
             $developers
                 .dropdown('developer')
                 .on('select2:unselect, change', unset_property)
@@ -135,13 +136,33 @@
 
             function whenDataExists()
             {
-                var address = "{{$param['property_item_address']}}";
-                var price = "{{$param['property_item_price']}}";
+                var address = "{{isset($param['property_item_address']) ? $param['property_item_address'] : ''}}";
+                var price = "{{isset($param['property_item_price']) ? $param['property_item_price'] : ''}}";
                 $('#building_area').val($('#sess_building_area').val()).trigger('change');
                 $('#category-hide').val($('#sess_prop_category').val()).trigger('change');
                 $('#property_item_name').val(address).trigger('change');
                 $('#price').val(price).trigger('change');
                 $('#home_location').val(address).trigger('change');
+            }
+
+            //set time period validation
+            var timeoutID = null;
+            $year.keyup(function(e) {
+                clearTimeout(timeoutID);
+                timeoutID = setTimeout(function(){timePeriod()}, 1000);
+            });
+
+            function timePeriod()
+            {
+                if(parseInt($year.val().replace( /[^0-9]/g, '' )) <= 12){
+                    $year.val('12');
+                }else if($year.val() >= 240){
+                    $year.val('240');
+                    var val = $year.val();
+                }else if($year.val() == ''){
+                    $year.val('12');
+                    var val = $year.val();
+                }
             }
 
         });
@@ -159,12 +180,14 @@
             console.log(data);
             if (data.bri != '1') {
                 $select.removeClass('hide');
+                $kpr.addClass('hide');
                 $price.val(0).attr('readonly', true).trigger('change');
                 $building_area.val(0).attr('readonly', true).trigger('change');
                 $home_location.val('').attr('readonly', true).trigger('change');
                 return;
             }
 
+            $kpr.removeClass('hide');
             $select.addClass('hide');
             $price.removeAttr('readonly');
             $building_area.removeAttr('readonly');

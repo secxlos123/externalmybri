@@ -11,11 +11,11 @@
                 </div>
                 <div class="error-text">
                     @if ($status == 'approve')
-                        <h3>Terima kasih telah menyetujui verifikasi data Anda.</h3>
-                        <p>Selanjutnya kami akan memproses pengajuan Aplikasi e-Form anda.</p>
+                        <h3>Terima kasih telah memverifikasi data Anda.</h3>
+                        <p>Selanjutnya kami akan memproses pengajuan Aplikasi KPR anda.</p>
                     @else
                         <h3>Mohon maaf ada kesalahan data yang diinputkan.</h3>
-                        <p>Account Officer kami segera akan mengupdate data Abda.</p>
+                        <p>Account Officer kami segera akan mengupdate data Anda.</p>
                     @endif
                 </div>
             </div>

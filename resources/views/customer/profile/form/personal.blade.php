@@ -78,6 +78,25 @@
 						</div>
 
 						<div class="form-group">
+							      <label class="col-md-4 control-label"></label>
+							      <div class="col-md-8">
+							      <input name="myCheckBox" id="myCheckBox" type="checkbox" />
+							      <small>Alamat Domisili Sesuai Dengan Alamat KTP</small>
+							  	</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-md-4 control-label">Alamat Domisili *</label>
+							<div class="col-md-8">
+								{!! Form::textarea('address_domosili', old('address_domosili'), [
+									'class' => 'form-control',
+									'rows'  => 3,
+									'style' => 'resize: none'
+								]) !!}
+							</div>
+						</div>
+
+						<div class="form-group">
 							<label class="col-md-4 control-label">Kota *</label>
 							<div class="col-md-8">
 								{!! Form::select('city_id', ['' => ''] + [
@@ -154,7 +173,7 @@
 						</div>
 
 						<div class="form-group">
-							<label class="col-md-5 control-label">No Telepon *</label>
+							<label class="col-md-5 control-label">No Telepon</label>
 							<div class="col-md-7">
 								{!! Form::text('phone', old('phone'), [
 									'class' => 'form-control numeric', 'maxlength' => 16, 'minlength' => 7

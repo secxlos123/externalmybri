@@ -34,7 +34,7 @@
 						@yield('btn-action')
 
 						<i class="mdi mdi-content-save">
-							<button type="submit" class="btn btn-success waves-light waves-effect w-md m-b-20">
+							<button type="submit" class="btn btn-orange waves-light waves-effect w-md m-b-20">
 								Simpan
 							</button>
 						</i>

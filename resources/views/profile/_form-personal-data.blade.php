@@ -69,7 +69,7 @@
         <div class="single-query form-group bottom20">
             <label>Kota (*)</label>
             @if ($type != 'view')
-            {!! Form::select('city_id', ['' => ''], (old('city_id')) ? old('city_id') : @$results['personal']['city_id'], [
+            {!! Form::select('city_id', (old('city_id')) ? old('city_id') : [@$results['personal']['city_id'] => $results['personal']['city']], [
                 'class' => 'form-control select2 cities city',
                 'data-placeholder' => 'Pilih Kota',
             ]) !!}
@@ -100,7 +100,7 @@
         <div class="single-query form-group bottom20">
             <label>Kewarganegaraan (*)</label>
             @if ($type != 'view')
-            {!! Form::select('citizenship_id', ['' => ''], (old('citizenship_id')) ? old('citizenship_id') : $results['personal']['citizenship_id'], [
+            {!! Form::select('citizenship_id', (old('citizenship_id')) ? old('citizenship_id') : [$results['personal']['citizenship_id'] => $results['personal']['citizenship']], [
                 'class' => 'form-control select2 citizenships',
                 'data-placeholder' => 'Pilih Negara',
             ]) !!}
@@ -161,7 +161,7 @@
         <div class="single-query form-group bottom20">
             <label>No Telepon</label>
             @if ($type != 'view')
-            {!! Form::text('phone', old('phone'), [
+            {!! Form::text('phone', old('phone') ? old('phone') : $results['personal']['phone'], [
                 'class' => 'form-control numeric', 'maxlength' => 16, 'minlength' => 7
             ]) !!}
             @else
@@ -174,7 +174,7 @@
          <div class="single-query form-group bottom20">
             <label>No Handphone</label>
             @if ($type != 'view')
-            {!! Form::text('mobile_phone', old('mobile_phone'), [
+            {!! Form::text('mobile_phone', old('mobile_phone') ? old('mobile_phone') : $results['personal']['mobile_phone'], [
                 'class' => 'form-control numeric', 'maxlength' => 16, 'minlength' => 7
             ]) !!}
             @else
@@ -230,11 +230,17 @@
         @endif
     </div>
     @if ($type != 'view')
-    <div class="col-md-12">
-        <div class="pull-right">
-            <a href="{{(session('authenticate.role') == 'developer') ? url('dev/profile') : url('profile')}}" class="btn btn-default waves-light waves-effect w-md m-b-20">Batalkan</a>
-            <button type="submit" class="btn btn-success waves-light waves-effect w-md m-b-20"><i class="mdi mdi-content-save"></i> Simpan</button>
+        <div class="col-md-12">
+            <div class="pull-right">
+                <a href="{{(session('authenticate.role') == 'developer') ? url('dev/profile') : url('profile')}}" class="btn btn-default waves-light waves-effect w-md m-b-20">Batalkan</a>
+                <button type="submit" class="btn btn-orange waves-light waves-effect w-md m-b-20"><i class="mdi mdi-content-save"></i> Simpan</button>
+            </div>
         </div>
-    </div>
+    @else
+        <div class="col-md-12">
+            <div class="pull-right">
+                <a href="{{(session('authenticate.role') == 'developer') ? url('dev/profile/ubah') : url('profile/ubah')}}" class="btn btn-primary waves-light waves-effect w-md m-b-20">Ubah</a>
+            </div>
+        </div>
     @endif
 </div>

@@ -123,7 +123,6 @@
             },
             onStepChanged: function (event, currentIndex, priorIndex) {
                 // reinit gmaps
-                console.log(map);
                 google.maps.event.trigger(map, 'resize');
             },
             onFinishing: function (event, currentIndex) {

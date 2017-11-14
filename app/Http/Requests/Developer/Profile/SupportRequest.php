@@ -24,7 +24,12 @@ class SupportRequest extends FormRequest
     public function rules()
     {
         return [
-            'npwp'         => 'required|image|max:1024'
+            'npwp'         => 'image|max:1024',
+            'family_card'  =>'image|max:1024',
+            'couple_identity'=>'image|max:1024',
+            'marrital_certificate'=>'image|max:1024',
+            'diforce_certificate'=>'image|max:1024',
+            'status_id'=>'image|max:1024'   
         ];
     }
 }

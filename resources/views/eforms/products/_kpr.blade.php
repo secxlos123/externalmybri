@@ -21,15 +21,46 @@
                 ]) !!}
             </div>
         </div>
-        <div class="form-group">
-            <label class="control-label col-md-4">Nama Properti *</label>
+
+         <div class="form-group kpr_type {!! $errors->has('kpr_type') ? 'has-error' : '' !!}">
+                                            <label class="control-label col-md-4">Jenis KPR *:</label>
+                                            <div class="col-md-8">
+                                                <select class="form-control " name="kpr_type" id="kpr_type">
+                                                    <option value="0" selected=""> Pilih </option>
+                                                    <option value="1"> Baru </option>
+                                                    <option value="2"> Secondary </option>
+                                                    <option value="3"> Refinancing </option>
+                                                    <option value="4"> Renovasi </option>
+                                                    <option value="5"> Top Up </option>
+                                                    <option value="6"> Take Over </option>
+                                                    <option value="7"> Take Over Top Up </option>
+                                                </select>
+                                                @if ($errors->has('kpr_type')) <p class="help-block">{{ $errors->first('kpr_type') }}</p> @endif
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-group kpr_type_property {!! $errors->has('kpr_type_property') ? 'has-error' : '' !!}">
+                                            <label class="control-label col-md-4">Jenis Properti *:</label>
+                                            <div class="col-md-8">
+                                                <select class="form-control " name="kpr_type_property" id="kpr_type_property">
+                                                    <option value="0" selected=""> Pilih </option>
+                                                    <option value="1"> Rumah Tapak </option>
+                                                    <option value="2"> Rumah Susun/Apartment </option>
+                                                    <option value="3"> Rumah Toko </option>
+                                                </select>
+                                                @if ($errors->has('kpr_type_property')) <p class="help-block">{{ $errors->first('kpr_type_property') }}</p> @endif
+                                            </div>
+                                        </div>
+                                        
+        <div class="form-group property-select">
+            <label class="control-label col-md-4">Nama Proyek *</label>
             <div class="col-md-8">
                 {!! Form::select('property', isset($param['property_id']) ? [@$param['property_id']=>@$param['property_name']] : ['' => ''] + [
                     old('property') => old('property_name')
                 ], old('property'), [
                     'class' => 'select2 properties',
                     'data-option' => old('property'),
-                    'data-placeholder' => 'Pilih Nama Properti',
+                    'data-placeholder' => 'Pilih Nama Proyek',
                 ]) !!}
             </div>
         </div>

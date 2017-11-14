@@ -19,3 +19,9 @@ a.button-kpr {
 a.button-kpr:hover {
 	background-color: #1f1d22 !important;
 }
+.csm-attr {
+    height: 88px;
+}
+.homePage .has-dropdown-content {
+    right: 12px;
+}

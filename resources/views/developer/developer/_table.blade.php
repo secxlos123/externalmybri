@@ -56,7 +56,7 @@
         <center><input type="submit" class="btn btn-warning" id="alert{{ $value['user_id'] }}" value="Banned"></center>
         @elseif($value['is_actived'] == false)
         {!! Form::hidden('is_actived', 't', [ 'class' => '' ]) !!}
-        <center><input type="submit" class="btn btn-success" id="reactive{{ $value['user_id'] }}" value="Reactived"></center>
+        <center><input type="submit" class="btn btn-orange" value="Reactived"></center>
         @endif
      <!--    {!! Form::close() !!} -->
         </form>

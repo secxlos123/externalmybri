@@ -1,7 +1,7 @@
 @if ( isset($btn) )
     {!! Form::label('price', 'Foto') !!}
     <div class="clearfix"></div>
-    <span class="btn btn-success fileinput-button dz-clickable">
+    <span class="btn btn-orange fileinput-button dz-clickable">
         <i class="glyphicon glyphicon-plus"></i>
         <span>Tambah File</span>
     </span>

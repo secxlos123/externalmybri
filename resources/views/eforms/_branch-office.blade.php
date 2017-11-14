@@ -11,7 +11,7 @@
                 <input type="range" min="1" max="20" value="10" class="slider" id="range">
             </div>
             <div class="col-md-2" style="padding-left: unset; top: -3px;">
-                <a href="javascript:void(0)" class="btn-xs btn-success btn-find">
+                <a href="javascript:void(0)" class="btn-xs btn-orange btn-find">
                     <i class="fa fa-search"></i> CARI
                 </a>
             </div>

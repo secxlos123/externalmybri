@@ -74,7 +74,7 @@ class EformRequest extends FormRequest
             'citizenship_id'    => 'required',
             'status'            => 'required|in:1,2,3',
             'address_status'    => 'required|in:0,1,3',
-            'phone'             => 'required|numeric|digits_between:7,16',
+            // 'phone'             => 'numeric|digits_between:7,16',
             'mobile_phone'      => 'required|numeric|digits_between:9,16',
             'mother_name'       => 'required',  
             'couple_nik'        => 'required_if:status,2|numeric|digits:16',
