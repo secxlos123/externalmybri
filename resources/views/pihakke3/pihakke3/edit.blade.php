@@ -38,4 +38,5 @@
 @endsection
 @push('scripts')
 {!! JsValidator::formRequest(App\Http\Requests\Pihakke3\Profile\CreateRequest::class, '#form-pihakke3-edit') !!}
+{!! JsValidator::formRequest(App\Http\Requests\Developer\Profile\ChangePasswordRequest::class, '#form-change-password-store') !!}
 @endpush

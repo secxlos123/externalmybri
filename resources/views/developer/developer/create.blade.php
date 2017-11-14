@@ -55,13 +55,10 @@
     {!! JsValidator::formRequest(App\Http\Requests\Developer\Agent\CreateRequest::class, '#form-property') !!}
 
     <!-- Laravel Javascript Validation -->
-    <script type="text/javascript">
-    $( ".datepicker-date-born" ).datepicker({
-        dateFormat: 'yyyy-mm-dd'
-        , endDate: '-17y'
-    });
+      <script type="text/javascript">
+    $( ".datepicker-date-born" ).datepicker({dateFormat: 'yyyy-mm-dd', endDate: '-17y'});
     </script>
     <script type="text/javascript">
-    $( ".datepicker-date-join" ).datepicker({dateFormat: 'yyyy-mm-dd'}).val();
+    $( ".datepicker-date-join" ).datepicker({dateFormat: 'yyyy-mm-dd'});
     </script>
 @endpush

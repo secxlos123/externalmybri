@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\Pihakke3\Profile\BaseRequest;
 use App\Http\Requests\Pihakke3\Profile\CreateRequest;
 use App\Http\Requests\Pihakke3\Profile\UpdateRequest;
+use App\Http\Requests\Developer\Profile\ChangePasswordRequest;
 use App\Http\Controllers\Controller;
 use Client;
 
@@ -51,6 +52,11 @@ public function index()
     	 	]);
     }
 
+    /**
+    * This function for request update data to Admin
+    * @param  \Illuminate\Http\Request  $request
+    */
+
     public function requpdate(Request $request)
     {
         $input  = $request->all();
@@ -66,7 +72,12 @@ public function index()
         return redirect()->route('pihakke3.profile.edit');
     }
 
-    public function getCity($type = null)
+    /**
+    * This function for List View All City
+    *
+    */
+
+    public function getCity()
     {
         $results = Client::setEndpoint('cities')
                 ->get();
@@ -75,5 +86,26 @@ public function index()
         //     'results' => $results['contents']
 
         //     ]);
+    }
+
+    public function changePassword(ChangePasswordRequest $request)
+    {
+        $results = Client::setEndpoint('profile/password')
+            ->setHeaders([
+                'Authorization' => session('authenticate.token')
+            ])
+            ->setQuery([
+                'old_password' => $request->old_password,
+                'password' => $request->password,
+                'password_confirmation' => $request->password_confirmation
+            ])
+            ->put();
+
+        if (isset($results['code']) && $results['code'] == 200) {
+            \Session::flash('flash_message', $results['descriptions']);
+            return redirect()->back();
+        }
+        \Session::flash('flash_message', $results['descriptions']);
+        return redirect()->back()->withInput();
     }
 }
