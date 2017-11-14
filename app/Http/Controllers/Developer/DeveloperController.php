@@ -8,6 +8,7 @@ use App\Http\Requests\Developer\Agent\CreateRequest;
 use App\Http\Requests\Developer\Agent\UpdateRequest;
 use App\Http\Controllers\Controller;
 use Client;
+use Carbon\Carbon;
 
 class DeveloperController extends Controller
 {
@@ -43,12 +44,19 @@ class DeveloperController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   
+        $input = [
+            "name" => $request->input("name"),
+            "birth_date" => Carbon::parse($request->input("birth_date"))->format('Y-m-d'),
+            "join_date" => Carbon::parse($request->input("join_date"))->format('Y-m-d'),
+            "mobile_phone"  => $request->input("mobile_phone"),
+            "email" => $request->input("email")
+                ];
         $client = Client::setEndpoint('developer-agent')
            ->setHeaders([
                 'Authorization' => session('authenticate.token')
             ])
-           ->setBody($request->all())
+           ->setBody($input)
            ->post();
         // dd($client);
         return redirect()->route('developer.developer.index');
