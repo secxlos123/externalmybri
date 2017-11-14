@@ -136,8 +136,8 @@
 
             function whenDataExists()
             {
-                var address = "{{$param['property_item_address']}}";
-                var price = "{{$param['property_item_price']}}";
+                var address = "{{($param['property_item_address']) ? $param['property_item_address'] : ''}}";
+                var price = "{{($param['property_item_price']) ? $param['property_item_price'] : ''}}";
                 $('#building_area').val($('#sess_building_area').val()).trigger('change');
                 $('#category-hide').val($('#sess_prop_category').val()).trigger('change');
                 $('#property_item_name').val(address).trigger('change');
