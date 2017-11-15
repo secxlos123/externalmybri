@@ -12,10 +12,56 @@
         this.$calendarObj = null
     };
 
+    var eventValues = [];
+    $.ajax({
+        url: '/create-form',
+        dataType: "JSON",
+        type: 'GET',
+        async: false,
+        success: function(response){
+            $.each(response.data, function(key, value){
+                event = {
+                    title : value.title,
+                    start : new Date(value.appointment_date),
+                    className: 'bg-primary'
+                };
+                eventValues.push(event);
+            });
+        },
+        error: function(response){
+            console.log(response);
+        }
+    });
+
+    var today = new Date($.now());
+    var defaultEvents =  [{
+                title: 'Jadwal 1',
+                start: new Date($.now() + 158000000),
+                className: 'bg-primary'
+            },
+            {
+                title: 'Jadwal 2',
+                start: today,
+                end: today,
+                className: 'bg-primary'
+            },
+            {
+                title: 'Jadwal 3',
+                start: new Date($.now() + 168000000),
+                className: 'bg-primary'
+            },
+            {
+                title: 'Jadwal 4',
+                start: new Date($.now() + 338000000),
+                className: 'bg-primary'
+            }];
+
 
     /* on drop */
-    CalendarApp.prototype.onDrop = function (eventObj, date) { 
+    CalendarApp.prototype.onDrop = function (eventObj, date) {
         var $this = this;
+            console.log(eventObj);
+            console.log(date);
             // retrieve the dropped element's stored Event Object
             var originalEventObject = eventObj.data('eventObject');
             var $categoryClass = eventObj.attr('data-class');
@@ -36,6 +82,9 @@
     /* Edit Event */
     CalendarApp.prototype.onEventClick =  function (calEvent, jsEvent, view) {
         var $this = this;
+        console.log(calEvent);
+        console.log(jsEvent);
+        console.log(view);
             var form = $("<form></form>");
             form.append("<label>Nama Jadwal</label>");
             form.append("<div class='input-group'><input class='form-control' type=text value='" + calEvent.title + "' /><span class='input-group-btn'><button type='submit' class='btn btn-success waves-effect waves-light'><i class='fa fa-check'></i> Save</button></span></div>");
@@ -58,9 +107,14 @@
     /* Create New */
     CalendarApp.prototype.onSelect = function (start, end, allDay,) {
         var $this = this;
+        console.log(start);
+        console.log(end);
+        console.log(allDay);
             $this.$modal.modal({
                 backdrop: 'static'
             });
+            var moment = $('#calendar').fullCalendar('getDate');
+            console.log(moment.format());
             var form = $("<form></form>");
             form.append("<div class='row'></div>");
             form.find(".row")
@@ -93,14 +147,14 @@
                         end: end,
                         allDay: false,
                         className: categoryClass
-                    }, true);  
+                    }, true);
                     $this.$modal.modal('hide');
                 }
                 else{
                     alert('You have to give a title to your event');
                 }
                 return false;
-                
+
             });
             $this.$calendarObj.fullCalendar('unselect');
     },
@@ -133,47 +187,30 @@
         var form = '';
         var today = new Date($.now());
 
-        var defaultEvents =  [{
-                title: 'Jadwal 1',
-                start: new Date($.now() + 158000000),
-                className: 'bg-primary'
-            },
-            {
-                title: 'Jadwal 2',
-                start: today,
-                end: today,
-                className: 'bg-primary'
-            },
-            {
-                title: 'Jadwal 3',
-                start: new Date($.now() + 168000000),
-                className: 'bg-primary'
-            },
-            {
-                title: 'Jadwal 4',
-                start: new Date($.now() + 338000000),
-                className: 'bg-primary'
-            }];
-
         var $this = this;
         $this.$calendarObj = $this.$calendar.fullCalendar({
             slotDuration: '00:15:00', /* If we want to split day time each 15minutes */
             minTime: '08:00:00',
-            maxTime: '19:00:00',  
-            defaultView: 'month',  
-            handleWindowResize: true,   
-            height: $(window).height() - 200,   
+            maxTime: '19:00:00',
+            defaultView: 'month',
+            handleWindowResize: true,
+            height: $(window).height() - 200,
             header: {
                 left: 'prev,next today',
                 center: 'title',
                 right: 'month,agendaWeek,agendaDay'
             },
-            events: defaultEvents,
+            events: eventValues,
             editable: true,
             droppable: true, // this allows things to be dropped onto the calendar !!!
             eventLimit: true, // allow "more" link when too many events
             selectable: true,
-            drop: function(date) { $this.onDrop($(this), date); },
+            eventDrop: function(event, delta, revertFunc) {
+                console.log(event);
+                console.log(delta);
+                console.log(revertFunc);
+                // $this.onDrop($(this), date);
+            },
             select: function (start, end, allDay) { $this.onSelect(start, end, allDay); },
             eventClick: function(calEvent, jsEvent, view) { $this.onEventClick(calEvent, jsEvent, view); }
 
@@ -193,7 +230,7 @@
 
    //init CalendarApp
     $.CalendarApp = new CalendarApp, $.CalendarApp.Constructor = CalendarApp
-    
+
 }(window.jQuery),
 
 //initializing CalendarApp
