@@ -59,6 +59,7 @@ class RouteServiceProvider extends ServiceProvider
                 require base_path('routes/eform.php');
                 require base_path('routes/dropdown.php');
                 require base_path('routes/pihakke3.php');
+                require base_path('routes/developer-sales.php');
              });
     }
 

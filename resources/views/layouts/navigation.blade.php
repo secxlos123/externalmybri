@@ -39,6 +39,29 @@
                     </a>
                 </div>
                 @if(session('authenticate'))
+                    @if('others' == session('authenticate.role'))
+                    <ul class="attr-nav csm-attr no-bg">
+                    <li class="dropdown">
+                        <a href="{{('others' == session('authenticate.role')) ? url('pihakke3/profile/ubah') : url('profile')}}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> {!! session('authenticate.fullname') !!} <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <!-- <li><a href="#"><i class="fa fa-heart"></i> Favorit</a></li> -->
+                            <li><a href="{{('others' == session('authenticate.role')) ? url('pihakke3/profile/ubah') : url('profile')}}"><i class="fa fa-edit"></i> Edit Profile</a></li>
+                            <li><a href="javascript:void(0)" onclick="document.getElementById('form-logout').submit();"><i class="fa fa-sign-out"></i> Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                    @elseif('developer-sales' == session('authenticate.role'))
+                    <ul class="attr-nav csm-attr no-bg">
+                    <li class="dropdown">
+                        <a href="{{('developer-sales' == session('authenticate.role')) ? url('dev-sales/profile/ubah') : url('profile')}}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> {!! session('authenticate.fullname') !!} <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <!-- <li><a href="#"><i class="fa fa-heart"></i> Favorit</a></li> -->
+                            <li><a href="{{('developer-sales' == session('authenticate.role')) ? url('dev-sales/profile/ubah') : url('profile')}}"><i class="fa fa-edit"></i> Edit Profile</a></li>
+                            <li><a href="javascript:void(0)" onclick="document.getElementById('form-logout').submit();"><i class="fa fa-sign-out"></i> Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                    @else
                 <ul class="attr-nav csm-attr no-bg">
                     <li class="dropdown">
                         <a href="{{('developer' == session('authenticate.role')) ? url('dev/profile') : url('profile')}}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> {!! session('authenticate.fullname') !!} <span class="caret"></span></a>
@@ -49,6 +72,7 @@
                         </ul>
                     </li>
                 </ul>
+                    @endif
 
                 {!! Form::open([
                     'route' => 'auth.logout', 'method' => 'DELETE',
