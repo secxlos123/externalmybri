@@ -69,9 +69,10 @@ class LoginController extends Controller
     protected function redirectToRole()
     {
         switch ( session('authenticate.role') ) {
-            case 'developer' : return redirect()->route('developer.index');
+            case 'developer' : return $this->redirectIfDeveloper();
             case 'customer'  : return $this->redirectIfCustomer();
-            case 'others'    : return redirect()->route('pihakke3.index');
+            case 'others'    : return $this->redirectIfOther();
+            case 'developer-sales' : return $this->redirectIfDeveloperSales();
             default : return $this->redirectIfCustomer();
         }
     }
@@ -83,6 +84,26 @@ class LoginController extends Controller
     protected function redirectIfOther()
     {
         return redirect()->route('pihakke3.index');
+    }
+
+     /**
+     * This check if customer have a register complete or not
+     * 
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
+     */
+    protected function redirectIfDeveloper()
+    {
+        return redirect()->route('developer.index');
+    }
+
+     /**
+     * This check if customer have a register complete or not
+     * 
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
+     */
+    protected function redirectIfDeveloperSales()
+    {
+        return redirect()->route('dev-sales.index');
     }
 
     /**

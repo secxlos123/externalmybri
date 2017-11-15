@@ -2,13 +2,14 @@
 
 @section('title', 'Edit Profile')
 @section('breadcrumb')
-  <h1 class="text-uppercase">Manajemen Pihak Ke Tiga</h1>
-  <p>Kelola Profile anda di sini.</p>
+  <h1 class="text-uppercase">Manajemen Agen Developer</h1>
+  <p>Kelola Akun anda di sini.</p>
   <ol class="breadcrumb text-center">
-      <li><a href="{!! url('pihakke3/dashboard') !!}">Dashboard</a></li>
+      <li><a href="{!! url('/') !!}">Dashboard</a></li>
       <li class="active">Profile</li>
   </ol>
 @endsection
+
 @section('content')
 <section id="property" class="padding listing1">
   <div class="container">   
@@ -16,7 +17,7 @@
     @if(Session::has('flash_message'))
                         <div class="alert alert-success"><em> {!! session('flash_message') !!}</em></div>
                     @elseif(Session::has('error_flash_message'))
-                        <div class="alert alert-danger"><em> {!! session('error_flash_message') !!}</em></div>
+                        <div class="alert alert-success"><em> {!! session('error_flash_message') !!}</em></div>
           @endif
       <div class="panel panel-blue">
         <div class="panel-heading">
@@ -34,7 +35,7 @@
                   <a href="#change-password" data-toggle="tab" aria-expanded="false">CHANGE PASSWORD</a>
                 </li>
               </ul>
-              @include('pihakke3.pihakke3._form')
+              @include('developer.developer_sales._form')
             </div>
           </div>
         </div>
@@ -44,6 +45,19 @@
 </section>
 @endsection
 @push('scripts')
-{!! JsValidator::formRequest(App\Http\Requests\Pihakke3\Profile\CreateRequest::class, '#form-pihakke3-edit') !!}
+
+    <script src="{{asset('assets/js/bootstrap-datepicker.min.js')}}"></script>
+    <script src="{{asset('assets/js/jquery.date-pickers.init.js')}}"></script>
+    <!-- You can edit this script on resouces/asset/js/dropdown.js -->
+    <!-- After that you run in console or terminal or cmd "npm run production" -->
+    {!! JsValidator::formRequest(App\Http\Requests\Developer\Agent\CreateRequest::class, '#form-property') !!}
+
+    <!-- Laravel Javascript Validation -->
+      <script type="text/javascript">
+    $( ".datepicker-date-born" ).datepicker({dateFormat: 'yyyy-mm-dd', endDate: '-17y'});
+    </script>
+    <script type="text/javascript">
+    $( "#join_date" ).datepicker({dateFormat: 'yyyy-mm-dd'});
+    </script>
 {!! JsValidator::formRequest(App\Http\Requests\Developer\Profile\ChangePasswordRequest::class, '#form-change-password-store') !!}
 @endpush
