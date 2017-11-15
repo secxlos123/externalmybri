@@ -14,16 +14,24 @@
 
     var eventValues = [];
     $.ajax({
-        url: '/create-form',
+        url: '/schedule/data-list',
         dataType: "JSON",
         type: 'GET',
         async: false,
         success: function(response){
+            console.log(response.data);
             $.each(response.data, function(key, value){
                 event = {
+                    id : value.id,
                     title : value.title,
                     start : new Date(value.appointment_date),
-                    className: 'bg-primary'
+                    className: 'bg-primary',
+                    desc: value.desc,
+                    lat: value.latitude,
+                    long: value.longitude,
+                    status: value.status,
+                    guest: value.guest_name,
+                    refNum: value.ref_number
                 };
                 eventValues.push(event);
             });
@@ -82,9 +90,6 @@
     /* Edit Event */
     CalendarApp.prototype.onEventClick =  function (calEvent, jsEvent, view) {
         var $this = this;
-        console.log(calEvent);
-        console.log(jsEvent);
-        console.log(view);
             var form = $("<form></form>");
             form.append("<label>Nama Jadwal</label>");
             form.append("<div class='input-group'><input class='form-control' type=text value='" + calEvent.title + "' /><span class='input-group-btn'><button type='submit' class='btn btn-success waves-effect waves-light'><i class='fa fa-check'></i> Save</button></span></div>");
@@ -107,9 +112,6 @@
     /* Create New */
     CalendarApp.prototype.onSelect = function (start, end, allDay,) {
         var $this = this;
-        console.log(start);
-        console.log(end);
-        console.log(allDay);
             $this.$modal.modal({
                 backdrop: 'static'
             });
@@ -175,7 +177,119 @@
                 revertDuration: 0  //  original position after the drag
             });
         });
-    }
+    },
+    CalendarApp.prototype.buildForm = function (calEvent, disabled) {
+      var $this = this;
+        $this.$modal.modal({
+            backdrop: 'static'
+        });
+        var form = $("<form></form>");
+        form.append("<div class='row'></div>");
+        form.find(".row")
+            .append("<div class='col-md-6'><div class='form-group'><label class='control-label'>Tanggal</label><input class='form-control appointment_date' readonly type='text' name='date' /></div></div>")
+            .append("<div class='col-md-6'><div class='form-group'><label class='control-label'>No. Referensi</label><select class='form-control select2' " + disabled + " name='eform-id'></select></div></div>")
+            .find("select[name='eform-id']");
+        form.find(".select2").append("<option value='" + calEvent.eform_id + "' selected='selected'>" + calEvent.ref_number +"</option>");
+        form.find(".select2").trigger('change');
+        form.find(".select2").select2(ajaxConfig);
+        form.find(".row")
+            .append("<div class='col-md-6'><div class='form-group'><label class='control-label'>Title</label><input class='form-control' type='text' name='title' /></div></div>")
+            .append("<div class='col-md-6'><div class='form-group'><label class='control-label'>Guest</label><input class='form-control' type='text' name='guest' readonly='' value='John Doe' /></div></div>")
+        // form.find(".row")
+        //     .append("<div class='col-md-12'><div class='form-group'><label class='control-label'>Deskripsi</label><textarea name='description' class='form-control' rows='3'></textarea></div></div>")
+        $this.$modal.find('.delete-event').hide().end().find('.save-event').show().end().find('.modal-body').find('.form').empty().prepend(form);
+        $this.$modal.find('.save-event').unbind('click').click(function () {
+            form.submit();
+        });
+        return form;
+    },
+    CalendarApp.prototype.valid = function (data) {
+      return data !== '' && data !== null && data !== undefined && data.length > 0;
+    },
+    /* Edit Event */
+    CalendarApp.prototype.onEventClickTag =  function (calEvent, jsEvent, view) {
+        var $this = this;
+        $this.$modal.modal({
+            backdrop: 'static'
+        });
+        console.log(calEvent);
+        $("input[name='title']").val(calEvent.title || '');
+        $("input[name='guest']").val(calEvent.guest || '');
+        $("input[name='date']").val(calEvent.start.format('YYYY-MM-DD') || '');
+        $("input[name='reference']").val(calEvent.refNum || '');
+        $("textarea[name='description']").val(calEvent.desc || '');
+        $("input[name='lng']").val(calEvent.long || '');
+        $("input[name='lat']").val(calEvent.lat || '');
+        $("input[name='id_schedule']").val(calEvent.id || '');
+        // if (calEvent.status.toString() == "waiting") {
+        //     $this.$modal.find(".approval").show();
+        // }else{
+        //     $this.$modal.find(".approval").hide();
+        // }
+        initializeMapPosition(calEvent);
+        // $this.$modal.find(".save-event").html("Update Jadwal").attr('type', 'submit');
+        // $this.$modal.find('form').on('submit', function () {
+        //     var title = form.find("input[name='title']").val();
+        //     var beginning = form.find("input[name='beginning']").val();
+        //     var ending = form.find("input[name='ending']").val();
+        //     var categoryClass = form.find("select[name='category'] option:checked").val();
+        //     var eForm = form.find('select[name="eform-id"]');
+        //     // var desc = form.find('textarea[name="description"]').val();
+        //     var eFormTexts = eForm.find('option:selected').text().split('</span>').map(function(text) {
+        //         return text.replace('<span>', '').replace('<span class="none">', '');
+        //     });
+
+        //     var updateEvent = {
+        //         id: calEvent.id,
+        //         title: eForm.find('option:selected').text(),
+        //         origin_title: title,
+        //         start: moment($('.appointment_date').val()),
+        //         // end: end,
+        //         allDay: false,
+        //         eform_id: eForm.val(),
+        //         // desc: desc,
+        //         ref_number: calEvent.ref_number || undefined,
+        //         guest_id: calEvent.guest_id || undefined,
+        //         guest_name: calEvent.guest_name || undefined,
+        //         address: calEvent.address,
+        //         latitude: calEvent.latitude,
+        //         longitude: calEvent.longitude,
+        //         className: 'bg-primary'
+        //     }
+        //     if (!$this.valid(updateEvent.origin_title)) {
+        //         form.find("input[name='title']").parent().parent().addClass('has-error');
+        //     } else {
+        //         var schedule = new Schedule();
+        //         schedule.update(updateEvent, true)
+        //             .then(function(event) {
+        //             toastr.success('Schedule Has Been Updated');
+        //             calEvent.origin_title = title;
+        //             calEvent.start = moment($('.appointment_date').val());
+        //             calEvent.latitude = event.latitude;
+        //             calEvent.longitude = event.longitude;
+        //             calEvent.address = event.address;
+        //         $this.$calendarObj.fullCalendar('updateEvent', calEvent);
+        //         $this.$modal.modal('hide');
+        //         })
+        //         .catch(function(reason) {
+        //             toastr.error('Fail For Update Schedule');
+        //         });
+        //     }
+        // return false;
+        // });
+        // $this.$modal.find('.delete-event').show().end().find('.save-event').hide().end().find('.modal-body').empty().prepend(form).end().find('.delete-event').unbind('click').click(function () {
+        //     $this.$calendarObj.fullCalendar('removeEvents', function (ev) {
+        //         return (ev._id == calEvent._id);
+        //     });
+        //     $this.$modal.modal('hide');
+        // });
+        // $this.$modal.find('form').on('submit', function () {
+        //     calEvent.title = form.find("input[type=text]").val();
+        //     $this.$calendarObj.fullCalendar('updateEvent', calEvent);
+        //     $this.$modal.modal('hide');
+        //     return false;
+        // });
+    },
     /* Initializing */
     CalendarApp.prototype.init = function() {
         this.enableDrag();
@@ -186,7 +300,6 @@
         var y = date.getFullYear();
         var form = '';
         var today = new Date($.now());
-
         var $this = this;
         $this.$calendarObj = $this.$calendar.fullCalendar({
             slotDuration: '00:15:00', /* If we want to split day time each 15minutes */
@@ -211,8 +324,9 @@
                 console.log(revertFunc);
                 // $this.onDrop($(this), date);
             },
-            select: function (start, end, allDay) { $this.onSelect(start, end, allDay); },
-            eventClick: function(calEvent, jsEvent, view) { $this.onEventClick(calEvent, jsEvent, view); }
+            // select: function (start, end, allDay) { $this.onSelect(start, end, allDay); },
+            eventClick: function(calEvent, jsEvent, view) { $this.onEventClickTag(calEvent, jsEvent, view); },
+            // eventClick: function(calEvent, jsEvent, view) { $this.onSelect(calEvent, jsEvent, view); }
 
         });
 
@@ -228,7 +342,7 @@
         });
     },
 
-   //init CalendarApp
+    //init CalendarApp
     $.CalendarApp = new CalendarApp, $.CalendarApp.Constructor = CalendarApp
 
 }(window.jQuery),
