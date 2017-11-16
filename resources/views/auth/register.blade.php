@@ -22,7 +22,7 @@
 
     <div class="single-query form-group col-sm-12">
         {!! Form::text('mobile_phone', old('mobile_phone'), [
-            'class' => 'keyword-input', 'placeholder' => 'No Handphone ( Optional )',
+            'class' => 'keyword-input numeric', 'placeholder' => 'No Handphone ( Optional )',
             'maxlength' => 16, 'minlength' => 9
         ]) !!}
     </div>

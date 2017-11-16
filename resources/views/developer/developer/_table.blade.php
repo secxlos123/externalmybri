@@ -42,23 +42,29 @@
                         <td>{{ $value["last_login"] }}</td>
                         <td><center><a href="{{ url('dev/developer/edit/'.$value['user_id']) }}" class="btn btn-primary" role="button"><i class="fa fa-edit"></i> Edit</a></center></td>
                         <td>
-                        
-<!--        {!! Form::open([
-            'route' => ['developer.developer.deactive', $value["user_id"]] ,
-            'method' => 'PUT',
-            'id'    => 'alert'     
-        ]) !!} -->
         <form action="{{ url('dev/developer/banned/'.$value['user_id']) }}" id="falert{{$value['user_id']}}" method="POST">
         <input type="hidden" name="_method" value="PUT">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        <?php 
+        $name = $value["first_name"].' '.$value["last_name"];
+         ?>
         @if($value['is_actived'] == true)
         {!! Form::hidden('is_actived', 'f', [ 'class' => '' ]) !!}
+        {!! Form::hidden('name', $name, [ 'class' => '' ]) !!}
+        {!! Form::hidden('email', $value['email'], [ 'class' => '' ]) !!}
+        {!! Form::hidden('mobile_phone', $value['mobile_phone'], [ 'class' => '' ]) !!}
+        {!! Form::hidden('birth_date', $value['birth_date'], [ 'class' => '' ]) !!}
+        {!! Form::hidden('join_date', $value['join_date'], [ 'class' => '' ]) !!}
         <center><input type="submit" class="btn btn-warning" id="alert{{ $value['user_id'] }}" value="Banned"></center>
         @elseif($value['is_actived'] == false)
         {!! Form::hidden('is_actived', 't', [ 'class' => '' ]) !!}
-        <center><input type="submit" class="btn btn-orange" value="Reactived"></center>
+        {!! Form::hidden('name', $name, [ 'class' => '' ]) !!}
+        {!! Form::hidden('email', $value['email'], [ 'class' => '' ]) !!}
+        {!! Form::hidden('mobile_phone', $value['mobile_phone'], [ 'class' => '' ]) !!}
+        {!! Form::hidden('birth_date', $value['birth_date'], [ 'class' => '' ]) !!}
+        {!! Form::hidden('join_date', $value['join_date'], [ 'class' => '' ]) !!}
+        <center><input type="submit" class="btn btn-orange" id="reactive{{ $value['user_id'] }}" value="Reactived"></center>
         @endif
-     <!--    {!! Form::close() !!} -->
         </form>
                         </td>
                     </tr>
@@ -84,7 +90,7 @@
     $('#datatable').DataTable( {
         lengthMenu: [
                 [ 10, 25, 50, -1 ],
-                [ '10', '25', '50', 'All' ]
+                [ '10', '25', '50']
             ],
         "initComplete": function () {
             var api = this.api();
