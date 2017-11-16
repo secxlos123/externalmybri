@@ -112,11 +112,15 @@ Route::group(['prefix' => 'schedule', 'as' => 'schedule.', 'middleware' => ['aut
 	 * This route for send request schedule data
 	 */
 	Route::get('/', 'ScheduleController@index')->name('index-schedule');
-});
 	/**
 	 * This route for send request form create data
 	 */
-	Route::get('/create-form', 'ScheduleController@create')->name('create-form');
+	Route::get('/data-list', 'ScheduleController@listData')->name('list-data');
+	/**
+	 * This route for send request form create data
+	 */
+	Route::get('/update', 'ScheduleController@update')->name('update');
+});
 
 /**
  * This route grup for authenticate

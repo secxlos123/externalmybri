@@ -45,27 +45,27 @@ return [
 
         'local' => [
             'driver' => 'local',
-            'root' => storage_path('app'),
+            'root' => public_path('storage'),
         ],
 
         'public' => [
             'driver' => 'local',
-            'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'/storage',
+            'root' => public_path('storage'),
+            // 'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],
 
         'property_types' => [
             'driver'     => 'local',
-            'root'       => storage_path('app/public/property_types'),
-            'url'        => env('APP_URL').'/storage/property_types',
+            'root'       => public_path('storage/property_types'),
+            // 'url'        => env('APP_URL').'/storage/property_types',
             'visibility' => 'public',
         ],
 
         'property-item' => [
             'driver'     => 'local',
-            'root'       => storage_path('app/public/property-item'),
-            'url'        => env('APP_URL').'/storage/property-item',
+            'root'       => public_path('storage/property-item'),
+            // 'url'        => env('APP_URL').'/storage/property-item',
             'visibility' => 'public',
         ],
 

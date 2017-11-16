@@ -40,4 +40,18 @@ Route::group([ 'prefix' => 'eform', 'as' => 'eform.' ], function () {
 	 * This route for get page success
 	 */
 	Route::get('sukses', 'EformController@success')->name('success');
+	/**
+	 * This route for get list customer data
+	 */
+	Route::get('list-customer', 'EformController@getCustomer')->name('get-list-ustomer');
+
+	/**
+	 * This route for get list customer data
+	 */
+	Route::post('new-leads', 'EformController@saveCustomer')->name('save-customer');
+
+	/**
+	 * This route for get list customer data
+	 */
+	Route::get('detail-customer', 'EformController@detailCustomer')->name('detail-customer');
 });
