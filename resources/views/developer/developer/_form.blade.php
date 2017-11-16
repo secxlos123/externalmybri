@@ -49,7 +49,8 @@ $name     = $result['first_name']." ".$result['last_name'];
             {{ $errors->has('mobile_phone') ? ' has-error' : '' }}">
             {!! Form::label('mobile_phone', 'No Handphone') !!}
             {!! Form::text('mobile_phone', $result['mobile_phone'], [
-                'class' => 'keyword-input',
+                'class' => 'keyword-input numeric',
+                'maxlength' => 16, 'minlength' => 9,
                 'placeholder' => 'Masukkan No Handphone developer'
             ]) !!}
 
@@ -126,7 +127,8 @@ $name     = $result['first_name']." ".$result['last_name'];
             {{ $errors->has('mobile_phone') ? ' has-error' : '' }}">
             {!! Form::label('mobile_phone', 'No Handphone') !!}
             {!! Form::text('mobile_phone', old('mobile_phone'), [
-                'class' => 'keyword-input',
+                'class' => 'keyword-input numeric',
+                'maxlength' => 16, 'minlength' => 9,
                 'placeholder' => 'Masukkan No Handphone developer'
             ]) !!}
 

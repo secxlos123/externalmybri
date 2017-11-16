@@ -28,7 +28,7 @@ $join = \Carbon\Carbon::parse($results["join_date"])->format('d-m-Y');
                                   </div>
                                   <div class="single-query form-group bottom20 {{ $errors->has('mobile_phone') ? ' has-error' : '' }} ">
                                     <label>Nomor Telepon (*)</label>
-                                    <input type="text" class="keyword-input" name="mobile_phone" value="{{$results['mobile_phone']}}">
+                                    <input type="text" class="keyword-inpu numerict" maxlength="16" minlength="9" name="mobile_phone" value="{{$results['mobile_phone']}}">
                                     @if ($errors->has('mobile_phone'))
                                     <span class="help-block">
                                     <strong>{{ $errors->first('mobile_phone') }}</strong>
