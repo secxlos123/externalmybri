@@ -200,15 +200,15 @@
             // console.log(data);
             if (data.bri != '1') {
                 $select.removeClass('hide');
-                // $kpr.addClass('hide');
+                $('.kpr_type_property').hide();
                 $price.val(0).attr('readonly', true).trigger('change');
                 $building_area.val(0).attr('readonly', true).trigger('change');
                 $home_location.val('').attr('readonly', true).trigger('change');
                 return;
             }
 
-            // $kpr.removeClass('hide');
-            // $select.addClass('hide');
+            $('.kpr_type_property').show();
+            $select.addClass('hide');
             $price.removeAttr('readonly');
             $building_area.removeAttr('readonly');
             $home_location.removeAttr('readonly');
@@ -316,6 +316,19 @@
         //property status
         $('.status_property').on('change', function () {
             var value = $(this).select2('data')[0]['id'];
+
+            // $("select[name='developer']").html("");
+            // $("select[name='kpr_type_property']").val("").trigger("change");
+            // $("select[name='property']").html("");
+            // $("select[name='property_type']").html("");
+            // $("select[name='property_item']").html("");
+            // $("select[name='active_kpr']").val("").trigger("change");
+            // $("input[name='price']").val("");
+            // $("input[name='building_area']").val("");
+            // $("input[name='dp']").val(0);
+            // $("input[name='down_payment']").val(0);
+            // $("input[name='request_amount']").val(0);
+            // $("textarea[name='home_location']").val("").html("");
 
             if (1 == value) {
                 $("div.kpr_type_property").hide();

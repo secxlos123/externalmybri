@@ -21,18 +21,6 @@
             </div>
         </div>
 
-        <div class="form-group kpr_type_property {!! $errors->has('kpr_type_property') ? 'has-error' : '' !!}">
-            <label class="control-label col-md-4">Jenis Properti *:</label>
-            <div class="col-md-8">
-                {!! Form::select('kpr_type_property', array("" => "", "1" => "Rumah Tapak", "2" => "Rumah Susun/Apartment", "3" => "Rumah Toko"), old('kpr_type_property'), [
-                    'class' => 'select2 kpr_type_properties ',
-                    'data-placeholder' => 'Pilih Jenis Properti',
-                    'data-bri' => ''
-                ]) !!}
-                @if ($errors->has('kpr_type_property')) <p class="help-block">{{ $errors->first('kpr_type_property') }}</p> @endif
-            </div>
-        </div>
-
         <div class="form-group developer" hidden>
             <label class="control-label col-md-4">Developer *</label>
             <div class="col-md-8">
@@ -43,6 +31,18 @@
                     'data-option' => old('developer'),
                     'data-placeholder' => 'Pilih Developer',
                 ]) !!}
+            </div>
+        </div>
+
+        <div class="form-group kpr_type_property {!! $errors->has('kpr_type_property') ? 'has-error' : '' !!}">
+            <label class="control-label col-md-4">Jenis Properti *:</label>
+            <div class="col-md-8">
+                {!! Form::select('kpr_type_property', array("" => "", "1" => "Rumah Tapak", "2" => "Rumah Susun/Apartment", "3" => "Rumah Toko"), old('kpr_type_property'), [
+                    'class' => 'select2 kpr_type_properties ',
+                    'data-placeholder' => 'Pilih Jenis Properti',
+                    'data-bri' => ''
+                ]) !!}
+                @if ($errors->has('kpr_type_property')) <p class="help-block">{{ $errors->first('kpr_type_property') }}</p> @endif
             </div>
         </div>
 
