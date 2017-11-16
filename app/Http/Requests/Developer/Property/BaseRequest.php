@@ -22,8 +22,8 @@ class BaseRequest extends FormRequest
             'pic_phone' => 'required|numeric|digits_between:9,16',
             'photo'     => 'required|image|max:1024',
             'address'   => 'required',
-            'latitude'  => 'required',
-            'longitude' => 'required',
+            //'latitude'  => 'required',
+            //'longitude' => 'required',
             'description' => 'required',
             'facilities'  => 'required',
         ];
