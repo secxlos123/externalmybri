@@ -31,7 +31,6 @@
                         @include('eforms.products._kpr')
                         {!! Form::hidden('category', 0, ['id' => 'category-hide']) !!}
                         {!! Form::hidden('product_type', 'kpr') !!}
-                        {!! Form::hidden('status_property', 'new') !!}
                     </div>
 
                     @if (false)
@@ -86,7 +85,8 @@
             $select = $('.property-select, .types-select, .units-select')
             $kpr = $('.kpr_type_property, .kpr_type')
             $dp = $('#dp');
-            $kpr.addClass('hide');
+            // $kpr.addClass('hide');
+            $('.kpr_type_properties, .type_property').select2({width:'100%'});
             $developers
                 .dropdown('developer')
                 .on('select2:unselect, change', unset_property)
@@ -102,6 +102,26 @@
                 if ( $(this).val() < 12) {
                     $(this).val(12);
                     return;
+                }
+            });
+
+            $down_payment.on('input', function() {
+                var val = $(this).val().replace(',00', '').replace(/\./g, '');
+                var static_price = $('#price').val().replace(',00', '').replace(/\./g, '');
+                var dp = $('#dp');
+
+                if (parseInt(val) < parseInt(static_price)) {
+                    payment = (val / static_price) * 100;
+
+                } else {
+                    $(this).val(static_price);
+                    payment = 100;
+
+                }
+
+                if ( !isNaN(payment) ) {
+                    dp.val(Math.round(payment));
+                    $request_amount.val(static_price - val);
                 }
             });
 
@@ -177,18 +197,18 @@
                 .on('select2:unselect, change', unset_property_type)
                 .on('select2:select', set_property_type);
 
-            console.log(data);
+            // console.log(data);
             if (data.bri != '1') {
                 $select.removeClass('hide');
-                $kpr.addClass('hide');
+                // $kpr.addClass('hide');
                 $price.val(0).attr('readonly', true).trigger('change');
                 $building_area.val(0).attr('readonly', true).trigger('change');
                 $home_location.val('').attr('readonly', true).trigger('change');
                 return;
             }
 
-            $kpr.removeClass('hide');
-            $select.addClass('hide');
+            // $kpr.removeClass('hide');
+            // $select.addClass('hide');
             $price.removeAttr('readonly');
             $building_area.removeAttr('readonly');
             $home_location.removeAttr('readonly');
@@ -292,6 +312,32 @@
                 default  : $dp.data('min', 20).val(20).trigger('change');
             }
         }
+
+        //property status
+        $('.status_property').on('change', function () {
+            var value = $(this).select2('data')[0]['id'];
+
+            if (1 == value) {
+                $("div.kpr_type_property").hide();
+                $("div.developer").show();
+                $("div.property").show();
+                $("div.property_type").show();
+                $("div.property_item").show();
+                $('#price').attr('readonly', '');
+                $('#home_location').attr('readonly', '');
+                $('#building_area').attr('readonly', '');
+            } else {
+                $("div.kpr_type_property").show();
+                $("div.developer").hide();
+                $("div.property").hide();
+                $("div.property_type").hide();
+                $("div.property_item").hide();
+                $('#price').removeAttr('readonly');
+                $('#home_location').removeAttr('readonly');
+                $('#building_area').removeAttr('readonly');
+
+            }
+        });
 
     </script>
 @endpush

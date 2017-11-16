@@ -9,7 +9,31 @@
 @endif
 <div class="row">
     <div class="col-md-6">
-        <div class="form-group">
+         <div class="form-group kpr_type {!! $errors->has('kpr_type') ? 'has-error' : '' !!}">
+            <label class="control-label col-md-4">Jenis KPR *:</label>
+            <div class="col-md-8">
+                {!! Form::select('status_property', array("" => "", "1" => "Baru", "2" => "Secondary", "3" => "Refinancing", "4" => "Renovasi", "5" => "Top Up", "6" => "Take Over", "7" => "Take Over Top Up", "8" => "Take Over Account In House (Cash Bertahap)"), old('status_property'), [
+                    'class' => 'select2 status_property ',
+                    'data-placeholder' => 'Pilih Jenis KPR',
+                    'data-bri' => ''
+                ]) !!}
+                @if ($errors->has('kpr_type')) <p class="help-block">{{ $errors->first('kpr_type') }}</p> @endif
+            </div>
+        </div>
+
+        <div class="form-group kpr_type_property {!! $errors->has('kpr_type_property') ? 'has-error' : '' !!}">
+            <label class="control-label col-md-4">Jenis Properti *:</label>
+            <div class="col-md-8">
+                {!! Form::select('kpr_type_property', array("" => "", "1" => "Rumah Tapak", "2" => "Rumah Susun/Apartment", "3" => "Rumah Toko"), old('kpr_type_property'), [
+                    'class' => 'select2 kpr_type_properties ',
+                    'data-placeholder' => 'Pilih Jenis Properti',
+                    'data-bri' => ''
+                ]) !!}
+                @if ($errors->has('kpr_type_property')) <p class="help-block">{{ $errors->first('kpr_type_property') }}</p> @endif
+            </div>
+        </div>
+
+        <div class="form-group developer" hidden>
             <label class="control-label col-md-4">Developer *</label>
             <div class="col-md-8">
                 {!! Form::select('developer', isset($param['developer_id']) ? [@$param['developer_id'] => @$param['developer_name']] : [''=>''] + [
@@ -22,37 +46,7 @@
             </div>
         </div>
 
-         <div class="form-group kpr_type {!! $errors->has('kpr_type') ? 'has-error' : '' !!}">
-                                            <label class="control-label col-md-4">Jenis KPR *:</label>
-                                            <div class="col-md-8">
-                                                <select class="form-control " name="kpr_type" id="kpr_type">
-                                                    <option value="0" selected=""> Pilih </option>
-                                                    <option value="1"> Baru </option>
-                                                    <option value="2"> Secondary </option>
-                                                    <option value="3"> Refinancing </option>
-                                                    <option value="4"> Renovasi </option>
-                                                    <option value="5"> Top Up </option>
-                                                    <option value="6"> Take Over </option>
-                                                    <option value="7"> Take Over Top Up </option>
-                                                </select>
-                                                @if ($errors->has('kpr_type')) <p class="help-block">{{ $errors->first('kpr_type') }}</p> @endif
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="form-group kpr_type_property {!! $errors->has('kpr_type_property') ? 'has-error' : '' !!}">
-                                            <label class="control-label col-md-4">Jenis Properti *:</label>
-                                            <div class="col-md-8">
-                                                <select class="form-control " name="kpr_type_property" id="kpr_type_property">
-                                                    <option value="0" selected=""> Pilih </option>
-                                                    <option value="1"> Rumah Tapak </option>
-                                                    <option value="2"> Rumah Susun/Apartment </option>
-                                                    <option value="3"> Rumah Toko </option>
-                                                </select>
-                                                @if ($errors->has('kpr_type_property')) <p class="help-block">{{ $errors->first('kpr_type_property') }}</p> @endif
-                                            </div>
-                                        </div>
-                                        
-        <div class="form-group property-select">
+        <div class="form-group property-select property" hidden>
             <label class="control-label col-md-4">Nama Proyek *</label>
             <div class="col-md-8">
                 {!! Form::select('property', isset($param['property_id']) ? [@$param['property_id']=>@$param['property_name']] : ['' => ''] + [
@@ -64,10 +58,7 @@
                 ]) !!}
             </div>
         </div>
-    </div>
-
-    <div class="col-md-6">
-        <div class="form-group types-select">
+        <div class="form-group types-select property_type" hidden>
             <label class="control-label col-md-4">Tipe Properti *</label>
             <div class="col-md-8">
                 {!! Form::select('property_type', isset($param['property_type_id']) ? [@$param['property_type_id']=>@$param['property_type_name']] : ['' => ''] + [
@@ -79,7 +70,7 @@
                     ]) !!}
             </div>
         </div>
-        <div class="form-group units-select">
+        <div class="form-group units-select property_item" hidden>
             <label class="control-label col-md-4">Unit Properti *</label>
             <div class="col-md-8">
                 {!! Form::select('property_item', isset($param['property_item_address']) ? [@$param['property_item_id']=>@$param['property_item_address']] : ['' => ''] + [
@@ -92,11 +83,6 @@
             </div>
         </div>
     </div>
-</div>
-
-<hr>
-
-<div class="row">
 
     <div class="col-md-6">
         <div class="form-group">
@@ -131,9 +117,6 @@
                 ]) !!}
             </div>
         </div>
-    </div>
-
-    <div class="col-md-6">
         <div class="form-group">
             <label class="control-label col-md-4">Jangka Waktu *</label>
             <div class="col-md-8">
@@ -170,7 +153,7 @@
                 <div class="input-group">
                     <span class="input-group-addon">Rp</span>
                     {!! Form::text('down_payment',old('down_payment'), [
-                        'class' => 'form-control currency', 'id' => 'down_payment', 'readonly', 'maxlength' => 15
+                        'class' => 'form-control numeric currency', 'id' => 'down_payment', 'maxlength' => 15
                     ]) !!}
                 </div>
             </div>
