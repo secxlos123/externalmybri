@@ -9,7 +9,7 @@ class DropdownController extends Controller
 {
 	/**
      * This logic for get list of developer from api
-     * 
+     *
      * @param  Request $request
      * @return \Illuminate\Http\Response
      */
@@ -22,7 +22,7 @@ class DropdownController extends Controller
 
     /**
 	 * This logic for get list of properties from api
-	 * 
+	 *
 	 * @param  Request $request
      * @return \Illuminate\Http\Response
 	 */
@@ -35,7 +35,7 @@ class DropdownController extends Controller
 
     /**
 	 * This logic for get list of property types from api
-	 * 
+	 *
 	 * @param  Request $request
      * @return \Illuminate\Http\Response
 	 */
@@ -48,7 +48,7 @@ class DropdownController extends Controller
 
     /**
 	 * This logic for get list of property items / units from api
-	 * 
+	 *
 	 * @param  Request $request
      * @return \Illuminate\Http\Response
 	 */
@@ -66,7 +66,7 @@ class DropdownController extends Controller
 
     /**
 	 * This logic for get list of cities from api
-	 * 
+	 *
 	 * @param  Request $request
      * @return \Illuminate\Http\Response
 	 */
@@ -79,7 +79,7 @@ class DropdownController extends Controller
 
     /**
 	 * This logic for get list of jobs from api
-	 * 
+	 *
 	 * @param  Request $request
      * @return \Illuminate\Http\Response
 	 */
@@ -92,7 +92,7 @@ class DropdownController extends Controller
 
     /**
 	 * This logic for get list of job types from api
-	 * 
+	 *
 	 * @param  Request $request
      * @return \Illuminate\Http\Response
 	 */
@@ -105,7 +105,7 @@ class DropdownController extends Controller
 
     /**
      * This logic for get list of job fields from api
-     * 
+     *
      * @param  Request $request
      * @return \Illuminate\Http\Response
      */
@@ -118,7 +118,7 @@ class DropdownController extends Controller
 
     /**
 	 * This logic for get list of job fields from api
-	 * 
+	 *
 	 * @param  Request $request
      * @return \Illuminate\Http\Response
 	 */
@@ -131,7 +131,7 @@ class DropdownController extends Controller
 
     /**
      * This logic for get list of citizenships from api
-     * 
+     *
      * @param  Request $request
      * @return \Illuminate\Http\Response
      */
@@ -144,19 +144,27 @@ class DropdownController extends Controller
 
     /**
 	 * This logic for get list of nearby office
-	 * 
+	 *
 	 * @param  Request $request
      * @return \Illuminate\Http\Response
 	 */
     public function offices(Request $request)
     {
+        if ($request->has('distance')) {
+            if (!$request->has('long') && !$request->has('lat')) {
+                $request->merge([
+                    'lat' => -6.217458,
+                    'long' => 106.813880
+                ]);
+            }
+        }
     	$body 	 = [ 'text' => 'unit', 'id' => 'branch' ];
         return $this->init('offices', $body, $request->only(['name', 'distance', 'long', 'lat']));
     }
 
     /**
      * This checking for role user
-     * 
+     *
      * @return string
      */
     private function base()
@@ -166,11 +174,11 @@ class DropdownController extends Controller
 
     /**
      * This function for init request to API
-     * 
-     * @param  string $endpoint 
-     * @param  array  $body     
-     * @param  array  $options  
-     * @return \Illuminate\Http\Response         
+     *
+     * @param  string $endpoint
+     * @param  array  $body
+     * @param  array  $options
+     * @return \Illuminate\Http\Response
      */
     public function init($endpoint, array $body, array $options = [], $base = 'eks')
     {
@@ -178,7 +186,7 @@ class DropdownController extends Controller
         	->setHeaders( [ 'Authorization' => session('authenticate.token') ] )
             ->setQuery( array_merge(['page' => request()->get('page', 1) ], $options) )
             ->get();
-       
+
         foreach ($results['contents']['data'] as $key => $result) {
 
         	if ( isset( $body['id'] ) ) {
