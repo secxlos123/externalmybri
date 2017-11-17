@@ -60,7 +60,7 @@ class RegisterRequest extends FormRequest
             'email' => 'required|email',
             'fullname' => 'required|string|min:4',
             'phone' => 'nullable|string|regex:/^[0-9]+$/|min:9|max:12',
-            'password' => 'required|confirmed|min:8'
+            'password' => 'required|min:6|regex:/^(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])\S*$/|confirmed'
         ];
     }
 
@@ -81,15 +81,15 @@ class RegisterRequest extends FormRequest
             'personal.city_id'          => 'required',
             'personal.gender'           => 'required|in:L,P',
             'personal.citizenship_id'   => 'required',
-            'personal.status'           => 'required|in:0,1,2',
+            'personal.status'           => 'required|in:1,2,3',
             'personal.address_status'   => 'required|in:menetap,sementara',
             'personal.mother_name'      => 'required',
             'personal.identity'         => 'required|image|max:1024',
-            'personal.couple_nik'       => 'required_if:personal.status,1|numeric|digits:16',
-            'personal.couple_name'      => 'required_if:personal.status,1',
-            'personal.couple_birth_place_id'    => 'required_if:personal.status,1',
-            'personal.couple_birth_date'        => 'required_if:personal.status,1|date',
-            'personal.couple_identity'          => 'required_if:personal.status,1|image|max:1024',
+            'personal.couple_nik'       => 'required_if:personal.status,2|numeric|digits:16',
+            'personal.couple_name'      => 'required_if:personal.status,2',
+            'personal.couple_birth_place_id'    => 'required_if:personal.status,2',
+            'personal.couple_birth_date'        => 'required_if:personal.status,2|date',
+            'personal.couple_identity'          => 'required_if:personal.status,2|image|max:1024',
         ];
     }
 
@@ -110,15 +110,15 @@ class RegisterRequest extends FormRequest
             'personal.city_id'          => 'required',
             'personal.gender'           => 'required|in:L,P',
             'personal.citizenship_id'   => 'required',
-            'personal.status'           => 'required|in:0,1,2',
+            'personal.status'           => 'required|in:1,2,3',
             'personal.address_status'   => 'required|in:menetap,sementara',
             'personal.mother_name'      => 'required',
             'personal.identity'         => 'required|image|max:1024',
-            'personal.couple_nik'       => 'required_if:personal.status,1|numeric|digits:16',
-            'personal.couple_name'      => 'required_if:personal.status,1',
-            'personal.couple_birth_place_id'    => 'required_if:personal.status,1',
-            'personal.couple_birth_date'        => 'required_if:personal.status,1|date',
-            'personal.couple_identity'          => 'required_if:personal.status,1|image|max:1024',
+            'personal.couple_nik'       => 'required_if:personal.status,2|numeric|digits:16',
+            'personal.couple_name'      => 'required_if:personal.status,2',
+            'personal.couple_birth_place_id'    => 'required_if:personal.status,2',
+            'personal.couple_birth_date'        => 'required_if:personal.status,2|date',
+            'personal.couple_identity'          => 'required_if:personal.status,2|image|max:1024',
             'work_type'                          => 'required',
             'work'                              => 'required',
             'company_name'                      => 'required',
