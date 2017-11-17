@@ -121,11 +121,22 @@
 
                 if ( !isNaN(payment) ) {
                     dp.val(Math.round(payment));
-                    $request_amount.val(static_price - val);
+                    if (!isNaN(val)) {
+                        if ((static_price - val) < 0) {
+                            $request_amount.val(0);
+                        }else{
+                            $request_amount.val(static_price - val);
+                        }
+                    }else{
+                        $request_amount.val(static_price);
+                    }
+                    if (dp.val() == 100) {
+                        $request_amount.val(0);
+                    }
                 }
             });
 
-            $dp.on('change', function () {
+            $dp.on('input', function () {
                 if ( $(this).val() > 100 ) {
                     $(this).val(100).trigger('change');
                     return;
@@ -136,6 +147,7 @@
                     return;
                 }
             });
+
 
             $category.on('change', function () {
                 switch ( $(this).val() ) {
