@@ -80,15 +80,15 @@
 						<div class="form-group">
 							      <label class="col-md-4 control-label"></label>
 							      <div class="col-md-8">
-							      <input name="myCheckBox" id="myCheckBox" type="checkbox" />
-							      <small>Alamat Domisili Sesuai Dengan Alamat KTP</small>
+							      <input id="myCheckBox" type="checkbox" />
+							      <label for="myCheckBox">Alamat Domisili Sesuai Dengan Alamat KTP</label>
 							  	</div>
 						</div>
 
 						<div class="form-group">
 							<label class="col-md-4 control-label">Alamat Domisili *</label>
 							<div class="col-md-8">
-								{!! Form::textarea('address_domosili', old('address_domosili'), [
+								{!! Form::textarea('current_address', old('current_address'), [
 									'class' => 'form-control',
 									'rows'  => 3,
 									'style' => 'resize: none'

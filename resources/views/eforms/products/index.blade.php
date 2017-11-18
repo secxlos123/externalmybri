@@ -85,69 +85,117 @@
             $select = $('.property-select, .types-select, .units-select')
             $kpr = $('.kpr_type_property, .kpr_type')
             $dp = $('#dp');
+            
             // $kpr.addClass('hide');
             $('.kpr_type_properties, .type_property').select2({width:'100%'});
+
             $developers
                 .dropdown('developer')
                 .on('select2:unselect, change', unset_property)
                 .on('select2:select', set_property);
 
-            $year.on('change', function () {
-                console.log('1');
-                if ( $(this).val() > 240 ) {
-                    $(this).val(240);
-                    return;
-                }
+            $year
+                .on('change', function () {
+                    if ( $(this).val() > 240 ) {
+                        $(this).val(240);
+                        return;
+                    }
 
-                if ( $(this).val() < 12) {
-                    $(this).val(12);
-                    return;
-                }
-            });
+                    if ( $(this).val() < 12) {
+                        $(this).val(12);
+                        return;
+                    }
+                })
+                .on('blur', function () {
+                    if ( parseInt($year.val().replace( /[^0-9]/g, '' ) ) <= 12 ) {
+                        $year.val('12');
+                    } else if ( $year.val() >= 240 ) {
+                        $year.val('240');
+                        var val = $year.val();
+                    } else if ( $year.val() == '' ){
+                        $year.val('12');
+                        var val = $year.val();
+                    }
+                });
 
-            $down_payment.on('input', function() {
-                var val = $(this).val().replace(',00', '').replace(/\./g, '');
-                var static_price = $('#price').val().replace(',00', '').replace(/\./g, '');
-                var dp = $('#dp');
+            $down_payment
+                .on('input', function() {
+                    var val = $(this).val().replace(',00', '').replace(/\./g, '');
+                    var static_price = $('#price').val().replace(',00', '').replace(/\./g, '');
+                    var dp = $('#dp');
+                    var dp_min = dp.data('min');
+                    var max = parseInt(static_price) * (90/100);
 
-                if (parseInt(val) < parseInt(static_price)) {
-                    payment = (val / static_price) * 100;
+                    if ( isNaN(parseInt(val)) ) {
+                        val = 0;
+                    }
 
-                } else {
-                    $(this).val(static_price);
-                    payment = 100;
+                    if (parseInt(val) < max) {
+                        payment = (val / static_price) * 100;
 
-                }
+                    } else {
+                        $(this).val(max);
+                        payment = 90;
 
-                if ( !isNaN(payment) ) {
-                    dp.val(Math.round(payment));
-                    if (!isNaN(val)) {
-                        if ((static_price - val) < 0) {
-                            $request_amount.val(0);
-                        }else{
+                    }
+                    
+                    if ( !isNaN(payment) ) {
+                        dp.val(Math.round(payment));
+                        total = static_price - val;
+
+                        if (total > 0) {
                             $request_amount.val(static_price - val);
+                            
+                        } else {
+                            $request_amount.val(static_price - max);
+
                         }
-                    }else{
-                        $request_amount.val(static_price);
                     }
-                    if (dp.val() == 100) {
-                        $request_amount.val(0);
+                })
+                .on('blur', function() {
+                    var val = $(this).val().replace(',00', '').replace(/\./g, '');
+                    var static_price = $('#price').val().replace(',00', '').replace(/\./g, '');
+                    var dp = $('#dp');
+                    var dp_min = dp.data('min');
+                    var min = parseInt(static_price) * (dp_min/100);
+
+                    if ( isNaN(parseInt(val)) ) {
+                        val = 0;
                     }
-                }
-            });
 
-            $dp.on('input', function () {
-                if ( $(this).val() > 100 ) {
-                    $(this).val(100).trigger('change');
-                    return;
-                }
+                    if (parseInt(val) < min) {
+                        $(this).val(min)
+                        dp.val(dp_min);
+                        $request_amount.val(static_price - min);
+                    }
+                });
 
-                if ( $(this).val() < $(this).data('min') ) {
-                    $(this).val($(this).data('min')).trigger('change');
-                    return;
-                }
-            });
+            $dp
+                .on('input', function() {
+                    change_dp(this);
+                })
+                .on('change', function() {
+                    change_dp(this);
+                })
+                .on('blur', function() {
+                    var val = $(this).val();
+                    var dp_min = $dp.data('min');
+                    var down_payment = $('#down_payment');
+                    var request_amount = $('#request_amount');
+                    var price_without_comma = $price.val().replace(',00', '');
+                    var static_price = price_without_comma.replace(/\./g, '');
 
+                    if (val < dp_min) {
+                        val = dp_min;
+                        $(this).val(dp_min);
+                    }
+
+                    payment = (val / 100) * static_price;
+                    down_payment.val(payment);
+                    amount = static_price - payment;
+                    down_payment.val(payment);
+                    request_amount.val(amount);
+                });
 
             $category.on('change', function () {
                 switch ( $(this).val() ) {
@@ -157,17 +205,7 @@
                 }
             }).trigger('change');
 
-            $('.calculate').on('change', function () {
-                var dp = ! isNaN( parseInt( $dp.val() ) ) ? parseInt( $dp.val() ) : 0;
-                var price = parseInt( $price.val().split('.').join('') );
-                var fix_price = ! isNaN(price) ? price : 0;
-                var payment = ! isNaN((dp * fix_price) / 100) ? (dp * fix_price) / 100 : 0;
-                $down_payment.val(payment);
-                $request_amount.val(fix_price - payment);
-            });
-
-            function whenDataExists()
-            {
+            function whenDataExists() {
                 var address = "{{isset($param['property_item_address']) ? $param['property_item_address'] : ''}}";
                 var price = "{{isset($param['property_item_price']) ? $param['property_item_price'] : ''}}";
                 $('#building_area').val($('#sess_building_area').val()).trigger('change');
@@ -176,28 +214,21 @@
                 $('#price').val(price).trigger('change');
                 $('#home_location').val(address).trigger('change');
             }
-
-            //set time period validation
-            var timeoutID = null;
-            $year.keyup(function(e) {
-                clearTimeout(timeoutID);
-                timeoutID = setTimeout(function(){timePeriod()}, 1000);
-            });
-
-            function timePeriod()
-            {
-                if(parseInt($year.val().replace( /[^0-9]/g, '' )) <= 12){
-                    $year.val('12');
-                }else if($year.val() >= 240){
-                    $year.val('240');
-                    var val = $year.val();
-                }else if($year.val() == ''){
-                    $year.val('12');
-                    var val = $year.val();
-                }
-            }
-
         });
+
+        function change_dp(element) {
+            var val = $(element).val();
+            var down_payment = $('#down_payment');
+            var request_amount = $('#request_amount');
+            var price_without_comma = $price.val().replace(',00', '');
+            var static_price = price_without_comma.replace(/\./g, '');
+
+            payment = (val / 100) * static_price;
+            down_payment.val(payment);
+            amount = static_price - payment;
+            down_payment.val(payment);
+            request_amount.val(amount);
+        }
 
         function set_property(e) {
             var data = e.params.data;
@@ -209,7 +240,6 @@
                 .on('select2:unselect, change', unset_property_type)
                 .on('select2:select', set_property_type);
 
-            // console.log(data);
             if (data.bri != '1') {
                 $select.removeClass('hide');
                 $('.kpr_type_property').hide();
@@ -327,20 +357,7 @@
 
         //property status
         $('.status_property').on('change', function () {
-            var value = $(this).select2('data')[0]['id'];
-
-            // $("select[name='developer']").html("");
-            // $("select[name='kpr_type_property']").val("").trigger("change");
-            // $("select[name='property']").html("");
-            // $("select[name='property_type']").html("");
-            // $("select[name='property_item']").html("");
-            // $("select[name='active_kpr']").val("").trigger("change");
-            // $("input[name='price']").val("");
-            // $("input[name='building_area']").val("");
-            // $("input[name='dp']").val(0);
-            // $("input[name='down_payment']").val(0);
-            // $("input[name='request_amount']").val(0);
-            // $("textarea[name='home_location']").val("").html("");
+            var value = $(this).select2('data')[0]['id']; 
 
             if (1 == value) {
                 $("div.kpr_type_property").hide();

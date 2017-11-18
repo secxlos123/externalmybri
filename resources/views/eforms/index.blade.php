@@ -134,6 +134,27 @@
         });
 
         $('.select2').select2({width: '100%'});
+
+        $(document).on('change', '#myCheckBox', function(){
+            checked = $(this).prop("checked");
+            current_address = $("textarea[name='current_address']");
+            address = $("textarea[name='address']").val();
+
+            current_address.attr('readonly', checked);
+
+            if ( checked ) {
+                current_address.val(address).html(address);
+            }
+        });
+
+        $(document).on('input', "textarea[name='address']", function(){
+            checked = $('#myCheckBox').prop("checked");
+            address = $(this).val();
+
+            if ( checked ) {
+                current_address.val(address).html(address);
+            }
+        });
     </script>
     @stack('parent-scripts')
 @endpush

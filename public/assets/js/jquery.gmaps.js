@@ -4,21 +4,29 @@ if (navigator.geolocation) {
     alert('geolocation not supported');
 }
 
-function successMaps(position) {
+function generateMaps(longitude, latitude) {
     google.maps.event.addDomListener(
         window
         , 'load'
         , initialize(
-            position.coords.longitude
-            , position.coords.latitude
+            longitude
+            , latitude
             )
         );
 }
 
+function successMaps(position) {
+    generateMaps(position.coords.longitude, position.coords.latitude);
+}
+
 function errorMaps(msg) {
     console.log(msg);
-    document.getElementById('lat').value = -6.217458;
-    document.getElementById('lng').value = 106.813880;
+    longitude = 106.813880;
+    latitude = -6.217458;
+    document.getElementById('lat').value = latitude;
+    document.getElementById('lng').value = longitude;
+
+    generateMaps(longitude, latitude);
 }
 
 function initialize(longBase, latBase) {
