@@ -69,7 +69,7 @@
         <div class="single-query form-group bottom20">
             <label>Kota (*)</label>
             @if ($type != 'view')
-            {!! Form::select('city_id', (old('city_id')) ? old('city_id') : [@$results['personal']['city_id'] => $results['personal']['city']], [
+            {!! Form::select('city_id', [@$results['personal']['city_id'] => @$results['personal']['city_id']], old('city_id'), [
                 'class' => 'form-control select2 cities city',
                 'data-placeholder' => 'Pilih Kota',
             ]) !!}
@@ -100,7 +100,7 @@
         <div class="single-query form-group bottom20">
             <label>Kewarganegaraan (*)</label>
             @if ($type != 'view')
-            {!! Form::select('citizenship_id', (old('citizenship_id')) ? old('citizenship_id') : [$results['personal']['citizenship_id'] => $results['personal']['citizenship']], [
+            {!! Form::select('citizenship_id',[$results['personal']['citizenship_id'] => $results['personal']['citizenship']], (old('citizenship_id')) ? old('citizenship_id') : '', [
                 'class' => 'form-control select2 citizenships',
                 'data-placeholder' => 'Pilih Negara',
             ]) !!}

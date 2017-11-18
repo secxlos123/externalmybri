@@ -119,7 +119,12 @@ class ProfileController extends Controller
         if (isset($results['code']) && $results['code'] == 200) {
             \Session::flash('flash_message', $results['descriptions']);
         }else{
-            \Session::flash('error_flash_message', $results['descriptions']);
+             $message = '';
+                foreach ($results['contents'] as $key => $value) {
+                    $message .= $value.'<br/>';
+                }
+                \Session::flash('error_flash_message',$message);
+                return redirect()->back()->withInput();
         }
 
         return redirect()->route('profile.edit');;

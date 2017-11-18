@@ -23,7 +23,10 @@ trait Profileble
         $profile = Client::setEndpoint('profile')
             ->setHeaders(['Authorization' => session('authenticate.token')])
             ->get();
-
+        if (array_key_exists('error',$profile)) {
+            \Session::flush();
+            return redirect()->route('homepage');
+        }
         return isset( $profile['contents'] ) ? $profile['contents'] : null ;
     }
 
