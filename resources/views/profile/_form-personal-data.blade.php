@@ -69,7 +69,7 @@
         <div class="single-query form-group bottom20">
             <label>Kota (*)</label>
             @if ($type != 'view')
-            {!! Form::select('city_id', [@$results['personal']['city_id'] => @$results['personal']['city_id']], old('city_id'), [
+            {!! Form::select('city_id', [@$results['personal']['city_id'] => @$results['personal']['city']], old('city_id'), [
                 'class' => 'form-control select2 cities city',
                 'data-placeholder' => 'Pilih Kota',
             ]) !!}

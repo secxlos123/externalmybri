@@ -21,7 +21,7 @@ trait Profileble
     public function profile()
     {
         $profile = Client::setEndpoint('profile')
-            ->setHeaders(['Authorization' => "salah"])//session('authenticate.token')])
+            ->setHeaders(['Authorization' => session('authenticate.token')])
             ->get();
         $code = isset($profile['code']) ? $profile['code'] : '';
         if ( array_key_exists('error',$profile) || $code == 404 ) {
