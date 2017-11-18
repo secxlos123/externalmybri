@@ -53,7 +53,7 @@ class LoginController extends Controller
         
         if ($response['code'] != 200) {
             return redirect()->back()->withInput()->with([
-                'error-login' => trans('auth.failed')
+                'error-login' => $response['descriptions']
             ]);
         }
 
