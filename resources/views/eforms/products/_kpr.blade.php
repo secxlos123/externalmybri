@@ -140,10 +140,10 @@
             <label class="control-label col-md-4">Uang Muka *</label>
             <div class="col-md-8">
                 <div class="input-group">
-                    {!! Form::text('dp',old('dp'), [
-                        'class' => 'form-control numeric calculate currency', 'id' => 'dp', 'maxlength' => 3
+                    <span class="input-group-addon">Rp</span>
+                    {!! Form::text('down_payment',old('down_payment'), [
+                        'class' => 'form-control numeric currency', 'id' => 'down_payment', 'maxlength' => 15
                     ]) !!}
-                    <span class="input-group-addon">%</span>
                 </div>
             </div>
         </div>
@@ -151,10 +151,10 @@
         <div class="form-group">
             <div class="col-md-offset-4 col-md-8">
                 <div class="input-group">
-                    <span class="input-group-addon">Rp</span>
-                    {!! Form::text('down_payment',old('down_payment'), [
-                        'class' => 'form-control numeric currency', 'id' => 'down_payment', 'maxlength' => 15
+                    {!! Form::text('dp',old('dp'), [
+                        'class' => 'form-control numeric calculate currency', 'id' => 'dp', 'maxlength' => 3
                     ]) !!}
+                    <span class="input-group-addon">%</span>
                 </div>
             </div>
         </div>
