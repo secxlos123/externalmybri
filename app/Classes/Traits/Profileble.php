@@ -25,7 +25,9 @@ trait Profileble
             ->get();
         if (array_key_exists('error',$profile)) {
             \Session::flush();
-            return redirect()->route('homepage');
+            return redirect()->route('homepage')->with([
+                'error-login' => $response['descriptions']
+            ]);;
         }
         return isset( $profile['contents'] ) ? $profile['contents'] : null ;
     }
