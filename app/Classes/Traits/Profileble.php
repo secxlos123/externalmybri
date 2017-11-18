@@ -11,7 +11,7 @@ trait Profileble
      *
      * @var array
      */
-    protected $status = ['Belum Menikah' => 0, 'Menikah' => 1, 'Janda' => 2, 'Duda' => 2];
+    protected $status = ['Belum Menikah' => 1, 'Menikah' => 2, 'Janda/Duda' => 3];
 
 	/**
      * Get profile of user
