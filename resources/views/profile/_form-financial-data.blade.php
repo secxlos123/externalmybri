@@ -6,7 +6,7 @@
             @if ($type != 'view')
                 <span class="input-group-addon">Rp</span>
                 {!! Form::text('salary', (old('salary')) ? old('salary') : @$results['financial']['salary'], [
-                    'class' => 'form-control numeric currency', 'maxlength' => 15
+                    'class' => 'form-control numeric ', 'maxlength' => 15
                 ]) !!}
                 <span class="input-group-addon">,00</span>
             @else
@@ -21,7 +21,7 @@
             @if ($type != 'view')
                 <span class="input-group-addon">Rp</span>
                 {!! Form::text('other_salary', (old('other_salary')) ? old('other_salary') : @$results['financial']['other_salary'], [
-                    'class' => 'form-control numeric currency', 'maxlength' => 15
+                    'class' => 'form-control numeric ', 'maxlength' => 15
                 ]) !!}
                 <span class="input-group-addon">,00</span>
             @else
@@ -38,7 +38,7 @@
             @if ($type != 'view')
                 <span class="input-group-addon">Rp</span>
                 {!! Form::text('loan_installment', (old('loan_installment')) ? old('loan_installment') : @$results['financial']['loan_installment'], [
-                    'class' => 'form-control numeric currency', 'maxlength' => 15
+                    'class' => 'form-control numeric ', 'maxlength' => 15
                 ]) !!}
                 <span class="input-group-addon">,00</span>
             @else
@@ -50,7 +50,7 @@
             <label title ="Anak Dalam Tanggungan" >Jumlah Tanggungan (*)</label>
             @if ($type != 'view')
                 {!! Form::text('dependent_amount', (old('dependent_amount')) ? old('dependent_amount') : @$results['financial']['dependent_amount'], [
-                    'class' => 'form-control numeric currency', 'maxlength' => 15
+                    'class' => 'form-control numeric ', 'maxlength' => 15
                 ]) !!}
             @else
                 {{($results['financial']['dependent_amount']) ? $results['financial']['dependent_amount'] : '0'}}

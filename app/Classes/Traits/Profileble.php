@@ -11,7 +11,7 @@ trait Profileble
      *
      * @var array
      */
-    protected $status = ['Belum Menikah' => 0, 'Menikah' => 1, 'Janda' => 2, 'Duda' => 2];
+    protected $status = ['Belum Menikah' => 1, 'Menikah' => 2, 'Janda/Duda' => 3];
 
 	/**
      * Get profile of user
@@ -23,7 +23,10 @@ trait Profileble
         $profile = Client::setEndpoint('profile')
             ->setHeaders(['Authorization' => session('authenticate.token')])
             ->get();
-
+        $code = isset($profile['code']) ? $profile['code'] : '';
+        if ( array_key_exists('error',$profile) || $code == 404 ) {
+            return 404;
+        }
         return isset( $profile['contents'] ) ? $profile['contents'] : null ;
     }
 
@@ -35,6 +38,9 @@ trait Profileble
     public function customer()
     {
         $profile = $this->profile();
+        if ($profile == 404) {
+            $this->forcelogout();
+        }
         $profile['personal'] = $this->personal($profile['personal']);
         $profile['personal']['is_simple'] = $profile['is_simple'] ? 1 : 0;
 
@@ -69,5 +75,17 @@ trait Profileble
             }
         }
         return $personal;
+    }
+
+    /**
+     * [FunctionName description]
+     * @param string $value [description]
+     */
+    public function forcelogout()
+    {
+        \Session::flush();
+            return redirect()->route('homepage')->with([
+                'error-login' => "Session Anda Telah Habis"
+            ]);
     }
 }

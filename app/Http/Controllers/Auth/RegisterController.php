@@ -75,7 +75,11 @@ class RegisterController extends Controller
                 ->post();
 
             if ($response['code'] == 422) {
-                \Session::flash('flash_message','Email telah digunakan!');
+                $message = '';
+                foreach ($response['contents'] as $key => $value) {
+                    $message .= $value.'<br/>';
+                }
+                \Session::flash('flash_message',$message);
                 return redirect()->back()->withInput();
             }
             
