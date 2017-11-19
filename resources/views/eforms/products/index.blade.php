@@ -85,7 +85,7 @@
             $select = $('.property-select, .types-select, .units-select')
             $kpr = $('.kpr_type_property, .kpr_type')
             $dp = $('#dp');
-            
+
             // $kpr.addClass('hide');
             $('.kpr_type_properties, .type_property').select2({width:'100%'});
 
@@ -138,14 +138,14 @@
                         payment = 90;
 
                     }
-                    
+
                     if ( !isNaN(payment) ) {
                         dp.val(Math.round(payment));
                         total = static_price - val;
 
                         if (total > 0) {
                             $request_amount.val(static_price - val);
-                            
+
                         } else {
                             $request_amount.val(static_price - max);
 
@@ -222,6 +222,12 @@
             var request_amount = $('#request_amount');
             var price_without_comma = $price.val().replace(',00', '');
             var static_price = price_without_comma.replace(/\./g, '');
+
+            if (parseInt(val) > 90) {
+                val = 90;
+                $(element).val(val);
+
+            }
 
             payment = (val / 100) * static_price;
             down_payment.val(payment);
@@ -357,7 +363,7 @@
 
         //property status
         $('.status_property').on('change', function () {
-            var value = $(this).select2('data')[0]['id']; 
+            var value = $(this).select2('data')[0]['id'];
 
             if (1 == value) {
                 $("div.kpr_type_property").hide();
