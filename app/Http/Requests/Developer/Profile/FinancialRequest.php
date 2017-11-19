@@ -24,10 +24,10 @@ class FinancialRequest extends FormRequest
     public function rules()
     {
         return [
-            'salary'            => 'required|numeric',
-            'other_salary'      => 'required|numeric',
-            'loan_installment'  => 'required|numeric',
-            'dependent_amount'  => 'required|numeric',
+            'salary'            => 'required',
+            'other_salary'      => 'required',
+            'loan_installment'  => 'required',
+            'dependent_amount'  => 'required',
         ];
     }
 }
