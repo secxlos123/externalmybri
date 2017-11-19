@@ -95,7 +95,7 @@
     {!! Html::script('assets/js/bootstrap-filestyle.min.js') !!}
 
 	<script type="text/javascript">
-		
+
 		var dropdowns = [
 			{class: '.birth_place', endpoint: 'cities', hidden: '#birth_place'},
 			{class: '.cities', endpoint: 'cities', hidden: '#city_name'},
@@ -109,6 +109,15 @@
 
 		dropdowns.map(init_dropdown);
 		current_status_customer();
+
+		$(".current_address").on('keyup', function(){
+			console.log($(this).val());
+			if ($(this).val().toLowerCase() == $(".address").val().toLowerCase()) {
+				$("#myCheckBox").prop("checked", true);
+			}else{
+				$("#myCheckBox").prop("checked", false);
+			}
+		});
 
 		$('.collapse').on('hidden.bs.collapse', toggle_icon);
 		$('.collapse').on('shown.bs.collapse', toggle_icon);
@@ -129,7 +138,7 @@
 		@endif
 
 		$('#status').on('change', current_status_customer);
-		
+
 		$('#work_mount').on('change', function () {
 			if ($(this).val() > 11) {
 				$(this).val(11);

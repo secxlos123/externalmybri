@@ -70,7 +70,7 @@
 							<label class="col-md-4 control-label">Alamat *</label>
 							<div class="col-md-8">
 								{!! Form::textarea('address', old('address'), [
-									'class' => 'form-control',
+									'class' => 'form-control address',
 									'rows'  => 3,
 									'style' => 'resize: none'
 								]) !!}
@@ -89,7 +89,7 @@
 							<label class="col-md-4 control-label">Alamat Domisili *</label>
 							<div class="col-md-8">
 								{!! Form::textarea('current_address', old('current_address'), [
-									'class' => 'form-control',
+									'class' => 'form-control current_address',
 									'rows'  => 3,
 									'style' => 'resize: none'
 								]) !!}
