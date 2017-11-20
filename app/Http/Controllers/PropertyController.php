@@ -150,6 +150,7 @@ class PropertyController extends Controller
 
         \Session::put('prop_id_bri', $results['contents']['prop_id_bri']);
         \Session::put('category', $results['contents']['category']);
+        \Session::put('status', $results['contents']['status']);
 
         return view("developer.property.show", [
             'property' => (object) $results['contents'],
@@ -190,6 +191,7 @@ class PropertyController extends Controller
         $results = Client::setBase('common')
             ->setEndpoint('property-type/'.$slug)
             ->get();
+
         \Session::put('property_id', $results['contents']['property_id']);
         \Session::put('property_name', $results['contents']['property_name']);
         \Session::put('building_area', $results['contents']['building_area']);
@@ -235,7 +237,7 @@ class PropertyController extends Controller
             ->get();
 
         $unit = (object) $results['contents'];
-        $action = '?property_id='.$unit->property_id.'&property_name='.$unit->property_name.'&property_type_id='.$unit->property_type_id.'&property_type_name='.$unit->property_type_name.'&property_item_id='.$unit->id.'&developer_id='.$unit->developer_id.'&developer_name='.$unit->developer_name.'&property_item_address='.$unit->address.'&property_item_price='.$unit->price;
+        $action = '?property_id='.$unit->property_id.'&property_name='.$unit->property_name.'&property_type_id='.$unit->property_type_id.'&property_type_name='.$unit->property_type_name.'&property_item_id='.$unit->id.'&developer_id='.$unit->developer_id.'&developer_name='.$unit->developer_name.'&property_item_address='.$unit->address.'&property_item_price='.$unit->price.'&prop_status='.$unit->status;
 
         return view("developer.property_item.show", [
             'unit' => $unit,

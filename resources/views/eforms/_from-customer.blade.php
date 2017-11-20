@@ -111,7 +111,6 @@
 		current_status_customer();
 
 		$(".current_address").on('keyup', function(){
-			console.log($(this).val());
 			if ($(this).val().toLowerCase() == $(".address").val().toLowerCase()) {
 				$("#myCheckBox").prop("checked", true);
 			}else{

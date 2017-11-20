@@ -208,6 +208,30 @@
             function whenDataExists() {
                 var address = "{{isset($param['property_item_address']) ? $param['property_item_address'] : ''}}";
                 var price = "{{isset($param['property_item_price']) ? $param['property_item_price'] : ''}}";
+                var dev_id = "{{isset($param['developer_id']) ? $param['developer_id'] : ''}}";
+                var status = "{{isset($param['prop_status']) ? $param['prop_status'] : ''}}";
+                var prop_id = "{{isset($param['property_id']) ? $param['property_id'] : ''}}";
+                var prop_name = "{{isset($param['property_name']) ? $param['property_name'] : ''}}";
+
+                if (status) {
+                    if (jQuery.inArray(status, ['new', '1']) !== -1) {
+                        $('.status_property').val(1).trigger('change');
+                    }else if (jQuery.inArray(status, ['second', '2']) !== -1) {
+                        $('.status_property').val(2).trigger('change');
+                    }else if (jQuery.inArray(status, ['3', '4', '5' ,'6', '7', '8']) !== -1) {
+                        $('.status_property').val(status).trigger('change');
+                    }
+                }
+
+                if (dev_id) {
+                    $('.properties')
+                    .empty()
+                    .dropdown('property', { dev_id: dev_id });
+                    if (prop_id) {
+                        $('.properties').select2('data', {id: prop_id, a_key: prop_name});
+                    }
+                }
+
                 $('#building_area').val($('#sess_building_area').val()).trigger('change');
                 $('#category-hide').val($('#sess_prop_category').val()).trigger('change');
                 $('#property_item_name').val(address).trigger('change');
