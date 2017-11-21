@@ -55,7 +55,7 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Foto KTP :</label>
                                 <div class="col-md-8">
-                                    {!! Form::file('couple_identity', [
+                                    {!! Form::file('couple_identity', ($customer->couple_identity ? $customer->couple_identity : ''),[
                                         'class' => 'filestyle', 'data-target' => 'ktp_couple_preview',
                                         'data-buttontext' => 'Unggah', 'data-buttonname' => 'btn-default',
                                         'data-iconname' => 'fa fa-cloud-upload', 'data-placeholder' => 'Tidak ada file'
