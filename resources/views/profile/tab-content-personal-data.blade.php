@@ -159,6 +159,12 @@
             $('#address_status').attr('value', value);
         });
 
+     
+
+
+    </script>
+    @if(session('authenticate.role') != 'developer')
+    <script type="text/javascript">
         $( document ).ready(function() {
             @php( ($status = old('status')) ? old('status') : $results['personal']['status_id']);
 
@@ -170,7 +176,6 @@
 
             @endif
         });
-
-
     </script>
+    @endif
 @endpush
