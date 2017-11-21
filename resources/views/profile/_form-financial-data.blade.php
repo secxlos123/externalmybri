@@ -48,6 +48,7 @@
         </div>
         <div class="single-query form-group bottom20">
             <label title ="Anak Dalam Tanggungan" >Jumlah Tanggungan (*)</label>
+            <div class="input-group">
             @if ($type != 'view')
                 {!! Form::text('dependent_amount', (old('dependent_amount')) ? old('dependent_amount') : @$results['financial']['dependent_amount'], [
                     'class' => 'form-control numeric ', 'maxlength' => 15
@@ -55,6 +56,7 @@
             @else
                 {{($results['financial']['dependent_amount']) ? $results['financial']['dependent_amount'] : '0'}}
             @endif
+            </div>
         </div>
     </div>
     @if ($type != 'view')
