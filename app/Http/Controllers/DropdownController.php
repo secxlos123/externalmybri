@@ -159,7 +159,7 @@ class DropdownController extends Controller
             }
         }
     	$body 	 = [ 'text' => 'unit', 'id' => 'branch' ];
-        return $this->init('offices', $body, $request->only(['name', 'distance', 'long', 'lat']));
+        return $this->init('offices', $body, $request->only(['name', 'distance', 'long', 'lat', 'name']));
     }
 
     /**
