@@ -42,6 +42,11 @@
                                 <input type="text" name="sess_building_area" id="sess_building_area" value="{{Session::get('building_area')}}">
 
                                 {!! Form::text('is_simple', old('is_simple')) !!}
+                                @if ( isset($customer->couple_identity) && $customer->couple_identity != "http://127.0.0.1:8001/img/avatar.jpg" )
+                                    <input type="text" name="couple_identity_flag" id="couple_identity_flag" value="1">
+                                @else
+                                    <input type="text" name="couple_identity_flag" id="couple_identity_flag" value="0">
+                                @endif
                                 {!! Form::text('developer_name', old('developer_name'), [
                                     'id' => 'developer_name'
                                 ]) !!}
