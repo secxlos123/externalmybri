@@ -95,7 +95,7 @@
             <label>Nama Pasangan (*)</label>
             @if ($type != 'view')
                 {!! Form::text('couple_name', (old('couple_name')) ? old('couple_name') : @$results['personal']['couple_name'], [
-                    'class' => 'form-control numeric', 'maxlength' => 16,
+                    'class' => 'form-control',
                 ]) !!}
             @else
                 <span class="form-control" style="border: 0px;">{{isset($results['personal']['couple_name']) ? $results['personal']['couple_name'] : ''}}</span>
@@ -105,13 +105,13 @@
         <div class="single-query form-group bottom20 couple-selector">
             <label>Tempat lahir Pasangan (*)</label>
             @if ($type != 'view')
-            {!! Form::select('couple_birth_place_id', [@$results['personal']['couple_birth_place_id'] => @$results['personal']['couple_birth_place_id']], old('couple_birth_place_id'), [
-                'class' => 'form-control select2 cities couple_birth_place_id',
+            {!! Form::select('couple_birth_place_id', [@$results['personal']['couple_birth_place_id'] => @$results['personal']['couple_birth_place']], old('couple_birth_place_id'), [
+                'class' => 'form-control select2 cities couple_birth_place',
                 'data-placeholder' => 'Pilih Kota',
             ]) !!}
             @else
             <span class="form-control" style="border: 0px;">
-                {{isset($results['personal']['couple_birth_place_id']) ? $results['personal']['couple_birth_place_id'] : ''}}
+                {{isset($results['personal']['couple_birth_place']) ? $results['personal']['couple_birth_place'] : ''}}
             </span>
             @endif
         </div>
