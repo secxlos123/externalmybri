@@ -102,7 +102,7 @@ class ProfileController extends Controller
             \Session::flash('error_flash_message', $results['descriptions']);
         }
 
-        return redirect()->route('developer.profile.index-profile');;
+        return redirect()->route('developer.profile.index');;
     }
 
     /**

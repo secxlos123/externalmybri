@@ -127,7 +127,7 @@ class ProfileController extends Controller
                 return redirect()->back()->withInput();
         }
 
-        return redirect()->route('profile.edit');;
+        return redirect()->route('profile.index-profile');;
     }
 
     /**

@@ -12,6 +12,7 @@
         <div class="single-query form-group bottom20">
             <label>Password Baru (*)</label>
             {!! Form::password('password', [ 'class' => 'keyword-input', 'placeholder' => 'Kata Sandi' ]) !!}
+            <p>Kata sandi harus terdiri dari satu huruf kapital dan satu angka</p>
         </div>
 
         <div class="single-query form-group bottom20">
