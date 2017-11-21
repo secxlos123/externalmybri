@@ -163,10 +163,11 @@
 
 
     </script>
+
     @if(session('authenticate.role') != 'developer')
     <script type="text/javascript">
         $( document ).ready(function() {
-            @php( ($status = old('status')) ? old('status') : $results['personal']['status_id']);
+            @php( $status = old('status') ? old('status') : $results['personal']['status_id']);
 
             @if($status == 2)
                 $('.couple-selector').removeClass('hide');
