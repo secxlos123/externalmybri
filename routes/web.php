@@ -35,7 +35,7 @@ Route::post('upload', 'UploadController@upload');
 Route::get('properties', 'PropertyController@index')->name('properties');
 
 
-/**
+/**ri
  * This route for handle homepage
  */
 Route::get('rincian-property/{property}', 'PropertyController@detailProperty')->name('detail-properties');
@@ -84,7 +84,7 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.', 'middleware' => ['auth.
 	/**
 	 * This route for send request profile data
 	 */
-	Route::get('/', 'ProfileController@index')->name('index-profile');
+	Route::get('/{type}', 'ProfileController@index')->name('index-profile');
 
 	/**
 	 * This route for send request change password
@@ -94,7 +94,7 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.', 'middleware' => ['auth.
 	/**
 	 * This route to show field edit data profile
 	 */
-	Route::get('/ubah', 'ProfileController@edit')->name('edit');
+	Route::get('/ubah/{type}', 'ProfileController@edit')->name('edit');
 
 
 	/**
