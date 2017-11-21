@@ -31,9 +31,18 @@ class EformRequest extends FormRequest
      */
     public function rulesEform()
     {
+        if ($this->input('developer')) {
+            if ( $this->input('developer') == ENV('DEVELOPER_KEY', 1) ) {
+                $property = '';
+            } else {
+                $property = 'required_unless:developer,1';
+            }
+        } else {
+            $property = '';
+        }
         return [
             'developer'         => 'required',
-            'property'          => 'required',
+            'property'          => $property,
             // 'property_type'     => 'required_if:developer,1',
             // 'property_item'     => 'required_if:developer,1',
             'price'             => 'required',
