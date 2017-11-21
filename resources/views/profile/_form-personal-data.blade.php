@@ -79,6 +79,61 @@
             </span>
             @endif
         </div>
+        
+         <div class="single-query form-group bottom20">
+            <label>NIK Pasangan (*)</label>
+            @if ($type != 'view')
+                {!! Form::text('couple_nik', (old('couple_nik')) ? old('couple_nik') : @$results['personal']['couple_nik'], [
+                    'class' => 'form-control numeric', 'maxlength' => 16,
+                ]) !!}
+            @else
+                <span class="form-control" style="border: 0px;">{{isset($results['personal']['couple_nik']) ? $results['personal']['couple_nik'] : ''}}</span>
+            @endif
+        </div>
+
+        <div class="single-query form-group bottom20">
+            <label>Nama Pasangan (*)</label>
+            @if ($type != 'view')
+                {!! Form::text('couple_name', (old('couple_name')) ? old('couple_name') : @$results['personal']['couple_name'], [
+                    'class' => 'form-control numeric', 'maxlength' => 16,
+                ]) !!}
+            @else
+                <span class="form-control" style="border: 0px;">{{isset($results['personal']['couple_name']) ? $results['personal']['couple_name'] : ''}}</span>
+            @endif
+        </div>
+
+        <div class="single-query form-group bottom20">
+            <label>Tempat lahir Pasangan (*)</label>
+            @if ($type != 'view')
+            {!! Form::select('couple_birth_place_id', [@$results['personal']['couple_birth_place_id'] => @$results['personal']['couple_birth_place_id']], old('couple_birth_place_id'), [
+                'class' => 'form-control select2 cities couple_birth_place_id',
+                'data-placeholder' => 'Pilih Kota',
+            ]) !!}
+            @else
+            <span class="form-control" style="border: 0px;">
+                {{isset($results['personal']['couple_birth_place_id']) ? $results['personal']['couple_birth_place_id'] : ''}}
+            </span>
+            @endif
+        </div>
+
+        <div class="single-query form-group bottom20">
+            <label>Tanggal lahir Pasangan (*)</label>
+            <div>
+                <div class="input-group">
+                    @if ($type != 'view')
+                    {!! Form::text('couple_birth_date', (old('couple_birth_date')) ? old('couple_birth_date') : @$results['personal']['birth_date'], [
+                    'class' => 'form-control datepicker-autoclose'
+                    ]) !!}
+                    <span class="input-group-addon b-0"><i class="fa fa-calendar"></i></span>
+                    @else
+                    <span class="form-control" style="border: 0px;">
+                        {{isset($results['personal']['couple_birth_date']) ? $results['personal']['couple_birth_date'] : ''}}
+                    </span>
+                    @endif
+                </div>
+            </div>
+        </div>
+
     </div>
     <div class="col-md-6">
         <div class="single-query form-group bottom20">
@@ -196,6 +251,9 @@
             </span>
             @endif
         </div>
+
+        
+
         @if ($type != 'view')
         <div class="single-query form-group bottom20 has-upload-file">
             <label>Foto KTP</label>
@@ -228,6 +286,40 @@
             </div>
 
         @endif
+
+        @if ($type != 'view')
+        <div class="single-query form-group bottom20 has-upload-file">
+            <label>Foto KTP Pasangan</label>
+            {!! Form::file('couple_identity', [
+                'class' => 'filestyle', 'data-target' => 'ktppas_preview',
+                'data-buttontext' => 'Unggah', 'data-buttonname' => 'btn-default',
+                'data-iconname' => 'fa fa-cloud-upload', 'data-placeholder' => 'Tidak ada file'
+            ]) !!}
+        </div>
+        @endif
+
+        @if ( isset($results['personal']['couple_identity']) && $results['personal']['couple_identity'])
+
+            <div class="single-query form-group bottom20">
+                <label>Foto KTP Pasangan</label>
+                {!! Html::image(image_checker($results['personal']['couple_identity']), 'KTPPASANGAN', [
+                    'class' => 'img-responsive', 'width' => 300, 'id' => 'ktppas_preview',
+                    'data-src' => asset('assets/images/no-image.jpg')
+                ]) !!}
+            </div>
+
+        @else
+
+            <div class="single-query form-group bottom20">
+                <label>Foto KTP Pasangan</label>
+                {!! Html::image(image_checker(), 'KTPPASANGAN', [
+                    'class' => 'img-responsive', 'width' => 300, 'id' => 'ktppas_preview',
+                    'data-src' => asset('assets/images/no-image.jpg')
+                ]) !!}
+            </div>
+
+        @endif
+
     </div>
     @if ($type != 'view')
         <div class="col-md-12">
