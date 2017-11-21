@@ -163,7 +163,7 @@ class ProfileController extends Controller
 
         if (isset($results['code']) && $results['code'] == 200) {
             \Session::flash('flash_message', $results['descriptions']);
-            return redirect()->back();
+            return redirect()->route('profile.index-profile');
         }
         \Session::flash('error_flash_message', $results['descriptions']);
         return redirect()->back()->withInput();

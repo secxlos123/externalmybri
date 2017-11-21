@@ -61,30 +61,57 @@ class EformRequest extends FormRequest
      */
     public function rulesCustomerSimple()
     {
-        $rules = [
-            'selector'          => 'required',
-            'nik'               => 'required|numeric|digits:16',
-            'first_name'        => 'required',
-            'last_name'         => '',
-            'birth_place_id'    => 'required',
-            'birth_date'        => 'required|date',
-            'address'           => 'required',
-            'post_code'         => 'required',
-            'city_id'           => 'required',
-            'gender'            => 'required|in:L,P',
-            'citizenship_id'    => 'required',
-            'status'            => 'required|in:1,2,3',
-            'address_status'    => 'required|in:0,1,3',
-            // 'phone'             => 'numeric|digits_between:7,16',
-            'mobile_phone'      => 'required|numeric|digits_between:9,16',
-            'mother_name'       => 'required',
-            'couple_nik'        => 'required_if:status,2|numeric|digits:16',
-            'couple_name'       => 'required_if:status,2',
-            'couple_birth_date' => 'required_if:status,2',
-            'couple_birth_place_id' => 'required_if:status,2',
-            'identity'          => 'required_if:is_simple,0|image|max:1024',
-            'couple_identity'   => 'required_if:status,2|image|max:1024',
-        ];
+        if ($this->couple_identity_flag == 1) {
+            $rules = [
+                'selector'          => 'required',
+                'nik'               => 'required|numeric|digits:16',
+                'first_name'        => 'required',
+                'last_name'         => '',
+                'birth_place_id'    => 'required',
+                'birth_date'        => 'required|date',
+                'address'           => 'required',
+                'post_code'         => 'required',
+                'city_id'           => 'required',
+                'gender'            => 'required|in:L,P',
+                'citizenship_id'    => 'required',
+                'status'            => 'required|in:1,2,3',
+                'address_status'    => 'required|in:0,1,3',
+                // 'phone'             => 'numeric|digits_between:7,16',
+                'mobile_phone'      => 'required|numeric|digits_between:9,16',
+                'mother_name'       => 'required',
+                'couple_nik'        => 'required_if:status,2|numeric|digits:16',
+                'couple_name'       => 'required_if:status,2',
+                'couple_birth_date' => 'required_if:status,2',
+                'couple_birth_place_id' => 'required_if:status,2',
+                'identity'          => 'required_if:is_simple,0|image|max:1024',
+                'couple_identity'   => 'image|max:1024'
+            ];
+        }else{
+            $rules = [
+                'selector'          => 'required',
+                'nik'               => 'required|numeric|digits:16',
+                'first_name'        => 'required',
+                'last_name'         => '',
+                'birth_place_id'    => 'required',
+                'birth_date'        => 'required|date',
+                'address'           => 'required',
+                'post_code'         => 'required',
+                'city_id'           => 'required',
+                'gender'            => 'required|in:L,P',
+                'citizenship_id'    => 'required',
+                'status'            => 'required|in:1,2,3',
+                'address_status'    => 'required|in:0,1,3',
+                // 'phone'             => 'numeric|digits_between:7,16',
+                'mobile_phone'      => 'required|numeric|digits_between:9,16',
+                'mother_name'       => 'required',
+                'couple_nik'        => 'required_if:status,2|numeric|digits:16',
+                'couple_name'       => 'required_if:status,2',
+                'couple_birth_date' => 'required_if:status,2',
+                'couple_birth_place_id' => 'required_if:status,2',
+                'identity'          => 'required_if:is_simple,0|image|max:1024',
+                'couple_identity'   => 'required_if:status,2|image|max:1024'
+            ];
+        }
 
         return $rules;
     }

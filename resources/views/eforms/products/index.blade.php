@@ -223,15 +223,6 @@
                     }
                 }
 
-                if (dev_id) {
-                    $('.properties')
-                    .empty()
-                    .dropdown('property', { dev_id: dev_id });
-                    if (prop_id) {
-                        $('.properties').select2('data', {id: prop_id, a_key: prop_name});
-                    }
-                }
-
                 $('#building_area').val($('#sess_building_area').val()).trigger('change');
                 $('#category-hide').val($('#sess_prop_category').val()).trigger('change');
                 $('#property_item_name').val(address).trigger('change');
