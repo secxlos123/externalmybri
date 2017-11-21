@@ -27,8 +27,8 @@
         <input id="searchInput" class="input-controls" type="text" placeholder="Masukkan lokasi pertemuan">
 
         <div class="map" id="map"></div>
-        <input type="hidden" id="long" >
-        <input type="hidden" id="lat" >
+        <!-- <input type="text" id="long" >
+        <input type="text" id="lat" > -->
 
         <div class="form-group m-t-20">
             {!! Form::textarea('address_location', old('address_location'), [
@@ -61,7 +61,7 @@
 
 @push( 'parent-scripts' )
     {!! Html::script('assets/js/jquery.gmaps.js') !!}
-    
+
     <script type="text/javascript">
         $('.datepicker-autoclose').datepicker({
             format: 'dd-mm-yyyy',
