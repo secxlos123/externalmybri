@@ -3,7 +3,7 @@
                 <div class="row top20">
                 <div class="col-md-3"></div>
                               <div class="col-md-6">
-                
+
                                   <div class="single-query form-group bottom20 {{ $errors->has('name') ? ' has-error' : '' }}">
                                     <label>NAME (*)</label>
                                     <input type="text" class="keyword-input" name="name" value="{{ $results['name'] }}">
@@ -24,14 +24,14 @@
                                   </div>
                                   <div class="single-query form-group bottom20 {{ $errors->has('phone_number') ? ' has-error' : '' }} ">
                                     <label>Nomor Telepon (*)</label>
-                                    <input type="text" class="keyword-input numeric" name="phone_number" maxlength="16" minlength="9" value="{{$results['phone_number']}}">
+                                    <input type="text" class="keyword-input numeric" name="phone_number" maxlength="12" minlength="9" value="{{$results['phone_number']}}">
                                     @if ($errors->has('phone_number'))
                                     <span class="help-block">
                                     <strong>{{ $errors->first('phone_number') }}</strong>
                                     </span>
                                     @endif
                                   </div>
-                                   
+
                                   <div class="single-query form-group bottom20 {{ $errors->has('address') ? ' has-error' : '' }}">
                                     <label>Alamat (*)</label>
                                     <textarea class="form-control" name="address" rows="3">{{ $results['address'] }}</textarea>
@@ -56,7 +56,7 @@
                                     </span>
                                     @endif
                                     </div>
-                                  </div> 
+                                  </div>
                                   </div>
                               <div class="col-md-12">
                                 <div class="pull-right">
@@ -66,6 +66,6 @@
                                 </div>
                             </div>
                             </div>
-                             
+
 
                 </div>

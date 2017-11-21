@@ -217,7 +217,7 @@
             <label>No Telepon</label>
             @if ($type != 'view')
             {!! Form::text('phone', old('phone') ? old('phone') : $results['personal']['phone'], [
-                'class' => 'form-control numeric', 'maxlength' => 16, 'minlength' => 7
+                'class' => 'form-control numeric', 'maxlength' => 12, 'minlength' => 7
             ]) !!}
             @else
             <span class="form-control" style="border: 0px;">
@@ -230,7 +230,7 @@
             <label>No Handphone</label>
             @if ($type != 'view')
             {!! Form::text('mobile_phone', old('mobile_phone') ? old('mobile_phone') : $results['personal']['mobile_phone'], [
-                'class' => 'form-control numeric', 'maxlength' => 16, 'minlength' => 7
+                'class' => 'form-control numeric', 'maxlength' => 12, 'minlength' => 7
             ]) !!}
             @else
             <span class="form-control" style="border: 0px;">

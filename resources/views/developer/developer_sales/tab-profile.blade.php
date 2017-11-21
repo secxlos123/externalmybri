@@ -7,7 +7,7 @@ $join = \Carbon\Carbon::parse($results["join_date"])->format('d-m-Y');
                 <div class="row top20">
                 <div class="col-md-3"></div>
                               <div class="col-md-6">
-                
+
                                   <div class="single-query form-group bottom20 {{ $errors->has('name') ? ' has-error' : '' }}">
                                     <label>NAME (*)</label>
                                     <input type="text" class="keyword-input" name="name" value="{{ $results['name'] }}">
@@ -28,14 +28,14 @@ $join = \Carbon\Carbon::parse($results["join_date"])->format('d-m-Y');
                                   </div>
                                   <div class="single-query form-group bottom20 {{ $errors->has('mobile_phone') ? ' has-error' : '' }} ">
                                     <label>Nomor Telepon (*)</label>
-                                    <input type="text" class="keyword-inpu numerict" maxlength="16" minlength="9" name="mobile_phone" value="{{$results['mobile_phone']}}">
+                                    <input type="text" class="keyword-inpu numerict" maxlength="12" minlength="9" name="mobile_phone" value="{{$results['mobile_phone']}}">
                                     @if ($errors->has('mobile_phone'))
                                     <span class="help-block">
                                     <strong>{{ $errors->first('mobile_phone') }}</strong>
                                     </span>
                                     @endif
                                   </div>
-                                   
+
                                   <div class="single-query form-group bottom20 {{ $errors->has('birth_date') ? ' has-error' : '' }}">
                                   {!! Form::label('birth_date', 'Tanggal lahir') !!}
                                   {!! Form::text('birth_date', $birth, ['class' => 'form-control datepicker-date-born','placeholder' => 'Masukkan tanggal lahir']) !!}
@@ -55,7 +55,7 @@ $join = \Carbon\Carbon::parse($results["join_date"])->format('d-m-Y');
                                     </span>
                                     @endif
                                   </div>
-                            
+
                                   </div>
                               <div class="col-md-12">
                                 <div class="pull-right">
@@ -65,6 +65,6 @@ $join = \Carbon\Carbon::parse($results["join_date"])->format('d-m-Y');
                                 </div>
                             </div>
                             </div>
-                             
+
 
                 </div>

@@ -186,7 +186,7 @@
 							<label class="col-md-5 control-label">No Telepon</label>
 							<div class="col-md-7">
 								{!! Form::text('phone', old('phone'), [
-									'class' => 'form-control numeric', 'maxlength' => 16, 'minlength' => 7
+									'class' => 'form-control numeric', 'maxlength' => 12, 'minlength' => 9
 								]) !!}
 							</div>
 						</div>
@@ -195,7 +195,7 @@
 							<label class="col-md-5 control-label">No Handphone *</label>
 							<div class="col-md-7">
 								{!! Form::text('mobile_phone', old('mobile_phone'), [
-									'class' => 'form-control numeric', 'maxlength' => 16, 'minlength' => 9
+									'class' => 'form-control numeric', 'maxlength' => 12, 'minlength' => 9
 								]) !!}
 							</div>
 						</div>
