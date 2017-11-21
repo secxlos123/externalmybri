@@ -144,6 +144,15 @@
         $('.status').on('change', function () {
             var value = $(this).select2('data')[0]['text'];
             $('#status').attr('value', value);
+
+            val = $(this).val();
+            if (val == 2) {
+                $('.couple-selector').removeClass('hide');
+
+            } else {
+                $('.couple-selector').addClass('hide');
+
+            }
         });
         $('.address_status').on('change', function () {
             var value = $(this).select2('data')[0]['text'];
@@ -151,6 +160,15 @@
         });
 
         $( document ).ready(function() {
+            @php( ($status = old('status')) ? old('status') : $results['personal']['status_id']);
+
+            @if($status == 2)
+                $('.couple-selector').removeClass('hide');
+
+            @else
+                $('.couple-selector').addClass('hide');
+
+            @endif
         });
 
 
