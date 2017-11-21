@@ -79,8 +79,8 @@
             </span>
             @endif
         </div>
-        
-         <div class="single-query form-group bottom20">
+
+         <div class="single-query form-group bottom20 couple-selector">
             <label>NIK Pasangan (*)</label>
             @if ($type != 'view')
                 {!! Form::text('couple_nik', (old('couple_nik')) ? old('couple_nik') : @$results['personal']['couple_nik'], [
@@ -91,7 +91,7 @@
             @endif
         </div>
 
-        <div class="single-query form-group bottom20">
+        <div class="single-query form-group bottom20 couple-selector">
             <label>Nama Pasangan (*)</label>
             @if ($type != 'view')
                 {!! Form::text('couple_name', (old('couple_name')) ? old('couple_name') : @$results['personal']['couple_name'], [
@@ -102,7 +102,7 @@
             @endif
         </div>
 
-        <div class="single-query form-group bottom20">
+        <div class="single-query form-group bottom20 couple-selector">
             <label>Tempat lahir Pasangan (*)</label>
             @if ($type != 'view')
             {!! Form::select('couple_birth_place_id', [@$results['personal']['couple_birth_place_id'] => @$results['personal']['couple_birth_place_id']], old('couple_birth_place_id'), [
@@ -116,7 +116,7 @@
             @endif
         </div>
 
-        <div class="single-query form-group bottom20">
+        <div class="single-query form-group bottom20 couple-selector">
             <label>Tanggal lahir Pasangan (*)</label>
             <div>
                 <div class="input-group">
@@ -252,7 +252,7 @@
             @endif
         </div>
 
-        
+
 
         @if ($type != 'view')
         <div class="single-query form-group bottom20 has-upload-file">
@@ -288,7 +288,7 @@
         @endif
 
         @if ($type != 'view')
-        <div class="single-query form-group bottom20 has-upload-file">
+        <div class="single-query form-group bottom20 has-upload-file couple-selector">
             <label>Foto KTP Pasangan</label>
             {!! Form::file('couple_identity', [
                 'class' => 'filestyle', 'data-target' => 'ktppas_preview',
@@ -300,7 +300,7 @@
 
         @if ( isset($results['personal']['couple_identity']) && $results['personal']['couple_identity'])
 
-            <div class="single-query form-group bottom20">
+            <div class="single-query form-group bottom20 couple-selector">
                 <label>Foto KTP Pasangan</label>
                 {!! Html::image(image_checker($results['personal']['couple_identity']), 'KTPPASANGAN', [
                     'class' => 'img-responsive', 'width' => 300, 'id' => 'ktppas_preview',
