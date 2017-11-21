@@ -105,6 +105,18 @@
         $(document).on('change', 'input[name="image"]', function(){
             $("#form-personal-data-customer-avatar").submit();
         });
+
+        $(document).on('input', "input[name='work_duration']", function(){
+            if ($(this).val() > 100) {
+                $(this).val("99");
+            }
+        })
+
+        $(document).on('input', "input[name='work_duration_month']", function(){
+            if ($(this).val() > 11) {
+                $(this).val("11");
+            }
+        })
     </script>
     @stack('parent-scripts')
 @endpush

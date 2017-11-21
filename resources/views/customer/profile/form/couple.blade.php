@@ -4,7 +4,7 @@
             <div class="panel-heading" data-toggle="collapse" data-target="#couple-data">
                 <h3 class="panel-title text-uppercase">
                     Data Pasangan
-                    
+
                     <div class="pull-right">
                         <i class="fa fa-chevron-down" aria-hidden="true"></i>
                     </div>
@@ -33,13 +33,11 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Tempat Lahir *</label>
                                 <div class="col-md-8">
-                                    {!! Form::select('couple_birth_place_id', ['' => ''] + [
-                                        $customer->couple_birth_place_id ?: old('couple_birth_place_id') => $customer->birth_place ?: old('couple_birth_place'),
-                                    ], old('couple_birth_place_id'), [
-                                        'class' => 'form-control select2 couple_birth',
+                                    {!! Form::select('couple_birth_place_id', ( isset($customer->couple_birth_place) ? [$customer->couple_birth_place_id => $customer->couple_birth_place] : [old('couple_birth_place_id')] ), old('couple_birth_place_id'), [
+                                        'class' => 'form-control couple_birth',
                                         'data-placeholder' => 'Pilih Kota',
-                                        'data-option' => old('couple_birth_place_id'),
-                                    ]) !!}                                
+                                        'data-option' => ( isset($customer->couple_birth_place) ? $customer->couple_birth_place_id : old('couple_birth_place_id') ),
+                                    ]) !!}
                                 </div>
                             </div>
                             <div class="form-group">
@@ -60,7 +58,7 @@
                                     {!! Form::file('couple_identity', [
                                         'class' => 'filestyle', 'data-target' => 'ktp_couple_preview',
                                         'data-buttontext' => 'Unggah', 'data-buttonname' => 'btn-default',
-                                        'data-iconname' => 'fa fa-cloud-upload', 'data-placeholder' => 'Tidak ada file' 
+                                        'data-iconname' => 'fa fa-cloud-upload', 'data-placeholder' => 'Tidak ada file'
                                     ]) !!}
                                 </div>
                             </div>
@@ -80,7 +78,7 @@
                             </div>
 
                         @else
-                            
+
                             <div class="col-md-6">
                                 <div class="form-group hide ktp_couple_preview">
                                     <div class="col-md-12 col-md-offset-2">
