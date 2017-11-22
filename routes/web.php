@@ -35,7 +35,7 @@ Route::post('upload', 'UploadController@upload');
 Route::get('properties', 'PropertyController@index')->name('properties');
 
 
-/**
+/**ri
  * This route for handle homepage
  */
 Route::get('rincian-property/{property}', 'PropertyController@detailProperty')->name('detail-properties');
@@ -84,7 +84,7 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.', 'middleware' => ['auth.
 	/**
 	 * This route for send request profile data
 	 */
-	Route::get('/', 'ProfileController@index')->name('index-profile');
+	Route::get('/{type}', 'ProfileController@index')->name('index-profile');
 
 	/**
 	 * This route for success change password
@@ -100,8 +100,7 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.', 'middleware' => ['auth.
 	/**
 	 * This route to show field edit data profile
 	 */
-	Route::get('/ubah', 'ProfileController@edit')->name('edit');
-
+	Route::get('/ubah/{type}', 'ProfileController@edit')->name('edit');
 
 	/**
 	 * This route for update data personal
@@ -126,6 +125,21 @@ Route::group(['prefix' => 'schedule', 'as' => 'schedule.', 'middleware' => ['aut
 	 * This route for send request form create data
 	 */
 	Route::get('/update', 'ScheduleController@update')->name('update');
+});
+
+/**
+ * This route for handle page tracking
+ */
+Route::group(['prefix' => 'tracking', 'as' => 'tracking.', 'middleware' => ['auth.api', 'HasAccess:customer']], function () {
+
+	/**
+	 * This route for send request tracking list data
+	 */
+	Route::get('/', 'TrackingController@index')->name('index-tracking');
+	/**
+	 * This route for send request detail tracking
+	 */
+	Route::get('/detail/{id}', 'TrackingController@show')->name('show');
 });
 
 /**

@@ -40,21 +40,21 @@
                     <div class="row">
                         <div class="col-md-12 top20">
                             <ul class="nav nav-pills nav-justified nav-centered m-b-30">
-                                <li class="active">
+                                <li class="{{ $active != 'password' ? 'active' : '' }}">
                                     <a href="#data-pribadi" data-toggle="tab" aria-expanded="true">DATA PRIBADI</a>
                                 </li>
-                                <li class="">
+                                <li class="{{ $active == 'password' ? 'active' : '' }}">
                                     <a href="#change-password" data-toggle="tab" aria-expanded="false">UBAH KATA SANDI</a>
                                 </li>
                             </ul>
                             <div class="tab-content br-n pn">
-                                <div id="data-pribadi" class="tab-pane active">
+                                <div id="data-pribadi" class="tab-pane {{ $active != 'password' ? 'active' : '' }}">
                                     <div>
                                         @include('profile.tab-content-personal-data')
                                     </div>
                                 </div>
 
-                                <div id="change-password" class="tab-pane">
+                                <div id="change-password" class="tab-pane {{ $active == 'password' ? 'active' : '' }}">
                                     @include('profile.tab-content-change-password')
                                 </div>
                             </div>
@@ -105,6 +105,18 @@
         $(document).on('change', 'input[name="image"]', function(){
             $("#form-personal-data-customer-avatar").submit();
         });
+
+        $(document).on('input', "input[name='work_duration']", function(){
+            if ($(this).val() > 100) {
+                $(this).val("99");
+            }
+        })
+
+        $(document).on('input', "input[name='work_duration_month']", function(){
+            if ($(this).val() > 11) {
+                $(this).val("11");
+            }
+        })
     </script>
     @stack('parent-scripts')
 @endpush

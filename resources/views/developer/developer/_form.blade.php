@@ -1,5 +1,5 @@
 @if(!empty($id))
-<?php 
+<?php
 $id       = $data['contents']['userdeveloper']['user_id'];
 $result   = $data['contents'];
 $result2  = $data['contents']['userdeveloper'];
@@ -50,7 +50,7 @@ $name     = $result['first_name']." ".$result['last_name'];
             {!! Form::label('mobile_phone', 'No Handphone') !!}
             {!! Form::text('mobile_phone', $result['mobile_phone'], [
                 'class' => 'keyword-input numeric',
-                'maxlength' => 16, 'minlength' => 9,
+                'maxlength' => 12, 'minlength' => 9,
                 'placeholder' => 'Masukkan No Handphone developer'
             ]) !!}
 
@@ -128,7 +128,7 @@ $name     = $result['first_name']." ".$result['last_name'];
             {!! Form::label('mobile_phone', 'No Handphone') !!}
             {!! Form::text('mobile_phone', old('mobile_phone'), [
                 'class' => 'keyword-input numeric',
-                'maxlength' => 16, 'minlength' => 9,
+                'maxlength' => 12, 'minlength' => 9,
                 'placeholder' => 'Masukkan No Handphone developer'
             ]) !!}
 

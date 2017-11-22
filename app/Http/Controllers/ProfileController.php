@@ -13,7 +13,7 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($type)
     {
         $results = Client::setEndpoint('profile')
             ->setHeaders([
@@ -23,7 +23,8 @@ class ProfileController extends Controller
 
         return view('profile.index', [
             'results' => $results['contents'],
-            'type' => 'view'
+            'type' => 'view',
+            'active' => $type
         ]);
     }
 
@@ -65,7 +66,7 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit($type)
     {
         $results = Client::setEndpoint('profile')
             ->setHeaders([
@@ -75,7 +76,8 @@ class ProfileController extends Controller
 
         return view('profile.index', [
             'results' => $results['contents'],
-            'type' => 'edit'
+            'type' => 'edit',
+            'active' => $type
         ]);
     }
 
@@ -118,7 +120,7 @@ class ProfileController extends Controller
             \Log::info($results);
         if (isset($results['code']) && $results['code'] == 200) {
             \Session::flash('flash_message', $results['descriptions']);
-            return redirect()->route('profile.index-profile');
+            return redirect()->route('profile.index-profile', $type);
         }else{
              $message = '';
                 foreach ($results['contents'] as $key => $value) {
@@ -128,7 +130,7 @@ class ProfileController extends Controller
                 return redirect()->back()->withInput();
         }
 
-        return redirect()->route('profile.index-profile');;
+        return redirect()->route('profile.index-profile', $type);;
     }
 
     /**
@@ -182,7 +184,11 @@ class ProfileController extends Controller
 
         if (isset($results['code']) && $results['code'] == 200) {
             \Session::flash('flash_message', $results['descriptions']);
+<<<<<<< HEAD
             return redirect()->route('profile.index-password');
+=======
+            return redirect()->route('profile.index-profile', 'password');
+>>>>>>> a72cccb938e2ba8f459b61448bd35da220f97f47
         }
         \Session::flash('error_flash_message', $results['descriptions']);
         return redirect()->back()->withInput();

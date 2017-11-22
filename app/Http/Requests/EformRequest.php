@@ -31,9 +31,18 @@ class EformRequest extends FormRequest
      */
     public function rulesEform()
     {
+        if ($this->input('developer')) {
+            if ( $this->input('developer') == ENV('DEVELOPER_KEY', 1) ) {
+                $property = '';
+            } else {
+                $property = 'required_unless:developer,1';
+            }
+        } else {
+            $property = '';
+        }
         return [
             'developer'         => 'required',
-            'property'          => 'required',
+            'property'          => $property,
             // 'property_type'     => 'required_if:developer,1',
             // 'property_item'     => 'required_if:developer,1',
             'price'             => 'required',
@@ -70,14 +79,13 @@ class EformRequest extends FormRequest
                 'birth_place_id'    => 'required',
                 'birth_date'        => 'required|date',
                 'address'           => 'required',
-                'post_code'         => 'required',
                 'city_id'           => 'required',
                 'gender'            => 'required|in:L,P',
                 'citizenship_id'    => 'required',
                 'status'            => 'required|in:1,2,3',
                 'address_status'    => 'required|in:0,1,3',
                 // 'phone'             => 'numeric|digits_between:7,16',
-                'mobile_phone'      => 'required|numeric|digits_between:9,16',
+                'mobile_phone'      => 'required|string|regex:/^[0-9]+$/|min:9|max:12',
                 'mother_name'       => 'required',
                 'couple_nik'        => 'required_if:status,2|numeric|digits:16',
                 'couple_name'       => 'required_if:status,2',
@@ -95,21 +103,20 @@ class EformRequest extends FormRequest
                 'birth_place_id'    => 'required',
                 'birth_date'        => 'required|date',
                 'address'           => 'required',
-                'post_code'         => 'required',
                 'city_id'           => 'required',
                 'gender'            => 'required|in:L,P',
                 'citizenship_id'    => 'required',
                 'status'            => 'required|in:1,2,3',
                 'address_status'    => 'required|in:0,1,3',
                 // 'phone'             => 'numeric|digits_between:7,16',
-                'mobile_phone'      => 'required|numeric|digits_between:9,16',
+                'mobile_phone'      => 'required|string|regex:/^[0-9]+$/|min:9|max:12',
                 'mother_name'       => 'required',
                 'couple_nik'        => 'required_if:status,2|numeric|digits:16',
                 'couple_name'       => 'required_if:status,2',
                 'couple_birth_date' => 'required_if:status,2',
                 'couple_birth_place_id' => 'required_if:status,2',
                 'identity'          => 'required_if:is_simple,0|image|max:1024',
-                'couple_identity'   => 'required_if:status,2|image|max:1024'
+                'couple_identity'   => 'image|max:1024'
             ];
         }
 
@@ -137,7 +144,7 @@ class EformRequest extends FormRequest
             'loan_installment'  => 'required_if:selector,0',
             'dependent_amount'  => 'required_if:selector,0',
             'emergency_name'    => 'required_if:selector,0',
-            'emergency_contact' => 'required_if:selector,0|numeric|digits_between:9,16',
+            'emergency_contact' => 'required_if:selector,0|string|regex:/^[0-9]+$/|min:9|max:12',
             'emergency_relation'=> 'required_if:selector,0',
             'couple_salary'     => 'required_with:is_join',
             'couple_other_salary' => 'required_with:is_join',

@@ -1,30 +1,30 @@
 <ul class="nav nav-tabs tabs-bordered">
-    <li class="active">
+    <li class="{{ $active == 'personal' || $active == 'password' ? 'active' : '' }}">
         <a href="#home-b1" data-toggle="tab" aria-expanded="false">
             <span class="visible-xs"><i class="fa fa-home"></i></span>
             <span class="hidden-xs">Data Pribadi</span>
         </a>
     </li>
     @if (session('authenticate.role') != 'developer')
-    <li class="">
+    <li class="{{ $active == 'work' ? 'active' : '' }}">
         <a href="#profile-b1" data-toggle="tab" aria-expanded="true">
             <span class="visible-xs"><i class="fa fa-user"></i></span>
             <span class="hidden-xs">Data Pekerjaan</span>
         </a>
     </li>
-    <li class="">
+    <li class="{{ $active == 'financial' ? 'active' : '' }}">
         <a href="#messages-b1" data-toggle="tab" aria-expanded="false">
             <span class="visible-xs"><i class="fa fa-envelope-o"></i></span>
             <span class="hidden-xs">Data Finansial</span>
         </a>
     </li>
-    <li class="">
+    <li class="{{ $active == 'contact' ? 'active' : '' }}">
         <a href="#contact-b1" data-toggle="tab" aria-expanded="false">
             <span class="visible-xs"><i class="fa fa-cog"></i></span>
             <span class="hidden-xs">Data Contact Person</span>
         </a>
     </li>
-    <li class="">
+    <li class="{{ $active == 'support' ? 'active' : '' }}">
         <a href="#support-b1" data-toggle="tab" aria-expanded="false">
             <span class="visible-xs"><i class="fa fa-cog"></i></span>
             <span class="hidden-xs">Data Pendukung</span>
@@ -41,7 +41,7 @@
 
 <div class="tab-content no-padding">
     @if (session('authenticate.role') != 'developer')
-    <div class="tab-pane active" id="home-b1">
+    <div class="tab-pane {{ $active == 'personal' || $active == 'password' ? 'active' : '' }}" id="home-b1">
         {!! Form::open([
             'route' => ['profile.update', 'personal'],
             'class' => 'callus', 'id' => 'form-personal-data-customer-personal',
@@ -50,7 +50,7 @@
             @include('profile._form-personal-data')
         {!! Form::close() !!}
     </div>
-    <div class="tab-pane" id="profile-b1">
+    <div class="tab-pane {{ $active == 'work' ? 'active' : '' }}" id="profile-b1">
         {!! Form::open([
             'route' => ['profile.update', 'work'],
             'class' => 'callus', 'id' => 'form-personal-data-customer-work',
@@ -59,7 +59,7 @@
             @include('profile._form-work-data')
         {!! Form::close() !!}
     </div>
-    <div class="tab-pane" id="messages-b1">
+    <div class="tab-pane {{ $active == 'financial' ? 'active' : '' }}" id="messages-b1">
         {!! Form::open([
             'route' => ['profile.update', 'financial'],
             'class' => 'callus', 'id' => 'form-personal-data-customer-financial',
@@ -68,7 +68,7 @@
             @include('profile._form-financial-data')
         {!! Form::close() !!}
     </div>
-    <div class="tab-pane" id="contact-b1">
+    <div class="tab-pane {{ $active == 'contact' ? 'active' : '' }}" id="contact-b1">
         {!! Form::open([
             'route' => ['profile.update', 'contact'],
             'class' => 'callus', 'id' => 'form-personal-data-customer-contact',
@@ -77,7 +77,7 @@
             @include('profile._form-contact-person')
         {!! Form::close() !!}
     </div>
-    <div class="tab-pane" id="support-b1">
+    <div class="tab-pane {{ $active == 'support' ? 'active' : '' }}" id="support-b1">
         {!! Form::open([
             'route' => ['profile.update', 'other'],
             'class' => 'callus', 'id' => 'form-personal-data-customer-support',
@@ -87,7 +87,7 @@
         {!! Form::close() !!}
     </div>
     @else
-    <div class="tab-pane active" id="home-b1">
+    <div class="tab-pane {{ $active == 'personal' ? 'active' : '' }}" id="home-b1">
         {!! Form::model($results, [
             'route' => ['developer.profile.update', 'personal'],
             'class' => 'callus', 'id' => 'form-personal-data-developer-personal',
@@ -159,14 +159,19 @@
             $('#address_status').attr('value', value);
         });
 
-     
+
 
 
     </script>
+<<<<<<< HEAD
   <!--   @if(session('authenticate.role') != 'developer') -->
+=======
+
+    @if(session('authenticate.role') != 'developer')
+>>>>>>> a72cccb938e2ba8f459b61448bd35da220f97f47
     <script type="text/javascript">
         $( document ).ready(function() {
-            @php( ($status = old('status')) ? old('status') : $results['personal']['status_id']);
+            @php( $status = old('status') ? old('status') : $results['personal']['status_id']);
 
             @if($status == 2)
                 $('.couple-selector').removeClass('hide');

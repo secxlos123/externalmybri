@@ -140,7 +140,7 @@
             {!! Form::text('pic_phone', old('pic_phone'), [
                 'class' => 'keyword-input numeric',
                 'placeholder' => 'Masukkan nomor hp PIC Project',
-                'maxlength' => 16,
+                'maxlength' => 12,
                 'minlength' => 9
             ]) !!}
 

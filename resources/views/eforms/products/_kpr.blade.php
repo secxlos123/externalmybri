@@ -17,6 +17,7 @@
                     'data-placeholder' => 'Pilih Jenis KPR',
                     'data-bri' => ''
                 ]) !!}
+                <p>Wajib diisi</p>
                 @if ($errors->has('kpr_type')) <p class="help-block">{{ $errors->first('kpr_type') }}</p> @endif
             </div>
         </div>
@@ -31,6 +32,7 @@
                     'data-option' => old('developer'),
                     'data-placeholder' => 'Pilih Developer',
                 ]) !!}
+                <p>Wajib diisi</p>
             </div>
         </div>
 
@@ -42,6 +44,7 @@
                     'data-placeholder' => 'Pilih Jenis Properti',
                     'data-bri' => ''
                 ]) !!}
+                <p>Wajib diisi</p>
                 @if ($errors->has('kpr_type_property')) <p class="help-block">{{ $errors->first('kpr_type_property') }}</p> @endif
             </div>
         </div>
@@ -56,6 +59,7 @@
                     'data-option' => old('property'),
                     'data-placeholder' => 'Pilih Nama Proyek',
                 ]) !!}
+                <p>Wajib diisi</p>
             </div>
         </div>
         <div class="form-group types-select property_type" hidden>
@@ -68,6 +72,7 @@
                     'data' => old('property_type'),
                     'data-placeholder' => 'Pilih Tipe Properti',
                     ]) !!}
+                <p>Wajib diisi</p>
             </div>
         </div>
         <div class="form-group units-select property_item" hidden>
@@ -80,6 +85,7 @@
                     'data-option' => old('property_item'),
                     'data-placeholder' => 'Pilih Unit Properti',
                 ]) !!}
+                <p>Wajib diisi</p>
             </div>
         </div>
     </div>
@@ -94,6 +100,7 @@
                         'id' => 'price', 'class' => 'currency form-control calculate', 'maxlength' => 15, 'readonly'
                     ]) !!}
                 </div>
+                <p>Wajib diisi</p>
             </div>
         </div>
         <div class="form-group">
@@ -106,6 +113,7 @@
                     ]) !!}
                     <span class="input-group-addon">m<sup>2</sup></span>
                 </div>
+                <p>Wajib diisi</p>
             </div>
         </div>
         <div class="form-group">
@@ -115,6 +123,7 @@
                     'id' => 'home_location', 'class' => 'form-control', 'rows' => 3, 'readonly',
                     'style' => 'resize: none;'
                 ]) !!}
+                <p>Wajib diisi</p>
             </div>
         </div>
         <div class="form-group">
@@ -126,6 +135,7 @@
                     ]) !!}
                     <span class="input-group-addon">Bulan</span>
                 </div>
+                <p>Wajib diisi</p>
             </div>
         </div>
         <div class="form-group">
@@ -134,6 +144,7 @@
                 {!! Form::select('active_kpr', [ '' => 'Pilih', '1' => '1', '2' => '2', '3' => '> 2' ], old('active_kpr'), [
                     'class' => 'form-control select2 calculate', 'id' => 'active_kpr'
                 ]) !!}
+                <p>Wajib diisi</p>
             </div>
         </div>
         <div class="form-group">
@@ -145,6 +156,7 @@
                         'class' => 'form-control numeric currency', 'id' => 'down_payment', 'maxlength' => 15
                     ]) !!}
                 </div>
+                <p>Wajib diisi</p>
             </div>
         </div>
 
@@ -156,6 +168,7 @@
                     ]) !!}
                     <span class="input-group-addon">%</span>
                 </div>
+                <p>Wajib diisi</p>
             </div>
         </div>
 
@@ -168,6 +181,7 @@
                         'class' => 'form-control currency', 'id' => 'request_amount', 'readonly', 'maxlength' => 15
                     ]) !!}
                 </div>
+                <p>Wajib diisi</p>
             </div>
         </div>
     </div>
