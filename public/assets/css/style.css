@@ -8195,3 +8195,173 @@ li.has-dropdown {
     max-width: 150px !important;
     min-width: 90px !important;
 }
+
+.account-pages-bg {
+    background: url(../images/dust.png);
+}
+
+.centered-404 {
+    top: 50%;
+    position: absolute;
+    transform: translateY(-50%);
+}
+
+.text-404 {
+    color: #315374;
+    margin-bottom: 10px;
+}
+
+
+.tracking-widget .tracking-card {
+    display: inline-block;
+}
+
+.tracking-widget.cms-tracking-widget {
+  font-size: 0;
+    display: table;
+    width: 100%;
+}
+
+
+.tracking-widget.cms-tracking-widget .tracking-card {
+    display: table-cell;
+    box-sizing: border-box;
+    width: 10%;
+    font-size: 14px;
+    /* margin: 0 5px; */
+    position: relative;
+}
+
+.cms-tracking-widget .card-box {
+  width: auto;
+  margin: 0 5px;
+  height: 147px;
+}
+
+.cms-tracking-widget .card-box  .bg-icon {
+  display: block;
+  margin: auto !important;
+  width: 45px;
+  height: 45px;
+}
+
+.cms-tracking-widget .card-box  .bg-icon i {
+  line-height: 45px;
+    font-size: 20px;
+}
+
+
+.cms-tracking-widget .card-box  .text-center {
+  display: block;
+}
+
+.tracking-widget .card-box.active {
+    background-color: #F7941E;
+    border-color: #F7941E;
+}
+
+.cms-tracking-widget .card-box {
+    width: auto;
+    margin: 0 5px;
+    height: 147px;
+}
+
+.tracking-widget .card-box {
+    border-color: #e6e6e6;
+    width: 90%;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.card-box {
+    padding: 20px;
+    border: 2px solid #f3f3f3;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    background-clip: padding-box;
+    margin-bottom: 20px;
+    background-color: #ffffff;
+}
+
+.tracking-widget.cms-tracking-widget {
+    font-size: 0;
+    display: table;
+    width: 100%;
+}
+
+.cms-tracking-widget .card-box .bg-icon {
+    display: block;
+    margin: auto !important;
+    width: 45px;
+    height: 45px;
+}
+
+.widget-box-three.active .bg-icon {
+    background-color: #fff;
+    border: none;
+}
+
+.cms-tracking-widget .card-box .bg-icon i {
+    line-height: 45px;
+    font-size: 20px;
+}
+
+.widget-box-three.active .bg-icon i {
+    color: #f7941e;
+}
+
+.tracking-widget .widget-box-three.active p {
+    color: #fff;
+}
+
+.widget-box-three .bg-icon {
+    height: 80px;
+    width: 80px;
+    text-align: center;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    background-clip: padding-box;
+    border: 1px dashed #98a6ad;
+    background-color: #f3f3f3;
+    margin-right: 20px;
+}
+
+.cms-tracking-widget .card-box {
+    width: auto;
+    margin: 0 5px;
+    height: 147px;
+}
+
+.content-page .cms-tracking-widget .bg-icon {
+    margin-bottom: 15px !important;
+}
+
+
+.tracking-widget.cms-tracking-widget .tracking-card:before {
+    content: '';
+    display: block;
+    font-size: 0;
+    background-color: #ddd;
+    height: 1px;
+    width: 10px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: -5px;
+    z-index: 0;
+}
+
+.tracking-widget.cms-tracking-widget .tracking-card:first-child:before {
+    display: none;
+}
+
+.tracking-widget.cms-tracking-widget:after {
+    left: -93px;
+    width: 72%;
+}
+
+.cms-tracking-widget .card-box i {
+    color: #696969;
+}

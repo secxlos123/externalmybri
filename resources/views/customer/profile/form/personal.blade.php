@@ -67,16 +67,6 @@
 						</div>
 
 						<div class="form-group">
-							<label class="col-md-4 control-label">Kode pos *</label>
-							<div class="col-md-8">
-								{!! Form::text('post_code', old('post_code'), [
-									'class' => 'form-control numeric',
-									'maxlength' => 6
-								]) !!}
-							</div>
-						</div>
-
-						<div class="form-group">
 							<label class="col-md-4 control-label">Alamat *</label>
 							<div class="col-md-8">
 								{!! Form::textarea('address', old('address'), [

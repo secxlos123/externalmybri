@@ -198,4 +198,18 @@ Route::group([
 		 */
 		Route::match(['put', 'patch'], '{type}', 'ProfileController@update')->name('update');
 	});
+	/**
+	 * This route for handle page tracking
+	 */
+	Route::group(['prefix' => 'tracking', 'as' => 'tracking.'], function () {
+
+		/**
+		 * This route for send request tracking list data
+		 */
+		Route::get('/', 'TrackingController@index')->name('index-tracking');
+		/**
+		 * This route for send request detail tracking
+		 */
+		Route::get('/detail/{id}', 'TrackingController@show')->name('show');
+	});
 });

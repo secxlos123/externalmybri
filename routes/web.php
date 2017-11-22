@@ -96,7 +96,6 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.', 'middleware' => ['auth.
 	 */
 	Route::get('/ubah/{type}', 'ProfileController@edit')->name('edit');
 
-
 	/**
 	 * This route for update data personal
 	 */
@@ -120,6 +119,21 @@ Route::group(['prefix' => 'schedule', 'as' => 'schedule.', 'middleware' => ['aut
 	 * This route for send request form create data
 	 */
 	Route::get('/update', 'ScheduleController@update')->name('update');
+});
+
+/**
+ * This route for handle page tracking
+ */
+Route::group(['prefix' => 'tracking', 'as' => 'tracking.', 'middleware' => ['auth.api', 'HasAccess:customer']], function () {
+
+	/**
+	 * This route for send request tracking list data
+	 */
+	Route::get('/', 'TrackingController@index')->name('index-tracking');
+	/**
+	 * This route for send request detail tracking
+	 */
+	Route::get('/detail/{id}', 'TrackingController@show')->name('show');
 });
 
 /**
