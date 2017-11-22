@@ -65,6 +65,13 @@ class EformController extends Controller
             return 'Hallo Developer....';
         }
 
+        if ( 'developer-sales' == session('authenticate.role') ) {
+            return view('eforms.index', [
+                'customer' => (object) [],
+                'param' => []
+            ]);
+        }
+
         config(['jsvalidation.focus_on_error' => false]);
         return view('eforms.index', [
             'customer' => (object) $this->customer(),
@@ -194,5 +201,159 @@ class EformController extends Controller
         }
 
         return $response;
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getCustomer(Request $request)
+    {
+        $customers = Client::setEndpoint('customer')
+            ->setHeaders([
+                'Authorization' => session('authenticate.token')
+            ])->setQuery([
+                'nik' => $request->input('name'),
+                'page' => $request->input('page')
+            ])
+            ->get();
+        \Log::info($customers);
+
+        foreach ($customers['contents']['data'] as $key => $cust) {
+
+            $cust['text'] = $cust['nik'];
+            $cust['id'] = $cust['id'];
+            $customers['contents']['data'][$key] = $cust;
+        }
+
+        return response()->json(['customers' => $customers['contents']]);
+    }
+
+    /**
+     * Display a detail of customer.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function detailCustomer(Request $request)
+    {
+        $customerData = Client::setEndpoint('customer/'.$request->input('id'))
+                        ->setHeaders([
+                            'Authorization' => session('authenticate.token')
+                        ])->get();
+        $dataCustomer = $customerData['contents'];
+        \Log::info($customerData);
+
+        if(($customerData['code'])==200){
+            $view = (String)view('eforms.agent.detail-customer')
+                ->with('dataCustomer', $dataCustomer)
+                ->render();
+
+            return response()->json(['view' => $view]);
+        } else {
+            $view = (String)view('eforms.agent.error')
+                ->with('dataCustomer', $dataCustomer)
+                ->render();
+
+            return response()->json(['view' => $view]);
+        }
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function saveCustomer(CustomerRequest $request)
+    {
+        $data = $this->getUser();
+
+        $newCustomer = $this->dataRequest($request);
+        // dd($newCustomer);
+        $client = Client::setEndpoint('customer')
+            ->setHeaders([
+                'Authorization' => session('authenticate.token')
+            ])->setBody($newCustomer)
+            ->post('multipart');
+
+        $codeResponse = $client['code'];
+        $codeDescription = $client['descriptions'];
+
+        if($codeResponse == 201){
+            // session()->put('user', $client);
+            return response()->json(['message' => $codeDescription, 'code' => $codeResponse]);
+        }elseif($codeResponse == 422){
+            return response()->json($client);
+        }elseif($codeResponse == 404){
+            return response()->json(['message' => $codeDescription, 'code' => $codeResponse]);
+        }else{
+            return response()->json(['message' => $codeDescription, 'code' => $codeResponse]);
+        }
+    }
+
+    /**
+     * List of request needed for input to customer
+     *
+     * @param  \Illuminate\Http\Request  $request
+     */
+    public function dataRequest($request)
+    {
+        $first_name = $this->split_name($request)['0'];
+        $last_name = $this->split_name($request)['1'];
+
+        $name = array(
+            [
+              'name'     => 'first_name',
+              'contents' => $first_name,
+            ],
+            [
+              'name'     => 'last_name',
+              'contents' => $last_name,
+            ],
+        );
+
+        $imgReq = $request->identity;
+            $image_path = $imgReq->getPathname();
+            $image_mime = $imgReq->getmimeType();
+            $image_name = $imgReq->getClientOriginalName();
+            $image[] = [
+                    'name'     => 'identity',
+                    'filename' => $image_name,
+                    'Mime-Type'=> $image_mime,
+                    'contents' => fopen( $image_path, 'r' ),
+                ];
+
+        if($request->couple_identity){
+            $imgReq = $request->couple_identity;
+            $image_path = $imgReq->getPathname();
+            $image_mime = $imgReq->getmimeType();
+            $image_name = $imgReq->getClientOriginalName();
+            $couple[] = [
+                'name'     => 'couple_identity',
+                'filename' => $image_name,
+                'Mime-Type'=> $image_mime,
+                'contents' => fopen( $image_path, 'r' ),
+            ];
+            $allReq = $request->except(['identity', '_token', 'couple_identity', 'full_name']);
+            foreach ($allReq as $index => $req) {
+            $inputData[] = [
+                'name'     => $index,
+                'contents' => $req
+                ];
+            }
+            $newCustomer = array_merge($image, $inputData, $couple, $name);
+        }else{
+            $allReq = $request->except(['identity', '_token', 'full_name']);
+            foreach ($allReq as $index => $req) {
+                $inputData[] = [
+                    'name'     => $index,
+                    'contents' => $req
+                ];
+            }
+            $newCustomer = array_merge($image, $inputData, $name);
+        }
+
+        return $newCustomer;
     }
 }
