@@ -30,6 +30,12 @@ Route::group([
 		Route::get('/', 'ProfileController@index')->name('index');
 
 		/**
+	 	* This route for success change password
+		*/
+
+		Route::get('change-password/check', 'ProfileController@successChangePassword')->name('index-password');
+
+		/**
 		 * This route for handle agent developer update data
 		 */
 		Route::match(['put', 'patch'], '{type}', 'ProfileController@update')->name('update');

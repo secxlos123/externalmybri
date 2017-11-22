@@ -1,4 +1,9 @@
-<div id="data-pribadi" class="tab-pane active">
+{!! Form::open([
+                  'route' => 'pihakke3.profile.requpdate',
+                  'class' => 'callus submit_property', 'id' => 'form-pihakke3-edit',
+                  'enctype' => 'multipart/form-data', 'method' => 'PUT'
+                ]) !!}
+
                 <!-- Form Update -->
                 <div class="row top20">
                 <div class="col-md-3"></div>
@@ -66,6 +71,4 @@
                                 </div>
                             </div>
                             </div>
-                             
-
-                </div>
+                            {!! Form::close() !!}

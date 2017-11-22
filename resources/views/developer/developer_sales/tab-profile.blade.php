@@ -2,12 +2,18 @@
 $birth= \Carbon\Carbon::parse($results["birth_date"])->format('d-m-Y');
 $join = \Carbon\Carbon::parse($results["join_date"])->format('d-m-Y');
 ?>
-<div id="data-pribadi" class="tab-pane active">
                 <!-- Form Update -->
                 <div class="row top20">
                 <div class="col-md-3"></div>
                               <div class="col-md-6">
-                
+                <?php 
+$id = $results["id"];
+  ?>
+{!! Form::open([
+                  'route' => ['dev-sales.profile.update', $id],
+                  'class' => 'callus submit_property', 'id' => 'form-property',
+                  'enctype' => 'multipart/form-data', 'method' => 'PUT'
+                ]) !!}
                                   <div class="single-query form-group bottom20 {{ $errors->has('name') ? ' has-error' : '' }}">
                                     <label>NAME (*)</label>
                                     <input type="text" class="keyword-input" name="name" value="{{ $results['name'] }}">
@@ -61,10 +67,8 @@ $join = \Carbon\Carbon::parse($results["join_date"])->format('d-m-Y');
                                 <div class="pull-right">
                                     <a href="#" class="btn btn-default waves-light waves-effect w-md m-b-20">Batalkan</a>
                                     <input type="submit" class="btn btn-success waves-light waves-effect w-md m-b-20" value="Simpan">
+                                    {!! Form::close() !!}
                                     <!-- <a href="#" class="btn btn-success waves-light waves-effect w-md m-b-20" data-toggle="modal" data-target="#save"><i class="mdi mdi-content-save"></i> Simpan</a> -->
                                 </div>
                             </div>
                             </div>
-                             
-
-                </div>

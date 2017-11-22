@@ -87,6 +87,12 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.', 'middleware' => ['auth.
 	Route::get('/', 'ProfileController@index')->name('index-profile');
 
 	/**
+	 * This route for success change password
+	 */
+
+	Route::get('change-password/check', 'ProfileController@successChangePassword')->name('index-password');
+
+	/**
 	 * This route for send request change password
 	 */
 	Route::post('password/change-password', 'ProfileController@changePassword')->name('change-password');

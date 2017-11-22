@@ -184,6 +184,12 @@ Route::group([
 		Route::get('/', 'ProfileController@index')->name('index');
 
 		/**
+	 	* This route for success change password
+		*/
+
+		Route::get('change-password/check', 'ProfileController@successChangePassword')->name('index-password');
+
+		/**
 		 * This route for handle homepage
 		 */
 		Route::get('/ubah', 'ProfileController@edit')->name('edit');

@@ -17,7 +17,7 @@
     @if(Session::has('flash_message'))
                         <div class="alert alert-success"><em> {!! session('flash_message') !!}</em></div>
                     @elseif(Session::has('error_flash_message'))
-                        <div class="alert alert-success"><em> {!! session('error_flash_message') !!}</em></div>
+                        <div class="alert alert-danger"><em> {!! session('error_flash_message') !!}</em></div>
           @endif
       <div class="panel panel-blue">
         <div class="panel-heading">
@@ -35,7 +35,19 @@
                   <a href="#change-password" data-toggle="tab" aria-expanded="false">CHANGE PASSWORD</a>
                 </li>
               </ul>
-              @include('developer.developer_sales._form')
+              <div class="tab-content br-n pn">
+                    <div id="data-pribadi" class="tab-pane active">
+                       <div>
+                        @include('developer.developer_sales.tab-profile')
+                       </div>
+                    </div>
+
+                    <div id="change-password" class="tab-pane">
+                        <div>
+                        @include('developer.developer_sales.tab-change-password')
+                        </div>
+                    </div>
+              </div>
             </div>
           </div>
         </div>

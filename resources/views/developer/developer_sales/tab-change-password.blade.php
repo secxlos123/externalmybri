@@ -1,4 +1,4 @@
-<div id="change-password" class="tab-pane">
+
                   <div class="col-md-3"></div>
                               <div class="col-md-6">
                     {!! Form::open(['route' => 'dev-sales.profile.change-password', 'class' => 'callus clearfix', 'id' => 'form-change-password-store']) !!}
@@ -26,4 +26,4 @@
                     </div>
                   </div>
                   {!! Form::close() !!}
-                </div>
+     

@@ -88,6 +88,27 @@ public function index()
         //     ]);
     }
 
+    /**
+    * This Controller For Redirect when Success or Failed Update Password
+    *
+    * @return \Illuminate\Http\Response
+    */
+
+    public function successChangePassword()
+    {
+        $results = Client::setEndpoint('profile')
+            ->setHeaders([
+                'Authorization' => session('authenticate.token')
+            ])
+            ->get();
+        $city    = Client::setEndpoint('city/')->get(); 
+        return view('pihakke3.pihakke3.success_edit', [
+            'results' => $results['contents'],
+            'city'      => $city['contents'],
+            'type' => 'view'
+        ]);
+    }
+
     public function changePassword(ChangePasswordRequest $request)
     {
         $results = Client::setEndpoint('profile/password')
@@ -103,9 +124,9 @@ public function index()
 
         if (isset($results['code']) && $results['code'] == 200) {
             \Session::flash('flash_message', $results['descriptions']);
-            return redirect()->back();
+            return redirect()->route('pihakke3.profile.index-password');
         }
-        \Session::flash('flash_message', $results['descriptions']);
-        return redirect()->back()->withInput();
+        \Session::flash('error_flash_message', $results['descriptions']);
+        return redirect()->route('pihakke3.profile.index-password')->withInput();
     }
 }

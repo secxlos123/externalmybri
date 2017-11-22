@@ -143,6 +143,25 @@ class ProfileController extends Controller
     }
 
     /**
+    * This Controller For Redirect when Success or Failed Update Password
+    *
+    * @return \Illuminate\Http\Response
+    */
+
+    public function successChangePassword()
+    {
+        $results = Client::setEndpoint('profile')
+            ->setHeaders([
+                'Authorization' => session('authenticate.token')
+            ])
+            ->get();
+        return view('profile.index_password', [
+            'results' => $results['contents'],
+            'type' => 'view'
+        ]);
+    }
+
+    /**
      * Update password with new one.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -163,7 +182,7 @@ class ProfileController extends Controller
 
         if (isset($results['code']) && $results['code'] == 200) {
             \Session::flash('flash_message', $results['descriptions']);
-            return redirect()->route('profile.index-profile');
+            return redirect()->route('profile.index-password');
         }
         \Session::flash('error_flash_message', $results['descriptions']);
         return redirect()->back()->withInput();

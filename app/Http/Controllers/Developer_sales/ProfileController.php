@@ -64,11 +64,38 @@ public function index()
                 ->put();
         if (isset($client['code']) && $client['code'] == 200) {
             \Session::flash('flash_message', $client['descriptions']);
+            return redirect()->route('dev-sales.profile.index');
         }else{
             \Session::flash('error_flash_message', $client['descriptions']);
         }
         return redirect()->route('dev-sales.profile.index');
     }
+
+     /**
+    * This Controller For Redirect when Success or Failed Update Password
+    *
+    * @return \Illuminate\Http\Response
+    */
+
+     public function successChangePassword()
+    {
+        $results = Client::setEndpoint('profile')
+            ->setHeaders([
+                'Authorization' => session('authenticate.token')
+            ])
+            ->get();
+        return view('developer.developer_sales.success_edit', [
+            'results' => $results['contents'],
+            'type' => 'view'
+        ]);
+    }
+    
+     /**
+     * change password with new one.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
 
     public function changePassword(ChangePasswordRequest $request)
     {
@@ -85,9 +112,9 @@ public function index()
 
         if (isset($results['code']) && $results['code'] == 200) {
             \Session::flash('flash_message', $results['descriptions']);
-            return redirect()->back();
+            return redirect()->route('dev-sales.profile.index-password');
         }
-        \Session::flash('flash_message', $results['descriptions']);
-        return redirect()->back()->withInput();
+        \Session::flash('error_flash_message', $results['descriptions']);
+        return redirect()->route('dev-sales.profile.index-password')->withInput();
     }
 }

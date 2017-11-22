@@ -27,21 +27,21 @@
           <div class="row">
             <div class="col-md-12 top20">
               <ul class="nav nav-pills nav-justified nav-centered m-b-30">
-                <li class="active">
+                <li class="">
                   <a href="#data-pribadi" data-toggle="tab" aria-expanded="true">DATA PRIBADI</a>
                 </li>
-                <li class="">
+                <li class="active">
                   <a href="#change-password" data-toggle="tab" aria-expanded="false">CHANGE PASSWORD</a>
                 </li>
               </ul>
               <div class="tab-content br-n pn">
-                    <div id="data-pribadi" class="tab-pane active">
+                    <div id="data-pribadi" class="tab-pane">
                        <div>
                          @include('pihakke3.pihakke3.tab-profile')
                        </div>
                     </div>
 
-                    <div id="change-password" class="tab-pane">
+                    <div id="change-password" class="tab-pane active">
                         <div>
                         @include('pihakke3.pihakke3.tab-change-password')
                         </div>
