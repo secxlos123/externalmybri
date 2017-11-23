@@ -40,8 +40,9 @@ class EformRequest extends FormRequest
         } else {
             $property = '';
         }
+
         return [
-            'developer'         => 'required',
+            'developer'         => 'required_if:status_property,1',
             'property'          => $property,
             // 'property_type'     => 'required_if:developer,1',
             // 'property_item'     => 'required_if:developer,1',
@@ -51,7 +52,7 @@ class EformRequest extends FormRequest
             'year'              => 'required',
             'active_kpr'        => 'required',
             'dp'                => 'required',
-            'category'          => 'required',
+            'category'          => 'required_if:status_property,1',
             'product_type'      => 'required',
             'status_property'   => 'required',
             'appointment_date'  => 'required',
