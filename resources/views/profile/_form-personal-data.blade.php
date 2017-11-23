@@ -95,15 +95,7 @@
             <label>Nama Pasangan (*)</label>
             @if ($type != 'view')
                 {!! Form::text('couple_name', (old('couple_name')) ? old('couple_name') : @$results['personal']['couple_name'], [
-<<<<<<< HEAD
-
-                    'class' => 'form-control', 'maxlength' => 16,
-
                     'class' => 'form-control',
-
-=======
-                    'class' => 'form-control',
->>>>>>> a72cccb938e2ba8f459b61448bd35da220f97f47
                 ]) !!}
             @else
                 <span class="form-control" style="border: 0px;">{{isset($results['personal']['couple_name']) ? $results['personal']['couple_name'] : ''}}</span>
@@ -113,18 +105,10 @@
         <div class="single-query form-group bottom20 couple-selector">
             <label>Tempat lahir Pasangan (*)</label>
             @if ($type != 'view')
-            {!! Form::select('couple_birth_place_id', [@$results['personal']['couple_birth_place_id'] => @$results['personal']['couple_birth_place']], old('couple_birth_place_id'), [
-<<<<<<< HEAD
-
-                'class' => 'form-control select2 cities couple_birth_place_id',
-
-                'class' => 'form-control select2 cities couple_birth_place',
-
-=======
-                'class' => 'form-control select2 cities couple_birth_place',
->>>>>>> a72cccb938e2ba8f459b61448bd35da220f97f47
-                'data-placeholder' => 'Pilih Kota',
-            ]) !!}
+                {!! Form::select('couple_birth_place_id', [@$results['personal']['couple_birth_place_id'] => @$results['personal']['couple_birth_place']], old('couple_birth_place_id'), [
+                    'class' => 'form-control select2 cities couple_birth_place',
+                    'data-placeholder' => 'Pilih Kota'
+                ]) !!}
             @else
             <span class="form-control" style="border: 0px;">
                 {{isset($results['personal']['couple_birth_place']) ? $results['personal']['couple_birth_place'] : ''}}
@@ -137,10 +121,10 @@
             <div>
                 <div class="input-group">
                     @if ($type != 'view')
-                    {!! Form::text('couple_birth_date', (old('couple_birth_date')) ? old('couple_birth_date') : @$results['personal']['couple_birth_date'], [
-                    'class' => 'form-control datepicker-autoclose'
-                    ]) !!}
-                    <span class="input-group-addon b-0"><i class="fa fa-calendar"></i></span>
+                        {!! Form::text('couple_birth_date', (old('couple_birth_date')) ? old('couple_birth_date') : @$results['personal']['couple_birth_date'], [
+                        'class' => 'form-control datepicker-autoclose'
+                        ]) !!}
+                        <span class="input-group-addon b-0"><i class="fa fa-calendar"></i></span>
                     @else
                     <span class="form-control" style="border: 0px;">
                         {{isset($results['personal']['couple_birth_date']) ? $results['personal']['couple_birth_date'] : ''}}
@@ -155,12 +139,12 @@
         <div class="single-query form-group bottom20">
             <label>Jenis Kelamin (*)</label>
             @if ($type != 'view')
-            {!! Form::select('gender', [
-                'L' => 'Laki-laki',
-                'P' => 'Perempuan',
-            ], (old('gender')) ? old('gender') : ($results['personal']['gender'] == 'Laki-laki' || $results['personal']['gender'] == 'L') ? 'L' : 'P', [
-                'class' => 'form-control select2 gender', 'id' => 'gender'
-            ]) !!}
+                {!! Form::select('gender', [
+                    'L' => 'Laki-laki',
+                    'P' => 'Perempuan',
+                ], (old('gender')) ? old('gender') : ($results['personal']['gender'] == 'Laki-laki' || $results['personal']['gender'] == 'L') ? 'L' : 'P', [
+                    'class' => 'form-control select2 gender', 'id' => 'gender'
+                ]) !!}
             @else
             <span class="form-control" style="border: 0px;">
                 {{isset($results['personal']['gender']) ? $results['personal']['gender'] : ''}}
