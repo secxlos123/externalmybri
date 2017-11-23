@@ -342,8 +342,8 @@
                 <a href="{{(session('authenticate.role') == 'developer') ? url('dev/profile/ubah') : url('profile/ubah/personal')}}" class="btn btn-primary waves-light waves-effect w-md m-b-20">Ubah</a>
             </div>
         </div>
-        @endif
-            @elseif($results['is_approved'] == null)
+            @endif
+        @elseif($results['is_approved'] == null)
         <div class="col-md-12">
             <div class="pull-right">
                 <a href="{{(session('authenticate.role') == 'developer') ? url('dev/profile/ubah') : url('profile/ubah/personal')}}" class="btn btn-primary waves-light waves-effect w-md m-b-20">Ubah</a>
