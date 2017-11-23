@@ -356,4 +356,16 @@ class EformController extends Controller
 
         return $newCustomer;
     }
+
+    /**
+     * uses regex that accepts any word character or hyphen in last name
+     *
+     * @param  \Illuminate\Http\Request  $request
+     */
+    function split_name($request) {
+        $name = trim($request->full_name);
+        $last_name = (strpos($name, ' ') === false) ? '' : preg_replace('#.*\s([\w-]*)$#', '$1', $name);
+        $first_name = trim( preg_replace('#'.$last_name.'#', '', $name ) );
+        return array($first_name, $last_name);
+    }
 }
