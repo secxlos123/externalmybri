@@ -204,7 +204,7 @@
             <label>Email</label>
             @if ($type != 'view')
             {!! Form::email('email', (old('email')) ? old('email') : $results['personal']['email'], [
-                'class' => 'form-control', 'readonly', 'style' => 'text-transform: none;'
+                'class' => 'form-control', 'readonly', 'style' => 'text-transform: none;background-color: #efefef;'
             ]) !!}
             @else
             <span class="form-control" style="border: 0px;">
