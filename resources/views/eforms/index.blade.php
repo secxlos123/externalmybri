@@ -35,6 +35,7 @@
                             'route' => 'eform.store', 'id' => 'app-eform',
                             'class' => 'form-horizontal', 'enctype' => 'multipart/form-data'
                         ]) !!}
+                        {{$customer->couple_identity}}
 
                             <fieldset hidden>
                                 <input type="text" name="sess_prop_category" id="sess_prop_category" value="{{@Session::get('prop_id_bri')}}">
@@ -42,10 +43,15 @@
                                 <input type="text" name="sess_building_area" id="sess_building_area" value="{{Session::get('building_area')}}">
 
                                 {!! Form::text('is_simple', old('is_simple')) !!}
-                                @if ( isset($customer->couple_identity) && $customer->couple_identity != "http://127.0.0.1:8001/img/avatar.jpg" )
-                                    <input type="text" name="couple_identity_flag" id="couple_identity_flag" value="1">
-                                @else
+                                @if ( isset($customer->couple_identity) && str_contains($customer->couple_identity,"noimage.jpg") )
                                     <input type="text" name="couple_identity_flag" id="couple_identity_flag" value="0">
+                                @else
+                                    <input type="text" name="couple_identity_flag" id="couple_identity_flag" value="1">
+                                @endif
+                                @if ( isset($customer->identity) && str_contains($customer->identity,"noimage.jpg") )
+                                    <input type="text" name="identity_flag" id="identity_flag" value="0">
+                                @else
+                                    <input type="text" name="identity_flag" id="identity_flag" value="1">
                                 @endif
                                 {!! Form::text('developer_name', old('developer_name'), [
                                     'id' => 'developer_name'
