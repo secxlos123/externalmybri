@@ -40,8 +40,9 @@ class EformRequest extends FormRequest
         } else {
             $property = '';
         }
+
         return [
-            'developer'         => 'required',
+            'developer'         => 'required_if:status_property,1',
             'property'          => $property,
             // 'property_type'     => 'required_if:developer,1',
             // 'property_item'     => 'required_if:developer,1',
@@ -51,7 +52,7 @@ class EformRequest extends FormRequest
             'year'              => 'required',
             'active_kpr'        => 'required',
             'dp'                => 'required',
-            'category'          => 'required',
+            'category'          => 'required_if:status_property,1',
             'product_type'      => 'required',
             'status_property'   => 'required',
             'appointment_date'  => 'required',
@@ -70,55 +71,29 @@ class EformRequest extends FormRequest
      */
     public function rulesCustomerSimple()
     {
-        if ($this->couple_identity_flag == 1) {
-            $rules = [
-                'selector'          => 'required',
-                'nik'               => 'required|numeric|digits:16',
-                'first_name'        => 'required',
-                'last_name'         => '',
-                'birth_place_id'    => 'required',
-                'birth_date'        => 'required|date',
-                'address'           => 'required',
-                'city_id'           => 'required',
-                'gender'            => 'required|in:L,P',
-                'citizenship_id'    => 'required',
-                'status'            => 'required|in:1,2,3',
-                'address_status'    => 'required|in:0,1,3',
-                // 'phone'             => 'numeric|digits_between:7,16',
-                'mobile_phone'      => 'required|string|regex:/^[0-9]+$/|min:9|max:12',
-                'mother_name'       => 'required',
-                'couple_nik'        => 'required_if:status,2|numeric|digits:16',
-                'couple_name'       => 'required_if:status,2',
-                'couple_birth_date' => 'required_if:status,2',
-                'couple_birth_place_id' => 'required_if:status,2',
-                'identity'          => 'required_if:is_simple,0|image|max:1024',
-                'couple_identity'   => 'image|max:1024'
-            ];
-        }else{
-            $rules = [
-                'selector'          => 'required',
-                'nik'               => 'required|numeric|digits:16',
-                'first_name'        => 'required',
-                'last_name'         => '',
-                'birth_place_id'    => 'required',
-                'birth_date'        => 'required|date',
-                'address'           => 'required',
-                'city_id'           => 'required',
-                'gender'            => 'required|in:L,P',
-                'citizenship_id'    => 'required',
-                'status'            => 'required|in:1,2,3',
-                'address_status'    => 'required|in:0,1,3',
-                // 'phone'             => 'numeric|digits_between:7,16',
-                'mobile_phone'      => 'required|string|regex:/^[0-9]+$/|min:9|max:12',
-                'mother_name'       => 'required',
-                'couple_nik'        => 'required_if:status,2|numeric|digits:16',
-                'couple_name'       => 'required_if:status,2',
-                'couple_birth_date' => 'required_if:status,2',
-                'couple_birth_place_id' => 'required_if:status,2',
-                'identity'          => 'required_if:is_simple,0|image|max:1024',
-                'couple_identity'   => 'image|max:1024'
-            ];
-        }
+        $rules = [
+            'selector'          => 'required',
+            'nik'               => 'required|numeric|digits:16',
+            'first_name'        => 'required',
+            'last_name'         => '',
+            'birth_place_id'    => 'required',
+            'birth_date'        => 'required|date',
+            'address'           => 'required',
+            'city_id'           => 'required',
+            'gender'            => 'required|in:L,P',
+            'citizenship_id'    => 'required',
+            'status'            => 'required|in:1,2,3',
+            'address_status'    => 'required|in:0,1,3',
+            // 'phone'             => 'numeric|digits_between:7,16',
+            'mobile_phone'      => 'required|string|regex:/^[0-9]+$/|min:9|max:12',
+            'mother_name'       => 'required',
+            'couple_nik'        => 'required_if:status,2|numeric|digits:16',
+            'couple_name'       => 'required_if:status,2',
+            'couple_birth_date' => 'required_if:status,2',
+            'couple_birth_place_id' => 'required_if:status,2',
+            'identity'          => 'required_if:identity_flag,0|image|max:1024',
+            'couple_identity'   => 'required_if:couple_identity_flag,0|image|max:1024'
+        ];
 
         return $rules;
     }

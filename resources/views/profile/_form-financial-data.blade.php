@@ -68,11 +68,27 @@
             </div>
         </div>
     @else
+        @if(!empty($results['is_approved']['status']))
+            @if($results['is_approved']['status'] == false)
         <div class="col-md-12">
             <div class="pull-right">
-                <a href="{{(session('authenticate.role') == 'developer') ? url('dev/profile/ubah') : url('profile/ubah/financial')}}" class="btn btn-primary waves-light waves-effect w-md m-b-20">Ubah</a>
+                <button class="btn btn-primary waves-light waves-effect w-md m m-b-20" disabled="disabled">Ubah</button>
             </div>
         </div>
+            @elseif($results['is_approved']['status'] == true)
+        <div class="col-md-12">
+            <div class="pull-right">
+                <a href="{{(session('authenticate.role') == 'developer') ? url('dev/profile/ubah') : url('profile/ubah/personal')}}" class="btn btn-primary waves-light waves-effect w-md m-b-20">Ubah</a>
+            </div>
+        </div>
+            @endif
+        @elseif($results['is_approved'] == null)
+        <div class="col-md-12">
+            <div class="pull-right">
+                <a href="{{(session('authenticate.role') == 'developer') ? url('dev/profile/ubah') : url('profile/ubah/personal')}}" class="btn btn-primary waves-light waves-effect w-md m-b-20">Ubah</a>
+            </div>
+        </div>
+        @endif
     @endif
 
 </div>

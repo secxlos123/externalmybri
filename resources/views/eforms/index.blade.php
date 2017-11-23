@@ -42,10 +42,15 @@
                                 <input type="text" name="sess_building_area" id="sess_building_area" value="{{Session::get('building_area')}}">
 
                                 {!! Form::text('is_simple', old('is_simple')) !!}
-                                @if ( isset($customer->couple_identity) && $customer->couple_identity != "http://127.0.0.1:8001/img/avatar.jpg" )
-                                    <input type="text" name="couple_identity_flag" id="couple_identity_flag" value="1">
-                                @else
+                                @if ( isset($customer->couple_identity) && str_contains($customer->couple_identity,"noimage.jpg") )
                                     <input type="text" name="couple_identity_flag" id="couple_identity_flag" value="0">
+                                @else
+                                    <input type="text" name="couple_identity_flag" id="couple_identity_flag" value="1">
+                                @endif
+                                @if ( isset($customer->identity) && str_contains($customer->identity,"noimage.jpg") )
+                                    <input type="text" name="identity_flag" id="identity_flag" value="0">
+                                @else
+                                    <input type="text" name="identity_flag" id="identity_flag" value="1">
                                 @endif
                                 {!! Form::text('developer_name', old('developer_name'), [
                                     'id' => 'developer_name'
@@ -158,6 +163,19 @@
 
             if ( checked ) {
                 current_address.val(address).html(address);
+            }
+        });
+
+        $(document).on('submit', '#app-eform', function(e){
+            var status = $("#status").select2('data')[0]['id'];
+            var dob = new Date($("input[name='birth_date']").val());
+            var today = new Date();
+            var age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));
+
+            if (age < 21 && status == 1) {
+                e.preventDefault();
+                $("#steps-uid-0-t-1").trigger('click');
+                $("div.card-box").append("<div class=\"alert alert-danger\"><ul><li>Umur anda "+age+" tahun kurang memenuhi persyaratan yaitu minimum 21 tahun</li></ul></div>");
             }
         });
     </script>

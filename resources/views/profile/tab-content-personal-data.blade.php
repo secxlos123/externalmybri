@@ -163,12 +163,7 @@
 
 
     </script>
-<<<<<<< HEAD
-  <!--   @if(session('authenticate.role') != 'developer') -->
-=======
-
     @if(session('authenticate.role') != 'developer')
->>>>>>> a72cccb938e2ba8f459b61448bd35da220f97f47
     <script type="text/javascript">
         $( document ).ready(function() {
             @php( $status = old('status') ? old('status') : $results['personal']['status_id']);
@@ -182,5 +177,5 @@
             @endif
         });
     </script>
-<!--     @endif -->
+    @endif
 @endpush
