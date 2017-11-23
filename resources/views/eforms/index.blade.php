@@ -160,6 +160,19 @@
                 current_address.val(address).html(address);
             }
         });
+
+        $(document).on('submit', '#app-eform', function(e){
+            var status = $("#status").select2('data')[0]['id'];
+            var dob = new Date($("input[name='birth_date']").val());
+            var today = new Date();
+            var age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));
+
+            if (age < 21 && status == 1) {
+                e.preventDefault();
+                $("#steps-uid-0-t-1").trigger('click');
+                $("div.card-box").append("<div class=\"alert alert-danger\"><ul><li>Umur anda "+age+" tahun kurang memenuhi persyaratan yaitu minimum 21 tahun</li></ul></div>");
+            }
+        });
     </script>
     @stack('parent-scripts')
 @endpush
