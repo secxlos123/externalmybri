@@ -35,7 +35,6 @@
                             'route' => 'eform.store', 'id' => 'app-eform',
                             'class' => 'form-horizontal', 'enctype' => 'multipart/form-data'
                         ]) !!}
-                        {{$customer->couple_identity}}
 
                             <fieldset hidden>
                                 <input type="text" name="sess_prop_category" id="sess_prop_category" value="{{@Session::get('prop_id_bri')}}">
