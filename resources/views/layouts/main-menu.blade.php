@@ -1,14 +1,14 @@
 <li class="{!! request()->is('/') || request()->is('dev/dashboard') ? 'active' : '' !!}">
-    <a href="{!! request()->is('/') || request()->is('dev/dashboard') ? '#' : url('/') !!}">Beranda </a>
+    <a href="{!! request()->is('/') || request()->is('dev/dashboard') ? '#' : url('/') || request()->is('dev-sales/dashboard') ? url('dev-sales/dashboard') : url('/') !!}">Beranda </a>
 </li>
+   </li>
+        <li class="">
+            <a href="#">Tentang Kami </a>
+        </li>
 
-<li class="">
-    <a href="#">Tentang Kami </a>
-</li>
-
-<li class="">
-    <a href="#">Produk </a>
-</li>
+        <li class="">
+            <a href="#">Produk </a>
+        </li>
 
 @if ( 'customer' == session('authenticate.role') || ! session('authenticate') )
 
@@ -55,10 +55,21 @@
         <li>
             <a href="javascript:void(0)">Contact User</a>
         </li>
-    @endif
-    <!-- @end You can remove this condition if this module already -->
+        <li class="">
+            <a href="#">Tentang Kami </a>
+        </li>
 
+        <li class="">
+            <a href="#">Produk </a>
+        </li>
+    @endif
 @endif
+    <!-- @end You can remove this condition if this module already -->
+@if('developer-sales' == session('authenticate.role'))
+<li><a href="{!! route('eform.index') !!}">Pengajuan</a></li>
+   
+@endif
+
 @if('others' == session('authenticate.role'))
 <li><a href="#">Tracking</a></li>
 
