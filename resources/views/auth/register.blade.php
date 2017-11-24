@@ -1,6 +1,6 @@
 <style type="text/css">
-    span#password-error {
-        color: white;
+    span.error-help-block {
+        color: white !important;
     }
 </style>
 @if(Session::has('flash_message'))
