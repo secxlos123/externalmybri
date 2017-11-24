@@ -1,8 +1,3 @@
-<style type="text/css">
-    span.error-help-block {
-        color: white !important;
-    }
-</style>
 @if(Session::has('flash_message'))
     <div class="alert alert-danger"><em> {!! session('flash_message') !!}</em></div>
     <script>
