@@ -15,7 +15,7 @@
                         <p>Selanjutnya kami akan memproses pengajuan Aplikasi KPR anda.</p>
                     @else
                         <h3>Mohon maaf ada kesalahan data yang diinputkan.</h3>
-                        <p>Account Officer kami segera akan mengupdate data Anda.</p>
+                        <p>Account Officer kami akan segera mengupdate data Anda.</p>
                     @endif
                 </div>
             </div>
