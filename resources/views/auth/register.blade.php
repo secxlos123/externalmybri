@@ -1,3 +1,8 @@
+<style type="text/css">
+    span#password-error {
+        color: white;
+    }
+</style>
 @if(Session::has('flash_message'))
     <div class="alert alert-danger"><em> {!! session('flash_message') !!}</em></div>
     <script>
