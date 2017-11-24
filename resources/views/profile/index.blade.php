@@ -85,6 +85,11 @@
 
     <script type="text/javascript">
         $('#status').select2();
+        $('.datepicker-autoclose').datepicker({
+            format: "dd-mm-yyyy",
+            autoclose: true,
+            endDate: "-20y"
+        });
 
         if ($("#status").select2('data')[0]['id'] != 1) {
             // $('.birth-date').val("{{$results['personal']['birth_date']}}");
