@@ -11,7 +11,7 @@
                 <div class="panel-heading">
                     <h3 class="panel-title text-uppercase">Profil Saya</h3>
                 </div>
-                <div class="panel-body">
+                <div class="panel-body fMessage">
                     <h4>&nbsp;</h4>
                     @if(Session::has('flash_message'))
                         <div class="alert alert-success"><em> {!! session('flash_message') !!}</em></div>

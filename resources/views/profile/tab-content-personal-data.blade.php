@@ -77,7 +77,7 @@
             @include('profile._form-contact-person')
         {!! Form::close() !!}
     </div>
-    <div class="tab-pane {{ $active == 'support' ? 'active' : '' }}" id="support-b1">
+    <div class="tab-pane {{ $active == 'other' ? 'active' : '' }}" id="support-b1">
         {!! Form::open([
             'route' => ['profile.update', 'other'],
             'class' => 'callus', 'id' => 'form-personal-data-customer-support',
@@ -159,8 +159,19 @@
             $('#address_status').attr('value', value);
         });
 
+        $("#form-personal-data-customer-personal").on('submit', function(e){
+            e.preventDefault();
+            var status = $("#status").select2('data')[0]['id'];
+            var dob = new Date($("input[name='birth_date']").val());
+            var today = new Date();
+            var age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));
 
-
+            if (age < 21 && status == 1) {
+                e.preventDefault();
+                $("#steps-uid-0-t-1").trigger('click');
+                $("div.fMessage").prepend("<div class=\"alert alert-danger\"><em> Umur anda "+age+" tahun kurang memenuhi persyaratan yaitu minimum 21 tahun</em></div>");
+            }
+        });
 
     </script>
     @if(session('authenticate.role') != 'developer')
