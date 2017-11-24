@@ -85,22 +85,18 @@
 
     <script type="text/javascript">
         $('#status').select2();
-        $('.datepicker-autoclose').datepicker({
-            format: 'dd-mm-yyyy',
-            autoclose: true,
-        });
 
         if ($("#status").select2('data')[0]['id'] != 1) {
-            console.log($("#status").select2('data')[0]['id']);
-            $('.datepicker-autoclose').datepicker({
-                format: 'dd-mm-yyyy',
+            // $('.birth-date').val("{{$results['personal']['birth_date']}}");
+            $('.birth-date').datepicker({
+                format: "dd-mm-yyyy",
                 autoclose: true,
-                endDate: '-20y'
+                endDate: "-20y"
             });
         }else{
-            console.log($("#status").select2('data')[0]['id']);
-            $('.datepicker-autoclose').datepicker({
-                format: 'dd-mm-yyyy',
+            // $('.birth-date').val("{{$results['personal']['birth_date']}}");
+            $('.birth-date').datepicker({
+                format: "dd-mm-yyyy",
                 autoclose: true,
             });
         }

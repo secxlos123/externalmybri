@@ -114,21 +114,20 @@
     <script type="text/javascript">
 
         $("#status").on('change', function(){
-            $('.datepicker-autoclose').datepicker("destroy");
-            console.log($(this).select2('data')[0]['id']);
+            $('.birth-date').datepicker("destroy");
             if ($(this).select2('data')[0]['id'] == 1) {
-                $('.datepicker-autoclose').datepicker({
+                $('.birth-date').datepicker({
                     format: 'dd-mm-yyyy',
                     autoclose: true,
                     endDate: '-20y'
                 });
             }else{
-                $('.datepicker-autoclose').datepicker({
+                $('.birth-date').datepicker({
                     format: 'dd-mm-yyyy',
                     autoclose: true,
                 });
             }
-            $('.datepicker-autoclose').datepicker("refresh");
+            $('.birth-date').datepicker("refresh");
         });
 
         $('.jobFields').on('change', function () {

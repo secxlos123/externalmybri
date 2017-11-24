@@ -25,3 +25,9 @@ a.button-kpr:hover {
 .homePage .has-dropdown-content {
     right: 12px;
 }
+form#form-login div.single-query span.error-help-block {
+    color: white !important;
+}
+form#form-register-store div.single-query span.error-help-block {
+    color: white !important;
+}

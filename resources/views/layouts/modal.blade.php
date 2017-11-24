@@ -1,8 +1,3 @@
-<style type="text/css">
-    span.error-help-block {
-        color: white !important;
-    }
-</style>
 <div class="modal fade" id="login-register" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document" style="width: 30%">
         <div class="modal-content">
