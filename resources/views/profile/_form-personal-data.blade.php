@@ -123,7 +123,9 @@
             <div>
                 <div class="input-group">
                     @if ($type != 'view')
-                        {!! Form::text('couple_birth_date', (old('couple_birth_date')) ? old('couple_birth_date') : @$results['personal']['couple_birth_date'], [
+                        <?php $originalDate = $results['personal']['couple_birth_date'];
+                            $newDateCouple = date("d-m-Y", strtotime($originalDate)); ?>
+                        {!! Form::text('couple_birth_date', (old('couple_birth_date')) ? old('couple_birth_date') : @$newDateCouple, [
                         'class' => 'form-control datepicker-autoclose'
                         ]) !!}
                         <span class="input-group-addon b-0"><i class="fa fa-calendar"></i></span>
