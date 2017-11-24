@@ -84,10 +84,27 @@
     {!! JsValidator::formRequest(App\Http\Requests\Developer\Profile\ChangePasswordRequest::class, '#form-change-password-store') !!}
 
     <script type="text/javascript">
+        $('#status').select2();
         $('.datepicker-autoclose').datepicker({
             format: 'dd-mm-yyyy',
             autoclose: true,
         });
+
+        if ($("#status").select2('data')[0]['id'] != 1) {
+            console.log($("#status").select2('data')[0]['id']);
+            $('.datepicker-autoclose').datepicker({
+                format: 'dd-mm-yyyy',
+                autoclose: true,
+                endDate: '-20y'
+            });
+        }else{
+            console.log($("#status").select2('data')[0]['id']);
+            $('.datepicker-autoclose').datepicker({
+                format: 'dd-mm-yyyy',
+                autoclose: true,
+            });
+        }
+
         $('.address_status, .status, .gender').select2();
         $('.cities').dropdown('cities');
         $('.citizenships').dropdown('citizenships');

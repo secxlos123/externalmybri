@@ -41,7 +41,7 @@
                 <div class="input-group">
                     @if ($type != 'view')
                     {!! Form::text('birth_date', (old('birth_date')) ? old('birth_date') : @$results['personal']['birth_date'], [
-                    'class' => 'form-control datepicker-autoclose'
+                    'class' => 'form-control datepicker-autoclose birth-date'
                     ]) !!}
                     <span class="input-group-addon b-0"><i class="fa fa-calendar"></i></span>
                     @else

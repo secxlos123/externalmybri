@@ -152,10 +152,34 @@
 			}
 		});
 
-		$('.date-birth').datepicker({
-			format: 'dd-mm-yyyy',
-	        autoclose: true,
-	        endDate: '-20y'
+		if ($("#status").select2('data')[0]['id'] == 1) {
+			$('.date-birth').datepicker({
+				format: 'dd-mm-yyyy',
+		        autoclose: true,
+		        endDate: '-20y'
+			});
+		}else{
+			$('.date-birth').datepicker({
+				format: 'dd-mm-yyyy',
+		        autoclose: true,
+			});
+		}
+
+		$(".date-birth").on('change', function(){
+    		$(".date-birth").datepicker("destroy");
+			if ($(this).select2('data')[0]['id'] == 1) {
+				$('.date-birth').datepicker({
+					format: 'dd-mm-yyyy',
+			        autoclose: true,
+			        endDate: '-20y'
+				});
+			}else{
+				$('.date-birth').datepicker({
+					format: 'dd-mm-yyyy',
+			        autoclose: true,
+				});
+			}
+    		$(".date-birth").datepicker("refresh");
 		});
 
 		function current_status_customer() {

@@ -112,6 +112,25 @@
     {!! JsValidator::formRequest(App\Http\Requests\Developer\Profile\SupportRequest::class, '#form-personal-data-customer-support') !!}
     {!! JsValidator::formRequest(App\Http\Requests\Developer\Profile\Developer\PersonalRequest::class, '#form-personal-data-developer-personal') !!}
     <script type="text/javascript">
+
+        $("#status").on('change', function(){
+            $('.datepicker-autoclose').datepicker("destroy");
+            console.log($(this).select2('data')[0]['id']);
+            if ($(this).select2('data')[0]['id'] == 1) {
+                $('.datepicker-autoclose').datepicker({
+                    format: 'dd-mm-yyyy',
+                    autoclose: true,
+                    endDate: '-20y'
+                });
+            }else{
+                $('.datepicker-autoclose').datepicker({
+                    format: 'dd-mm-yyyy',
+                    autoclose: true,
+                });
+            }
+            $('.datepicker-autoclose').datepicker("refresh");
+        });
+
         $('.jobFields').on('change', function () {
             var value = $(this).select2('data')[0]['name'];
             $('#work_field').attr('value', value);
