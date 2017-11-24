@@ -22,6 +22,7 @@ Route::group([
 	 * This route for get homepage of agent developer
 	 */
 	Route::get('dashboard', 'HomeController@index')->name('index');
+	Route::get('data_eform', 'HomeController@DataEform')->name('data-eform');
 
 	Route::group(['prefix' => 'profile', 'as' => 'profile.'], function () {
 		/**

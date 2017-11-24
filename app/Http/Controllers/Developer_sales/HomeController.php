@@ -16,4 +16,9 @@ class HomeController extends Controller
     {
         return view('developer.home_dev_sales.index');
     }
+
+    public function DataEform()
+    {
+    	return view('developer.home_dev_sales.eform_pengajuan.index');
+    }
 }
