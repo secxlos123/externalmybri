@@ -15,10 +15,20 @@
                         <p>Selanjutnya kami akan memproses pengajuan Aplikasi KPR anda.</p>
                     @else
                         <h3>Mohon maaf ada kesalahan data yang diinputkan.</h3>
-                        <p>Account Officer kami segera akan mengupdate data Anda.</p>
+                        <p>Account Officer kami akan segera mengupdate data Anda.</p>
                     @endif
                 </div>
             </div>
         </div>
     </section>
 @endsection
+
+@push('styles')
+<style type="text/css">
+    footer.footer_third.absolute-fix {
+        bottom: 0px !important;
+        position: absolute;
+        width: -webkit-fill-available;
+    }
+</style>
+@endpush

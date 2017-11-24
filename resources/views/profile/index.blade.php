@@ -11,7 +11,7 @@
                 <div class="panel-heading">
                     <h3 class="panel-title text-uppercase">Profil Saya</h3>
                 </div>
-                <div class="panel-body">
+                <div class="panel-body fMessage">
                     <h4>&nbsp;</h4>
                     @if(Session::has('flash_message'))
                         <div class="alert alert-success"><em> {!! session('flash_message') !!}</em></div>
@@ -84,10 +84,28 @@
     {!! JsValidator::formRequest(App\Http\Requests\Developer\Profile\ChangePasswordRequest::class, '#form-change-password-store') !!}
 
     <script type="text/javascript">
+        $('#status').select2();
         $('.datepicker-autoclose').datepicker({
-            format: 'dd-mm-yyyy',
+            format: "dd-mm-yyyy",
             autoclose: true,
+            endDate: "-20y"
         });
+
+        if ($("#status").select2('data')[0]['id'] != 1) {
+            // $('.birth-date').val("{{$results['personal']['birth_date']}}");
+            $('.birth-date').datepicker({
+                format: "dd-mm-yyyy",
+                autoclose: true,
+                endDate: "-20y"
+            });
+        }else{
+            // $('.birth-date').val("{{$results['personal']['birth_date']}}");
+            $('.birth-date').datepicker({
+                format: "dd-mm-yyyy",
+                autoclose: true,
+            });
+        }
+
         $('.address_status, .status, .gender').select2();
         $('.cities').dropdown('cities');
         $('.citizenships').dropdown('citizenships');

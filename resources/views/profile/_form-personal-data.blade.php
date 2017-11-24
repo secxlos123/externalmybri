@@ -40,8 +40,10 @@
             <div>
                 <div class="input-group">
                     @if ($type != 'view')
-                    {!! Form::text('birth_date', (old('birth_date')) ? old('birth_date') : @$results['personal']['birth_date'], [
-                    'class' => 'form-control datepicker-autoclose'
+                    <?php $originalDate = $results['personal']['birth_date'];
+                            $newDate = date("d-m-Y", strtotime($originalDate)); ?>
+                    {!! Form::text('birth_date', (old('birth_date')) ? old('birth_date') : @$newDate, [
+                    'class' => 'form-control birth-date'
                     ]) !!}
                     <span class="input-group-addon b-0"><i class="fa fa-calendar"></i></span>
                     @else
@@ -121,7 +123,9 @@
             <div>
                 <div class="input-group">
                     @if ($type != 'view')
-                        {!! Form::text('couple_birth_date', (old('couple_birth_date')) ? old('couple_birth_date') : @$results['personal']['couple_birth_date'], [
+                        <?php $originalDate = $results['personal']['couple_birth_date'];
+                            $newDateCouple = date("d-m-Y", strtotime($originalDate)); ?>
+                        {!! Form::text('couple_birth_date', (old('couple_birth_date')) ? old('couple_birth_date') : @$newDateCouple, [
                         'class' => 'form-control datepicker-autoclose'
                         ]) !!}
                         <span class="input-group-addon b-0"><i class="fa fa-calendar"></i></span>

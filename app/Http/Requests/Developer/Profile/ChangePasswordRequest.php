@@ -28,4 +28,16 @@ class ChangePasswordRequest extends FormRequest
             'password' => 'required|min:6|regex:/^(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])\S*$/|confirmed'
         ];
     }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'password.regex' => 'Password harus berupa kombinasi huruf besar, huruf kecil dan angka',
+        ];
+    }
 }

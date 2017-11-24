@@ -82,7 +82,7 @@ class RegisterController extends Controller
                 \Session::flash('flash_message',$message);
                 return redirect()->back()->withInput();
             }
-            
+            \Session::flash('success_flash_message', 'success');
             $route = 'auth.successed';
         } else {
             $response = Client::setEndpoint("auth/register-{$request->input('register')}")
@@ -150,6 +150,7 @@ class RegisterController extends Controller
         $response = Client::setEndpoint('activate')->setBody(['user_id' => $userId, 'code' => $code])->post();
 
         if ( in_array($response['code'], [200, 201]) ) {
+            \Session::flash('access_flash_200', 'success');
             return redirect()->route('auth.activated');
         }
 
@@ -163,7 +164,11 @@ class RegisterController extends Controller
      */
     public function activated()
     {
-        return view('auth.actived');
+        if (\Session::has('access_flash_200')) {
+            return view('auth.actived');
+        }else{
+            return redirect()->route('homepage');
+        }
     }
 
     /**
@@ -173,6 +178,10 @@ class RegisterController extends Controller
      */
     public function successed()
     {
-        return view('auth.success-register');
+        if (\Session::has('success_flash_message')) {
+            return view('auth.success-register');
+        }else{
+            return redirect()->route('homepage');
+        }
     }
 }
