@@ -155,4 +155,16 @@ class RegisterRequest extends FormRequest
 
         return $personal;
     }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'password.regex' => 'Password harus berupa kombinasi huruf besar, huruf kecil dan angka',
+        ];
+    }
 }

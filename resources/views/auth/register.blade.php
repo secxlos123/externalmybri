@@ -30,9 +30,6 @@
     <div class="single-query form-group col-sm-12">
         {!! Form::password('password', [ 'class' => 'keyword-input', 'placeholder' => 'Kata Sandi' ]) !!}
     </div>
-    <div class="single-query form-group col-sm-12 text-left" style="color: #fff;">
-        Kata sandi harus terdiri dari satu huruf kapital dan satu angka
-    </div>
 
     <div class="single-query form-group col-sm-12">
         {!! Form::password('password_confirmation', [ 'class' => 'keyword-input', 'placeholder' => 'Ulangi Kata Sandi' ]) !!}
