@@ -29,8 +29,8 @@
         <div class="container hide denied">
             <div class="row">
                 <div class="col-sm-12 text-center">
-                    <h2 class="uppercase">Tidak dapat mencari lokasi PROPERTI terdekat</h2>
-                    <p class="heading_space">Hidupkan GPS pada browser anda agar dapat melihat daftar PROPERTI terdekat.</p>
+                    <h2 class="uppercase">Tidak tersedia properti di lokasi terdekat Anda.</h2>
+                    <p class="heading_space">Pastikan GPS pada browser telah berfungsi dengan baik.</p>
                 </div>
             </div>
         </div>

@@ -67,7 +67,7 @@
 						</div>
 
 						<div class="form-group">
-							<label class="col-md-4 control-label">Alamat *</label>
+							<label class="col-md-4 control-label">Alamat KTP *</label>
 							<div class="col-md-8">
 								{!! Form::textarea('address', old('address'), [
 									'class' => 'form-control address',

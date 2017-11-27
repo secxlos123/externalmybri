@@ -41,7 +41,7 @@
         </ul>
     </li>
       <li>
-            <a href="{!! route('developer.developer.index') !!}">Developer</a>
+            <a href="{!! route('developer.developer.index') !!}">Agen Developer</a>
     </li>
 
     <!-- @start You can remove this condition if this module already -->
@@ -67,7 +67,7 @@
     <!-- @end You can remove this condition if this module already -->
 @if('developer-sales' == session('authenticate.role'))
 <li><a href="{!! route('dev-sales.data-eform') !!}">Pengajuan</a></li>
-   
+
 @endif
 
 @if('others' == session('authenticate.role'))
