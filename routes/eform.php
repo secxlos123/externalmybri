@@ -34,7 +34,7 @@ Route::group([ 'prefix' => 'eform', 'as' => 'eform.' ], function () {
 	/**
 	 * This route for get page confirmation
 	 */
-	Route::get('konfrimasi', 'EformController@confirmation')->name('confirmation');
+	Route::get('konfirmasi', 'EformController@confirmation')->name('confirmation');
 
 	/**
 	 * This route for get page success
