@@ -59,9 +59,11 @@
     <!-- Laravel Javascript Validation -->
     <script type="text/javascript">
     $( ".datepicker-date-born" ).datepicker({
+        format: 'dd-mm-yyyy',
         endDate: '-17y'
     });
     $( ".datepicker-date-join" ).datepicker({
+        format: 'dd-mm-yyyy'
     });
     </script>
 @endpush
