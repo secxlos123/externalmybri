@@ -14,10 +14,23 @@ class PropertyController extends Controller
      */
     public function index(Request $request)
     {
-        $properties = Client::setBase('common')->setEndpoint('nearby-properties')
+        // if (!$request->input('lat') || !$request->input('long')) {
+            $client = new \GuzzleHttp\Client();
+            $res = $client->request('GET', 'http://freegeoip.net/json/');
+            $getIP = json_decode( '[' . $res->getBody()->getContents() . ']' )[0];
+            $long = $getIP->longitude;
+            $lat = $getIP->latitude;
+            \Log::info("check long ======= ".$long);
+            \Log::info("check lat ======= ".$lat);
+        // }else{
+        //     $long = $request->input('long');
+        //     $lat = $request->input('lat');
+        // }
+        $properties = Client::setBase('common')
+            ->setEndpoint('nearby-properties')
             ->setQuery([
-                'lat' => $request->input('lat'),
-                'long' => $request->input('long'),
+                'lat' => $lat,
+                'long' => $long,
             ])
             ->get();
 
