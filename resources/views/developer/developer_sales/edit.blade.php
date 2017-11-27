@@ -56,6 +56,10 @@
     </div>
 </section>
 @endsection
+
+@push( 'styles' )
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/bootstrap-datepicker.min.css')}}">
+@endpush
 @push('scripts')
 
 <script src="{{asset('assets/js/bootstrap-datepicker.min.js')}}"></script>
@@ -63,13 +67,16 @@
 <!-- You can edit this script on resouces/asset/js/dropdown.js -->
 <!-- After that you run in console or terminal or cmd "npm run production" -->
 {!! JsValidator::formRequest(App\Http\Requests\Developer\Agent\CreateRequest::class, '#form-property') !!}
+{!! JsValidator::formRequest(App\Http\Requests\Developer\Profile\ChangePasswordRequest::class, '#form-change-password-store') !!}
 
 <!-- Laravel Javascript Validation -->
 <script type="text/javascript">
-    $( ".datepicker-date-born" ).datepicker({dateFormat: 'yyyy-mm-dd', endDate: '-17y'});
+    $( ".datepicker-date-born" ).datepicker({
+        format: 'dd-mm-yyyy',
+        endDate: '-17y'
+    });
+    $( ".datepicker-date-join" ).datepicker({
+        format: 'dd-mm-yyyy'
+    });
 </script>
-<script type="text/javascript">
-    $( "#join_date" ).datepicker({dateFormat: 'yyyy-mm-dd'});
-</script>
-{!! JsValidator::formRequest(App\Http\Requests\Developer\Profile\ChangePasswordRequest::class, '#form-change-password-store') !!}
 @endpush

@@ -1,6 +1,6 @@
 <?php
-$birth= \Carbon\Carbon::parse($results["birth_date"])->format('d-m-Y');
-$join = \Carbon\Carbon::parse($results["join_date"])->format('d-m-Y');
+$birth= date('d-m-Y', strtotime($results['userdeveloper']["birth_date"]));
+$join = date('d-m-Y', strtotime($results['userdeveloper']["join_date"]));
 ?>
 <!-- Form Update -->
 <div class="row top20">
