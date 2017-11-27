@@ -24,7 +24,8 @@ class ProfileController extends Controller
         // dd($results);
         return view('profile.index', [
             'results' => $results['contents'],
-            'type' => 'view'
+            'type' => 'view',
+            'active' => 'personal'
             ]);
     }
 
@@ -76,7 +77,8 @@ class ProfileController extends Controller
         // dd($results);
         return view('profile.index', [
             'results' => $results['contents'],
-            'type' => 'edit'
+            'type' => 'edit',
+            'active' => 'personal'
             ]);
     }
 
