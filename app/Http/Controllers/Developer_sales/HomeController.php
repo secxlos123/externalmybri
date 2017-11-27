@@ -33,6 +33,12 @@ class HomeController extends Controller
         return view('developer.home_dev_sales.index');
     }
 
+    /**
+    *	This function for view Data Pengajuan Eform by Agen Developer
+    *	@param  \Illuminate\Http\Request  $request
+    *
+    */
+
     public function DataEform(Request $request)
     {
     	 // $data = Client::setEndpoint('eforms')->setHeaders(['Authorization' => session('authenticate.token')])->get();
@@ -40,6 +46,20 @@ class HomeController extends Controller
     	 if($request->ajax() ) return $this->datatables($request);
     	 return view('developer.home_dev_sales.eform_pengajuan.index');
     }
+
+    // public function show($id)
+    // {
+    // 	$results = Client::setEndpoint('eforms/{$id}')
+    // 	->setHeaders(['Authorization' => session('authenticate.token')])
+    // 	->get();
+    // 	return 
+    // }
+
+    /**
+    *	This function for Datatables Data Pengajuan Eform by Agen Developer
+    *	@param  \Illuminate\Http\Request  $request
+    *
+    */
 
     public function datatables(Request $request)
     {
