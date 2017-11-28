@@ -1,12 +1,11 @@
- 
  <style type="text/css">
   .form-group {
      margin-bottom: 0px; 
 }
- .bottom20 {
+ .bottom201 {
      margin-bottom: 0px; 
 }
-.top20 {
+.top201 {
      margin-top: 0px; 
 }
 
@@ -23,8 +22,8 @@
 }
 </style> 
 <div class="tp_overlay warna"> 
-  <form class="callus top20" action="#">
-    <h2 class="text-uppercase t_white bottom20 text-center">Simulasi Kredit</h2>
+  <form class="callus top201" action="#">
+    <h2 class="text-uppercase t_white bottom201 text-center">Simulasi Kredit</h2>
     <div class="row">
       <div class="col-md-6">
         <div class="form-group">
