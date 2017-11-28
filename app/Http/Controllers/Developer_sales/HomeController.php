@@ -116,4 +116,16 @@ class HomeController extends Controller
         return response()->json(['customers' => $customers['contents']]);
     }
 
+    public function CustPost(Request $request)
+    {
+        $input      = $request->all();
+        $customer   = Client::setEndpoint('customer')
+                    ->setHeaders([
+                        'Authorization' => session('authenticate.token')
+                        ])->setBody($input)
+                    ->post();
+        \Log::info($input);
+        return redirect()->route('eform.index');
+    }
+
 }

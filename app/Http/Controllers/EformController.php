@@ -168,7 +168,7 @@ class EformController extends Controller
         }
 
         if ( $request->input('status') != '2' ) {
-            unset(
+            unset(  
                 $customer['couple_identity'], $customer['couple_name'], $customer['couple_nik'],
                 $customer['couple_birth_date'], $customer['couple_birth_place_id']
             );

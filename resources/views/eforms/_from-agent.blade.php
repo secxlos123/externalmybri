@@ -160,56 +160,56 @@
         // $('#btn-save').on('click', function(e){
             console.log('masukkkkkkkkkkkkkkkkkkkkkkk');
             var formData = new FormData(this);
-            // var nik = $("#nik").val();
-            // var full_name = $("#full_name").val();
-            // var birth_place_id = $("#birth_place_id").select2('data')[0]['id'];
-            // var birth_place = $("#birth_place_id").select2('data')[0]['name'];
-            // var gender = $("#gender").val();
-            // var birth_date = $("#birth_date").val();
-            // var status = $("#status").val();
-            // var email = $("#email").val();
-            // var mobile_phone = $("#mobile_phone").val();
-            // var phone = $("#phone").val();
-            // var mother_name = $("#mother_name").val();
-            // var identity = $("input[type='file']").val();
-            // console.log(identity);
-            // e.preventDefault();
+             var nik = $("#nik").val();
+             var full_name = $("#full_name").val();
+             var birth_place_id = $("#birth_place_id").select2('data')[0]['id'];
+             var birth_place = $("#birth_place_id").select2('data')[0]['name'];
+             var gender = $("#gender").val();
+             var birth_date = $("#birth_date").val();
+             var status = $("#status").val();
+             var email = $("#email").val();
+             var mobile_phone = $("#mobile_phone").val();
+             var phone = $("#phone").val();
+             var mother_name = $("#mother_name").val();
+             var identity = $("input[type='file']").val();
+             console.log(identity);
+             e.preventDefault();
 
-            // $.ajax({
-            //     url: "{{route('eform.save-customer')}}",
-            //     type: 'POST',
-            //     data: formData,
-            //     async: false,
-            //     success: function (data) {
-            //         // console.log(data)
-            //         // toastr["success"]("Data Berhasil disimpan");
-            //         if ( data.code != 422 ) {
-            //             $('#leads-modal').modal('toggle');
-            //         } else {
-            //             setTimeout(
-            //                 function(){
-            //                     $.each(data.contents, function(key, value) {
-            //                         // console.log(key);
-            //                         $("#form_data_personal").find(".form-group." + key).eq(0).addClass('has-error');
-            //                         $("#form_data_personal").find("span#"+key+"-error").eq(0).html(value);
-            //                     });
-            //                 }
-            //             , 2000);
-            //         }
+             $.ajax({
+                 url: "{{route('eform.save-customer')}}",
+                 type: 'POST',
+                 data: formData,
+                 async: false,
+                 success: function (data) {
+                     // console.log(data)
+                     // toastr["success"]("Data Berhasil disimpan");
+                     if ( data.code != 422 ) {
+                         $('#leads-modal').modal('toggle');
+                     } else {
+                         setTimeout(
+                             function(){
+                                 $.each(data.contents, function(key, value) {
+                                     // console.log(key);
+                                     $("#form_data_personal").find(".form-group." + key).eq(0).addClass('has-error');
+                                     $("#form_data_personal").find("span#"+key+"-error").eq(0).html(value);
+                                 });
+                             }
+                         , 2000);
+                     }
 
-            //         HoldOn.close();
-            //         // $('#divForm').addClass('alert alert-success');
-            //         // $('#divForm').append('Data Berhasil Ditambahkan');
-            //     },
-            //     error: function (response) {
-            //         // console.log(response)
-            //         // toastr["error"]("Data Gagal disimpan");
-            //         HoldOn.close();
-            //     },
-            //     cache: false,
-            //     contentType: false,
-            //     processData: false
-            // });
+                     HoldOn.close();
+                     // $('#divForm').addClass('alert alert-success');
+                     // $('#divForm').append('Data Berhasil Ditambahkan');
+                 },
+                 error: function (response) {
+                     // console.log(response)
+                     // toastr["error"]("Data Gagal disimpan");
+                     HoldOn.close();
+                 },
+                 cache: false,
+                 contentType: false,
+                 processData: false
+             });
 
             $.ajax({
                 url: "{{route('eform.save-customer')}}",
