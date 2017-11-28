@@ -11,7 +11,10 @@
         </div>
     </section>
     <!-- This is content of list product end -->
-
+   
+      <!-- Credit Simulation -->
+      @include('form.credit_simulation')
+   
     <!-- This is content of list projects / properties -->
     <section id="property" class="padding grey listing1">
         <div class="row" id="text-nearby-property">
