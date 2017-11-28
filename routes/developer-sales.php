@@ -24,6 +24,7 @@ Route::group([
 	Route::get('dashboard', 'HomeController@index')->name('index');
 	Route::get('data_eform', 'HomeController@DataEform')->name('data-eform');
 	Route::get('datatable/eforms', 'HomeController@datatables')->name('table-eform');
+	Route::post('customer/add', 'HomeController@CustPost')->name('add-customer');
 
 	Route::group(['prefix' => 'profile', 'as' => 'profile.'], function () {
 		/**

@@ -27,7 +27,7 @@
                             </div>
                             <div class="panel-body">
                                 <div class="row">
-                            <form class="form-horizontal" role="form" method="POST" enctype="multipart/form-data" id="form_data_personal">
+                            <form class="form-horizontal" role="form" method="POST" action="{{ route('eform.save-customer') }}" enctype="multipart/form-data" id="form_data_personal">
                             {{ csrf_field() }}
                                     <div class="col-md-6">
                                         <div class="form-horizontal" >

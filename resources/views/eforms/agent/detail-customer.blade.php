@@ -49,7 +49,10 @@
                                                 <div class="form-group">
                                                     <label class="col-md-6 control-label">NIK :</label>
                                                     <div class="col-md-6">
-                                                        <p class="form-control-static" id="cust_nik">@if(!empty($dataCustomer['personal']['nik'])){{$dataCustomer['personal']['nik']}}@else - @endif</p>
+                                                        <p class="form-control-static" id="cust_nik">@if(!empty($dataCustomer['personal']['nik'])){{$dataCustomer['personal']['nik']}}
+                                                        <input type="hidden" name="nik" value="{{ $dataCustomer['personal']['nik'] }}">
+                                                        @else - @endif</p>
+
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
