@@ -1,7 +1,7 @@
 <div class="row top20">
     <div class="col-md-6">
         <div class="single-query form-group bottom20">
-            <label>NIK (*)</label>
+            <label>NIK </label>
             @if ($type != 'view')
                 {!! Form::text('nik', (old('nik')) ? old('nik') : @$results['personal']['nik'], [
                     'class' => 'form-control numeric', 'maxlength' => 16,
@@ -11,7 +11,7 @@
             @endif
         </div>
         <div class="single-query form-group bottom20">
-            <label>Nama (*)</label>
+            <label>Nama </label>
             @if ($type != 'view')
                 {!! Form::text('name', @$results['personal']['first_name'].' '.@$results['personal']['last_name'], [
                     'class' => 'form-control'
@@ -23,7 +23,7 @@
             @endif
         </div>
         <div class="single-query form-group bottom20">
-            <label>Tempat lahir (*)</label>
+            <label>Tempat lahir </label>
             @if ($type != 'view')
             {!! Form::select('birth_place_id', [@$results['personal']['birth_place_id'] => @$results['personal']['birth_place']], old('birth_place_id'), [
                 'class' => 'form-control select2 cities birth_place',
@@ -36,7 +36,7 @@
             @endif
         </div>
         <div class="single-query form-group bottom20">
-            <label>Tanggal lahir (*)</label>
+            <label>Tanggal lahir </label>
             <div>
                 <div class="input-group">
                     @if ($type != 'view')
@@ -55,7 +55,7 @@
             </div>
         </div>
         <div class="single-query form-group bottom20">
-            <label>Alamat (*)</label>
+            <label>Alamat </label>
             @if ($type != 'view')
                 {!! Form::textarea('address', (old('address')) ? old('address') : @$results['personal']['address'], [
                     'class' => 'form-control',
@@ -69,7 +69,7 @@
             @endif
         </div>
         <div class="single-query form-group bottom20">
-            <label>Kota (*)</label>
+            <label>Kota </label>
             @if ($type != 'view')
             {!! Form::select('city_id', [@$results['personal']['city_id'] => @$results['personal']['city']], old('city_id'), [
                 'class' => 'form-control select2 cities city',
@@ -83,7 +83,7 @@
         </div>
 
          <div class="single-query form-group bottom20 couple-selector">
-            <label>NIK Pasangan (*)</label>
+            <label>NIK Pasangan </label>
             @if ($type != 'view')
                 {!! Form::text('couple_nik', (old('couple_nik')) ? old('couple_nik') : @$results['personal']['couple_nik'], [
                     'class' => 'form-control numeric', 'maxlength' => 16,
@@ -94,7 +94,7 @@
         </div>
 
         <div class="single-query form-group bottom20 couple-selector">
-            <label>Nama Pasangan (*)</label>
+            <label>Nama Pasangan </label>
             @if ($type != 'view')
                 {!! Form::text('couple_name', (old('couple_name')) ? old('couple_name') : @$results['personal']['couple_name'], [
                     'class' => 'form-control',
@@ -105,7 +105,7 @@
         </div>
 
         <div class="single-query form-group bottom20 couple-selector">
-            <label>Tempat lahir Pasangan (*)</label>
+            <label>Tempat lahir Pasangan </label>
             @if ($type != 'view')
                 {!! Form::select('couple_birth_place_id', [@$results['personal']['couple_birth_place_id'] => @$results['personal']['couple_birth_place']], old('couple_birth_place_id'), [
                     'class' => 'form-control select2 cities couple_birth_place',
@@ -119,7 +119,7 @@
         </div>
 
         <div class="single-query form-group bottom20 couple-selector">
-            <label>Tanggal lahir Pasangan (*)</label>
+            <label>Tanggal lahir Pasangan </label>
             <div>
                 <div class="input-group">
                     @if ($type != 'view')
@@ -141,7 +141,7 @@
     </div>
     <div class="col-md-6">
         <div class="single-query form-group bottom20">
-            <label>Jenis Kelamin (*)</label>
+            <label>Jenis Kelamin </label>
             @if ($type != 'view')
                 {!! Form::select('gender', [
                     'L' => 'Laki-laki',
@@ -157,7 +157,7 @@
         </div>
 
         <div class="single-query form-group bottom20">
-            <label>Kewarganegaraan (*)</label>
+            <label>Kewarganegaraan </label>
             @if ($type != 'view')
             {!! Form::select('citizenship_id',[$results['personal']['citizenship_id'] => $results['personal']['citizenship']], (old('citizenship_id')) ? old('citizenship_id') : '', [
                 'class' => 'form-control select2 citizenships',
@@ -172,7 +172,7 @@
         </div>
 
         <div class="single-query form-group bottom20">
-            <label>Status Pernikahan (*)</label>
+            <label>Status Pernikahan </label>
             @if ($type != 'view')
             {!! Form::select('status', [
                 '1' => 'Belum Menikah',
@@ -189,7 +189,7 @@
         </div>
 
         <div class="single-query form-group bottom20">
-            <label>Status Tempat Tinggal (*)</label>
+            <label>Status Tempat Tinggal </label>
             @if ($type != 'view')
             {!! Form::select('address_status', [
                 '0' => 'Milik Sendiri',

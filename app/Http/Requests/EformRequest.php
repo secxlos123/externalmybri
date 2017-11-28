@@ -95,6 +95,14 @@ class EformRequest extends FormRequest
             'couple_identity'   => 'required_if:couple_identity_flag,0|image|max:1024'
         ];
 
+        if ($this->input('status') == 2 && $this->input('couple_identity_flag') == 0) {
+            $rule = ['couple_identity' => 'required|image|max:1024'];
+            $rules = array_merge($rules, $rule);
+        }else{
+            $rule = ['couple_identity' => 'image|max:1024'];
+            $rules = array_merge($rules, $rule);
+        }
+
         return $rules;
     }
 

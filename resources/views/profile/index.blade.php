@@ -92,14 +92,12 @@
         });
 
         if ($("#status").select2('data')[0]['id'] != 1) {
-            // $('.birth-date').val("{{$results['personal']['birth_date']}}");
             $('.birth-date').datepicker({
                 format: "dd-mm-yyyy",
                 autoclose: true,
                 endDate: "-20y"
             });
         }else{
-            // $('.birth-date').val("{{$results['personal']['birth_date']}}");
             $('.birth-date').datepicker({
                 format: "dd-mm-yyyy",
                 autoclose: true,
