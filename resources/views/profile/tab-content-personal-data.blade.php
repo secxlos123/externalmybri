@@ -44,11 +44,15 @@
     <div class="tab-pane {{ $active == 'personal' || $active == 'password' ? 'active' : '' }}" id="home-b1">
         {!! Form::open([
             'route' => ['profile.update', 'personal'],
-            'class' => 'callus', 'id' => 'form-personal-data-customer-personal',
+            'class' => 'callus', 
             'enctype' => 'multipart/form-data', 'method' => 'PUT'
-        ]) !!}
-            @include('profile._form-personal-data')
+        ]) !!}  
+       <!--  <form action="{{ url('profile/update') }}" method="POST" enctype="multipart/form-data" >
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        <input type="hidden" name="_method" value="PUT" > -->
+        @include('profile._form-personal-data')
         {!! Form::close() !!}
+        </form>
     </div>
     <div class="tab-pane {{ $active == 'work' ? 'active' : '' }}" id="profile-b1">
         {!! Form::open([
