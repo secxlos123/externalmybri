@@ -121,6 +121,7 @@ class PropertyTypeController extends Controller
                 'Authorization' => session('authenticate.token')
             ])
             ->setQuery([
+                'property_id' => $request->input('property_id'),
                 'surface_area' => $request->input('surface_area'),
                 'building_area'=> $request->input('building_area'),
                 'proyek_type'  => $request->input('proyek_type'),
