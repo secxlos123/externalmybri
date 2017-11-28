@@ -86,24 +86,27 @@
 <!-- This is scripts for this page -->
 @push('scripts')
     <script type="text/javascript">
-        navigator.geolocation.watchPosition(properties, permission_handling);
+        // navigator.geolocation.watchPosition(properties, permission_handling);
 
-        function permission_handling(error) {
-            if (error.code == error.PERMISSION_DENIED){
-                $('#text-nearby-property').addClass('hide');
-                $('#property .container').addClass('hide');
-                $('.denied').removeClass('hide');
-            }else{
-                $('#text-nearby-property').addClass('hide');
-                $('#content-galery').hide();
-                $('.denied').removeClass('hide');
-            }
-        }
+        // function permission_handling(error) {
+        //     if (error.code == error.PERMISSION_DENIED){
+        //         $('#text-nearby-property').addClass('hide');
+        //         $('#property .container').addClass('hide');
+        //         $('.denied').removeClass('hide');
+        //     }else{
+        //         $('#text-nearby-property').addClass('hide');
+        //         $('#content-galery').hide();
+        //         $('.denied').removeClass('hide');
+        //     }
+        // }
 
-        function properties(position) {
+        // function properties(position) {
             $.ajax({
                 url: '/properties',
-                data: { lat: position.coords.latitude, long: position.coords.longitude}
+                data: {
+                    lat: null,
+                    long: null
+                }
             })
             .done(function (response) {
                 $('#content-galery').html(response);
@@ -113,7 +116,7 @@
                 $('#text-nearby-property').addClass('hide');
                 $('.error-server').removeClass('hide');
             });
-        }
+        // }
     </script>
 @endpush
 <!-- This is scripts for this page end -->
