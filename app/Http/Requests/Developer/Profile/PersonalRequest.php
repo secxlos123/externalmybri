@@ -24,18 +24,18 @@ class PersonalRequest extends FormRequest
     public function rules()
     {
         return [
-            'nik'              => 'required|numeric|digits:16',
+            'nik'              => 'numeric|digits:16',
             'first_name'       => 'required',
-            'mobile_phone'     => 'required',
-            'birth_place_id'   => 'required',
-            'birth_date'       => 'required|date',
-            'address'          => 'required',
-            'city_id'          => 'required',
-            'gender'           => 'required|in:L,P',
-            'citizenship_id'   => 'required',
-            'status_id'        => 'required|in:1,2,3',
-            'address_status_id'=> 'required|in:0,1,3',
-            'mother_name'      => 'required',
+            'mobile_phone'     => '',
+            'birth_place_id'   => '',
+            'birth_date'       => 'date',
+            'address'          => '',
+            'city_id'          => '',
+            'gender'           => 'in:L,P',
+            'citizenship_id'   => '',
+            'status_id'        => 'in:1,2,3',
+            'address_status_id'=> 'in:0,1,3',
+            'mother_name'      => '',
             'identity'         => 'image|max:1024'
         ];
     }

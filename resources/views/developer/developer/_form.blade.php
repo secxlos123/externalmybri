@@ -100,7 +100,7 @@ $name     = $result['first_name']." ".$result['last_name'];
             {!! Form::label('name', 'Nama') !!}
             {!! Form::text('name', old('name'), [
                 'class' => 'keyword-input',
-                'placeholder' => 'Masukkan nama developer'
+                'placeholder' => 'Masukkan nama agen developer'
             ]) !!}
 
             @if ($errors->has('name'))
@@ -114,7 +114,7 @@ $name     = $result['first_name']." ".$result['last_name'];
             {!! Form::label('email', 'Email') !!}
             {!! Form::text('email', old('email'), [
                 'class' => 'keyword-input',
-                'placeholder' => 'Masukkan email developer'
+                'placeholder' => 'Masukkan email agen developer'
             ]) !!}
 
             @if ($errors->has('email'))
@@ -129,7 +129,7 @@ $name     = $result['first_name']." ".$result['last_name'];
             {!! Form::text('mobile_phone', old('mobile_phone'), [
                 'class' => 'keyword-input numeric',
                 'maxlength' => 12, 'minlength' => 9,
-                'placeholder' => 'Masukkan No Handphone developer'
+                'placeholder' => 'Masukkan No Handphone agen developer'
             ]) !!}
 
             @if ($errors->has('mobile_phone'))
