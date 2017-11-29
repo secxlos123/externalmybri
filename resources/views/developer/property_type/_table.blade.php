@@ -20,6 +20,16 @@
                             <div class="panel-body">
                                 <form class="form-horizontal" role="form">
                                     <div class="form-group">
+                                        <label class="col-sm-4 control-label">Property :</label>
+                                        <div class="col-sm-8">
+                                            {!! Form::select('property', ['' => ''], old('property'), [
+                                                'class' => 'select2 properties',
+                                                'data-placeholder' => 'Pilih Proyek'
+                                            ]) !!}
+                                            <input type="hidden" name="prop_id" id="prop_id">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
                                         <label class="col-sm-4 control-label">Nama Tipe :</label>
                                         <div class="col-sm-8">
                                             {!! Form::text('proyek_type', old('proyek_type'), [
@@ -109,6 +119,8 @@
     {!! Html::script('assets/js/select2.min.js') !!}
     {!! Html::script('js/numeric.min.js') !!}
 
+    {!! Html::script('js/dropdown.min.js') !!}
+
     <script type="text/javascript">
         var value = 0
             $min_surface = $('.min_surface')
@@ -144,6 +156,10 @@
                     if ($min_building.val() != '' || $max_building.val() != '')
                         d.building_area = $min_building.val() + '|' + $max_building.val();
 
+                    if ($('#prop_id').val()) {
+                        d.property_id = $('#prop_id').val();
+                    }
+
                     d.certificate = $certificate.val();
                     d.proyek_type = $proyek_type.val();
                 }
@@ -165,6 +181,10 @@
                     table.fnDraw();
                 }
             }
+        });
+        $('.properties').dropdown('property');
+        $('.properties').on('change', function(){
+            $('#prop_id').val($(this).select2('data')[0]['id']);
         });
         // $min_surface.numeric(null, 0).on('change', set_max);
         // $min_building.numeric(null, 0).on('change', set_max);
