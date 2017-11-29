@@ -71,4 +71,9 @@ Route::group(['prefix' => 'dropdown', 'as' => 'dropdown.'], function () {
 	 */
 	Route::get('positions', 'DropdownController@positions')->name('positions');
 
+	/**
+	*	This Route for get Kanwil List
+	*/
+	Route::get('kanwil', 'DropdownController@getKanwil')->name('kanwil');
+
 });
