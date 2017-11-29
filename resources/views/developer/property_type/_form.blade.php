@@ -24,7 +24,7 @@
         </div>
         <div class="single-query form-group bottom20
             {{ $errors->has('name') ? ' has-error' : '' }}">
-            {!! Form::label('name', 'Nama Proyek Tipe') !!}
+            {!! Form::label('name', 'Nama Tipe Proyek') !!}
             {!! Form::text('name', old('name'), [
                 'class' => 'keyword-input',
             ]) !!}
@@ -37,7 +37,7 @@
         </div>
         <div class="single-query form-group bottom20
             {{ $errors->has('price') ? ' has-error' : '' }}">
-            {!! Form::label('price', 'Harga Proyek Tipe') !!}
+            {!! Form::label('price', 'Harga Tipe Proyek') !!}
             <div class="input-group">
                 <span class="input-group-addon">Rp</span>
                 {!! Form::text('price', old('price'), [
@@ -51,7 +51,7 @@
                 </span>
             @endif
         </div>
-        
+
         <div class="single-query">
             <div class="form-group bottom20 col-sm-6 {{ $errors->has('surface_area') ? ' has-error' : '' }}"
                 style="padding-left: unset;">
@@ -93,7 +93,7 @@
 
         <div class="single-query">
             <div class="col-sm-6 form-group bottom20 {{ $errors->has('electrical_power') ? ' has-error' : '' }}"
-                style="padding-left: unset;">            
+                style="padding-left: unset;">
                 {!! Form::label('electrical_power', 'Daya Listrik') !!}
                 <div class="input-group">
                     {!! Form::text('electrical_power', old('electrical_power'), [

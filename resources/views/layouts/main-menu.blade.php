@@ -36,8 +36,8 @@
         <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">Properti</a>
         <ul class="dropdown-menu animated fadeOut">
             <li><a href="{!! route('developer.proyek.index') !!}">Proyek</a></li>
-            <li><a href="{!! route('developer.proyek-type.index') !!}">Proyek Type</a></li>
-            <li><a href="{!! route('developer.proyek-item.index') !!}">Proyek Unit</a></li>
+            <li><a href="{!! route('developer.proyek-type.index') !!}">Tipe Proyek</a></li>
+            <li><a href="{!! route('developer.proyek-item.index') !!}">Unit Proyek</a></li>
         </ul>
     </li>
       <li>

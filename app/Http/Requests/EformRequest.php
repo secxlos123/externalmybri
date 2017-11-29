@@ -41,7 +41,7 @@ class EformRequest extends FormRequest
             $property = '';
         }
 
-        return [
+        $rules = [
             'developer'         => 'required_if:status_property,1',
             'property'          => $property,
             // 'property_type'     => 'required_if:developer,1',
@@ -62,6 +62,12 @@ class EformRequest extends FormRequest
             'address_location'  => 'required',
             'branch_id'         => 'required',
         ];
+
+        if ($this->input('status_property') == 1) {
+            $rules = array_merge($rules, ['kpr_type_property' => '']);
+        }
+
+        return $rules;
     }
 
     /**
