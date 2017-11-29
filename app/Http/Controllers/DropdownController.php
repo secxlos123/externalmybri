@@ -199,4 +199,26 @@ class DropdownController extends Controller
 
         return response()->json(['results' => $results['contents']]);
     }
+
+     /**
+    *   Get Kanwil from API
+    */
+
+    public function getKanwil()
+    {
+        $kanwil = Client::setEndpoint('kanwil-list')
+                ->setHeaders([
+                    'Authorization' => session('authenticate.token')
+                    ])
+                ->get();
+      //  dd($kanwil);
+        foreach ($kanwil['contents']['data'] as $key => $value) {
+
+            $value['id'] = $value['region_id'];
+            $value['text'] = $value['region_name'];
+            $kanwil['contents']['data'][$key] = $value;
+        }
+
+        return response()->json(['result' => $kanwil['contents']]);
+    }
 }
