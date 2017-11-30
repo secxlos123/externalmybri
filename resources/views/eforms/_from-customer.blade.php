@@ -123,6 +123,11 @@
 	        autoclose: true,
 		});
 
+		$('.couple_birth').datepicker({
+			format: 'dd-mm-yyyy',
+	        autoclose: true,
+		});
+
 		$('.collapse').on('hidden.bs.collapse', toggle_icon);
 		$('.collapse').on('shown.bs.collapse', toggle_icon);
 
