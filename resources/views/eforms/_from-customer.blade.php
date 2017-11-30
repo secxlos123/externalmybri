@@ -123,7 +123,7 @@
 	        autoclose: true,
 		});
 
-		$('.couple_birth').datepicker({
+		$('.couple-date-birth').datepicker({
 			format: 'dd-mm-yyyy',
 	        autoclose: true,
 		});
@@ -175,7 +175,7 @@
 			});
 		}
 
-		$(".date-birth").on('change', function(){
+		$("#status").on('change', function(){
     		$(".date-birth").datepicker("destroy");
 			if ($(this).select2('data')[0]['id'] == 1) {
 				$('.date-birth').datepicker({
