@@ -133,7 +133,8 @@ class ProfileController extends Controller
             ->get();
         return view('profile.index_password', [
             'results' => $results['contents'],
-            'type' => 'view'
+            'type' => 'view',
+            'active' => 'password'
         ]);
     }
 
