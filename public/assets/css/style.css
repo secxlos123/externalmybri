@@ -8372,3 +8372,39 @@ li.has-dropdown {
 .profile-login .tab-content form input.keyword-input {
    margin-bottom: 15px;
 }
+
+.image.product {
+    border: solid 1px #eee;
+}
+.call-bri {
+    display: block;
+    border: solid 1px #1f3f81;
+    background-color: #fff;
+    padding: 30px 0;
+    text-align: center;
+    font-size: 18px;
+    border-radius: 100px;
+    margin-top: -45px;
+    margin-left: 150px;
+    margin-right: 150px;
+    color: #1f3f81;
+}
+.copyright_simple {
+    border-top: none;
+}
+.copyright-footer {
+    margin-top: 15px;
+    margin-bottom: 5px;
+    opacity: 0.5;
+}
+.call-bri .list-inline>li {
+    border-right: solid 1px #1f3f81;
+    padding-right: 15px;
+    padding-left: 10px;
+}
+.call-bri .list-inline>li:last-child {
+    border-right: none;
+}
+.call-bri li>a:hover {
+    color: #f7941e;
+}

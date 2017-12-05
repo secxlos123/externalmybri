@@ -77,6 +77,26 @@ Route::get('daftar-proyek', 'PropertyController@pageProperty')->name('all-proper
 Route::get('get-all-properties', 'PropertyController@listProperty')->name('get-list-property');
 
 /**
+ * This route for handle homepage
+ */
+Route::get('daftar-developer', 'DevelopersController@index')->name('all-developer');
+
+/**
+ * This route for handle homepage
+ */
+Route::get('get-all-developer', 'DevelopersController@getListDeveloper')->name('get-list-developer');
+
+/**
+ * This route for handle homepage
+ */
+Route::get('properti-developer/{id}', 'DevelopersController@listPropertyDeveloper')->name('list-property-developer');
+
+/**
+ * This route for handle homepage
+ */
+Route::get('get-properti-developer', 'DevelopersController@getListPropertyDeveloper')->name('get-property-developer');
+
+/**
  * This route for handle customer profile
  */
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'middleware' => ['auth.api', 'HasAccess:customer']], function () {
