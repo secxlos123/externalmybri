@@ -8,7 +8,7 @@
         <div class="col-sm-4 margin40">
             <div class="agent_wrap">
                 <div class="image">
-                    {!! Html::image('assets/images/product/kpr.png', 'KPR') !!}
+                    {!! Html::image('assets/images/product/logo-kpr.jpg', 'KPR') !!}
                     <div class="img-info">
                         <h3>KPR</h3>
                         <span>Kredit Pemilikan Rumah</span>
