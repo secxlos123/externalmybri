@@ -86,10 +86,11 @@ public function index()
             ->get();
         return view('developer.developer_sales.success_edit', [
             'results' => $results['contents'],
-            'type' => 'view'
+            'type' => 'view',
+            'active' => 'password'
         ]);
     }
-    
+
      /**
      * change password with new one.
      *
