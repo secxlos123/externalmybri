@@ -71,6 +71,11 @@
 @push('styles')
     {!! Html::style('assets/css/bootstrap-datepicker.min.css') !!}
     {!! Html::style('assets/css/select2.min.css') !!}
+    <style type="text/css">
+        input#email {
+            background-color: #cccccc;
+        }
+    </style>
 @endpush
 <!-- This is styles for this page end -->
 

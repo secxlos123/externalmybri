@@ -44,9 +44,9 @@
     <div class="tab-pane {{ $active == 'personal' || $active == 'password' ? 'active' : '' }}" id="home-b1">
         {!! Form::open([
             'route' => ['profile.update', 'personal'],
-            'class' => 'callus', 
+            'class' => 'callus',
             'enctype' => 'multipart/form-data', 'method' => 'PUT'
-        ]) !!}  
+        ]) !!}
        <!--  <form action="{{ url('profile/update') }}" method="POST" enctype="multipart/form-data" >
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <input type="hidden" name="_method" value="PUT" > -->
@@ -116,6 +116,7 @@
     {!! JsValidator::formRequest(App\Http\Requests\Developer\Profile\SupportRequest::class, '#form-personal-data-customer-support') !!}
     {!! JsValidator::formRequest(App\Http\Requests\Developer\Profile\Developer\PersonalRequest::class, '#form-personal-data-developer-personal') !!}
     <script type="text/javascript">
+        $('.cities').dropdown('cities');
 
         $("#status").on('change', function(){
             $('.birth-date').datepicker("destroy");
