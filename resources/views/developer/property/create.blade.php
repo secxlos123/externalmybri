@@ -27,7 +27,7 @@
     <section id="property" class="padding listing1">
         <div class="container">
             {!! Form::open([
-                'route' => 'developer.proyek.store',
+                'route' => 'developer.proyek.input',
                 'class' => 'callus submit_property', 'id' => 'form-property',
                 'enctype' => 'multipart/form-data'
             ]) !!}

@@ -128,4 +128,15 @@ class HomeController extends Controller
         return redirect()->route('eform.index');
     }
 
+     public function getCust($id)
+    {
+        $result = Client::setEndpoint('customer/'.$id)
+                ->setHeaders([
+                    'Authorization' => session('authenticate.token')
+                    ])->get();
+        $data   = $result['contents']['personal'];
+        //dd($data);
+        return response()->json(['data' => $data ]);
+    }
+
 }

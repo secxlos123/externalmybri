@@ -38,6 +38,8 @@ Route::group([
 		 */
 		Route::post('/', 'PropertyController@store')->name('store');
 
+		Route::post('input', 'PropertyController@input')->name('input');
+
 		/**
 		 * This route for showing list property of developer
 		 */

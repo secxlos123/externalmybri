@@ -37,6 +37,31 @@ class PropertyController extends Controller
         return view( 'developer.property.index' );
     }
 
+    public function input(CreateRequest $request)
+    {
+        $input = $request->all();
+        $query = Client::setEndpoint('property')
+                ->setHeaders([
+                    'Authorization' => session('authenticate.token')
+                    ])
+                ->setBody(array_to_multipart($input))
+                ->post('multipart');
+              //  dd($query);
+       // if ( ! in_array($query['code'], [200, 201]) ) {
+       //          $messages = count($query['contents']) > 0 ? json_encode($query['contents']) : $query['descriptions'];
+       //          throw new \Exception($messages, $query['code']);
+                
+       //      }
+         if (isset($query['code']) && $query['code'] == 200 && $query['code'] == 201 ) {
+            \Session::flash('flash_message', $query['descriptions']);
+            return redirect()->route('developer.proyek.index');
+        }else{
+            \Session::flash('error_flash_message', $query['descriptions']);
+        }
+
+        return redirect()->route('developer.proyek.index');
+    }
+
     /**
      * Create a new user instance after a valid registration.
      *
@@ -178,10 +203,11 @@ class PropertyController extends Controller
                     ->setHeaders(['Authorization' => session('authenticate.token')])
                     ->setBody(array_to_multipart($request->all()))
                     ->{$method}('multipart');
-
+                   // dd($request->all());
             if ( ! in_array($response['code'], [200, 201]) ) {
                 $messages = count($response['contents']) > 0 ? json_encode($response['contents']) : $response['descriptions'];
                 throw new \Exception($messages, $response['code']);
+               // dd($response);
             }
             
         } catch (\Exception $e) {

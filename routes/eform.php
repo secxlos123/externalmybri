@@ -27,6 +27,11 @@ Route::group([ 'prefix' => 'eform', 'as' => 'eform.' ], function () {
 	Route::get('/', 'EformController@index')->name('index');
 
 	/**
+	* This route for get form Eform Agen Developer
+	*/
+	Route::get('eform-agen', 'EformController@formEform')->name('eform-agen');
+
+	/**
 	 * This route for submit verify page
 	 */
 	Route::get('{token}/{status}', 'EformController@verify')->name('verify');
@@ -54,4 +59,10 @@ Route::group([ 'prefix' => 'eform', 'as' => 'eform.' ], function () {
 	 * This route for get list customer data
 	 */
 	Route::get('detail-customer', 'EformController@detailCustomer')->name('detail-customer');
+
+	Route::get('get-cust', 'EformController@getCust')->name('get-cust');
+
+	Route::get('form-lead', 'EformController@formlead')->name('form-lead');
+
+	Route::post('add-lead', 'EformController@add_cust')->name('add-lead');
 });

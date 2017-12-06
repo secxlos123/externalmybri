@@ -9,12 +9,13 @@
                 <div class="form-group nik {!! $errors->has('nik') ? 'has-error' : '' !!}">
                     <label class="control-label">Cari NIK Customer *</label>
                     <div class="input-group">
-                        {!! Form::select('nik', ['' => ''], old('nik'), [
+                        {!! Form::select('nik2', ['' => ''], old('nik'), [
                                 'class' => 'select2 nikSelect',
                                 'data-placeholder' => 'NIK',
                                 'id' => 'nik',
                                 'maximumInputLength' => 16
                             ]) !!}
+                            <input type="text" name="nik" id="nikSelect">
                         <span class="input-group-btn">
                         <a href="#" class="btn waves-effect waves-light btn-primary" id="search"><i class="fa fa-search"></i> Cari</a>
                         </span>
@@ -77,6 +78,14 @@
         $('#btn-leads').on('click', function() {
            $('#leads-modal').modal('show');
         });
+
+     $('#view-modal').on('click', '#agree', function() {
+           HoldOn.open(options);
+             console.log('ini ini ini');
+       $("#app-eform").submit();
+    });
+    
+
         $('.nikSelect').select2({
             maximumInputLength : 16,
             width : '100%',
@@ -131,49 +140,89 @@
                                 more: (params.page * data.customers.per_page) < data.customers.total
                             }
                         };
+
+                        var text = $(this).find("option:selected").text();
+                        console.log(text);
                     }
                 },
                 cache: true
             },
         });
 
+            $('.nikSelect').on('select2:unselecting', function (e) {
+            $('#search').addClass('disabled');
+            $('#btn-leads').removeClass('disabled');
+        });
+
+        $('.nikSelect').on('select2:select', function (e) {
+            $('#search').removeClass('disabled');
+            $('#btn-leads').addClass('disabled');
+        });
+
+        $('.nikSelect').on('change', function () {
+            var id = $(this).val();
+            var text = $(this).find("option:selected").text();
+            $('#nikSelect').val(text);
+             $('#nik_customer').val(text);
+            // console.log(text);
+        });
+
         //search customer by nik
         $('#search').on('click', function(e) {
-            var id = $('#nik').val();
+           // var id = $('#nik').val();
+           var nik = $('#nik').val();
             e.preventDefault();
 
             $.ajax({
                 dataType: 'json',
                 type: 'GET',
                 url: '{{route("eform.detail-customer")}}',
-                data: { id : id }
+                data: { nik : nik }
             }).done(function(data){
-                // console.log(data);
+                console.log(data);
                 $('#detail').html(data['view']);
+               
+
             }).fail(function(errors) {
 
             });
         });
 
-        //storing leads
-        $("#form_data_personal").submit(function(e){
-        // $('#btn-save').on('click', function(e){
-            console.log('masukkkkkkkkkkkkkkkkkkkkkkk');
+           //showing modal create leads
+    $(document).on('click', '#btn-leads', function(){
+       console.log("salah masuk");
+       $('#leads-modal').modal('show');
+    })
+
+     var options = {
+     theme:"sk-cube-grid",
+     message:'some cool message for your user here ! Or where the logo is ! Your skills are the only limit. ',
+     textColor:"white"
+          };
+
+   $('#btn-save').on('click', function() {
+        HoldOn.open(options);
+     });
+
+      //storing leads
+      $(document).ready(function(e){
+      $("#form_data_personal").submit(function(){ 
+    //  $('#btn-save').on('click', function(e){       
             var formData = new FormData(this);
-             var nik = $("#nik").val();
-             var full_name = $("#full_name").val();
-             var birth_place_id = $("#birth_place_id").select2('data')[0]['id'];
-             var birth_place = $("#birth_place_id").select2('data')[0]['name'];
-             var gender = $("#gender").val();
-             var birth_date = $("#birth_date").val();
-             var status = $("#status").val();
-             var email = $("#email").val();
-             var mobile_phone = $("#mobile_phone").val();
-             var phone = $("#phone").val();
-             var mother_name = $("#mother_name").val();
-             var identity = $("input[type='file']").val();
-             console.log(identity);
-             e.preventDefault();
+
+        //     var formData = {
+        //         nik: "1212121212121212",
+        // first_name: "Ajuan Test",
+        // email: "ajuan@mailinator.com",
+        // mobile_phone: "08131207377",
+        // status: "1",
+        // mother_name: "Ibu Ajuan",
+        // birth_place_id: "022",
+        // birth_date: "1992-11-21",
+        // identity: "scan-ktp.jpg"
+        //     };
+        
+             console.log(formData);
 
              $.ajax({
                  url: "{{route('eform.save-customer')}}",
@@ -181,10 +230,26 @@
                  data: formData,
                  async: false,
                  success: function (data) {
-                     // console.log(data)
-                     // toastr["success"]("Data Berhasil disimpan");
+                      console.log(data);
+                     toastr["success"]("Data Berhasil disimpan");
+                      $('#divForm').removeClass('alert alert-success');
+                      $('#divForm').html("");
+
                      if ( data.code != 422 ) {
                          $('#leads-modal').modal('toggle');
+
+                   nik = $('.nikStep2').val();
+                    console.log(nik);
+
+                    $("#nik").html('<option value="'+nik+'">'+nik+'</option>');
+                    $("#select2-nik-container").replaceWith('<span class="select2-selection__rendered" id="select2-nik-container" title="'+nik+'"><span class="select2-selection__clear">×</span>'+nik+'</span>');
+                    $("#search").click();
+                    $('body').addClass('modal-open');
+                    $("a[href='#finish']").click();
+
+                    $('#divForm').addClass('alert alert-success');
+                    $('#divForm').html('Data Berhasil Ditambahkan');
+
                      } else {
                          setTimeout(
                              function(){
@@ -198,70 +263,23 @@
                      }
 
                      HoldOn.close();
-                     // $('#divForm').addClass('alert alert-success');
-                     // $('#divForm').append('Data Berhasil Ditambahkan');
+                      $('#divForm').addClass('alert alert-success');
+                      $('#divForm').append('Data Berhasil Ditambahkan');
                  },
                  error: function (response) {
-                     // console.log(response)
-                     // toastr["error"]("Data Gagal disimpan");
+                      console.log(response)
+                      toastr["error"]("Data Gagal disimpan");
                      HoldOn.close();
                  },
                  cache: false,
                  contentType: false,
                  processData: false
              });
+           });
 
-            $.ajax({
-                url: "{{route('eform.save-customer')}}",
-                type: 'POST',
-                data: formData,
-                async: false,
-                success: function (data) {
-                    // console.log(data)
-                    // toastr["success"]("Data Berhasil disimpan");
-                    $('#divForm').removeClass('alert alert-success');
-                    $('#divForm').html("");
-
-                    if ( data.code != 422 ) {
-                        $('#leads-modal').modal('toggle');
-
-                        nik = $("input[name='nik']").val();
-
-                        $("#nik").html('<option value="'+nik+'">'+nik+'</option>');
-                        $("#select2-nik-container").replaceWith('<span class="select2-selection__rendered" id="select2-nik-container" title="'+nik+'"><span class="select2-selection__clear">×</span>'+nik+'</span>');
-                        $("#search").click();
-                        $("a[href='#finish']").click();
-
-                        $('#divForm').addClass('alert alert-success');
-                        $('#divForm').html('Data Berhasil Ditambahkan');
-
-                    } else {
-                        setTimeout(
-                            function(){
-                                $.each(data.contents, function(key, value) {
-                                    // console.log(key);
-                                    $("#form_data_personal").find(".form-group." + key).eq(0).addClass('has-error');
-                                    $("#form_data_personal").find("span#"+key+"-error").eq(0).html(value);
-                                });
-                            }
-                        , 2000);
-                    }
-
-                    HoldOn.close();
-                },
-                error: function (response) {
-                    // console.log(response)
-                    // toastr["error"]("Data Gagal disimpan");
-                    HoldOn.close();
-                },
-                cache: false,
-                contentType: false,
-                processData: false
-            });
 
             return false;
         });
-
 
         $('.cities').dropdown('cities');
 

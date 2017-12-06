@@ -200,7 +200,7 @@ class DropdownController extends Controller
         return response()->json(['results' => $results['contents']]);
     }
 
-     /**
+    /**
     *   Get Kanwil from API
     */
 
@@ -211,7 +211,7 @@ class DropdownController extends Controller
                     'Authorization' => session('authenticate.token')
                     ])
                 ->get();
-      //  dd($kanwil);
+    
         foreach ($kanwil['contents']['data'] as $key => $value) {
 
             $value['id'] = $value['region_id'];

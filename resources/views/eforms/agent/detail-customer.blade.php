@@ -50,7 +50,7 @@
                                                     <label class="col-md-6 control-label">NIK :</label>
                                                     <div class="col-md-6">
                                                         <p class="form-control-static" id="cust_nik">@if(!empty($dataCustomer['personal']['nik'])){{$dataCustomer['personal']['nik']}}
-                                                        <input type="hidden" name="nik" value="{{ $dataCustomer['personal']['nik'] }}">
+                                                        <input type="hidden" name="nik" value="{{ $dataCustomer['personal']['nik'] }}" id="nik">
                                                         @else - @endif</p>
 
                                                     </div>
@@ -59,25 +59,33 @@
                                                     <label class="col-md-6 control-label">Nama Lengkap :</label>
                                                     <div class="col-md-6">
                                                         <p class="form-control-static">{{$dataCustomer['personal']['first_name']}} {{$dataCustomer['personal']['last_name']}}</p>
+                                                        <input type="hidden" name="name" value="{{ $dataCustomer['personal']['first_name'] }}  {{ $dataCustomer['personal']['last_name'] }}" id="name">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="col-md-6 control-label">Tempat Lahir :</label>
                                                     <div class="col-md-6">
-                                                        <p class="form-control-static">@if(!empty($dataCustomer['personal']['birth_place'])){{$dataCustomer['personal']['birth_place']}}@else - @endif</p>
+                                                        <p class="form-control-static">@if(!empty($dataCustomer['personal']['birth_place'])){{$dataCustomer['personal']['birth_place']}}
+                                                        <input type="hidden" name="birth_place" id="birth_place" value="{{$dataCustomer['personal']['birth_place']}}">
+                                                        @else - @endif</p>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="col-md-6 control-label">Tanggal Lahir :</label>
                                                     <div class="col-md-6">
-                                                        <p class="form-control-static">@if(!empty($dataCustomer['personal']['birth_date'])){{$dataCustomer['personal']['birth_date']}}@else - @endif</p>
+                                                        <p class="form-control-static">@if(!empty($dataCustomer['personal']['birth_date'])){{$dataCustomer['personal']['birth_date']}}
+                                                        <input type="hidden" name="birth_date" id="birth_date" value="{{$dataCustomer['personal']['birth_date']}}">
+
+                                                        @else - @endif</p>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="col-md-6 control-label">Alamat :</label>
                                                     <div class="col-md-6">
                                                         <p class="form-control-static">
-                                                            @if(!empty($dataCustomer['personal']['address'])){{$dataCustomer['personal']['address']}}@else - @endif
+                                                            @if(!empty($dataCustomer['personal']['address'])){{$dataCustomer['personal']['address']}}
+                                                            <input type="hidden" name="address" id="address" value="{{$dataCustomer['personal']['address']}}">
+                                                            @else - @endif
                                                         </p>
                                                     </div>
                                                 </div>
@@ -88,14 +96,18 @@
                                                 <div class="form-group">
                                                     <label class="col-md-6 control-label">Jenis Kelamin :</label>
                                                     <div class="col-md-6">
-                                                        <p class="form-control-static">@if(!empty($dataCustomer['personal']['gender'])){{$dataCustomer['personal']['gender']}}@else - @endif</p>
+                                                        <p class="form-control-static">@if(!empty($dataCustomer['personal']['gender'])){{$dataCustomer['personal']['gender']}}
+                                                        <input type="hidden" name="gender" id="gender" value="{{$dataCustomer['personal']['gender']}}">
+                                                        @else - @endif</p>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="col-md-6 control-label">Status Pernikahan :</label>
                                                     <div class="col-md-6">
                                                         <p class="form-control-static">
-                                                            @if(!empty($dataCustomer['personal']['status'])){{$dataCustomer['personal']['status']}}@else - @endif
+                                                            @if(!empty($dataCustomer['personal']['status'])){{$dataCustomer['personal']['status']}}</p>
+          <input type="hidden" name="status" value="{{$dataCustomer['personal']['status']}}" id="status">
+                                                            @else - @endif
                                                         </p>
                                                     </div>
                                                 </div>
@@ -103,19 +115,25 @@
                                                     <label class="col-md-6 control-label">Email :</label>
                                                     <div class="col-md-6">
                                                         <p class="form-control-static">@if(!empty($dataCustomer['personal']['email']))
-                                                        {{$dataCustomer['personal']['email']}}@else - @endif</p>
+                                                        {{$dataCustomer['personal']['email']}}
+                                                        <input type="hidden" name="email" id="email" value="{{$dataCustomer['personal']['email']}}">
+                                                        @else - @endif</p>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="col-md-6 control-label">Nama Gadis Ibu Kandung :</label>
                                                     <div class="col-md-6">
-                                                        <p class="form-control-static">@if(!empty($dataCustomer['personal']['mother_name'])){{$dataCustomer['personal']['mother_name']}}@else - @endif</p>
+                                                        <p class="form-control-static">@if(!empty($dataCustomer['personal']['mother_name'])){{$dataCustomer['personal']['mother_name']}}
+                                                        <input type="hidden" name="mother_name" id="mother_name" value="{{$dataCustomer['personal']['mother_name']}}">
+                                                        @else - @endif</p>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="col-md-6 control-label">No. Handphone :</label>
                                                     <div class="col-md-6">
-                                                        <p class="form-control-static">@if(!empty($dataCustomer['personal']['mobile_phone'])){{$dataCustomer['personal']['mobile_phone']}}@else - @endif</p>
+                                                        <p class="form-control-static">@if(!empty($dataCustomer['personal']['mobile_phone'])){{$dataCustomer['personal']['mobile_phone']}}
+                                                        <input type="hidden" name="mobile_phone" id="mobile_phone" value="{{$dataCustomer['personal']['mobile_phone']}}">
+                                                        @else - @endif</p>
                                                     </div>
                                                 </div>
                                             </form>
@@ -139,13 +157,17 @@
                                                 <div class="form-group">
                                                     <label class="col-md-6 control-label">NIK :</label>
                                                     <div class="col-md-6">
-                                                        <p class="form-control-static">@if(!empty($dataCustomer['personal']['couple_nik'])){{$dataCustomer['personal']['couple_nik']}}@else - @endif</p>
+                                                        <p class="form-control-static">@if(!empty($dataCustomer['personal']['couple_nik'])){{$dataCustomer['personal']['couple_nik']}}
+                                                        <input type="hidden" name="couple_nik" id="couple_nik" value="{{$dataCustomer['personal']['couple_nik']}}">
+                                                        @else - @endif</p>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="col-md-6 control-label">Nama Lengkap :</label>
                                                     <div class="col-md-6">
-                                                        <p class="form-control-static">@if(!empty($dataCustomer['personal']['couple_name'])){{$dataCustomer['personal']['couple_name']}}@else - @endif</p>
+                                                        <p class="form-control-static">@if(!empty($dataCustomer['personal']['couple_name'])){{$dataCustomer['personal']['couple_name']}}
+                                                        <input type="hidden" name="couple_name" id="couple_name" value="{{$dataCustomer['personal']['couple_name']}}">
+                                                        @else - @endif</p>
                                                     </div>
                                                 </div>
                                             </form>
@@ -155,13 +177,17 @@
                                                 <div class="form-group">
                                                     <label class="col-md-6 control-label">Tempat Lahir :</label>
                                                     <div class="col-md-6">
-                                                        <p class="form-control-static">@if(!empty($dataCustomer['personal']['couple_birth_place'])){{$dataCustomer['personal']['couple_birth_place']}}@else - @endif</p>
+                                                 <p class="form-control-static">@if(!empty($dataCustomer['personal']['couple_birth_place'])){{$dataCustomer['personal']['couple_birth_place']}}</p>
+                                         <input type="hidden" name="couple_birth_place" value="{{$dataCustomer['personal']['couple_birth_place']}}" id="couple_birth_place" >
+                                                        @else - @endif
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="col-md-6 control-label">Tanggal Lahir :</label>
                                                     <div class="col-md-6">
-                                                        <p class="form-control-static">@if(!empty($dataCustomer['personal']['couple_birth_date'])){{$dataCustomer['personal']['couple_birth_date']}}@else - @endif</p>
+                                                        <p class="form-control-static">@if(!empty($dataCustomer['personal']['couple_birth_date'])){{$dataCustomer['personal']['couple_birth_date']}}
+                                                        <input type="hidden" name="couple_birth_date" id="couple_birth_date" value="{{$dataCustomer['personal']['couple_birth_date']}}">
+                                                        @else - @endif</p>
                                                     </div>
                                                 </div>
                                             </form>

@@ -9,7 +9,8 @@
             <div class="col-md-8">
                 <div class="input-group">
                     {!! Form::text('appointment_date', old('appointment_date'), [
-                        'class' => 'form-control datepicker-autoclose'
+                        'class' => 'form-control datepicker-autoclose',
+                        'id'    => 'appointment_date'
                     ]) !!}
                     <span class="input-group-addon b-0"><i class="fa fa-calendar"></i></span>
                 </div>

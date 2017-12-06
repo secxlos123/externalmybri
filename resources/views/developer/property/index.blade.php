@@ -15,6 +15,11 @@
 <section id="agent-2-peperty" class="profile padding">
 	<div class="container">
 		<div class="row">
+          @if(Session::has('flash_message'))
+            <div class="alert alert-success"><em> {!! session('flash_message') !!}</em></div>
+            @elseif(Session::has('error_flash_message'))
+            <div class="alert alert-success"><em> {!! session('error_flash_message') !!}</em></div>
+            @endif
 			<div class="col-md-12">
 				<div class="btn-project bottom10">
 					<a class="btn btn-primary" href="#filter" role="button" data-toggle="collapse">

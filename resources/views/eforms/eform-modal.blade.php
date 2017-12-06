@@ -4,7 +4,7 @@
     margin: 50px auto;
 }
 </style>
-<div id="leads-modal" class="modal fade">
+<div id="view-modal" class="modal fade">
     <div class="modal-dialog-custom" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -43,13 +43,13 @@
                                             <div class="form-group">
                                                 <label class="col-md-5 control-label">Jangka Waktu :</label>
                                                 <div class="col-md-7">
-                                                    <p class="form-control-static" id="month"></p>
+                                                    <p class="form-control-static" id="year"></p>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-md-5 control-label">Pengaju :</label>
                                                 <div class="col-md-7">
-                                                    <p class="form-control-static" id="ao_name">
+                                                    <p class="form-control-static" id="ao_name">{!! session('authenticate.fullname') !!}
                                                     </p>
                                                 </div>
                                             </div>
@@ -96,7 +96,7 @@
                                             <div class="form-group">
                                                 <label class="col-md-5 control-label">NIK :</label>
                                                 <div class="col-md-7">
-                                                    <p class="form-control-static" id="nik"></p>
+                                                    <p class="form-control-static" id="cust_nik"></p>
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -178,12 +178,14 @@
                                     <div class="col-md-6" align="center">
                                         <div class="card-box" id="identity">
                                             <img src="@if(!empty($dataCustomer['other']['identity'])){{$dataCustomer['other']['identity']}}@endif" class="img-responsive">
+                                            
                                             <p>Foto KTP</p>
                                         </div>
                                     </div>
                                     <div class="col-md-6" align="center" id="couple5">
                                         <div class="card-box" id="couple_identity">
                                             <img src="@if(!empty($dataCustomer['other']['npwp'])){{$dataCustomer['other']['npwp']}}@endif" class="img-responsive">
+                                            
                                             <p>Foto KTP Pasangan</p>
                                         </div>
                                     </div>

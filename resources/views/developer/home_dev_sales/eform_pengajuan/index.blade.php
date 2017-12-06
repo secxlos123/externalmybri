@@ -20,7 +20,7 @@
 					<!-- <a class="btn btn-primary" href="#filter" role="button" data-toggle="collapse">
 						<i class="fa fa-filter"></i> Filter
 					</a> -->
-					<a class="btn btn-primary" href="{!! route('eform.index') !!}" role="button">
+					<a class="btn btn-primary" href="{!! route('eform.eform-agen') !!}" role="button">
 						<i class="fa fa-plus"></i>  Tambah Pengajuan Baru
 					</a>
 				</div>

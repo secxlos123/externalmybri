@@ -28,6 +28,7 @@
                     'data-option' => old('branch_id'),
                     'data-placeholder' => 'Pilih Kota'
                 ]) !!}
+                <input type="hidden" name="" id="offices">
             </div>
 
             <div class="form-group col-md-12">
@@ -107,6 +108,11 @@
             .on('select2:unselect', function (e) {
                 $('#branch_office_address, #branch_name').val('');
             });
+        });
+        $('.offices').on('change', function(){
+              var id = $(this).val();
+            var text = $(this).find("option:selected").text();
+            $('#offices').val(text);
         });
     </script>
 @endpush

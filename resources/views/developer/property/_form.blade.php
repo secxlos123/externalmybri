@@ -68,10 +68,10 @@
             {{ $errors->has('region_id') ? ' has-error' : '' }}">
            {!! Form::label('region_id', 'Kantor Wilayah BRI *') !!}
             {!! Form::select('region_id', ['' => ''] + [
-                    old('kanwil_id') => old('kanwil_name')
-                ], old('kanwil_id'), [
+                    old('region_id') => old('region_name')
+                ], old('region_id'), [
                 'class' => 'select2 kanwil',
-                'data-option'   => old('kanwil_id'),
+                'data-option'   => old('region_id'),
                 'data-placeholder' => 'Pilih Kantor Wilayah'
             ]) !!}
            <input type="hidden" name="region_name" id="region_name">

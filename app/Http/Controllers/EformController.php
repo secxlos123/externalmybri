@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Classes\Traits\Profileble;
 use App\Http\Requests\EformRequest;
+use App\Http\Requests\Customer\CustomerRequest;
 use Client;
 use Illuminate\Http\Request;
 
@@ -70,6 +71,28 @@ class EformController extends Controller
                 'customer' => (object) [],
                 'param' => []
             ]);
+        }
+
+        config(['jsvalidation.focus_on_error' => false]);
+        return view('eforms.index', [
+            'customer' => (object) $this->customer(),
+            'param' => $request->all()
+        ]);
+    }
+
+    /**
+    * Display a listing of the resource Form Eform Agen Dev
+    * @return \Illuminate\Http\Response
+    */
+
+    public function formEform(Request $request)
+    {
+        if ('developer-sales' == session('authenticate.role'))
+        {
+            return view('eforms.eform-agent', [
+                'customer' => (object) [],
+                'param'    => []
+                ]);
         }
 
         config(['jsvalidation.focus_on_error' => false]);
@@ -237,7 +260,7 @@ class EformController extends Controller
      */
     public function detailCustomer(Request $request)
     {
-        $customerData = Client::setEndpoint('customer/'.$request->input('id'))
+        $customerData = Client::setEndpoint('customer/'.$request->input('nik'))
                         ->setHeaders([
                             'Authorization' => session('authenticate.token')
                         ])->get();
@@ -259,6 +282,21 @@ class EformController extends Controller
         }
     }
 
+    public function getCust(Request $request)
+    {
+        $result = Client::setEndpoint('customer')
+                ->setHeaders([
+                    'Authorization' => session('authenticate.token')
+                    ])
+                ->setQuery([
+                    'nik'   => $request->input('nik')
+                    ])
+                ->get();
+        $data   = $result['contents']['data'][0];
+        //dd($data);
+        return response()->json(['data' => $data ]);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -267,7 +305,7 @@ class EformController extends Controller
      */
     public function saveCustomer(CustomerRequest $request)
     {
-        $data = $this->getUser();
+        // $data = $this->getUser();
 
         $newCustomer = $this->dataRequest($request);
         // dd($newCustomer);
@@ -290,6 +328,26 @@ class EformController extends Controller
         }else{
             return response()->json(['message' => $codeDescription, 'code' => $codeResponse]);
         }
+    }
+
+    public function formlead()
+    {
+        return view('eforms.formlead');
+    }
+
+    public function add_cust(Request $request)
+    {
+        $input = $request->all();
+        $client = Client::setEndpoint('customer')
+        ->setHeaders([
+            'Authorization' => session('authenticate.token')
+            ])
+        ->setBody($input)
+        ->post('multipart');
+dd($input);
+        $codeResponse = $client['code'];
+        $codeDescription = $client['descriptions'];
+        return response()->json(['message'=> $codeDescription, 'code' => $codeResponse]);
     }
 
     /**
