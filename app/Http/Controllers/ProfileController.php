@@ -157,7 +157,7 @@ class ProfileController extends Controller
                 'Authorization' => session('authenticate.token')
             ])
             ->get();
-        return view('profile.index_password', [
+        return view('profile.index', [
             'results' => $results['contents'],
             'type' => 'view',
             'active' => 'password'

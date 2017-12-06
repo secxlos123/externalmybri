@@ -328,7 +328,7 @@
     @if ($type != 'view')
         <div class="col-md-12">
             <div class="pull-right">
-                <a href="{{(session('authenticate.role') == 'developer') ? url('dev/profile') : url('profile/personal')}}" class="btn btn-default waves-light waves-effect w-md m-b-20">Batalkan</a>
+                <a href="{{(session('authenticate.role') == 'developer') ? url('dev/profile/personal') : url('profile/personal')}}" class="btn btn-default waves-light waves-effect w-md m-b-20">Batalkan</a>
                 <button type="submit" class="btn btn-orange waves-light waves-effect w-md m-b-20"><i class="mdi mdi-content-save"></i> Simpan</button>
             </div>
         </div>

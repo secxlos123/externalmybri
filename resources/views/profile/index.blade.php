@@ -23,7 +23,6 @@
                             <div class="image img-thumbnail">
                                 @if ($type != 'view')
                                     @include('profile._form-avatar-data')
-
                                 @else
                                     @if (session('authenticate.role') != 'developer')
                                         <img src="{{(isset($results['other']['image'])) ? image_checker($results['other']['image']) : image_checker()}}" alt="Agents">
@@ -96,18 +95,20 @@
             endDate: "-20y"
         });
 
-        if ($("#status").select2('data')[0]['id'] != 1) {
-            $('.birth-date').datepicker({
-                format: "dd-mm-yyyy",
-                autoclose: true,
-                endDate: "-20y"
-            });
-        }else{
-            $('.birth-date').datepicker({
-                format: "dd-mm-yyyy",
-                autoclose: true,
-            });
-        }
+        @if (session('authenticate.role') != 'developer')
+            if ($("#status").select2('data')[0]['id'] != 1) {
+                $('.birth-date').datepicker({
+                    format: "dd-mm-yyyy",
+                    autoclose: true,
+                    endDate: "-20y"
+                });
+            }else{
+                $('.birth-date').datepicker({
+                    format: "dd-mm-yyyy",
+                    autoclose: true,
+                });
+            }
+        @endif
 
         $('.address_status, .status, .gender').select2();
         $('.cities').dropdown('cities');
