@@ -1,12 +1,12 @@
 @if (session('authenticate.role') != 'developer')
-{!! Form::open([
-    'route' => ['profile.update', 'avatar']
-    , 'class' => 'callus'
-    , 'id' => 'form-personal-data-customer-avatar'
-    , 'enctype' => 'multipart/form-data'
-    , 'method' => 'PUT'
-    , 'onsubmit' => "return confirm('Yakin akan mengganti dengan yang baru ?');"
-]) !!}
+	{!! Form::open([
+	    'route' => ['profile.update', 'avatar']
+	    , 'class' => 'callus'
+	    , 'id' => 'form-personal-data-customer-avatar'
+	    , 'enctype' => 'multipart/form-data'
+	    , 'method' => 'PUT'
+	    , 'onsubmit' => "return confirm('Yakin akan mengganti dengan yang baru ?');"
+	]) !!}
 	@php ( $image = (isset($results['image'])) ? image_checker($results['image']) : image_checker() )
 
 	@if (session('authenticate.role') != 'developer')
@@ -32,15 +32,16 @@
 
 	{!! Form::hidden('cif_number', '-', ['class' => 'form-control']) !!}
 
-{!! Form::close() !!}
+	{!! Form::close() !!}
 @else
-{!! Form::open([
-    'route' => ['developer.profile.update', 'personal']
-    , 'class' => 'callus'
-    , 'enctype' => 'multipart/form-data'
-    , 'method' => 'PUT'
-    , 'onsubmit' => "return confirm('Yakin akan mengganti dengan yang baru ?');"
-]) !!}
+	{!! Form::open([
+	    'route' => ['developer.profile.update', 'personal']
+	    , 'class' => 'callus'
+	    , 'id' => 'form-personal-data-customer-avatar'
+	    , 'enctype' => 'multipart/form-data'
+	    , 'method' => 'PUT'
+	    , 'onsubmit' => "return confirm('Yakin akan mengganti dengan yang baru ?');"
+	]) !!}
 	@php ( $image = (isset($results['image'])) ? image_checker($results['image']) : image_checker() )
 
 	@if (session('authenticate.role') != 'developer')
@@ -58,7 +59,7 @@
 	{!! Form::file('image', [
 	    'class' => 'filestyle hide'
 	    , 'data-target' => 'image_preview'
-	    ,'data-buttontext' => 'Unggah'
+	    , 'data-buttontext' => 'Unggah'
 	    , 'data-buttonname' => 'btn-default'
 	    , 'data-iconname' => 'fa fa-cloud-upload'
 	    , 'data-placeholder' => 'Tidak ada file'
@@ -66,5 +67,5 @@
 
 	{!! Form::hidden('cif_number', '-', ['class' => 'form-control']) !!}
 
-{!! Form::close() !!}
+	{!! Form::close() !!}
 @endif

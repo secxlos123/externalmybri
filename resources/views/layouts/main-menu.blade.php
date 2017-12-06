@@ -29,6 +29,9 @@
     <li class="{!! request()->is('daftar-proyek') ? 'active' : '' !!}">
         <a href="{!! route('all-properties') !!}">Daftar Properti</a>
     </li>
+    <li class="{!! request()->is('daftar-developer') ? 'active' : '' !!}">
+        <a href="{!! route('all-developer') !!}">Daftar Developer</a>
+    </li>
 @endif
 
 @if ( 'developer' == session('authenticate.role') )

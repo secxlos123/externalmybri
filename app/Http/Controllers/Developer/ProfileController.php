@@ -14,7 +14,7 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($type)
     {
         $results = Client::setEndpoint('profile')
             ->setHeaders([
@@ -25,7 +25,7 @@ class ProfileController extends Controller
         return view('profile.index', [
             'results' => $results['contents'],
             'type' => 'view',
-            'active' => 'personal'
+            'active' => $type
             ]);
     }
 
@@ -67,7 +67,7 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit($type)
     {
         $results = Client::setEndpoint('profile')
             ->setHeaders([
@@ -78,7 +78,7 @@ class ProfileController extends Controller
         return view('profile.index', [
             'results' => $results['contents'],
             'type' => 'edit',
-            'active' => 'personal'
+            'active' => $type
             ]);
     }
 
@@ -104,7 +104,7 @@ class ProfileController extends Controller
             \Session::flash('error_flash_message', $results['descriptions']);
         }
 
-        return redirect()->route('developer.profile.index');;
+        return redirect()->route('developer.profile.index', $type);;
     }
 
     /**
@@ -124,16 +124,17 @@ class ProfileController extends Controller
     * @return \Illuminate\Http\Response
     */
 
-    public function successChangePassword()
+    public function successChangePassword($type)
     {
         $results = Client::setEndpoint('profile')
             ->setHeaders([
                 'Authorization' => session('authenticate.token')
             ])
             ->get();
-        return view('profile.index_password', [
+        return view('profile.index', [
             'results' => $results['contents'],
-            'type' => 'view'
+            'type' => 'view',
+            'active' => $type
         ]);
     }
 
@@ -158,9 +159,9 @@ class ProfileController extends Controller
 
         if (isset($results['code']) && $results['code'] == 200) {
             \Session::flash('flash_message', $results['descriptions']);
-            return redirect()->route('developer.profile.index-password');
+            return redirect()->route('developer.profile.index', 'password');
         }
         \Session::flash('error_flash_message', $results['descriptions']);
-        return redirect()->route('developer.profile.index-password')->withInput();
+        return redirect()->back()->withInput();
     }
 }

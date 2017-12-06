@@ -61,7 +61,7 @@
             <label>Email</label>
             @if ($type != 'view')
             {!! Form::email('email', (old('email')) ? old('email') : @$results['email'], [
-                'class' => 'form-control', 'readonly', 'style' => 'text-transform: none;'
+                'class' => 'form-control', 'readonly', 'style' => 'text-transform: none;', 'id' => 'email'
             ]) !!}
             @else
             <span class="form-control" style="border: 0px;">
@@ -82,54 +82,18 @@
             </span>
             @endif
         </div>
-
-         <div class="single-query form-group bottom20">
-            <label>No Handphone (*)</label>
-            @if ($type != 'view')
-            {!! Form::text('mobile_phone', (old('mobile_phone')) ? old('mobile_phone') : @$results['mobile_phone'], [
-                'class' => 'form-control numeric', 'maxlength' => 12, 'minlength' => 7
-            ]) !!}
-            @else
-            <span class="form-control" style="border: 0px;">
-                {{@$results['mobile_phone']}}
-            </span>
-            @endif
-        </div>
-
-        @if ($type != 'view')
-        <div class="single-query form-group bottom20 has-upload-file">
-            <label>Foto (*)</label>
-            {!! Form::file('image', [
-                'class' => 'filestyle', 'data-target' => 'ktp_preview',
-                'data-buttontext' => 'Unggah', 'data-buttonname' => 'btn-default',
-                'data-iconname' => 'fa fa-cloud-upload', 'data-placeholder' => 'Tidak ada file'
-            ]) !!}
-        </div>
-        @endif
-
-        @if ( $type != 'view')
-
-            <div class="single-query form-group bottom20">
-                <label>Foto</label>
-                {!! Html::image(image_checker(@$results['image']), 'Foto', [
-                    'class' => 'img-responsive', 'width' => 300, 'id' => 'ktp_preview',
-                    'data-src' => asset('assets/images/no-image.jpg')
-                ]) !!}
-            </div>
-
-        @endif
     </div>
     @if ($type != 'view')
     <div class="col-md-12">
         <div class="pull-right">
-            <a href="{{(session('authenticate.role') == 'developer') ? url('dev/profile') : url('profile/personal')}}" class="btn btn-default waves-light waves-effect w-md m-b-20">Batalkan</a>
+            <a href="{{(session('authenticate.role') == 'developer') ? url('dev/profile/personal') : url('profile/personal')}}" class="btn btn-default waves-light waves-effect w-md m-b-20">Batalkan</a>
             <button type="submit" class="btn btn-orange waves-light waves-effect w-md m-b-20"><i class="mdi mdi-content-save"></i> Simpan</button>
         </div>
     </div>
     @else
     <div class="col-md-12">
             <div class="pull-right">
-                <a href="{{(session('authenticate.role') == 'developer') ? url('dev/profile/ubah') : url('profile/ubah/personal')}}" class="btn btn-primary waves-light waves-effect w-md m-b-20">Ubah</a>
+                <a href="{{(session('authenticate.role') == 'developer') ? url('dev/profile/ubah/personal') : url('profile/ubah/personal')}}" class="btn btn-primary waves-light waves-effect w-md m-b-20">Ubah</a>
             </div>
         </div>
     @endif

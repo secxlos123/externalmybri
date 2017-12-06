@@ -58,7 +58,8 @@ class DropdownController extends Controller
     	$options = [
             'property_type_id' => $request->input('prop_type_id'),
             'search' => $request->input('name'),
-            'dropdown' => true
+            'dropdown' => true,
+            'is_available' => true
         ];
 
         return $this->init('property-item', $body, $options, $this->base());

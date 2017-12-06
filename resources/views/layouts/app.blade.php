@@ -66,7 +66,21 @@
 
     <!-- Footer -->
     <footer class="footer_third absolute-fix csm-footer">
-        <div class="icons">{!! Html::image('assets/images/logo/callbri.png') !!}</div>
+        <!-- <div class="icons">{!! Html::image('assets/images/logo/callbri.png') !!}</div> -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="call-bri">
+                        <ul class="list-inline">
+                            <li>Contact <strong>BRI 14017 / 1500017</strong></li>
+                            <li><a href="http://bri.co.id/">www.bri.co.id</a></li>
+                            <li><a href="#"><i class="fa fa-facebook-square"></i> Bank BRI</a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i> @promo_BRI</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="container">
             @include('layouts.footer')
         </div>

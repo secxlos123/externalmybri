@@ -64,12 +64,12 @@
                     @else
                 <ul class="attr-nav csm-attr no-bg">
                     <li class="dropdown">
-                        <a href="{{('developer' == session('authenticate.role')) ? url('dev/profile') : url('profile/personal')}}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> {!! session('authenticate.fullname') !!} <span class="caret"></span></a>
+                        <a href="{{('developer' == session('authenticate.role')) ? url('dev/profile/personal') : url('profile/personal')}}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> {!! session('authenticate.fullname') !!} <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             @if ('customer' == session('authenticate.role'))
                             <li><a href="{{url('schedule')}}"><i class="fa fa-calendar"></i> Schedule</a></li>
                             @endif
-                            <li><a href="{{('developer' == session('authenticate.role')) ? url('dev/profile') : url('profile/personal')}}"><i class="fa fa-edit"></i> Edit Profile</a></li>
+                            <li><a href="{{('developer' == session('authenticate.role')) ? url('dev/profile/personal') : url('profile/personal')}}"><i class="fa fa-edit"></i> Edit Profile</a></li>
                             <li><a href="javascript:void(0)" onclick="document.getElementById('form-logout').submit();"><i class="fa fa-sign-out"></i> Logout</a></li>
                         </ul>
                     </li>
