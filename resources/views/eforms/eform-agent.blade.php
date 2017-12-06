@@ -99,7 +99,7 @@
                                 'id' => 'nik',
                                 'maximumInputLength' => 16
                             ]) !!}
-                            <input type="text" name="nik" id="nikSelect">
+                            <input type="hidden" name="nik" id="nikSelect">
                         <span class="input-group-btn">
                         <a href="#" class="btn waves-effect waves-light btn-primary" id="search"><i class="fa fa-search"></i> Cari</a>
                         </span>
