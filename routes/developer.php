@@ -181,7 +181,7 @@ Route::group([
 		/**
 		 * This route for handle homepage
 		 */
-		Route::get('/', 'ProfileController@index')->name('index');
+		Route::get('/{type}', 'ProfileController@index')->name('index');
 
 		/**
 	 	* This route for success change password
@@ -192,7 +192,7 @@ Route::group([
 		/**
 		 * This route for handle homepage
 		 */
-		Route::get('/ubah', 'ProfileController@edit')->name('edit');
+		Route::get('/ubah/{type}', 'ProfileController@edit')->name('edit');
 
 		/**
 		 * This route for send request change password
