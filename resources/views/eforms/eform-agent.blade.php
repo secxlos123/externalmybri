@@ -434,7 +434,7 @@
 
            //showing modal create leads
     $(document).on('click', '#btn-leads', function(){
-       console.log("salah masuk");
+      // console.log("salah masuk");
        $('#leads-modal').modal('show');
     })
 
