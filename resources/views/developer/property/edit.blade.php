@@ -54,3 +54,11 @@
         </div>
     </section>
 @endsection
+
+@push ( 'styles' )
+    <style type="text/css">
+        .error-help-block {
+            color: #a64a40;
+        }
+    </style>
+@endpush

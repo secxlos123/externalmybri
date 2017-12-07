@@ -38,7 +38,7 @@
             {{ $errors->has('category') ? ' has-error' : '' }}">
             {!! Form::label('category', 'Kategori') !!}
             {!! Form::select('category', [
-                '' => '', 'Rumah', 'Rukan / Ruko', 'Rusun',
+                '' => '', 'Rumah Tapak', 'Rumah Susun / Apartemen', 'Rumah Toko',
             ], old('category'), [
                 'class' => 'select2',
                 'data-placeholder' => '-- Pilih Kategori --'
@@ -181,8 +181,7 @@
     <div class="col-md-1"></div>
     <div class="col-md-10 {{ $errors->has('description') ? ' has-error' : '' }}">
         <h3 class="bottom10">Deskripsi Properti</h3>
-        {!! Form::textarea('description', old('description'), [
-            'id' => 'txtEditor', 'class' => 'editor'
+        {!! Form::textarea('description', old('description'), ['class' => 'editor desc', 'style' => 'width: 100%;', 'maxlength' => 255
         ]) !!}
 
         @if ($errors->has('description'))
@@ -198,8 +197,7 @@
     <div class="col-md-1"></div>
     <div class="col-md-10 {{ $errors->has('facilities') ? ' has-error' : '' }}">
         <h3 class="bottom10">Fasilitas</h3>
-        {!! Form::textarea('facilities', old('facilities'), [
-            'id' => 'txtEditor2', 'class' => 'editor'
+        {!! Form::textarea('facilities', old('facilities'), ['class' => 'editor fac', 'style' => 'width: 100%;', 'maxlength' => 255
         ]) !!}
 
         @if ($errors->has('facilities'))
@@ -272,8 +270,8 @@
 
     <!-- Laravel Javascript Validation -->
     <script type="text/javascript">
-        CKEDITOR.replace( 'txtEditor' );
-        CKEDITOR.replace( 'txtEditor2' );
+        // CKEDITOR.replace( 'txtEditor' );
+        // CKEDITOR.replace( 'txtEditor2' );
         $('select').select2({allowClear: true});
 
         $('.cities').dropdown('cities')
@@ -286,6 +284,7 @@
             })
             .val($('.cities').data('option'))
             .trigger('change');
+
     </script>
     <script type="text/javascript">
         $lat = $('#lat');
@@ -330,7 +329,7 @@
                 dataType: 'json',
                 delay: 250,
                 data: function (params) {
-                   
+
                      return {
                          region_id: params.term,
                          page: params.page || 1
@@ -345,9 +344,9 @@
                                  more: (params.page * data.result.per_page) < data.result.total
                              }
                          };
-                     
+
                     var text = $(this).find("option:selected").text();
-                      
+
                          console.log(text);
                  },
                  cache: true
