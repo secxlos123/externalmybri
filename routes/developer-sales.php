@@ -31,7 +31,7 @@ Route::group([
 		/**
 		 * This route for handle homepage
 		 */
-		Route::get('/', 'ProfileController@index')->name('index');
+		Route::get('/', 'ProfileController@edit')->name('index');
 
 		/**
 	 	* This route for success change password
@@ -50,9 +50,14 @@ Route::group([
 		Route::post('password/change-password', 'ProfileController@changePassword')->name('change-password');
 
 		/**
+		* This Route For View Profile
+		*/
+		//Route::get('')
+
+		/**
 		 * This route for handle homepage
 		 */
-		Route::get('/ubah', 'ProfileController@edit')->name('edit');
+		Route::get('/ubah', 'ProfileController@index')->name('edit');
 
 		
 	});
