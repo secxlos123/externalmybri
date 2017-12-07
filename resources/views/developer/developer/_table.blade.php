@@ -45,7 +45,7 @@
         <form action="{{ url('dev/developer/banned/'.$value['user_id']) }}" id="falert{{$value['user_id']}}" method="POST">
         <input type="hidden" name="_method" value="PUT">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-        <?php 
+        <?php
         $name = $value["first_name"].' '.$value["last_name"];
          ?>
         @if($value['is_actived'] == true)
@@ -63,7 +63,7 @@
         {!! Form::hidden('mobile_phone', $value['mobile_phone'], [ 'class' => '' ]) !!}
         {!! Form::hidden('birth_date', $value['birth_date'], [ 'class' => '' ]) !!}
         {!! Form::hidden('join_date', $value['join_date'], [ 'class' => '' ]) !!}
-        <center><input type="submit" class="btn btn-orange" id="reactive{{ $value['user_id'] }}" value="Reactived"></center>
+        <center><input type="submit" class="btn" id="reactive{{ $value['user_id'] }}" style="color: #fff;background-color: #3896d6;" value="Reactived"></center>
         @endif
         </form>
                         </td>
@@ -107,7 +107,7 @@
                 {
                    $("form#falert{{$value['user_id']}}").submit();
                 };
-        
+
     });
 });
     </script>
