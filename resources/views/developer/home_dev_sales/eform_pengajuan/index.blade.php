@@ -77,7 +77,7 @@
                                 <th>Nominal</th>
                                 <th>Status Pengajuan</th>
                                 <th>Produk</th>
-                                <th>AO</th>
+                                <!-- <th>AO</th> -->
                                 <th>Aksi</th>
                             </tr>
                             </thead>
@@ -139,7 +139,7 @@
                 { data: 'nominal', name: 'nominal' },
                 { data: 'status', name: 'status' },
                 { data: 'product_type', name: 'product_type' },
-                { data: 'ao_name', name: 'ao_name' },
+                // { data: 'ao_name', name: 'ao_name' },
                 { data: 'action', name: 'action', bSortable: false },
             ],
         });

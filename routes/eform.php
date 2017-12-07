@@ -65,4 +65,5 @@ Route::group([ 'prefix' => 'eform', 'as' => 'eform.' ], function () {
 	Route::get('form-lead', 'EformController@formlead')->name('form-lead');
 
 	Route::post('add-lead', 'EformController@add_cust')->name('add-lead');
+
 });

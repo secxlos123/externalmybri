@@ -47,14 +47,6 @@ class HomeController extends Controller
     	 return view('developer.home_dev_sales.eform_pengajuan.index');
     }
 
-    // public function show($id)
-    // {
-    // 	$results = Client::setEndpoint('eforms/{$id}')
-    // 	->setHeaders(['Authorization' => session('authenticate.token')])
-    // 	->get();
-    // 	return 
-    // }
-
     /**
     *	This function for Datatables Data Pengajuan Eform by Agen Developer
     *	@param  \Illuminate\Http\Request  $request
@@ -77,7 +69,7 @@ class HomeController extends Controller
 		//dd($data_eform['contents']['data']);
     	foreach ($data_eform['contents']['data'] as $key => $eform) {
     		$eform['action'] = view('layouts.actions', [
-    			// 'show' => route('#', $eform['id'])
+    			 'show' => route('dev-sales.eform-cust', $eform['id'])
     			] )->render();
     		$data_eform['contents']['data'][$key] = $eform;
     	}
@@ -92,6 +84,25 @@ class HomeController extends Controller
     		$data_eform['contents']['next_page_url']
     		);
     	return response()->json($data_eform['contents']);
+    }
+
+    /**
+    * Get List Data Eform Customer By Id
+    * @param $id
+    */
+     public function getDataEform($id)
+    {
+        $results = Client::setEndpoint('eforms/'.$id)
+                ->setHeaders([
+                    'Authorization' => session('authenticate.token')
+                    ])->get();
+        $data    = $results['contents'];
+        // dd($data);
+       // return response()->json(['data' => $data]);
+        return view('developer.home_dev_sales.eform_pengajuan.show', [
+            'data' => $data
+            ]);
+
     }
 
     public function getCustomer(Request $request)
@@ -138,5 +149,4 @@ class HomeController extends Controller
         //dd($data);
         return response()->json(['data' => $data ]);
     }
-
 }
