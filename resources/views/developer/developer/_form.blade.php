@@ -99,8 +99,9 @@ $name     = $result['first_name']." ".$result['last_name'];
             {{ $errors->has('name') ? ' has-error' : '' }}">
             {!! Form::label('name', 'Nama') !!}
             {!! Form::text('name', old('name'), [
-                'class' => 'keyword-input',
-                'placeholder' => 'Masukkan nama agen developer'
+                'class' => 'keyword-input ',
+                'placeholder' => 'Masukkan nama agen developer',
+                'onKeyPress' => 'return goodchars(event, "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ", this)'
             ]) !!}
 
             @if ($errors->has('name'))
