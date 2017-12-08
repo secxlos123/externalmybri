@@ -26,6 +26,10 @@ Route::group([
 	Route::get('datatable/eforms', 'HomeController@datatables')->name('table-eform');
 	Route::post('customer/add', 'HomeController@CustPost')->name('add-customer');
 	Route::get('get-cust/{id}', 'HomeController@getCust')->name('get-cust');
+	/** 
+	* This route for get list Eform By id
+	*/
+	Route::get('get-eform/{id}', 'HomeController@getDataEform')->name('eform-cust');
 
 	Route::group(['prefix' => 'profile', 'as' => 'profile.'], function () {
 		/**

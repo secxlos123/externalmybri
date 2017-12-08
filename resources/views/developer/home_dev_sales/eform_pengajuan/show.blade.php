@@ -1,110 +1,219 @@
 @extends('layouts.app')
 
-@section('title', 'Detail Proyek')
+@section('title', 'Manajemen Data Pengajuan Eform')
 
 @section('breadcrumb')
-   	<h1 class="text-uppercase">Detail Proyek</h1>
-
-    @if (session('authenticate.role') == 'developer')
-    	<ol class="breadcrumb text-center">
-    	    <li><a href="{!! route('developer.proyek.index') !!}">List Proyek</a></li>
-    	    <li class="active">Detail Proyek</li>
-    	</ol>
-    @else
-        <p>Dapatkan properti idaman Anda.</p>
-        <ol class="breadcrumb text-center">
-            <li><a href="{!! url('daftar-proyek') !!}">List Properti</a></li>
-            <li class="active">Detail Properti</li>
-        </ol>
-    @endif
+    <h1 class="text-uppercase">Manajemen Data Pengajuan Eform</h1>
+    <p>Kelola Data anda di sini.</p>
+    <ol class="breadcrumb text-center">
+        <li><a href="{!! url('dev-sales/dashboard') !!}">Dashboard</a></li>
+        <li class="active">Pengajuan</li>
+    </ol>
 @endsection
 
 @section('content')
-<section id="property" class="padding bg_white">
+<section id="agent-2-peperty" class="profile padding">
     <div class="container">
         <div class="row">
-            <div class="col-md-12 listing1 property-details">
-                <div class="row title-box">
+            <div class="col-md-12">
+            <!-- This List View Eform By Id -->
 
-                    <div class="col-md-6 p-0 b-r-1">
-                        <h2 class="text-uppercase">{!! $property->name !!}</h2>
-                        <p><i class="fa fa-map-marker"></i> {!! $property->address !!}</p>
-                    </div>
-
-                    <div class="col-md-3 dev-logo text-right">
-                        {!! Html::image($property->developer_logo, 'logo', ['class' => 'img-thumbnail img-responsive']) !!}
-                    </div>
-                    <div class="col-md-3 p-0">
-                        <div class="dev pull-right">
-                            <p>Oleh:</p>
-                            <h2><a href="#">{!! $property->developer_name !!}</a></h2>
+             <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-color panel-primary">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Data Pengajuan</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <form class="form-horizontal" role="form">
+                                            <div class="form-group">
+                                                <label class="col-md-5 control-label">Jumlah Permohonan :</label>
+                                                <div class="col-md-7">
+                                                    <p class="form-control-static" id="request_amount"><?php echo number_format($data['kpr']['request_amount'], 2) ;?></p>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-5 control-label">Nama Product :</label>
+                                                <div class="col-md-7">
+                                                    <p class="form-control-static">KPR</p>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-5 control-label">Jangka Waktu :</label>
+                                                <div class="col-md-7">
+                                                    <p class="form-control-static" id="year">{{ $data['kpr']['year'] }} Bulan</p>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-5 control-label">Pengaju :</label>
+                                                <div class="col-md-7">
+                                                    <p class="form-control-static" id="ao_name">{!! session('authenticate.fullname') !!}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <form class="form-horizontal" role="form">
+                                            <div class="form-group">
+                                                <label class="col-md-5 control-label">Kantor Cabang :</label>
+                                                <div class="col-md-7">
+                                                    <p class="form-control-static" id="office">{{ $data['branch'] }}</p>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-5 control-label">Nama Nasabah :</label>
+                                                <div class="col-md-7">
+                                                    <p class="form-control-static" id="customer_name">{{ $data['customer']['personal']['first_name'] }}</p>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-5 control-label">Tanggal Pertemuan :</label>
+                                                <div class="col-md-7">
+                                                    <p class="form-control-static" id="appointment_date">{{ $data['appointment_date'] }}</p>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-
                 </div>
 
                 <div class="row">
                     <div class="col-md-12">
-
-                        <div class="single">
-                            <img src="{!! image_checker($property->photo) !!}" class="img-property" alt="image"/>
+                        <div class="panel panel-color panel-primary">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Data Nasabah</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <form class="form-horizontal" role="form">
+                                            <div class="form-group">
+                                                <label class="col-md-5 control-label">NIK :</label>
+                                                <div class="col-md-7">
+                                                    <p class="form-control-static" id="cust_nik">{{ $data['nik'] }}</p>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-5 control-label">Nama Lengkap :</label>
+                                                <div class="col-md-7">
+                                                    <p class="form-control-static" id="customer_fullname">{{ $data['customer']['personal']['name'] }}</p>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-5 control-label">Nomor HP :</label>
+                                                <div class="col-md-7">
+                                                    <p class="form-control-static" id="mobile_phone">{{ $data['customer']['personal']['mobile_phone'] }}</p>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            @if($data['customer']['personal']['couple_name'] == NULL)
+                                            <!-- KOSONG/Single man or women -->
+                                            @else
+                                            <div class="form-group" id="couple1">
+                                                <label class="col-md-5 control-label">NIK Pasangan :</label>
+                                                <div class="col-md-7">
+                                                    <p class="form-control-static" id="couple_nik">{{ $data['customer']['personal']['couple_nik'] }}</p>
+                                                </div>
+                                            </div>
+                                            <div class="form-group" id="couple2">
+                                                <label class="col-md-5 control-label">Nama Lengkap Pasangan :</label>
+                                                <div class="col-md-7">
+                                                    <p class="form-control-static" id="couple_name">{{ $data['customer']['personal']['couple_name'] }}</p>
+                                                </div>
+                                            </div>
+                                            @endif
+                                        </form>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <form class="form-horizontal" role="form">
+                                            <div class="form-group">
+                                                <label class="col-md-5 control-label">Email :</label>
+                                                <div class="col-md-7">
+                                                    <p class="form-control-static" id="email">{{ $data['customer']['personal']['email'] }}</p>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-5 control-label">Status Pernikahan :</label>
+                                                <div class="col-md-7">
+                                                    <p class="form-control-static" id="status">{{ $data['customer']['personal']['status'] }}</p>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-5 control-label">Nama Gadis Ibu Kandung :</label>
+                                                <div class="col-md-7">
+                                                    <p class="form-control-static" id="mother_name">{{ $data['customer']['personal']['mother_name'] }}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            @if($data['customer']['personal']['couple_name'] == NULL)
+                                            <!-- KOSONG/Single man or women -->
+                                            @else
+                                            <div class="form-group" id="couple3">
+                                                <label class="col-md-5 control-label">Tempat Lahir Pasangan :</label>
+                                                <div class="col-md-7">
+                                                    <p class="form-control-static" id="couple_birth_place">{{ $data['customer']['personal']['couple_birth_place'] }}</p>
+                                                </div>
+                                            </div>
+                                            <div class="form-group" id="couple4">
+                                                <label class="col-md-5 control-label">Tanggal Lahir Pasangan :</label>
+                                                <div class="col-md-7">
+                                                    <p class="form-control-static" id="couple_birth_date">{{ $data['customer']['personal']['couple_birth_date'] }}</p>
+                                                </div>
+                                            </div>
+                                            @endif
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                    </div>
+                </div>
 
-                        <!-- @todo to update database and add new field description -->
-                        <h2 class="text-uppercase">Deskripsi Proyek</h2>
-                        <div class="text-it-p bottom40">
-                            {!! $property->description !!}
-                        </div>
-                        <!-- @endtodo to update database and add new field description -->
-
-                        <h2 class="text-uppercase bottom20">Detail</h2>
-                        <p class="bottom30">{!! $property->facilities !!}</p>
-
-                        <!-- @todo to update relation with user cause pic is user have account -->
-                        {{-- @include('developer.fake-pic') --}}
-                        <!-- @endtodo to update relation with user cause pic is user have account -->
-
-                        @if (session('authenticate.role') == 'developer')
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="panel panel-blue">
-                                        <div class="panel-heading">
-                                            <h3 class="panel-title text-uppercase">List Tipe Properti</h3>
+                <div class="row foto-nasabah">
+                    <div class="col-md-12">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-6" align="center">
+                                        <div class="card-box" id="identity">
+                                            <img src="@if(!empty($data['customer']['other']['identity'])){{$data['customer']['other']['identity']}}@endif" class="img-responsive">
+                                            
+                                            <p>Foto KTP</p>
                                         </div>
-                                        <div class="panel-body">
-                                            @include('developer.property_type._table')
+                                    </div>
+                                    <div class="col-md-6" align="center" id="couple5">
+                                        <div class="card-box" id="couple_identity">
+                                            <img src="@if(!empty($data['customer']['personal']['couple_identity'])){{$data['customer']['personal']['couple_identity']}}@endif" class="img-responsive">
+                                            
+                                            <p>Foto KTP Pasangan</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        @else
-                            @include('property._section-type')
-                        @endif
-
+                        </div>
                     </div>
                 </div>
+            </div>
+            <div class="modal-footer">
+                   <a href="{!! route('dev-sales.data-eform') !!}" class="btn btn-default" data-dismiss="modal" >Kembali</a>
+                   <!-- <a id="agree" href="#" class="btn btn-default" data-dismiss="modal" >Ajukan</a> -->
+               </form>
+           </div>   
+
+            <!-- End List View Eform By Id -->
             </div>
         </div>
     </div>
 </section>
 @endsection
 
-@push('styles')
-    <style type="text/css">
-        .img-property {
-            width: 100%;
-            max-width: 100%;
-            margin-bottom: 20px;
-        }
-    </style>
-    @stack('parent-style')
-    @include('property.style-code')
-@endpush
-
-@push('scripts')
-    @stack('parent-script')
-
-    @if (session('authenticate.role') != 'developer')
-        @include('property.script-code')
-    @endif
-@endpush

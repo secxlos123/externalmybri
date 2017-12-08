@@ -307,7 +307,9 @@ class EformController extends Controller
     public function saveCustomer(CustomerRequest $request)
     {
         // $data = $this->getUser();
-
+      \Log::info($request->all());
+      dd($request->all());
+      die();
         $newCustomer = $this->dataRequest($request);
         // dd($newCustomer);
         $client = Client::setEndpoint('customer')

@@ -260,6 +260,11 @@
                  else
                  {
                     var status = 'Janda/Duda';
+                    $('#view-modal #couple1').hide();
+                    $('#view-modal #couple2').hide();
+                    $('#view-modal #couple3').hide();
+                    $('#view-modal #couple4').hide();
+                    $('#view-modal #couple5').hide();
                  }
 
                 $("#view-modal #couple_identity").html('<img src="'+couple_identity+'" class="img-responsive">');
