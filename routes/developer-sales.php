@@ -26,12 +26,16 @@ Route::group([
 	Route::get('datatable/eforms', 'HomeController@datatables')->name('table-eform');
 	Route::post('customer/add', 'HomeController@CustPost')->name('add-customer');
 	Route::get('get-cust/{id}', 'HomeController@getCust')->name('get-cust');
+	/** 
+	* This route for get list Eform By id
+	*/
+	Route::get('get-eform/{id}', 'HomeController@getDataEform')->name('eform-cust');
 
 	Route::group(['prefix' => 'profile', 'as' => 'profile.'], function () {
 		/**
 		 * This route for handle homepage
 		 */
-		Route::get('/', 'ProfileController@index')->name('index');
+		Route::get('/', 'ProfileController@edit')->name('index');
 
 		/**
 	 	* This route for success change password
@@ -50,9 +54,14 @@ Route::group([
 		Route::post('password/change-password', 'ProfileController@changePassword')->name('change-password');
 
 		/**
+		* This Route For View Profile
+		*/
+		//Route::get('')
+
+		/**
 		 * This route for handle homepage
 		 */
-		Route::get('/ubah', 'ProfileController@edit')->name('edit');
+		Route::get('/ubah', 'ProfileController@index')->name('edit');
 
 		
 	});

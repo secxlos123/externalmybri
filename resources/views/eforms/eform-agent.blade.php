@@ -242,14 +242,29 @@
                  if(result.data.status == 1)
                  {
                     var status ='Belum Menikah';
+                    $('#view-modal #couple1').hide();
+                    $('#view-modal #couple2').hide();
+                    $('#view-modal #couple3').hide();
+                    $('#view-modal #couple4').hide();
+                    $('#view-modal #couple5').hide();
                  }
                  else if(result.data.status == 2)
                  {
                     var status = 'Menikah';
+                    $('#view-modal #couple1').show();
+                    $('#view-modal #couple2').show();
+                    $('#view-modal #couple3').show();
+                    $('#view-modal #couple4').show();
+                    $('#view-modal #couple5').show();
                  }
                  else
                  {
                     var status = 'Janda/Duda';
+                    $('#view-modal #couple1').hide();
+                    $('#view-modal #couple2').hide();
+                    $('#view-modal #couple3').hide();
+                    $('#view-modal #couple4').hide();
+                    $('#view-modal #couple5').hide();
                  }
 
                 $("#view-modal #couple_identity").html('<img src="'+couple_identity+'" class="img-responsive">');
@@ -434,7 +449,7 @@
 
            //showing modal create leads
     $(document).on('click', '#btn-leads', function(){
-       console.log("salah masuk");
+      // console.log("salah masuk");
        $('#leads-modal').modal('show');
     })
 
@@ -449,29 +464,15 @@
      });
 
       //storing leads
-      // $(document).ready(function(e){
-
+      
         $('#btn-save').on('click', function(e){
             $("#form_data_personal").submit();
         });
 
         $("#form_data_personal").submit(function(){ 
-         //$("#btn-save").submit(function(){ 
-        // $('#btn-save').on('click', function(e){       
+             
             var formData = new FormData(this);
 
-        //     var formData = {
-        //         nik: "1212121212121212",
-        // first_name: "Ajuan Test",
-        // email: "ajuan@mailinator.com",
-        // mobile_phone: "08131207377",
-        // status: "1",
-        // mother_name: "Ibu Ajuan",
-        // birth_place_id: "022",
-        // birth_date: "1992-11-21",
-        // identity: "scan-ktp.jpg"
-        //     };
-        
              console.log(formData);
 
              $.ajax({

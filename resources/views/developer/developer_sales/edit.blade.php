@@ -38,7 +38,11 @@
                             <div class="tab-content br-n pn">
                                 <div id="data-pribadi" class="tab-pane active">
                                     <div>
+                                    @if($type == 'view')
+                                        @include('developer.developer_sales.tab-view-profile')
+                                    @elseif($type == 'edit')
                                         @include('developer.developer_sales.tab-profile')
+                                    @endif
                                     </div>
                                 </div>
 
@@ -76,7 +80,10 @@
         endDate: '-17y'
     });
     $( ".datepicker-date-join" ).datepicker({
-        format: 'dd-mm-yyyy'
+        format: 'dd-mm-yyyy',
+       // autoclose: true,
+       // startDate: 'now',
+        endDate: 'now'
     });
 </script>
 @endpush

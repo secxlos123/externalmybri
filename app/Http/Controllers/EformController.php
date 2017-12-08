@@ -41,7 +41,7 @@ class EformController extends Controller
      * @var array
      */
     protected $eform = [
-        'product_type', 'status_property', 'developer', 'developer_name', 'property', 'property_name', 'price', 'building_area', 'home_location', 'year',
+        'product_type', 'status_property', 'developer', 'developer_name', 'property', 'property_name', 'price', 'building_area', 'property_type','property_type_name','property_item','property_item_name', 'home_location', 'year',
         'active_kpr', 'dp', 'request_amount', 'nik', 'branch_id', 'appointment_date', 'address_location', 'longitude', 'latitude', 'kpr_type_property'
     ];
 
@@ -214,6 +214,7 @@ class EformController extends Controller
         if (isset($data['address_location'])) {
             $data['address'] = $data['address_location'];
         }
+        //dd($data);
         $response = Client::setEndpoint($endpoint)
             ->setHeaders(['Authorization' => session('authenticate.token')])
             ->setBody(array_to_multipart($data))
