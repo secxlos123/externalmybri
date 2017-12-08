@@ -8,7 +8,7 @@
 
 <div id="mainMenuBarAnchor"></div>
 
-<button type="button" class="form_opener"><i class="fa fa-bars"></i></button>
+<!-- <button type="button" class="form_opener"><i class="fa fa-bars"></i></button> -->
 <div class="tp_overlay">
 
     <!-- Top menu -->
