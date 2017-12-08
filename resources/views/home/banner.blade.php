@@ -7,8 +7,7 @@
 <!-- Slider end -->
 
 <div id="mainMenuBarAnchor"></div>
-
-<!-- <button type="button" class="form_opener"><i class="fa fa-bars"></i></button> -->
+<a href="javascript:void(0)" data-toggle="modal" data-target="#login-register" class="btn form_opener"><i class="fa fa-bars"></i></a>
 <div class="tp_overlay">
 
     <!-- Top menu -->

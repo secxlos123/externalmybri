@@ -18,7 +18,7 @@
 </ul>
 
 <div class="tp-static-layers">
-    <div class="tp-caption tp-static-layer"
+    <div class="tp-caption tp-static-layer tp-post"
         id="slide-37-layer-2"
         data-x="['left','left','left','left']" data-hoffset="['50','50','50','50']"
         data-y="['bottom','bottom','bottom','bottom']" data-voffset="['230','180','150','100']"
@@ -32,11 +32,11 @@
         data-endslide="5"
         style="z-index: 5;">
         <h1>
-            <span class="t_white">My BRI kini hadir dengan<br> fitur yang lebih baik.</span>
+            <span class="t_white intro-title">My BRI kini hadir dengan<br> fitur yang lebih baik.</span>
         </h1>
     </div>
 
-    <div class="tp-caption tp-static-layer"
+    <div class="tp-caption tp-static-layer tp-subpost"
         id="slide-37-layer-2"
         data-x="['left','left','left','left']" data-hoffset="['50','50','50','50']"
         data-y="['bottom','bottom','bottom','bottom']" data-voffset="['150','100','120','120']"
@@ -47,7 +47,7 @@
         data-startslide="0"
         data-endslide="5"
         style="z-index: 5;">
-        <p class="t_white">
+        <p class="t_white intro-subtitle">
             Dengan adanya website dan aplikasi berbasis Android,<br> kini My BRI hadir dengan beragam fitur dan produk.
         </p>
     </div>

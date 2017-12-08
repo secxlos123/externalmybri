@@ -1,5 +1,5 @@
 <div class="modal fade" id="login-register" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" role="document" style="width: 30%">
+    <div class="modal-dialog modalLogin" role="document">
         <div class="modal-content">
             <div class="modal-body login">
                 <section id="login">
