@@ -69,6 +69,11 @@ Route::get('rincian-produk', 'HomeController@detailProduct')->name('detail-produ
 /**
  * This route for handle homepage
  */
+Route::get('tentang-kami', 'HomeController@aboutUs')->name('about-us');
+
+/**
+ * This route for handle homepage
+ */
 Route::get('daftar-proyek', 'PropertyController@pageProperty')->name('all-properties');
 
 /**

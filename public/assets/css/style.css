@@ -8408,3 +8408,163 @@ li.has-dropdown {
 .call-bri li>a:hover {
     color: #f7941e;
 }
+
+.btn-margin{
+    margin-top: 10px;
+}
+
+@media only screen
+and (max-device-width : 480px) {
+    .navbar-logo{
+        width: 100% !important;
+    }
+}
+
+@media only screen
+and (max-device-width : 768px)
+ {
+    .navbar-logo{
+        width: 50% !important;
+    }
+
+    .table-scroll{
+        overflow: scroll !important;
+    }
+}
+
+@media only screen
+and (max-device-width : 640px)
+ {
+    .navbar-logo{
+        width: 50% !important;
+    }
+
+    .intro-title {
+        line-height: 15%;
+        letter-spacing: 0px;
+        font-weight: 10;
+    }
+
+    h1{
+        line-height: 100%;
+        font-size: 150% !important;
+    }
+    .intro-subtitle {
+        line-height: 8px;
+        letter-spacing: 0px;
+        font-weight: 400;
+        font-size: 200% !important;
+    }
+    .img-thumbnail{
+        width: 100% !important;
+    }
+    .tp-post{
+
+        top: -50px !important;
+    }
+    .tp-subpost{
+
+        top: -40px !important;
+    }
+    .tp-button{
+
+        top: -40px !important;
+    }
+    .owl-wrapper-outer{
+        height: 50vh !important;
+    }
+    .span-info{
+        line-height: 20px !important;
+    }
+    .listing_full_bg{
+        position: absolute !important;
+        top: 100px;
+    }
+    .span-pic{
+        width: 50px !important;
+    }
+    .span-place{
+        margin-top: 30px;
+        font-size: 10pt !important;
+    }
+    .span-map{
+        font-size: 7pt !important;
+    }
+    .span-detail{
+        height: 10px !important;
+    }
+    h3{
+        font-size: 5pt;
+    }
+    .error-text{
+        margin-top: 30px;
+    }
+    #full-slider .owl-prev, #full-slider .owl-next, .three-item .owl-prev, .three-item .owl-next, #partner-slider .owl-prev, #partner-slider .owl-next, #two-col-slider .owl-prev, #two-col-slider .owl-next, #xyz .owl-next, #xyz .owl-prev{
+        top: 0;
+    }
+}
+
+@media only screen
+and (max-device-width : 480px)
+{
+    .button-my-pro-list{
+        margin-left: 25%;
+        margin-bottom: 11px;
+    }
+
+}
+@media only screen
+and (min-device-width : 480px)
+and (max-device-width : 992px)
+{
+    .button-my-pro-list{
+        display: block;
+        margin-left: 35%;
+        margin-right: auto;
+        margin-bottom: 11px;
+    }
+    .span-pic{
+        width: 50px !important;
+    }
+}
+
+@media only screen
+and (min-device-width : 640px)
+and (max-device-width : 1199px)
+{
+
+    .sm-owl-item{
+        width: 20vw !important;
+        margin: 10px;
+    }
+
+    .span-pic{
+        width: 50px !important;
+    }
+    .span-place{
+        margin-top: 30px;
+        font-size: 15pt;
+    }
+    .span-map{
+        font-size: 10pt !important;
+    }
+    .span-detail{
+        height: 15px !important;
+    }
+}
+
+@media only screen
+and (max-device-width : 992px){
+    .navbar-brand > img{
+        width:100%;
+        max-width: 30px;
+    }
+}
+
+.line-separator{
+    font-size: 2rem;
+}
+
+.margin-separator{
+    margin-bottom: 100px;
+}
