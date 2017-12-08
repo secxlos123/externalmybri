@@ -31,7 +31,29 @@ form#form-login div.single-query span.error-help-block {
 form#form-register-store div.single-query span.error-help-block {
     color: white !important;
 }
-.modal-dialog.modalLogin {
-    padding-left: 10%;
-    padding-right: 10%;
+
+@media only screen and (min-width: 768px) {
+    .modal-dialog.modalLogin {
+        width: 30%;
+    }
+}
+
+@media only screen and (max-width: 586px) {
+    .call-bri .list-inline>li {
+        border-right: none;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .modal-dialog.modalLogin {
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+}
+
+@media only screen and (max-width: 884px) {
+    .call-bri {
+        margin-right: 10%;
+        margin-left: 10%;
+    }
 }
