@@ -42,4 +42,9 @@ class HomeController extends Controller
     {
         return view('product.index');
     }
+
+    public function aboutUs()
+    {
+        return view('about-us.index');
+    }
 }

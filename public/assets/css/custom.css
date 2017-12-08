@@ -31,3 +31,7 @@ form#form-login div.single-query span.error-help-block {
 form#form-register-store div.single-query span.error-help-block {
     color: white !important;
 }
+.modal-dialog.modalLogin {
+    padding-left: 10%;
+    padding-right: 10%;
+}

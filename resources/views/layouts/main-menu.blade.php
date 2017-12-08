@@ -3,7 +3,7 @@
 </li>
    </li>
         <li class="">
-            <a href="#">Tentang Kami </a>
+            <a href="{!! route('about-us') !!}">Tentang Kami </a>
         </li>
 
         <li class="">
