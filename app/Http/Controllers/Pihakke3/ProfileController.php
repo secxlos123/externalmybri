@@ -22,11 +22,12 @@ public function index()
     {
         $results = Client::setEndpoint('profile')
                 ->setHeaders(['Authorization' => session('authenticate.token')])->get();
-
+         $city    = Client::setEndpoint('city/')->get(); 
         //return $results;
          return view('pihakke3.pihakke3.edit', [
             'results'   => $results['contents'],
-            'type'      =>  'view'
+            'city'      => $city['contents'],
+            'type'      =>  'edit'
 
             ]);
     }
@@ -47,7 +48,7 @@ public function index()
     	 return view('pihakke3.pihakke3.edit', [
     	 	'results' 	=> $results['contents'],
             'city'      => $city['contents'],
-    	 	'type'		=>	'edit'
+    	 	'type'		=>	'view'
 
     	 	]);
     }
@@ -82,10 +83,7 @@ public function index()
         $results = Client::setEndpoint('cities')
                 ->get();
         return $results['contents']['data'];
-        // return view('pihakke3.pihakke3.edit', [
-        //     'results' => $results['contents']
-
-        //     ]);
+        
     }
 
     /**

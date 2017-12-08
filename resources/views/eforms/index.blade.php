@@ -153,7 +153,7 @@
             current_address.attr('readonly', checked);
 
             if ( checked ) {
-                current_address.val(address).html(address);
+                current_address.val(address);
             }
         });
         
@@ -163,7 +163,7 @@
             address = $(this).val();
 
             if ( checked ) {
-                current_address.val(address).html(address);
+                current_address.val(address);
             }
         });
 

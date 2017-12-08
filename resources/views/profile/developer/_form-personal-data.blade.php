@@ -71,6 +71,19 @@
         </div>
 
         <div class="single-query form-group bottom20">
+            <label>Nomor Hp</label>
+            @if ($type != 'view')
+            {!! Form::text('mobile_phone', (old('mobile_phone')) ? old('mobile_phone') : @$results['mobile_phone'], [
+                'class' => 'form-control numeric', 'maxlength' => 12, 'minlength' => 7
+            ]) !!}
+            @else
+            <span class="form-control" style="border: 0px;">
+                {{@$results['mobile_phone']}}
+            </span>
+            @endif
+        </div>
+
+        <div class="single-query form-group bottom20">
             <label>No Telepon</label>
             @if ($type != 'view')
             {!! Form::text('phone', (old('phone')) ? old('phone') : @$results['phone'], [
@@ -87,7 +100,7 @@
     <div class="col-md-12">
         <div class="pull-right">
             <a href="{{(session('authenticate.role') == 'developer') ? url('dev/profile/personal') : url('profile/personal')}}" class="btn btn-default waves-light waves-effect w-md m-b-20">Batalkan</a>
-            <button type="submit" class="btn btn-orange waves-light waves-effect w-md m-b-20"><i class="mdi mdi-content-save"></i> Simpan</button>
+            <button type="submit" class="btn btn-primary waves-light waves-effect w-md m-b-20"><i class="mdi mdi-content-save"></i> Simpan</button>
         </div>
     </div>
     @else
