@@ -239,7 +239,8 @@ class EformController extends Controller
                 'Authorization' => session('authenticate.token')
             ])->setQuery([
                 'nik' => $request->input('name'),
-                'page' => $request->input('page')
+                'page' => $request->input('page'),
+                'eform'=> $request->has('eform') ? $request->input('eform') : true
             ])
             ->get();
         \Log::info($customers);
