@@ -30,7 +30,7 @@
                                 @include('developer.property_type._form')
 
                                 @foreach($type->photos as $key => $photo)
-                                    {!! Html::image($photo, 'image', [
+                                    {!! Html::image($photo['image'], 'image', [
                                         'class' => 'photoable hide', 'data-name' => "Foto-{$key}"
                                     ]) !!}
                                 @endforeach

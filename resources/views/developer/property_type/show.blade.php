@@ -53,14 +53,14 @@
                             <div id="property-d-1" class="owl-carousel single">
                                 @foreach ($type->photos as $photo)
                                     <div class="item">
-                                        {!! Html::image(image_checker($photo), 'image') !!}
+                                        {!! Html::image(image_checker($photo['image']), 'image') !!}
                                     </div>
                                 @endforeach
                             </div>
                             <div id="property-d-1-2" class="owl-carousel single">
                                 @foreach ($type->photos as $photo)
                                     <div class="item">
-                                        {!! Html::image(image_checker($photo), 'image') !!}
+                                        {!! Html::image(image_checker($photo['image']), 'image') !!}
                                     </div>
                                 @endforeach
                             </div>
