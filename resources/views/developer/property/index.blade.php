@@ -15,10 +15,10 @@
 <section id="agent-2-peperty" class="profile padding">
 	<div class="container">
 		<div class="row">
-          @if(Session::has('flash_message'))
+            @if(Session::has('flash_message'))
             <div class="alert alert-success"><em> {!! session('flash_message') !!}</em></div>
             @elseif(Session::has('error_flash_message'))
-            <div class="alert alert-success"><em> {!! session('error_flash_message') !!}</em></div>
+            <div class="alert alert-danger"><em> {!! session('error_flash_message') !!}</em></div>
             @endif
 			<div class="col-md-12">
 				<div class="btn-project bottom10">
@@ -108,7 +108,7 @@
     <!-- After that you run in console or terminal or cmd "npm run production" -->
     {!! Html::script('js/dropdown.min.js') !!}
 
-    
+
     <!-- @todo waiting to move this script to resource/asset/js/property.js -->
     <script type="text/javascript">
         var table = $('#datatable').dataTable({

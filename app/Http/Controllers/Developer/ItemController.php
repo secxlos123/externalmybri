@@ -21,6 +21,7 @@ class ItemController extends Controller
         'address',
         'price',
         'is_available',
+        'available_status',
         'status',
     ];
 
@@ -115,6 +116,17 @@ class ItemController extends Controller
             ->setHeaders([
                 'Authorization' => session('authenticate.token')
             ])->get();
+        if ($view == "edit") {
+            if (isset($unit['contents']['available_status'])) {
+                if (in_array($unit['contents']['available_status'], ['booked', 'sold'])) {
+                    \Session::flash('error_flash_message', 'Properti tidak dapat diubah.');
+                    return redirect()->route('developer.proyek-item.index');
+                }
+            }else{
+                \Session::flash('error_flash_message', 'Tidak dapat menemukan status properti.');
+                return redirect()->route('developer.proyek-item.index');
+            }
+        }
 
         return view("developer.property_item.{$view}", [
             'unit' => (object) $unit['contents'],
@@ -147,6 +159,7 @@ class ItemController extends Controller
 
         foreach ($units['contents']['data'] as $key => $unit) {
             $unit['is_available']  = $unit['is_available'] ? 'Avaliable' : 'Not Avaliable';
+            $unit['available_status']  = $unit['available_status'] ? ucfirst($unit['available_status']) : 'Not known';
             $unit['status'] = $unit['status'] == 'new' ? 'Baru' : 'Bekas';
             $unit['price']  = 'Rp. ' . number_format($unit['price'], 0, ',', '.');
             $unit['action'] = view('layouts.actions', [
@@ -165,6 +178,7 @@ class ItemController extends Controller
             $units['contents']['prev_page_url'],
             $units['contents']['next_page_url']
         );
+
         return response()->json($units['contents']);
     }
 
