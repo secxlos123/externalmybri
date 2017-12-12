@@ -34,7 +34,7 @@
                                             'class' => 'select2 property_type',
                                             'data-placeholder' => 'Pilih Tipe Proyek'
                                         ]) !!}
-                                        <input type="text" name="value_prop_type" id="value_prop_type">
+                                        <input type="hidden" name="value_prop_type" id="value_prop_type">
                                     </div>
                                 </div>
                             </form>
@@ -56,6 +56,7 @@
                         <th>Address</th>
                         <th>Price</th>
                         <th>Available</th>
+                        <th>Status Property</th>
                         <th>Status</th>
                         <th>Aksi</th>
                     </tr>
@@ -114,6 +115,7 @@
                 { data: 'address', name: 'address' },
                 { data: 'price', name: 'price' },
                 { data: 'is_available', name: 'is_available' },
+                { data: 'available_status', name: 'available_status' },
                 { data: 'status', name: 'status' },
                 { data: 'action', name: 'action', bSortable: false },
             ],
