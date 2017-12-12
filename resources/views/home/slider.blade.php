@@ -1,17 +1,17 @@
 <!-- SLIDE -->
 <ul>
     <li data-transition="fade">
-        {!! Html::image('assets/images/home1-banner1.jpg', '', [
+        {!! Html::image('assets/images/FA_BRI-banner-1.jpg', '', [
             'data-bgposition' => 'center center', 'data-bgfit' => 'cover', 'class' => 'rev-slidebg'
         ]) !!}
     </li>
     <li data-transition="fade">
-        {!! Html::image('assets/images/home1-banner2.jpg', '', [
+        {!! Html::image('assets/images/FA_KPR-banner-2.jpg', '', [
             'data-bgposition' => 'center center', 'data-bgfit' => 'cover', 'class' => 'rev-slidebg'
         ]) !!}
     </li>
     <li data-transition="fade">
-        {!! Html::image('assets/images/home1-banner3.jpg', '', [
+        {!! Html::image('assets/images/FA_my-bri-banner-3.jpg', '', [
             'data-bgposition' => 'center center', 'data-bgfit' => 'cover', 'class' => 'rev-slidebg'
         ]) !!}
     </li>
@@ -31,9 +31,9 @@
         data-startslide="0"
         data-endslide="5"
         style="z-index: 5;">
-        <h1>
+        <!-- <h1>
             <span class="t_white intro-title">My BRI kini hadir dengan<br> fitur yang lebih baik.</span>
-        </h1>
+        </h1> -->
     </div>
 
     <div class="tp-caption tp-static-layer tp-subpost"
@@ -47,9 +47,9 @@
         data-startslide="0"
         data-endslide="5"
         style="z-index: 5;">
-        <p class="t_white intro-subtitle">
+        <!-- <p class="t_white intro-subtitle">
             Dengan adanya website dan aplikasi berbasis Android,<br> kini My BRI hadir dengan beragam fitur dan produk.
-        </p>
+        </p> -->
     </div>
 
     <div class="tp-caption tp-static-layer"
@@ -63,7 +63,7 @@
         data-startslide="0"
         data-endslide="5"
         style="z-index: 5;">
-        <a href="#" class="btn-white border_radius uppercase">Detail</a>
+        <!-- <a href="#" class="btn-white border_radius uppercase">Detail</a> -->
     </div>
 </div>
 <!-- SLIDE end -->
