@@ -390,7 +390,7 @@
                 $("div.developer").show();
                 $("div.property").show();
                 $("div.property_type").show();
-                $("div.property_item").show();
+                $("div.property_unit").show();
                 $('#price').attr('readonly', '');
                 $('#home_location').attr('readonly', '');
                 $('#building_area').attr('readonly', '');
@@ -399,7 +399,7 @@
                 $("div.developer").hide();
                 $("div.property").hide();
                 $("div.property_type").hide();
-                $("div.property_item").hide();
+                $("div.property_unit").hide();
                 $('#price').removeAttr('readonly');
                 $('#home_location').removeAttr('readonly');
                 $('#building_area').removeAttr('readonly');
