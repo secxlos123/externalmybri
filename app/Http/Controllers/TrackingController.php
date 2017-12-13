@@ -107,12 +107,11 @@ class TrackingController extends Controller
      */
     public function datatables(Request $request, $slug = null)
     {
-        $client = new \GuzzleHttp\Client();
-        $res = $client->get('https://private-694ba-mybri.apiary-mock.com/api/v1/eks/tracking?kota=kota&developer=developer&status=status');
-        // dd(json_decode($res->getBody()));
-        $types = json_decode($res->getBody());
-
-        \Log::info($types);
+        $types = Client::setEndpoint('tracking')
+                ->setHeaders([
+                    'Authorization' => session('authenticate.token')
+                ])
+                ->get();
 
         foreach ($types->contents->data as $key => $type) {
             $type['action'] = view('layouts.actions', [
