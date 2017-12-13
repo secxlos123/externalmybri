@@ -23,7 +23,7 @@ class TrackingController extends Controller
                 ])
                 ->get();
 
-        $data = $result['contents']['data'];
+        $data = $result['contents'];
 
         return view('tracking.index', compact('data'));
     }
