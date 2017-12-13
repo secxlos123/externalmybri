@@ -20,18 +20,26 @@
         <li class="active">
             <a href="javascript:void(0)">Developer</a>
         </li>
+        <li class="{!! request()->is('daftar-proyek') ? 'active' : '' !!}">
+            <a href="{!! route('all-properties') !!}">Daftar Properti</a>
+        </li>
+        <li class="{!! request()->is('daftar-developer') ? 'active' : '' !!}">
+            <a href="{!! route('all-developer') !!}">Daftar Developer</a>
+        </li>
     @endif
     <!-- @end You can remove this condition if this module already -->
     <li>
         <a href="{!! session('authenticate') ? route('eform.index') : 'javascript:void(0)' !!}" class="submission-of-credit">Pengajuan Kredit</a>
     </li>
 
-    <li class="{!! request()->is('daftar-proyek') ? 'active' : '' !!}">
-        <a href="{!! route('all-properties') !!}">Daftar Properti</a>
+    <li class="dropdown">
+        <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">List Kerja Sama KPR</a>
+        <ul class="dropdown-menu animated fadeOut">
+            <li><a href="{!! route('all-properties') !!}">Daftar Properti</a></li>
+            <li><a href="{!! route('all-developer') !!}">Daftar Developer</a></li>
+        </ul>
     </li>
-    <li class="{!! request()->is('daftar-developer') ? 'active' : '' !!}">
-        <a href="{!! route('all-developer') !!}">Daftar Developer</a>
-    </li>
+
 @endif
 
 @if ( 'developer' == session('authenticate.role') )
@@ -43,7 +51,7 @@
             <li><a href="{!! route('developer.proyek-item.index') !!}">Unit Proyek</a></li>
         </ul>
     </li>
-      <li>
+    <li>
             <a href="{!! route('developer.developer.index') !!}">Agen Developer</a>
     </li>
 
