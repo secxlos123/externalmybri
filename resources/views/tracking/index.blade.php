@@ -25,16 +25,6 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($types as $key => $value)
-                                                <tr>
-                                                    <td>{{$value->nama_pemohon}}</td>
-                                                    <td>{{$value->developer_name}}</td>
-                                                    <td>{{$value->property_name}}</td>
-                                                    <td>{{$value->ao}}</td>
-                                                    <td>{{$value->status}}</td>
-                                                    <td><a href="{{$action}}">show</a></td>
-                                                </tr>
-                                                @endforeach
                                             </tbody>
                                         </table>
                                     </div>
@@ -63,33 +53,33 @@
     <script type="text/javascript">
         var table = $('#datatable').dataTable({
             processing : true,
-            // serverSide : true,
-            // lengthMenu: [
-            //     [ 10, 25, 50, -1 ],
-            //     [ '10', '25', '50', 'All' ]
-            // ],
-            // language : {
-            //     infoFiltered : '(disaring dari _MAX_ data keseluruhan)'
-            // },
-            // ajax : {
-            //     data : function(d, settings){
+            serverSide : true,
+            lengthMenu: [
+                [ 10, 25, 50, -1 ],
+                [ '10', '25', '50', 'All' ]
+            ],
+            language : {
+                infoFiltered : '(disaring dari _MAX_ data keseluruhan)'
+            },
+            ajax : {
+                data : function(d, settings){
 
-            //         var api = new $.fn.dataTable.Api(settings);
+                    var api = new $.fn.dataTable.Api(settings);
 
-            //         d.page = Math.min(
-            //             Math.max(0, Math.round(d.start / api.page.len())),
-            //             api.page.info().pages
-            //         );
-            //     }
-            // },
-            // aoColumns : [
-            //     { data: 'nama_pemohon', name: 'nama_pemohon' },
-            //     { data: 'developer_name', name: 'developer_name' },
-            //     { data: 'property_name', name: 'property_name' },
-            //     { data: 'ao', name: 'ao' },
-            //     { data: 'status', name: 'status' },
-            //     { data: 'action', name: 'action', bSortable: false },
-            // ],
+                    d.page = Math.min(
+                        Math.max(0, Math.round(d.start / api.page.len())),
+                        api.page.info().pages
+                    );
+                }
+            },
+            aoColumns : [
+                { data: 'nama_pemohon', name: 'nama_pemohon' },
+                { data: 'developer_name', name: 'developer_name' },
+                { data: 'property_name', name: 'property_name' },
+                { data: 'ao', name: 'ao' },
+                { data: 'status', name: 'status' },
+                { data: 'action', name: 'action', bSortable: false },
+            ],
         });
     </script>
 @endpush

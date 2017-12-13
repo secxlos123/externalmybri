@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Client;
 
 class TrackingController extends Controller
 {
@@ -11,15 +12,20 @@ class TrackingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $client = new \GuzzleHttp\Client();
-        $res = $client->get('https://private-694ba-mybri.apiary-mock.com/api/v1/eks/tracking?kota=kota&developer=developer&status=status');
-        // dd(json_decode($res->getBody()));
-        $types = json_decode($res->getBody())->contents->data;
-        // if ( $request->ajax() ) return $this->datatables($request);
+        $result = Client::setEndpoint('tracking')
+                ->setHeaders([
+                    'Authorization' => session('authenticate.token')
+                ])
+                ->setQuery([
+                    'user_id' => 7
+                ])
+                ->get();
 
-        return view('tracking.index', compact('types'));
+        $data = $result['contents']['data'][0];
+
+        return view('tracking.index', compact('data'));
     }
 
     /**
@@ -105,6 +111,8 @@ class TrackingController extends Controller
         $res = $client->get('https://private-694ba-mybri.apiary-mock.com/api/v1/eks/tracking?kota=kota&developer=developer&status=status');
         // dd(json_decode($res->getBody()));
         $types = json_decode($res->getBody());
+
+        \Log::info($types);
 
         foreach ($types->contents->data as $key => $type) {
             $type['action'] = view('layouts.actions', [
