@@ -53,7 +53,6 @@ class TrackingController extends Controller
                     'Authorization' => session('authenticate.token')
                 ])
                 ->get();
-        dd($results);
 
         return view('tracking.show', [
             'results' => $results['contents']
