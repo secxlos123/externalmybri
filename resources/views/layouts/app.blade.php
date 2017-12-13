@@ -74,8 +74,8 @@
                         <ul class="list-inline">
                             <li>Contact <strong>BRI 14017 / 1500017</strong></li>
                             <li><a href="http://bri.co.id/">www.bri.co.id</a></li>
-                            <li><a href="#"><i class="fa fa-facebook-square"></i> Bank BRI</a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i> @promo_BRI</a></li>
+                            <li><a href="https://www.facebook.com/BRIofficialpage" target="_blank"><i class="fa fa-facebook-square"></i> Bank BRI</a></li>
+                            <li><a href="https://twitter.com/promo_BRI" target="_blank"><i class="fa fa-twitter"></i> @promo_BRI</a></li>
                         </ul>
                     </div>
                 </div>

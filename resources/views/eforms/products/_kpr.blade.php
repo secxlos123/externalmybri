@@ -75,7 +75,7 @@
                 <p>Wajib diisi</p>
             </div>
         </div>
-        <div class="form-group units-select property_item" hidden>
+        <div class="form-group units-select property_unit" hidden>
             <label class="control-label col-md-4">Unit Properti *</label>
             <div class="col-md-8">
                 {!! Form::select('property_item', isset($param['property_item_address']) ? [@$param['property_item_id']=>@$param['property_item_address']] : ['' => ''] + [
