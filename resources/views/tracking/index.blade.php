@@ -13,7 +13,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="table-responsive">
-                                        <table class="table table-striped table-bordered unit-list" id="datatable">
+                                        <table class="table table-striped table-bordered" id="datatable">
                                             <thead class="bg-blue">
                                                 <tr>
                                                     <th>Nama pemohon</th>
@@ -65,7 +65,7 @@
                 data : function(d, settings){
 
                     var api = new $.fn.dataTable.Api(settings);
-
+                    console.log(api);
                     d.page = Math.min(
                         Math.max(0, Math.round(d.start / api.page.len())),
                         api.page.info().pages

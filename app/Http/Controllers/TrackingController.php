@@ -12,20 +12,11 @@ class TrackingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $result = Client::setEndpoint('tracking')
-                ->setHeaders([
-                    'Authorization' => session('authenticate.token')
-                ])
-                ->setQuery([
-                    'user_id' => 7
-                ])
-                ->get();
+        if ( $request->ajax() ) return $this->datatables($request);
 
-        $data = $result['contents'];
-
-        return view('tracking.index', compact('data'));
+        return view('tracking.index');
     }
 
     /**
@@ -57,11 +48,15 @@ class TrackingController extends Controller
      */
     public function show($id)
     {
-        $client = new \GuzzleHttp\Client();
-        $res = $client->get('https://private-694ba-mybri.apiary-mock.com/api/v1/eks/tracking/'.$id);
-        // dd(json_decode($res->getBody())->contents);
+        $results = Client::setEndpoint('tracking/'.$id)
+                ->setHeaders([
+                    'Authorization' => session('authenticate.token')
+                ])
+                ->get();
+        dd($results);
+
         return view('tracking.show', [
-            'results' => json_decode($res->getBody())->contents
+            'results' => $results['contents']
             ]);
     }
 
@@ -107,29 +102,30 @@ class TrackingController extends Controller
      */
     public function datatables(Request $request, $slug = null)
     {
-        $types = Client::setEndpoint('tracking')
+        $results = Client::setEndpoint('tracking')
                 ->setHeaders([
                     'Authorization' => session('authenticate.token')
                 ])
                 ->get();
+        \Log::info($results);
 
-        foreach ($types->contents->data as $key => $type) {
+        foreach ($results['contents']['data'] as $key => $type) {
             $type['action'] = view('layouts.actions', [
                 'show' => route('tracking.show', 1)
             ])->render();
-            $types['contents']['data'][$key] = $type;
+            $results['contents']['data'][$key] = $type;
         }
 
-        $types['contents']['draw'] = $request->input('draw');
-        $types['contents']['recordsTotal'] = $types['contents']['total'];
-        $types['contents']['recordsFiltered'] = $types['contents']['total'];
+        $results['contents']['draw'] = $request->input('draw');
+        $results['contents']['recordsTotal'] = $results['contents']['total'];
+        $results['contents']['recordsFiltered'] = $results['contents']['total'];
 
         unset(
-            $types['contents']['path'],
-            $types['contents']['prev_page_url'],
-            $types['contents']['next_page_url']
+            $results['contents']['path'],
+            $results['contents']['prev_page_url'],
+            $results['contents']['next_page_url']
         );
 
-        return response()->json($types['contents']);
+        return response()->json($results['contents']);
     }
 }
