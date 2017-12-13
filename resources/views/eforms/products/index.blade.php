@@ -167,6 +167,11 @@
                         $(this).val(min)
                         dp.val(dp_min);
                         $request_amount.val(static_price - min);
+
+                    } else {
+                        $(this).val(real);
+                        request_amount.val(static_price - real);
+
                     }
                 });
 
