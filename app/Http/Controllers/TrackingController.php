@@ -95,7 +95,7 @@ class TrackingController extends Controller
     }
 
     /**
-     * Initial for datatable property type
+     * Initial for datatable tracking
      *
      * @param  Request $request
      * @return \Illuminate\Http\Response
@@ -111,7 +111,7 @@ class TrackingController extends Controller
 
         foreach ($results['contents']['data'] as $key => $type) {
             $type['action'] = view('layouts.actions', [
-                'show' => route('tracking.show', 1)
+                'show' => route('tracking.show', $type['id'])
             ])->render();
             $results['contents']['data'][$key] = $type;
         }

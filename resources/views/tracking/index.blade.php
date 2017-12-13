@@ -76,7 +76,7 @@
                 { data: 'nama_pemohon', name: 'nama_pemohon' },
                 { data: 'developer_name', name: 'developer_name' },
                 { data: 'property_name', name: 'property_name' },
-                { data: 'ao', name: 'ao' },
+                { data: 'ao_name', name: 'ao_name' },
                 { data: 'status', name: 'status' },
                 { data: 'action', name: 'action', bSortable: false },
             ],

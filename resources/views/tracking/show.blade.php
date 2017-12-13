@@ -76,19 +76,49 @@
                                                     <div class="form-group">
                                                         <label class="col-md-4 control-label">No. Ref :</label>
                                                         <div class="col-md-8">
-                                                            <p class="form-control-static">{{$results->no_ref}}</p>
+                                                            <p class="form-control-static">{{$results->ref_number}}</p>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label class="col-md-4 control-label">Nama Pemohon :</label>
+                                                        <label class="col-md-4 control-label">Tanggal Pengajuan :</label>
                                                         <div class="col-md-8">
-                                                            <p class="form-control-static">{{$results->nama_pemohon}}</p>
+                                                            <p class="form-control-static">{{$results->created_at}}</p>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label class="col-md-4 control-label">Jumlah Pengajuan :</label>
+                                                        <label class="col-md-4 control-label">Jenis KPR :</label>
                                                         <div class="col-md-8">
-                                                            <p class="form-control-static">Rp. {{number_format($results->jumlah_pengajuan,2)}}</p>
+                                                            <p class="form-control-static">{{$results->product_type}}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-md-4 control-label">Nama Developer :</label>
+                                                        <div class="col-md-8">
+                                                            <p class="form-control-static">{{$results->developer_name}}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-md-4 control-label">Nama Proyek :</label>
+                                                        <div class="col-md-8">
+                                                            <p class="form-control-static">{{$results->property_name}}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-md-4 control-label">Tipe Properti :</label>
+                                                        <div class="col-md-8">
+                                                            <p class="form-control-static">{{$results->property_type_name}}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-md-4 control-label">Unit Properti :</label>
+                                                        <div class="col-md-8">
+                                                            <p class="form-control-static">{{$results->property_item_name}}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-md-4 control-label">Harga Rumah :</label>
+                                                        <div class="col-md-8">
+                                                            <p class="form-control-static">Rp. {{number_format($results->price,2)}}</p>
                                                         </div>
                                                     </div>
                                                 </form>
@@ -96,21 +126,51 @@
                                             <div class="col-md-6">
                                                 <form class="form-horizontal" role="form">
                                                     <div class="form-group">
-                                                        <label class="col-md-4 control-label">Nama AO / Officer :</label>
+                                                        <label class="col-md-4 control-label">Luas Bangunan :</label>
                                                         <div class="col-md-8">
-                                                            <p class="form-control-static">{{$results->ao}}</p>
+                                                            <p class="form-control-static">{{$results->building_area}}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-md-4 control-label">Lokasi Rumah :</label>
+                                                        <div class="col-md-8">
+                                                            <p class="form-control-static">{{$results->home_location}}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-md-4 control-label">Jangka Waktu :</label>
+                                                        <div class="col-md-8">
+                                                            <p class="form-control-static"><mark>{{$results->200}}</mark></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-md-4 control-label">KPR Aktif :</label>
+                                                        <div class="col-md-8">
+                                                            <p class="form-control-static"><mark>{{$results->active_kpr}}</mark></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-md-4 control-label">Uang Muka :</label>
+                                                        <div class="col-md-8">
+                                                            <p class="form-control-static"><mark>{{$results->down_payment}}</mark></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-md-4 control-label">Jumlah Permohonan :</label>
+                                                        <div class="col-md-8">
+                                                            <p class="form-control-static"><mark>{{$results->request_amount}}</mark></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-md-4 control-label">Nama AO :</label>
+                                                        <div class="col-md-8">
+                                                            <p class="form-control-static"><mark>{{$results->ao_name}}</mark></p>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="col-md-4 control-label">Kantor Cabang :</label>
                                                         <div class="col-md-8">
-                                                            <p class="form-control-static">{{$results->kacab}}</p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-md-4 control-label">Status Aplikasi :</label>
-                                                        <div class="col-md-8">
-                                                            <p class="form-control-static"><mark>{{$results->status}}</mark></p>
+                                                            <p class="form-control-static"><mark>{{$results->branch}}</mark></p>
                                                         </div>
                                                     </div>
                                                 </form>

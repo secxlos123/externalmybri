@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Developer;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Client;
 
 class TrackingController extends Controller
 {
@@ -12,15 +13,11 @@ class TrackingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $client = new \GuzzleHttp\Client();
-        $res = $client->get('https://private-694ba-mybri.apiary-mock.com/api/v1/eks/tracking?kota=kota&developer=developer&status=status');
-        // dd(json_decode($res->getBody()));
-        $types = json_decode($res->getBody())->contents->data;
-        // if ( $request->ajax() ) return $this->datatables($request);
+        if ( $request->ajax() ) return $this->datatables($request);
 
-        return view('tracking.index', compact('types'));
+        return view('tracking.index');
     }
 
     /**
@@ -52,11 +49,14 @@ class TrackingController extends Controller
      */
     public function show($id)
     {
-        $client = new \GuzzleHttp\Client();
-        $res = $client->get('https://private-694ba-mybri.apiary-mock.com/api/v1/eks/tracking/'.$id);
-        // dd(json_decode($res->getBody())->contents);
+        $result = Client::setEndpoint('tracking/'.$id)
+                ->setHeaders([
+                    'Authorization' => session('authenticate.token')
+                ])->get();
+        dd($result);
+
         return view('tracking.show', [
-            'results' => json_decode($res->getBody())->contents
+            'results' => $result['contents']
             ]);
     }
 
@@ -92,5 +92,40 @@ class TrackingController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * Initial for datatable tracking
+     *
+     * @param  Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function datatables(Request $request, $slug = null)
+    {
+        $results = Client::setEndpoint('tracking')
+                ->setHeaders([
+                    'Authorization' => session('authenticate.token')
+                ])
+                ->get();
+        \Log::info($results);
+
+        foreach ($results['contents']['data'] as $key => $type) {
+            $type['action'] = view('layouts.actions', [
+                'show' => route('tracking.show', 1)
+            ])->render();
+            $results['contents']['data'][$key] = $type;
+        }
+
+        $results['contents']['draw'] = $request->input('draw');
+        $results['contents']['recordsTotal'] = $results['contents']['total'];
+        $results['contents']['recordsFiltered'] = $results['contents']['total'];
+
+        unset(
+            $results['contents']['path'],
+            $results['contents']['prev_page_url'],
+            $results['contents']['next_page_url']
+        );
+
+        return response()->json($results['contents']);
     }
 }
