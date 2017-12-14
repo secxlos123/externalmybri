@@ -1,6 +1,7 @@
 <!-- Slider -->
 <div class="rev_slider_wrapper">
     <div id="rev_overlaped" class="rev_slider"  data-version="5.0">
+        @include('home.calculator.sliderdown')
         @include('home.slider')
     </div>
 </div>

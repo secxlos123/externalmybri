@@ -1,3 +1,114 @@
+
+/*css kalkulator*/
+.credit-scroll{
+    height: 45vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.credit-scroll > label{
+    color: white;
+}
+.base { 
+    background: #6391f1; 
+    display: inline-block; 
+    height: 55px; 
+    margin-right: 160px; 
+    margin-top: 0px; 
+    position: absolute; 
+    width: 250px;
+    z-index: 99;
+    color: white;
+    right: 0;
+    cursor: pointer;
+} 
+
+.base:before { 
+    border-top: 45px solid #6391f1; 
+    border-left: 125px solid transparent; 
+    border-right: 125px solid transparent; 
+    content: ""; 
+    height: 0; 
+    right: 0; 
+    position: absolute; 
+    top: 55px; 
+    width: 0; }
+
+.base:hover{  
+    color: yellow;
+}
+
+.credit_text{
+    color: white;
+    margin: auto;
+    font-size: 1.75rem;
+    padding: 30px 40px;
+    font-family: 'robotoregular';
+}
+.header_credit{
+    margin-top: 20px;
+    text-align: center;
+}
+
+.nav-pills > li > a:hover {
+    background-color: rgba(0, 0, 0, 0);
+    transform: scale(1.1) translateY(-10px);
+}
+
+.nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover{
+    background-color: rgba(0, 0, 0, 0);
+}
+
+
+#credit_simulation{
+   background-color: rgba(5, 82, 152, 0.9);
+    color: white;
+    height: 100vh;
+    z-index: 999999999;
+    position: absolute;
+    top: 0;
+    width: 100vw;
+}
+
+.image_wrap{
+    background-color: white;
+    width: 100px;
+    height: 70px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    margin-bottom: 0px;
+    float: left;
+}
+
+.img-credit{
+    width: 100px;
+}
+
+.left100{
+    margin-left: 100px;
+}
+
+.credit-input{
+    height: 50px;
+}
+
+.btn-transparent{
+    width: 300px;
+    border: 1px solid white;
+    padding: 10px;
+}
+
+.btn-transparent:hover{
+    background-color: #F7941E;
+    color: black;
+}
+
+.close{
+    opacity: 1 !important;
+    position: absolute;
+    right: 30px; 
+    margin-bottom: 10px;
+}
+/*end css calculator*/
 nav.bootsnav .dropdown.megamenu-fw {
     position: static;
 }
