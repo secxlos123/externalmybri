@@ -29,7 +29,7 @@ class HomeController extends Controller
             });
         }
       config(['jsvalidation.focus_on_error' => false]);
-    	return view('home.index', compact('developers','rincian_pinjaman','detail_angsuran'));
+    	return view('home.index', compact('developers'));
     }
 
     /**
