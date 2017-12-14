@@ -53,7 +53,7 @@ class TrackingController extends Controller
                     'Authorization' => session('authenticate.token')
                 ])
                 ->get();
-
+        \Log::info($results['contents']);
         return view('tracking.show', [
             'results' => $results['contents']
             ]);
@@ -109,6 +109,7 @@ class TrackingController extends Controller
         \Log::info($results);
 
         foreach ($results['contents']['data'] as $key => $type) {
+            $type['ao_name'] = $type['ao_name'];
             $type['action'] = view('layouts.actions', [
                 'show' => route('tracking.show', $type['id'])
             ])->render();
