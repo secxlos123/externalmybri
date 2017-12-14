@@ -42,7 +42,7 @@
       </div>
       <div class="col-md-12">
           <div class="tab-content">
-              <div id="credit1" class="tab-pane fade in active">
+              <div id="credit1" class="tab-pane fade in active bordered-pane">
                   @include('home.calculator._form_home')   
               </div>
               <div id="credit2" class="tab-pane fade">           
