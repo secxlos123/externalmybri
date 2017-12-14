@@ -41,8 +41,7 @@ class HomeController extends Controller
 
     public function DataEform(Request $request)
     {
-    	 // $data = Client::setEndpoint('eforms')->setHeaders(['Authorization' => session('authenticate.token')])->get();
-    	 // return view('developer.home_dev_sales.eform_pengajuan.index', compact('data'));
+    	
     	 if($request->ajax() ) return $this->datatables($request);
     	 return view('developer.home_dev_sales.eform_pengajuan.index');
     }
@@ -59,6 +58,8 @@ class HomeController extends Controller
     	$data_eform = Client::setEndpoint('eforms')
     	->setHeaders(['Authorization' => session('authenticate.token')])
     	->setQuery([
+            //'limit'            => $request->input('length'),
+            'page'       => (int) $request->input('page') + 1,
     		'ref_number' => $request->input('ref_number'),
     		'leads'		 => $request->input('nik'),
     		'status'	 => $request->input('stat_pengajuan'),
