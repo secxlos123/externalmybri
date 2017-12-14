@@ -14,16 +14,6 @@ class DevelopersController extends Controller
      */
     public function index()
     {
-        // $results = Client::setBase('common')->setEndpoint('developers')
-        //     ->setHeaders( [ 'Authorization' => session('authenticate.token') ] )
-        //     ->setQuery([
-        //         'page' => request()->get('page', 1)
-        //         ])
-        //     ->get();
-        // dd($results);
-        // return response()->json(
-        //     view('list-developer._content-developer', [ 'results' => $results['contents'] ])->render()
-        // );
         return view('list-developer.index');
     }
 
@@ -104,8 +94,8 @@ class DevelopersController extends Controller
         $results = Client::setBase('common')->setEndpoint('developers')
             ->setHeaders( [ 'Authorization' => session('authenticate.token') ] )
             ->setQuery([
-                'page' => request()->get('page', 1),
-                'without_independent' => true
+                'page' => ($request->input('page')) ? $request->input('page') : 1,
+                'without_independent' => false
                 ])
             ->get();
 
