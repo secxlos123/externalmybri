@@ -13,7 +13,7 @@
                             <div class="row">
                                 <div class="tracking-widget cms-tracking-widget">
                                     <div class="tracking-card">
-                                        <div class="card-box widget-box-three {{($results->status == 0) ? 'active' : '' }}">
+                                        <div class="card-box widget-box-three {{($results->status == 'Pengajuan Kredit') ? 'active' : '' }}">
                                             <div class="bg-icon">
                                                 <i class="fa fa-envelope-o"></i>
                                             </div>
@@ -23,7 +23,7 @@
                                         </div>
                                     </div>
                                     <div class="tracking-card">
-                                        <div class="card-box widget-box-three {{($results->status == 1) ? 'active' : '' }}">
+                                        <div class="card-box widget-box-three {{($results->status == 'Disposisi Pengajuan') ? 'active' : '' }}">
                                             <div class="bg-icon">
                                                 <i class="fa fa-crosshairs"></i>
                                             </div>
@@ -33,7 +33,7 @@
                                         </div>
                                     </div>
                                     <div class="tracking-card">
-                                        <div class="card-box widget-box-three {{($results->status == 2) ? 'active' : '' }}">
+                                        <div class="card-box widget-box-three {{($results->status == 'Prakarsa') ? 'active' : '' }}">
                                             <div class="bg-icon">
                                                 <i class="fa fa-hdd-o"></i>
                                             </div>
@@ -43,7 +43,7 @@
                                         </div>
                                     </div>
                                     <div class="tracking-card">
-                                        <div class="card-box widget-box-three {{($results->status == 3) ? 'active' : '' }}">
+                                        <div class="card-box widget-box-three {{($results->status == 'Proses CLF') ? 'active' : '' }}">
                                             <div class="bg-icon">
                                                 <i class="fa fa-suitcase"></i>
                                             </div>
@@ -53,7 +53,7 @@
                                         </div>
                                     </div>
                                     <div class="tracking-card">
-                                        <div class="card-box widget-box-three {{($results->status == 4) ? 'active' : '' }}">
+                                        <div class="card-box widget-box-three {{($results->status != 'Pengajuan Kredit' && $results->status != 'Proses CLF' && $results->status != 'Prakarsa' && $results->status != 'Disposisi Pengajuan' && $results->status != 'Kredit Ditolak') ? 'active' : '' }}">
                                             <div class="bg-icon">
                                                 <i class="fa fa-check"></i>
                                             </div>
