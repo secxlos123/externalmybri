@@ -45,10 +45,7 @@
               <div id="credit1" class="tab-pane fade in active">
                   @include('home.calculator._form_home')   
               </div>
-              <div id="credit2" class="tab-pane fade">
-              <div class="credit-scroll">
-                  
-              </div>           
+              <div id="credit2" class="tab-pane fade">           
               </div>
               <div id="credit3" class="tab-pane fade">
                                 
