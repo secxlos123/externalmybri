@@ -109,7 +109,7 @@ class TrackingController extends Controller
         \Log::info($results);
 
         foreach ($results['contents']['data'] as $key => $type) {
-            $type['ao_name'] = $type['ao_name'];
+            $type['ao_name'] = $type['ao'];
             $type['action'] = view('layouts.actions', [
                 'show' => route('tracking.show', $type['id'])
             ])->render();

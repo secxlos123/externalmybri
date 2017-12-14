@@ -95,7 +95,7 @@ class DevelopersController extends Controller
             ->setHeaders( [ 'Authorization' => session('authenticate.token') ] )
             ->setQuery([
                 'page' => ($request->input('page')) ? $request->input('page') : 1,
-                'without_independent' => false
+                'without_independent' => true
                 ])
             ->get();
 
