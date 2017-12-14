@@ -156,10 +156,10 @@ class ItemController extends Controller
                 'search'=> $request->input('search.value'),
             ])
             ->get();
-
+            \Log::info($units['contents']['data']);
         foreach ($units['contents']['data'] as $key => $unit) {
             $unit['is_available']  = $unit['is_available'] ? 'Avaliable' : 'Not Avaliable';
-            $unit['available_status']  = $unit['available_status'] ? ucfirst($unit['available_status']) : 'Not known';
+            $unit['prop_status']  = $unit['prop_status'] ? ucfirst($unit['prop_status']) : 'Not known';
             $unit['status'] = $unit['status'] == 'new' ? 'Baru' : 'Bekas';
             $unit['price']  = 'Rp. ' . number_format($unit['price'], 0, ',', '.');
             $unit['action'] = view('layouts.actions', [
