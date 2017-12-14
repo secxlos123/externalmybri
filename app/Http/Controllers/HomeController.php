@@ -28,7 +28,15 @@ class HomeController extends Controller
                 return $developers->push( array_only($developer, ['image', 'company_name']) );
             });
         }
-
+         $dataSend = array(
+                 'type' => 'generateFlat',
+                 'price' => '4200000',
+                 'term' => 12,
+                 'rate' => 2,
+                 'downPayment' => 10
+            );
+         $response = Client::setEndpoint('calculator')->setBody($dataSend)->post();
+            
         $rincian_pinjaman =  null;
         $detail_angsuran =   null;
         config(['jsvalidation.focus_on_error' => false]);

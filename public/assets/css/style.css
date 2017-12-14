@@ -1,5 +1,15 @@
 
 /*css kalkulator*/
+
+.padding0{
+    padding: 0;
+ 
+}
+.tab-pane{
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 10px;
+}
 .credit-scroll{
     height: 45vh;
     overflow-y: scroll;
@@ -45,7 +55,6 @@
     font-family: 'robotoregular';
 }
 .header_credit{
-    margin-top: 20px;
     text-align: center;
 }
 
@@ -77,6 +86,7 @@
     border-top-right-radius: 8px;
     margin-bottom: 0px;
     float: left;
+    margin: -10px -10px 10px;
 }
 
 .img-credit{
@@ -3787,8 +3797,14 @@ a.back-to:hover, a.back-to:focus{ background:#173471;}
   border-color:#1F3F81;
   color: #fff;
 }
-.panel-title{
-    font-size:18px;
+.panel-title {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 0;
+  margin-top: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-family: 'Hind Madurai', sans-serif;
 }
 .panel-default .panel-body {
   padding: 24px 15px;
@@ -8678,4 +8694,14 @@ and (max-device-width : 992px){
 
 .margin-separator{
     margin-bottom: 100px;
+}
+.panel {
+    border: 2px solid #f3f3f3;
+     
+}
+
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:focus,
+.nav-tabs > li.active > a:hover {
+  color: #7fc1fc;
 }

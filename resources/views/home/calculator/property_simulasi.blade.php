@@ -11,7 +11,7 @@
     <div class="col-md-4">
         <div class="panel panel-color panel-primary">
             <div class="panel-heading">
-                <h3 class="panel-title">Simulasi Perhitungan Kredit</h3>
+                <h3 class="panel-title text-uppercase">Simulasi Perhitungan Kredit</h3>
             </div>
             <div class="panel-body" style="border: none;">
                     @include('home.calculator._form_credit_simulation')
@@ -23,19 +23,19 @@
             <li class="active">
                 <a href="#developer-info" data-toggle="tab" aria-expanded="true">
                     <span class="visible-xs"><i class="fa fa-info"></i></span>
-                    <span class="hidden-xs">Rincian Pinjaman</span>
+                    <span class="hidden-xs text-uppercase">Rincian Pinjaman</span>
                 </a>
             </li>
             <li class="">
                 <a href="#contact-list" data-toggle="tab" aria-expanded="false">
                     <span class="visible-xs"><i class="fa fa-phone"></i></span>
-                    <span class="hidden-xs">Detail Angsuran</span>
+                    <span class="hidden-xs text-uppercase">Detail Angsuran</span>
                 </a>
             </li>
             <li class="">
                 <a href="#property-list" data-toggle="tab" aria-expanded="false">
                     <span class="visible-xs"><i class="fa fa-list"></i></span>
-                    <span class="hidden-xs">Download</span>
+                    <span class="hidden-xs text-uppercase">Download</span>
                 </a>
             </li>
         </ul>

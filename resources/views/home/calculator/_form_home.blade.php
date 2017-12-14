@@ -83,7 +83,7 @@
     </div>
 
       <div class="col-md-3">
-          <div class="form-group col-md-12" id="interest_rate_div">
+          <div class="form-group col-md-12 padding0" id="interest_rate_div">
             <label>Suku Bunga *:</label>
             <div class="input-group col-md-12">
              {!! Form::text('rate', '', ['class' => 'form-control numericOnly ','placeholder' => '0','id'=>'rate','maxlength'=>'2']) !!}
@@ -91,7 +91,7 @@
             </div>
           </div>        
 
-          <div class="form-group col-md-12" id="interest_rate_fixed_div">
+          <div class="form-group col-md-12 padding0" id="interest_rate_fixed_div">
             <label>Suku Bunga Fixed *:</label>                                         
             <div class="input-group">
                 {!! Form::text('interest_rate_fixed', '', ['class' => 'form-control numericOnly ','placeholder' => '0','id'=>'interest_rate_efektif','maxlength'=>'2']) !!}
@@ -106,7 +106,7 @@
 
     <!-- <div class="row"> -->
     <div class="col-md-3">
-       <div class="form-group col-md-12" id="time_period_fixed_div">
+       <div class="form-group col-md-12 padding0" id="time_period_fixed_div">
           <label>Jangka Waktu Fixed *:</label>
           <div class="input-group">
             {!! Form::text('time_period_fixed', '', ['class' => 'form-control numericOnly ','placeholder' => '0','id'=>'time_period_fixed','maxlength'=>'2']) !!}
