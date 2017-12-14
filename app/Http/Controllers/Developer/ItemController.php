@@ -21,7 +21,7 @@ class ItemController extends Controller
         'address',
         'price',
         'is_available',
-        'available_status',
+        'prop_status',
         'status',
     ];
 
@@ -148,12 +148,14 @@ class ItemController extends Controller
                 'Authorization' => session('authenticate.token')
             ])
             ->setQuery([
+                'limit'            => $request->input('length'),
                 'property_type_id' => $request->input('property_type_id'),
-                'is_available' => $request->input('is_available'),
-                'status' => $request->input('status'),
-                'price' => $request->input('price'),
-                'sort'  => $this->columns[$sort['column']] .'|'. $sort['dir'],
-                'search'=> $request->input('search.value'),
+                'is_available'     => $request->input('is_available'),
+                'status'           => $request->input('status'),
+                'price'            => $request->input('price'),
+                'sort'             => $this->columns[$sort['column']] .'|'. $sort['dir'],
+                'page'             => (int) $request->input('page') + 1,
+                'search'           => $request->input('search.value'),
             ])
             ->get();
             \Log::info($units['contents']['data']);
@@ -208,4 +210,5 @@ class ItemController extends Controller
 
         return redirect()->route('developer.proyek-item.index');
     }
+
 }

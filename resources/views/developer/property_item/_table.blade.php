@@ -92,6 +92,7 @@
         var table = $('#datatable').dataTable({
             processing : true,
             serverSide : true,
+            order : [[3, 'asc']],
             lengthMenu: [
                 [ 10, 25, 50, -1 ],
                 [ '10', '25', '50', 'All' ]
@@ -146,5 +147,12 @@
         $('#btn-filter').on('click', function (event) {
             table.fnDraw();
         });
+         $('#datatable_next').on( 'click', function (event) {
+                 table.page( 'next' ).fnDraw( 'page' );
+                } );
+ 
+               $('#datatable_previous').on( 'click', function (event) {
+                 table.page( 'previous' ).fnDraw( 'page' );
+             } );
     </script>
 @endpush
