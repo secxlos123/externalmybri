@@ -154,8 +154,8 @@ class DropdownController extends Controller
         if ($request->has('distance')) {
             if (!$request->has('long') && !$request->has('lat')) {
                 $request->merge([
-                    'lat' => -6.193686,
-                    'long' => 106.636042
+                    'lat' => -6.21670,
+                    'long' => 106.81350
                 ]);
             }
         }

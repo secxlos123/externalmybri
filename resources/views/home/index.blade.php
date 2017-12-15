@@ -53,8 +53,8 @@
     <!-- This is content of list developers end -->
 
     <div class="hidden-content hide">
-        <input name="hidden-long" value="106.63604">
-        <input name="hidden-lat" value="-6.19368">
+        <input name="hidden-long" value="106.81350">
+        <input name="hidden-lat" value="-6.21670">
 
     </div>
 @endsection
