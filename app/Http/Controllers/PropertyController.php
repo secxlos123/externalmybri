@@ -14,8 +14,8 @@ class PropertyController extends Controller
      */
     public function index(Request $request)
     {
-        $long = 106.81388;
-        $lat = -6.21745;
+        $long = 106.636042;
+        $lat = -6.193686;
 
         if ( $request->has('lat') ){
             $lat = $request->input('lat');
@@ -122,8 +122,8 @@ class PropertyController extends Controller
                 'prop_city_id' => ($request->input('prop_city_id')) ? $request->input('prop_city_id') : null,
                 'dev_id' => ($request->input('dev_id')) ? $request->input('dev_id') : null,
                 'without_independent' => true,
-                'long' => ($request->input('long')) ? $request->input('long') : 106.813880,
-                'lat' => ($request->input('lat')) ? $request->input('lat') : -6.217458,
+                'long' => ($request->input('long')) ? $request->input('long') : 106.636042,
+                'lat' => ($request->input('lat')) ? $request->input('lat') : -6.193686,
                 'price' => ($request->input('price')) ? $request->input('price') : null,
                 'category' => ($request->input('category')) ? $request->input('category') : null,
                 'bedroom' => ($request->input('bedroom')) ? $request->input('bedroom') : null,
