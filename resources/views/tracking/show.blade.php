@@ -158,7 +158,7 @@
                                                     <div class="form-group">
                                                         <label class="col-md-4 control-label">Jumlah Permohonan :</label>
                                                         <div class="col-md-8">
-                                                            <p class="form-control-static"><mark>{{$results$results['kpr']['request_amount']}}</mark></p>
+                                                            <p class="form-control-static"><mark>{{$results['kpr']['request_amount']}}</mark></p>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
