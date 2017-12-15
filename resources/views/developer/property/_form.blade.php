@@ -181,7 +181,7 @@
     <div class="col-md-1"></div>
     <div class="col-md-10 {{ $errors->has('description') ? ' has-error' : '' }}">
         <h3 class="bottom10">Deskripsi Properti</h3>
-        {!! Form::textarea('description', old('description'), ['class' => 'editor desc', 'style' => 'width: 100%;', 'maxlength' => 255
+        {!! Form::textarea('description', old('description'), ['class' => 'editor desc', 'style' => 'width: 100%;'
         ]) !!}
 
         @if ($errors->has('description'))
@@ -197,7 +197,7 @@
     <div class="col-md-1"></div>
     <div class="col-md-10 {{ $errors->has('facilities') ? ' has-error' : '' }}">
         <h3 class="bottom10">Fasilitas</h3>
-        {!! Form::textarea('facilities', old('facilities'), ['class' => 'editor fac', 'style' => 'width: 100%;', 'maxlength' => 255
+        {!! Form::textarea('facilities', old('facilities'), ['class' => 'editor fac', 'style' => 'width: 100%;'
         ]) !!}
 
         @if ($errors->has('facilities'))
