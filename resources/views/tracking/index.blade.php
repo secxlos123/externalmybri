@@ -19,7 +19,6 @@
                                                     <th>Nama pemohon</th>
                                                     <th>Developer</th>
                                                     <th>Property</th>
-                                                    <th>AO</th>
                                                     <th>Status</th>
                                                     <th>Aksi</th>
                                                 </tr>
