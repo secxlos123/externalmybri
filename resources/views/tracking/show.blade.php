@@ -138,7 +138,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label class="col-md-4 control-label">Jangka Waktu :</label>
+                                                        <label class="col-md-4 control-label">Jangka Waktu (Bulan) :</label>
                                                         <div class="col-md-8">
                                                             <p class="form-control-static">{{@$results['kpr']['year']}}</p>
                                                         </div>
