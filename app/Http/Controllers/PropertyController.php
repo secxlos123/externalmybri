@@ -14,18 +14,19 @@ class PropertyController extends Controller
      */
     public function index(Request $request)
     {
-        // if (!$request->input('lat') || !$request->input('long')) {
-            $client = new \GuzzleHttp\Client();
-            $res = $client->request('GET', 'http://freegeoip.net/json/');
-            $getIP = json_decode( '[' . $res->getBody()->getContents() . ']' )[0];
-            $long = $getIP->longitude;
-            $lat = $getIP->latitude;
-            \Log::info("check long ======= ".$long);
-            \Log::info("check lat ======= ".$lat);
-        // }else{
-        //     $long = $request->input('long');
-        //     $lat = $request->input('lat');
-        // }
+        $long = 106.81388;
+        $lat = -6.21745;
+
+        if ( $request->has('lat') ){
+            $lat = $request->input('lat');
+
+        }
+
+        if ( $request->has('long') ){
+            $long = $request->input('long');
+
+        }
+
         $properties = Client::setBase('common')
             ->setEndpoint('nearby-properties')
             ->setQuery([

@@ -52,6 +52,11 @@
     </section>
     <!-- This is content of list developers end -->
 
+    <div class="hidden-content hide">
+        <input name="hidden-long" value="106.81388">
+        <input name="hidden-lat" value="-6.21745">
+
+    </div>
 @endsection
 
 <!-- This is styles for this page -->
@@ -100,22 +105,37 @@
         // }
 
         // function properties(position) {
-            $.ajax({
-                url: '/properties',
-                data: {
-                    lat: null,
-                    long: null
-                }
-            })
-            .done(function (response) {
-                $('#content-galery').html(response);
-            })
-            .fail(function (response) {
-                $('#content-galery').hide();
-                $('#text-nearby-property').addClass('hide');
-                $('.error-server').removeClass('hide');
-            });
         // }
+
+        $(document).ready(function(){
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        })
+
+        function showPosition(position) {
+            $('input[name="hidden-long"]').val(position.coords.longitude);
+            $('input[name="hidden-lat"]').val(position.coords.latitude);
+        }
+
+        $.ajax({
+            url: '/properties',
+            data: {
+                long: $('input[name="hidden-long"]').val(),
+                lat: $('input[name="hidden-lat"]').val()
+            }
+        })
+        .done(function (response) {
+            $('#content-galery').html(response);
+        })
+        .fail(function (response) {
+            $('#content-galery').hide();
+            $('#text-nearby-property').addClass('hide');
+            $('.error-server').removeClass('hide');
+        });
     </script>
 @endpush
 <!-- This is scripts for this page end -->
