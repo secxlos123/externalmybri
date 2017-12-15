@@ -8,38 +8,62 @@
                     <label class="col-md-8 control-label">: Rp. <span class="currency"> {{$rincian_pinjaman['rincian']['uang_muka']}}</span></label>
                 </div>
             </div>
+            <?php
+                $suku_bunga = 'Suku Bunga';
+                if($interest_rate_type == 2){
+                   $suku_bunga = 'Suku Bunga';
+                }else {
+                   $suku_bunga = 'Suku Bunga Fixed'; 
+                }
+            ?>
             <div class="form-group">
-                <label class="col-md-4 control-label"> Suku Bunga </label>
+                <label class="col-md-4 control-label"> {{$suku_bunga}} </label>
                 <div class="col-md-8">
                     <label class="col-md-8 control-label">: {{$rincian_pinjaman['rincian']['suku_bunga']}} </label>
                 </div>
-            </div>
+            </div>       
+        @if($interest_rate_type==4 || $interest_rate_type== 3)
             <div class="form-group">
                 <label class="col-md-4 control-label"> Suku Bunga Floating</label>
                 <div class="col-md-8">
                    <label class="col-md-8 control-label">: {{$rincian_pinjaman['rincian']['suku_bunga_floating']}} </label>
                 </div>
             </div>
+         @endif   
+
+        @if($interest_rate_type==4)   
             <div class="form-group">
-                <label class="col-md-4 control-label">Kredit Fix    </label>
+                <label class="col-md-4 control-label"> Suku Bunga Floor</label>
                 <div class="col-md-8">
-                    <label class="col-md-8 control-label">: {{$rincian_pinjaman['rincian']['kredit_fix']}}</label>
+                   <label class="col-md-8 control-label">: {{$rincian_pinjaman['rincian']['suku_bunga_floor']}} </label>
                 </div>
-            </div> 
+            </div>
+
+        @endif
         </div>
         <div class="col-md-12"> 
             <div class="form-group">
-                <label class="col-md-4 control-label"> Lama Pinjaman </label>
+                <label class="col-md-4 control-label"> Jangka Waktu Total </label>
                 <div class="col-md-8">
                      <label class="col-md-8 control-label">: {{$rincian_pinjaman['rincian']['lama_pinjaman']}} </label>
                 </div>
             </div>
+        @if($interest_rate_type==4 || $interest_rate_type==3)
             <div class="form-group">
-                <label class="col-md-4 control-label"> Pinjaman Maxsimum</label>
+                <label class="col-md-4 control-label"> Jangka  Waktu Fixed</label>
                 <div class="col-md-8">
-                    <label class="col-md-8 control-label">: {{$rincian_pinjaman['rincian']['pinjaman_maksimum']}} </label>
+                    <label class="col-md-8 control-label">: {{$rincian_pinjaman['rincian']['kredit_fix']}} </label>
                 </div>
             </div>
+        @endif    
+        @if($interest_rate_type==4)
+             <div class="form-group">
+                <label class="col-md-4 control-label"> Jangka Waktu Floor</label>
+                <div class="col-md-8">
+                    <label class="col-md-8 control-label">: {{$rincian_pinjaman['rincian']['jangka_waktu_floor']}} </label>
+                </div>
+            </div>
+        @endif
             <div class="form-group">
                 <label class="col-md-4 control-label">Angsuran Per Bulan </label>
                 <div class="col-md-8">

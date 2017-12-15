@@ -275,7 +275,7 @@
                     +"<div class=\"row\">"
                         +"<div class=\"col-sm-12 text-center\">"
                             +"<h2 class=\"uppercase\">Tidak dapat mencari lokasi PROPERTI</h2>"
-                            +"<p class=\"heading_space\">Hidupkan GPS pada brower anda agar dapat melihat daftar PROPERTI terdekat.</p>"
+                            +"<p class=\"heading_space\">Hidupkan GPS pada browser anda agar dapat melihat daftar PROPERTI terdekat.</p>"
                         +"</div>"
                     +"</div>"
                 +"</div>");
