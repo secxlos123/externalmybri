@@ -16,7 +16,7 @@ class DropdownController extends Controller
     public function developers(Request $request)
     {
         $body    = [ 'id' => 'dev_id', 'text' => 'company_name' ];
-        $options = [ 'search' => $request->input('name') ];
+        $options = [ 'search' => $request->input('name')];
         return $this->init('developers', $body, $options, 'common');
     }
 
@@ -221,5 +221,25 @@ class DropdownController extends Controller
         }
 
         return response()->json(['result' => $kanwil['contents']]);
+    }
+
+    /**
+     * This logic for get list of developer from api
+     *
+     * @param  Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public static function developersList()
+    {
+        $body    = [ 'id' => 'dev_id', 'text' => 'company_name' ];
+        $options = [ 'without_independent' => true ];
+        $base = 'common';
+        $endpoint = 'developers';
+
+        $results = Client::setBase($base)->setEndpoint($endpoint)
+            ->setHeaders( [ 'Authorization' => session('authenticate.token') ] )
+            ->setQuery( array_merge(['page' => request()->get('page', 1) ], $options) )
+            ->get();
+        return $results;
     }
 }

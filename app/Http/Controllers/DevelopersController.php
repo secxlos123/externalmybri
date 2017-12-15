@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Client;
+use App\Http\Controllers\DropdownController;
 
 class DevelopersController extends Controller
 {
@@ -91,14 +92,15 @@ class DevelopersController extends Controller
      */
     public function getListDeveloper(Request $request)
     {
-        $results = Client::setBase('common')->setEndpoint('developers')
-            ->setHeaders( [ 'Authorization' => session('authenticate.token') ] )
-            ->setQuery([
-                'page' => request()->get('page', 1),
-                'without_independent' => true,
-                'limit' => 9
-                ])
-            ->get();
+        // $results = Client::setBase('common')->setEndpoint('developers')
+        //     ->setHeaders( [ 'Authorization' => session('authenticate.token') ] )
+        //     ->setQuery([
+        //         'page' => request()->get('page', 1),
+        //         'without_independent' => true,
+        //         'limit' => 9
+        //         ])
+        //     ->get();
+        $results = DropdownController::developersList();
         \Log::info($results);
         return response()->json(
             view('list-developer._content-developer', [ 'results' => $results['contents'], 'id' => 'dev' ])->render()
