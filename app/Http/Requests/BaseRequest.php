@@ -12,7 +12,7 @@ class BaseRequest extends FormRequest
      * @var array
      */
     protected $currency = [
-        'price', 'request_amount', 'down_payment', 'salary', 'other_salary', 
+        'price', 'request_amount', 'down_payment', 'salary', 'other_salary',
         'loan_installment', 'dependent_amount', 'couple_salary', 'couple_other_salary',
         'couple_loan_installment'
     ];
@@ -41,7 +41,7 @@ class BaseRequest extends FormRequest
 
     /**
      * Remove format of currency
-     * 
+     *
      * @return void
      */
     public function removeFormatCurrency()
@@ -60,15 +60,15 @@ class BaseRequest extends FormRequest
 
     /**
      * Set default Latitude or Longitude
-     * 
+     *
      * @return void
      */
     public function defaultLatLong()
     {
         if ($this->has('latitude') || $this->has('longitude')) {
             $this->merge([
-                'latitude' => $this->get('latitude', '-6.2773'),
-                'longitude' => $this->get('longitude', '106.66101')
+                'latitude' => $this->get('latitude', '-6.193686'),
+                'longitude' => $this->get('longitude', '106.636042')
             ]);
         }
     }
