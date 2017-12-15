@@ -152,13 +152,13 @@
                                                     <div class="form-group">
                                                         <label class="col-md-4 control-label">Uang Muka :</label>
                                                         <div class="col-md-8">
-                                                            <p class="form-control-static">{{number_format(@$results['kpr']['down_payment'], 2, ',', '.')}}</p>
+                                                            <p class="form-control-static">Rp. {{number_format(@$results['kpr']['down_payment'], 2, ',', '.')}}</p>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="col-md-4 control-label">Jumlah Permohonan :</label>
                                                         <div class="col-md-8">
-                                                            <p class="form-control-static">{{number_format(@$results['kpr']['request_amount'], 2, ',', '.')}}</p>
+                                                            <p class="form-control-static">Rp. {{number_format(@$results['kpr']['request_amount'], 2, ',', '.')}}</p>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
