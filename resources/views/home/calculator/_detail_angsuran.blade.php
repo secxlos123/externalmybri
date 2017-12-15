@@ -29,18 +29,14 @@
     </table>
 </div>
 @push('styles')
- 
-		{!! Html::style('assets/css/jquery.dataTables.min.css') !!}
+	{!! Html::style('assets/css/jquery.dataTables.min.css') !!}
     {!! Html::style('assets/css/dataTables.bootstrap.min.css') !!}
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/bootstrap-datepicker.min.css')}}">
 @endpush
-
 @push('scripts')
- 
 	{!! Html::script('assets/js/jquery.dataTables.min.js') !!}
     {!! Html::script('assets/js/dataTables.bootstrap.js') !!}
 	<script type="text/javascript">
         var dataTable = $('#employee-grid').DataTable( {searching: false});
-        
 	 </script>
 @endpush

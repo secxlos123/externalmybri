@@ -27,14 +27,14 @@
               <li>
                 <a data-toggle="pill" href="#credit2"> 
                   <div class="image_wrap">
-                    <img src="{{url('assets/images/product/kkb2.png')}}" class="img-credit">    
+                    <img src="" class="img-credit">    
                     </div> 
                 </a>
               </li>
               <li>
                 <a data-toggle="pill" href="#credit3"> 
                   <div class="image_wrap">
-                    <img src="{{url('assets/images/product/kkb2.png')}}" class="img-credit">    
+                    <img src="" class="img-credit">    
                     </div> 
                 </a>
               </li>
