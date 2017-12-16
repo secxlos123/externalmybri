@@ -40,10 +40,10 @@
                         <div class="col-md-12 top20">
                             <ul class="nav nav-pills nav-justified nav-centered m-b-30">
                                 <li class="{{ $active != 'password' ? 'active' : '' }}">
-                                    <a href="#data-pribadi" data-toggle="tab" aria-expanded="true">DATA PRIBADI</a>
+                                    <a href="#data-pribadi" data-toggle="tab" aria-expanded="true" class="new-class-active">DATA PRIBADI</a>
                                 </li>
                                 <li class="{{ $active == 'password' ? 'active' : '' }}">
-                                    <a href="#change-password" data-toggle="tab" aria-expanded="false">UBAH KATA SANDI</a>
+                                    <a href="#change-password" data-toggle="tab" aria-expanded="false" class="new-class-active">UBAH KATA SANDI</a>
                                 </li>
                             </ul>
                             <div class="tab-content br-n pn">

@@ -29,10 +29,10 @@
                         <div class="col-md-12 top20">
                             <ul class="nav nav-pills nav-justified nav-centered m-b-30">
                                 <li class="active">
-                                    <a href="#data-pribadi" data-toggle="tab" aria-expanded="true">DATA PRIBADI</a>
+                                    <a href="#data-pribadi" class="new-class-active" data-toggle="tab" aria-expanded="true">DATA PRIBADI</a>
                                 </li>
                                 <li class="">
-                                    <a href="#change-password" data-toggle="tab" aria-expanded="false">CHANGE PASSWORD</a>
+                                    <a href="#change-password" class="new-class-active" data-toggle="tab" aria-expanded="false">CHANGE PASSWORD</a>
                                 </li>
                             </ul>
                             <div class="tab-content br-n pn">

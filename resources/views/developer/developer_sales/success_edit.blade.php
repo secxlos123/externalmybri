@@ -12,7 +12,7 @@
 
 @section('content')
 <section id="property" class="padding listing1">
-  <div class="container">   
+  <div class="container">
     <div class="row">
     @if(Session::has('flash_message'))
                         <div class="alert alert-success"><em> {!! session('flash_message') !!}</em></div>
@@ -29,10 +29,10 @@
             <div class="col-md-12 top20">
               <ul class="nav nav-pills nav-justified nav-centered m-b-30">
                 <li class="">
-                  <a href="#data-pribadi" data-toggle="tab" aria-expanded="true">DATA PRIBADI</a>
+                  <a href="#data-pribadi" data-toggle="tab" aria-expanded="true" class="new-class-active">DATA PRIBADI</a>
                 </li>
                 <li class="active">
-                  <a href="#change-password" data-toggle="tab" aria-expanded="false">CHANGE PASSWORD</a>
+                  <a href="#change-password" data-toggle="tab" aria-expanded="false" class="new-class-active">CHANGE PASSWORD</a>
                 </li>
               </ul>
               <div class="tab-content br-n pn">

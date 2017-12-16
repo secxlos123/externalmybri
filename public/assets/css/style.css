@@ -7282,7 +7282,7 @@ ul.social_share {
     transform: scale(1.1) translateY(-10px);
 }
 
-.nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover{
+.nav-pills > li.active > a:not(.new-class-active), .nav-pills > li.active > a:focus:not(.new-class-active), .nav-pills > li.active > a:hover:not(.new-class-active) {
     background-color: rgba(0, 0, 0, 0);
 }
 
