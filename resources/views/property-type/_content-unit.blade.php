@@ -1,7 +1,7 @@
 <div class="row bg-hover">
     <div class="my-pro-list">
         <div class="col-md-2 col-sm-2 col-xs-12">
-            <img src="{{(!isset($types['photos'][0])) ? image_checker() : image_checker($types['photos'][0])}}" alt="image"/>
+            <img src="{{(!isset($units['photos'][0])) ? image_checker() : image_checker($units['photos'][0])}}" alt="image"/>
         </div>
         <div class="col-md-8 col-sm-8 col-xs-12">
             <div class="feature-p-text">
