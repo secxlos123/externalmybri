@@ -141,7 +141,7 @@ class DeveloperController extends Controller
             ->get();
 
         foreach ($dev['contents']['data'] as $key => $value) {
-            $value['action'] = view('layouts.actions', [
+            $value['action'] = view('layouts.actions-agent-dev', [
                 'show'    => route('developer.developer.show', $value['user_id']),
                 'edit'    => route('developer.developer.show', $value['user_id']),
                 'banned'  => route('developer.developer.deactive', $value['user_id']),
