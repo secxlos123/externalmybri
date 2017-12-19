@@ -7252,9 +7252,32 @@ ul.social_share {
     top: 30px;
     width: 0; }
 
- .base:hover{
-    color: yellow;
- }
+.base2 {
+    background: #6391f1;
+    display: inline-block;
+    height: 30px;
+    margin-right: 25vw;
+    margin-top: 0px;
+    position: absolute;
+    width: 150px;
+    z-index: 99;
+    color: white;
+    right: 0;
+    bottom: -30px;
+    cursor: pointer;
+}
+
+.base2:before {
+    border-top: 25px solid #6391f1;
+    border-left: 74px solid transparent;
+    border-right: 74px solid transparent;
+    content: "";
+    height: 0;
+    right: 0;
+    position: absolute;
+    top: 30px;
+    width: 0;
+}
 
  .bordered-pane{
      border: 1px solid white;
@@ -8432,8 +8455,8 @@ li.has-dropdown {
     font-size: 20px;
 }
 
-.widget-box-three.active .bg-icon i {
-    color: #f7941e;
+.widget-box-three.active .bg-icon .track-icon {
+    filter: none;
 }
 
 .tracking-widget .widget-box-three.active p {
@@ -8492,7 +8515,14 @@ li.has-dropdown {
 }
 
 /* Fikri - Update 27/11/2017 */
-
+.track-icon{
+    width: 20px;
+    margin-top: 10px;
+    filter: grayscale(100%);
+}
+.track-icon:hover{
+    opacity: 0.7;
+}
 .profile-big{
     display: block;
 }
