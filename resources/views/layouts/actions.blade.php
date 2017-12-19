@@ -1,3 +1,4 @@
+<center>
 <div class="btn-group" role="group" aria-label="Second group">
 
     @if ( isset($show) )
@@ -17,5 +18,5 @@
             <i class="glyphicon glyphicon-remove"></i>
         </a>
     @endif
-
 </div>
+</center>

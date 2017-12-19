@@ -175,7 +175,7 @@ Route::group([
 		/**
 		* This route for banned agent developer
 		*/
-		Route::put('banned/{id}', 'DeveloperController@deactive')->name('deactive');
+		Route::get('banned/{id}', 'DeveloperController@deactive')->name('deactive');
 
 	});
 
