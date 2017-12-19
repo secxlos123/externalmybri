@@ -1,3 +1,4 @@
+<center>
 <div class="btn-group" role="group" aria-label="Second group">
 
     @if ( isset($show) )
@@ -18,4 +19,63 @@
         </a>
     @endif
 
+    @if ( isset($banned) )
+        
+        @if ( $is_banned == false )
+        <a href="{!! $banned !!}" class="btn btn-default" id="btn-banned{{ $user_id }}" title="Banned">
+            <i class="glyphicon glyphicon-ban-circle"></i>
+        </a>
+        @else
+        <a href="{!! $banned !!}" class="btn btn-default" id="btn-unbanned{{ $user_id }}" title="Unbanned">
+            <i class="glyphicon glyphicon-repeat"></i>
+        @endif
+        </a>
+
+    @endif
 </div>
+</center>
+<!-- JS For Modal Confirmation Banned -->
+<script type="text/javascript">
+// Banned Function
+$(document).ready(function(){
+    $('#btn-banned{{ $user_id }}').on('click', function(event){
+      
+                   event.preventDefault();
+        bootbox.confirm("Anda yakin untuk Banned Agen Developer ini ?", function(result) {
+            if (result) {
+                 //include the href duplication link here?;
+                 window.location = ('{{ url("dev/developer/banned/".$user_id) }}');
+            
+              console.log({{ $user_id }});
+
+                //showProgressAnimation();
+             
+            } else {
+               
+            }
+        });
+    });
+});
+
+// Unbanned Function
+$(document).ready(function(){
+    $('#btn-unbanned{{ $user_id }}').on('click', function(event){
+      
+                   event.preventDefault();
+        bootbox.confirm("Anda yakin untuk Unbanned Agen Developer ini ?", function(result) {
+            if (result) {
+                 //include the href duplication link here?;
+                 window.location = ('{{ url("dev/developer/banned/".$user_id) }}');
+            
+              console.log({{ $user_id }});
+
+                //showProgressAnimation();
+             
+            } else {
+               
+            }
+        });
+    });
+});
+</script>
+  <!-- End JS For Modal Confirmation -->

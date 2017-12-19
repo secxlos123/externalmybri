@@ -19,11 +19,11 @@ class DeveloperController extends Controller
      */
     public function index(Request $request)
     {
-        // if ( $request->ajax() ) return $this->datatables($request);
+         if ( $request->ajax() ) return $this->datatables($request);
 
-        // return view( 'developer.developer.index' );
-          $data = Client::setEndpoint('developer-agent')->setHeaders(['Authorization' => session('authenticate.token')])->get();
-        return view( 'developer.developer.index', compact('data'));
+         return view( 'developer.developer.index' );
+        //   $data = Client::setEndpoint('developer-agent')->setHeaders(['Authorization' => session('authenticate.token')])->get();
+        // return view( 'developer.developer.index', compact('data'));
     }
 
     /**
@@ -134,14 +134,19 @@ class DeveloperController extends Controller
                 'Authorization' => session('authenticate.token')
             ])
             ->setQuery([
-                'search'=> $request->input('search.value')
+                'limit'     => $request->input('length'),
+                'search'    => $request->input('search.value'),
+                'page'      => ( int ) $request->input('page') + 1
             ])
             ->get();
 
         foreach ($dev['contents']['data'] as $key => $value) {
             $value['action'] = view('layouts.actions', [
-                'show' => route('developer.developer-agent.show', $value['id']),
-                'edit' => route('developer.developer-agent.edit', $value['id'])
+                'show'    => route('developer.developer.show', $value['user_id']),
+                'edit'    => route('developer.developer.show', $value['user_id']),
+                'banned'  => route('developer.developer.deactive', $value['user_id']),
+                'is_banned'=> $value['is_banned'],
+                'user_id'   => $value['user_id']
             ])->render();
             $dev['contents']['data'][$key] = $value;
         }
@@ -155,23 +160,28 @@ class DeveloperController extends Controller
             $dev['contents']['prev_page_url'],
             $dev['contents']['next_page_url']
         );
+
         return response()->json($dev['contents']);
     }
     /**
      * This Function for Deactive and Active user login
-     * @param Request $request
      * @return \Illuminate\Http\Response
      */
      public function deactive(Request $request, $id)
      { 
-        $userid = $request->all();
+        $input  = $request->all();
         $client = Client::setEndpoint('developer-agent/banned/'.$id)
                 ->setHeaders([
                     'Authorization' => session('authenticate.token')
                     ])
-                ->setBody($userid)
-                ->put();
+               // ->setBody($input)
+                ->get();
+                
+                 if (isset($client['code']) && $client['code'] == 200) {
+                \Session::flash('flash_message', $client['descriptions']);
+
                 return redirect()->route('developer.developer.index');
+            }
 
      }
 }

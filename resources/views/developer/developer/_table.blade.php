@@ -1,16 +1,10 @@
-<?php
-
-    function IndonesiaTgl($tanggal){
-    $tgl=substr($tanggal,8,2);
-    $bln=substr($tanggal,5,2);
-    $thn=substr($tanggal,0,4);
-    $tanggal="$bln-$tgl-$thn";
-    return $tanggal;
-}
-
- ;?>
 <div class="row">
 	<div class="col-md-12">
+        @if(Session::has('flash_message'))
+            <div class="alert alert-success"><em> {!! session('flash_message') !!}</em></div>
+            @elseif(Session::has('error_flash_message'))
+            <div class="alert alert-danger"><em> {!! session('error_flash_message') !!}</em></div>
+            @endif
 		<h2 class="text-uppercase bottom20">Manajemen Agen Developer</h2>
 		<div class="btn-project bottom10">
 			<a class="btn btn-primary" href="{!! route('developer.developer.create') !!}" role="button">
@@ -28,51 +22,28 @@
                         <th>Tgl gabung</th>
                         <th>Riwayat login</th>
                         <th>Aksi</th>
-                        <th>&nbsp;</th>
                     </tr>
                 </thead>
-                <tbody>
-                <?php foreach ($data['contents']['data'] as $key => $value) :?>
-                    <tr>
-                        <td>{{ $value["first_name"] }} {{  $value["last_name"] }}</td>
-                        <td>{{ $value["email"] }}</td>
-                        <td>{{ $value["mobile_phone"] }}</td>
-                        <td>{{ IndonesiaTgl($value["birth_date"]) }}</td>
-                        <td>{{ IndonesiaTgl($value["join_date"]) }}</td>
-                        <td>{{ $value["last_login"] }}</td>
-                        <td><center><a href="{{ url('dev/developer/edit/'.$value['user_id']) }}" class="btn btn-primary" role="button"><i class="fa fa-edit"></i> Edit</a></center></td>
-                        <td>
-        <form action="{{ url('dev/developer/banned/'.$value['user_id']) }}" id="falert{{$value['user_id']}}" method="POST">
-        <input type="hidden" name="_method" value="PUT">
-        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-        <?php
-        $name = $value["first_name"].' '.$value["last_name"];
-         ?>
-        @if($value['is_actived'] == true)
-        {!! Form::hidden('is_actived', 'f', [ 'class' => '' ]) !!}
-        {!! Form::hidden('name', $name, [ 'class' => '' ]) !!}
-        {!! Form::hidden('email', $value['email'], [ 'class' => '' ]) !!}
-        {!! Form::hidden('mobile_phone', $value['mobile_phone'], [ 'class' => '' ]) !!}
-        {!! Form::hidden('birth_date', $value['birth_date'], [ 'class' => '' ]) !!}
-        {!! Form::hidden('join_date', $value['join_date'], [ 'class' => '' ]) !!}
-        <center><input type="submit" class="btn btn-warning" id="alert{{ $value['user_id'] }}" value="Banned"></center>
-        @elseif($value['is_actived'] == false)
-        {!! Form::hidden('is_actived', 't', [ 'class' => '' ]) !!}
-        {!! Form::hidden('name', $name, [ 'class' => '' ]) !!}
-        {!! Form::hidden('email', $value['email'], [ 'class' => '' ]) !!}
-        {!! Form::hidden('mobile_phone', $value['mobile_phone'], [ 'class' => '' ]) !!}
-        {!! Form::hidden('birth_date', $value['birth_date'], [ 'class' => '' ]) !!}
-        {!! Form::hidden('join_date', $value['join_date'], [ 'class' => '' ]) !!}
-        <center><input type="submit" class="btn" id="reactive{{ $value['user_id'] }}" style="color: #fff;background-color: #3896d6;" value="Reactived"></center>
-        @endif
-        </form>
-                        </td>
-                    </tr>
-                <?php endforeach ?>
-                </tbody>
             </table>
         </div>
 	</div>
+</div>
+
+<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                Confirmation Action
+            </div>
+            <div class="modal-body">
+                Anda yakin untuk Banned Agen Developer ini ?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <a class="btn btn-danger btn-ok">Confrim</a>
+            </div>
+        </div>
+    </div>
 </div>
 
 @push('parent-style')
@@ -86,41 +57,40 @@
     {!! Html::script('assets/js/bootbox.min.js') !!}
 
     <script type="text/javascript">
-        $(document).ready(function() {
-    $('#datatable').DataTable( {
-        lengthMenu: [
+   var table = $('#datatable').dataTable({
+            processing : true,
+            serverSide : true,
+            lengthMenu: [
                 [ 10, 25, 50, -1 ],
-                [ '10', '25', '50']
+                [ '10', '25', '50', 'All' ]
             ],
-        "initComplete": function () {
-            var api = this.api();
-        }
-    } );
-} );
-    </script>
-    <?php foreach ($data['contents']['data'] as $key => $value){ ?>
-    <script type="text/javascript">
-    $(document).on("click", "#alert{{ $value['user_id'] }}", function(e){
-       e.preventDefault();
-        bootbox.confirm("Yakin untuk Banned Agen Developer ini", function(confirmed){
-                if(confirmed)
-                {
-                   $("form#falert{{$value['user_id']}}").submit();
-                };
+            language : {
+                infoFiltered : '(disaring dari _MAX_ data keseluruhan)'
+            },
+            ajax : {
+           
+                data : function(d, settings){
 
-    });
-});
-    </script>
-    <script type="text/javascript">
-        $(document).on("click", "#reactive{{ $value['user_id'] }}", function(e){
-            e.preventDefault();
-            bootbox.confirm("Yakin untuk Mengaktifkan kembali Agen Developer ini", function(confirmed){
-                if(confirmed)
-                {
-                    $("form#falert{{$value['user_id']}}").submit();
+                    var api = new $.fn.dataTable.Api(settings);
+
+                    d.page = Math.min(
+                        Math.max(0, Math.round(d.start / api.page.len())),
+                        api.page.info().pages
+                    );
+
                 }
-            });
+            },
+            aoColumns : [
+                { data: 'first_name', name: 'first_name' },
+                { data: 'email', name: 'email' },
+                { data: 'mobile_phone', name: 'mobile_phone' },
+                { data: 'birth_date', name: 'birth_date' },
+                { data: 'join_date', name: 'join_date' },
+                { data: 'last_login', name: 'last_login' },
+                { data: 'action', name: 'action', bSortable: false },
+            ],
         });
+
     </script>
-    <?php } ;?>
+   
 @endpush
