@@ -66,8 +66,8 @@
 
     <!-- set current longitude latitude -->
     <div class="hidden-content hide">
-        <input name="hidden-long" value="106.81350">
-        <input name="hidden-lat" value="-6.21670">
+        <input name="hidden-long" value="{{ env('DEF_LONG', '106.81350') }}">
+        <input name="hidden-lat" value="{{ env('DEF_LAT', '-6.21670') }}">
 
     </div>
     <!-- end -->

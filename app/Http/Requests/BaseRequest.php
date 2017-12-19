@@ -67,8 +67,8 @@ class BaseRequest extends FormRequest
     {
         if ($this->has('latitude') || $this->has('longitude')) {
             $this->merge([
-                'latitude' => $this->get('latitude', '-6.21670'),
-                'longitude' => $this->get('longitude', '106.81350')
+                'latitude' => $this->get('latitude', env('DEF_LAT', '-6.21670')),
+                'longitude' => $this->get('longitude', env('DEF_LONG', '106.81350'))
             ]);
         }
     }
