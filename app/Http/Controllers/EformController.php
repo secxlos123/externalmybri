@@ -32,7 +32,7 @@ class EformController extends Controller
         'salary', 'other_salary', 'loan_installment', 'dependent_amount', 'emergency_name',
         'emergency_contact', 'emergency_relation', 'city', 'work_duration', 'phone', 'couple_salary',
         'couple_other_salary', 'couple_loan_installment', 'work_duration_month', 'work_duration',
-        'citizenship_id', 'citizenship', 'work_field_name', 'work_type_name', 'work_name', 'position', 'position_name'
+        'citizenship_id', 'citizenship', 'work_field_name', 'work_type_name', 'work_name', 'position', 'position_name', 'source_income'
     ];
 
     /**
@@ -191,7 +191,7 @@ class EformController extends Controller
         }
 
         if ( $request->input('status') != '2' ) {
-            unset(  
+            unset(
                 $customer['couple_identity'], $customer['couple_name'], $customer['couple_nik'],
                 $customer['couple_birth_date'], $customer['couple_birth_place_id']
             );

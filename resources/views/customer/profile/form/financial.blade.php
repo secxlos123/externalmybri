@@ -3,7 +3,7 @@
         <div class="panel-heading" data-toggle="collapse" data-target="#finansial-data">
             <h3 class="panel-title text-uppercase">
                 Data Keuangan
-                
+
                 <div class="pull-right">
                     <i class="fa fa-chevron-down" aria-hidden="true"></i>
                 </div>
@@ -12,7 +12,7 @@
         <div id="finansial-data" class="panel-collapse collapse in">
             <div class="panel-body">
                 <div class="row">
-                    <div class="col-md-12">                
+                    <div class="col-md-12">
                         <fieldset>
                             <legend>Nasabah</legend>
                             <div class="col-md-6">
@@ -68,7 +68,8 @@
 
                             <div class="col-md-12">
                                 <div class="">
-                                    <input id="checkbox1" name="is_join" type="checkbox">
+                                    <input name="source_income" type="hidden" value="single">
+                                    <input id="checkbox1" name="source_income" type="checkbox" value="joint">
                                     <label for="checkbox1"> Joint Income </label>
                                 </div>
                             </div>
