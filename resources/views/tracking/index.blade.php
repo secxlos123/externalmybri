@@ -2,6 +2,14 @@
 
 @section('title', 'Halaman Utama')
 
+@section('breadcrumb')
+    <h1 class="text-uppercase">Data Tracking</h1>
+    <ol class="breadcrumb text-center">
+        <li><a href="#">Dashboard</a></li>
+        <li class="active">Tracking</li>
+    </ol>
+@endsection
+
 @section('content')
 <section id="property" class="padding listing1">
     <div class="container">

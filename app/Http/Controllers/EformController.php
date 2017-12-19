@@ -42,7 +42,7 @@ class EformController extends Controller
      */
     protected $eform = [
         'product_type', 'status_property', 'developer', 'developer_name', 'property', 'property_name', 'price', 'building_area', 'property_type','property_type_name','property_item','property_item_name', 'home_location', 'year',
-        'active_kpr', 'dp', 'request_amount', 'nik', 'branch_id', 'appointment_date', 'address_location', 'longitude', 'latitude', 'kpr_type_property'
+        'active_kpr', 'dp', 'request_amount', 'nik', 'branch_id', 'appointment_date', 'address_location', 'longitude', 'latitude', 'kpr_type_property', 'sales_dev_id'
     ];
 
     /**
@@ -89,9 +89,13 @@ class EformController extends Controller
     {
         if ('developer-sales' == session('authenticate.role'))
         {
+          $results = Client::setEndpoint('profile')
+          ->setHeaders(['Authorization' => session('authenticate.token')])->get();
+
             return view('eforms.eform-agent', [
                 'customer' => (object) [],
-                'param'    => []
+                'param'    => [],
+                'results'  => $results['contents']
                 ]);
         }
 

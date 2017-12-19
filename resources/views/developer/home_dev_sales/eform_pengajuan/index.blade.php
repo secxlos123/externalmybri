@@ -72,15 +72,15 @@
                         <thead class="bg-blue">
                         
                             <tr>
-                                <th>No Ref</th>
-                                <th>Leads</th>
-                                <th>Nominal</th>
-                                <th>Status Pengajuan</th>
-                                <th>Produk</th>
-                                <!-- <th>AO</th> -->
-                                <th>Aksi</th>
+                                    <th>Ref Number</th>
+                                    <th>Nama pemohon</th>
+                                    <th>Nominal</th>
+                                    <th>Developer</th>
+                                    <th>Property</th>
+                                    <th>Status</th>
+                                    <th>Aksi</th>
                             </tr>
-                            </thead>
+                        </thead>
                     </table>
                 </div>
 			</div>
@@ -106,7 +106,7 @@
 
     
     <!-- @todo waiting to move this script to resource/asset/js/property.js -->
-    <script type="text/javascript">
+        <script type="text/javascript">
         var table = $('#datatable').dataTable({
             processing : true,
             serverSide : true,
@@ -118,31 +118,64 @@
                 infoFiltered : '(disaring dari _MAX_ data keseluruhan)'
             },
             ajax : {
-             //   url:'/datatable/eforms',
                 data : function(d, settings){
 
                     var api = new $.fn.dataTable.Api(settings);
-
+                    console.log(api);
                     d.page = Math.min(
                         Math.max(0, Math.round(d.start / api.page.len())),
                         api.page.info().pages
                     );
-
-                    d.ref_number = $('.ref_number').val();
-                    d.nik = $('.nik').val();
-                    d.status = $('#status').val();
                 }
             },
             aoColumns : [
                 { data: 'ref_number', name: 'ref_number' },
-                { data: 'customer_name', name: 'customer_name' },
+                { data: 'nama_pemohon', name: 'nama_pemohon' },
                 { data: 'nominal', name: 'nominal' },
+                { data: 'developer_name', name: 'developer_name' },
+                { data: 'property_name', name: 'property_name' },
                 { data: 'status', name: 'status' },
-                { data: 'product_type', name: 'product_type' },
-                // { data: 'ao_name', name: 'ao_name' },
                 { data: 'action', name: 'action', bSortable: false },
             ],
         });
+    </script>
+    <script type="text/javascript">
+        // var table = $('#datatable').dataTable({
+        //     processing : true,
+        //     serverSide : true,
+        //     lengthMenu: [
+        //         [ 10, 25, 50, -1 ],
+        //         [ '10', '25', '50', 'All' ]
+        //     ],
+        //     language : {
+        //         infoFiltered : '(disaring dari _MAX_ data keseluruhan)'
+        //     },
+        //     ajax : {
+        //      //   url:'/datatable/eforms',
+        //         data : function(d, settings){
+
+        //             var api = new $.fn.dataTable.Api(settings);
+
+        //             d.page = Math.min(
+        //                 Math.max(0, Math.round(d.start / api.page.len())),
+        //                 api.page.info().pages
+        //             );
+
+        //             d.ref_number = $('.ref_number').val();
+        //             d.nik = $('.nik').val();
+        //             d.status = $('#status').val();
+        //         }
+        //     },
+        //     aoColumns : [
+        //         { data: 'ref_number', name: 'ref_number' },
+        //         { data: 'customer_name', name: 'customer_name' },
+        //         { data: 'nominal', name: 'nominal' },
+        //         { data: 'status', name: 'status' },
+        //         { data: 'product_type', name: 'product_type' },
+        //         // { data: 'ao_name', name: 'ao_name' },
+        //         { data: 'action', name: 'action', bSortable: false },
+        //     ],
+        // });
 
         $('#btn-filter').on('click', function () {
         	table.fnDraw();

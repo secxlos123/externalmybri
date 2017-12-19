@@ -78,6 +78,7 @@
     <!-- @end You can remove this condition if this module already -->
 @if('developer-sales' == session('authenticate.role'))
 <li><a href="{!! route('dev-sales.data-eform') !!}">Pengajuan</a></li>
+<li><a href="{!! route('dev-sales.tracking') !!}">Tracking</a></li>
 
 @endif
 

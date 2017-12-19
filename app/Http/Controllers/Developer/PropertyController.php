@@ -46,20 +46,16 @@ class PropertyController extends Controller
                     ])
                 ->setBody(array_to_multipart($input))
                 ->post('multipart');
-              //  dd($query);
-       // if ( ! in_array($query['code'], [200, 201]) ) {
-       //          $messages = count($query['contents']) > 0 ? json_encode($query['contents']) : $query['descriptions'];
-       //          throw new \Exception($messages, $query['code']);
-                
-       //      }
-         if (isset($query['code']) && $query['code'] == 200 && $query['code'] == 201 ) {
+
+         if (isset($query['code']) && $query['code'] == 201 ) {
             \Session::flash('flash_message', $query['descriptions']);
             return redirect()->route('developer.proyek.index');
         }else{
             \Session::flash('error_flash_message', $query['descriptions']);
+             return redirect()->route('developer.proyek.index');
         }
 
-        return redirect()->route('developer.proyek.index');
+       
     }
 
     /**

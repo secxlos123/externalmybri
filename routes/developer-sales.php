@@ -26,6 +26,17 @@ Route::group([
 	Route::get('datatable/eforms', 'HomeController@datatables')->name('table-eform');
 	Route::post('customer/add', 'HomeController@CustPost')->name('add-customer');
 	Route::get('get-cust/{id}', 'HomeController@getCust')->name('get-cust');
+	
+	/**
+	* This route for get list tracking of agent developer
+	*/
+	Route::get('tracking', 'TrackingController@index')->name('tracking');
+
+	/**
+	* This route for get detail tracking By id CUstomer
+	*/
+	Route::get('tracking/{id}', 'TrackingController@show')->name('show');
+
 	/** 
 	* This route for get list Eform By id
 	*/

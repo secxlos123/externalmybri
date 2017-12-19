@@ -145,6 +145,7 @@
                                 <section>
                                     @include('eforms._branch-office')
                                 </section>
+                                <input type="hidden" name="sales_dev_id" value="{{ $results['id'] }}">
                             </div>
                         {!! Form::close() !!}
                     </div>

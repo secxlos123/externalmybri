@@ -54,37 +54,37 @@ class HomeController extends Controller
 
     public function datatables(Request $request)
     {
-    	$sort = $request->input('order.0');
-    	$data_eform = Client::setEndpoint('eforms')
-    	->setHeaders(['Authorization' => session('authenticate.token')])
-    	->setQuery([
-            //'limit'            => $request->input('length'),
-            'page'       => (int) $request->input('page') + 1,
-    		'ref_number' => $request->input('ref_number'),
-    		'leads'		 => $request->input('nik'),
-    		'status'	 => $request->input('stat_pengajuan'),
-    		'sort' 		 => $this->columns[$sort['column']] .'|'. $sort['dir'],
-    		'search'	 => $request->input('search.value'),
-    		])
-    	->get();
-		//dd($data_eform['contents']['data']);
-    	foreach ($data_eform['contents']['data'] as $key => $eform) {
-    		$eform['action'] = view('layouts.actions', [
-    			 'show' => route('dev-sales.eform-cust', $eform['id'])
-    			] )->render();
-    		$data_eform['contents']['data'][$key] = $eform;
-    	}
+$sort = $request->input('order.0');
+        $results = Client::setEndpoint('tracking')
+                ->setHeaders([
+                    'Authorization' => session('authenticate.token')
+                ])
+                ->setQuery([
+                'limit'     => $request->input('length'),
+                'search'    => $request->input('search.value'),
+                'page'      => ( int ) $request->input('page') + 1
+            ])
+                ->get();
+        \Log::info($results);
 
-    	$data_eform['contents']['draw'] = $request->input('draw');
-    	$data_eform['contents']['recordsTotal'] = $data_eform['contents']['total'];
-    	$data_eform['contents']['recordsFiltered'] = $data_eform['contents']['total'];
+        foreach ($results['contents']['data'] as $key => $type) {
+            $type['action'] = view('layouts.actions', [
+                'show' => route('dev-sales.eform-cust', $type['id'])
+            ])->render();
+            $results['contents']['data'][$key] = $type;
+        }
 
-    	unset(
-    		$data_eform['contents']['path'],
-    		$data_eform['contents']['prev_page_url'],
-    		$data_eform['contents']['next_page_url']
-    		);
-    	return response()->json($data_eform['contents']);
+        $results['contents']['draw'] = $request->input('draw');
+        $results['contents']['recordsTotal'] = $results['contents']['total'];
+        $results['contents']['recordsFiltered'] = $results['contents']['total'];
+
+        unset(
+            $results['contents']['path'],
+            $results['contents']['prev_page_url'],
+            $results['contents']['next_page_url']
+        );
+
+        return response()->json($results['contents']);
     }
 
     /**
