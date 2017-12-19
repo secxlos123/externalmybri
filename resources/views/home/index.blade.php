@@ -51,12 +51,6 @@
         </div>
     </section>
     <!-- This is content of list developers end -->
-
-    <div class="hidden-content hide">
-        <input name="hidden-long" value="106.81350">
-        <input name="hidden-lat" value="-6.21670">
-
-    </div>
 @endsection
 
 <!-- This is styles for this page -->
@@ -107,26 +101,8 @@
         // function properties(position) {
         // }
 
-        $(document).ready(function(){
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(showPosition);
-
-            } else {
-                alert("Geolocation is not supported by this browser.");
-            }
-        })
-
-        function showPosition(position) {
-            $('input[name="hidden-long"]').val(position.coords.longitude);
-            $('input[name="hidden-lat"]').val(position.coords.latitude);
-        }
-
         $.ajax({
-            url: '/properties',
-            data: {
-                long: $('input[name="hidden-long"]').val(),
-                lat: $('input[name="hidden-lat"]').val()
-            }
+            url: '/properties'
         })
         .done(function (response) {
             $('#content-galery').html(response);

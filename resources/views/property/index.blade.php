@@ -174,11 +174,7 @@
     <!-- After that you run in console or terminal or cmd "npm run production" -->
     {!! Html::script( 'js/dropdown.min.js' ) !!}
     <script type="text/javascript">
-        var long = "";
-        var lat = "";
         $( document ).ready(function() {
-            navigator.geolocation.getCurrentPosition(showPosition);
-
             $('.select2').select2({ witdh : '100%' });
             loadData(1);
             $('.city_id').dropdown('cities');
@@ -235,37 +231,29 @@
             });
         });
 
-        function showPosition(position) {
-            lat = position.coords.latitude;
-            long = position.coords.longitude;
-        }
-
         function loadData(nextPage, dev=null, city=null, price=null, land=null, build=null, category=null, bedroom=null, bathroom=null, garage=null, type=null)
         {
-            console.log(price);
+            console.log("loadData", price);
             $('.contentProperty').html("");
             $('.contentProperty').append("<div style=\"height: 60px;margin: auto;padding: 10px;\"><div class=\"loader-page\" id=\"loader-page\"></div></div>");
             $.ajax({
                 url: '/get-all-properties',
                 data:   {
-                        limit: 6,
-                        page: nextPage,
-                        dev_id: dev,
-                        prop_city_id: city,
-                        long: long,
-                        lat: lat,
-                        price: price,
-                        category: category,
-                        land: land,
-                        building: build,
-                        bedroom: bedroom,
-                        bathroom: bathroom,
-                        carport: garage,
-                        prop_type: type
-                    }
+                    limit: 6,
+                    page: nextPage,
+                    dev_id: dev,
+                    prop_city_id: city,
+                    price: price,
+                    category: category,
+                    land: land,
+                    building: build,
+                    bedroom: bedroom,
+                    bathroom: bathroom,
+                    carport: garage,
+                    prop_type: type
+                }
             })
             .done(function (response) {
-                // console.log(response);
                 $('.contentProperty').html("");
                 $('.contentProperty').html(response);
             })

@@ -64,6 +64,14 @@
 
     @yield('content')
 
+    <!-- set current longitude latitude -->
+    <div class="hidden-content hide">
+        <input name="hidden-long" value="106.81350">
+        <input name="hidden-lat" value="-6.21670">
+
+    </div>
+    <!-- end -->
+
     <!-- Footer -->
     <footer class="footer_third absolute-fix csm-footer">
         <!-- <div class="icons">{!! Html::image('assets/images/logo/callbri.png') !!}</div> -->
@@ -86,7 +94,6 @@
         </div>
     </footer>
     <!-- Footer end -->
-
 
     <!-- This is main script -->
     {!! Html::script('assets/js/jquery-2.1.4.js') !!}
@@ -118,7 +125,40 @@
     {!! Html::script('assets/js/inputmask.numeric.extensions.js') !!}
     {!! Html::script('js/numeric.min.js') !!}
 
+    <script type="text/javascript">
+        // Handling get longitude - latitude
+        $(document).ready(function(){
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition, getError);
 
+            } else {
+                alert("Geolocation is not supported by this browser.");
+                console.log("Geolocation is not supported by this browser.");
+
+            }
+        })
+
+        // Success get longitude - latitude
+        function showPosition(position) {
+            $('input[name="hidden-long"]').val(position.coords.longitude);
+            $('input[name="hidden-lat"]').val(position.coords.latitude);
+
+            console.log("Success generate longitude" + position.coords.longitude + " - latitude : " + position.coords.latitude + ".");
+        }
+
+        // Fail get longitude - latitude
+        function getError() {
+            console.log("Default longitude - latitude set.");
+        }
+
+        $.ajaxSetup({
+            data: {
+                long: $('input[name="hidden-long"]').val(),
+                lat: $('input[name="hidden-lat"]').val()
+            }
+        });
+
+    </script>
 
     <script type="text/javascript">
         $(document).ready(function () {
