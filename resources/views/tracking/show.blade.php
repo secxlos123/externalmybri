@@ -115,28 +115,39 @@
                                                             <p class="form-control-static">{{ @$results['kpr']['developer_name'] }}</p>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group">
-                                                        <label class="col-md-4 control-label">Nama Proyek :</label>
-                                                        <div class="col-md-8">
-                                                            <p class="form-control-static">{{ @$results['kpr']['property_name'] }}</p>
+
+                                                    @if ( !$results['kpr']['kpr_type_property'] )
+                                                        <div class="form-group">
+                                                            <label class="col-md-4 control-label">Nama Proyek :</label>
+                                                            <div class="col-md-8">
+                                                                <p class="form-control-static">{{ @$results['kpr']['property_name'] }}</p>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-md-4 control-label">Tipe Properti :</label>
-                                                        <div class="col-md-8">
-                                                            <p class="form-control-static">{{ @$results['kpr']['property_type_name'] }}</p>
+                                                        <div class="form-group">
+                                                            <label class="col-md-4 control-label">Tipe Properti :</label>
+                                                            <div class="col-md-8">
+                                                                <p class="form-control-static">{{ @$results['kpr']['property_type_name'] }}</p>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-md-4 control-label">Unit Properti :</label>
-                                                        <div class="col-md-8">
-                                                            <p class="form-control-static">{{ @$results['kpr']['property_item_name'] }}</p>
+                                                        <div class="form-group">
+                                                            <label class="col-md-4 control-label">Unit Properti :</label>
+                                                            <div class="col-md-8">
+                                                                <p class="form-control-static">{{ @$results['kpr']['property_item_name'] }}</p>
+                                                            </div>
                                                         </div>
-                                                    </div>
+                                                    @else
+                                                        <div class="form-group">
+                                                            <label class="col-md-4 control-label">Jenis Properti :</label>
+                                                            <div class="col-md-8">
+                                                                <p class="form-control-static">{{ @$results['kpr']['kpr_type_property_name'] }}</p>
+                                                            </div>
+                                                        </div>
+                                                    @endif
+
                                                     <div class="form-group">
                                                         <label class="col-md-4 control-label">Harga Rumah :</label>
                                                         <div class="col-md-8">
-                                                            <p class="form-control-static">Rp. {{number_format(@$results['kpr']['price'], 2, ',', '.') }}</p>
+                                                            <p class="form-control-static">Rp. {{ number_format(@$results['kpr']['price'], 2, ',', '.') }}</p>
                                                         </div>
                                                     </div>
                                                 </form>

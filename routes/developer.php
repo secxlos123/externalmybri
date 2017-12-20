@@ -220,4 +220,12 @@ Route::group([
 		 */
 		Route::get('/detail/{id}', 'TrackingController@show')->name('show');
 	});
+	/*
+	   This route for send request chart developer dashboard
+	*/
+	Route::post('/chart_developer', 'HomeController@chart_developer')->name('chart_developer');
+	/*
+	   This route for send request table developer dashboard
+	*/
+	Route::post('/data_table_developer', 'HomeController@data_table_developer')->name('data_table_developer');
 });
