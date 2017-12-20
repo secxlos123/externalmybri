@@ -67,11 +67,10 @@
             @endif
         </div>
 
-        <div class="single-query form-group bottom20 {{ $errors->has('status') ? ' has-error' : '' }}">
+        <div hidden class="single-query form-group bottom20 {{ $errors->has('status') ? ' has-error' : '' }}">
             {!! Form::label('status', 'Status') !!}
             {!! Form::select('status', [
-                'new' => 'Baru',
-                'second' => 'Bekas'
+                'new' => 'Baru'
             ], old('status'), [
                 'class' => 'select2 status',
             ]) !!}
