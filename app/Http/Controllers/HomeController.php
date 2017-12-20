@@ -65,6 +65,7 @@ class HomeController extends Controller
       }
 
       $maxTerm = 240; 
+      $minTerm = 12;
       $maxRate =99.99;
       $price = $data['price'];
       $term = $data['time_period'];
@@ -121,6 +122,11 @@ class HomeController extends Controller
            $messagesError .='Suku bunga tidak boleh lebih dari '.$maxRate.'<br/>';
         }
 
+        if($term < $minTerm){
+           $error = true;
+           $messagesError .='Jangka Waktu minimal '.$minTerm.'<br/>';
+        }
+
         $dataSend = array(
                'type' => $type,
                'price' => $priceNumber,
@@ -150,6 +156,16 @@ class HomeController extends Controller
         if($fxflterm > $maxTerm){
            $error = true;
            $messagesError .='Jangka Waktu Total tidak boleh lebih dari '.$maxTerm.'<br/>';
+        }
+
+        if($fxflterm < $minTerm){
+           $error = true;
+           $messagesError .='Jangka Waktu Total minimal '.$minTerm.'<br/>';
+        }
+
+        if($fxterm < $minTerm){
+           $error = true;
+           $messagesError .='Jangka Waktu Fixed minimal '.$minTerm.'<br/>';
         }
 
         if($fxterm > $maxTerm){
@@ -215,7 +231,22 @@ class HomeController extends Controller
           $error = true;
            $messagesError .='Jangka Waktu Fixed tidak boleh sama dengan Jangka Waktu Total<br/>';
         }
- 
+        
+        if($fxflterm < $minTerm){
+           $error = true;
+           $messagesError .='Jangka Waktu Total minimal '.$minTerm.'<br/>';
+        }
+
+        if($fxterm < $minTerm){
+           $error = true;
+           $messagesError .='Jangka Waktu Fixed minimal '.$minTerm.'<br/>';
+        }
+
+        if($fflterm < $minTerm){
+           $error = true;
+           $messagesError .='Jangka Waktu Floor minimal '.$minTerm.'<br/>';
+        }
+
 
         if($fflterm > $maxTerm){
            $error = true;

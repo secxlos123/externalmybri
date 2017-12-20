@@ -1,5 +1,3 @@
- @include('home.calculator._error_validation') 
-
 {!! Form::open(['url' => 'calculate','class' => 'callus top201', 'id' => 'form-calculator', ]) !!}
   <h2 class="text-uppercase t_white bottom201 text-center">Simulasi Kredit</h2>
   <div class="row">

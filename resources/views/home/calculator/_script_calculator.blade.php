@@ -24,6 +24,7 @@
           }
   });
   var defaultJangkaWaktu = 240; 
+  var defaultMinJangkaWaktu = 12;
   var interest_rate = $('#interest_rate_div');
   var interest_rate_floor = $('#interest_rate_floor_div');
   var interest_rate_float = $('#interest_rate_float_div');
@@ -121,6 +122,7 @@ function hitungDP(priceint,dpPersen){
   var down_payment = priceint *   dpPersen;
   var price_platform = priceint - down_payment;
   $("#down_payment").val(down_payment);
+  console.log('aa');
   $("#price_platform").val(price_platform);
 }
 
@@ -152,7 +154,10 @@ $("#down_payment").keyup(function(){
     persen = persen.toFixed(2);
     $("#dp").val(persen);
     var price_platform = priceint - down_payment_int;
-  $("#price_platform").val(price_platform);
+    if(price_platform <= 0 ){
+        price_platform = 0;
+    }
+    $("#price_platform").val(price_platform);
 });
 
 //validasi nomer suku bunga
@@ -271,7 +276,13 @@ $('#form-calculator').on('submit', function() {
         $("#rate" ).focus();
         return false;
     }
-    if(time_period > defaultJangkaWaktu){
+
+    if(time_period < defaultMinJangkaWaktu){
+      alert('Jangka Waktu minimal 12');
+      $("#time_period" ).focus();
+      return false;
+    }
+    else if(time_period > defaultJangkaWaktu){
       alert('Jangka Waktu tidak boleh melebihi 240');
       return false;
     }
@@ -296,6 +307,16 @@ $('#form-calculator').on('submit', function() {
     }else if(interest_rate_float ===""){
       alert('Suku Bunga Float Belum Diisi');
       $('#interest_rate_float').focus();
+      return false;
+    }
+    
+    if(time_period_total < defaultMinJangkaWaktu){
+      alert('Jangka Waktu Total minimal 12');
+      $('#time_period_total').focus();
+      return false;
+    }else if (time_period_fixed  < defaultMinJangkaWaktu){
+       alert('Jangka Waktu Fixed minimal 12');
+      $('#time_period_fixed').focus();
       return false;
     }
 
@@ -355,6 +376,21 @@ $('#form-calculator').on('submit', function() {
         $('#interest_rate_floor').focus();
       return false;
     }
+
+    if(time_period_total < defaultMinJangkaWaktu){
+      alert('Jangka Waktu Total minimal 12');
+      $('#time_period_total').focus();
+      return false;
+    }else if (time_period_fixed  < defaultMinJangkaWaktu){
+       alert('Jangka Waktu Fixed minimal 12');
+      $('#time_period_fixed').focus();
+      return false;
+    } else if (time_period_floor < defaultMinJangkaWaktu){
+      alert('Jangka Waktu Floor minimal 12');
+      $('#time_period_floor').focus();
+      return false;
+    }
+    
 
     var jwt = parseInt(time_period_total);
     var jwf = parseInt(time_period_fixed);

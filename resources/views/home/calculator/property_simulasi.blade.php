@@ -8,6 +8,7 @@
   <div class="container">
 <h2></h2>
 <div class="row">
+ @include('home.calculator._error_validation') 
     <div class="col-md-4">
         <div class="panel panel-color panel-primary">
             <div class="panel-heading">
