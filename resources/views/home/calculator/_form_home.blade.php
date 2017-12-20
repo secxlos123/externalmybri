@@ -1,4 +1,5 @@
-{!! Form::open(['url' => 'calculate','target' => '_blank', 'id' => 'form-calculator', ]) !!}
+@include('home.calculator._error_validation') 
+{!! Form::open(['url' => 'calculate','id' => 'form-calculator', ]) !!}
 <h2 class="text-uppercase t_white bottom201 text-center">Simulasi Kredit</h2>
 <div class="row">
    <div class="col-md-3">

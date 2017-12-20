@@ -76,8 +76,9 @@
   $('#base').click(function() {
   $('#credit_simulation').slideToggle('slow');
 });
-
-
+@if ($errors->any())
+  $('#credit_simulation').show() 
+@endif
 </script>
 @endpush
 
