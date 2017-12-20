@@ -156,7 +156,7 @@
                 current_address.val(address);
             }
         });
-        
+
 
         $(document).on('input', "textarea[name='address']", function(){
             checked = $('#myCheckBox').prop("checked");

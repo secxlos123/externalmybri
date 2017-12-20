@@ -225,6 +225,10 @@ class EformController extends Controller
             ->post('multipart');
 
         if ( ! in_array($response['code'], [200, 201]) ) {
+            if ($response['code'] == 422 && $endpoint == 'eforms') {
+              throw new \Exception(json_encode($response['descriptions']), $response['code']);
+            }
+
             throw new \Exception(json_encode($response['contents']), $response['code']);
         }
 
