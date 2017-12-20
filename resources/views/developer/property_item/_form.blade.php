@@ -71,9 +71,7 @@
             {!! Form::label('status', 'Status') !!}
             {!! Form::select('status', [
                 'new' => 'Baru'
-            ], old('status'), [
-                'class' => 'select2 status',
-            ]) !!}
+            ], old('status')) !!}
 
             @if ($errors->has('status'))
                 <span class="help-block">
