@@ -116,7 +116,7 @@
                                                         </div>
                                                     </div>
 
-                                                    @if ($results['kpr']['property_name'])
+                                                    @if ( !$results['kpr']['kpr_type_property'] )
                                                         <div class="form-group">
                                                             <label class="col-md-4 control-label">Nama Proyek :</label>
                                                             <div class="col-md-8">
@@ -139,7 +139,7 @@
                                                         <div class="form-group">
                                                             <label class="col-md-4 control-label">Jenis Properti :</label>
                                                             <div class="col-md-8">
-                                                                <p class="form-control-static">{{ @$results['kpr']['kpr_type_property'] }}</p>
+                                                                <p class="form-control-static">{{ @$results['kpr']['kpr_type_property_name'] }}</p>
                                                             </div>
                                                         </div>
                                                     @endif
