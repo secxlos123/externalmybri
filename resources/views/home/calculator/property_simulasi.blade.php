@@ -15,7 +15,7 @@
                 <h3 class="panel-title text-uppercase">Simulasi Perhitungan Kredit</h3>
             </div>
             <div class="panel-body" style="border: none;">
-                {!! Form::open(['route' => 'post.kalkulator','class' => 'callus top201', 'id' => 'form-calculator', ]) !!}
+                {!! Form::open(['route' => 'kalkulator.post','class' => 'callus top201', 'id' => 'form-calculator', ]) !!}
                     @include('home.calculator._form_credit_simulation')
                 {!!  Form::close()  !!}    
             </div>

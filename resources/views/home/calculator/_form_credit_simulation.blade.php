@@ -6,7 +6,7 @@
         <label>Harga Rumah *:</label>
         <div class="input-group">
           <span class="input-group-addon">Rp</span> 
-           {!! Form::text('price', '', ['class' => 'form-control numericOnly currency','placeholder' => '','id'=>'price','required'=>'']) !!}
+           {!! Form::text('price', $price, ['class' => 'form-control numericOnly currency','placeholder' => '','id'=>'price','required'=>'']) !!}
         </div>
             @if ($errors->has('price'))
                 <span class="help-block">
