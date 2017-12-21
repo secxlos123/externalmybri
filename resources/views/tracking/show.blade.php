@@ -109,12 +109,15 @@
                                                             <p class="form-control-static">{{ @$results['product_type'] }}</p>
                                                         </div>
                                                     </div>
+
+                                                    @if ( $results['kpr']['status_property'] == 1 )
                                                     <div class="form-group">
                                                         <label class="col-md-4 control-label">Nama Developer :</label>
                                                         <div class="col-md-8">
                                                             <p class="form-control-static">{{ @$results['kpr']['developer_name'] }}</p>
                                                         </div>
                                                     </div>
+                                                    @endif
 
                                                     @if ( !$results['kpr']['kpr_type_property'] )
                                                         <div class="form-group">
@@ -136,12 +139,14 @@
                                                             </div>
                                                         </div>
                                                     @else
+                                                        @if ( $results['kpr']['status_property'] == 1 )
                                                         <div class="form-group">
                                                             <label class="col-md-4 control-label">Jenis Properti :</label>
                                                             <div class="col-md-8">
                                                                 <p class="form-control-static">{{ @$results['kpr']['kpr_type_property_name'] }}</p>
                                                             </div>
                                                         </div>
+                                                        @endif
                                                     @endif
 
                                                     <div class="form-group">

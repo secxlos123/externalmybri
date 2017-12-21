@@ -129,14 +129,14 @@ class EformRequest extends FormRequest
             'work_duration_month' => 'required_if:selector,0',
             'office_address'    => 'required_if:selector,0',
             'salary'            => 'required_if:selector,0',
-            'other_salary'      => 'required_if:selector,0',
+            // 'other_salary'      => 'required_if:selector,0',
             'loan_installment'  => 'required_if:selector,0',
             'dependent_amount'  => 'required_if:selector,0',
             'emergency_name'    => 'required_if:selector,0',
             'emergency_contact' => 'required_if:selector,0|string|regex:/^[0-9]+$/|min:9|max:12',
             'emergency_relation'=> 'required_if:selector,0',
             'couple_salary'     => 'required_with:is_join',
-            'couple_other_salary' => 'required_with:is_join',
+            // 'couple_other_salary' => 'required_with:is_join',
             'couple_loan_installment' => 'required_with:is_join',
         ];
     }
