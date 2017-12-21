@@ -35,7 +35,7 @@
         <div class="single-query form-group bottom20 {{ $errors->has('phone_number') ? ' has-error' : '' }} ">
             <label>Nomor Telepon (*)</label>
             @if($type != 'view')
-            <input type="text" class="keyword-input numeric" name="phone_number" maxlength="12" minlength="9" value="{{$results['phone_number']}}">
+            <input type="text" class="keyword-input numeric" name="phone" maxlength="12" minlength="9" value="{{$results['phone_number']}}">
             @else
             <p>{{ $results['phone_number'] }}</p>
             @endif
