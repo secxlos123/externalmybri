@@ -42,10 +42,10 @@
                     'data-placeholder' => 'Pilih Developer',
                 ]) !!}
             @else
-                {!! Form::select('developer', isset($results['userdeveloper']['id']) ? [@$results['userdeveloper']['id'] => @$results['developer']['company_name']] : [''=>''] + [
+                {!! Form::select('developer', isset($results['userdeveloper']['admin_developer_id']) ? [@$results['userdeveloper']['admin_developer_id'] => @$results['developer']['company_name']] : [''=>''] + [
                    old('developer') => old('developer_name')
                 ], old('developer'), [
-                    'class' => 'select2 ',
+                    'class' => 'select2 dev_name',
                     'data-option' => old('developer'),
                     'data-placeholder' => 'Pilih Developer',
                 ]) !!}

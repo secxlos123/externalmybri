@@ -236,7 +236,9 @@
                     $('#home_location').val(address).trigger('change');
                 @else
                     $('.status_property').val(1).trigger('change');
-                    var dev_id = <?= $results['userdeveloper']['admin_developer_id'] ?>;
+                    var dev_id   = <?= $results['userdeveloper']['admin_developer_id'] ?>;
+                    var dev_name = "{{ $results['developer']['company_name'] }}";
+                    $('#developer_name').val(dev_name);
                     $('.properties')
                         .dropdown('property', { dev_id: dev_id })
                         .on('select2:unselect, change', unset_property_type)
