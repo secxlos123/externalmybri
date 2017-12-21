@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Client;
 use Validator;
 use Session;
+
 class HomeController extends Controller
 {
     /**
@@ -87,9 +88,7 @@ class HomeController extends Controller
       if($downPayment <= 0){
         $error = true;
         $messagesError .='Dp tidak boleh 0 <br/>';
-      }
-
-    
+      }   
 
       if($interest_rate_type== 1 || $interest_rate_type ==2){
  
@@ -109,8 +108,6 @@ class HomeController extends Controller
         'down_payment.required' => 'Hasil dp  harus diisi',
         'rate.required' => 'Suku bunga harus diisi',
         ];
-
-      
 
         if($term > $maxTerm){
            $error = true;
@@ -298,13 +295,17 @@ class HomeController extends Controller
       $response = Client::setBase('common')->setEndpoint('calculator')->setBody($dataSend)->post(); 
       $rincian_pinjaman =  $response['contents']['rincian_pinjaman'];
       $detail_angsuran =   $response['contents']['detail_angsuran']; 
-      return view('home.calculator.property_simulasi', compact('rincian_pinjaman','detail_angsuran','interest_rate_type'));
+      $price = number_format($priceNumber, 0, ',', '.');
+      return view('home.calculator.property_simulasi', compact('rincian_pinjaman','detail_angsuran','interest_rate_type','price'));
     }
 
-     public function calculate(Request $request){
+    public function calculate($price = null){
+      if($price){
+          $price = number_format($price, 0, ',', '.');
+      }
         $rincian_pinjaman =  null;
         $detail_angsuran =   null;
-        return view('home.calculator.property_simulasi', compact('rincian_pinjaman','detail_angsuran'));
+        return view('home.calculator.property_simulasi', compact('rincian_pinjaman','detail_angsuran','price'));
     }
 
     public function convertCommatoPoint($value){

@@ -1,5 +1,5 @@
 @include('home.calculator._error_validation') 
-{!! Form::open(['route' => 'post.kalkulator','id' => 'form-calculator']) !!}  
+{!! Form::open(['route' => 'kalkulator.post','id' => 'form-calculator']) !!}  
 <h2 class="text-uppercase t_white bottom201 text-center">Simulasi Kredit</h2>
 <div class="row">
    <div class="col-md-3">

@@ -13,7 +13,8 @@ class CalculatorController extends Controller
     public function index(Request $request){
         $rincian_pinjaman =  null;
         $detail_angsuran =   null;
-        return view('developer.calculator.property_simulasi', compact('rincian_pinjaman','detail_angsuran'));
+        $price = null;
+        return view('developer.calculator.property_simulasi', compact('rincian_pinjaman','detail_angsuran','price'));
     }
 
     public function postCalculate(Request $request){
@@ -261,11 +262,12 @@ class CalculatorController extends Controller
       if ($validator->fails()) {
         $messages = $validator->messages();
         return redirect()->back()->withInput($request->input())->withErrors($messages);
-      }  
+      } 
+      $price = number_format($priceNumber, 0, ',', '.');
       $response = Client::setBase('common')->setEndpoint('calculator')->setBody($dataSend)->post(); 
       $rincian_pinjaman =  $response['contents']['rincian_pinjaman'];
       $detail_angsuran =   $response['contents']['detail_angsuran']; 
-    	return view('developer.calculator.property_simulasi', compact('rincian_pinjaman','detail_angsuran','interest_rate_type'));
+    	return view('developer.calculator.property_simulasi', compact('rincian_pinjaman','detail_angsuran','interest_rate_type','price'));
     }
 
     public function convertCommatoPoint($value){

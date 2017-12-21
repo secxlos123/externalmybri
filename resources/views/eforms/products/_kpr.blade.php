@@ -12,11 +12,19 @@
          <div class="form-group kpr_type {!! $errors->has('kpr_type') ? 'has-error' : '' !!}">
             <label class="control-label col-md-4">Jenis KPR *:</label>
             <div class="col-md-8">
+            @if ('developer-sales' != session('authenticate.role'))
                 {!! Form::select('status_property', array("" => "", "1" => "Baru", "2" => "Secondary", "3" => "Refinancing", "4" => "Renovasi", "5" => "Top Up", "6" => "Take Over", "7" => "Take Over Top Up", "8" => "Take Over Account In House (Cash Bertahap)"), old('status_property'), [
                     'class' => 'select2 status_property ',
                     'data-placeholder' => 'Pilih Jenis KPR',
                     'data-bri' => ''
                 ]) !!}
+            @else
+                {!! Form::select('status_property', array("1" => "Baru"), old('status_property'), [
+                    'class' => 'select2 status_property ',
+                    'data-placeholder' => 'Pilih Jenis KPR',
+                    'data-bri' => ''
+                ]) !!}
+            @endif
                 <p>Wajib diisi</p>
                 @if ($errors->has('kpr_type')) <p class="help-block">{{ $errors->first('kpr_type') }}</p> @endif
             </div>
@@ -25,6 +33,7 @@
         <div class="form-group developer" hidden>
             <label class="control-label col-md-4">Developer *</label>
             <div class="col-md-8">
+            @if ('developer-sales' != session('authenticate.role'))
                 {!! Form::select('developer', isset($param['developer_id']) ? [@$param['developer_id'] => @$param['developer_name']] : [''=>''] + [
                    old('developer') => old('developer_name')
                 ], old('developer'), [
@@ -32,6 +41,15 @@
                     'data-option' => old('developer'),
                     'data-placeholder' => 'Pilih Developer',
                 ]) !!}
+            @else
+                {!! Form::select('developer', isset($results['userdeveloper']['id']) ? [@$results['userdeveloper']['id'] => @$results['developer']['company_name']] : [''=>''] + [
+                   old('developer') => old('developer_name')
+                ], old('developer'), [
+                    'class' => 'select2 ',
+                    'data-option' => old('developer'),
+                    'data-placeholder' => 'Pilih Developer',
+                ]) !!}
+            @endif
                 <p>Wajib diisi</p>
             </div>
         </div>
