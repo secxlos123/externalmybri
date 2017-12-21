@@ -1,6 +1,4 @@
-<div class="base" id="base">
-    <div class="credit_text">SIMULASI KREDIT</div>
-</div>
+
 <div id="credit_simulation">
   <div class="col-md-12">
       <button type="button" class="close"aria-label="Close" id="base"><span aria-hidden="true" style="color: white; font-size: 20pt;">×</span></button>
@@ -54,28 +52,34 @@
       </div>
     </div>
   </div>
+    <div class="base2" id="base">
+          <div class="credit_text">SIMULASI KREDIT  &nbsp; <i class="fa fa-chevron-up" aria-hidden="true"></i>            
+          </div>
+      </div>
 </div>
 @push('scripts')
 <script type="text/javascript">
-      $('#credit_simulation').hide()
-  var i = 0;
-    $( "body" ).on("click","#base",function() {
+        $('#credit_simulation').hide()
+  var i = 0; 
+    $( "body" ).on("click","#base",function() {   
      i++;
      if(i%2==0){
       $('#credit_simulation').hide().css({
-
-       });
+        
+       }); $('.base').show()
      }
      else{
       $('#credit_simulation').show().css({
-
+       
        });
-     }
+       $('.base').hide()
+     }        
 });
 
-  $('#base').click(function() {
+      $('#base').click(function() {
   $('#credit_simulation').slideToggle('slow');
 });
+      
 @if ($errors->any())
   $('#credit_simulation').show() 
 @endif

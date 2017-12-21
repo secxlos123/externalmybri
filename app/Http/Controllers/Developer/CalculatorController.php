@@ -1,57 +1,24 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Developer;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Client;
 use Validator;
 use Session;
 
-class HomeController extends Controller
+class CalculatorController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-    	if ( 'developer' == session('authenticate.role') ) {
-            return redirect()->route('developer.index');
-        }
-
-        $results = \Client::setBase('common')
-            ->setQuery(['without_independent' => true])
-            ->setEndpoint('developers')->get();
-
-        $developers = collect([]);
-
-        if ($results['code'] == 200) {
-            collect($results['contents']['data'])->filter(function ($developer) use (&$developers) {
-                return $developers->push( array_only($developer, ['image', 'company_name']) );
-            });
-        }
-      config(['jsvalidation.focus_on_error' => false]);
-    	return view('home.index', compact('developers'));
+    public function index(Request $request){
+        $rincian_pinjaman =  null;
+        $detail_angsuran =   null;
+        $price = null;
+        return view('developer.calculator.property_simulasi', compact('rincian_pinjaman','detail_angsuran','price'));
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function detailProduct()
-    {
-        return view('product.index');
-    }
-
-    public function aboutUs()
-    {
-        return view('about-us.index');
-    }
-
-    public function postcalculate(Request $request){
-      $data = $request->except('_token');
+    public function postCalculate(Request $request){
+    	 $data = $request->except('_token');
       $interest_rate_type = $data['interest_rate_type'];
       if($interest_rate_type==1){
           $type = 'generateFlat';
@@ -88,7 +55,9 @@ class HomeController extends Controller
       if($downPayment <= 0){
         $error = true;
         $messagesError .='Dp tidak boleh 0 <br/>';
-      }   
+      }
+
+    
 
       if($interest_rate_type== 1 || $interest_rate_type ==2){
  
@@ -108,6 +77,8 @@ class HomeController extends Controller
         'down_payment.required' => 'Hasil dp  harus diisi',
         'rate.required' => 'Suku bunga harus diisi',
         ];
+
+      
 
         if($term > $maxTerm){
            $error = true;
@@ -291,21 +262,12 @@ class HomeController extends Controller
       if ($validator->fails()) {
         $messages = $validator->messages();
         return redirect()->back()->withInput($request->input())->withErrors($messages);
-      }  
+      } 
+      $price = number_format($priceNumber, 0, ',', '.');
       $response = Client::setBase('common')->setEndpoint('calculator')->setBody($dataSend)->post(); 
       $rincian_pinjaman =  $response['contents']['rincian_pinjaman'];
       $detail_angsuran =   $response['contents']['detail_angsuran']; 
-      $price = number_format($priceNumber, 0, ',', '.');
-      return view('home.calculator.property_simulasi', compact('rincian_pinjaman','detail_angsuran','interest_rate_type','price'));
-    }
-
-    public function calculate($price = null){
-      if($price){
-          $price = number_format($price, 0, ',', '.');
-      }
-        $rincian_pinjaman =  null;
-        $detail_angsuran =   null;
-        return view('home.calculator.property_simulasi', compact('rincian_pinjaman','detail_angsuran','price'));
+    	return view('developer.calculator.property_simulasi', compact('rincian_pinjaman','detail_angsuran','interest_rate_type','price'));
     }
 
     public function convertCommatoPoint($value){

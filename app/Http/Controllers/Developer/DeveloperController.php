@@ -52,6 +52,7 @@ class DeveloperController extends Controller
             "mobile_phone"  => $request->input("mobile_phone"),
             "email" => $request->input("email")
                 ];
+       // dd($input);
         $client = Client::setEndpoint('developer-agent')
            ->setHeaders([
                 'Authorization' => session('authenticate.token')
@@ -59,7 +60,24 @@ class DeveloperController extends Controller
            ->setBody($input)
            ->post();
         // dd($client);
-        return redirect()->route('developer.developer.index');
+        if (isset($client['code']) && $client['code'] == 201) 
+           {
+                \Session::flash('flash_message', $client['descriptions']);
+
+                return redirect()->route('developer.developer.index');
+           }
+           elseif(isset($client['code']) && $client['code'] == 500)
+           {
+                \Session::flash('error_flash_message', $client['descriptions']);
+
+                return redirect()->route('developer.developer.index');
+           }
+           else
+           {
+                \Session::flash('error_flash_message', $client['descriptions']);
+
+                return redirect()->route('developer.developer.index');
+           }
     }
 
     /**
@@ -98,15 +116,41 @@ class DeveloperController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $input = $request->all();
+      //  $input = $request->all();
+        $join_date = date('Y-m-d', strtotime($request->input("join_date")));
+        $input = [
+            "name" => $request->input("name"),
+            "birth_date" => $request->input("birth_date"),
+            "join_date" =>  Carbon::parse($request->input("join_date"))->format('Y-m-d'),
+            "mobile_phone"  => $request->input("mobile_phone"),
+            "email" => $request->input("email")
+                ];
+       // dd($input);
         $client = Client::setEndpoint('developer-agent/'.$id)
             ->setHeaders([
                 'Authorization' => session('authenticate.token')
             ])
             ->setBody($input)
             ->put();
-       
-        return redirect()->route('developer.developer.index');
+     // dd($client);
+          if (isset($client['code']) && $client['code'] == 201) 
+           {
+                \Session::flash('flash_message', $client['descriptions']);
+
+                return redirect()->route('developer.developer.index');
+           }
+           elseif(isset($client['code']) && $client['code'] == 500)
+           {
+                \Session::flash('error_flash_message', $client['descriptions']);
+
+                return redirect()->route('developer.developer.index');
+           }
+           else
+           {
+                \Session::flash('error_flash_message', $client['descriptions']);
+
+                return redirect()->route('developer.developer.index');
+           }
     }
 
     /**

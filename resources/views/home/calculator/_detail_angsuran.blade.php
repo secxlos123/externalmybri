@@ -1,5 +1,5 @@
 <div class="table-responsive">
-    <table class="table" id="employee-grid">
+    <table class="table" id="kalkulator-grid">
     <thead class="bg-blue">
         <tr>
         <th>Bulan</th>
@@ -37,6 +37,9 @@
 	{!! Html::script('assets/js/jquery.dataTables.min.js') !!}
     {!! Html::script('assets/js/dataTables.bootstrap.js') !!}
 	<script type="text/javascript">
-        var dataTable = $('#employee-grid').DataTable( {searching: false});
+        var dataTable = $('#kalkulator-grid').DataTable( {
+            searching: false,
+           "pagingType": "full"
+        });
 	 </script>
 @endpush

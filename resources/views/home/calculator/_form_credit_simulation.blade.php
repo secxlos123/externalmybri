@@ -1,4 +1,4 @@
-{!! Form::open(['url' => 'calculate','class' => 'callus top201', 'id' => 'form-calculator', ]) !!}
+
   <h2 class="text-uppercase t_white bottom201 text-center">Simulasi Kredit</h2>
   <div class="row">
     <div class="col-md-12">
@@ -6,7 +6,7 @@
         <label>Harga Rumah *:</label>
         <div class="input-group">
           <span class="input-group-addon">Rp</span> 
-           {!! Form::text('price', '', ['class' => 'form-control numericOnly currency','placeholder' => '','id'=>'price','required'=>'']) !!}
+           {!! Form::text('price', $price, ['class' => 'form-control numericOnly currency','placeholder' => '','id'=>'price','required'=>'']) !!}
         </div>
             @if ($errors->has('price'))
                 <span class="help-block">
@@ -182,7 +182,7 @@
       </div>
     </div>
   </div>
-{!!  Form::close()  !!}
+
 @push('scripts')
  @include('home.calculator._script_calculator') 
 @endpush

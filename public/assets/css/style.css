@@ -7279,10 +7279,11 @@ ul.social_share {
     width: 0;
 }
 
- .bordered-pane{
+.bordered-pane{
      border: 1px solid white;
      padding: 10px;
      border-radius: 5px;
+     margin-bottom: 20px;
  }
 
  .credit_text{
@@ -7309,15 +7310,24 @@ ul.social_share {
     background-color: rgba(0, 0, 0, 0);
 }
 
-#credit_simulation{
+#credit_simulation {
     background-color: rgba(5, 82, 152, 0.9);
     color: white;
-    height: 100vh;
-    z-index: 999999999999999999999999999999999999999999;
+    z-index: 99999;
     position: absolute;
     top: 0;
     width: 100vw;
 }
+
+#toggle-credit{
+    background-color: rgba(5, 82, 152, 0.9);
+    color: white;
+    z-index: 99999;
+    position: absolute;
+    top: -100vh;
+    width: 100vw;
+}
+
 
 .image_wrap{
     background-color: white;
