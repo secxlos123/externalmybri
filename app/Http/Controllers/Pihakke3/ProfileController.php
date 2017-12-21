@@ -60,7 +60,7 @@ public function index()
 
     public function requpdate(Request $request)
     {
-        $input  = $request->all();
+        $input  = $request->except('email');
         $client = Client::setEndpoint('profile/update/')
                 ->setHeaders(['Authorization' => session('authenticate.token')])
                 ->setBody($input)
