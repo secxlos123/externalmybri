@@ -52,7 +52,7 @@ class EformRequest extends FormRequest
             'year'              => 'required',
             'active_kpr'        => 'required',
             'dp'                => 'required',
-            'category'          => 'required_if:status_property,1',
+            // 'category'          => 'required_if:status_property,1',
             'product_type'      => 'required',
             'status_property'   => 'required',
             'appointment_date'  => 'required',
