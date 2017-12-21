@@ -229,5 +229,18 @@ Route::group(['namespace' => 'Auth', 'as' => 'auth.'], function () {
 	Route::delete('logout', 'LoginController@logout')->name('logout');
 
 });
-Route::post('calculate', 'HomeController@postcalculate');
-Route::get('calculate', 'HomeController@calculate');
+Route::group(['prefix' => 'kalkulator', 'as' => 'kalkulator.'], function () {
+	/**
+	 * This route for Form Calculator
+	 */
+	Route::get('/', 'HomeController@calculate')->name('kalkulator');
+	/*
+	*  This  route for get Price from detail property	
+	*/
+	Route::get('/{unit_price}/simulasi-kpr', 'HomeController@calculate')->name('simulasi.kpr');
+	/**
+	 * This route for Post Calculator
+	 */
+	Route::post('/', 'HomeController@postcalculate')->name('post');
+});
+	
