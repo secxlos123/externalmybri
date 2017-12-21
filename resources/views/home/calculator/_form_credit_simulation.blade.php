@@ -1,4 +1,4 @@
-{!! Form::open(['url' => 'calculate','class' => 'callus top201', 'id' => 'form-calculator', ]) !!}
+
   <h2 class="text-uppercase t_white bottom201 text-center">Simulasi Kredit</h2>
   <div class="row">
     <div class="col-md-12">
@@ -182,7 +182,7 @@
       </div>
     </div>
   </div>
-{!!  Form::close()  !!}
+
 @push('scripts')
  @include('home.calculator._script_calculator') 
 @endpush

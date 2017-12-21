@@ -229,5 +229,11 @@ Route::group(['namespace' => 'Auth', 'as' => 'auth.'], function () {
 	Route::delete('logout', 'LoginController@logout')->name('logout');
 
 });
-Route::post('calculate', 'HomeController@postcalculate');
-Route::get('calculate', 'HomeController@calculate');
+/**
+ * This route for Form Calculator
+ */
+Route::get('kalkulator', 'HomeController@calculate')->name('kalkulator');
+/**
+ * This route for Post Calculator
+ */
+Route::post('kalkulator', 'HomeController@postcalculate')->name('post.kalkulator');

@@ -49,6 +49,7 @@
             <li><a href="{!! route('developer.proyek.index') !!}">Proyek</a></li>
             <li><a href="{!! route('developer.proyek-type.index') !!}">Tipe Proyek</a></li>
             <li><a href="{!! route('developer.proyek-item.index') !!}">Unit Proyek</a></li>
+            <li><a href="{!! route('developer.calculator') !!}">Kalkulator</a></li>
         </ul>
     </li>
     <li>

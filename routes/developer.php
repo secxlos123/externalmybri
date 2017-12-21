@@ -228,4 +228,13 @@ Route::group([
 	   This route for send request table developer dashboard
 	*/
 	Route::post('/data_table_developer', 'HomeController@data_table_developer')->name('data_table_developer');
+	/*
+	   This route for calculator developer dashboard
+	*/
+	Route::get('/kalkulator', 'CalculatorController@index')->name('calculator');
+	/*
+	   This route for post calculator developer dashboard
+	*/
+	Route::post('/kalkulator', 'CalculatorController@postCalculate')->name('post_calculator');
+
 });
