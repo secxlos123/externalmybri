@@ -1,9 +1,11 @@
 @extends('layouts.app')
 
 @section('title', 'Halaman Utama')
-
+@section('landing_calculator')
+  @include('home.calculator.sliderdown')       
+@endsection
 @section('content')
-
+     
     <!-- This is content of list product -->
     <section id="testinomialBg" class="padding bg_light">
         <div id="agent-2">

@@ -8525,6 +8525,64 @@ li.has-dropdown {
 }
 
 /* Fikri - Update 27/11/2017 */
+.credit-slider {
+    text-align: center;
+    margin: 0 auto;
+  }
+  
+  .credit-slider .credit-wrapper {
+    background: #eee;
+    position: relative;
+    top: 0vh;
+    transition: top 0.5s ease-in-out;
+  }
+  
+  .credit-slider .credit-wrapper h1 {
+    line-height: 150px;
+    color: #30303f;
+    width: 100%;
+    text-stroke: 1px;
+    font-size: 30px;
+    text-shadow: 0 1px 1px #000;
+    font-family: "Roboto"
+  }
+  
+  .credit-slider input#credit-toggle {
+    display: none;
+  }
+  
+  .credit-slider input#credit-toggle + label {
+    font-size: 25px;
+    width: 25px;
+    height: 25px;
+    display: inline-block;
+    padding: 10px;
+    color: white;
+    position: absolute;
+    bottom: -5px;
+    right: 0;
+    transition: top 0.5s ease-in-out;
+    cursor: pointer;
+  }
+  
+  input#credit-toggle + label i.credit-toggle-icon:before {
+    font-family: 'entypo', sans-serif;
+    content: "\e764";
+  }
+  
+  input#credit-toggle:checked + label i.credit-toggle-icon:before {
+    content: "\e767";
+  }
+  
+  input#credit-toggle:checked + label {
+    
+  }
+  
+  input#credit-toggle:checked ~ .credit-wrapper {
+      top: -465px;
+  }
+
+
 .track-icon{
     width: 20px;
     margin-top: 10px;
@@ -8807,8 +8865,18 @@ and (max-device-width : 992px){
         display: block;
         left: 0;
     }
-}
 
+    input#credit-toggle:checked ~ .credit-wrapper {
+        top: -935px;
+    }
+}
+@media only screen
+and (min-device-width : 400px)
+and (max-device-width : 640px){
+    input#credit-toggle:checked ~ .credit-wrapper {
+        top: -910px;
+    }
+}
 
 .line-separator{
     font-size: 2rem;

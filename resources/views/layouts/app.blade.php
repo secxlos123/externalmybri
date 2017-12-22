@@ -26,7 +26,7 @@
 </head>
 
 <body>
-
+    @yield('landing_calculator')
     <!-- This is present on homepage only -->
     @if ( request()->is('/') )
         @include('home.banner')
