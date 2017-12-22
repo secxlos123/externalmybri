@@ -121,7 +121,7 @@
                 { data: 'price', name: 'price' },
                 { data: 'is_available', name: 'is_available' },
                 { data: 'prop_status', name: 'prop_status' },
-                { data: 'status', name: 'status' },
+                { data: 'available_status', name: 'available_status' },
                 { data: 'action', name: 'action', bSortable: false },
             ],
         });

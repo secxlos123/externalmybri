@@ -96,6 +96,23 @@
                     </span>
                 @endif
             </div>
+
+            <div class="single-query form-group bottom20 {{ $errors->has('is_available') ? 'has-error' : '' }}">
+            {!! Form::label('available_status', 'Status') !!}
+            {!! Form::select('available_status', [
+                'available' => 'Available',
+                'book' => 'Booked',
+                'sold' => 'Sold'
+            ], old('available_status'), [
+                'class' => 'select2 available_status',
+            ]) !!}
+
+            @if ($errors->has('is_available'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('is_available') }}</strong>
+                </span>
+            @endif
+            </div>
         @endif
     </div>
 

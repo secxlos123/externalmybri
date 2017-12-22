@@ -469,12 +469,14 @@
       
         $('#btn-save').on('click', function(e){
             $("#form_data_personal").submit();
+            console.log("masuklah");
         });
 
         $("#form_data_personal").submit(function(){ 
              
             var formData = new FormData(this);
 
+            console.log("=========Ngirim Data Gak Yaa============");
              console.log(formData);
 
              $.ajax({

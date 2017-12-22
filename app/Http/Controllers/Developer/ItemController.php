@@ -22,6 +22,7 @@ class ItemController extends Controller
         'price',
         'is_available',
         'prop_status',
+        'available_status',
         'status',
     ];
 
@@ -202,13 +203,17 @@ class ItemController extends Controller
                 ->setHeaders(['Authorization' => session('authenticate.token')])
                 ->setBody(array_to_multipart($request->all()))
                 ->{$method}('multipart');
-
+                //dd($response);
         if ( ! in_array($response['code'], [200, 201]) ) {
             Storage::disk('property-item')->deleteDirectory($dir);
             return redirect()->back()->withInput()->withError($response['descriptions']);
         }
-
-        return redirect()->route('developer.proyek-item.index');
+        if (isset($response['code']) && $response['code'] == 200 || isset($response['code']) && $response['code'] == 201 ){
+            \Session::flash('flash_message', $response['descriptions']);
+            return redirect()->route('developer.proyek-item.index');
+        }else{
+            return redirect()->route('developer.proyek-item.index');
+        }
     }
 
 }
