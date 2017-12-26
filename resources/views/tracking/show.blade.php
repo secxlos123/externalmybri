@@ -46,8 +46,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="tracking-card">
-                                        <div class="card-box widget-box-three {{($results['status'] == 'Kredit Ditolak') ? 'active' : ''}}">
+                                    <div class="tracking-card">\
+                                        <div class="card-box widget-box-three {{ ($results['status'] == 'Kredit Ditolak' || $results['status'] == 'Kredit Ditolak') ? 'active' : ''}}">
                                             <div class="bg-icon">
                                                 {!! Html::image('assets/images/fa_file_o.png', '', [
                                                     'class' => 'track-icon'
@@ -55,7 +55,11 @@
                                                 <!--  <i class="fa fa-hdd-o"></i> -->
                                             </div>
                                             <div class="text-center">
+                                            @if ($results['status'] == 'Kredit Ditolak' || $results['status'] == 'Kredit Ditolak')
+                                                <p class="m-t-5 text-uppercase font-600 font-secondary">{{($results['status'] == 'Kredit Ditolak') ? 'Status Pengajuan Di Tolak' : 'Status Pengajuan Di Terima'}}</p>
+                                            @else
                                                 <p class="m-t-5 text-uppercase font-600 font-secondary">Status Pengajuan</p>
+                                            @endif
                                             </div>
                                         </div>
                                     </div>
@@ -93,14 +97,13 @@
                                                     <div class="form-group">
                                                         <label class="col-md-4 control-label">Tanggal Pengajuan :</label>
                                                         <div class="col-md-8">
-                                                            <p class="form-control-static">{{ @$results['created_at'] }}</p>
+                                                            <p class="form-control-static">{{ date("d-m-Y", strtotime($results['created_at'])) }}</p>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="col-md-4 control-label">Lama Pengajuan :</label>
                                                         <div class="col-md-8">
-                                                            <input type="hidden" id="createdEform" name="createdEform" value="{{ @$results['created_at'] }}">
-                                                            <p class="form-control-static agingVal"></p>
+                                                            <p class="form-control-static">{{ @$results['aging'] }}</p>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
@@ -207,6 +210,12 @@
                                                             <p class="form-control-static">{{ @$results['branch'] }}</p>
                                                         </div>
                                                     </div>
+                                                    <div class="form-group">
+                                                        <label class="col-md-4 control-label">Status :</label>
+                                                        <div class="col-md-8">
+                                                            <p class="form-control-static"><mark>{{ @$results['status'] }}</mark></p>
+                                                        </div>
+                                                    </div>
                                                 </form>
                                             </div>
                                         </div>
@@ -230,12 +239,12 @@
 
 <!-- This is scripts for this page -->
 @push('scripts')
-    <script type="text/javascript">
+   <!--  <script type="text/javascript">
     $( document ).ready(function() {
         var dob = new Date($("input[name='createdEform']").val());
         var today = new Date();
         var age = Math.floor((today-dob) / (1000 * 60 * 60 * 24));
         $('.agingVal').html(age+' Hari');
     });
-    </script>
+    </script> -->
 @endpush
