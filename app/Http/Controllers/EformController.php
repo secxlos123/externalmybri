@@ -220,7 +220,13 @@ class EformController extends Controller
         }
         //dd($data);
         $response = Client::setEndpoint($endpoint)
-            ->setHeaders(['Authorization' => session('authenticate.token')])
+             ->setHeaders(
+                ['Authorization' => session('authenticate.token'),
+                 'long' => array_key_exists('latitude', $data) ? $data['latitude'] : null,  
+                 'lat' =>  array_key_exists('longitude', $data) ? $data['longitude'] : null,
+                 'auditaction' => array_key_exists('longitude', $data) ?  'Pengajuan Kredit' : null,
+                ]
+              )
             ->setBody(array_to_multipart($data))
             ->post('multipart');
 
