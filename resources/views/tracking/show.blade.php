@@ -46,7 +46,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="tracking-card">\
+                                    <div class="tracking-card">
                                         <div class="card-box widget-box-three {{ ($results['status'] == 'Kredit Ditolak' || $results['status'] == 'Kredit Ditolak') ? 'active' : ''}}">
                                             <div class="bg-icon">
                                                 {!! Html::image('assets/images/fa_file_o.png', '', [
