@@ -34,7 +34,7 @@
                                         </div>
                                     </div>
                                     <div class="tracking-card">
-                                        <div class="card-box widget-box-three {{( $results['status'] == 'Proses CLF' && $results['status'] == 'Prakarsa' && $results['status'] == 'Disposisi Pengajuan') ? 'active' : '' }}">
+                                        <div class="card-box widget-box-three {{( $results['status'] == 'Proses Analisa Pengajuan') ? 'active' : '' }}">
                                             <div class="bg-icon">
                                                 {!! Html::image('assets/images/fa_analis_o.png', '', [
                                                     'class' => 'track-icon'
@@ -47,7 +47,7 @@
                                         </div>
                                     </div>
                                     <div class="tracking-card">
-                                        <div class="card-box widget-box-three {{ ($results['status'] == 'Kredit Ditolak' || $results['status'] == 'Kredit Ditolak') ? 'active' : ''}}">
+                                        <div class="card-box widget-box-three {{ ($results['status'] == 'Kredit Ditolak' || $results['status'] == 'Pengajuan Diterima') ? 'active' : ''}}">
                                             <div class="bg-icon">
                                                 {!! Html::image('assets/images/fa_file_o.png', '', [
                                                     'class' => 'track-icon'
@@ -55,7 +55,7 @@
                                                 <!--  <i class="fa fa-hdd-o"></i> -->
                                             </div>
                                             <div class="text-center">
-                                            @if ($results['status'] == 'Kredit Ditolak' || $results['status'] == 'Kredit Ditolak')
+                                            @if ($results['status'] == 'Kredit Ditolak' || $results['status'] == 'Pengajuan Diterima')
                                                 <p class="m-t-5 text-uppercase font-600 font-secondary">{{($results['status'] == 'Kredit Ditolak') ? 'Status Pengajuan Di Tolak' : 'Status Pengajuan Di Terima'}}</p>
                                             @else
                                                 <p class="m-t-5 text-uppercase font-600 font-secondary">Status Pengajuan</p>
