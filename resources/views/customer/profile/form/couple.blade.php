@@ -1,5 +1,4 @@
 <fieldset id="couple_content" hidden disabled >
-    <?php print_r($customer->couple_birth_place_id); ?>
     <div class="col-md-12">
         <div class="panel panel-blue">
             <div class="panel-heading" data-toggle="collapse" data-target="#couple-data">
