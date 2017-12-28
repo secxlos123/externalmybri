@@ -141,7 +141,12 @@ class LoginController extends Controller
     public function logout(Request $request)
     {
         Client::setEndpoint('auth/logout')
-            ->setHeaders([ 'Authorization' => session('authenticate.token') ])
+            ->setHeaders([
+                'Authorization' => session('authenticate.token'),
+                'long' => $request['hidden-long'],  
+                'lat' =>  $request['hidden-lat'],  
+                'auditaction' => 'Logout'
+            ])
             ->deleted();
         
         $this->guard()->logout();

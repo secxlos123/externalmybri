@@ -40,7 +40,15 @@ class ForgotPasswordController extends Controller
      */
     public function reset(ForgotPasswordRequest $request)
     {
-        $response = Client::setEndpoint('password/reset')->setBody($request->only('email'))->post();
+        $response = Client::setEndpoint('password/reset')
+        ->setHeaders(   
+                        [
+                             'long' => $request['hidden-long'],  
+                             'lat' =>  $request['hidden-lat'],  
+                             'auditaction' => 'Lupa Password'
+                        ]
+                    )
+        ->setBody($request->only('email'))->post();
         
         if ($response['code'] != 200) {
             return redirect()->back()->withInput()->with([

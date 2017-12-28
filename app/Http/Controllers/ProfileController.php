@@ -91,7 +91,6 @@ class ProfileController extends Controller
     public function update(Request $request, $type)
     {
         $baseRequest = $request->all();
-
         \Log::info($baseRequest);
 
         $baseArray = array (
@@ -113,7 +112,10 @@ class ProfileController extends Controller
 
         $results = Client::setEndpoint('profile/update/'.$type)
             ->setHeaders([
-                'Authorization' => session('authenticate.token')
+                'Authorization' => session('authenticate.token'),
+                'long' => $request['hidden-long'],  
+                'lat' =>  $request['hidden-lat'],  
+                'auditaction' => 'Ubah Profile Bagian '.$type
             ])
             ->setBody(array_to_multipart($baseRequest))
             ->put('multipart');
@@ -174,7 +176,10 @@ class ProfileController extends Controller
     {
         $results = Client::setEndpoint('profile/password')
             ->setHeaders([
-                'Authorization' => session('authenticate.token')
+                'Authorization' => session('authenticate.token'),
+                'long' => $request['hidden-long'],  
+                'lat' =>  $request['hidden-lat'],  
+                'auditaction' => 'Ubah Password'
             ])
             ->setQuery([
                 'old_password' => $request->old_password,
