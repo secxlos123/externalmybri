@@ -1,4 +1,5 @@
 <fieldset id="couple_content" hidden disabled >
+    <?php print_r($customer->couple_birth_place_id); ?>
     <div class="col-md-12">
         <div class="panel panel-blue">
             <div class="panel-heading" data-toggle="collapse" data-target="#couple-data">
@@ -33,10 +34,12 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Tempat Lahir *</label>
                                 <div class="col-md-8">
-                                    {!! Form::select('couple_birth_place_id', ( isset($customer->couple_birth_place) ? [$customer->couple_birth_place_id => $customer->couple_birth_place] : [old('couple_birth_place_id')] ), old('couple_birth_place_id'), [
-                                        'class' => 'form-control couple_birth',
+                                    {!! Form::select('couple_birth_place_id', ['' => ''] + [
+                                    $customer->couple_birth_place_id ? $customer->couple_birth_place_id : old('couple_birth_place_id') => $customer->couple_birth_place ? $customer->couple_birth_place : old('couple_birth_place')
+                                    ], old('couple_birth_place_id'), [
+                                        'class' => 'form-control select2 couple_birth',
                                         'data-placeholder' => 'Pilih Kota',
-                                        'data-option' => ( isset($customer->couple_birth_place) ? $customer->couple_birth_place_id : old('couple_birth_place_id') ),
+                                        'data-option' => $customer->couple_birth_place_id ?: old('couple_birth_place_id'),
                                     ]) !!}
                                 </div>
                             </div>
@@ -45,7 +48,7 @@
                                 <div class="col-md-8">
                                     <div class="input-group">
                                         {!! Form::text('couple_birth_date', old('couple_birth_date'), [
-                                            'class' => 'form-control date-birth'
+                                            'class' => 'form-control couple-date-birth'
                                         ]) !!}
                                         <span class="input-group-addon b-0"><i class="fa fa-calendar"></i></span>
                                     </div>
