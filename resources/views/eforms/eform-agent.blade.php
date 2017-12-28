@@ -535,9 +535,10 @@
 
             return false;
         });
-    // });
+    
 
           $('#leads-modal #status').on('change', function(){
+
             if ($(this).val() == 2) 
             {
                 $('#data_couple').show();
@@ -575,6 +576,10 @@
         $('#datepicker-date').datepicker("setDate",  "{{date('Y-m-d', strtotime('-21 years'))}}");
         $('#datepicker-autoclose').datepicker("setDate",  "{{date('Y-m-d', strtotime('-21 years'))}}");
 
+        // $( "#datepicker-date" ).datepicker({
+        //     format: 'dd-mm-yyyy',
+        //     endDate: '-17y'
+        //     });
     </script>
     <!-- End Script for Agent Dev -->
     @stack('parent-scripts')

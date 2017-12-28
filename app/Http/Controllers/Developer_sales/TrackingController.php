@@ -17,7 +17,7 @@ class TrackingController extends Controller
     {
         if ( $request->ajax() ) return $this->datatables($request);
 
-        return view('tracking.index');
+        return view('tracking.index-devsales');
     }
 
     /**
@@ -54,7 +54,7 @@ class TrackingController extends Controller
                     'Authorization' => session('authenticate.token')
                 ])
                 ->get();
-              //  dd($results);
+        //        dd($results['contents']);
         \Log::info($results['contents']);
         return view('tracking.show', [
             'results' => $results['contents']
@@ -113,7 +113,7 @@ class TrackingController extends Controller
                 'page'      => ( int ) $request->input('page') + 1
             ])
                 ->get();
-        \Log::info($results);
+        \Log::info($results['contents']);
 
         foreach ($results['contents']['data'] as $key => $type) {
             $type['action'] = view('layouts.actions', [
