@@ -81,6 +81,7 @@
                     'route' => 'auth.logout', 'method' => 'DELETE',
                     'style' => 'display: none;', 'id' => 'form-logout'
                 ]) !!}
+                    @include('form._input_long_lat')
                 {!! Form::close() !!}
                 @endif
                 <div class="collapse navbar-collapse" id="navbar-menu">

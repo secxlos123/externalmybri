@@ -51,6 +51,7 @@
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <input type="hidden" name="_method" value="PUT" > -->
         @include('profile._form-personal-data')
+        @include('form._input_long_lat')
         {!! Form::close() !!}
         </form>
     </div>
@@ -61,6 +62,7 @@
             'enctype' => 'multipart/form-data', 'method' => 'PUT'
         ]) !!}
             @include('profile._form-work-data')
+            @include('form._input_long_lat')
         {!! Form::close() !!}
     </div>
     <div class="tab-pane {{ $active == 'financial' ? 'active' : '' }}" id="messages-b1">
@@ -70,6 +72,7 @@
             'method' => 'PUT'
         ]) !!}
             @include('profile._form-financial-data')
+            @include('form._input_long_lat')
         {!! Form::close() !!}
     </div>
     <div class="tab-pane {{ $active == 'contact' ? 'active' : '' }}" id="contact-b1">
@@ -79,6 +82,7 @@
             'method' => 'PUT'
         ]) !!}
             @include('profile._form-contact-person')
+            @include('form._input_long_lat')
         {!! Form::close() !!}
     </div>
     <div class="tab-pane {{ $active == 'other' ? 'active' : '' }}" id="support-b1">
@@ -88,6 +92,7 @@
             'enctype' => 'multipart/form-data', 'method' => 'PUT'
         ]) !!}
             @include('profile._form-supporting-data')
+            @include('form._input_long_lat')
         {!! Form::close() !!}
     </div>
     @else
@@ -98,6 +103,7 @@
             'enctype' => 'multipart/form-data', 'method' => 'PUT'
         ]) !!}
             @include('profile.developer._form-personal-data')
+            @include('form._input_long_lat')
         {!! Form::close() !!}
     </div>
     @endif

@@ -19,6 +19,7 @@
             {!! Form::password('password_confirmation', [ 'class' => 'keyword-input', 'placeholder' => 'Ulangi Kata Sandi' ]) !!}
         </div>
     </div>
+    @include('form._input_long_lat')
     <div class="col-md-12">
         <div class="pull-right">
             <button type="submit" class="btn btn-primary waves-light waves-effect w-md m-b-20"><i class="mdi mdi-content-save"></i>Simpan</button>

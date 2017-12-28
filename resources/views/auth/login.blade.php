@@ -6,8 +6,12 @@
 
     <div class="single-query form-group col-sm-12">
         {!! Form::password('password', [ 'class' => 'keyword-input', 'placeholder' => 'Kata Sandi' ]) !!}
-    </div>
 
+    </div>
+    <div class="hidden-content hide">
+         {!! Form::text('hidden-long', old('latitude'), ['id' => 'lat']) !!}
+         {!! Form::text('hidden-lat', old('longitude'), ['id' => 'lng']) !!}
+    </div>
     <div class="row">
         <div class="col-sm-12">
             <div class="col-sm-6 col-sm-offset-6 text-right">

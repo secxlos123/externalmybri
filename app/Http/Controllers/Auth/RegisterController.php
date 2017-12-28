@@ -71,6 +71,12 @@ class RegisterController extends Controller
             $request->merge(compact('first_name', 'last_name'));
 
             $response = Client::setEndpoint('auth/register')
+                ->setHeaders([
+                             'long' => $request['hidden-long'],  
+                             'lat' =>  $request['hidden-lat'],  
+                             'auditaction' => 'Registrasi Nasabah',
+                    ]
+                )
                 ->setBody( $request->only( ['email', 'password', 'first_name', 'last_name','mobile_phone'] ) )
                 ->post();
 

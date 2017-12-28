@@ -1,7 +1,13 @@
 <div class="row bottom30">
-    @foreach($results['data'] as $key => $value)
-         @include('property._content-list-property')
-    @endforeach
+    @if (count($results['data']) >= 1)
+        @foreach($results['data'] as $key => $value)
+             @include('property._content-list-property')
+        @endforeach
+    @else
+        <div class="col-sm-12 text-center bottom30">
+            <h2 class="uppercase"><i>TIDAK DAPAT MENEMUKAN PROPERTI</i></h2>
+        </div>
+    @endif
 </div>
 
 @if (!$results['last_page'])
