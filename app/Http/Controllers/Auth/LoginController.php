@@ -49,7 +49,14 @@ class LoginController extends Controller
      */
     public function login(LoginRequest $request)
     {
-        $response = Client::setEndpoint('auth/login')->setBody($this->credentials($request))->post();
+        $response = Client::setEndpoint('auth/login')
+        ->setHeaders([
+                 'long' => $request['hidden-long'],  
+                 'lat' =>  $request['hidden-lat'],  
+                 'auditaction' => 'Login',
+            ]
+        )
+        ->setBody($this->credentials($request))->post();
         
         if ($response['code'] != 200) {
             return redirect()->back()->withInput()->with([
