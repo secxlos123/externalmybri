@@ -13,10 +13,16 @@
     };
 
     var eventValues = [];
+    var today = new Date($.now());
+
     $.ajax({
         url: '/schedule/data-list',
         dataType: "JSON",
         type: 'GET',
+        data: {
+            month: today.getMonth() + 1
+            , year: today.getFullYear()
+        },
         async: false,
         success: function(response){
             console.log(response.data);
@@ -41,7 +47,6 @@
         }
     });
 
-    var today = new Date($.now());
     var defaultEvents =  [{
                 title: 'Jadwal 1',
                 start: new Date($.now() + 158000000),

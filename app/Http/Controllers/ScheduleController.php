@@ -99,12 +99,13 @@ class ScheduleController extends Controller
      * Get list schedule from API
      * @return \Illuminate\Http\Response
      */
-    public function listData()
+    public function listData(Request $request)
     {
         $results = Client::setEndpoint('schedule')
             ->setHeaders([
                 'Authorization' => session('authenticate.token')
             ])
+            ->setQuery($request->all())
             ->get();
 
         return response()->json($results['contents']);
