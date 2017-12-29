@@ -27,9 +27,8 @@
         </p>
         <input id="searchInput" class="input-controls" type="text" placeholder="Masukkan lokasi pertemuan">
 
-        <div class="map" id="map"></div>
-        <!-- <input type="text" id="long" >
-        <input type="text" id="lat" > -->
+        <div class="map" id="map">
+        </div>
 
         <div class="form-group m-t-20">
             {!! Form::textarea('address_location', old('address_location'), [
@@ -51,7 +50,6 @@
 
 @push( 'parent-styles' )
     {!! Html::script('https://maps.googleapis.com/maps/api/js?key=AIzaSyAIijm1ewAfeBNX3Np3mlTDZnsCl1u9dtE&libraries=places') !!}
-    {!! Html::script( 'assets/js/jquery.gmaps.js' ) !!}
     <style type="text/css">
         .map {
             width: 100%;
