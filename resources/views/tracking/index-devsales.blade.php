@@ -25,10 +25,8 @@
                                             <thead class="bg-blue">
                                                 <tr>
                                                     <th>Nama pemohon</th>
-                                                    <th>Property</th>
-                                                    <th>Property Type</th>
+                                                    <th>Product Type</th>
                                                     <th>Property Unit</th>
-                                                    <th>Nominal</th>
                                                     <th>Status</th>
                                                     <th>Aksi</th>
                                                 </tr>
@@ -83,10 +81,8 @@
             },
             aoColumns : [
                 { data: 'nama_pemohon', name: 'nama_pemohon' },
-                { data: 'kpr.property_name', name: 'property'},
-                { data: 'kpr.property_type_name', name: 'property_type_name' },
+                { data: 'product_type', name: 'product_type'},
                 { data: 'property_name', name: 'property_name' },
-                { data: 'nominal', name: 'nominal' },
                 { data: 'status', name: 'status' },
                 { data: 'action', name: 'action', bSortable: false },
             ],

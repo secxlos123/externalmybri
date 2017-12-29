@@ -65,8 +65,10 @@ class PropertyTypeController extends Controller
      */
     public function show(Request $request, $slug)
     {
+       // if ( $request->ajax() ) return $this->datatables_unit($request, $slug);
+       // return view( 'developer.property_type.show' );
         if ( $request->ajax() ) {
-            return app(ItemController::class)->datatables($request, $slug);
+            return $this->datatables_unit($request, $slug);
         }
 
         return $this->type($slug, 'show');
@@ -198,5 +200,46 @@ class PropertyTypeController extends Controller
         }
             \Session::flash('flash_message', $response['descriptions']);
             return redirect()->route('developer.proyek-type.index');
+    }
+
+     public function datatables_unit(Request $request, $slug)
+    {
+      
+        $sort = $request->input('order.0');
+        $types = Client::setEndpoint("property-type/{$slug}/property-item")
+            ->setHeaders([
+                'Authorization' => session('authenticate.token')
+            ])
+            ->setQuery([
+                'limit'            => $request->input('length'),
+                'property_type_id' => $request->input('property_type_id'),
+                'is_available'     => $request->input('is_available'),
+                'status'           => $request->input('status'),
+                'price'            => $request->input('price'),
+                'sort'             => $this->columns[$sort['column']] .'|'. $sort['dir'],
+                'page'             => (int) $request->input('page') + 1,
+                'search'           => $request->input('search.value'),
+            ])
+            ->get();
+
+        foreach ($types['contents']['data'] as $key => $type) {
+            $type['action'] = view('layouts.actions', [
+                'show' => route('developer.proyek-item.show', $type['id']),
+                'edit' => route('developer.proyek-item.edit', $type['id'])
+            ])->render();
+            $types['contents']['data'][$key] = $type;
+        }
+
+        $types['contents']['draw'] = $request->input('draw');
+        $types['contents']['recordsTotal'] = $types['contents']['total'];
+        $types['contents']['recordsFiltered'] = $types['contents']['total'];
+
+        unset(
+            $types['contents']['path'],
+            $types['contents']['prev_page_url'],
+            $types['contents']['next_page_url']
+        );
+
+        return response()->json($types['contents']);
     }
 }

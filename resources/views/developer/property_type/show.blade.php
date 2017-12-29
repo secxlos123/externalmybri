@@ -170,7 +170,7 @@
                                         <h3 class="panel-title text-uppercase">List Unit Properti</h3>
                                     </div>
                                     <div class="panel-body">
-                                        @include('developer.property_item._table')
+                                        @include('developer.property_item._table_unit')
                                     </div>
                                 </div>
                             </div>
