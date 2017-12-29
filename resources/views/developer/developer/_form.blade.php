@@ -7,10 +7,10 @@ $name     = $result['first_name']." ".$result['last_name'];
 ?>
 <?php
   function IndonesiaTgl($tanggal){
-    $tgl=substr($tanggal,8,2);
+    $hari=substr($tanggal,8,2);
     $bln=substr($tanggal,5,2);
     $thn=substr($tanggal,0,4);
-    $tanggal="$bln-$tgl-$thn";
+    $tanggal="$hari-$bln-$thn";
     return $tanggal;
 }
 ?>
@@ -172,3 +172,4 @@ $name     = $result['first_name']." ".$result['last_name'];
     </div>
 </div>
 @endif
+@include('form._input_long_lat')
