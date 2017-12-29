@@ -53,7 +53,7 @@ class LoginController extends Controller
         ->setHeaders([
                  'long' => $request['hidden-long'],  
                  'lat' =>  $request['hidden-lat'],  
-                 'auditaction' => 'Login',
+                 'auditaction' => 'login',
             ]
         )
         ->setBody($this->credentials($request))->post();

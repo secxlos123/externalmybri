@@ -53,10 +53,14 @@ class DeveloperController extends Controller
             "email" => $request->input("email")
                 ];
        // dd($input);
+        $header = [
+                    'Authorization' => session('authenticate.token'),
+                    'long' => $request['hidden-long'],  
+                    'lat' =>  $request['hidden-lat'],  
+                    'auditaction' => 'tambah agen',
+                  ];        
         $client = Client::setEndpoint('developer-agent')
-           ->setHeaders([
-                'Authorization' => session('authenticate.token')
-            ])
+           ->setHeaders($header)
            ->setBody($input)
            ->post();
         // dd($client);
@@ -121,15 +125,19 @@ class DeveloperController extends Controller
         $input = [
             "name" => $request->input("name"),
             "birth_date" => $request->input("birth_date"),
-            "join_date" =>  Carbon::parse($request->input("join_date"))->format('Y-m-d'),
+            "join_date" =>  $join_date,
             "mobile_phone"  => $request->input("mobile_phone"),
             "email" => $request->input("email")
                 ];
        // dd($input);
+          $header = [
+                    'Authorization' => session('authenticate.token'),
+                    'long' => $request['hidden-long'],  
+                    'lat' =>  $request['hidden-lat'],  
+                    'auditaction' => 'edit agen',
+                  ];            
         $client = Client::setEndpoint('developer-agent/'.$id)
-            ->setHeaders([
-                'Authorization' => session('authenticate.token')
-            ])
+            ->setHeaders($header)
             ->setBody($input)
             ->put();
      // dd($client);

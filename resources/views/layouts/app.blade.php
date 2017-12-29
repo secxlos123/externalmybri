@@ -142,6 +142,8 @@
         function showPosition(position) {
             $('input[name="hidden-long"]').val(position.coords.longitude);
             $('input[name="hidden-lat"]').val(position.coords.latitude);
+            $('input#lng').val(position.coords.longitude);
+            $('input#lat').val(position.coords.latitude);
 
             console.log("Success generate longitude" + position.coords.longitude + " - latitude : " + position.coords.latitude + ".");
         }

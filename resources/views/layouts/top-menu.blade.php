@@ -20,7 +20,7 @@
 			</a>
 		</li>
 		<li>
-			<a href="{{('developer' == session('authenticate.role')) ? url('dev/profile') : url('profile/personal')}}">
+			<a href="{{('developer' == session('authenticate.role')) ? url('dev/profile/personal') : url('profile/personal')}}">
 				<i class="fa fa-user"></i> {!! session('authenticate.fullname') !!}
 			</a>
 		</li>

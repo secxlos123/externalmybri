@@ -27,6 +27,7 @@
                                                     <th>Nama pemohon</th>
                                                     <th>Developer</th>
                                                     <th>Property</th>
+                                                    <th>Produk</th>
                                                     <th>Status</th>
                                                     <th>Aksi</th>
                                                 </tr>
@@ -83,6 +84,7 @@
                 { data: 'nama_pemohon', name: 'nama_pemohon' },
                 { data: 'developer_name', name: 'developer_name' },
                 { data: 'property_name', name: 'property_name' },
+                { data: 'product', name: 'product' },
                 { data: 'status', name: 'status' },
                 { data: 'action', name: 'action', bSortable: false },
             ],
