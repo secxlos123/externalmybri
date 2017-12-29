@@ -4,7 +4,7 @@
             <div class="alert alert-success"><em> {!! session('flash_message') !!}</em></div>
             @elseif(Session::has('error_flash_message'))
             <div class="alert alert-danger"><em> {!! session('error_flash_message') !!}</em></div>
-            @endif
+        @endif
 		<h2 class="text-uppercase bottom20">Manajemen Agen Developer</h2>
 		<div class="btn-project bottom10">
 			<a class="btn btn-primary" href="{!! route('developer.developer.create') !!}" role="button">

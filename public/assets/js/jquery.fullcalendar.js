@@ -24,7 +24,9 @@
             , year: today.getFullYear()
         },
         async: false,
+        allDay: false,
         success: function(response){
+            console.log("====didieu====");
             console.log(response.data);
             $.each(response.data, function(key, value){
                 event = {
@@ -41,6 +43,9 @@
                 };
                 eventValues.push(event);
             });
+         //    $( document ).ready(function() {
+         //     $('.fc-time').remove();
+         // });
         },
         error: function(response){
             console.log(response);
@@ -231,7 +236,7 @@
         // }else{
         //     $this.$modal.find(".approval").hide();
         // }
-        initializeMapPosition(calEvent);
+       //initializeMapPosition(calEvent);
         // $this.$modal.find(".save-event").html("Update Jadwal").attr('type', 'submit');
         // $this.$modal.find('form').on('submit', function () {
         //     var title = form.find("input[name='title']").val();
@@ -306,21 +311,26 @@
         var form = '';
         var today = new Date($.now());
         var $this = this;
+       // displayEventTime : false
         $this.$calendarObj = $this.$calendar.fullCalendar({
-            slotDuration: '00:15:00', /* If we want to split day time each 15minutes */
-            minTime: '08:00:00',
-            maxTime: '19:00:00',
+            displayEventTime : false,
+            allDay: false,
+            Time: false,
+           // slotDuration: '00:15:00', /* If we want to split day time each 15minutes */
+           // minTime: '08:00:00',
+           // maxTime: '19:00:00',
             defaultView: 'month',
             handleWindowResize: true,
             height: $(window).height() - 200,
             header: {
                 left: 'prev,next today',
                 center: 'title',
-                right: 'month,agendaWeek,agendaDay'
+                right: 'month'
+               // right: 'month,agendaWeek,agendaDay'
             },
             events: eventValues,
             editable: true,
-            droppable: true, // this allows things to be dropped onto the calendar !!!
+            droppable: false, // this allows things to be dropped onto the calendar !!!
             eventLimit: true, // allow "more" link when too many events
             selectable: true,
             eventDrop: function(event, delta, revertFunc) {

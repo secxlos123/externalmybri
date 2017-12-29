@@ -114,7 +114,7 @@ class PropertyTypeController extends Controller
      */
     public function datatables(Request $request, $slug = null)
     {
-        $endpoint = $slug ? "property/{$slug}/property-type" : 'property-type';
+        $endpoint = $slug ? "property-type/{$slug}/property-item" : 'property-type';
         $sort = $request->input('order.0');
         $types = Client::setEndpoint($endpoint)
             ->setHeaders([
@@ -193,9 +193,10 @@ class PropertyTypeController extends Controller
 
         if ( ! in_array($response['code'], [200, 201]) ) {
             Storage::disk('property_types')->deleteDirectory($dir);
+            \Session::flash('error_flash_message', $response['descriptions']);
             return redirect()->back()->withInput()->withError($response['descriptions']);
         }
-
-        return redirect()->route('developer.proyek-type.index');
+            \Session::flash('flash_message', $response['descriptions']);
+            return redirect()->route('developer.proyek-type.index');
     }
 }
