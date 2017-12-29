@@ -41,7 +41,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label">Title</label>
-                                                    <input class="form-control" name="title" type="text">
+                                                    <input class="form-control" id="title" name="title" type="text">
                                                     <input class="form-control" id="lng" name="lng" type="hidden">
                                                     <input class="form-control" id="lat" name="lat" type="hidden">
                                                     <input class="form-control" id="id_schedule" name="id_schedule" type="hidden">
@@ -225,17 +225,18 @@ function initialize() {
                     console.log(response);
                     title = $('#id_schedule').val();
                     console.log(title);
+                       $('#label').addClass('alert alert-success');
+                       $('#label').text('Jadwal Berhasil di Update');
 
                 },
                 error: function(response){
                     console.log('error');
                 }
             });
-            $('#event-modal').modal('hide'); 
-            $('.fc-title').text(title);
-            $('#label').addClass('alert alert-success');
-            $('#label').text('Jadwal Berhasil di Update');
-            // location.reload();
+            $('#event-modal').modal('hide');
+            content_title = $('#title').val(); 
+            $('.fc-title').text(content_title);
+            setTimeout(location.reload.bind(location), 1500);
         });
     </script>
 @endpush
