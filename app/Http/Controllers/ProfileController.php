@@ -109,13 +109,14 @@ class ProfileController extends Controller
         }
         \Log::info("=======================================================");
         \Log::info($baseRequest);
-
-        $results = Client::setEndpoint('profile/update/'.$type)
+           
+           $namaBagian = $this->_typeList($type);
+           $results = Client::setEndpoint('profile/update/'.$type)
             ->setHeaders([
                 'Authorization' => session('authenticate.token'),
                 'long' => $request['hidden-long'],  
                 'lat' =>  $request['hidden-lat'],  
-                'auditaction' => 'Ubah Profile Bagian '.$type
+                'auditaction' => 'ubah profile bagian '.$namaBagian
             ])
             ->setBody(array_to_multipart($baseRequest))
             ->put('multipart');
@@ -195,5 +196,17 @@ class ProfileController extends Controller
         }
         \Session::flash('error_flash_message', $results['descriptions']);
         return redirect()->back()->withInput();
+    }
+    /*
+        This function for convert type of edit profile for action log
+    */
+    public function _typeList($type){
+         $typeList = array('personal'=>'data pribadi','work'=>'data pekerjaan','financial'=>'data finansial','contact'=>'data contact person','other'=>'data pendukung');
+         if(!empty($typeList[$type])){
+            $result =$typeList[$type];
+         }else{
+            $result = $type;
+         }
+         return $result;
     }
 }

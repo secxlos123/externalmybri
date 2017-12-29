@@ -97,7 +97,7 @@ class ProfileController extends Controller
                 'Authorization' => session('authenticate.token'),
                 'long' => $request['hidden-long'],  
                 'lat' =>  $request['hidden-lat'],  
-                'auditaction' => 'Ubah Profile'
+                'auditaction' => 'ubah profile bagian data pribadi'
             ])
             ->setBody(array_to_multipart($request->all()))
             ->put('multipart');
