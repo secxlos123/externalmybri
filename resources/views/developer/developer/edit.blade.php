@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
-@section('title', 'Rubah Developer')
+@section('title', 'Ubah Developer')
 
 @section('breadcrumb')
-    <h1 class="text-uppercase">Rubah Data Agen Developer</h1>
+    <h1 class="text-uppercase">Ubah Data Agen Developer</h1>
     <p>Kelola developer anda di sini.</p>
     <ol class="breadcrumb text-center">
         <li><a href="{!! route('developer.proyek.index') !!}">List Developer</a></li>
-        <li class="active">Rubah Data Agen Developer</li>
+        <li class="active">Ubah Data Agen Developer</li>
     </ol>
 @endsection
 
@@ -22,7 +22,7 @@
             ]) !!}
                 <div class="row">
                     <div class="col-md-12">
-                        <h2 class="text-uppercase bottom40">Rubah Developer Properti</h2>
+                        <h2 class="text-uppercase bottom40">Ubah Developer Properti</h2>
                         <div class="panel panel-blue">
                             <div class="panel-heading">
                                 <h3 class="panel-title text-uppercase">Data Developer</h3>
@@ -35,7 +35,7 @@
                     <div class="col-md-12">
                         <div class="pull-right">
                             <button type="submit" class="btn btn-orange waves-light waves-effect w-md m-b-20">
-                                <i class="mdi mdi-content-save"></i> Rubah
+                                <i class="mdi mdi-content-save"></i> Ubah
                             </button>
                         </div>
                     </div>

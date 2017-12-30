@@ -13,7 +13,7 @@
 
                     <!-- <div class='map' id='map' style='width: 100%; height: 200px;'></div> -->
                     <p class="text-muted m-b-30">
-                        Klik pada label jadwal yg telah ada untuk dirubah.
+                        Klik pada label jadwal yg telah ada untuk diubah.
                     </p>
                     <div class="row">
                         <div class="col-md-12">
@@ -234,7 +234,7 @@ function initialize() {
                 }
             });
             $('#event-modal').modal('hide');
-            content_title = $('#title').val(); 
+            content_title = $('#title').val();
             $('.fc-title').text(content_title);
             setTimeout(location.reload.bind(location), 1500);
         });

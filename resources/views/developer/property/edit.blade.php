@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
-@section('title', 'Rubah Proyek')
+@section('title', 'Ubah Proyek')
 
 @section('breadcrumb')
-    <h1 class="text-uppercase">Rubah Proyek</h1>
+    <h1 class="text-uppercase">Ubah Proyek</h1>
     <p>Kelola proyek anda di sini.</p>
     <ol class="breadcrumb text-center">
         <li><a href="{!! route('developer.proyek.index') !!}">List Proyek</a></li>
-        <li class="active">Rubah Proyek</li>
+        <li class="active">Ubah Proyek</li>
     </ol>
 @endsection
 

@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
-@section('title', 'Rubah Proyek Tipe')
+@section('title', 'Ubah Proyek Tipe')
 
 @section('breadcrumb')
-    <h1 class="text-uppercase">Rubah Proyek Tipe</h1>
+    <h1 class="text-uppercase">Ubah Proyek Tipe</h1>
     <p>Kelola proyek anda di sini.</p>
     <ol class="breadcrumb text-center">
         <li><a href="{!! route('developer.proyek-type.index') !!}">List Proyek Tipe</a></li>
-        <li class="active">Rubah Proyek Tipe</li>
+        <li class="active">Ubah Proyek Tipe</li>
     </ol>
 @endsection
 
@@ -21,7 +21,7 @@
             ]) !!}
                 <div class="row">
                     <div class="col-md-12">
-                        <h2 class="text-uppercase bottom40">Rubah Proyek Tipe</h2>
+                        <h2 class="text-uppercase bottom40">Ubah Proyek Tipe</h2>
                         <div class="panel panel-blue">
                             <div class="panel-heading">
                                 <h3 class="panel-title text-uppercase">Data Proyek Tipe</h3>
@@ -40,7 +40,7 @@
                     <div class="col-md-12">
                         <div class="pull-right">
                             <button type="submit" class="btn btn-orange waves-light waves-effect w-md m-b-20">
-                                <i class="mdi mdi-content-save"></i> Rubah
+                                <i class="mdi mdi-content-save"></i> Ubah
                             </button>
                         </div>
                     </div>
