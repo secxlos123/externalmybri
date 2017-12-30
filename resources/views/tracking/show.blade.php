@@ -109,7 +109,7 @@
                                                     <div class="form-group">
                                                         <label class="col-md-4 control-label">Jenis KPR :</label>
                                                         <div class="col-md-8">
-                                                            <p class="form-control-static">{{ @$results['product_type'] }}</p>
+                                                            <p class="form-control-static">{{ @$results['kpr']['status_property_name'] }}</p>
                                                         </div>
                                                     </div>
 
