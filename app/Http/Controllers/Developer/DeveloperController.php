@@ -222,10 +222,15 @@ class DeveloperController extends Controller
      public function deactive(Request $request, $id)
      { 
         $input  = $request->all();
+        $hasillong = number_format(floatval($request['hidden-long']), 5);
+        $headers= [
+                    'Authorization' => session('authenticate.token'),
+                    'long' => $hasillong,  
+                    'lat' =>  $request['hidden-lat'],  
+                    'auditaction' => $request['auditaction']
+                  ];
         $client = Client::setEndpoint('developer-agent/banned/'.$id)
-                ->setHeaders([
-                    'Authorization' => session('authenticate.token')
-                    ])
+                ->setHeaders($headers)
                // ->setBody($input)
                 ->get();
                 

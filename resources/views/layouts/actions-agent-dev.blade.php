@@ -38,19 +38,21 @@
 <!-- JS For Modal Confirmation Banned -->
 <script type="text/javascript">
 // Banned Function
+ var LongLat ='?hidden-long='+ $('input[name="hidden-long"]').val()+'?&hidden-lat='+$('input[name="hidden-lat"]').val()+'&auditaction=banned agen';
+ var urlLongLat =LongLat+'&auditaction=banned agen';
 $(document).ready(function(){
+
     $('#btn-banned{{ $user_id }}').on('click', function(event){
       
-                   event.preventDefault();
+       event.preventDefault();
         bootbox.confirm("Anda yakin untuk Banned Agen Developer ini ?", function(result) {
             if (result) {
                  //include the href duplication link here?;
-                 window.location = ('{{ url("dev/developer/banned/".$user_id) }}');
+                 window.location = ('{{ url("dev/developer/banned/".$user_id) }}'+urlLongLat);
             
-              console.log({{ $user_id }});
+                 console.log({{ $user_id }});
 
-                //showProgressAnimation();
-             
+                 //showProgressAnimation(); 
             } else {
                
             }
@@ -61,17 +63,17 @@ $(document).ready(function(){
 // Unbanned Function
 $(document).ready(function(){
     $('#btn-unbanned{{ $user_id }}').on('click', function(event){
-      
-                   event.preventDefault();
+         
+        var urlLongLat =LongLat+'&auditaction=unbanned agen';
+        event.preventDefault();
         bootbox.confirm("Anda yakin untuk Unbanned Agen Developer ini ?", function(result) {
             if (result) {
                  //include the href duplication link here?;
-                 window.location = ('{{ url("dev/developer/banned/".$user_id) }}');
+                 window.location = ('{{ url("dev/developer/banned/".$user_id) }}'+urlLongLat);
             
-              console.log({{ $user_id }});
+                 console.log({{ $user_id }});
 
-                //showProgressAnimation();
-             
+                 //showProgressAnimation(); 
             } else {
                
             }
