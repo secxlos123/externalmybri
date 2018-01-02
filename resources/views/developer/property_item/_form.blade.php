@@ -138,7 +138,7 @@
         @include('additional-forms.dropzone', ['form' => true])
     </div>
 </div>
-
+  @include('form._input_long_lat')
 @push( 'styles' )
     {!! Html::style( 'assets/css/dropzone.min.css' ) !!}
     {!! Html::style( 'assets/css/select2.min.css' ) !!}
