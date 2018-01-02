@@ -60,7 +60,12 @@ public function index()
     {
         $input  = $request->all();
         $client = Client::setEndpoint('developer-agent/'.$id)
-                ->setHeaders(['Authorization' => session('authenticate.token')])
+                ->setHeaders([
+                    'Authorization' => session('authenticate.token'),
+                    'long'          => $request['hidden-long'],  
+                    'lat'           => $request['hidden-lat'],
+                    'auditaction'   => $request['auditaction']
+                    ])
                 ->setBody($input)
                 ->put();
         if (isset($client['code']) && $client['code'] == 201) {
@@ -103,7 +108,10 @@ public function index()
     {
         $results = Client::setEndpoint('profile/password')
             ->setHeaders([
-                'Authorization' => session('authenticate.token')
+                'Authorization' => session('authenticate.token'),
+                'long'          => $request['hidden-long'],  
+                'lat'           => $request['hidden-lat'],
+                'auditaction'   => $request['auditaction']
             ])
             ->setQuery([
                 'old_password' => $request->old_password,

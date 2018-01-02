@@ -19,7 +19,7 @@ class EformController extends Controller
      */
     protected $simple = [
         'nik', 'first_name', 'last_name', 'birth_place_id', 'birth_date', 'address','current_address', 'city_id', 'gender', 'status', 'address_status', 'mobile_phone', 'mother_name', 'identity', 'couple_nik',
-        'couple_name', 'couple_birth_place_id', 'couple_birth_date', 'couple_identity', 'is_simple', 'work_field','work_type', 'work', 'work_field_name', 'work_type_name', 'work_name', 'position', 'position_name', 'citizenship_id', 'citizenship'
+        'couple_name', 'couple_birth_place_id', 'couple_birth_date', 'couple_identity', 'is_simple', 'work_field','work_type', 'work', 'work_field_name', 'work_type_name', 'work_name', 'position', 'position_name', 'citizenship_id', 'citizenship', 'hidden-long', 'hidden-lat'
     ];
 
     /**
@@ -32,7 +32,7 @@ class EformController extends Controller
         'salary', 'other_salary', 'loan_installment', 'dependent_amount', 'emergency_name',
         'emergency_contact', 'emergency_relation', 'city', 'work_duration', 'phone', 'couple_salary',
         'couple_other_salary', 'couple_loan_installment', 'work_duration_month', 'work_duration',
-        'citizenship_id', 'citizenship', 'work_field_name', 'work_type_name', 'work_name', 'position', 'position_name', 'source_income'
+        'citizenship_id', 'citizenship', 'work_field_name', 'work_type_name', 'work_name', 'position', 'position_name', 'source_income','hidden-long', 'hidden-lat'
     ];
 
     /**
@@ -42,7 +42,7 @@ class EformController extends Controller
      */
     protected $eform = [
         'product_type', 'status_property', 'developer', 'developer_name', 'property', 'property_name', 'price', 'building_area', 'property_type','property_type_name','property_item','property_item_name', 'home_location', 'year',
-        'active_kpr', 'dp', 'request_amount', 'nik', 'branch_id', 'appointment_date', 'address_location', 'longitude', 'latitude', 'kpr_type_property', 'sales_dev_id'
+        'active_kpr', 'dp', 'request_amount', 'nik', 'branch_id', 'appointment_date', 'address_location', 'longitude', 'latitude', 'kpr_type_property', 'sales_dev_id','hidden-long','hidden-lat'
     ];
 
     /**
@@ -114,6 +114,7 @@ class EformController extends Controller
      */
     public function store(EformRequest $request)
     {
+
         try {
             \Log::info($request->all());
             if (session('authenticate.role') == 'customer') {
@@ -218,12 +219,12 @@ class EformController extends Controller
         if (isset($data['address_location'])) {
             $data['address'] = $data['address_location'];
         }
-        //dd($data);
+        
         $response = Client::setEndpoint($endpoint)
              ->setHeaders(
                 ['Authorization' => session('authenticate.token'),
-                 'long' => array_key_exists('latitude', $data) ? $data['latitude'] : null,  
-                 'lat' =>  array_key_exists('longitude', $data) ? $data['longitude'] : null,
+                 'long' => array_key_exists('hidden-long', $data) ? $data['hidden-long'] : null,  
+                 'lat' =>  array_key_exists('hidden-lat', $data) ? $data['hidden-lat'] : null,
                  'auditaction' => array_key_exists('longitude', $data) ?  'Pengajuan Kredit' : null,
                 ]
               )
@@ -328,7 +329,10 @@ class EformController extends Controller
         // dd($newCustomer);
         $client = Client::setEndpoint('customer')
             ->setHeaders([
-                'Authorization' => session('authenticate.token')
+                'Authorization' => session('authenticate.token'),
+                'long' => $request['hidden-long'],  
+                'lat' =>  $request['hidden-lat'],
+                'auditaction' => 'Tambah Leads',
             ])->setBody($newCustomer)
             ->post('multipart');
 

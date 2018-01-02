@@ -203,4 +203,5 @@
             </div>
         </div>
     </div>
+    @include('form._input_long_lat')
 </div>

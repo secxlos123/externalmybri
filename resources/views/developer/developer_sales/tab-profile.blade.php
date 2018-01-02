@@ -62,6 +62,8 @@ $join = date('d-m-Y', strtotime($results['userdeveloper']["join_date"]));
             @endif
         </div>
     </div>
+    @include('form._input_long_lat')
+    {!! Form::hidden('auditaction', 'Update Profile Agen Developer')!!}
     <div class="col-md-12">
         <div class="pull-right">
             <a href="{{ route('dev-sales.profile.edit') }}" class="btn btn-default waves-light waves-effect w-md m-b-20">Batalkan</a>
