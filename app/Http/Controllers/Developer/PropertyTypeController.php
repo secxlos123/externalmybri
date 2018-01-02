@@ -188,8 +188,21 @@ class PropertyTypeController extends Controller
         $dir = "tmp/{$request->get('_token')}";
         extract_dir_to_request($request, $dir, 'property_types');
 
+        if($method=='put'){
+            $auditaction= 'edit tipe property';
+        }else if ($method == 'post'){
+            $auditaction= 'tambah tipe property';
+        }
+
+        $headers= [
+            'Authorization' => session('authenticate.token'),
+            'long' => $request['hidden-long'],  
+            'lat' =>  $request['hidden-lat'],  
+            'auditaction' => $auditaction
+          ];
+
         $response = Client::setEndpoint($endpoint)
-                ->setHeaders(['Authorization' => session('authenticate.token')])
+                ->setHeaders($headers)
                 ->setBody(array_to_multipart($request->all()))
                 ->{$method}('multipart');
 
