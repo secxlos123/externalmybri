@@ -40,10 +40,14 @@ class PropertyController extends Controller
     public function input(CreateRequest $request)
     {
         $input = $request->all();
+        $headers= [
+                    'Authorization' => session('authenticate.token'),
+                    'long' => $request['hidden-long'],  
+                    'lat' =>  $request['hidden-lat'],  
+                    'auditaction' => 'tambah proyek'
+                  ];
         $query = Client::setEndpoint('property')
-                ->setHeaders([
-                    'Authorization' => session('authenticate.token')
-                    ])
+                ->setHeaders($headers)
                 ->setBody(array_to_multipart($input))
                 ->post('multipart');
 
@@ -195,8 +199,14 @@ class PropertyController extends Controller
     public function storeOrUpdate(Request $request, $endpoint, $method)
     {
         try {
+            $headers = [
+                          'Authorization' => session('authenticate.token'),
+                          'long' => $request['hidden-long'],  
+                          'lat' =>  $request['hidden-lat'],  
+                          'auditaction' => 'edit proyek'
+                       ];
             $response = Client::setEndpoint($endpoint)
-                    ->setHeaders(['Authorization' => session('authenticate.token')])
+                    ->setHeaders($headers)
                     ->setBody(array_to_multipart($request->all()))
                     ->{$method}('multipart');
                    // dd($request->all());
