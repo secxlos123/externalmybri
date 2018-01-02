@@ -198,9 +198,21 @@ class ItemController extends Controller
     {
         $dir = "tmp/{$request->get('_token')}";
         extract_dir_to_request($request, $dir, 'property-item');
+        if($method=='put'){
+            $auditaction= 'edit unit property';
+        }else if ($method == 'post'){
+            $auditaction= 'tambah unit property';
+        }
+
+        $headers= [
+            'Authorization' => session('authenticate.token'),
+            'long' => $request['hidden-long'],  
+            'lat' =>  $request['hidden-lat'],  
+            'auditaction' => $auditaction
+            ];
 
         $response = Client::setEndpoint($endpoint)
-                ->setHeaders(['Authorization' => session('authenticate.token')])
+                ->setHeaders($headers)
                 ->setBody(array_to_multipart($request->all()))
                 ->{$method}('multipart');
                 //dd($response);
