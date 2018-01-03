@@ -34,10 +34,7 @@
     <div class="single-query form-group col-sm-12">
         {!! Form::password('password_confirmation', [ 'class' => 'keyword-input', 'placeholder' => 'Ulangi Kata Sandi' ]) !!}
     </div>
-     <div class="hidden-content hide">
-         {!! Form::text('hidden-long', old('latitude'), ['id' => 'lat']) !!}
-         {!! Form::text('hidden-lat', old('longitude'), ['id' => 'lng']) !!}
-    </div>
+   @include('form._input_long_lat')
     <div class="col-md-12 col-sm-12 col-xs-12 text-center">
         <div class="query-submit-button">
             <input type="submit" value="Buat Akun" class="btn-slide">
