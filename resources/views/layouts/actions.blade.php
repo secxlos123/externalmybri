@@ -8,9 +8,11 @@
     @endif
 
     @if ( isset($edit) )
-        <a href="{!! $edit !!}" class="btn btn-default" title="Edit">
-            <i class="glyphicon glyphicon-pencil"></i>
-        </a>
+        @if (isset($is_approve) && $is_approve !== true)
+            <a href="{!! $edit !!}" class="btn btn-default" title="Edit">
+                <i class="glyphicon glyphicon-pencil"></i>
+            </a>
+        @endif
     @endif
 
     @if ( isset($delete) )

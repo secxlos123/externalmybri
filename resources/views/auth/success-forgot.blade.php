@@ -27,5 +27,8 @@
         position: absolute;
         width: -webkit-fill-available;
     }
+    section.page-banner.padding.bg_light {
+        display: none;
+    }
 </style>
 @endpush
