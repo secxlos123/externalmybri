@@ -49,7 +49,7 @@
       <div class="form-group">
         <label>Jenis Suku Bunga *:</label>
         <div class="input-group">
-          {{Form::select('interest_rate_type',[1=>'FLAT',2=>'EFEKTIF','3'=>'EFEKTIF (Fixed - Float)','4'=>'EFEKTIF (Fixed - Floor - Float) '],null,['class'=>'form-control' ,'id'=>'interest_rate_type'])}}
+          {{Form::select('interest_rate_type',[1=>'FLAT',2=>'EFEKTIF','3'=>'EFEKTIF (Fixed - Float)'],null,['class'=>'form-control' ,'id'=>'interest_rate_type'])}}
         </div>
       </div>
     </div>
