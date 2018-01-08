@@ -144,7 +144,12 @@ class EformController extends Controller
      */
     public function verify(Request $request, $token, $status)
     {
-        $response = Client::setEndpoint("eform/{$token}/{$status}")->get();
+        $headers= [
+                  'auditaction' => $status.' verifikasi'
+                 ];
+        $response = Client::setEndpoint("eform/{$token}/{$status}")
+        ->setHeaders($headers)
+        ->get();
 
         if (in_array( $response['code'], [200, 201] )) {
             return redirect()->route('eform.confirmation')->withSuccess(
