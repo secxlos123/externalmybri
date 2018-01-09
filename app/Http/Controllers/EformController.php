@@ -142,10 +142,13 @@ class EformController extends Controller
      * @param  string   $status
      * @return \Illuminate\Http\Response
      */
-    public function verify(Request $request, $token, $status)
+    public function verify($token, $status)
     {
-        $response = Client::setEndpoint("eform/{$token}/{$status}")->get();
-
+        $response = Client::setEndpoint("eform/".$token."/".$status)
+                        ->get();
+        \Log::info($response);
+        var_dump($response);
+        die();
         if (in_array( $response['code'], [200, 201] )) {
             return redirect()->route('eform.confirmation')->withSuccess(
                 compact('status')

@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
+use GuzzleHttp\Client;
 
 if (! function_exists('array_to_multipart')) {
 

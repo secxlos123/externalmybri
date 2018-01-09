@@ -168,6 +168,21 @@ Route::group(['prefix' => 'tracking', 'as' => 'tracking.', 'middleware' => ['aut
 });
 
 /**
+ * This route for handle page verification
+ */
+Route::group(['prefix' => 'verification', 'as' => 'verification.', 'middleware' => ['auth.api', 'HasAccess:customer']], function () {
+
+	/**
+	 * This route for send request verification list data
+	 */
+	Route::get('/', 'VerificationController@index')->name('index-verification');
+	/**
+	 * This route for send request detail verification
+	 */
+	// Route::get('/detail/{id}', 'VerificationController@show')->name('show');
+});
+
+/**
  * This route grup for authenticate
  */
 Route::group(['namespace' => 'Auth', 'as' => 'auth.'], function () {

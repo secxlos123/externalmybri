@@ -1,0 +1,470 @@
+/*
+* start added iqbal notif ----------------------------------------------------------------------------------------------------------
+*/
+.notify-list>li>a.user-list-item {
+    background-color: #f5f5f5;
+}
+
+.notify-list>li>a.user-list-item:focus,
+.notify-list>li>a.user-list-item:hover
+ {
+    color: #262626;
+    text-decoration: none;
+    background-color: #fff !important;
+}
+
+
+/* The side navigation menu */
+
+.rightSide {
+  height: 100%;
+  /* 100% Full-height */
+  width: 0;
+  /* 0 width - change this with JavaScript */
+  position: fixed;
+  /* Stay in place */
+  z-index: 9999;
+  /* Stay on top */
+  top: 0;
+  right: 0;
+  background-color: #fff;
+  /*overflow-x: hidden;*/
+  /* Disable horizontal scroll */
+  transition: 0.5s;
+  /* 0.5 second transition effect to slide in the rightSide */
+}
+
+
+/* The navigation menu links */
+
+.rightSide a {
+  display: block;
+  transition: 0.3s;
+  display: block;
+  font-size: 14px;
+  opacity: .6;
+  color: #000;
+}
+
+
+/* When you mouse over the navigation links, change their color */
+
+.rightSide a:hover, .rightSide a:focus, .offcanvas a:focus {
+  background-color: transparent;
+  text-decoration: none;
+  color: #000;
+  opacity: 1;
+}
+
+
+/* Position and style the close button (top right corner) */
+
+.rightSide .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+#rightSide li {
+    padding: 15px 15px 0;
+}
+
+
+a.notif-item:hover {
+    background: #4caf50;
+}
+.dropdown-menu.dropdown-extend {
+    min-width: 280px;
+    max-width: 320px;
+    margin: 0;
+    padding: 0
+}
+
+.notif-minimal .notif-item .notif-ico img {
+    position: absolute;
+    left: -15px;
+    height: 50px;
+    width: 50px;
+    border-radius: 100px;
+}
+#rightSide li {
+    padding: 0;
+    display: block;
+    width: 285px;
+}
+#rightSide li:not(.notif-head) {
+    overflow-y: scroll;
+}
+
+.dropdown-menu.dropdown-extend:before {
+    position: absolute;
+    top: -10px;
+    left: 15px;
+    right: auto;
+    width: 0;
+    height: 0;
+    content: '';
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #fff
+}
+
+.dropdown-menu.dropdown-extend.pull-right:before {
+    right: 15px;
+    left: auto
+}
+
+.dropdown-menu.dropdown-extend>.dropdown-header {
+    position: relative;
+    padding: 10px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    background-color: #fff;
+    color: #232332
+}
+
+.dropdown-menu.dropdown-extend>.dropdown-footer {
+    position: relative;
+    font-size: 13px;
+    border-bottom: 0 none;
+    background-color: #fff;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px
+}
+
+.dropdown-menu.dropdown-extend>.dropdown-footer a {
+    color: #232332
+}
+
+.dropdown-menu.dropdown-extend>.dropdown-footer:hover a {
+    background-color: inherit
+}
+
+.dropdown-menu.dropdown-extend>.dropdown-footer .btn {
+    margin: 10px 0;
+    display: inline-block
+}
+
+.dropdown-menu.dropdown-extend>.dropdown-footer .btn.pull-left {
+    margin-left: 10px
+}
+
+.dropdown-menu.dropdown-extend>.dropdown-footer .btn.pull-right {
+    margin-right: 10px
+}
+
+.dropdown-menu.dropdown-extend>.dropdown-footer>.view-all {
+    padding: 15px 10px
+}
+
+.dropdown-menu.dropdown-extend>.dropdown-footer i {
+    margin-top: 0;
+    font-size: 18px
+}
+
+.dropdown-menu.dropdown-extend>li {
+    border-bottom: 1px solid #E0E4E8;
+    text-align: left
+}
+
+.dropdown-menu.dropdown-extend>li>a {
+    white-space: normal;
+    text-align: left
+}
+
+.dropdown-menu.dropdown-extend .notif-media {
+    position: relative;
+    max-height: 360px;
+    overflow: auto
+}
+
+.notif-media .notif-item {
+    border-bottom: 1px solid #E0E4E8;
+    padding: 10px
+}
+
+.notif-media .notif-item:last-child {
+    border-bottom: 0
+}
+
+.notif-media .notif-item .notif-img.pull-left {
+    margin-right: 10px;
+    margin-left: auto
+}
+
+.notif-media .notif-item .notif-img.pull-right {
+    margin-right: auto;
+    margin-left: 10px
+}
+
+.notif-media .notif-item .notif-img>img {
+    width: 40px;
+    height: 40px
+}
+
+.notif-media .notif-item .notif-heading {
+    position: relative;
+    margin: 0;
+    padding: 0 0 5px;
+    font-size: 16px;
+    font-weight: 300;
+    overflow: hidden;
+    text-overflow: clip;
+    white-space: nowrap
+}
+
+.notif-media .notif-item .notif-heading small {
+    position: absolute;
+    top: 3px;
+    right: 0;
+    font-size: 10px;
+    color: #95a5a6
+}
+
+.notif-media .notif-item:hover .notif-heading small {
+    color: #bdc3c7
+}
+
+.notif-media .notif-item .notif-text {
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    font-weight: 300;
+    color: #394264;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+.notif-media .notif-item:hover .notif-text {
+    color: #bdc3c7
+}
+
+.dropdown-menu.dropdown-extend .notif-minimal {
+    position: relative;
+    max-height: 360px;
+    overflow: auto
+}
+
+.notif-minimal .notif-item {
+    padding: 12px;
+    line-height: 6;
+}
+.bg-cloud {
+    background-color: #ecf0f1!important;
+    color: #394264!important;
+}
+.notif-minimal .notif-item:last-child {
+    border-bottom: 0
+}
+
+.notif-minimal .notif-item .notif-ico {
+    position: absolute;
+    left: 10px;
+    height: 50px;
+    width: 50px;
+    border-radius: 40px;
+    line-height: 40px;
+    text-align: center
+}
+
+.notif-minimal .notif-item .notif-ico>i {
+    font-size: 20px;
+    line-height: 2.5;
+    color: #333;
+}
+
+.notif-minimal .notif-item .notif-text {
+    position: relative;
+    left: 50px;
+    line-height: 1.44;
+    word-wrap: break-word;
+    width: 80%;
+    overflow: hidden;
+    color: #333;
+}
+.dropdown-menu.dropdown-extend .notif-progress {
+    position: relative;
+    max-height: 360px;
+    overflow: auto
+}
+.text-bold {
+    font-weight: 600;
+}
+.notif-progress .notif-item {
+    position: relative;
+    border-bottom: 1px solid #E0E4E8;
+    padding: 10px;
+    cursor: default;
+    overflow: hidden
+}
+
+.notif-progress:hover .notif-item {
+    background-color: #fff
+}
+
+.notif-progress .notif-item:last-child {
+    border-bottom: 0
+}
+
+.notif-progress .notif-item .progress {
+    margin-bottom: 0
+}
+
+.notif-progress .notif-item .notif-text {
+    margin: 0 2px 5px;
+    font-size: 11px;
+    font-weight: 300;
+    color: #394264;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+.dropdown-inline {
+    padding: 0;
+    padding-left: 5px;
+    min-width: 167px;
+    width: auto;
+    max-width: 187px
+}
+
+.dropdown-inline li {
+    margin: 5px 0 0 2px;
+    padding: 0;
+    display: inline-block
+}
+
+.dropdown-inline li .color-pick {
+    min-width: 10px;
+    padding: 0;
+    width: 20px;
+    height: 20px;
+    line-height: 1em;
+    border: 0;
+    outline: 0;
+    background-color: inherit;
+    cursor: pointer
+}
+
+.notif-minimal .notif-item .time-text {
+    position: relative;
+    left: 50px;
+    line-height: 0.7;
+    font-size: 12px;
+    color: #9e9ea2;
+    font-style: italic;
+}
+/*
+.rightSide a i.fa-times {
+    position: absolute;
+    right: 15px;
+    margin-top: 15px;
+    text-align: center;
+}*/
+#rightSide h4{
+    float: left;
+    font-size: 16px;
+    padding: 10px 10px;
+     color: #fff
+}
+.notif-head{
+    background: #00529C;
+    color: #fff
+}
+.notification{
+    margin: 0;
+    width: 270px;
+}
+.notification td{
+    padding: 10px;
+    font-size: 13px;
+    color: #888;
+}
+.notification .notif-ico {
+    padding: 7px 9px;
+    border-radius: 100px;
+    color: #fff;
+    background: #00529C !important;
+    width: 33px;
+}
+tr.read .notif-ico{background: #b9b9b9 !important;}
+tr.unread {
+    background: rgba(255, 87, 34, 0.07) !important;
+    border-left: 4px solid #00529C;
+}
+tr.unread  td{
+    color:#000 !important;
+    font-weight: bold !important;
+    background: #fafafa !important;
+}
+.close-notif{padding: 10px;float: right;}
+
+tr.notification-read:hover {
+    cursor: pointer;
+}
+table.notification tr.web-notification-read {
+    cursor: pointer;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+tr.line-notif {
+    border-bottom: 1pt solid rgb(144, 144, 160);
+}
+
+a.user-list-item.list-notif {
+    width: 0px;
+}
+p.notif-text {
+    text-align: left;
+}
+p.title {
+    text-align: left;
+}
+p.time-text {
+    text-align: left;
+}
+
+.notification p {
+    font-size: 12px;
+    color: #676767;
+    margin: 0 0 3px;
+}
+
+.col-md-12.notif {
+    padding: 0 30px 50px 30px;
+    margin: 50px;
+}
+
+table.table-form-verifikasi {
+    margin: 0 200px 0 200px;
+}
+
+table.table-form-verifikasi > tbody > tr > td{
+    padding: 2px !important;
+}
+table.warning-notes {
+    width: 100%;
+}
+
+.btn-red {
+    color: #fff;
+    background: red;
+    font-size: 14px;
+    padding: 14px 20px;
+    display: inline-block;
+    font-weight: bold;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+/*
+* ended
+*/

@@ -11,6 +11,8 @@
     {!! Html::style('assets/css/font-awesome.min.css') !!}
     {!! Html::style('assets/css/owl.carousel.css') !!}
     {!! Html::style('assets/css/owl.transitions.css') !!}
+    {!! Html::style('assets/css/font-icons.css') !!}
+    {!! Html::style('assets/css/notification.css') !!}
 
     <!-- This is place for dynamis stylesheet per page -->
     @stack('styles')

@@ -87,3 +87,14 @@
 <li><a href="#">Tracking</a></li>
 
 @endif
+
+@if( session('authenticate.role') == 'customer' )
+    <li>
+        <a href="#" onclick="openSide()" class="right-menu-item dropdown-toggle" data-toggle="dropdown">
+            <i class="mdi mdi-bell"></i>
+            <span class="badge up bg-success"> 
+                {{ count( notificationsUnread() ) }}
+            </span>
+        </a>
+    </li>
+@endif

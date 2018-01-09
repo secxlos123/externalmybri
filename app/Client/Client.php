@@ -91,6 +91,7 @@ class Client
      */
     public function uri()
     {
+        // var_dump($this->uri . $this->base . $this->endpoint);die();
         return $this->uri . $this->base . $this->endpoint;
     }
 

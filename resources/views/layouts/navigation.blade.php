@@ -69,6 +69,7 @@
                             @if ('customer' == session('authenticate.role'))
                             <li><a href="{{url('schedule')}}"><i class="fa fa-calendar"></i> Schedule</a></li>
                             <li><a href="{{url('tracking')}}"><i class="fa fa-calendar"></i> Tracking</a></li>
+                            <li><a href="{{url('verification')}}"><i class="fa fa-bars"></i> Verifikasi</a></li>
                             @endif
                             <li><a href="{{('developer' == session('authenticate.role')) ? url('dev/profile/personal') : url('profile/personal')}}"><i class="fa fa-edit"></i> Edit Profile</a></li>
                             <li><a href="javascript:void(0)" onclick="document.getElementById('form-logout').submit();"><i class="fa fa-sign-out"></i> Logout</a></li>
@@ -88,6 +89,7 @@
                     <ul class="nav navbar-nav" data-in="fadeIn" data-out="fadeOut">
                         @include('layouts.main-menu')
                     </ul>
+                     @include('layouts.notification')  
                 </div>
             </div>
         </div>
