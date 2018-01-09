@@ -14,13 +14,23 @@ class VerificationController extends Controller
      */
     public function index(Request $request)
     {
-        $results = Client::setEndpoint('customer-data/'.session()->get('authenticate.user_id'))
+        $results = Client::setEndpoint('customer-data/'.$request->get('ref_number').'/'.$request->get('ids') )
                         ->setHeaders([
                             'Authorization' => session('authenticate.token')
                         ])
                         ->get();
         $data_verification = $results['contents'];               
-    
+        /*
+        * mark read the notification
+        */
+        Client::setEndpoint('users/notification/read/'.@$request->get('ids').' ')
+               ->setHeaders([
+                'Authorization' => session('authenticate.token')
+                // , 'auditaction' => 'action name'
+                , 'long' => number_format($request->get('long', env('DEF_LONG', '106.81350')), 5)
+                , 'lat' => number_format($request->get('lat', env('DEF_LAT', '-6.21670')), 5)
+            ])->get();
+
         return view('verification.index',compact('data_verification'));
     }
 

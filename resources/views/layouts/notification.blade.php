@@ -10,7 +10,7 @@
                     <tr class="line-notif">
                           <td>
                               <div class="notif-ico bg-success">
-                                <a href="{{ url('/eform?ref_number='.$value['data']['ref_number'].'&ids='.$value['data']['eform_id'].'') }}" class="user-list-item list-notif">
+                                <a href="{{ $value['url'] }}" class="user-list-item list-notif">
                                     <i class="fa fa-bell"></i>
                                 </a>
                               </div>
