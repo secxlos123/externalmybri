@@ -159,7 +159,7 @@ class ItemController extends Controller
                 'search'           => $request->input('search.value'),
             ])
             ->get();
-            \Log::info($units['contents']['data']);
+
         foreach ($units['contents']['data'] as $key => $unit) {
             $unit['is_available']  = $unit['is_available'] ? 'Avaliable' : 'Not Avaliable';
             $unit['prop_status']  = $unit['prop_status'] ? ucfirst($unit['prop_status']) : 'Not known';
@@ -167,7 +167,8 @@ class ItemController extends Controller
             $unit['price']  = 'Rp. ' . number_format($unit['price'], 0, ',', '.');
             $unit['action'] = view('layouts.actions', [
                 'show' => route('developer.proyek-item.show', $unit['id']),
-                'edit' => route('developer.proyek-item.edit', $unit['id'])
+                'edit' => route('developer.proyek-item.edit', $unit['id']),
+                'is_approve' => $unit['is_approved']
             ])->render();
             $units['contents']['data'][$key] = $unit;
         }
@@ -206,8 +207,8 @@ class ItemController extends Controller
 
         $headers= [
             'Authorization' => session('authenticate.token'),
-            'long' => $request['hidden-long'],  
-            'lat' =>  $request['hidden-lat'],  
+            'long' => $request['hidden-long'],
+            'lat' =>  $request['hidden-lat'],
             'auditaction' => $auditaction
             ];
 

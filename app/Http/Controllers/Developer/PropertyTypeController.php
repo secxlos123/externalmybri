@@ -137,7 +137,8 @@ class PropertyTypeController extends Controller
         foreach ($types['contents']['data'] as $key => $type) {
             $type['action'] = view('layouts.actions', [
                 'show' => route('developer.proyek-type.show', $type['slug']),
-                'edit' => route('developer.proyek-type.edit', $type['slug'])
+                'edit' => route('developer.proyek-type.edit', $type['slug']),
+                'is_approve' => $type['is_approved']
             ])->render();
             $types['contents']['data'][$key] = $type;
         }
@@ -196,8 +197,8 @@ class PropertyTypeController extends Controller
 
         $headers= [
             'Authorization' => session('authenticate.token'),
-            'long' => $request['hidden-long'],  
-            'lat' =>  $request['hidden-lat'],  
+            'long' => $request['hidden-long'],
+            'lat' =>  $request['hidden-lat'],
             'auditaction' => $auditaction
           ];
 
@@ -217,7 +218,7 @@ class PropertyTypeController extends Controller
 
      public function datatables_unit(Request $request, $slug)
     {
-      
+
         $sort = $request->input('order.0');
         $types = Client::setEndpoint("property-type/{$slug}/property-item")
             ->setHeaders([

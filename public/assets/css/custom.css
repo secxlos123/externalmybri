@@ -57,3 +57,7 @@ form#form-register-store div.single-query span.error-help-block {
         margin-left: 10%;
     }
 }
+
+footer.footer_third.absolute-fix.csm-footer {
+    margin-top: 90px;
+}

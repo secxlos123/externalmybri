@@ -42,8 +42,8 @@ class PropertyController extends Controller
         $input = $request->all();
         $headers= [
                     'Authorization' => session('authenticate.token'),
-                    'long' => $request['hidden-long'],  
-                    'lat' =>  $request['hidden-lat'],  
+                    'long' => $request['hidden-long'],
+                    'lat' =>  $request['hidden-lat'],
                     'auditaction' => 'tambah proyek'
                   ];
         $query = Client::setEndpoint('property')
@@ -59,7 +59,7 @@ class PropertyController extends Controller
              return redirect()->route('developer.proyek.index');
         }
 
-       
+
     }
 
     /**
@@ -147,7 +147,8 @@ class PropertyController extends Controller
         foreach ($properties['contents']['data'] as $key => $property) {
             $property['action'] = view('layouts.actions', [
                 'show' => route('developer.proyek.show', $property['prop_slug']),
-                'edit' => route('developer.proyek.edit', $property['prop_slug'])
+                'edit' => route('developer.proyek.edit', $property['prop_slug']),
+                'is_approve' => $property['is_approved']
             ])->render();
             $properties['contents']['data'][$key] = $property;
         }
@@ -184,7 +185,7 @@ class PropertyController extends Controller
 
         return view("developer.property.{$view}", [
             'property' => $slug ? (object) $property['contents'] : (object) null,
-            'validation' => $slug ? UpdateRequest::class : CreateRequest::class 
+            'validation' => $slug ? UpdateRequest::class : CreateRequest::class
         ]);
     }
 
@@ -201,8 +202,8 @@ class PropertyController extends Controller
         try {
             $headers = [
                           'Authorization' => session('authenticate.token'),
-                          'long' => $request['hidden-long'],  
-                          'lat' =>  $request['hidden-lat'],  
+                          'long' => $request['hidden-long'],
+                          'lat' =>  $request['hidden-lat'],
                           'auditaction' => 'edit proyek'
                        ];
             $response = Client::setEndpoint($endpoint)
@@ -215,7 +216,7 @@ class PropertyController extends Controller
                 throw new \Exception($messages, $response['code']);
                // dd($response);
             }
-            
+
         } catch (\Exception $e) {
             $message = is_json($e->getMessage()) ? json_decode($e->getMessage()) : $e->getMessage();
             return redirect()->back()->withInput()->withErrors($message);

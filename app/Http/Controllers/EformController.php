@@ -144,11 +144,13 @@ class EformController extends Controller
      */
     public function verify($token, $status)
     {
-        $response = Client::setEndpoint("eform/".$token."/".$status)
-                        ->get();
-        \Log::info($response);
-        var_dump($response);
-        die();
+        $headers= [
+                  'auditaction' => $status.' verifikasi'
+                 ];
+        $response = Client::setEndpoint("eform/{$token}/{$status}")
+        ->setHeaders($headers)
+        ->get();
+
         if (in_array( $response['code'], [200, 201] )) {
             return redirect()->route('eform.confirmation')->withSuccess(
                 compact('status')
@@ -326,10 +328,10 @@ class EformController extends Controller
     public function saveCustomer(CustomerRequest $request)
     {
       
-      \Log::info($request->all());
+        \Log::info($request->all());
  
         $newCustomer = $this->dataRequest($request);
-        // dd($newCustomer);
+        
         $client = Client::setEndpoint('customer')
             ->setHeaders([
                 'Authorization' => session('authenticate.token'),
@@ -342,14 +344,20 @@ class EformController extends Controller
         $codeResponse = $client['code'];
         $codeDescription = $client['descriptions'];
 
-        if($codeResponse == 201){
-          
+        if($codeResponse == 201)
+        {
             return response()->json(['message' => $codeDescription, 'code' => $codeResponse]);
-        }elseif($codeResponse == 422){
+        }
+        elseif($codeResponse == 422)
+        {
             return response()->json($client);
-        }elseif($codeResponse == 404){
+        }
+        elseif($codeResponse == 404)
+        {
             return response()->json(['message' => $codeDescription, 'code' => $codeResponse]);
-        }else{
+        }
+        else
+        {
             return response()->json(['message' => $codeDescription, 'code' => $codeResponse]);
         }
     }
@@ -368,7 +376,7 @@ class EformController extends Controller
             ])
         ->setBody($input)
         ->post('multipart');
-dd($input);
+
         $codeResponse = $client['code'];
         $codeDescription = $client['descriptions'];
         return response()->json(['message'=> $codeDescription, 'code' => $codeResponse]);
