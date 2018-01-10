@@ -150,6 +150,14 @@
                                                             </div>
                                                         </div>
                                                         @endif
+                                                        @if ( $results['kpr']['kpr_type_property'] == 1 )
+                                                        <div class="form-group">
+                                                            <label class="col-md-4 control-label">Jenis Properti :</label>
+                                                            <div class="col-md-8">
+                                                                <p class="form-control-static">{{ @$results['kpr']['kpr_type_property_name'] }}</p>
+                                                            </div>
+                                                        </div>
+                                                        @endif
                                                     @endif
 
                                                     <div class="form-group">
@@ -206,12 +214,14 @@
                                                             <p class="form-control-static">Rp. {{number_format(@$results['kpr']['request_amount'], 2, ',', '.') }}</p>
                                                         </div>
                                                     </div>
+                                                    @if(!empty($results['ao_name']))
                                                     <div class="form-group">
                                                         <label class="col-md-4 control-label">Nama AO :</label>
                                                         <div class="col-md-8">
                                                             <p class="form-control-static">{{ @$results['ao_name'] }}</p>
                                                         </div>
                                                     </div>
+                                                    @endif
                                                     <div class="form-group">
                                                         <label class="col-md-4 control-label">Kantor Cabang :</label>
                                                         <div class="col-md-8">

@@ -372,11 +372,11 @@
                                 <tbody>
                                     <tr>
                                         <td align="center">
-                                            <a style="padding: 15px 50px;" class="btn-blue border_radius" href="{!! $data_verification[ 'url' ] !!}/approve">Setuju</a>
+                                            <a style="padding: 15px 50px;" class="btn-blue border_radius btn_long_lat" href="{!! $data_verification[ 'url' ] !!}/approve">Setuju</a>
                                         </td>
                                         <td width="40"></td>
                                         <td align="center">
-                                            <a class="btn-red border_radius" href="{!! $data_verification[ 'url' ] !!}/reject">Tidak Setuju</a>
+                                            <a class="btn-red border_radius btn_long_lat" href="{!! $data_verification[ 'url' ] !!}/reject">Tidak Setuju</a>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -437,5 +437,10 @@
                 { data: 'action', name: 'action', bSortable: false },
             ],
         });
+
+           var LongLat ='?hidden-long='+ $('input[name="hidden-long"]').val()+'&hidden-lat='+$('input[name="hidden-lat"]').val();
+            $(".btn_long_lat").attr("href", function(i, href) {
+                return href +LongLat;
+            });
     </script>
 @endpush

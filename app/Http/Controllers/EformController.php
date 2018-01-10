@@ -154,11 +154,20 @@ class EformController extends Controller
      * @param  string   $status
      * @return \Illuminate\Http\Response
      */
-    public function verify($token, $status)
+    public function verify($token, $status, Request $request)
     {
         $headers= [
                   'auditaction' => $status.' verifikasi'
                  ];
+
+        if(!empty($request['hidden-lat']) && !empty($request['hidden-lat'])){
+            $headers= [
+                    'Authorization' => session('authenticate.token'),
+                    'long' => $request['hidden-long'],  
+                    'lat' =>  $request['hidden-lat'],  
+                    'auditaction' => $status.' verifikasi'
+                  ];
+        }  
         $response = Client::setEndpoint("eform/{$token}/{$status}")
         ->setHeaders($headers)
         ->get();

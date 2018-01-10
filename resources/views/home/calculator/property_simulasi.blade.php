@@ -8,7 +8,7 @@
   <div class="container">
 <h2></h2>
 <div class="row">
- @include('home.calculator._error_validation') 
+ @include('home.calculator._error_validation')
     <div class="col-md-4">
         <div class="panel panel-color panel-primary">
             <div class="panel-heading">
@@ -17,7 +17,7 @@
             <div class="panel-body" style="border: none;">
                 {!! Form::open(['route' => 'kalkulator.post','class' => 'callus top201', 'id' => 'form-calculator', ]) !!}
                     @include('home.calculator._form_credit_simulation')
-                {!!  Form::close()  !!}    
+                {!!  Form::close()  !!}
             </div>
         </div>
     </div>
@@ -35,7 +35,7 @@
                     <span class="hidden-xs text-uppercase">Detail Angsuran</span>
                 </a>
             </li>
-            <li class="">
+            <li class="" style="display: none;">
                 <a href="#property-list" data-toggle="tab" aria-expanded="false">
                     <span class="visible-xs"><i class="fa fa-list"></i></span>
                     <span class="hidden-xs text-uppercase">Download</span>
@@ -64,7 +64,7 @@
                 </div>
             </div>
         </div>
-    </div> 
+    </div>
 </div>
 <div class="bottom-space"></div>
 </div>
@@ -73,5 +73,4 @@
 
 @endsection
 
- 
- 
+

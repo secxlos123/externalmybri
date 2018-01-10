@@ -50,6 +50,12 @@
 @push('styles')
     {!! Html::style('assets/css/jquery.dataTables.min.css') !!}
     {!! Html::style('assets/css/dataTables.bootstrap.min.css') !!}
+    <style type="text/css">
+        .content-page {
+            margin-left: 0px !important;
+            overflow: unset !important;
+        }
+    </style>
 @endpush
 <!-- This is styles for this page end -->
 
