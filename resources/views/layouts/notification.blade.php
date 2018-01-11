@@ -3,7 +3,7 @@
         <h4>Notification</h4>
         <a href="javascript:void(0)" onclick="closeSide()" class="close-notif"><i class="fa fa-times fa-lg" aria-hidden="true"></i></a>
     </li>
-    <li>
+    <li class="unread_notif">
         <table class="notification">
             @if(count(notificationsUnread()) > 0 )
                 @foreach(notificationsUnread() as $value)
