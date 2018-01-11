@@ -15,7 +15,7 @@
                         <h3>Registrasi Anda berhasil.</h3>
                         <p>Silahkan cek email Anda untuk verifikasi akun.</p>
                         <div class="erro-button">
-                            <a href="#." class="btn-blue">Lihat Profil</a>
+                            <a href="javascript:void(0)" data-toggle="modal" data-target="#login-register" class="btn-blue">Masuk</a>
                         </div>
                     </div>
                 </div>
