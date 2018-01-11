@@ -266,6 +266,12 @@
 
 <!-- This is styles for this page -->
 @push('styles')
+    <style type="text/css">
+        .content-page {
+            margin-left: 0px !important;
+            overflow: unset !important;
+        }
+    </style>
 @endpush
 <!-- This is styles for this page end -->
 
