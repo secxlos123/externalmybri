@@ -62,17 +62,18 @@ class EformController extends Controller
      */
     public function index(Request $request)
     {
-      
-      /*
-      * mark read the notification
-      */
-      Client::setEndpoint('users/notification/read/'.@$request->get('ids').' ')
-             ->setHeaders([
-              'Authorization' => session('authenticate.token')
-              // , 'auditaction' => 'action name'
-              , 'long' => number_format($request->get('long', env('DEF_LONG', '106.81350')), 5)
-              , 'lat' => number_format($request->get('lat', env('DEF_LAT', '-6.21670')), 5)
-          ])->get();
+      if(!empty($request->get('ids') )){
+        /*
+        * mark read the notification
+        */
+        Client::setEndpoint('users/notification/read/'.@$request->get('ids').' ')
+               ->setHeaders([
+                'Authorization' => session('authenticate.token')
+                // , 'auditaction' => 'action name'
+                , 'long' => number_format($request->get('long', env('DEF_LONG', '106.81350')), 5)
+                , 'lat' => number_format($request->get('lat', env('DEF_LAT', '-6.21670')), 5)
+            ])->get();
+      }
 
         if ( 'developer' == session('authenticate.role') ) {
             return 'Hallo Developer....';
