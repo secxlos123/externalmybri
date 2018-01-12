@@ -16,6 +16,8 @@
                         <p>Silahkan cek email Anda untuk verifikasi akun.</p>
                         <div class="erro-button">
                             <a href="javascript:void(0)" data-toggle="modal" data-target="#login-register" class="btn-blue">Masuk</a>
+                            <br>
+                            <a href="{{url('/resend')}}" class="btn-blue btn-resend">Kirim ulang email</a>
                         </div>
                     </div>
                 </div>
@@ -34,6 +36,12 @@
     }
     section.page-banner.padding.bg_light {
         display: none;
+    }
+    a.btn-blue.btn-resend {
+        background: grey;
+    }
+    a.btn-blue.btn-resend:hover {
+        background: #1f1d22;
     }
 </style>
 @endpush
