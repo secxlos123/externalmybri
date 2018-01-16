@@ -278,6 +278,22 @@
                     'data-src' => asset('assets/images/no-image.jpg')
                 ]) !!}
             </div>
+        @if($type == 'view')
+             <!-- handle image or pdf -->
+            @if((pathinfo(strtolower($results['other']['identity']), PATHINFO_EXTENSION) == 'jpg') || (pathinfo(strtolower($results['other']['identity']), PATHINFO_EXTENSION) == 'png') || (pathinfo((strtolower($results['other']['identity'])), PATHINFO_EXTENSION) == 'jpeg'))
+                 @if(strpos($results['other']['identity'], 'noimage.jpg'))
+                <p>Foto KTP Kosong</p>
+                 @else
+                                                     
+             
+                <!-- <p>Foto KTP</p> -->
+                  @endif
+            @else
+                <a href="@if(!empty($results['other']['identity'])){{$results['other']['identity']}}@endif" target="_blank" class="img-responsive"><img src="{{asset('assets/images/download-logo.png')}}" class="img-responsive"></a>
+                <p>Klik Untuk Lihat Foto KTP</p>
+            @endif
+            <!-- end handle -->
+        @endif
 
         @else
 
@@ -311,6 +327,23 @@
                     'data-src' => asset('assets/images/no-image.jpg')
                 ]) !!}
             </div>
+
+             @if($type == 'view')
+             <!-- handle image or pdf -->
+            @if((pathinfo(strtolower($results['personal']['couple_identity']), PATHINFO_EXTENSION) == 'jpg') || (pathinfo(strtolower($results['personal']['couple_identity']), PATHINFO_EXTENSION) == 'png') || (pathinfo((strtolower($results['personal']['couple_identity'])), PATHINFO_EXTENSION) == 'jpeg'))
+                 @if(strpos($results['personal']['couple_identity'], 'noimage.jpg'))
+               <!--  <p>Foto KTP Kosong</p> -->
+                 @else
+                                                     
+               
+                <!-- <p>Foto KTP</p> -->
+                  @endif
+            @else
+                <a href="@if(!empty($results['personal']['couple_identity'])){{$results['personal']['couple_identity']}}@endif" target="_blank" class="img-responsive"><img src="{{asset('assets/images/download-logo.png')}}" class="img-responsive"></a>
+                <p>Klik Untuk Lihat Foto KTP PASANGAN</p>
+            @endif
+            <!-- end handle -->
+        @endif
 
         @else
 

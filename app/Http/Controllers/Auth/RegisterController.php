@@ -33,7 +33,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth.api', ['except' => ['register', 'activated', 'activate', 'successed'] ]);
+        $this->middleware('auth.api', ['except' => ['register', 'activated', 'activate', 'successed', 'resendEmail'] ]);
     }
 
     /**
@@ -72,13 +72,15 @@ class RegisterController extends Controller
 
             $response = Client::setEndpoint('auth/register')
                 ->setHeaders([
-                             'long' => $request['hidden-long'],  
-                             'lat' =>  $request['hidden-lat'],  
+                             'long' => $request['hidden-long'],
+                             'lat' =>  $request['hidden-lat'],
                              'auditaction' => 'Registrasi Nasabah',
                     ]
                 )
                 ->setBody( $request->only( ['email', 'password', 'first_name', 'last_name','mobile_phone'] ) )
                 ->post();
+
+            \Session::put('uid', $response['contents']['user_id']);
 
             if ($response['code'] == 422) {
                 $message = '';
@@ -189,5 +191,30 @@ class RegisterController extends Controller
         }else{
             return redirect()->route('homepage');
         }
+    }
+
+    /**
+     * Show view after success
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function resendEmail()
+    {
+        $uid = \Session::get('uid');
+        $response = Client::setEndpoint('auth/register')
+                ->setQuery([
+                    'uid' => $uid
+                    ])
+                ->post();
+        if ($response['code'] == 422) {
+            $message = '';
+            foreach ($response['contents'] as $key => $value) {
+                $message .= $value.'<br/>';
+            }
+            \Session::flash('flash_message',$message);
+            return redirect()->back();
+        }
+        \Session::flash('success_flash_message', 'success');
+        return redirect()->route('auth.successed');
     }
 }
