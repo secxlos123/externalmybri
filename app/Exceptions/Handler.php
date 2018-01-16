@@ -48,14 +48,14 @@ class Handler extends ExceptionHandler
     public function render($request, Exception $exception)
     {
         // send email if error
-        if ( ENV("APP_ENV") == "production" ) {
-            Mail::send('mails.ErrorException', array('exception' => $exception), function($message)
-            {
-                $message->subject("EXT myBRI Error Exception");
-                $message->from("error@mybri.bri.co.id", 'Error Exception');
-                $message->to("rachmat.ramadhan@wgs.co.id");
-            });
-        }
+        // if ( ENV("APP_ENV") == "production" ) {
+        //     Mail::send('mails.ErrorException', array('exception' => $exception), function($message)
+        //     {
+        //         $message->subject("EXT myBRI Error Exception");
+        //         $message->from("error@mybri.bri.co.id", 'Error Exception');
+        //         $message->to("rachmat.ramadhan@wgs.co.id");
+        //     });
+        // }
 
         if ($exception instanceof MethodNotAllowedHttpException) {
             return redirect()->back();
