@@ -15,7 +15,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="col-md-4 control-label">NIK *</label>
+                                <label class="col-md-4 control-label">NIK *:</label>
                                 <div class="col-md-8">
                                     {!! Form::text('couple_nik', old('couple_nik'), [
                                         'class' => 'form-control numeric', 'maxlength' => 16
@@ -23,7 +23,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-md-4 control-label">Nama Lengkap *</label>
+                                <label class="col-md-4 control-label">Nama Lengkap *:</label>
                                 <div class="col-md-8">
                                     {!! Form::text('couple_name', old('couple_name'), [
                                         'class' => 'form-control'
@@ -31,7 +31,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-md-4 control-label">Tempat Lahir *</label>
+                                <label class="col-md-4 control-label">Tempat Lahir *:</label>
                                 <div class="col-md-8">
                                     {!! Form::select('couple_birth_place_id', ['' => ''] + [
                                     $customer->couple_birth_place_id ? $customer->couple_birth_place_id : old('couple_birth_place_id') => $customer->couple_birth_place ? $customer->couple_birth_place : old('couple_birth_place')
@@ -43,7 +43,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-md-4 control-label">Tanggal Lahir *</label>
+                                <label class="col-md-4 control-label">Tanggal Lahir *:</label>
                                 <div class="col-md-8">
                                     <div class="input-group">
                                         {!! Form::text('couple_birth_date', old('couple_birth_date'), [

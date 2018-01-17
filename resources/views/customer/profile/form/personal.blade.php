@@ -15,7 +15,7 @@
 					<div class="col-md-6">
 
 						<div class="form-group">
-							<label class="col-md-4 control-label">NIK *</label>
+							<label class="col-md-4 control-label">NIK *:</label>
 							<div class="col-md-8">
 								{!! Form::text('nik', old('nik'), [
 									'class' => 'form-control numeric', 'maxlength' => 16
@@ -24,7 +24,7 @@
 						</div>
 
 						<div class="form-group">
-							<label class="col-md-4 control-label">Nama Depan *</label>
+							<label class="col-md-4 control-label">Nama Depan *:</label>
 							<div class="col-md-8">
 								{!! Form::text('first_name', old('first_name'), [
 									'class' => 'form-control'
@@ -33,7 +33,7 @@
 						</div>
 
 						<div class="form-group">
-							<label class="col-md-4 control-label">Nama Belakang </label>
+							<label class="col-md-4 control-label">Nama Belakang :</label>
 							<div class="col-md-8">
 								{!! Form::text('last_name', old('last_name'), [
 									'class' => 'form-control'
@@ -42,7 +42,7 @@
 						</div>
 
 						<div class="form-group">
-							<label class="col-md-4 control-label">Tempat Lahir *</label>
+							<label class="col-md-4 control-label">Tempat Lahir *:</label>
 							<div class="col-md-8">
 								{!! Form::select('birth_place_id', ['' => ''] + [
 									$customer->birth_place_id ?: old('birth_place_id') => $customer->birth_place ?: old('birth_place'),
@@ -55,7 +55,7 @@
 						</div>
 
 						<div class="form-group">
-							<label class="col-md-4 control-label">Tanggal Lahir *</label>
+							<label class="col-md-4 control-label">Tanggal Lahir *:</label>
 							<div class="col-md-8">
 								<div class="input-group">
 									{!! Form::text('birth_date', old('birth_date'), [
@@ -67,7 +67,7 @@
 						</div>
 
 						<div class="form-group">
-							<label class="col-md-4 control-label">Alamat KTP *</label>
+							<label class="col-md-4 control-label">Alamat KTP *:</label>
 							<div class="col-md-8">
 								{!! Form::textarea('address', old('address'), [
 									'class' => 'form-control address',
@@ -86,7 +86,7 @@
 						</div>
 
 						<div class="form-group">
-							<label class="col-md-4 control-label">Alamat Domisili *</label>
+							<label class="col-md-4 control-label">Alamat Domisili *:</label>
 							<div class="col-md-8">
 								{!! Form::textarea('current_address', old('current_address'), [
 									'class' => 'form-control current_address',
@@ -97,7 +97,7 @@
 						</div>
 
 						<div class="form-group">
-							<label class="col-md-4 control-label">Kota *</label>
+							<label class="col-md-4 control-label">Kota *:</label>
 							<div class="col-md-8">
 								{!! Form::select('city_id', ['' => ''] + [
 									$customer->city_id ?: old('city_id') => $customer->city ?: old('city_name')
@@ -113,7 +113,7 @@
 					<div class="col-md-6">
 
 						<div class="form-group">
-							<label class="col-md-5 control-label">Jenis Kelamin *</label>
+							<label class="col-md-5 control-label">Jenis Kelamin *:</label>
 							<div class="col-md-7">
 								{!! Form::select('gender', [
 									'L' => 'Laki-laki',
@@ -125,7 +125,7 @@
 						</div>
 
 						<div class="form-group">
-							<label class="col-md-5 control-label">Kewarganegaraan *</label>
+							<label class="col-md-5 control-label">Kewarganegaraan *:</label>
 							<div class="col-md-7">
 								{!! Form::select('citizenship_id', ['' => ''] + [
 									$customer->citizenship_id ?: old('citizenship_id') => $customer->citizenship ?: old('citizenship')
@@ -138,7 +138,7 @@
 						</div>
 
 						<div class="form-group">
-							<label class="col-md-5 control-label">Status Pernikahan *</label>
+							<label class="col-md-5 control-label">Status Pernikahan *:</label>
 							<div class="col-md-7">
 								{!! Form::select('status', [
 									'1' => 'Belum Menikah',
@@ -151,7 +151,7 @@
 						</div>
 
 						<div class="form-group">
-							<label class="col-md-5 control-label">Status Tempat Tinggal *</label>
+							<label class="col-md-5 control-label">Status Tempat Tinggal *:</label>
 							<div class="col-md-7">
 								{!! Form::select('address_status', [
 									'0' => 'Milik Sendiri',
@@ -164,7 +164,7 @@
 						</div>
 
 						<div class="form-group">
-							<label class="col-md-5 control-label">Email </label>
+							<label class="col-md-5 control-label">Email :</label>
 							<div class="col-md-7">
 								{!! Form::email('email', old('email'), [
 									'class' => 'form-control', 'readonly'
@@ -173,7 +173,7 @@
 						</div>
 
 						<div class="form-group">
-							<label class="col-md-5 control-label">No Telepon</label>
+							<label class="col-md-5 control-label">No Telepon:</label>
 							<div class="col-md-7">
 								{!! Form::text('phone', old('phone'), [
 									'class' => 'form-control numeric', 'maxlength' => 12, 'minlength' => 9
@@ -182,7 +182,7 @@
 						</div>
 
 						<div class="form-group">
-							<label class="col-md-5 control-label">No Handphone *</label>
+							<label class="col-md-5 control-label">No Handphone *:</label>
 							<div class="col-md-7">
 								{!! Form::text('mobile_phone', old('mobile_phone'), [
 									'class' => 'form-control numeric', 'maxlength' => 12, 'minlength' => 9
@@ -191,7 +191,7 @@
 						</div>
 
 						<div class="form-group">
-							<label class="col-md-5 control-label">Nama Gadis Ibu Kandung *</label>
+							<label class="col-md-5 control-label">Nama Gadis Ibu Kandung *:</label>
 							<div class="col-md-7">
 								{!! Form::text('mother_name', old('mother_name'), [
 									'class' => 'form-control'
