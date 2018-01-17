@@ -80,8 +80,6 @@ class RegisterController extends Controller
                 ->setBody( $request->only( ['email', 'password', 'first_name', 'last_name','mobile_phone'] ) )
                 ->post();
 
-            \Session::put('uid', $response['contents']['user_id']);
-
             if ($response['code'] == 422) {
                 $message = '';
                 foreach ($response['contents'] as $key => $value) {
@@ -90,6 +88,7 @@ class RegisterController extends Controller
                 \Session::flash('flash_message',$message);
                 return redirect()->back()->withInput();
             }
+            \Session::put('uid', $response['contents']['user_id']);
             \Session::flash('success_flash_message', 'success');
             $route = 'auth.successed';
         } else {
