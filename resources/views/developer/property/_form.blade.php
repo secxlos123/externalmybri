@@ -70,7 +70,7 @@
             {!! Form::select('region_id', ['' => ''] + [
             isset($property->region_id) ? $property->region_id : old('region_id') =>
                 isset($property->region_name) ? $property->region_name : old('region_name')
-                   
+
                 ], old('region_id'), [
                 'class' => 'select2 kanwil',
                 'data-option'   => isset($property->region_id) ? $property->region_id : old('region_id'),
@@ -236,6 +236,10 @@
             opacity: 0.7;
             -webkit-transition: .2s;
             transition: opacity .2s;
+        }
+
+        .desc, .fac {
+            padding: 6px 12px;
         }
 
         .slider::-webkit-slider-thumb {

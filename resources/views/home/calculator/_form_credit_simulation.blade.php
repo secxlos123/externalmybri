@@ -5,7 +5,7 @@
       <div class="form-group  {{ $errors->has('price') ? ' has-error' : '' }}">
         <label>Harga Rumah *:</label>
         <div class="input-group">
-          <span class="input-group-addon">Rp</span> 
+          <span class="input-group-addon">Rp</span>
            {!! Form::text('price', $price, ['class' => 'form-control numericOnly currency','placeholder' => '','id'=>'price','required'=>'']) !!}
         </div>
             @if ($errors->has('price'))
@@ -16,7 +16,7 @@
       </div>
     </div>
     <div class="col-md-12">
-      <div class="form-group {{ $errors->has('dp') ? ' has-error' : '' }}">  
+      <div class="form-group {{ $errors->has('dp') ? ' has-error' : '' }}">
         <label>DP *:</label>
         <div class="input-group">
          {!! Form::text('dp', '', ['class' => 'form-control numericOnly ','placeholder' => '0','id'=>'dp','maxlength'=>'2','required'=>'']) !!}
@@ -30,7 +30,7 @@
       </div>
     </div>
     <div class="col-md-12">
-      <div class="form-group {{ $errors->has('down_payment') ? ' has-error' : '' }}">  
+      <div class="form-group {{ $errors->has('down_payment') ? ' has-error' : '' }}">
         <label></label>
         <div class="input-group">
           <span class="input-group-addon">Rp</span>
@@ -54,7 +54,7 @@
       </div>
     </div>
     <div class="col-md-12">
-      <div class="form-group {{ $errors->has('price_platform') ? ' has-error' : '' }}">  
+      <div class="form-group {{ $errors->has('price_platform') ? ' has-error' : '' }}">
         <label>Plafond yang diajukan *:</label>
         <div class="input-group">
           <span class="input-group-addon">Rp</span>
@@ -70,9 +70,9 @@
 </div>
 <div class="row">
   <div class="col-md-12">
-    <div class="form-group {{ $errors->has('time_period') ? ' has-error' : '' }}" id="time_period_div">  
+    <div class="form-group {{ $errors->has('time_period') ? ' has-error' : '' }}" id="time_period_div">
       <label>Jangka Waktu *:</label>
-      <div class="input-group"> 
+      <div class="input-group">
          {!! Form::text('time_period', '', ['class' => 'form-control' ,'placeholder' => '0','id'=>'time_period','maxlength'=>'3']) !!}
         <span class="input-group-addon">Bulan</span>
       </div>
@@ -102,19 +102,19 @@
        {!! Form::text('rate', '', ['class' => 'form-control numericOnly','placeholder' => '0','id'=>'rate','maxlength'=>'5']) !!}
         <span class="input-group-addon">% per-tahun</span>
       </div>
-    </div>        
+    </div>
     <div class="form-group {{ $errors->has('time_period_fixed') ? ' has-error' : '' }}" id="interest_rate_fixed_div">
       <label>Jangka Waktu Fixed *:</label>
       <div class="input-group">
         {!! Form::text('time_period_fixed', '', ['class' => 'form-control numericOnly ','placeholder' => '0','id'=>'time_period_fixed','maxlength'=>'3']) !!}
         <span class="input-group-addon">Bulan Pertama</span>
-      </div>  
+      </div>
       @if ($errors->has('time_period_fixed'))
         <span class="help-block">
           <strong>{{ $errors->first('time_period_fixed') }}</strong>
         </span>
-      @endif  
-    </div>     
+      @endif
+    </div>
   </div>
   <div class="col-md-12">
     <div class="form-group {{ $errors->has('time_period_fixed') ? ' has-error' : '' }}" id="time_period_floor_div">
@@ -122,17 +122,17 @@
       <div class="input-group">
          {!! Form::text('time_period_floor', '', ['class' => 'form-control numericOnly ','placeholder' => '0','id'=>'time_period_floor','maxlength'=>'3']) !!}
         <span class="input-group-addon">Bulan Pertama</span>
-      </div> 
+      </div>
         @if ($errors->has('time_period_floor'))
         <span class="help-block">
           <strong>{{ $errors->first('time_period_floor') }}</strong>
         </span>
-      @endif                                    
+      @endif
     </div>
   </div>
   <div class="col-md-12">
     <div class="form-group {{ $errors->has('interest_rate_fixed') ? ' has-error' : '' }}" id="time_period_fixed_div">
-      <label>Suku Bunga Fixed *:</label>                                         
+      <label>Suku Bunga Fixed *:</label>
       <div class="input-group">
         {!! Form::text('interest_rate_fixed', '', ['class' => 'form-control','placeholder' => '0','id'=>'interest_rate_efektif','maxlength'=>'5']) !!}
         <span class="input-group-addon">% per-tahun</span>
@@ -141,12 +141,12 @@
         <span class="help-block">
           <strong>{{ $errors->first('interest_rate_fixed') }}</strong>
         </span>
-      @endif                    
+      @endif
     </div>
-  </div>    
+  </div>
   <div class="col-md-12">
     <div class="form-group {{ $errors->has('interest_rate_fixed') ? ' has-error' : '' }}" id="interest_rate_float_div">
-      <label  >Suku Bunga Float *:</label>                                          
+      <label  >Suku Bunga Float *:</label>
       <div class="input-group">
          {!! Form::text('interest_rate_float', '', ['class' => 'form-control numericOnly ','placeholder' => '0','id'=>'interest_rate_float','maxlength'=>'5']) !!}
         <span class="input-group-addon">% per-tahun</span>
@@ -155,7 +155,7 @@
         <span class="help-block">
           <strong>{{ $errors->first('interest_rate_float') }}</strong>
         </span>
-      @endif                                          
+      @endif
     </div>
     </div>
   </div>
@@ -171,18 +171,25 @@
         <span class="help-block">
           <strong>{{ $errors->first('interest_rate_floor') }}</strong>
         </span>
-      @endif  
+      @endif
       </div>
     </div>
   </div>
   <div class="row">
     <div class="col-md-12">
       <div class="form-group">
-        <button type="submit" class="border_radius btn-yellow text-uppercase">Hitung Simulasi</button>
+        <button type="submit" class="border_radius btn-yellow text-uppercase colWhite">Hitung Simulasi</button>
       </div>
     </div>
   </div>
 
+@push ( 'styles' )
+  <style type="text/css">
+    .colWhite {
+      color: white;
+    }
+  </style>
+@endpush
 @push('scripts')
- @include('home.calculator._script_calculator') 
+ @include('home.calculator._script_calculator')
 @endpush
