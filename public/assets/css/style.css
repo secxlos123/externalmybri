@@ -10710,3 +10710,11 @@ and (min-device-width : 1920px){
     }
 }
 /* end of update 17/01/2018 */
+
+/* update 18/01/2018 */
+.fix-bottom{
+    margin-bottom: -10px;
+}
+.owl-page span{
+    margin-top: 40px !important;
+}
