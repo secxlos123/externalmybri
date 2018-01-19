@@ -97,7 +97,8 @@ class DeveloperController extends Controller
                     'Authorization' => session('authenticate.token')
                     ])   
                 ->get();
-        return view('developer.developer.edit', compact('data'));
+        $type = 'view';
+        return view('developer.developer.edit', compact('data', 'type'));
     }
 
     /**
@@ -108,7 +109,13 @@ class DeveloperController extends Controller
      */
     public function edit($id)
     {
-        return view( 'developer.developer.create', $id );
+        $data = Client::setEndpoint('developer-agent/'.$id)
+                ->setHeaders([
+                    'Authorization' => session('authenticate.token')
+                    ])   
+                ->get();
+        $type = 'edit';
+        return view('developer.developer.edit', compact('data', 'type'));
     }
 
     /**
@@ -195,7 +202,7 @@ class DeveloperController extends Controller
         foreach ($dev['contents']['data'] as $key => $value) {
             $value['action'] = view('layouts.actions-agent-dev', [
                 'show'    => route('developer.developer.show', $value['user_id']),
-                'edit'    => route('developer.developer.show', $value['user_id']),
+                'edit'    => route('developer.developer.edit', $value['user_id']),
                 'banned'  => route('developer.developer.deactive', $value['user_id']),
                 'is_banned'=> $value['is_banned'],
                 'user_id'   => $value['user_id']

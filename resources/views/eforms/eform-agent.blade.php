@@ -272,7 +272,7 @@
                 $("#view-modal #identity").html('<img src="'+identity+'" class="img-responsive">');
                 $('#view-modal #couple_birth_place').html(couple_birth_place);
                 $('#view-modal').modal('show');
-                $('#view-modal #request_amount').html('RP'+request_amount);
+                $('#view-modal #request_amount').html('Rp.'+request_amount);
                 $('#view-modal #year').html(year+' bulan');
                 $('#view-modal #office').html(offices);
                 $('#view-modal #appointment_date').html(appointment_date);

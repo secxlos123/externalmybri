@@ -150,7 +150,12 @@ Route::group([
 		/**
 		 * This route for showing list Developer of developer
 		 */
-		Route::get('edit/{id}', 'DeveloperController@show')->name('show');
+		Route::get('detail/{id}', 'DeveloperController@show')->name('show');
+
+		/**
+		 * This route for showing list Developer of developer
+		 */
+		Route::get('edit/{id}', 'DeveloperController@edit')->name('edit');
 
 		/**
 		 * This route for showing list Developer of developer

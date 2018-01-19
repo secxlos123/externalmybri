@@ -34,9 +34,17 @@
                     </div>
                     <div class="col-md-12">
                         <div class="pull-right">
+                        @if($type !='view')
+                        <input type="button" value="Kembali" onClick="history.go(-1);" class="btn btn-primary waves-light waves-effect w-md m-b-20">
                             <button type="submit" class="btn btn-orange waves-light waves-effect w-md m-b-20">
                                 <i class="mdi mdi-content-save"></i> Ubah
                             </button>
+                        @else
+                        <input type="button" value="Kembali" onClick="history.go(-1);" class="btn btn-primary waves-light waves-effect w-md m-b-20">
+                           <a href="{{ route('developer.developer.edit', $id) }}" class="btn btn-primary waves-light waves-effect w-md m-b-20">
+                                <!-- <i class="mdi mdi-content-save"></i> --> Edit
+                            </a>           
+                        @endif
                         </div>
                     </div>
                 </div>
