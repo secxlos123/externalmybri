@@ -14,7 +14,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="col-md-4 control-label">Bidang Pekerjaan *</label>
+                            <label class="col-md-4 control-label">Bidang Pekerjaan *:</label>
                             <div class="col-md-8">
                                 {!! Form::select('work_field', ['' => ''] + [
                                     $customer->work_field_id ?: old('work_field') => $customer->work_field ?: old('work_field_name')
@@ -27,7 +27,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="col-md-4 control-label">Jenis Pekerjaan *</label>
+                            <label class="col-md-4 control-label">Jenis Pekerjaan *:</label>
                             <div class="col-md-8">
                                 {!! Form::select('work_type', ['' => ''] + [
                                     $customer->type_id ?: old('work_type') => $customer->type_id ?: old('work_type_name')
@@ -40,7 +40,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="col-md-4 control-label">Pekerjaan *</label>
+                            <label class="col-md-4 control-label">Pekerjaan *:</label>
                             <div class="col-md-8">
                                 {!! Form::select('work', ['' => ''] + [
                                     $customer->work_id ?: old('work') => $customer->work ?: old('work_name')
@@ -53,7 +53,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="col-md-4 control-label">Jabatan *</label>
+                            <label class="col-md-4 control-label">Jabatan *:</label>
                             <div class="col-md-8">
                                 {!! Form::select('position', ['' => ''] + [
                                     $customer->position_id ?: old('position') => $customer->position ?: old('position_name')
@@ -68,19 +68,19 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="col-md-4 control-label">Nama Perusahaan *</label>
+                            <label class="col-md-4 control-label">Nama Perusahaan *:</label>
                             <div class="col-md-8">
                                 {!! Form::text('company_name', old('company_name'), ['class' => 'form-control']) !!}
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-4 control-label">Lama Kerja *</label>
+                            <label class="col-md-4 control-label">Lama Kerja *:</label>
                             <div class="col-md-8">
                                 <div class="input-group">
                                     {!! Form::text('work_duration', old('work_duration'), [
                                         'class' => 'form-control numeric', 'maxlength' => 2
                                     ]) !!}
-                                    <span class="input-group-addon">Tahun</span>
+                                    <span class="input-group-addon">Tahun:</span>
 
                                     {!! Form::text('work_duration_month', old('work_duration_month'), [
                                         'class' => 'form-control numeric', 'maxlength' => 2, 'id' => 'work_mount'
@@ -90,7 +90,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-4 control-label">Alamat Kantor *</label>
+                            <label class="col-md-4 control-label">Alamat Kantor *:</label>
                             <div class="col-md-8">
                                 {!! Form::textarea('office_address', old('office_address'), [
                                     'class' => 'form-control', 'rows' => 3, 'style' => 'resize: none;'

@@ -5,7 +5,7 @@
 @section('breadcrumb')
     <h1 class="text-uppercase">Data Tracking</h1>
     <ol class="breadcrumb text-center">
-        <li><a href="#">Dashboard</a></li>
+        <li><a href="{!! url('/') !!}">Dashboard</a></li>
         <li class="active">Tracking</li>
     </ol>
 @endsection
