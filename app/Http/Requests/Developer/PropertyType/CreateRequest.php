@@ -27,4 +27,26 @@ class CreateRequest extends FormRequest
             'electrical_power'  => 'required',
         ];
     }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'name.required'  => 'Bidang isian nama tipe proyek harus diisi',
+            'price.required' => 'Bidang isian harga harus diisi',
+            'bathroom.required'  => 'Bidang isian kamar mandi harus diisi',
+            'bedroom.required'  => 'Bidang isian kamar tidur harus diisi',
+            'floors.required'  => 'Bidang isian tipe jumlah lantai harus diisi',
+            'carport.required'  => 'Bidang isian tipe garasi harus diisi',
+            'property_id.required'  => 'Bidang isian nama proyek harus diisi',
+            'surface_area.required'  => 'Bidang isian luas tanah harus diisi',
+            'certificate.required'  => 'Bidang isian jenis sertifikat harus diisi',
+            'building_area.required'  => 'Bidang isian luas bangunan harus diisi',
+            'electrical_power.required'  => 'Bidang isian daya listrik harus diisi',
+        ];
+    }
 }

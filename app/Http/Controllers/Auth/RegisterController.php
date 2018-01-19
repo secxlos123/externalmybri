@@ -205,6 +205,7 @@ class RegisterController extends Controller
                     'uid' => $uid
                     ])
                 ->post();
+        \Session::flash('success_flash_message', 'success');
         if ($response['code'] == 422) {
             $message = '';
             foreach ($response['contents'] as $key => $value) {

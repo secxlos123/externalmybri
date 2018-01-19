@@ -29,4 +29,26 @@ class BaseRequest extends FormRequest
             'facilities'  => 'required',
         ];
     }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'name.required' => 'Bidang isian nama harus diisi',
+            'city_id.required'  => 'Bidang isian kota harus diisi',
+            'category.required'  => 'Bidang isian kategori harus diisi',
+            'pks_number.required'  => 'Bidang isian nomor PKS harus diisi',
+            'pic_name.required'  => 'Bidang isian nama PIC harus diisi',
+            'pic_phone.required'  => 'Bidang isian nomor handphone PIC harus diisi',
+            'photo.required'  => 'Bidang isian foto harus diisi',
+            'address.required'  => 'Bidang isian alamat harus diisi',
+            'region_id.required'  => 'Bidang isian kantor wilayah harus diisi',
+            'description.required'  => 'Bidang isian deskripsi harus diisi',
+            'facilities.required'  => 'Bidang isian fasilitas harus diisi',
+        ];
+    }
 }

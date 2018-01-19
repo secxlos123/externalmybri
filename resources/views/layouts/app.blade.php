@@ -75,7 +75,7 @@
     <!-- end -->
 
     <!-- Footer -->
-    <footer class="footer_third absolute-fix csm-footer">
+    <footer class="footer_third absolute-fix csm-footer fix-bottom">
         <!-- <div class="icons">{!! Html::image('assets/images/logo/callbri.png') !!}</div> -->
         <div class="container">
             <div class="row">
