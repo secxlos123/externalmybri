@@ -9,10 +9,25 @@ class UpdateRequest extends BaseRequest
      *
      * @return array
      */
-    public function rules()
+     public function rules()
     {
-        return array_merge(
-            parent::rules(), ['photo' => 'image|max:1024']
-        );
+        return [
+            'name' => 'required',
+            'email' => 'email|required',
+            'mobile_phone' => 'required|string|regex:/^[0-9]+$/|max:15',
+            'birth_date'    => 'required|date|date_format:Y-m-d|before:today',
+            'join_date' => 'required|date|date_format:Y-m-d'
+        ];
+    }
+
+     public function messages()
+    {
+        return [
+            'name.required' => 'Kolom Nama Harus diisi',
+            'email.required'    => 'Kolom email harus diisi',
+            'mobile_phone.required' => 'Kolom Nomor handphone harus diisi',
+            'birth_date.required' => 'Kolom tanggal lahir harus diisi.',
+            'join_date.required' => 'Kolom tanggal lahir harus diisi',
+        ];
     }
 }

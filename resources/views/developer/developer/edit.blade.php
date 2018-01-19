@@ -17,7 +17,7 @@
         <?php $id = $data['contents']['userdeveloper']['user_id'] ;?>
             {!! Form::model($data, [
                 'route' => ['developer.developer.update', $id],
-                'class' => 'callus submit_property', 'id' => 'form-property-edit',
+                'class' => 'callus submit_property', 'id' => 'form_data_agen',
                 'enctype' => 'multipart/form-data', 'method' => 'PUT'
             ]) !!}
                 <div class="row">
@@ -62,9 +62,10 @@
     <script src="{{asset('assets/js/jquery.date-pickers.init.js')}}"></script>
     <!-- You can edit this script on resouces/asset/js/dropdown.js -->
     <!-- After that you run in console or terminal or cmd "npm run production" -->
-    {!! JsValidator::formRequest(App\Http\Requests\Developer\Agent\CreateRequest::class, '#form-property-edit') !!}
-
     <!-- Laravel Javascript Validation -->
+    {!! JsValidator::formRequest(App\Http\Requests\Developer\Agent\CreateRequest::class, '#form_data_agen'); !!}
+    {!! JsValidator::formRequest(App\Http\Requests\Developer\Agent\UpdateRequest::class, '#form_data_agen'); !!}
+    <!-- end javascript validation -->
     <script type="text/javascript">
     $( ".datepicker-date-born" ).datepicker({
         format: 'dd-mm-yyyy',

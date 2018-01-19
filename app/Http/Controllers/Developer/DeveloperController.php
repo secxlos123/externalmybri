@@ -43,7 +43,7 @@ class DeveloperController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateRequest $request)
     {   
         $input = [
             "name" => $request->input("name"),
@@ -125,7 +125,7 @@ class DeveloperController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
       //  $input = $request->all();
         $join_date = date('Y-m-d', strtotime($request->input("join_date")));
