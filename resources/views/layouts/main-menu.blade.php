@@ -88,7 +88,7 @@
 
 @endif
 
-@if( session('authenticate.role') == 'customer' )
+@if( session('authenticate.role') == 'customer' || session('authenticate.role') == 'developer' || session('authenticate.role') == 'developer-sales' )
     <li>
         <a href="#" onclick="openSide()" class="right-menu-item dropdown-toggle" data-toggle="dropdown">
             <i class="mdi mdi-bell"></i>
