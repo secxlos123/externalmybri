@@ -81,7 +81,7 @@
                 }
             },
             aoColumns : [
-                { data: 'first_name', name: 'first_name' },
+                { data: 'full_name', name: 'full_name' },
                 { data: 'email', name: 'email' },
                 { data: 'mobile_phone', name: 'mobile_phone' },
                 { data: 'birth_date', name: 'birth_date' },

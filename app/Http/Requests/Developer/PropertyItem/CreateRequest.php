@@ -21,4 +21,20 @@ class CreateRequest extends FormRequest
             'property_type_id' => 'required',
         ];
     }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'price.required' => 'Bidang isian harga harus diisi',
+            'status.required'  => 'Bidang isian status harus diisi',
+            'address.required'  => 'Bidang isian alamat harus diisi',
+            'property.required'  => 'Bidang isian proyek harus diisi',
+            'property_type_id.required'  => 'Bidang isian tipe proyek harus diisi',
+        ];
+    }
 }

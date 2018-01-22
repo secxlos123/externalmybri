@@ -61,11 +61,15 @@ class EformRequest extends FormRequest
             'longitude'         => 'required',
             'address_location'  => 'required',
             'branch_id'         => 'required',
+            'kpr_type_property' => 'required_if:status_property,2,3,4,5,6,7,8',
         ];
 
         if ($this->input('status_property') == 1) {
             $rules = array_merge($rules, ['kpr_type_property' => '']);
         }
+        // else if($this->input('status_property') > 1){
+        //     $rules = array_merge($rules, ['kpr_type_property' => 'required']);
+        // }
 
         return $rules;
     }

@@ -4,7 +4,7 @@
 @section('breadcrumb')
     <h1 class="text-uppercase">Detail Tracking</h1>
     <ol class="breadcrumb text-center">
-        <li><a href="#">Dashboard</a></li>
+        <li><a href="{!! url('/') !!}">Dashboard</a></li>
         <li class="active">Tracking Detail</li>
     </ol>
 @endsection
@@ -34,7 +34,7 @@
                                         </div>
                                     </div>
                                     <div class="tracking-card">
-                                        <div class="card-box widget-box-three {{($results['status'] == 'Proses CLF' || $results['status'] == 'Prakarsa') ? 'active' : '' }}">
+                                        <div class="card-box widget-box-three {{($results['status'] == 'Proses CLF' || $results['status'] == 'Prakarsa'  || $results['status'] == 'Disposisi Pengajuan') ? 'active' : '' }}">
                                             <div class="bg-icon">
                                                 {!! Html::image('assets/images/fa_analis_o.png', '', [
                                                     'class' => 'track-icon'
@@ -47,7 +47,7 @@
                                         </div>
                                     </div>
                                     <div class="tracking-card">
-                                        <div class="card-box widget-box-three {{ ($results['status'] == 'Kredit Ditolak' || $results['status'] == 'Disposisi Pengajuan') ? 'active' : ''}}">
+                                        <div class="card-box widget-box-three {{ ($results['status'] == 'Kredit Ditolak') ? 'active' : ''}}">
                                             <div class="bg-icon">
                                                 {!! Html::image('assets/images/fa_file_o.png', '', [
                                                     'class' => 'track-icon'

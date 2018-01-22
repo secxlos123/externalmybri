@@ -16,7 +16,7 @@
         <div class="container">
             {!! Form::open([
                 'route' => 'developer.proyek-item.store',
-                'class' => 'callus submit_property', 'id' => 'form-property-item',
+                'class' => 'callus submit_property', 'id' => 'form-proyek-item',
                 'enctype' => 'multipart/form-data'
             ]) !!}
                 <div class="row">

@@ -2,17 +2,17 @@
 <ul>
     <li data-transition="fade">
         {!! Html::image('assets/images/FA_my-bri-banner-3.jpg', '', [
-            'data-bgposition' => 'center center', 'data-bgfit' => 'cover', 'class' => 'rev-slidebg'
+            'data-bgposition' => 'center center', 'data-bgfit' => '100% 100%', 'class' => 'rev-slidebg'
         ]) !!}
     </li>
     <li data-transition="fade">
         {!! Html::image('assets/images/FA_KPR-banner-2.jpg', '', [
-            'data-bgposition' => 'center center', 'data-bgfit' => 'cover', 'class' => 'rev-slidebg'
+            'data-bgposition' => 'center center', 'data-bgfit' => '100% 100%', 'class' => 'rev-slidebg'
         ]) !!}
     </li>
     <li data-transition="fade">
         {!! Html::image('assets/images/FA_BRI-banner-1.jpg', '', [
-            'data-bgposition' => 'center center', 'data-bgfit' => 'cover', 'class' => 'rev-slidebg'
+            'data-bgposition' => 'center center', 'data-bgfit' => '100% 100%', 'class' => 'rev-slidebg'
         ]) !!}
     </li>
 </ul>

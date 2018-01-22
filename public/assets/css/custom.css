@@ -60,4 +60,5 @@ form#form-register-store div.single-query span.error-help-block {
 
 footer.footer_third.absolute-fix.csm-footer {
     margin-top: 90px;
+    bottom: -5px;
 }

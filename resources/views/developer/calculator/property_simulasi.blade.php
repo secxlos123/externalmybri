@@ -5,18 +5,18 @@
 @section('breadcrumb')
 	<h1 class="text-uppercase">Kalkulator DEVELOPER</h1>
  	<ol class="breadcrumb text-center">
-	    <li><a href="javascript:void(0)">Dashboard</a></li>
+	    <li><a href="{!! url('/') !!}">Dashboard</a></li>
 	    <li class="active">Kalkulator</li>
 	</ol>
 @endsection
 
 @section('content')
- 
+
 <section id="property" class="padding listing1">
   <div class="container">
 <h2></h2>
 <div class="row">
- @include('home.calculator._error_validation') 
+ @include('home.calculator._error_validation')
     <div class="col-md-4">
         <div class="panel panel-color panel-primary">
             <div class="panel-heading">
@@ -25,7 +25,7 @@
             <div class="panel-body" style="border: none;">
                 {!! Form::open(['route' => 'developer.post_calculator','class' => 'callus top201', 'id' => 'form-calculator', ]) !!}
                     @include('home.calculator._form_credit_simulation')
-                {!!  Form::close()  !!}   
+                {!!  Form::close()  !!}
             </div>
         </div>
     </div>
@@ -72,12 +72,11 @@
                 </div>
             </div>
         </div>
-    </div> 
+    </div>
 </div>
- 
+
 </div>
 </section>
 
 @endsection
 
- 

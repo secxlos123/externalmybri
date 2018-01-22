@@ -31,7 +31,7 @@
         </div>
 
         <div class="form-group developer" hidden>
-            <label class="control-label col-md-4">Developer *</label>
+            <label class="control-label col-md-4">Developer *:</label>
             <div class="col-md-8">
             @if ('developer-sales' != session('authenticate.role'))
                 {!! Form::select('developer', isset($param['developer_id']) ? [@$param['developer_id'] => @$param['developer_name']] : [''=>''] + [
@@ -68,7 +68,7 @@
         </div>
 
         <div class="form-group property-select property" hidden>
-            <label class="control-label col-md-4">Nama Proyek *</label>
+            <label class="control-label col-md-4">Nama Proyek *:</label>
             <div class="col-md-8">
                 {!! Form::select('property', isset($param['property_id']) ? [@$param['property_id']=>@$param['property_name']] : ['' => ''] + [
                     old('property') => old('property_name')
@@ -81,7 +81,7 @@
             </div>
         </div>
         <div class="form-group types-select property_type" hidden>
-            <label class="control-label col-md-4">Tipe Properti *</label>
+            <label class="control-label col-md-4">Tipe Properti *:</label>
             <div class="col-md-8">
                 {!! Form::select('property_type', isset($param['property_type_id']) ? [@$param['property_type_id']=>@$param['property_type_name']] : ['' => ''] + [
                    old('property_type') => old('property_type_name')
@@ -94,7 +94,7 @@
             </div>
         </div>
         <div class="form-group units-select property_unit" hidden>
-            <label class="control-label col-md-4">Unit Properti *</label>
+            <label class="control-label col-md-4">Unit Properti *:</label>
             <div class="col-md-8">
                 {!! Form::select('property_item', isset($param['property_item_address']) ? [@$param['property_item_id']=>@$param['property_item_address']] : ['' => ''] + [
                     old('property_item') => old('property_item_name')
@@ -110,7 +110,7 @@
 
     <div class="col-md-6">
         <div class="form-group">
-            <label class="control-label col-md-4">Harga Rumah *</label>
+            <label class="control-label col-md-4">Harga Rumah *:</label>
             <div class="col-md-8">
                 <div class="input-group">
                     <span class="input-group-addon">Rp</span>
@@ -122,11 +122,11 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-md-4">Luas Bangunan *</label>
+            <label class="control-label col-md-4">Luas Bangunan *:</label>
             <div class="col-md-8">
                 <div class="input-group">
                     {!! Form::text('building_area', old('building_area'), [
-                        'id' => 'building_area', 'class' => 'form-control numeric calculate', 'readonly',
+                        'id' => 'building_area', 'class' => 'form-control calculate', 'readonly', 'onkeypress' => 'return goodchars(event, "1234567890 ", this)',
                         'maxlength' => 4
                     ]) !!}
                     <span class="input-group-addon">m<sup>2</sup></span>
@@ -135,7 +135,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-md-4">Lokasi Rumah *</label>
+            <label class="control-label col-md-4">Lokasi Rumah *:</label>
             <div class="col-md-8">
                 {!! Form::textarea('home_location', old('home_location'), [
                     'id' => 'home_location', 'class' => 'form-control', 'rows' => 3, 'readonly',
@@ -145,11 +145,11 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-md-4">Jangka Waktu *</label>
+            <label class="control-label col-md-4">Jangka Waktu *:</label>
             <div class="col-md-8">
                 <div class="input-group">
                     {!! Form::text('year',old('year'), [
-                        'class' => 'form-control numeric calculate', 'id' => 'year', 'maxlength' => 3
+                        'class' => 'form-control calculate', 'id' => 'year', 'maxlength' => 3, 'onkeypress' => 'return goodchars(event, "1234567890 ", this)',
                     ]) !!}
                     <span class="input-group-addon">Bulan</span>
                 </div>
@@ -157,7 +157,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-md-4">KPR Aktif ke *</label>
+            <label class="control-label col-md-4">KPR Aktif ke *:</label>
             <div class="col-md-8">
                 {!! Form::select('active_kpr', [ '' => 'Pilih', '1' => '1', '2' => '2', '3' => '> 2' ], old('active_kpr'), [
                     'class' => 'form-control select2 calculate', 'id' => 'active_kpr'
@@ -166,12 +166,12 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-md-4">Uang Muka *</label>
+            <label class="control-label col-md-4">Uang Muka *:</label>
             <div class="col-md-8">
                 <div class="input-group">
                     <span class="input-group-addon">Rp</span>
                     {!! Form::text('down_payment',old('down_payment'), [
-                        'class' => 'form-control numeric currency', 'id' => 'down_payment', 'maxlength' => 15
+                        'class' => 'form-control currency', 'id' => 'down_payment', 'maxlength' => 15
                     ]) !!}
                 </div>
                 <p>Wajib diisi</p>
@@ -191,7 +191,7 @@
         </div>
 
         <div class="form-group">
-            <label class="control-label col-md-4">Jumlah Permohonan *</label>
+            <label class="control-label col-md-4">Jumlah Permohonan *:</label>
             <div class="col-md-8">
                 <div class="input-group">
                     <span class="input-group-addon">Rp</span>
