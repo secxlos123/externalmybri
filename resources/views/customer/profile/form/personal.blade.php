@@ -18,7 +18,7 @@
 							<label class="col-md-4 control-label">NIK *:</label>
 							<div class="col-md-8">
 								{!! Form::text('nik', old('nik'), [
-									'class' => 'form-control numeric', 'maxlength' => 16
+									'class' => 'form-control', 'maxlength' => 16, 'onkeypress' => 'return goodchars(event, "1234567890 ", this)',
 								]) !!}
 							</div>
 						</div>
@@ -176,7 +176,7 @@
 							<label class="col-md-5 control-label">No Telepon:</label>
 							<div class="col-md-7">
 								{!! Form::text('phone', old('phone'), [
-									'class' => 'form-control numeric', 'maxlength' => 12, 'minlength' => 9
+									'class' => 'form-control', 'maxlength' => 12, 'minlength' => 9, 'onkeypress' => 'return goodchars(event, "1234567890 ", this)',
 								]) !!}
 							</div>
 						</div>
@@ -185,7 +185,7 @@
 							<label class="col-md-5 control-label">No Handphone *:</label>
 							<div class="col-md-7">
 								{!! Form::text('mobile_phone', old('mobile_phone'), [
-									'class' => 'form-control numeric', 'maxlength' => 12, 'minlength' => 9
+									'class' => 'form-control', 'maxlength' => 12, 'minlength' => 9, 'onkeypress' => 'return goodchars(event, "1234567890 ", this)',
 								]) !!}
 							</div>
 						</div>
@@ -210,7 +210,7 @@
 	                        	{!! Form::file('identity', [
 	                                'class' => 'filestyle', 'data-target' => 'ktp_preview',
 	                                'data-buttontext' => 'Unggah', 'data-buttonname' => 'btn-default',
-	                                'data-iconname' => 'fa fa-cloud-upload', 'data-placeholder' => 'Tidak ada file'
+	                                'data-iconname' => 'fa fa-cloud-upload', 'data-placeholder' => 'Tidak ada file', 'accept' => 'image/*,application/pdf'
 	                            ]) !!}
 	                        </div>
 	                    </div>
@@ -218,19 +218,32 @@
 
 					@if ( isset($customer->identity) )
 
-	                    <div class="col-md-6">
-							<div class="form-group ktp_preview">
-		                    	<div class="col-md-12 col-md-offset-2">
-		                    		{!! Html::image($customer->identity ? $customer->identity : 'assets/images/no-image.jpg', 'KTP', [
-		                                'class' => 'img-responsive', 'width' => 300, 'id' => 'ktp_preview',
-		                                'data-src' => asset('assets/images/no-image.jpg')
-		                            ]) !!}
-		                            @if ( null !== old('nik') )
-		                            	<br/>Harap Upload Ulang Foto KTP
-		                            @endif
-		                    	</div>
-		                    </div>
-						</div>
+						@if (str_contains($customer->identity, '.pdf'))
+
+		                    <div class="col-md-6">
+								<div class="form-group ktp_preview">
+			                    	<div class="col-md-12 col-md-offset-2">
+										<iframe src="{{$customer->identity}}" title="your_title" align="top" height="620" width="100%" frameborder="0" scrolling="auto" target="Message">
+										</iframe>
+									</div>
+								</div>
+							</div>
+
+						@else
+		                    <div class="col-md-6">
+								<div class="form-group ktp_preview">
+			                    	<div class="col-md-12 col-md-offset-2">
+			                    		{!! Html::image($customer->identity ? $customer->identity : 'assets/images/no-image.jpg', 'KTP', [
+			                                'class' => 'img-responsive', 'width' => 300, 'id' => 'ktp_preview',
+			                                'data-src' => asset('assets/images/no-image.jpg')
+			                            ]) !!}
+			                            @if ( null !== old('nik') )
+			                            	<br/>Harap Upload Ulang Foto KTP
+			                            @endif
+			                    	</div>
+			                    </div>
+							</div>
+						@endif
 
 	                @else
 

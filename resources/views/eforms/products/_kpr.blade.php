@@ -126,7 +126,7 @@
             <div class="col-md-8">
                 <div class="input-group">
                     {!! Form::text('building_area', old('building_area'), [
-                        'id' => 'building_area', 'class' => 'form-control numeric calculate', 'readonly',
+                        'id' => 'building_area', 'class' => 'form-control calculate', 'readonly', 'onkeypress' => 'return goodchars(event, "1234567890 ", this)',
                         'maxlength' => 4
                     ]) !!}
                     <span class="input-group-addon">m<sup>2</sup></span>
@@ -149,7 +149,7 @@
             <div class="col-md-8">
                 <div class="input-group">
                     {!! Form::text('year',old('year'), [
-                        'class' => 'form-control numeric calculate', 'id' => 'year', 'maxlength' => 3
+                        'class' => 'form-control calculate', 'id' => 'year', 'maxlength' => 3, 'onkeypress' => 'return goodchars(event, "1234567890 ", this)',
                     ]) !!}
                     <span class="input-group-addon">Bulan</span>
                 </div>
@@ -171,7 +171,7 @@
                 <div class="input-group">
                     <span class="input-group-addon">Rp</span>
                     {!! Form::text('down_payment',old('down_payment'), [
-                        'class' => 'form-control numeric currency', 'id' => 'down_payment', 'maxlength' => 15
+                        'class' => 'form-control currency', 'id' => 'down_payment', 'maxlength' => 15
                     ]) !!}
                 </div>
                 <p>Wajib diisi</p>
