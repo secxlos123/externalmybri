@@ -15,8 +15,8 @@ class CreateRequest extends BaseRequest
         	'name' => 'required',
         	'email' => 'email|required',
         	'mobile_phone' => 'required|string|regex:/^[0-9]+$/|max:15',
-        	'birth_date'    => 'required|date|date_format:Y-m-d|before:today',
-        	'join_date' => 'required|date|date_format:Y-m-d'
+        	'birth_date'    => 'required|date|date_format:d-m-Y|before:today',
+        	'join_date' => 'required|date|date_format:d-m-Y'
         ];
     }
 
