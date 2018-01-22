@@ -7,7 +7,7 @@
         </li>
 
         <li class="">
-            <a href="#">Produk </a>
+            <a href="{{url('rincian-produk')}}">Produk </a>
         </li>
 
 @if ( 'customer' == session('authenticate.role') || ! session('authenticate') )
@@ -92,7 +92,7 @@
     <li>
         <a href="#" onclick="openSide()" class="right-menu-item dropdown-toggle" data-toggle="dropdown">
             <i class="mdi mdi-bell"></i>
-            <span class="badge up bg-success"> 
+            <span class="badge up bg-success">
                 {{ count( notificationsUnread() ) }}
             </span>
         </a>
