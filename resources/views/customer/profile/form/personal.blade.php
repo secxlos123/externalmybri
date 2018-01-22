@@ -116,10 +116,12 @@
 							<label class="col-md-5 control-label">Jenis Kelamin *:</label>
 							<div class="col-md-7">
 								{!! Form::select('gender', [
+									'' => '',
 									'L' => 'Laki-laki',
 									'P' => 'Perempuan',
 								], old('gender'), [
 									'class' => 'form-control select2',
+									'data-placeholder' => 'Pilih Jenis Kelamin',
 								]) !!}
 							</div>
 						</div>
@@ -141,11 +143,12 @@
 							<label class="col-md-5 control-label">Status Pernikahan *:</label>
 							<div class="col-md-7">
 								{!! Form::select('status', [
+									'' => '',
 									'1' => 'Belum Menikah',
 									'2' => 'Menikah',
 									'3' => 'Janda / Duda',
 								], (isset($customer->status_id) ? $customer->status_id : old('status')), [
-									'class' => 'form-control select2', 'id' => 'status'
+									'class' => 'form-control select2', 'data-placeholder' => 'Pilih Status Pernikahan', 'id' => 'status'
 								]) !!}
 							</div>
 						</div>
@@ -154,11 +157,13 @@
 							<label class="col-md-5 control-label">Status Tempat Tinggal *:</label>
 							<div class="col-md-7">
 								{!! Form::select('address_status', [
+									'' => '',
 									'0' => 'Milik Sendiri',
 									'1' => 'Milik Orang Tua / Mertua atau Rumah Dinas',
 									'3' => 'Tinggal di Rumah Kontrakan',
 								], (isset($customer->address_status_id) ? $customer->address_status_id : old('address_status')), [
 									'class' => 'form-control select2',
+									'data-placeholder' => 'Pilih Status Tempat Tinggal',
 								]) !!}
 							</div>
 						</div>

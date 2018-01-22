@@ -80,7 +80,13 @@
                                                             @if ($errors->has('gender')) <p class="help-block">{{ $errors->first('gender') }}</p> @endif
                                                         </div>
                                                     </div>
-
+                                                    <div class="form-group address {!! $errors->has('address') ? 'has-error' : '' !!}">
+                                                        <label class="col-md-3 control-label">Alamat *:</label>
+                                                        <div class="col-md-9">
+                                                            <textarea class="form-control" rows="3" name="address" maxlength="255">{{old('address')}}</textarea>
+                                                        @if ($errors->has('address')) <p class="help-block">{{ $errors->first('address') }}</p> @endif
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
