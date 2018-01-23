@@ -104,10 +104,10 @@
             {{ $errors->has('pic_phone') ? ' has-error' : '' }}">
             {!! Form::label('pic_phone', 'Nomor HP PIC Project') !!}
             {!! Form::text('pic_phone', old('pic_phone'), [
-                'class' => 'keyword-input numeric',
+                'class' => 'keyword-input',
                 'placeholder' => 'Masukkan nomor hp PIC Project',
                 'maxlength' => 12,
-                'minlength' => 9
+                'minlength' => 9, 'onkeypress' => 'return goodchars(event, "1234567890 ", this)'
             ]) !!}
 
             @if ($errors->has('pic_phone'))
