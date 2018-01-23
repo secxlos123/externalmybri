@@ -14,8 +14,22 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($type)
+    public function index(Request $request, $type)
     {
+        if(!empty($request->get('slug')) && !empty($request->get('type'))  ){
+        /*
+        * mark read the notification
+        */
+        Client::setEndpoint('users/notification/read/'.@$request->get('slug').'/'.@$request->get('type'))
+               ->setHeaders([
+                'Authorization' => session('authenticate.token')
+                // , 'auditaction' => 'action name'
+                , 'is_read' => is_read()
+                , 'long' => number_format($request->get('long', env('DEF_LONG', '106.81350')), 5)
+                , 'lat' => number_format($request->get('lat', env('DEF_LAT', '-6.21670')), 5)
+            ])->get();
+        }
+
         $results = Client::setEndpoint('profile')
             ->setHeaders([
                 'Authorization' => session('authenticate.token')
