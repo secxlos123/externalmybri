@@ -33,8 +33,61 @@ class PropertyController extends Controller
     public function index(Request $request)
     {
         if ( $request->ajax() ) return $this->datatables($request);
+        if(!empty($request['slug']))
+        {
+            $slug = $request['slug'];
+            $properties =  Client::setEndpoint('propertyNotifCollateral/'.$slug)
+                            ->setHeaders([
+                                            'Authorization' => session('authenticate.token') 
+                                         ])->get();
+            $form_notif = $properties['contents'];
+           if(!empty($properties['contents']))
+           {
+                 $form_notif['prop_name'] =  $form_notif['prop_name']; 
+                 $form_notif['prop_city_name'] =  $form_notif['prop_city_name'];
+                 $form_notif['prop_types'] =  $form_notif['prop_types'];
+                 $form_notif['prop_items'] =  $form_notif['prop_items'];
+                 $form_notif['prop_pic_name'] =  $form_notif['prop_pic_name'];
+                 $form_notif['prop_pic_phone'] =  $form_notif['prop_pic_phone'];
+                 $form_notif['action'] = view('layouts.actions', [
+                'show' => route('developer.proyek.show', $form_notif['prop_slug']),
+                'edit' => route('developer.proyek.edit', $form_notif['prop_slug']),
+                'is_approve' => $form_notif['is_approved']
+            ])->render();
 
-        return view( 'developer.property.index' );
+            $prop_id = $form_notif['prop_id'];
+            $dataCollateral =  Client::setEndpoint('collateral/getIdCollateral/'.$prop_id)
+                             ->setHeaders([
+                              'Authorization' => session('authenticate.token')
+                                ])->get();
+            if(!empty($dataCollateral['contents']))
+            {
+                $colleteral_id = $dataCollateral['contents']['collaterals_id'];    
+                /*
+                * mark read the notification 
+                */        
+
+                $reads = Client::setEndpoint('users/notification/read/'.@$colleteral_id.'/'.@$request->get('type'))
+                    ->setHeaders([
+                      'Authorization' => session('authenticate.token')
+                      , 'is_read' => is_read()
+                  ])->get();
+            }       
+            return view( 'developer.property.index-notif',compact('form_notif'));  
+            
+           }else{
+            return view( 'developer.property.index');  
+            
+           }
+
+           
+        }
+        else
+        {  
+            
+      
+             return view( 'developer.property.index');    
+        }
     }
 
     public function input(CreateRequest $request)

@@ -38,7 +38,8 @@ class CalculatorController extends Controller
       $price = $data['price'];
       $term = $data['time_period'];
       $rate = $this->convertCommatoPoint($data['rate']);
-      $downPayment = $data['dp'];
+      $dpConvert = str_replace(".", "", $data['down_payment']);
+      $downPayment = $dpConvert;
       $priceNumber = str_replace(".", "", $price);
       $fxflterm = $data['time_period_total'];
       $fxterm =  $data['time_period_fixed'];
