@@ -116,7 +116,7 @@ class PropertyTypeController extends Controller
      */
     public function datatables(Request $request, $slug = null)
     {
-        $endpoint = $slug ? "property-type" : "property-type/{$slug}/property-item";
+        $endpoint = $slug ? "property-type/{$slug}/property-item" : 'property-type';
         $sort = $request->input('order.0');
         $types = Client::setEndpoint($endpoint)
             ->setHeaders([
@@ -230,7 +230,7 @@ class PropertyTypeController extends Controller
                 'is_available'     => $request->input('is_available'),
                 'status'           => $request->input('status'),
                 'price'            => $request->input('price'),
-                'sort'             => $this->columns[$sort['column']] .'|'. $sort['dir'],
+              //  'sort'             => $this->columns[$sort['column']] .'|'. $sort['dir'],
                 'page'             => (int) $request->input('page') + 1,
                 'search'           => $request->input('search.value'),
             ])
@@ -240,6 +240,53 @@ class PropertyTypeController extends Controller
             $type['action'] = view('layouts.actions', [
                 'show' => route('developer.proyek-item.show', $type['id']),
                 'edit' => route('developer.proyek-item.edit', $type['id'])
+            ])->render();
+            $types['contents']['data'][$key] = $type;
+        }
+
+        $types['contents']['draw'] = $request->input('draw');
+        $types['contents']['recordsTotal'] = $types['contents']['total'];
+        $types['contents']['recordsFiltered'] = $types['contents']['total'];
+
+        unset(
+            $types['contents']['path'],
+            $types['contents']['prev_page_url'],
+            $types['contents']['next_page_url']
+        );
+
+        return response()->json($types['contents']);
+    }
+
+    /**
+     * Initial for datatable property type
+     *
+     * @param  Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function datatables_view_type(Request $request)
+    {
+        $sort = $request->input('order.0');
+        $types = Client::setEndpoint('property-type')
+            ->setHeaders([
+                'Authorization' => session('authenticate.token')
+            ])
+            ->setQuery([
+                'property_id' => $request->input('property_id'),
+                'surface_area' => $request->input('surface_area'),
+                'building_area'=> $request->input('building_area'),
+                'proyek_type'  => $request->input('proyek_type'),
+                'certificate'  => $request->input('certificate'),
+                'page'  => $request->input('page'),
+                //'sort'  => $this->columns[$sort['column']] .'|'. $sort['dir'],
+                'search'=> $request->input('search.value'),
+            ])
+            ->get();
+
+        foreach ($types['contents']['data'] as $key => $type) {
+            $type['action'] = view('layouts.actions', [
+                'show' => route('developer.proyek-type.show', $type['slug']),
+                'edit' => route('developer.proyek-type.edit', $type['slug']),
+                'is_approve' => $type['is_approved']
             ])->render();
             $types['contents']['data'][$key] = $type;
         }

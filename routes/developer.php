@@ -60,6 +60,12 @@ Route::group([
 		 */
 		Route::get('tambah', 'PropertyController@create')->name('create');
 
+		// This route For Get Datatable Property Item
+		Route::get('prop_type', 'PropertyTypeController@datatables_view_type')->name('prop_type');
+
+		// This route For Get Datatable Property Unit
+		Route::get('{slug}/prop_unit', 'PropertyTypeController@datatables_unit')->name('prop_unit');
+
 	});
 
 	/**
@@ -96,6 +102,7 @@ Route::group([
 		 * This route for showing list property of developer
 		 */
 		Route::get('tambah', 'PropertyTypeController@create')->name('create');
+
 	});
 
 	/**

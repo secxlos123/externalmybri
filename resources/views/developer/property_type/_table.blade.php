@@ -146,6 +146,7 @@
                 infoFiltered : '(disaring dari _MAX_ data keseluruhan)'
             },
             ajax : {
+                url : '{{ route("developer.proyek.prop_type") }}',
                 data : function(d, settings){
 
                     var api = new $.fn.dataTable.Api(settings);
