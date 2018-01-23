@@ -43,7 +43,7 @@
                     <span class="hidden-xs text-uppercase">Detail Angsuran</span>
                 </a>
             </li>
-            <li class="">
+             <li class="" style="display: none;">
                 <a href="#download" data-toggle="tab" aria-expanded="false">
                     <span class="visible-xs"><i class="fa fa-list"></i></span>
                     <span class="hidden-xs text-uppercase">Download</span>
