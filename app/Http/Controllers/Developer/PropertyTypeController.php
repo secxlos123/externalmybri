@@ -116,7 +116,7 @@ class PropertyTypeController extends Controller
      */
     public function datatables(Request $request, $slug = null)
     {
-        $endpoint = $slug ? "property-type/{$slug}/property-item" : 'property-type';
+        $endpoint = $slug ? "property-type" : "property-type/{$slug}/property-item";
         $sort = $request->input('order.0');
         $types = Client::setEndpoint($endpoint)
             ->setHeaders([
