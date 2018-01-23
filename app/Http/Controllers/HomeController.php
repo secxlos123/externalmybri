@@ -71,7 +71,7 @@ class HomeController extends Controller
       $price = $data['price'];
       $term = $data['time_period'];
       $rate = $this->convertCommatoPoint($data['rate']);
-      $downPayment = $data['dp'];
+      $downPayment = $data['down_payment'];
       $priceNumber = str_replace(".", "", $price);
       $fxflterm = $data['time_period_total'];
       $fxterm =  $data['time_period_fixed'];
