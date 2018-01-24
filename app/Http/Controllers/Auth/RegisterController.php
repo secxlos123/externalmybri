@@ -200,7 +200,7 @@ class RegisterController extends Controller
     public function resendEmail()
     {
         $uid = \Session::get('uid');
-        $response = Client::setEndpoint('auth/register')
+        $response = Client::setEndpoint('auth/resend-email')
                 ->setQuery([
                     'uid' => $uid
                     ])
