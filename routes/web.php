@@ -16,7 +16,7 @@ use Illuminate\Http\Request;
 
 Route::get('test', function (Request $request) {
 	// return view('auth.actived');
-	return view('eforms.index');
+	return view('auth.success-register');
 });
 
 /**
@@ -224,6 +224,11 @@ Route::group(['namespace' => 'Auth', 'as' => 'auth.'], function () {
 	Route::get('successed', 'RegisterController@successed')->name('successed');
 
 	/**
+	 * This route for resend email function
+	 */
+	Route::get('resend', 'RegisterController@resendEmail')->name('resend');
+
+	/**
 	 * This route for send request login
 	 */
 	Route::post('login', 'LoginController@login')->name('login');
@@ -250,7 +255,7 @@ Route::group(['prefix' => 'kalkulator', 'as' => 'kalkulator.'], function () {
 	 */
 	Route::get('/', 'HomeController@calculate')->name('kalkulator');
 	/*
-	*  This  route for get Price from detail property	
+	*  This  route for get Price from detail property
 	*/
 	Route::get('/{unit_price}/simulasi-kpr', 'HomeController@calculate')->name('simulasi.kpr');
 	/**
@@ -258,4 +263,3 @@ Route::group(['prefix' => 'kalkulator', 'as' => 'kalkulator.'], function () {
 	 */
 	Route::post('/', 'HomeController@postcalculate')->name('post');
 });
-	
