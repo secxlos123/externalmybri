@@ -422,15 +422,39 @@
                                     <div class="row">
                                         <div class="col-md-6" align="center">
                                             <div class="card-box">
-                                                <img src="@if(!empty($dataCustomer['other']['identity'])){{$dataCustomer['other']['identity']}}@endif" class="img-responsive">
-                                                <p>Foto KTP</p>
+                                                
+         <!-- handle image or pdf -->
+        @if((pathinfo(strtolower($dataCustomer['other']['identity']), PATHINFO_EXTENSION) == 'jpg') || (pathinfo(strtolower($dataCustomer['other']['identity']), PATHINFO_EXTENSION) == 'png') || (pathinfo((strtolower($dataCustomer['other']['identity'])), PATHINFO_EXTENSION) == 'jpeg'))
+                 @if(strpos($dataCustomer['other']['identity'], 'noimage.jpg'))
+                <p>Foto KTP Kosong</p>
+                 @else
+                <img src="@if(!empty($dataCustomer['other']['identity'])){{$dataCustomer['other']['identity']}}@endif" class="img-responsive">                           
+                <p>Foto KTP</p>
+                  @endif
+        @else
+                <a href="@if(!empty($dataCustomer['other']['identity'])){{$dataCustomer['other']['identity']}}@endif" target="_blank" class="img-responsive"><img src="{{asset('assets/images/download-logo.png')}}" class="img-responsive"></a>
+                <p>Klik Untuk Lihat Foto KTP</p>
+        @endif
+         <!-- end handle -->
                                             </div>
                                         </div>
                                         @if(!empty($dataCustomer['personal']['status_id']) &&($dataCustomer['personal']['status_id'] == 2))
                                         <div class="col-md-6" align="center">
                                             <div class="card-box">
-                                                <img src="@if(!empty($dataCustomer['personal']['couple_identity'])){{$dataCustomer['personal']['couple_identity']}}@endif" class="img-responsive">
-                                                <p>Foto KTP Pasangan</p>
+           <!-- handle image or pdf -->
+        @if((pathinfo(strtolower($dataCustomer['personal']['couple_identity']), PATHINFO_EXTENSION) == 'jpg') || (pathinfo(strtolower($dataCustomer['personal']['couple_identity']), PATHINFO_EXTENSION) == 'png') || (pathinfo((strtolower($dataCustomer['personal']['couple_identity'])), PATHINFO_EXTENSION) == 'jpeg'))
+                 @if(strpos($dataCustomer['personal']['couple_identity'], 'noimage.jpg'))
+                <p>Foto KTP Kosong</p>
+                 @else
+                <img src="@if(!empty($dataCustomer['personal']['couple_identity'])){{$dataCustomer['personal']['couple_identity']}}@endif" class="img-responsive">
+                <p>Foto KTP Pasangan</p>
+                @endif
+        @else
+                <a href="@if(!empty($dataCustomer['personal']['couple_identity'])){{$dataCustomer['personal']['couple_identity']}}@endif" target="_blank" class="img-responsive"><img src="{{asset('assets/images/download-logo.png')}}" class="img-responsive"></a>
+                <p>Klik Untuk Lihat Foto KTP Pasangan</p>
+        @endif
+         <!-- end handle -->
+                                                
                                             </div>
                                         </div>
                                         @endif

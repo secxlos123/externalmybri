@@ -188,7 +188,7 @@
 
      <script src="{{asset('assets/js/HoldOn.min.js')}}"></script>
     <script src="{{asset('assets/js/toastr.min.js')}}"></script>
-   {!! JsValidator::formRequest('App\Http\Requests\Customer\CustomerRequest', '#form_data_personal'); !!}
+   {!! JsValidator::formRequest(App\Http\Requests\Customer\CustomerRequest::class, '#form_data_personal') !!}
    {!! JsValidator::formRequest(App\Http\Requests\EformRequest::class, '#app-eform') !!}
 
     <script type="text/javascript">
@@ -268,8 +268,6 @@
                     $('#view-modal #couple5').hide();
                  }
 
-                $("#view-modal #couple_identity").html('<img src="'+couple_identity+'" class="img-responsive">');
-                $("#view-modal #identity").html('<img src="'+identity+'" class="img-responsive">');
                 $('#view-modal #couple_birth_place').html(couple_birth_place);
                 $('#view-modal').modal('show');
                 $('#view-modal #request_amount').html('Rp.'+request_amount);
@@ -286,6 +284,21 @@
                 $('#view-modal #status').html(status);    
                 $('#view-modal #couple_birth_date').html(couple_birth_date);
                 $('#view-modal #mother_name').html(mother_name);
+                //$("#view-modal #couple_identity").html('<img src="'+couple_identity+'" class="img-responsive">');
+                //$("#view-modal #identity").html('<img src="'+identity+'" class="img-responsive">');
+                var extension_couple = couple_identity.substr((couple_identity.lastIndexOf('.') +1));
+                        if(extension_couple == 'pdf'){
+                            $("#view-modal #couple_identity").html('<a href="'+couple_identity+'" target="_blank" class="img-responsive"><img src="{{asset("assets/images/download-logo.png")}}" class="img-responsive"></a><p>Klik Untuk Lihat Foto KTP Pasangan</p> ');
+                        }else{
+                            $("#view-modal #couple_identity").html('<img src="'+couple_identity+'" class="img-responsive"><p>Foto KTP Pasangan</p>');
+                        }
+
+                var extension = identity.substr( (identity.lastIndexOf('.') +1) );
+                        if(extension == 'pdf'){
+                            $("#view-modal #identity").html('<a href="'+identity+'" target="_blank" class="img-responsive"><img src="{{asset("assets/images/download-logo.png")}}" class="img-responsive"></a><p>Klik Untuk Lihat Foto KTP</p>');
+                        }else{
+                            $("#view-modal #identity").html('<img src="'+identity+'" class="img-responsive"><p>Foto KTP</p>');
+                        }
                 },
                  error: function(result, data){
                         console.log('error');
@@ -342,7 +355,7 @@
 
      $('#view-modal').on('click', '#agree', function() {
            HoldOn.open(options);
-             console.log('ini ini ini');
+            // console.log('ini ini ini');
        $("#app-eform").submit();
     });
 
