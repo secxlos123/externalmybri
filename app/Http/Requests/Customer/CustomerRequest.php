@@ -36,12 +36,12 @@ class CustomerRequest extends FormRequest
             'email'    => 'email|required',
             'mother_name'   => 'required',
             'mobile_phone'  => 'required|string|regex:/^08[0-9]+$/|min:9|max:12',
-            'identity'  => 'mimes:jpeg,jpg,png,gif|required|max:10000',
+            'identity'  => 'mimes:pdf,jpeg,jpg,png,gif|required|max:10000',
             'couple_nik' => 'required_if:status,2',
             'couple_name' => 'required_if:status,2',
             'couple_birth_date' => 'required_if:status,2',
             'couple_birth_place_id' => 'required_if:status,2',
-            'couple_identity'  => 'required_if:status,2|mimes:jpeg,jpg,png,gif|max:10000'
+            'couple_identity'  => 'required_if:status,2|mimes:pdf,jpeg,jpg,png,gif|max:10000'
         ];
     }
 

@@ -101,8 +101,8 @@ class EformRequest extends FormRequest
             'couple_name'       => 'required_if:status,2',
             'couple_birth_date' => 'required_if:status,2',
             'couple_birth_place_id' => 'required_if:status,2',
-            'identity'          => 'required_if:identity_flag,0|image|max:1024',
-            'couple_identity'   => 'required_if:couple_identity_flag,0|image|max:1024'
+            'identity'          => 'required_if:identity_flag,0|mimes:jpeg,jpg,png,gif,pdf|max:10000',
+            'couple_identity'   => 'required_if:couple_identity_flag,0|mimes:pdf,jpeg,jpg,png,gif|max:10000'
         ];
 
         if ($this->input('status') == 2 && $this->input('couple_identity_flag') == 0) {
