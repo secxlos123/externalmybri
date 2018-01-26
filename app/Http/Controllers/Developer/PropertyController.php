@@ -62,7 +62,7 @@ class PropertyController extends Controller
                                 ])->get();
             if(!empty($dataCollateral['contents']))
             {
-                $colleteral_id = $dataCollateral['contents']['collaterals_id'];    
+                $colleteral_id = $dataCollateral['contents']['id'];    
                 /*
                 * mark read the notification 
                 */        
