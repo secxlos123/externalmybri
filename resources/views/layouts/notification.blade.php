@@ -7,17 +7,15 @@
         <table class="notification">
             @if(count(notificationsUnread()) > 0 )
                 @foreach(notificationsUnread() as $value)
-                    <tr class="line-notif">
+                    <tr class="line-notif" data-href="{{ $value['url'] }}">
                           <td>
                               <div class="notif-ico bg-success">
-                                <a href="{{ $value['url'] }}" class="user-list-item list-notif">
                                     <i class="fa fa-bell"></i>
-                                </a>
                               </div>
                           </td>
                           <td>
-                              <p class="notif-text"><span class="text-bold">{{ $value['data']['user_name'] }}</p>
-                              <p class="title"><span class="text-bold"><strong>{{ $value['subject'] }}</strong></p>
+                              <p class="notif-text"><span class="text-bold" style="font-size: 15px;"> {{ ucwords($value['data']['user_name']) }}</p>
+                              <p class="title"><span class="text-bold"><strong>{{ $value['subject_external'] }}</strong></p>
                               <p class="time-text">{{ $value['created_at'] }}</p>
                           </td>
                       </tr>

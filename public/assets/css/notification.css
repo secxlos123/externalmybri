@@ -417,7 +417,14 @@ table.notification tr.web-notification-read {
 
 tr.line-notif {
     border-bottom: 1pt solid rgb(144, 144, 160);
+    cursor: pointer;
+    background-color: rgba(144, 144, 160, 0.39);
 }
+
+tr.line-notif:hover {
+    background-color: rgba(255, 165, 0, 0.8);
+}
+
 
 a.user-list-item.list-notif {
     width: 0px;
@@ -436,6 +443,7 @@ p.time-text {
     font-size: 12px;
     color: #676767;
     margin: 0 0 3px;
+    text-align: justify;
 }
 
 .col-md-12.notif {

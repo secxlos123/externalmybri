@@ -170,6 +170,12 @@
     {!! Html::script('js/numeric.min.js') !!}
 
     <script type="text/javascript">
+            $('tr[data-href]').on("click", function() {
+                document.location = $(this).data('href');
+            });
+    </script>
+
+    <script type="text/javascript">
         // Handling get longitude - latitude
         $(document).ready(function(){
             if (navigator.geolocation) {
