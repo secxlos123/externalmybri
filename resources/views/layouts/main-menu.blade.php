@@ -90,11 +90,11 @@
 
 @if( session('authenticate.role') == 'customer' || session('authenticate.role') == 'developer' || session('authenticate.role') == 'developer-sales' || 'others' == session('authenticate.role') )
     <li>
-        <a href="#" onclick="openSide()" class="right-menu-item dropdown-toggle" data-toggle="dropdown">
+        <div onclick="openSide()" class="right-menu-item dropdown-toggle" data-toggle="dropdown">
             <i class="mdi mdi-bell"></i>
             <span class="badge up bg-success">
                 {{ count( notificationsUnread() ) }}
             </span>
-        </a>
+        </div>
     </li>
 @endif

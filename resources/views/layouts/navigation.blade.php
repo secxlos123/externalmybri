@@ -85,7 +85,7 @@
                 {!! Form::close() !!}
                 @endif
                 <div class="collapse navbar-collapse" id="navbar-menu">
-                    <ul class="nav navbar-nav" data-in="fadeIn" data-out="fadeOut">
+                    <ul class="nav navbar-nav notify" data-in="fadeIn" data-out="fadeOut">
                         @include('layouts.main-menu')
                     </ul>
                      @include('layouts.notification')  

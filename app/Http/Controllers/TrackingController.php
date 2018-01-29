@@ -48,6 +48,17 @@ class TrackingController extends Controller
      */
     public function show($id)
     {
+        
+        /*
+        * mark read the notification
+        */
+        Client::setEndpoint('users/notification/read/'.@$id.'/'.'eform')
+               ->setHeaders([
+                'Authorization' => session('authenticate.token')
+                // , 'auditaction' => 'action name'
+                , 'is_read' => is_read()
+             ])->get();
+        
         $results = Client::setEndpoint('tracking/'.$id)
                 ->setHeaders([
                     'Authorization' => session('authenticate.token')

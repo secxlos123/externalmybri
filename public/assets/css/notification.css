@@ -492,6 +492,12 @@ li.unread_notif {
     border-left: 1pt solid #f7941e;
     border-top: 2pt solid #f7941e;
 }
+
+.navbar-default .notify .right-menu-item .badge {
+    position: absolute;
+    top: auto !important; 
+    right: 0px !important;
+}
 /*
 * ended
 */
