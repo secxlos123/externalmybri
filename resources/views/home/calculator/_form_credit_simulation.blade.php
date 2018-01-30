@@ -19,7 +19,7 @@
       <div class="form-group {{ $errors->has('dp') ? ' has-error' : '' }}">
         <label>DP *:</label>
         <div class="input-group">
-         {!! Form::text('dp', '', ['class' => 'form-control numericOnly ','placeholder' => '0','id'=>'dp','maxlength'=>'2','required'=>'']) !!}
+         {!! Form::text('dp', '', ['class' => 'form-control numericOnly ','placeholder' => '0','id'=>'dp','maxlength'=>'7','required'=>'','step'=>'0.4','readonly'=>'']) !!}
           <span class="input-group-addon">%</span>
         </div>
          @if ($errors->has('dp'))
@@ -99,7 +99,7 @@
     <div class="form-group" id="interest_rate_div">
       <label>Suku Bunga *:</label>
       <div class="input-group">
-       {!! Form::text('rate', '', ['class' => 'form-control numericOnly','placeholder' => '0','id'=>'rate','maxlength'=>'5']) !!}
+       {!! Form::text('rate', '', ['class' => 'form-control numericOnly','placeholder' => '0','id'=>'rate','maxlength'=>'7']) !!}
         <span class="input-group-addon">% per-tahun</span>
       </div>
     </div>
@@ -164,7 +164,7 @@
       <div class="form-group {{ $errors->has('interest_rate_floor') ? ' has-error' : '' }}" id="interest_rate_floor_div">
         <label>Suku Bunga Floor *:</label>
         <div class="input-group">
-           {!! Form::text('interest_rate_floor', '', ['class' => 'form-control numericOnly ','placeholder' => '0','id'=>'interest_rate_floor','maxlength'=>'3']) !!}
+           {!! Form::text('interest_rate_floor', '', ['class' => 'form-control numericOnly ','placeholder' => '0','id'=>'interest_rate_floor','maxlength'=>'5']) !!}
           <span class="input-group-addon">% per-tahun</span>
         </div>
          @if ($errors->has('interest_rate_floor'))
