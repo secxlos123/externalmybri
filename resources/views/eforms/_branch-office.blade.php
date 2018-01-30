@@ -18,14 +18,16 @@
         </div>
 
         <div id="office-area" {!! null !== old('branch_name') ? '' : 'hidden' !!}>
-            <div class="form-group col-md-12">
+            <div class="form-group col-md-12 branch_id">
                 <label class="control-label">Kantor Cabang BRI *</label>
                 {!! Form::select('branch_id', ['' => ''] + [
                     old('branch_id') => old('branch_name')
                 ], old('branch_id'), [
                     'class' => 'form-control select2 offices',
                     'data-option' => old('branch_id'),
-                    'data-placeholder' => 'Pilih Kota'
+                    'data-placeholder' => 'Pilih Kota',
+                    'id' => 'branch_id',
+                    'data-id' => 'branch_id'
                 ]) !!}
                 <input type="hidden" name="" id="offices">
             </div>

@@ -16,7 +16,9 @@
                 {!! Form::select('status_property', array("" => "", "1" => "Baru", "2" => "Secondary", "3" => "Refinancing", "4" => "Renovasi", "5" => "Top Up", "6" => "Take Over", "7" => "Take Over Top Up", "8" => "Take Over Account In House (Cash Bertahap)"), old('status_property'), [
                     'class' => 'select2 status_property ',
                     'data-placeholder' => 'Pilih Jenis KPR',
-                    'data-bri' => ''
+                    'data-bri' => '',
+                    'id' => 'kpr_type',
+                    'data-id' => 'kpr_type',
                 ]) !!}
             @else
                 {!! Form::select('status_property', array("1" => "Baru"), old('status_property'), [
@@ -30,7 +32,7 @@
             </div>
         </div>
 
-        <div class="form-group developer" hidden>
+        <div class="form-group developer developer-group" hidden>
             <label class="control-label col-md-4">Developer *:</label>
             <div class="col-md-8">
             @if ('developer-sales' != session('authenticate.role'))
@@ -40,6 +42,8 @@
                     'class' => 'select2 developers ',
                     'data-option' => old('developer'),
                     'data-placeholder' => 'Pilih Developer',
+                    'id' => 'developer',
+                    'data-id' => 'developer'
                 ]) !!}
             @else
                 {!! Form::select('developer', isset($results['userdeveloper']['admin_developer_id']) ? [@$results['userdeveloper']['admin_developer_id'] => @$results['developer']['company_name']] : [''=>''] + [
@@ -60,14 +64,16 @@
                 {!! Form::select('kpr_type_property', array("" => "", "1" => "Rumah Tapak", "2" => "Rumah Susun/Apartment", "3" => "Rumah Toko"), old('kpr_type_property'), [
                     'class' => 'select2 kpr_type_properties ',
                     'data-placeholder' => 'Pilih Jenis Properti',
-                    'data-bri' => ''
+                    'data-bri' => '',
+                    'id' => 'kpr_type_property',
+                    'data-id' => 'kpr_type_property'
                 ]) !!}
                 <p>Wajib diisi</p>
                 @if ($errors->has('kpr_type_property')) <p class="help-block">{{ $errors->first('kpr_type_property') }}</p> @endif
             </div>
         </div>
 
-        <div class="form-group property-select property" hidden>
+        <div class="form-group property-select property property-group" hidden>
             <label class="control-label col-md-4">Nama Proyek *:</label>
             <div class="col-md-8">
                 {!! Form::select('property', isset($param['property_id']) ? [@$param['property_id']=>@$param['property_name']] : ['' => ''] + [
@@ -76,6 +82,8 @@
                     'class' => 'select2 properties',
                     'data-option' => old('property'),
                     'data-placeholder' => 'Pilih Nama Proyek',
+                    'id' => 'property',
+                    'data-id' => 'property'
                 ]) !!}
                 <p>Wajib diisi</p>
             </div>
@@ -89,6 +97,8 @@
                     'class' => 'select2 types',
                     'data' => old('property_type'),
                     'data-placeholder' => 'Pilih Tipe Properti',
+                    'id' => 'property_type',
+                    'data-id' => 'property_type'
                     ]) !!}
                 <p>Wajib diisi</p>
             </div>
@@ -102,6 +112,8 @@
                     'class' => 'select2 items',
                     'data-option' => old('property_item'),
                     'data-placeholder' => 'Pilih Unit Properti',
+                    'id' => 'property_unit',
+                    'data-id' => 'property_unit'
                 ]) !!}
                 <p>Wajib diisi</p>
             </div>

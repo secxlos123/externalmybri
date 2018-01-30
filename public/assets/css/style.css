@@ -9100,6 +9100,7 @@ and (max-device-width : 640px){
   text-align: center;
   border-radius: 50%;
   margin: 17px 5px;
+  cursor: pointer;
 }
 .navbar-default .right-menu-item .badge {
   position: absolute;

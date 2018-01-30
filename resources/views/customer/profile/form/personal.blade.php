@@ -41,7 +41,7 @@
 							</div>
 						</div>
 
-						<div class="form-group">
+						<div class="form-group birth_place_id">
 							<label class="col-md-4 control-label">Tempat Lahir *:</label>
 							<div class="col-md-8">
 								{!! Form::select('birth_place_id', ['' => ''] + [
@@ -49,7 +49,9 @@
 								], old('birth_place_id'), [
 									'class' => 'form-control select2 birth_place',
 									'data-option' => $customer->birth_place_id ?: old('birth_place_id'),
-									'data-placeholder' => 'Pilih Kota'
+									'data-placeholder' => 'Pilih Kota',
+									'id' => 'birth_place_id',
+									'data-id' => 'birth_place_id'
 								]) !!}
 							</div>
 						</div>
@@ -96,7 +98,7 @@
 							</div>
 						</div>
 
-						<div class="form-group">
+						<div class="form-group city_id">
 							<label class="col-md-4 control-label">Kota *:</label>
 							<div class="col-md-8">
 								{!! Form::select('city_id', ['' => ''] + [
@@ -105,6 +107,8 @@
 									'class' => 'form-control select2 cities',
 									'data-option' => $customer->city_id ?: old('city_id'),
 									'data-placeholder' => 'Pilih Kota',
+									'id' => 'city_id',
+									'data-id' => 'city_id'
 								]) !!}
 							</div>
 						</div>
@@ -126,7 +130,7 @@
 							</div>
 						</div>
 
-						<div class="form-group">
+						<div class="form-group citizenship_id">
 							<label class="col-md-5 control-label">Kewarganegaraan *:</label>
 							<div class="col-md-7">
 								{!! Form::select('citizenship_id', ['' => ''] + [
@@ -135,6 +139,8 @@
 									'class' => 'form-control select2 citizenships',
 									'data-option' => $customer->citizenship_id ?: old('citizenship_id'),
 									'data-placeholder' => 'Pilih Negara',
+									'id' => 'citizenship_id',
+									'data-id' => 'citizenship_id'
 								]) !!}
 							</div>
 						</div>

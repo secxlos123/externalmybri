@@ -119,10 +119,17 @@ $("#dp").keyup(function(){
 });
 
 function hitungDP(priceint,dpPersen){
-  var down_payment = priceint *   dpPersen;
+  if(dpPersen > 0.99)
+  {
+    alert('Dp tidak boleh lebih besar dari 99.99');
+    $("#dp").val('');
+    dpPersen = 0;
+    priceint = 0;
+  }
+  console.log(dpPersen);
+  var down_payment = priceint * dpPersen;
   var price_platform = priceint - down_payment;
   $("#down_payment").val(down_payment);
-  console.log('aa');
   $("#price_platform").val(price_platform);
 }
 
@@ -151,7 +158,7 @@ $("#down_payment").keyup(function(){
     if (isNaN(persen)) {
        persen = 0;
     }
-    persen = persen.toFixed(2);
+    persen = persen.toFixed(4);
     $("#dp").val(persen);
     var price_platform = priceint - down_payment_int;
     if(price_platform <= 0 ){
