@@ -233,5 +233,24 @@
             }
         });
 
+        $('#work_mount').on('keyup', function(){
+        	if (!$('#work_year').val()) {
+        		$('#work_year').val(0)
+        	}
+        });
+
+        $('#work_year').on('keyup', function() {
+        	if (!$('#work_mount').val()) {
+        		$('#work_mount').val(0);
+        	}
+        });
+	</script>
+	<script type="text/javascript">
+		$(document).on('ready', function(){
+			if ($("textarea[name = 'address']").val().toLowerCase() == $("textarea[name = 'current_address']").val().toLowerCase()) {
+        		$('#myCheckBox').prop('checked', true);
+        		$("textarea[name = 'current_address']").attr('readonly', true);
+			}
+		});
 	</script>
 @endpush

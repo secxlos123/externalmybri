@@ -86,7 +86,7 @@
                             <div class="col-md-8">
                                 <div class="input-group">
                                     {!! Form::text('work_duration', old('work_duration'), [
-                                        'class' => 'form-control numeric', 'maxlength' => 2
+                                        'class' => 'form-control numeric', 'maxlength' => 2, 'id' => 'work_year'
                                     ]) !!}
                                     <span class="input-group-addon">Tahun:</span>
 
