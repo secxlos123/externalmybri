@@ -463,4 +463,24 @@
         });
 
     </script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#kpr_type, #kpr_type_property, #developer").on('change', function(){
+                console.log($(this).data('id'));
+                if ( $(this).data('id') == 'property_unit' ) {
+                    if ($('.property_unit').hasClass('has-error')) {
+                        $('.property_unit').removeClass('has-error');
+                        $('.property_unit').addClass('has-success');
+                        $('#property_item-error').hide();
+                    }
+                }else{
+                    if ($('.'+ $(this).data('id')).hasClass('has-error')) {
+                        $('.'+ $(this).data('id')).removeClass('has-error');
+                        $('.'+ $(this).data('id')).addClass('has-success');
+                        $('#'+ $(this).data('id')+'-error').hide();
+                    }
+                }
+            });
+        });
+    </script>
 @endpush

@@ -30,7 +30,7 @@
                                     ]) !!}
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group couple_birth_place_id">
                                 <label class="col-md-4 control-label">Tempat Lahir *:</label>
                                 <div class="col-md-8">
                                     {!! Form::select('couple_birth_place_id', ['' => ''] + [
@@ -39,6 +39,8 @@
                                         'class' => 'form-control select2 couple_birth',
                                         'data-placeholder' => 'Pilih Kota',
                                         'data-option' => $customer->couple_birth_place_id ?: old('couple_birth_place_id'),
+                                        'id' => 'couple_birth_place_id',
+                                        'data-id' => 'couple_birth_place_id'
                                     ]) !!}
                                 </div>
                             </div>

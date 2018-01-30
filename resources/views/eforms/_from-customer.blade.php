@@ -225,5 +225,14 @@
 				.toggleClass('fa-chevron-down fa-chevron-left');
 		}
 
+		$('#birth_place_id, #city_id, #citizenship_id, #position, #work, #work_type, #work_field').on('change', function() {
+            console.log($(this).data('id'));
+            if ($('.'+ $(this).data('id')).hasClass('has-error')) {
+                $('.'+ $(this).data('id')).removeClass('has-error');
+                $('.'+ $(this).data('id')).addClass('has-success');
+                $('#'+ $(this).data('id')+'-error').hide();
+            }
+        });
+
 	</script>
 @endpush
