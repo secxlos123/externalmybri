@@ -3,7 +3,7 @@
         <div class="panel-heading" data-toggle="collapse" data-target="#employee-data">
             <h3 class="panel-title text-uppercase">
                 Data Pekerjaan
-                
+
                 <div class="pull-right">
                     <i class="fa fa-chevron-down" aria-hidden="true"></i>
                 </div>
@@ -13,7 +13,7 @@
             <div class="panel-body">
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="form-group">
+                        <div class="form-group work_field">
                             <label class="col-md-4 control-label">Bidang Pekerjaan *:</label>
                             <div class="col-md-8">
                                 {!! Form::select('work_field', ['' => ''] + [
@@ -22,11 +22,13 @@
                                     'class' => 'select2 job-fields',
                                     'data-option' => $customer->work_field_id ?: old('work_field'),
                                     'data-placeholder' => 'Pilih Bidang Pekerjaan',
+                                    'id' => 'work_field',
+                                    'data-id' => 'work_field'
                                 ]) !!}
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group work_type">
                             <label class="col-md-4 control-label">Jenis Pekerjaan *:</label>
                             <div class="col-md-8">
                                 {!! Form::select('work_type', ['' => ''] + [
@@ -35,11 +37,13 @@
                                     'class' => 'select2 job-types',
                                     'data-option' => $customer->type_id ?: old('work_type'),
                                     'data-placeholder' => 'Pilih Jenis Pekerjaan',
+                                    'id' => 'work_type',
+                                    'data-id' => 'work_type'
                                 ]) !!}
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group work">
                             <label class="col-md-4 control-label">Pekerjaan *:</label>
                             <div class="col-md-8">
                                 {!! Form::select('work', ['' => ''] + [
@@ -48,11 +52,13 @@
                                     'class' => 'select2 jobs',
                                     'data-option' => $customer->work_id ?: old('work'),
                                     'data-placeholder' => 'Pilih Pekerjaan',
+                                    'id' => 'work',
+                                    'data-id' => 'work'
                                 ]) !!}
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group position">
                             <label class="col-md-4 control-label">Jabatan *:</label>
                             <div class="col-md-8">
                                 {!! Form::select('position', ['' => ''] + [
@@ -61,6 +67,8 @@
                                     'class' => 'select2 positions',
                                     'data-option' => $customer->position_id ?: old('position'),
                                     'data-placeholder' => 'Pilih Jabatan',
+                                    'id' => 'position',
+                                    'data-id' => 'position'
                                 ]) !!}
                             </div>
                         </div>

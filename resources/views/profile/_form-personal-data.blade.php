@@ -299,10 +299,11 @@
 
             <div class="single-query form-group bottom20">
                 <label>Foto KTP</label>
-                {!! Html::image(image_checker(), 'KTP', [
+                <!-- {!! Html::image(image_checker(), 'KTP', [
                     'class' => 'img-responsive', 'width' => 300, 'id' => 'ktp_preview',
                     'data-src' => asset('assets/images/no-image.jpg')
-                ]) !!}
+                ]) !!} -->
+                <img src="{{ asset('assets/images/no-image.jpg') }}" data-src="{{ asset('assets/images/no-image.jpg') }}" class="img-responsive" width="300" id="ktp_preview">
             </div>
 
         @endif
@@ -347,12 +348,13 @@
 
         @else
 
-            <div class="single-query form-group bottom20">
+            <div class="single-query form-group bottom20 couple-selector">
                 <label>Foto KTP Pasangan</label>
-                {!! Html::image(image_checker(), 'KTPPASANGAN', [
+               <!--  {!! Html::image(image_checker(), 'KTPPASANGAN', [
                     'class' => 'img-responsive', 'width' => 300, 'id' => 'ktppas_preview',
                     'data-src' => asset('assets/images/no-image.jpg')
-                ]) !!}
+                ]) !!} -->
+                <img src="{{ asset('assets/images/no-image.jpg') }}" data-src="{{ asset('assets/images/no-image.jpg') }}" class="img-responsive" width="300" id="ktppas_preview">
             </div>
 
         @endif

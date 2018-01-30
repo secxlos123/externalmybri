@@ -9,7 +9,14 @@ function setup() {
         $(".selectbox").selectbox();
 
 function openSide() {
-    document.getElementById("rightSide").style.width = "285px";
+    
+    if(document.getElementById("rightSide").style.width == ''){
+        document.getElementById("rightSide").style.width = "285px";        
+    }else if(document.getElementById("rightSide").style.width == '0px'){
+        document.getElementById("rightSide").style.width = "285px";        
+    }else{
+        document.getElementById("rightSide").style.width = "0px";
+    }
 }
 
 function closeSide() {
