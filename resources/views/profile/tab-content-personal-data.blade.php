@@ -125,6 +125,13 @@
         $('.cities').dropdown('cities');
 
         $("#status").on('change', function(){
+            var val = $(this).val();
+            if(val == "2"){
+                $("#married-status").show();
+            }else{
+                $("#married-status").hide();
+            }
+
             $('.birth-date').datepicker("destroy");
             if ($(this).select2('data')[0]['id'] == 1) {
                 $('.birth-date').datepicker({
