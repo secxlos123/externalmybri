@@ -64,7 +64,7 @@ class EformController extends Controller
     {
         
         if ( 'developer' == session('authenticate.role') ) {
-            return 'Hallo Developer....';
+            return redirect()->route('homepage');
         }
 
         if ( 'developer-sales' == session('authenticate.role') ) {
