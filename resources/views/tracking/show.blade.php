@@ -34,7 +34,7 @@
                                         </div>
                                     </div>
                                     <div class="tracking-card">
-                                        <div class="card-box widget-box-three {{($results['status'] == 'Proses CLF' || $results['status'] == 'Prakarsa'  || $results['status'] == 'Disposisi Pengajuan') ? 'active' : '' }}">
+                                        <div class="card-box widget-box-three {{($results['status'] == 'Proses CLF' || $results['status'] == 'Prakarsa'  || $results['status'] == 'Disposisi Pengajuan' || $results['status'] == 'Rekontes Kredit') ? 'active' : '' }}">
                                             <div class="bg-icon">
                                                 {!! Html::image('assets/images/fa_analis_o.png', '', [
                                                     'class' => 'track-icon'
@@ -47,7 +47,7 @@
                                         </div>
                                     </div>
                                     <div class="tracking-card">
-                                        <div class="card-box widget-box-three {{ ($results['status'] == 'Kredit Ditolak') ? 'active' : ''}}">
+                                        <div class="card-box widget-box-three {{ ($results['status'] == 'Kredit Ditolak' || $results['status'] == 'Kredit Disetujui') ? 'active' : ''}}">
                                             <div class="bg-icon">
                                                 {!! Html::image('assets/images/fa_file_o.png', '', [
                                                     'class' => 'track-icon'
@@ -55,7 +55,7 @@
                                                 <!--  <i class="fa fa-hdd-o"></i> -->
                                             </div>
                                             <div class="text-center">
-                                            @if ($results['status'] == 'Kredit Ditolak' || $results['status'] == 'Disposisi Pengajuan')
+                                            @if ($results['status'] == 'Kredit Ditolak' || $results['status'] == 'Kredit Disetujui')
                                                 <p class="m-t-5 text-uppercase font-600 font-secondary">{{($results['status'] == 'Kredit Ditolak') ? 'Status Pengajuan Di Tolak' : 'Status Pengajuan Di Terima'}}</p>
                                             @else
                                                 <p class="m-t-5 text-uppercase font-600 font-secondary">Status Pengajuan</p>
@@ -235,11 +235,11 @@
                                                                 <mark>
                                                                     @if ($results['status'] == 'Pengajuan Kredit')
                                                                         Pengajuan diterima
-                                                                    @elseif ($results['status'] == 'Proses CLF' || $results['status'] == 'Prakarsa')
+                                                                    @elseif ($results['status'] == 'Proses CLF' || $results['status'] == 'Prakarsa' || $results['status'] == 'Rekontes Kredit' || $results['status'] == 'Disposisi Pengajuan')
                                                                         Proses Analisa Pengajuan
                                                                     @elseif ($results['status'] == 'Kredit Ditolak')
                                                                         Status Pengajuan Di Tolak
-                                                                    @elseif ($results['status'] == 'Disposisi Pengajuan')
+                                                                    @elseif ($results['status'] == 'Kredit Disetujui')
                                                                         Status Pengajuan Di Terima
                                                                     @else
                                                                         Status Tidak Diketahui
