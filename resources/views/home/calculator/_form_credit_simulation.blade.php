@@ -99,7 +99,7 @@
     <div class="form-group" id="interest_rate_div">
       <label>Suku Bunga *:</label>
       <div class="input-group">
-       {!! Form::text('rate', '', ['class' => 'form-control numericOnly','placeholder' => '0','id'=>'rate','maxlength'=>'6']) !!}
+       {!! Form::text('rate', '', ['class' => 'form-control numericOnly','placeholder' => '0','id'=>'rate','maxlength'=>'6','step'=>'0.4']) !!}
         <span class="input-group-addon">% per-tahun</span>
       </div>
     </div>
@@ -134,7 +134,7 @@
     <div class="form-group {{ $errors->has('interest_rate_fixed') ? ' has-error' : '' }}" id="time_period_fixed_div">
       <label>Suku Bunga Fixed *:</label>
       <div class="input-group">
-        {!! Form::text('interest_rate_fixed', '', ['class' => 'form-control','placeholder' => '0','id'=>'interest_rate_efektif','maxlength'=>'6']) !!}
+        {!! Form::text('interest_rate_fixed', '', ['class' => 'form-control numericOnly','placeholder' => '0','id'=>'interest_rate_efektif','maxlength'=>'6','step'=>'0.4']) !!}
         <span class="input-group-addon">% per-tahun</span>
       </div>
       @if ($errors->has('interest_rate_fixed'))
@@ -148,7 +148,7 @@
     <div class="form-group {{ $errors->has('interest_rate_fixed') ? ' has-error' : '' }}" id="interest_rate_float_div">
       <label  >Suku Bunga Float *:</label>
       <div class="input-group">
-         {!! Form::text('interest_rate_float', '', ['class' => 'form-control numericOnly ','placeholder' => '0','id'=>'interest_rate_float','maxlength'=>'6']) !!}
+         {!! Form::text('interest_rate_float', '', ['class' => 'form-control numericOnly ','placeholder' => '0','id'=>'interest_rate_float','maxlength'=>'6','step'=>'0.4']) !!}
         <span class="input-group-addon">% per-tahun</span>
       </div>
        @if ($errors->has('interest_rate_float'))
@@ -164,7 +164,7 @@
       <div class="form-group {{ $errors->has('interest_rate_floor') ? ' has-error' : '' }}" id="interest_rate_floor_div">
         <label>Suku Bunga Floor *:</label>
         <div class="input-group">
-           {!! Form::text('interest_rate_floor', '', ['class' => 'form-control numericOnly ','placeholder' => '0','id'=>'interest_rate_floor','maxlength'=>'6']) !!}
+           {!! Form::text('interest_rate_floor', '', ['class' => 'form-control numericOnly ','placeholder' => '0','id'=>'interest_rate_floor','maxlength'=>'6','step'=>'0.4']) !!}
           <span class="input-group-addon">% per-tahun</span>
         </div>
          @if ($errors->has('interest_rate_floor'))
