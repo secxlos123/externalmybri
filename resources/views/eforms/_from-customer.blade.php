@@ -247,9 +247,11 @@
 	</script>
 	<script type="text/javascript">
 		$(document).on('ready', function(){
-			if ($("textarea[name = 'address']").val().toLowerCase() == $("textarea[name = 'current_address']").val().toLowerCase()) {
-        		$('#myCheckBox').prop('checked', true);
-        		$("textarea[name = 'current_address']").attr('readonly', true);
+			if ($("textarea[name = 'address']").val() && $("textarea[name = 'current_address']").val()) {
+				if ($("textarea[name = 'address']").val().toLowerCase() == $("textarea[name = 'current_address']").val().toLowerCase()) {
+	        		$('#myCheckBox').prop('checked', true);
+	        		$("textarea[name = 'current_address']").attr('readonly', true);
+				}
 			}
 		});
 	</script>

@@ -19,7 +19,7 @@
                 <td>Rp {{number_format($val['angsuran_pokok'], 0, ',', '.')}}</td>
                 <td>Rp {{number_format($val['angsuran_bunga'], 0, ',', '.')}}</td>
                 <td>Rp {{number_format($val['angsuran'], 0, ',', '.')}}</td>
-                <td>{{$val['bunga']}}</td>
+                <td>{{str_replace('.', ',',$val['bunga'])}}</td>
             </tr>
         @endforeach
     @else
