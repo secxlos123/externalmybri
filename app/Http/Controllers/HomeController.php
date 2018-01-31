@@ -67,18 +67,20 @@ class HomeController extends Controller
 
       $maxTerm = 240; 
       $minTerm = 12;
-      $maxRate =99.99;
+      $maxRate =99.9999;
       $price = $data['price'];
       $term = $data['time_period'];
-      $rate = $this->convertCommatoPoint($data['rate']);
+      // $rate = $this->convertCommatoPoint($data['rate']);
+      $rate = $data['rate'];
       $dpConvert = str_replace(".", "", $data['down_payment']);
       $downPayment = $dpConvert;
       $priceNumber = str_replace(".", "", $price);
       $fxflterm = $data['time_period_total'];
       $fxterm =  $data['time_period_fixed'];
-      $fxrate =  $this->convertCommatoPoint($data['interest_rate_fixed']);
-      $flrate =  $this->convertCommatoPoint($data['interest_rate_float']);
-      
+      $fxrate = $data['interest_rate_fixed'];
+      $flrate = $data['interest_rate_float'];
+      // $fxrate =  $this->convertCommatoPoint($data['interest_rate_fixed']);
+      // $flrate =  $this->convertCommatoPoint($data['interest_rate_float']);
       $messagesError = "";
       $error = false;
       if($price <= 0){
