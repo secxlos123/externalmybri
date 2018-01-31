@@ -25,14 +25,14 @@
             <div class="form-group">
                 <label class="col-md-4 control-label"> {{$suku_bunga}} </label>
                 <div class="col-md-8">
-                    <label class="col-md-8 control-label">: {{$rincian_pinjaman['rincian']['suku_bunga']}} </label>
+                    <label class="col-md-8 control-label">: {{str_replace('.', ',',$rincian_pinjaman['rincian']['suku_bunga'])}} </label>
                 </div>
             </div>       
         @if($interest_rate_type==4 || $interest_rate_type== 3)
             <div class="form-group">
                 <label class="col-md-4 control-label"> Suku Bunga Floating</label>
                 <div class="col-md-8">
-                   <label class="col-md-8 control-label">: {{$rincian_pinjaman['rincian']['suku_bunga_floating']}} </label>
+                   <label class="col-md-8 control-label">: {{str_replace('.', ',',$rincian_pinjaman['rincian']['suku_bunga_floating'])}} </label>
                 </div>
             </div>
          @endif   
@@ -41,7 +41,7 @@
             <div class="form-group">
                 <label class="col-md-4 control-label"> Suku Bunga Floor</label>
                 <div class="col-md-8">
-                   <label class="col-md-8 control-label">: {{$rincian_pinjaman['rincian']['suku_bunga_floor']}} </label>
+                   <label class="col-md-8 control-label">: {{str_replace('.', ',',$rincian_pinjaman['rincian']['suku_bunga_floor'])}} </label>
                 </div>
             </div>
 
