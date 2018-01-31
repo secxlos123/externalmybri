@@ -15,42 +15,42 @@
     var eventValues = [];
     var today = new Date($.now());
 
-    // $.ajax({
-    //     url: '/schedule/data-list',
-    //     dataType: "JSON",
-    //     type: 'GET',
-    //     data: {
-    //         month: today.getMonth() + 1
-    //         , year: today.getFullYear()
-    //     },
-    //     async: false,
-    //     allDay: false,
-    //     success: function(response){
-    //         console.log("====didieu====");
-    //         console.log(response.data);
-    //         $.each(response.data, function(key, value){
-    //             event = {
-    //                 id : value.id,
-    //                 title : value.title,
-    //                 start : new Date(value.appointment_date),
-    //                 className: 'bg-primary',
-    //                 desc: value.desc,
-    //                 lat: value.latitude,
-    //                 long: value.longitude,
-    //                 status: value.status,
-    //                 guest: value.guest_name,
-    //                 refNum: value.ref_number
-    //             };
-    //             eventValues.push(event);
-    //         });
-    //      //    $( document ).ready(function() {
-    //      //     $('.fc-time').remove();
-    //      // });
-    //     },
-    //     error: function(response){
-    //         console.log(response);
-    //     }
-    // });
+    $.ajax({
+        url: '/schedule/data-list',
+        dataType: "JSON",
+        type: 'GET',
+        data: {
+            month: today.getMonth() + 1
+            , year: today.getFullYear()
+        },
+        async: false,
+        allDay: false,
+        success: function(response){
+            console.log("====didieu====");
+            console.log(response.data);
+            $.each(response.data, function(key, value){
+                event = {
+                    id : value.id,
+                    title : value.title,
+                    start : new Date(value.appointment_date),
+                    className: 'bg-primary',
+                    desc: value.desc,
+                    lat: value.latitude,
+                    long: value.longitude,
+                    status: value.status,
+                    guest: value.guest_name,
+                    refNum: value.ref_number
+                };
+                eventValues.push(event);
+            });
+         //    $( document ).ready(function() {
+         //     $('.fc-time').remove();
+         // });
+        },
+        error: function(response){
+            console.log(response);
+        }
+    });
 
     var defaultEvents =  [{
                 title: 'Jadwal 1',
@@ -71,11 +71,6 @@
             {
                 title: 'Jadwal 4',
                 start: new Date($.now() + 338000000),
-                className: 'bg-primary'
-            },
-            {
-                title: 'Jadwal 5',
-                start: new Date($.now() + 398000000),
                 className: 'bg-primary'
             }];
 
@@ -319,7 +314,7 @@
        // displayEventTime : false
         $this.$calendarObj = $this.$calendar.fullCalendar({
             displayEventTime : false,
-            allDay: true,
+            allDay: false,
             Time: false,
            // slotDuration: '00:15:00', /* If we want to split day time each 15minutes */
            // minTime: '08:00:00',
@@ -330,50 +325,10 @@
             header: {
                 left: 'prev,next today',
                 center: 'title',
+               // right: 'month'
                 right: 'month,agendaWeek,agendaDay'
-               // right: 'month,agendaWeek,agendaDay'
             },
-            eventSources: [{
-                events: function (start, end, timezone, callback) {
-                    $.ajax({
-                        url: '/schedule/data-list',
-                        dataType: "JSON",
-                        type: 'GET',
-                        data: {
-                            month: today.getMonth() + 1
-                            , year: today.getFullYear()
-                        },
-                        async: false,
-                        allDay: false,
-                        success: function(response){
-                            $.each(response.data, function(key, value){
-                                event = {
-                                    id : value.id,
-                                    title : value.title,
-                                    start : new Date(value.appointment_date),
-                                    className: 'bg-primary',
-                                    desc: value.desc,
-                                    lat: value.latitude,
-                                    long: value.longitude,
-                                    status: value.status,
-                                    guest: value.guest_name,
-                                    refNum: value.ref_number
-                                };
-                                eventValues.push(event);
-                            });
-                            callback(eventValues);
-                         //    $( document ).ready(function() {
-                         //     $('.fc-time').remove();
-                         // });
-                        },
-                        error: function(response){
-                            console.log(response);
-                            callback(eventValues);
-                        }
-                    });
-                }
-            }],
-            // events: eventValues,
+            events: eventValues,
             editable: true,
             droppable: false, // this allows things to be dropped onto the calendar !!!
             eventLimit: true, // allow "more" link when too many events
@@ -388,8 +343,6 @@
             eventClick: function(calEvent, jsEvent, view) { $this.onEventClickTag(calEvent, jsEvent, view); },
             // eventClick: function(calEvent, jsEvent, view) { $this.onSelect(calEvent, jsEvent, view); }
 
-        }).on('click', '.fc-agendaWeek-button, .fc-agendaDay-button', function() {
-            $this.$calendar.fullCalendar('refetchEvents');
         });
 
         //on new event

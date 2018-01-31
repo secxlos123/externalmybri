@@ -64,7 +64,7 @@
                                         </div>
                                     </div>
                                     <div class="tracking-card">
-                                        <div class="card-box widget-box-three ">
+                                        <div class="card-box widget-box-three {{ ($results['status'] == 'Pencairan') ? 'active' : '' }}">
                                             <div class="bg-icon">
                                                 {!! Html::image('assets/images/fa_dollar_o.png', '', [
                                                     'class' => 'track-icon'
@@ -241,6 +241,8 @@
                                                                         Status Pengajuan Di Tolak
                                                                     @elseif ($results['status'] == 'Kredit Disetujui')
                                                                         Status Pengajuan Di Terima
+                                                                    @elseif ($results['status'] == 'Pencairan')
+                                                                        Proses Pencairan
                                                                     @else
                                                                         Status Tidak Diketahui
                                                                     @endif

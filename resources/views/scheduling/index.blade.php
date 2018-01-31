@@ -41,7 +41,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label">Title</label>
-                                                    <input class="form-control" id="title" name="title" type="text">
+                                                    <input class="form-control" readonly="" id="title" name="title" type="text">
                                                     <input class="form-control" id="lng" name="lng" type="hidden">
                                                     <input class="form-control" id="lat" name="lat" type="hidden">
                                                     <input class="form-control" id="id_schedule" name="id_schedule" type="hidden">
@@ -60,7 +60,7 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                 <label class="control-label">Deskripsi</label>
-                                                <textarea name="description" class="form-control" rows="3" style="resize: none;"></textarea>
+                                                <textarea name="description" readonly="" class="form-control" rows="3" style="resize: none;"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -73,9 +73,10 @@
                                 <div class="approval" hidden>
                                     <button type="button" class="btn btn-default waves-effect">Setuju</button>
                                     <button type="button" class="btn btn-success save-event waves-effect waves-light">Tidak Setuju</button>
-                                </div>
+                                
                                 <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Batal</button>
                                 <button type="button" class="btn btn-success save-event waves-effect waves-light" id="updateSchedule">Update Jadwal</button>
+                                </div>
                                 <!-- <button type="button" class="btn btn-danger delete-event waves-effect waves-light" data-dismiss="modal">Hapus Jadwal Ini</button> -->
                             </div>
                         </div>
