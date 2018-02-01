@@ -48,7 +48,7 @@ class TrackingController extends Controller
      */
     public function show($id)
     {
-        
+
         /*
         * mark read the notification
         */
@@ -58,7 +58,7 @@ class TrackingController extends Controller
                 // , 'auditaction' => 'action name'
                 , 'is_read' => is_read()
              ])->get();
-        
+
         $results = Client::setEndpoint('tracking/'.$id)
                 ->setHeaders([
                     'Authorization' => session('authenticate.token')
@@ -122,7 +122,7 @@ class TrackingController extends Controller
             \Log::info("=================================list eform nasabah===========================");
             \Log::info($type);
             $type['ao_name'] = isset($type['ao']) ? $type['ao'] : '';
-            $type['product'] = isset($type['product_type']) ? $type['product_type'] : '';
+            $type['product'] = isset($type['product_type']) ? strtoupper($type['product_type']) : '';
             $type['action'] = view('layouts.actions', [
                 'show' => route('tracking.show', $type['id'])
             ])->render();

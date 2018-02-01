@@ -79,7 +79,7 @@
                             <legend>Pasangan</legend>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label title ="Take Home Pay Per Bulan" class="col-md-4 control-label">Gaji / Pendapatan *</label>
+                                    <label title ="Take Home Pay Per Bulan" class="col-md-4 control-label">Gaji / Pendapatan Perbulan*</label>
                                     <div class="col-md-8">
                                         <div class="input-group">
                                             <span class="input-group-addon">Rp</span>

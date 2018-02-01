@@ -325,8 +325,8 @@
             header: {
                 left: 'prev,next today',
                 center: 'title',
-               // right: 'month'
-                right: 'month,agendaWeek,agendaDay'
+                right: 'month'
+                // right: 'month,agendaWeek,agendaDay'
             },
             events: eventValues,
             editable: true,
