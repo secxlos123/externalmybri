@@ -142,22 +142,12 @@
                                                             </div>
                                                         </div>
                                                     @else
-                                                        @if ( $results['kpr']['status_property'] != 1 )
                                                         <div class="form-group">
                                                             <label class="col-md-4 control-label">Jenis Properti :</label>
                                                             <div class="col-md-8">
                                                                 <p class="form-control-static">{{ @$results['kpr']['kpr_type_property_name'] }}</p>
                                                             </div>
                                                         </div>
-                                                        @endif
-                                                        @if ( $results['kpr']['kpr_type_property'] == 1 )
-                                                        <div class="form-group">
-                                                            <label class="col-md-4 control-label">Jenis Properti :</label>
-                                                            <div class="col-md-8">
-                                                                <p class="form-control-static">{{ @$results['kpr']['kpr_type_property_name'] }}</p>
-                                                            </div>
-                                                        </div>
-                                                        @endif
                                                     @endif
 
                                                     <div class="form-group">
@@ -173,7 +163,7 @@
                                                     <div class="form-group">
                                                         <label class="col-md-4 control-label">Luas Bangunan :</label>
                                                         <div class="col-md-8">
-                                                            <p class="form-control-static">{{ @$results['kpr']['building_area'] }}</p>
+                                                            <p class="form-control-static">{{ @$results['kpr']['building_area'] }} m<sup>2</sup></p>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
