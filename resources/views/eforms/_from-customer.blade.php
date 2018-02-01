@@ -96,6 +96,17 @@
 
 	<script type="text/javascript">
 
+		$("#personalKTP").on("change", function(){
+			var input = this;
+			if (input.files && input.files[0]) {
+				var reader = new FileReader();
+				reader.onload = function(e) {
+				$('#ktp_preview').attr('src', e.target.result);
+			}
+				reader.readAsDataURL(input.files[0]);
+			}
+		});
+
 		var dropdowns = [
 			{class: '.birth_place', endpoint: 'cities', hidden: '#birth_place'},
 			{class: '.cities', endpoint: 'cities', hidden: '#city_name'},

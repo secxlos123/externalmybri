@@ -218,7 +218,7 @@
 						<div class="form-group">
 	                        <label class="col-md-4 control-label">Foto KTP :</label>
 	                        <div class="col-md-8">
-	                            <input type="file" class="filestyle" data-buttontext="Unggah" data-buttonname="btn-default" data-iconname="fa fa-cloud-upload" data-placeholder="Tidak ada file" name="identity" accept="image/png,image/jpeg,image/gif/pdf">
+	                            <input type="file" class="filestyle" data-buttontext="Unggah" data-buttonname="btn-default" data-iconname="fa fa-cloud-upload" data-placeholder="Tidak ada file" name="identity" accept="image/png,image/jpeg,image/gif/pdf" id="personalKTP">
 	                        </div>
 	                    </div>
 					</div>
