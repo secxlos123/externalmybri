@@ -92,7 +92,8 @@
         && ! request()->is('password/success')
         && ! request()->is('rincian-produk')
         && ! request()->is('daftar-proyek')
-        && ! request()->is('password/success') )
+        && ! request()->is('password/success')
+        && ! request()->is('tentang-kami') )
 
         <section class="page-banner padding bg_light">
             <div class="container">

@@ -6,7 +6,7 @@
     <h1 class="text-uppercase">Manajemen Data Pengajuan Eform</h1>
     <p>Kelola Data anda di sini.</p>
     <ol class="breadcrumb text-center">
-        <li><a href="{!! url('dev-sales/dashboard') !!}">Dashboard</a></li>
+        <!-- <li><a href="#">Dashboard</a></li> -->
         <li class="active">Pengajuan</li>
     </ol>
 @endsection
@@ -187,14 +187,14 @@
                                     <div class="col-md-6" align="center">
                                         <div class="card-box" id="identity">
                                             <img src="@if(!empty($data['customer']['other']['identity'])){{$data['customer']['other']['identity']}}@endif" class="img-responsive">
-                                            
+
                                             <p>Foto KTP</p>
                                         </div>
                                     </div>
                                     <div class="col-md-6" align="center" id="couple5">
                                         <div class="card-box" id="couple_identity">
                                             <img src="@if(!empty($data['customer']['personal']['couple_identity'])){{$data['customer']['personal']['couple_identity']}}@endif" class="img-responsive">
-                                            
+
                                             <p>Foto KTP Pasangan</p>
                                         </div>
                                     </div>
@@ -208,7 +208,7 @@
                    <a href="{!! route('dev-sales.data-eform') !!}" class="btn btn-default" data-dismiss="modal" >Kembali</a>
                    <!-- <a id="agree" href="#" class="btn btn-default" data-dismiss="modal" >Ajukan</a> -->
                </form>
-           </div>   
+           </div>
 
             <!-- End List View Eform By Id -->
             </div>

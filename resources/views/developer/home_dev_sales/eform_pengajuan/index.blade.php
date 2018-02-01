@@ -6,7 +6,7 @@
 	<h1 class="text-uppercase">Manajemen Data Pengajuan Eform</h1>
 	<p>Kelola Data anda di sini.</p>
 	<ol class="breadcrumb text-center">
-	    <li><a href="{!! url('dev-sales/dashboard') !!}">Dashboard</a></li>
+	    <!-- <li><a href="#">Dashboard</a></li> -->
 	    <li class="active">Pengajuan</li>
 	</ol>
 @endsection
@@ -70,7 +70,7 @@
                  <div class="table-responsive">
                     <table class="table table-striped table-bordered project-list" id="datatable">
                         <thead class="bg-blue">
-                        
+
                             <tr>
                                     <th>Ref Number</th>
                                     <th>Nama pemohon</th>
@@ -104,7 +104,7 @@
     <!-- After that you run in console or terminal or cmd "npm run production" -->
     {!! Html::script('js/dropdown.min.js') !!}
 
-    
+
     <!-- @todo waiting to move this script to resource/asset/js/property.js -->
         <script type="text/javascript">
         var table = $('#datatable').dataTable({
@@ -236,7 +236,7 @@
                     }
 
                     var text = $(this).find("option:selected").text();
-                        
+
                         console.log(text);
                 },
                 cache: true

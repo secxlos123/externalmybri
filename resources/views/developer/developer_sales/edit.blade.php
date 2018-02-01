@@ -5,7 +5,7 @@
 <h1 class="text-uppercase">Manajemen Agen Developer</h1>
 <p>Kelola Akun anda di sini.</p>
 <ol class="breadcrumb text-center">
-    <li><a href="{!! url('/') !!}">Dashboard</a></li>
+    <!-- <li><a href="#">Dashboard</a></li> -->
     <li class="active">Profile</li>
 </ol>
 @endsection
