@@ -44,7 +44,7 @@ class DeveloperController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(CreateRequest $request)
-    {   
+    {
         $input = [
             "name" => $request->input("name"),
             "birth_date" => Carbon::parse($request->input("birth_date"))->format('Y-m-d'),
@@ -55,16 +55,16 @@ class DeveloperController extends Controller
        // dd($input);
         $header = [
                     'Authorization' => session('authenticate.token'),
-                    'long' => $request['hidden-long'],  
-                    'lat' =>  $request['hidden-lat'],  
+                    'long' => $request['hidden-long'],
+                    'lat' =>  $request['hidden-lat'],
                     'auditaction' => 'tambah agen',
-                  ];        
+                  ];
         $client = Client::setEndpoint('developer-agent')
            ->setHeaders($header)
            ->setBody($input)
            ->post();
         // dd($client);
-        if (isset($client['code']) && $client['code'] == 201) 
+        if (isset($client['code']) && $client['code'] == 201)
            {
                 \Session::flash('flash_message', $client['descriptions']);
 
@@ -79,8 +79,14 @@ class DeveloperController extends Controller
            else
            {
                 \Session::flash('error_flash_message', $client['descriptions']);
-
-                return redirect()->route('developer.developer.index');
+                if (isset($client['contents']['email']) && $client['contents']['email'] == 'The email has already been taken.') {
+                    $client['contents']['email'] = 'Email sudah pernah digunakan';
+                    $msg = $client['contents'];
+                }
+                if (!isset($client['contents'])) {
+                    $msg = [];
+                }
+                return redirect()->back()->withInput()->withErrors($msg);
            }
     }
 
@@ -95,7 +101,7 @@ class DeveloperController extends Controller
         $data = Client::setEndpoint('developer-agent/'.$id)
                 ->setHeaders([
                     'Authorization' => session('authenticate.token')
-                    ])   
+                    ])
                 ->get();
         $type = 'view';
         return view('developer.developer.edit', compact('data', 'type'));
@@ -112,7 +118,7 @@ class DeveloperController extends Controller
         $data = Client::setEndpoint('developer-agent/'.$id)
                 ->setHeaders([
                     'Authorization' => session('authenticate.token')
-                    ])   
+                    ])
                 ->get();
         $type = 'edit';
         return view('developer.developer.edit', compact('data', 'type'));
@@ -139,16 +145,16 @@ class DeveloperController extends Controller
        // dd($input);
           $header = [
                     'Authorization' => session('authenticate.token'),
-                    'long' => $request['hidden-long'],  
-                    'lat' =>  $request['hidden-lat'],  
+                    'long' => $request['hidden-long'],
+                    'lat' =>  $request['hidden-lat'],
                     'auditaction' => 'edit agen',
-                  ];            
+                  ];
         $client = Client::setEndpoint('developer-agent/'.$id)
             ->setHeaders($header)
             ->setBody($input)
             ->put();
      // dd($client);
-          if (isset($client['code']) && $client['code'] == 201) 
+          if (isset($client['code']) && $client['code'] == 201)
            {
                 \Session::flash('flash_message', $client['descriptions']);
 
@@ -227,20 +233,20 @@ class DeveloperController extends Controller
      * @return \Illuminate\Http\Response
      */
      public function deactive(Request $request, $id)
-     { 
+     {
         $input  = $request->all();
         $hasillong = number_format(floatval($request['hidden-long']), 5);
         $headers= [
                     'Authorization' => session('authenticate.token'),
-                    'long' => $hasillong,  
-                    'lat' =>  $request['hidden-lat'],  
+                    'long' => $hasillong,
+                    'lat' =>  $request['hidden-lat'],
                     'auditaction' => $request['auditaction']
                   ];
         $client = Client::setEndpoint('developer-agent/banned/'.$id)
                 ->setHeaders($headers)
                // ->setBody($input)
                 ->get();
-                
+
                  if (isset($client['code']) && $client['code'] == 200) {
                 \Session::flash('flash_message', $client['descriptions']);
 
