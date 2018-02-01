@@ -51,13 +51,13 @@ class LoginController extends Controller
     {
         $response = Client::setEndpoint('auth/login')
         ->setHeaders([
-                 'long' => $request['hidden-long'],  
-                 'lat' =>  $request['hidden-lat'],  
+                 'long' => $request['hidden-long'],
+                 'lat' =>  $request['hidden-lat'],
                  'auditaction' => 'login',
             ]
         )
         ->setBody($this->credentials($request))->post();
-        
+
         if ($response['code'] != 200) {
             return redirect()->back()->withInput()->with([
                 'error-login' => $response['descriptions']
@@ -70,7 +70,7 @@ class LoginController extends Controller
 
     /**
      * This check role of user and redirect to page
-     * 
+     *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
      */
     protected function redirectToRole()
@@ -85,7 +85,7 @@ class LoginController extends Controller
     }
     /**
      * This check if customer have a register complete or not
-     * 
+     *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
      */
     protected function redirectIfOther()
@@ -95,7 +95,7 @@ class LoginController extends Controller
 
      /**
      * This check if customer have a register complete or not
-     * 
+     *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
      */
     protected function redirectIfDeveloper()
@@ -105,17 +105,17 @@ class LoginController extends Controller
 
      /**
      * This check if customer have a register complete or not
-     * 
+     *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
      */
     protected function redirectIfDeveloperSales()
     {
-        return redirect()->route('dev-sales.index');
+        return redirect()->route('dev-sales.data-eform');
     }
 
     /**
      * This check if customer have a register complete or not
-     * 
+     *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
      */
     protected function redirectIfCustomer()
@@ -143,12 +143,12 @@ class LoginController extends Controller
         Client::setEndpoint('auth/logout')
             ->setHeaders([
                 'Authorization' => session('authenticate.token'),
-                'long' => $request['hidden-long'],  
-                'lat' =>  $request['hidden-lat'],  
+                'long' => $request['hidden-long'],
+                'lat' =>  $request['hidden-lat'],
                 'auditaction' => 'Logout'
             ])
             ->deleted();
-        
+
         $this->guard()->logout();
         $request->session()->invalidate();
         return redirect('/');

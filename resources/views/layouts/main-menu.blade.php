@@ -1,13 +1,22 @@
-<li class="{!! request()->is('/') || request()->is('dev/dashboard') ? 'active' : '' !!}">
-    <a href="{!! request()->is('/') || request()->is('dev/dashboard') ? '#' : url('/') || request()->is('dev-sales/dashboard') ? url('dev-sales/dashboard') : url('/') !!}">Beranda </a>
-</li>
-   </li>
-        <li class="">
-            <a href="{!! route('about-us') !!}">Tentang Kami </a>
+    @if('developer-sales' != session('authenticate.role'))
+    <li class="{!! request()->is('/') || request()->is('dev/dashboard') ? 'active' : '' !!}">
+        <a href="{!! request()->is('/') || request()->is('dev/dashboard') ? '#' : url('/') || request()->is('dev-sales/dashboard') ? url('dev-sales/dashboard') : url('/') !!}">Beranda </a>
+    </li>
+    @endif
+    @if('developer-sales' == session('authenticate.role'))
+        <li class="{!! request()->is('dev-sales/data_eform') ? 'active' : '' !!}">
+            <a href="{!! route('dev-sales.data-eform') !!}">Pengajuan Kredit </a>
         </li>
-
-        <li class="">
+        <li class="{!! request()->is('dev-sales/tracking') ? 'active' : '' !!}">
+            <a href="{!! route('dev-sales.tracking') !!}">Tracking </a>
+        </li>
+    @endif
+    </li>
+        <li class="{!! request()->is('rincian-produk') ? 'active' : '' !!}">
             <a href="{{url('rincian-produk')}}">Produk </a>
+        </li>
+        <li class="{!! request()->is('tentang-kami') ? 'active' : '' !!}">
+            <a href="{!! route('about-us') !!}">Tentang Kami </a>
         </li>
 
 @if ( 'customer' == session('authenticate.role') || ! session('authenticate') )
@@ -77,11 +86,6 @@
     @endif
 @endif
     <!-- @end You can remove this condition if this module already -->
-@if('developer-sales' == session('authenticate.role'))
-<li><a href="{!! route('dev-sales.data-eform') !!}">Pengajuan</a></li>
-<li><a href="{!! route('dev-sales.tracking') !!}">Tracking</a></li>
-
-@endif
 
 @if('others' == session('authenticate.role'))
 <li><a href="#">Tracking</a></li>
