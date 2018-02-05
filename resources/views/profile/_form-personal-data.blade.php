@@ -221,7 +221,7 @@
             <label>No Telepon</label>
             @if ($type != 'view')
             {!! Form::text('phone', old('phone') ? old('phone') : $results['personal']['phone'], [
-                'class' => 'form-control numeric', 'maxlength' => 12, 'minlength' => 7
+                'class' => 'form-control', 'maxlength' => 12, 'minlength' => 7, 'onkeypress' => 'return goodchars(event, "1234567890 ", this)'
             ]) !!}
             @else
             <span class="form-control" style="border: 0px;">
@@ -234,7 +234,7 @@
             <label>No Handphone</label>
             @if ($type != 'view')
             {!! Form::text('mobile_phone', old('mobile_phone') ? old('mobile_phone') : $results['personal']['mobile_phone'], [
-                'class' => 'form-control numeric', 'maxlength' => 12, 'minlength' => 7
+                'class' => 'form-control', 'maxlength' => 12, 'minlength' => 7, 'onkeypress' => 'return goodchars(event, "1234567890 ", this)'
             ]) !!}
             @else
             <span class="form-control" style="border: 0px;">
@@ -289,8 +289,8 @@
                  @if(strpos($results['other']['identity'], 'noimage.jpg'))
                 <p>Foto KTP Kosong</p>
                  @else
-                                                     
-             
+
+
                 <!-- <p>Foto KTP</p> -->
                   @endif
             @else
@@ -306,7 +306,7 @@
                                    <!--  </div>
                                 </div>
                             </div> -->
-<!-- 
+<!--
                         @else
                             <div class="col-md-6">
                                 <div class="form-group ktp_preview">
@@ -371,8 +371,8 @@
                  @if(strpos($results['personal']['couple_identity'], 'noimage.jpg'))
                <!--  <p>Foto KTP Kosong</p> -->
                  @else
-                                                     
-               
+
+
                 <!-- <p>Foto KTP</p> -->
                   @endif
             @else

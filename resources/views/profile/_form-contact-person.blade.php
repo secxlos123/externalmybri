@@ -26,7 +26,7 @@
             <label>Nomor Hp Kerabat (*)</label>
             @if ($type != 'view')
                 {!! Form::text('emergency_contact', isset($results['contact']['emergency_contact']) ? $results['contact']['emergency_contact'] : old('emergency_contact'), [
-                        'class' => 'form-control numeric', 'maxlength' => 12
+                        'class' => 'form-control', 'maxlength' => 12, 'onkeypress' => 'return goodchars(event, "1234567890 ", this)'
                 ]) !!}
             @else
             <span class="form-control" style="border: 0px;">
