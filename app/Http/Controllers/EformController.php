@@ -19,7 +19,7 @@ class EformController extends Controller
      */
     protected $simple = [
         'nik', 'first_name', 'last_name', 'birth_place_id', 'birth_date', 'address','current_address', 'city_id', 'gender', 'status', 'address_status', 'mobile_phone', 'mother_name', 'identity', 'couple_nik',
-        'couple_name', 'couple_birth_place_id', 'couple_birth_date', 'couple_identity', 'is_simple', 'work_field','work_type', 'work', 'work_field_name', 'work_type_name', 'work_name', 'position', 'position_name', 'citizenship_id', 'citizenship', 'hidden-long', 'hidden-lat'
+        'couple_name', 'couple_birth_place_id', 'couple_birth_date', 'couple_identity', 'is_simple', 'work_field','work_type', 'work', 'work_field_name', 'work_type_name', 'work_name', 'position', 'position_name', 'citizenship_id', 'citizenship', 'hidden-long', 'hidden-lat','phone'
     ];
 
     /**
