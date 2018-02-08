@@ -76,5 +76,46 @@
       });
     }
   });
+  $("body").on("click", "#btnView", function(){
+      var url = "/dev/property-agent";
+      var id  = $(this).data('id');
+      $.ajax({
+          url  : url,
+          data : {"user_id" : id},
+          dataType : "JSON",
+          method : "GET",
+          success : function(response){
+              $(".listProperties").empty();
+              var length = response.data.length;
+              var data = response.data;
+              if (length == 0) {
+                  var alert = `<tr>
+                                   <td colspan="5">
+                                       <div class="alert alert-warning">
+                                           <p>
+                                               <strong>Tidak Ada Property</strong>
+                                           </p>
+                                       </div>
+                                   </td>
+                               </tr>`;
+                  $(".listProperties").html(alert);
+              }else {
+                  $(data).each(function(key, val){
+                    var content = `<tr>
+                                       <td>`+parseInt(key+1)+`</td>
+                                       <td>`+val.property_name+`</td>
+                                       <td>`+val.property_type_name+`</td>
+                                       <td>`+val.property_item_name+`</td>
+                                       <td>`+val.price+`</td>
+                                   </tr>`;
+                    $(".listProperties").append(content);
+                  })
+              }
+          },
+          error : function(response){
+              console.log(response);
+          }
+      });
+  });
   </script>
 @endpush

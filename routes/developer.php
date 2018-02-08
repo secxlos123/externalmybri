@@ -23,6 +23,7 @@ Route::group([
 	 */
 	Route::get('dashboard', 'HomeController@index')->name('index');
 
+	Route::get('property-agent', 'HomeController@listPropertyAgen')->name('property-agent');
 	/**
 	 * This route for group for manage project or property
 	 */
