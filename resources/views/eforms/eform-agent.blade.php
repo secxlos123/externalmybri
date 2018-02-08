@@ -213,8 +213,8 @@
              var request_amount = $('#request_amount').val();
              var year   = $('#year').val();
              var offices = $('#offices').val();
-             var appointment_date = $('#appointment_date').val(); 
-         
+             var appointment_date = $('#appointment_date').val();
+
              var nik = $('#nikSelect').val();
 
              $.ajax({
@@ -225,7 +225,7 @@
                 success: function(result, data){
                    // console.log(result);
                  var nik = result.data.nik;
-                 var first_name = (result.data.first_name ? result.data.first_name : ''); 
+                 var first_name = (result.data.first_name ? result.data.first_name : '');
                  var full_name = (result.data.first_name ? result.data.first_name : '')+' '+(result.data.last_name ? result.data.last_name : '');
                  var email = result.data.email;
                  var birth_place = result.data.birth_place;
@@ -281,7 +281,7 @@
                 $('#view-modal #couple_nik').html(couple_nik);
                 $('#view-modal #couple_name').html(couple_name);
                 $('#view-modal #email').html(email);
-                $('#view-modal #status').html(status);    
+                $('#view-modal #status').html(status);
                 $('#view-modal #couple_birth_date').html(couple_birth_date);
                 $('#view-modal #mother_name').html(mother_name);
                 //$("#view-modal #couple_identity").html('<img src="'+couple_identity+'" class="img-responsive">');
@@ -455,7 +455,7 @@
             }).done(function(data){
                 console.log(data);
                 $('#detail').html(data['view']);
-               
+
 
             }).fail(function(errors) {
 
@@ -479,14 +479,14 @@
      });
 
       //storing leads
-      
+
         $('#btn-save').on('click', function(e){
             $("#form_data_personal").submit();
             console.log("masuklah");
         });
 
-        $("#form_data_personal").submit(function(){ 
-             
+        $("#form_data_personal").submit(function(){
+
             var formData = new FormData(this);
 
             console.log("=========Ngirim Data Gak Yaa============");
@@ -503,37 +503,44 @@
                       $('#divForm').removeClass('alert alert-success');
                       $('#divForm').html("");
 
-                     if ( data.code != 422 ) {
-                         $('#leads-modal').modal('toggle');
+                    if ( data.code != 422 ) {
+                        $('#leads-modal').modal('toggle');
 
-                   nik = $('.nikStep2').val();
-                   $('#nikSelect').val(nik);
-                    console.log(nik);
+                        nik = $('.nikStep2').val();
+                        $('#nikSelect').val(nik);
+                        console.log(nik);
 
-                    $("#nik").html('<option value="'+nik+'">'+nik+'</option>');
-                    $("#select2-nik-container").replaceWith('<span class="select2-selection__rendered" id="select2-nik-container" title="'+nik+'"><span class="select2-selection__clear">×</span>'+nik+'</span>');
-                    $("#search").click();
-                    //$('body').addClass('modal-open');
-                    //$("a[href='#finish']").click();
+                        $("#nik").html('<option value="'+nik+'">'+nik+'</option>');
+                        $("#select2-nik-container").replaceWith('<span class="select2-selection__rendered" id="select2-nik-container" title="'+nik+'"><span class="select2-selection__clear">×</span>'+nik+'</span>');
+                        $("#search").click();
+                        //$('body').addClass('modal-open');
+                        //$("a[href='#finish']").click();
 
+                        $('#divForm').addClass('alert alert-success');
+                        $('#divForm').html('Data Berhasil Ditambahkan');
+
+                    } else {
+                        setTimeout(
+                            function(){
+                                $.each(data.contents, function(key, value) {
+                                    // console.log(key);
+                                    $("#form_data_personal").find(".form-group." + key).eq(0).addClass('has-error');
+
+                                    if (key == 'nik') {
+                                        $('div.nik div span#nik_customer-error').html(value);
+                                    }else if(key == 'email'){
+                                        $("#form_data_personal").find("span#"+key+"-error").eq(0).html('Email sudah pernah digunakan.');
+                                    }else{
+                                        $("#form_data_personal").find("span#"+key+"-error").eq(0).html(value);
+                                    }
+                                });
+                            }
+                        , 2000);
+                    }
+
+                    HoldOn.close();
                     $('#divForm').addClass('alert alert-success');
-                    $('#divForm').html('Data Berhasil Ditambahkan');
-
-                     } else {
-                         setTimeout(
-                             function(){
-                                 $.each(data.contents, function(key, value) {
-                                     // console.log(key);
-                                     $("#form_data_personal").find(".form-group." + key).eq(0).addClass('has-error');
-                                     $("#form_data_personal").find("span#"+key+"-error").eq(0).html(value);
-                                 });
-                             }
-                         , 2000);
-                     }
-
-                     HoldOn.close();
-                      $('#divForm').addClass('alert alert-success');
-                      $('#divForm').append('Data Berhasil Ditambahkan');
+                    $('#divForm').append('Data Berhasil Ditambahkan');
                  },
                  error: function (response) {
                       console.log(response)
@@ -548,11 +555,10 @@
 
             return false;
         });
-    
 
-          $('#leads-modal #status').on('change', function(){
 
-            if ($(this).val() == 2) 
+        $('#leads-modal #status').on('change', function(){
+            if ($(this).val() == 2)
             {
                 $('#data_couple').show();
             }
@@ -564,11 +570,11 @@
             {
                 $('#data_couple').hide();
             }
-        });    
+        });
 
         $('.cities').dropdown('cities');
 
-       
+
 
         $('#datepicker-date').datepicker({
             format: "yyyy-mm-dd",
