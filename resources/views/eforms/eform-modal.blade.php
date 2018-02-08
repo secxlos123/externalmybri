@@ -35,7 +35,7 @@
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="col-md-5 control-label">Nama Product :</label>
+                                                <label class="col-md-5 control-label">Nama Produk :</label>
                                                 <div class="col-md-7">
                                                     <p class="form-control-static">KPR</p>
                                                 </div>
@@ -178,14 +178,14 @@
                                     <div class="col-md-6" align="center">
                                         <div class="card-box" id="identity">
                                             <img src="@if(!empty($dataCustomer['other']['identity'])){{$dataCustomer['other']['identity']}}@endif" class="img-responsive">
-                                            
+
                                             <p>Foto KTP</p>
                                         </div>
                                     </div>
                                     <div class="col-md-6" align="center" id="couple5">
                                         <div class="card-box" id="couple_identity">
                                             <img src="@if(!empty($dataCustomer['other']['npwp'])){{$dataCustomer['other']['npwp']}}@endif" class="img-responsive">
-                                            
+
                                             <p>Foto KTP Pasangan</p>
                                         </div>
                                     </div>
