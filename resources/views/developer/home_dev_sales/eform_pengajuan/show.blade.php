@@ -36,7 +36,7 @@
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="col-md-5 control-label">Nama Product :</label>
+                                                <label class="col-md-5 control-label">Nama Produk :</label>
                                                 <div class="col-md-7">
                                                     <p class="form-control-static">KPR</p>
                                                 </div>

@@ -140,6 +140,23 @@
             }
         })
     </script>
+    <script type="text/javascript">
+    $( document ).ready(function() {
+        function addNewStyle(newStyle) {
+            var styleElement = document.getElementById('styles_js');
+            if (!styleElement) {
+                styleElement = document.createElement('style');
+                styleElement.type = 'text/css';
+                styleElement.id = 'styles_js';
+                document.getElementsByTagName('head')[0].appendChild(styleElement);
+            }
+            styleElement.appendChild(document.createTextNode(newStyle));
+        }
+
+        addNewStyle('span.select2.select2-container.select2-container--default {width:100% !important;}');
+    });
+
+    </script>
     @stack('parent-scripts')
 @endpush
 <!-- This is scripts for this page end-->

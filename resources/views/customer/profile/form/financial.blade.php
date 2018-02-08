@@ -56,7 +56,7 @@
                                     <label title ="Anak Dalam Tanggungan" class="col-md-5 control-label">Jumlah Tanggungan *</label>
                                     <div class="col-md-7">
                                         {!! Form::text('dependent_amount', old('dependent_amount'), [
-                                            'class' => 'form-control numeric', 'maxlength' => 2
+                                            'class' => 'form-control', 'maxlength' => 2, 'onkeypress' => 'return goodchars(event, "1234567890 ", this)'
                                         ]) !!}
                                     </div>
                                 </div>

@@ -51,7 +51,7 @@
             <div class="input-group" style="width: 100%;">
             @if ($type != 'view')
                 {!! Form::text('dependent_amount', (old('dependent_amount')) ? old('dependent_amount') : @$results['financial']['dependent_amount'], [
-                    'class' => 'form-control numeric ', 'maxlength' => 2,
+                    'class' => 'form-control', 'maxlength' => 2, 'onkeypress' => 'return goodchars(event, "1234567890 ", this)'
                 ]) !!}
             @else
                 {{($results['financial']['dependent_amount']) ? $results['financial']['dependent_amount'] : '0'}}

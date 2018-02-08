@@ -24,11 +24,11 @@ class SupportRequest extends FormRequest
     public function rules()
     {
         return [
-            'npwp'         => 'image|max:1024',
-            'family_card'  =>'image|max:1024',
-            'couple_identity'=>'image|max:1024',
-            'marrital_certificate'=>'image|max:1024',
-            'diforce_certificate'=>'image|max:1024',
+            'npwp'         => 'mimes:pdf,jpeg,jpg,png,gif|max:10000',
+            'family_card'  =>'mimes:pdf,jpeg,jpg,png,gif|max:10000',
+            'couple_identity'=>'mimes:pdf,jpeg,jpg,png,gif|max:10000',
+            'marrital_certificate'=>'mimes:pdf,jpeg,jpg,png,gif|max:10000',
+            'diforce_certificate'=>'mimes:pdf,jpeg,jpg,png,gif|max:10000',
             'status_id'=>'image|max:1024'   
         ];
     }

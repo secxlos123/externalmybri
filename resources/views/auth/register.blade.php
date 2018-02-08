@@ -17,13 +17,13 @@
     </div>
 
     <div class="single-query form-group col-sm-12">
-        {!! Form::email('email', old('email'), [ 'class' => 'keyword-input', 'placeholder' => 'Email' ]) !!}
+        {!! Form::email('email', old('email'), [ 'id' => 'email', 'class' => 'keyword-input', 'placeholder' => 'Email' ]) !!}
     </div>
 
     <div class="single-query form-group col-sm-12">
         {!! Form::text('mobile_phone', old('mobile_phone'), [
-            'class' => 'keyword-input numeric', 'placeholder' => 'No Handphone ( Optional )',
-            'maxlength' => 12, 'minlength' => 9
+            'class' => 'keyword-input', 'placeholder' => 'No Handphone ( Optional )',
+            'maxlength' => 12, 'minlength' => 9, 'onkeypress' => 'return goodchars(event, "1234567890 ", this)'
         ]) !!}
     </div>
 

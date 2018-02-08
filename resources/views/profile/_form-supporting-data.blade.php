@@ -14,10 +14,19 @@
 
                 <div class="single-query form-group bottom20">
                     <label>Foto NPWP</label>
-                    {!! Html::image(image_checker($results['other']['npwp']), 'npwp', [
+                    <!-- {!! Html::image(image_checker($results['other']['npwp']), 'npwp', [
                         'class' => 'img-responsive', 'width' => 300, 'id' => 'npwp_preview',
                         'data-src' => asset('assets/images/no-image.jpg')
-                    ]) !!}
+                    ]) !!} -->
+                     @if (!(str_contains($results['other']['npwp'], '.pdf')))
+                        {!! Html::image(image_checker($results['other']['npwp']), 'npwp', [
+                            'class' => 'img-responsive', 'width' => 300, 'id' => 'npwp_preview',
+                            'data-src' => asset('assets/images/no-image.jpg')
+                        ]) !!}
+                    @else
+                    <a href="@if(!empty($results['other']['npwp'])){{$results['other']['npwp']}}@endif" target="_blank" class="img-responsive"><img src="{{asset('assets/images/download-logo.png')}}" class="img-responsive" id="family_card_preview" width="230"></a>
+                    <p>Klik Untuk Lihat Foto NPWP</p>
+                    @endif
                 </div>
 
             @else
@@ -48,10 +57,19 @@
 
                 <div class="single-query form-group bottom20">
                     <label>Foto Kartu Keluarga</label>
-                    {!! Html::image(image_checker($results['other']['family_card']), 'family_card', [
+                <!--     {!! Html::image(image_checker($results['other']['family_card']), 'family_card', [
                         'class' => 'img-responsive', 'width' => 300, 'id' => 'family_card_preview',
                         'data-src' => asset('assets/images/no-image.jpg')
-                    ]) !!}
+                    ]) !!} -->
+                     @if (!(str_contains($results['other']['family_card'], '.pdf')))
+                        {!! Html::image(image_checker($results['other']['family_card']), 'Family_Card', [
+                            'class' => 'img-responsive', 'width' => 300, 'id' => 'family_card_preview',
+                            'data-src' => asset('assets/images/no-image.jpg')
+                        ]) !!}
+                        @else
+                        <a href="@if(!empty($results['other']['family_card'])){{$results['other']['family_card']}}@endif" target="_blank" class="img-responsive"><img src="{{asset('assets/images/download-logo.png')}}" class="img-responsive" id="family_card_preview" width="230"></a>
+                        <p>Klik Untuk Lihat Foto Kartu Keluarga</p>
+                        @endif
                 </div>
 
             @else
@@ -86,10 +104,15 @@
 
                     <div class="single-query form-group bottom20">
                         <label>Foto KTP Pasangan</label>
-                        {!! Html::image(image_checker($results['personal']['couple_identity']), 'couple_identity', [
+                        @if (!(str_contains($results['personal']['couple_identity'], '.pdf')))
+                        {!! Html::image(image_checker($results['personal']['couple_identity']), 'KTPPASANGAN', [
                             'class' => 'img-responsive', 'width' => 300, 'id' => 'couple_identity_preview',
                             'data-src' => asset('assets/images/no-image.jpg')
                         ]) !!}
+                        @else
+                        <a href="@if(!empty($results['personal']['couple_identity'])){{$results['personal']['couple_identity']}}@endif" target="_blank" class="img-responsive"><img src="{{asset('assets/images/download-logo.png')}}" class="img-responsive" id="couple_identity_preview" width="230"></a>
+                        <p>Klik Untuk Lihat Foto KTP PASANGAN</p>
+                        @endif
                     </div>
 
                 @else
@@ -121,10 +144,19 @@
 
                     <div class="single-query form-group bottom20">
                         <label>Foto Surat Nikah</label>
-                        {!! Html::image(image_checker($results['other']['marrital_certificate']), 'marrital_certificate', [
+                       <!--  {!! Html::image(image_checker($results['other']['marrital_certificate']), 'marrital_certificate', [
                             'class' => 'img-responsive', 'width' => 300, 'id' => 'marrital_certificate_preview',
                             'data-src' => asset('assets/images/no-image.jpg')
-                        ]) !!}
+                        ]) !!} -->
+                     @if (!(str_contains($results['other']['marrital_certificate'], '.pdf')))
+                    {!! Html::image(image_checker($results['other']['marrital_certificate']), 'marrital_certificate', [
+                        'class' => 'img-responsive', 'width' => 300, 'id' => 'marrital_certificate_preview',
+                        'data-src' => asset('assets/images/no-image.jpg')
+                    ]) !!}
+                    @else
+                    <a href="@if(!empty($results['other']['marrital_certificate'])){{$results['other']['marrital_certificate']}}@endif" target="_blank" class="img-responsive"><img src="{{asset('assets/images/download-logo.png')}}" class="img-responsive" id="family_card_preview" width="230"></a>
+                    <p>Klik Untuk Lihat Foto Surat Nikah</p>
+                    @endif
                     </div>
 
                 @else
@@ -159,10 +191,19 @@
 
                     <div class="single-query form-group bottom20">
                         <label>Foto Surat Cerai</label>
+                       <!--  {!! Html::image(image_checker($results['other']['diforce_certificate']), 'diforce_certificate', [
+                            'class' => 'img-responsive', 'width' => 300, 'id' => 'diforce_certificate_preview',
+                            'data-src' => asset('assets/images/no-image.jpg')
+                        ]) !!} -->
+                        @if (!(str_contains($results['other']['diforce_certificate'], '.pdf')))
                         {!! Html::image(image_checker($results['other']['diforce_certificate']), 'diforce_certificate', [
                             'class' => 'img-responsive', 'width' => 300, 'id' => 'diforce_certificate_preview',
                             'data-src' => asset('assets/images/no-image.jpg')
                         ]) !!}
+                        @else
+                        <a href="@if(!empty($results['other']['diforce_certificate'])){{$results['other']['diforce_certificate']}}@endif" target="_blank" class="img-responsive"><img src="{{asset('assets/images/download-logo.png')}}" class="img-responsive" id="family_card_preview" width="230"></a>
+                        <p>Klik Untuk Lihat Foto Surat Nikah</p>
+                        @endif
                     </div>
 
                 @else

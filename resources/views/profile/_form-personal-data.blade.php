@@ -221,7 +221,7 @@
             <label>No Telepon</label>
             @if ($type != 'view')
             {!! Form::text('phone', old('phone') ? old('phone') : $results['personal']['phone'], [
-                'class' => 'form-control numeric', 'maxlength' => 12, 'minlength' => 7
+                'class' => 'form-control', 'maxlength' => 12, 'minlength' => 7, 'onkeypress' => 'return goodchars(event, "1234567890 ", this)'
             ]) !!}
             @else
             <span class="form-control" style="border: 0px;">
@@ -234,7 +234,7 @@
             <label>No Handphone</label>
             @if ($type != 'view')
             {!! Form::text('mobile_phone', old('mobile_phone') ? old('mobile_phone') : $results['personal']['mobile_phone'], [
-                'class' => 'form-control numeric', 'maxlength' => 12, 'minlength' => 7
+                'class' => 'form-control', 'maxlength' => 12, 'minlength' => 7, 'onkeypress' => 'return goodchars(event, "1234567890 ", this)'
             ]) !!}
             @else
             <span class="form-control" style="border: 0px;">
@@ -273,10 +273,15 @@
 
             <div class="single-query form-group bottom20">
                 <label>Foto KTP</label>
+                @if (!(str_contains($results['other']['identity'], '.pdf')))
                 {!! Html::image(image_checker($results['other']['identity']), 'KTP', [
                     'class' => 'img-responsive', 'width' => 300, 'id' => 'ktp_preview',
                     'data-src' => asset('assets/images/no-image.jpg')
                 ]) !!}
+                @else
+                  <a href="@if(!empty($results['other']['identity'])){{$results['other']['identity']}}@endif" target="_blank" class="img-responsive"><img src="{{asset('assets/images/download-logo.png')}}" id="ktp_preview" class="img-responsive" width="230"></a>
+                <p>Klik Untuk Lihat Foto KTP</p>
+                @endif
             </div>
         @if($type == 'view')
              <!-- handle image or pdf -->
@@ -284,13 +289,39 @@
                  @if(strpos($results['other']['identity'], 'noimage.jpg'))
                 <p>Foto KTP Kosong</p>
                  @else
-                                                     
-             
+
+
                 <!-- <p>Foto KTP</p> -->
                   @endif
             @else
-                <a href="@if(!empty($results['other']['identity'])){{$results['other']['identity']}}@endif" target="_blank" class="img-responsive"><img src="{{asset('assets/images/download-logo.png')}}" class="img-responsive"></a>
-                <p>Klik Untuk Lihat Foto KTP</p>
+                <!-- <a href="@if(!empty($results['other']['identity'])){{$results['other']['identity']}}@endif" target="_blank" class="img-responsive"><img src="{{asset('assets/images/download-logo.png')}}" class="img-responsive"></a>
+                <p>Klik Untuk Lihat Foto KTP</p> -->
+              <!--   @if (str_contains($results['other']['identity'], '.pdf')) -->
+
+                           <!--  <div class="col-md-6">
+                                <div class="form-group ktp_preview">
+                                    <div class="col-md-12 col-md-offset-2"> -->
+                                        <!-- <iframe src="{{$results['other']['identity']}}" title="your_title" align="left" height="350" width="100%" frameborder="0" scrolling="auto" target="Message">
+                                        </iframe> -->
+                                   <!--  </div>
+                                </div>
+                            </div> -->
+<!--
+                        @else
+                            <div class="col-md-6">
+                                <div class="form-group ktp_preview">
+                                    <div class="col-md-12 col-md-offset-2">
+                                        {!! Html::image($results['other']['identity'] ? $results['other']['identity'] : 'assets/images/no-image.jpg', 'KTP', [
+                                            'class' => 'img-responsive', 'width' => 300, 'id' => 'ktp_preview',
+                                            'data-src' => asset('assets/images/no-image.jpg')
+                                        ]) !!}
+                                        @if ( null !== old('nik') )
+                                            <br/>Harap Upload Ulang Foto KTP
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                        @endif -->
             @endif
             <!-- end handle -->
         @endif
@@ -323,10 +354,15 @@
 
             <div class="single-query form-group bottom20 couple-selector">
                 <label>Foto KTP Pasangan</label>
+                @if (!(str_contains($results['personal']['couple_identity'], '.pdf')))
                 {!! Html::image(image_checker($results['personal']['couple_identity']), 'KTPPASANGAN', [
                     'class' => 'img-responsive', 'width' => 300, 'id' => 'ktppas_preview',
                     'data-src' => asset('assets/images/no-image.jpg')
                 ]) !!}
+                @else
+                <a href="@if(!empty($results['personal']['couple_identity'])){{$results['personal']['couple_identity']}}@endif" target="_blank" class="img-responsive"><img src="{{asset('assets/images/download-logo.png')}}" class="img-responsive" id="ktppas_preview" width="230"></a>
+                <p>Klik Untuk Lihat Foto KTP PASANGAN</p>
+                @endif
             </div>
 
              @if($type == 'view')
@@ -335,13 +371,39 @@
                  @if(strpos($results['personal']['couple_identity'], 'noimage.jpg'))
                <!--  <p>Foto KTP Kosong</p> -->
                  @else
-                                                     
-               
+
+
                 <!-- <p>Foto KTP</p> -->
                   @endif
             @else
-                <a href="@if(!empty($results['personal']['couple_identity'])){{$results['personal']['couple_identity']}}@endif" target="_blank" class="img-responsive"><img src="{{asset('assets/images/download-logo.png')}}" class="img-responsive"></a>
-                <p>Klik Untuk Lihat Foto KTP PASANGAN</p>
+                <!-- <a href="@if(!empty($results['personal']['couple_identity'])){{$results['personal']['couple_identity']}}@endif" target="_blank" class="img-responsive"><img src="{{asset('assets/images/download-logo.png')}}" class="img-responsive"></a>
+                <p>Klik Untuk Lihat Foto KTP PASANGAN</p> -->
+                <!--  @if (str_contains($results['personal']['couple_identity'], '.pdf'))
+ -->
+                           <!--  <div class="col-md-6">
+                                <div class="form-group ktp_preview">
+                                    <div class="col-md-12 col-md-offset-2"> -->
+                                        <!-- <iframe src="{{$results['personal']['couple_identity']}}" title="your_title" align="left" height="350" width="100%" frameborder="0" scrolling="auto" target="Message">
+                                        </iframe> -->
+                                   <!--  </div>
+                                </div>
+                            </div> -->
+
+                        <!-- @else
+                            <div class="col-md-6">
+                                <div class="form-group ktp_preview">
+                                    <div class="col-md-12 col-md-offset-2">
+                                        {!! Html::image($results['personal']['couple_identity'] ? $results['personal']['couple_identity'] : 'assets/images/no-image.jpg', 'KTP', [
+                                            'class' => 'img-responsive', 'width' => 300, 'id' => 'ktp_preview',
+                                            'data-src' => asset('assets/images/no-image.jpg')
+                                        ]) !!}
+                                        @if ( null !== old('nik') )
+                                            <br/>Harap Upload Ulang Foto KTP
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                        @endif -->
             @endif
             <!-- end handle -->
         @endif

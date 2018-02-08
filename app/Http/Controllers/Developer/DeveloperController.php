@@ -50,7 +50,7 @@ class DeveloperController extends Controller
             "birth_date" => Carbon::parse($request->input("birth_date"))->format('Y-m-d'),
             "join_date" => Carbon::parse($request->input("join_date"))->format('Y-m-d'),
             "mobile_phone"  => $request->input("mobile_phone"),
-            "email" => $request->input("email")
+            "email" => strtolower($request->input("email"))
                 ];
        // dd($input);
         $header = [
