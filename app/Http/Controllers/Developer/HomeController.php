@@ -17,9 +17,22 @@ class HomeController extends Controller
     	$response = Client::setEndpoint('get-data-dashboard-developer')
          ->setHeaders(['Authorization' => session('authenticate.token')])
         ->post();
-        $userList = $response['contents']['user_list']; 
+        $userList = $response['contents']['user_list'];
         return view('developer.home.dashboard',compact('userList'));
         // return view('developer.home.index');
+    }
+
+    public function listPropertyAgen(Request $req)
+    {
+        $data = $req->all();
+        $response = Client::setEndpoint("get-list-property-agen-dev")
+                    ->setHeaders([
+                                    'Authorization' => session('authenticate.token'),
+                                    'userId' => $data['user_id'],
+                                ])->get();
+        return response([
+            'data' => $response['contents'],
+        ]);
     }
 
     public function data_table_developer(Request $request){
