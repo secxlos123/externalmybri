@@ -74,8 +74,27 @@ Route::group([
 		 */
 		Route::get('/ubah', 'ProfileController@index')->name('edit');
 
+
+
 		
 	});
 
 
+});
+
+/**
+ * This route grup for agent developer
+ */
+Route::group([
+	'prefix' => 'dev-sales', 'as' => 'dev-sales.', 'namespace' => 'Developer', 'middleware' => ['auth.api', 'HasAccess:developer-sales']
+], function () {
+
+/*
+	   This route for calculator developer dashboard
+	*/
+	Route::get('/kalkulator', 'CalculatorController@index')->name('calculator');
+	/*
+	   This route for post calculator developer dashboard
+	*/
+	Route::post('/kalkulator', 'CalculatorController@postCalculate')->name('post_calculator');
 });
