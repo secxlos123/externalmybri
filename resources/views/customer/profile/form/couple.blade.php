@@ -68,33 +68,55 @@
                             </div>
                         </div>
 
-                        @if ( isset($customer->couple_identity) && $customer->couple_identity )
+                        
+                        <!-- couple identity -->
+                        @if ( isset($customer->couple_identity) )
+
+                        @if (str_contains($customer->couple_identity, '.pdf'))
 
                             <div class="col-md-6">
-                                <div class="form-group ktp_couple_preview">
+                                <div class="form-group ktp_preview">
                                     <div class="col-md-12 col-md-offset-2">
-                                        {!! Html::image($customer->couple_identity ?: 'assets/images/no-image.jpg', 'KTP Pasangan', [
-                                            'class' => 'img-responsive', 'width' => 300, 'id' => 'ktp_couple_preview',
-                                            'data-src' => asset('assets/images/no-image.jpg')
-                                        ]) !!}
+                                        <iframe src="{{$customer->couple_identity}}" title="your_title" align="top" height="620" width="100%" frameborder="0" scrolling="auto" target="Message">
+                                        </iframe>
                                     </div>
                                 </div>
                             </div>
 
                         @else
-
                             <div class="col-md-6">
-                                <div class="form-group hide ktp_couple_preview">
+                                <div class="form-group ktp_preview">
                                     <div class="col-md-12 col-md-offset-2">
-                                        {!! Html::image('assets/images/no-image.jpg', 'KTP Pasangan', [
+                                        {!! Html::image($customer->couple_identity ? $customer->couple_identity : 'assets/images/no-image.jpg', 'KTP', [
                                             'class' => 'img-responsive', 'width' => 300, 'id' => 'ktp_couple_preview',
                                             'data-src' => asset('assets/images/no-image.jpg')
                                         ]) !!}
+                                        @if ( null !== old('nik') )
+                                            <br/>Harap Upload Ulang Foto KTP
+                                        @endif
                                     </div>
                                 </div>
                             </div>
-
                         @endif
+
+                    @else
+
+                        <div class="col-md-6">
+                            <div class="form-group hide ktp_preview">
+                                <div class="col-md-12 col-md-offset-2">
+                                    {!! Html::image('assets/images/no-image.jpg', 'KTP', [
+                                        'class' => 'img-responsive', 'width' => 300, 'id' => 'ktp_couple_preview',
+                                        'data-src' => asset('assets/images/no-image.jpg')
+                                    ]) !!}
+                                    @if ( null !== old('nik') )
+                                        <br/>Harap Upload Ulang Foto KTP
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+
+                    @endif
+                        <!-- end couple identity --> 
                     </div>
                 </div>
             </div>
