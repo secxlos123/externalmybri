@@ -10,6 +10,7 @@
         <li class="{!! request()->is('dev-sales/tracking') ? 'active' : '' !!}">
             <a href="{!! route('dev-sales.tracking') !!}">Tracking </a>
         </li>
+        <li class="{!! request()->is('dev-sales/kalkulator') ? 'active' : '' !!}"><a href="{!! route('dev-sales.calculator') !!}">Kalkulator</a></li>
     @endif
     </li>
         <li class="{!! request()->is('rincian-produk') ? 'active' : '' !!}">
