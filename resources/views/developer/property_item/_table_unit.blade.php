@@ -57,6 +57,7 @@
                 <thead class="bg-blue">
                     <tr>
                         <th>Tipe Proyek</th>
+                        <th>No Unit</th>
                         <th>Address</th>
                         <th>Price</th>
                         <th>Available</th>
@@ -117,6 +118,7 @@
             },
             aoColumns : [
                 { data: 'property_type_name', name: 'property_type_name' },
+                { data: 'no_item', name: 'no_item' },
                 { data: 'address', name: 'address' },
                 { data: 'price', name: 'price' },
                 { data: 'is_available', name: 'is_available' },

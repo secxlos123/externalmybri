@@ -18,6 +18,7 @@ class ItemController extends Controller
      */
     protected $columns = [
         'property_type_id',
+        'no_item',
         'address',
         'price',
         'is_available',
