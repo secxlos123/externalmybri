@@ -54,7 +54,7 @@
             <div class="input-group">
                 <span class="input-group-addon">Rp</span>
                 {!! Form::text('price', old('price'), [
-                    'class' => 'form-control numeric currency',
+                    'class' => 'form-control numericOnly currency',
                     'placeholder' => 'Masukkan harga properti',
                     'maxlength' => 15
                 ]) !!}
@@ -74,7 +74,7 @@
                 {!! Form::label('first_unit', 'No Unit Pertama') !!}
                 <div class="input-group">
                     {!! Form::text('first_unit', old('first_unit'), [
-                        'class' => 'keyword-input numeric',
+                        'class' => 'form-control numericOnly',
                         'placeholder' => 'No Unit Pertama',
                         'maxlength' => 3,
                         'id'=> 'first_unit'
@@ -93,7 +93,7 @@
                 {!! Form::label('last_unit', 'No Unit Terakhir') !!}
                 <div class="input-group">
                     {!! Form::text('last_unit', old('last_unit'), [
-                        'class' => 'keyword-input numeric',
+                        'class' => 'form-control numericOnly',
                         'placeholder' => 'No Unit Terakhir',
                         'maxlength' => 4,
                         'id'=> 'last_unit'
@@ -112,7 +112,7 @@
                 {!! Form::label('unit_size', 'Jumlah Unit') !!}
                 <div class="input-group">
                     {!! Form::text('unit_size', old('unit_size'), [
-                        'class' => 'keyword-input numeric',
+                        'class' => 'form-control numericOnly',
                         'placeholder' => 'Jumlah',
                         'maxlength' => 4,
                         'id'=> 'unit_size',
@@ -220,6 +220,29 @@
 
     <!-- Laravel Javascript Validation -->
     <script type="text/javascript">
+
+        $(document).on('keydown', ".numericOnly", function (e) {
+          // Allow: backspace, delete, tab, escape, enter and .
+          if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+               // Allow: Ctrl+A
+               (e.keyCode == 65 && e.ctrlKey === true) ||
+               // Allow: Ctrl+C
+               (e.keyCode == 67 && e.ctrlKey === true) ||
+               // Allow: Ctrl+X
+               (e.keyCode == 88 && e.ctrlKey === true) ||
+              // Allow: backspace
+              (e.keyCode === 320 && e.ctrlKey === true) ||
+               // Allow: home, end, left, right
+               (e.keyCode >= 35 && e.keyCode <= 39)) {
+                   // let it happen, don't do anything
+                 return;
+               }
+
+          // Ensure that it is a number and stop the keypress
+          if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+            e.preventDefault();
+          }
+  });
         $('.select2').select2({width: '100%'});
 
         $('.properties').dropdown('property')
