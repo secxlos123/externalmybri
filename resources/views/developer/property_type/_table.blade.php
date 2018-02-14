@@ -165,6 +165,10 @@
                     if ($('#prop_id').val()) {
                         d.property_id = $('#prop_id').val();
                     }
+                    if({{isset($property)}})
+                    {
+                        d.property_id = {{$property->id}};
+                    }
 
                     d.certificate = $certificate.val();
                     d.proyek_type = $proyek_type.val();

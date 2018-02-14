@@ -114,6 +114,10 @@
                     if ($('#value_prop_type').val()) {
                         d.property_type_id = $('#value_prop_type').val();
                     }
+                    if({{isset($type)}})
+                    {
+                        d.property_type_id = {{$type->id}};
+                    }
                 }
             },
             aoColumns : [
