@@ -12,9 +12,9 @@
                     <h4 class="m-t-0 header-title"><b>Modul Penjadwalan</b></h4>
 
                     <!-- <div class='map' id='map' style='width: 100%; height: 200px;'></div> -->
-                    <p class="text-muted m-b-30">
+                   <!--  <p class="text-muted m-b-30">
                         Klik pada label jadwal yg telah ada untuk diubah.
-                    </p>
+                    </p> -->
                     <div class="row">
                         <div class="col-md-12">
                             <div id="calendar"></div>
