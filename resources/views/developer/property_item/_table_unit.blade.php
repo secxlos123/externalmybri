@@ -39,6 +39,7 @@
                                             'data-placeholder' => 'Pilih Tipe Proyek'
                                         ]) !!}
                                         <input type="hidden" name="value_prop_type" id="value_prop_type">
+                                        <input type="hidden" id="prop_type_view" value="{{isset($type) ? $type->id : "" }}">
                                     </div>
                                 </div>
                             </form>
@@ -114,9 +115,9 @@
                     if ($('#value_prop_type').val()) {
                         d.property_type_id = $('#value_prop_type').val();
                     }
-                    if({{isset($type)}})
+                    if($('#prop_type_view').val() != '')
                     {
-                        d.property_type_id = {{$type->id}};
+                        d.property_type_id = $('#prop_type_view').val();
                     }
                 }
             },
