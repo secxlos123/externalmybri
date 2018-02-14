@@ -22,7 +22,7 @@
             ]) !!}
                 <div class="row">
                     <div class="col-md-12">
-                        <h2 class="text-uppercase bottom40">Ubah Developer Properti</h2>
+                        <h2 class="text-uppercase bottom40">@if($type !='view')Ubah Data Agen Developer @else Lihat Informasi Detail @endif</h2>
                         <div class="panel panel-blue">
                             <div class="panel-heading">
                                 <h3 class="panel-title text-uppercase">Data Developer</h3>
