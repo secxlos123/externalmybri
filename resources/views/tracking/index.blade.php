@@ -24,9 +24,9 @@
                                         <table class="table table-striped table-bordered" id="datatable">
                                             <thead class="bg-blue">
                                                 <tr>
-                                                    <th>Nama pemohon</th>
+                                                    <th>Nama Pemohon</th>
                                                     <th>Developer</th>
-                                                    <th>Property</th>
+                                                    <th>Properti</th>
                                                     <th>Produk</th>
                                                     <th>Status</th>
                                                     <th>Aksi</th>
