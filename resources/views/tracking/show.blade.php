@@ -56,9 +56,9 @@
                                             </div>
                                             <div class="text-center">
                                             @if ($results['status'] == 'Kredit Ditolak' || $results['status'] == 'Kredit Disetujui')
-                                                <p class="m-t-5 text-uppercase font-600 font-secondary">{{($results['status'] == 'Kredit Ditolak') ? 'Status Pengajuan Di Tolak' : 'Status Pengajuan Di Terima'}}</p>
+                                                <p class="m-t-5 text-uppercase font-600 font-secondary">{{($results['status'] == 'Kredit Ditolak') ? 'Kredit Ditolak' : 'Kredit Disetujui'}}</p>
                                             @else
-                                                <p class="m-t-5 text-uppercase font-600 font-secondary">Status Pengajuan</p>
+                                                <p class="m-t-5 text-uppercase font-600 font-secondary">Status Putusan Kredit</p>
                                             @endif
                                             </div>
                                         </div>
