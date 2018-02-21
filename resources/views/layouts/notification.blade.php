@@ -8,7 +8,7 @@
           @if ( session('authenticate') )
             @if(count(notificationsUnread()) > 0 )
                 @foreach(notificationsUnread() as $value)
-                    <tr class="line-notif {{ !$value['read_at'] ? 'read-notif' : '' }}" data-href="{{ $value['url'] }}">
+                    <tr class="line-notif {{ !empty($value['read_at']) ? 'read-notif' : '' }}" data-href="{{ $value['url'] }}">
                           <td>
                               <div class="notif-ico bg-success">
                                     <i class="fa fa-bell"></i>
