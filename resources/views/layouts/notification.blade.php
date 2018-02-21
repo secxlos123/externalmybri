@@ -5,6 +5,7 @@
     </li>
     <li class="unread_notif">
         <table class="notification">
+          @if ( session('authenticate') )
             @if(count(notificationsUnread()) > 0 )
                 @foreach(notificationsUnread() as $value)
                     <tr class="line-notif" data-href="{{ $value['url'] }}">
@@ -25,7 +26,8 @@
                     <p class="m-0"><a>Tidak Ada Data Notifikasi</a></p>
                 </li>
             @endif
-                  
+          @endif
+
         </table>
         <li class="all-msgs text-center" style="display: block;">
             <p class="m-0" style="display: block;"><a> &nbsp;</a></p>
