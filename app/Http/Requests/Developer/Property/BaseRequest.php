@@ -16,7 +16,7 @@ class BaseRequest extends FormRequest
         return [
             'name'      => 'required',
             'city_id'   => 'required',
-            'category'  => 'required|in:0,1,2',
+            'category'  => 'required|in:1,2,3',
             'pks_number'=> 'required',
             'pic_name'  => 'required',
             'pic_phone' => 'required|string|regex:/^[0-9]+$/|min:9|max:12',
