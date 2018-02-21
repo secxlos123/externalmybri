@@ -474,6 +474,10 @@ table.warning-notes {
     z-index: 1;
 }
 
+tr.line-notif.read-notif {
+    background-color: white;
+}
+
 tr.line-notif {
     border-bottom: 1pt solid rgb(144, 144, 160);
 }
@@ -495,7 +499,7 @@ li.unread_notif {
 
 .navbar-default .notify .right-menu-item .badge {
     position: absolute;
-    top: auto !important; 
+    top: auto !important;
     right: 0px !important;
 }
 /*
