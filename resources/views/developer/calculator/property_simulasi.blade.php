@@ -3,7 +3,11 @@
 @section('title', 'Dashboard')
 
 @section('breadcrumb')
+    @if(session('authenticate.role') != 'developer')
+    <h1 class="text-uppercase">Kalkulator Agen Developer</h1>
+    @else
 	<h1 class="text-uppercase">Kalkulator DEVELOPER</h1>
+    @endif
  	<ol class="breadcrumb text-center">
 	    <li><a href="{!! url('/') !!}">Dashboard</a></li>
 	    <li class="active">Kalkulator</li>
@@ -23,7 +27,11 @@
                 <h3 class="panel-title text-uppercase">Simulasi Perhitungan Kredit</h3>
             </div>
             <div class="panel-body" style="border: none;">
+                @if(session('authenticate.role') != 'developer')
+                {!! Form::open(['route' => 'dev-sales.post_calculator','class' => 'callus top201', 'id' => 'form-calculator', ]) !!}
+                @else
                 {!! Form::open(['route' => 'developer.post_calculator','class' => 'callus top201', 'id' => 'form-calculator', ]) !!}
+                @endif
                     @include('home.calculator._form_credit_simulation')
                 {!!  Form::close()  !!}
             </div>
