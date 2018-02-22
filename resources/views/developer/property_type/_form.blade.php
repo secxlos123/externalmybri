@@ -227,6 +227,6 @@
     <!-- Laravel Javascript Validation -->
     <script type="text/javascript">
         $('.select2').select2({ witdh : '100%' });
-        $('.properties').dropdown('property');
+        $('.properties').dropdown('property?is_approved=true');
     </script>
 @endpush

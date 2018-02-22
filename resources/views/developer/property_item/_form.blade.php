@@ -245,7 +245,7 @@
   });
         $('.select2').select2({width: '100%'});
 
-        $('.properties').dropdown('property')
+        $('.properties').dropdown('property?is_approved=true')
             .on('select2:select', set_property_type)
             .on('select2:unselect', unset_property_type);
 
