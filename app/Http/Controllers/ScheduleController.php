@@ -120,7 +120,7 @@ class ScheduleController extends Controller
             ->setHeaders([
                 'Authorization' => session('authenticate.token')
             ])
-            ->setQuery($request->all())
+            ->setQuery($request->except('month','year'))
             ->get();
 
         return response()->json($results['contents']);
