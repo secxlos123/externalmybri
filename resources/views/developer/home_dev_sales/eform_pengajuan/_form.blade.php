@@ -38,7 +38,7 @@
             {{ $errors->has('category') ? ' has-error' : '' }}">
             {!! Form::label('category', 'Kategori') !!}
             {!! Form::select('category', [
-                '' => '', 'Rumah', 'Rukan / Ruko', 'Rusun',
+                '' => '', "1" => "Rumah Tapak", "2" => "Rumah Susun/Apartment", "3" => "Rumah Toko"
             ], old('category'), [
                 'class' => 'select2',
                 'data-placeholder' => '-- Pilih Kategori --'

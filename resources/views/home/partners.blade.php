@@ -6,7 +6,11 @@
 <div class="row">
     <div id="partners" class="owl-carousel">
         @foreach ($developers as $developer)
+            @if(substr($developer['image'], -11) == 'noimage.jpg')
+            <div class="item" hidden="hidden">
+            @else
             <div class="item">
+            @endif
                 {!! Html::image($developer['image'], $developer['company_name'], ['title' => $developer['company_name']]) !!}
             </div>
         @endforeach

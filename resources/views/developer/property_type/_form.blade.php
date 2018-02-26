@@ -133,11 +133,13 @@
             {{ $errors->has('certificate') ? ' has-error' : '' }}">
             {!! Form::label('certificate', 'Jenis Sertifikat') !!}
             {!! Form::select('certificate', [
+                '' => '',
                 'SHM'   => 'SHM (Sertifikat Hak Milik)',
                 'SHGB'  => 'SHGB (Sertifikat Hak Guna Bangunan)',
                 'SHSRS' => 'SHSRS (Sertifikat Hak Satuan Rumah Susun)'
             ], old('certificate'), [
-                'class' => 'select2 keyword-input'
+                'class'     => 'select2 keyword-input',
+                'data-placeholder' => 'Pilih Sertifikat'
             ]) !!}
 
             @if ($errors->has('certificate'))
@@ -182,8 +184,9 @@
         <div class="single-query form-group bottom20
             {{ $errors->has('carport') ? ' has-error' : '' }}">
             {!! Form::label('carport', 'Garasi') !!}
-            {!! Form::select('carport', [0 => 'Tidak Tersedia', 1 => 'Tersedia'], old('carport'), [
+            {!! Form::select('carport', [''=>'',0 => 'Tidak Tersedia', 1 => 'Tersedia'], old('carport'), [
                 'class' => 'select2 keyword-input',
+                'data-placeholder' => 'Pilih Garasi'
             ]) !!}
 
             @if ($errors->has('carport'))
@@ -224,6 +227,6 @@
     <!-- Laravel Javascript Validation -->
     <script type="text/javascript">
         $('.select2').select2({ witdh : '100%' });
-        $('.properties').dropdown('property');
+        $('.properties').dropdown('property?is_approved=true');
     </script>
 @endpush

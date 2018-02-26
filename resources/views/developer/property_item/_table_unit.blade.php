@@ -39,6 +39,7 @@
                                             'data-placeholder' => 'Pilih Tipe Proyek'
                                         ]) !!}
                                         <input type="hidden" name="value_prop_type" id="value_prop_type">
+                                        <input type="hidden" id="prop_type_view" value="{{isset($type) ? $type->id : "" }}">
                                     </div>
                                 </div>
                             </form>
@@ -57,6 +58,7 @@
                 <thead class="bg-blue">
                     <tr>
                         <th>Tipe Proyek</th>
+                        <th>No Unit</th>
                         <th>Address</th>
                         <th>Price</th>
                         <th>Available</th>
@@ -113,10 +115,15 @@
                     if ($('#value_prop_type').val()) {
                         d.property_type_id = $('#value_prop_type').val();
                     }
+                    if($('#prop_type_view').val() != '')
+                    {
+                        d.property_type_id = $('#prop_type_view').val();
+                    }
                 }
             },
             aoColumns : [
                 { data: 'property_type_name', name: 'property_type_name' },
+                { data: 'no_item', name: 'no_item' },
                 { data: 'address', name: 'address' },
                 { data: 'price', name: 'price' },
                 { data: 'is_available', name: 'is_available' },

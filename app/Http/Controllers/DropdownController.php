@@ -29,7 +29,7 @@ class DropdownController extends Controller
     public function properties(Request $request)
     {
     	$body 	 = [ 'id' => 'prop_id', 'text' => 'prop_name' ];
-    	$options = [ 'dev_id' => $request->input('dev_id'), 'search' => $request->input('name'), 'dropdown' => true ];
+    	$options = [ 'dev_id' => $request->input('dev_id'), 'search' => $request->input('name'),'is_approved' => $request->input('is_approved'), 'dropdown' => true ];
         return $this->init('property', $body, $options, $this->base());
     }
 

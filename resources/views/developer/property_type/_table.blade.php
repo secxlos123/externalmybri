@@ -6,7 +6,6 @@
             <div class="alert alert-danger"><em> {!! session('error_flash_message') !!}</em></div>
         @endif
         <div class="add-btn bottom10 top20">
-
             @if ( request()->is('dev/proyek-type') )
                 <a class="btn btn-primary" href="#filter" role="button" data-toggle="collapse">
                     <i class="fa fa-filter"></i> Filter
@@ -32,6 +31,7 @@
                                                 'data-placeholder' => 'Pilih Proyek'
                                             ]) !!}
                                             <input type="hidden" name="prop_id" id="prop_id">
+                                            <input type="hidden" id="prop_id_view" value="{{isset($property) ? $property->id : "" }}">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -164,6 +164,9 @@
 
                     if ($('#prop_id').val()) {
                         d.property_id = $('#prop_id').val();
+                    }
+                    if ($('#prop_id_view').val() != '') {
+                        d.property_id = $('#prop_id_view').val();
                     }
 
                     d.certificate = $certificate.val();
