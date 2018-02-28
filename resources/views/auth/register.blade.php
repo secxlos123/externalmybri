@@ -34,9 +34,9 @@
     <div class="single-query form-group col-sm-12">
         {!! Form::password('password_confirmation', [ 'class' => 'keyword-input', 'placeholder' => 'Ulangi Kata Sandi' ]) !!}
     </div>
-    <div class="single-query form-group col-sm-12">
+   <!--  <div class="single-query form-group col-sm-12">
         {!! Recaptcha::render() !!}
-    </div>
+    </div> -->
    @include('form._input_long_lat')
     <div class="col-md-12 col-sm-12 col-xs-12 text-center">
         <div class="query-submit-button">
