@@ -206,6 +206,11 @@ Route::group(['namespace' => 'Auth', 'as' => 'auth.'], function () {
 		 * This route for get form registration simple
 		 */
 		Route::get('complete', 'RegisterController@complete')->name('complete');
+
+	   /**
+	 	* This route for refresh captcha
+	 	*/
+		Route::get('recaptcha', 'RegisterController@refreshCaptcha')->name('recaptcha');
 	});
 
 	/**

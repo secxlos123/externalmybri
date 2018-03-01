@@ -314,6 +314,19 @@
         </script>
     @endif
 
+    <!-- REFRESH CEPTCHA -->
+        <script type="text/javascript">
+                $("#form-register-store .btn-refresh").click(function(){
+                    $.ajax({
+                        type:'GET',
+                        url:'{{ route("auth.register.recaptcha") }}',
+                        success:function(data){
+                            $(".captcha span").html(data.captcha);
+                            }
+                        });
+                    });
+        </script>
+
     <!-- This is place for dynamis scripts per page -->
     @stack('scripts')
 </body>
