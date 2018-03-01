@@ -27,7 +27,7 @@ class CustomerRequest extends FormRequest
             'nik' => 'required|numeric|digits:16',
             'full_name' => 'required',
             'birth_place_id'   => 'required',
-            'birth_date'    => 'date|date_format:Y-m-d|before:today',
+            'birth_date'    => 'date|date_format:Y-m-d|before:-21years',
             'gender'    => 'required',
             // 'city'  => 'required',
             // 'phone' => 'required|numeric|digits_between:1,12',
@@ -67,7 +67,8 @@ class CustomerRequest extends FormRequest
             'couple_name.required' => 'Nama Pasangan harus diisi.',
             'couple_identity.required' => 'Kolom foto ktp pasangan harus diisi.',
             'couple_birth_date' => 'Kolom Tanggal Lahir Pasangan harus diisi',
-            'couple_birth_place_id' => 'Kolom Tempat Lahir Pasangan harus diisi'
+            'couple_birth_place_id' => 'Kolom Tempat Lahir Pasangan harus diisi',
+            'birth_date.before' => 'Umur anda kurang memenuhi persyaratan yaitu mininum 21 tahun'
         ];
     }
 }

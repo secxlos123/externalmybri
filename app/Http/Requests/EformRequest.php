@@ -87,7 +87,7 @@ class EformRequest extends FormRequest
             'first_name'        => 'required',
             'last_name'         => '',
             'birth_place_id'    => 'required',
-            'birth_date'        => 'required|date',
+            'birth_date'        => 'required|date|before:-21years',
             'address'           => 'required',
             'city_id'           => 'required',
             'gender'            => 'required|in:L,P',
@@ -165,5 +165,12 @@ class EformRequest extends FormRequest
         }
 
         return $attributes;
+    }
+
+    public function messages()
+    {
+        return [
+            'birth_date.before' => 'Umur anda kurang memenuhi persyaratan yaitu mininum 21 tahun'
+        ];
     }
 }
