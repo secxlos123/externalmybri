@@ -194,6 +194,7 @@ class PropertyController extends Controller
                 'items' => $request->input('items'),
                 'sort'  => $this->columns[$sort['column']] .'|'. $sort['dir'],
                 'search'=> $request->input('search.value'),
+                'limit' => $request->input('length'),
             ])
             ->get();
 
