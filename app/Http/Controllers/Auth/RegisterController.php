@@ -10,6 +10,7 @@ use Client;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use LaravelCaptcha\Lib\Captcha;
 
 class RegisterController extends Controller
 {
@@ -33,7 +34,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth.api', ['except' => ['register', 'activated', 'activate', 'successed', 'resendEmail'] ]);
+        $this->middleware('auth.api', ['except' => ['register', 'activated', 'activate', 'successed', 'resendEmail', 'refreshCaptcha'] ]);
     }
 
     /**
@@ -64,6 +65,10 @@ class RegisterController extends Controller
      */
     public function register(RegisterRequest $request)
     {
+        $this->validate($request, [
+            'captcha' => 'required|captcha'
+        ],['captcha.captcha'=>'Kode Captcha tidak sesuai.']);
+
         if ( 'register' == $request->input('register') ) {
             $splitName = explode(' ', $request->input('fullname'), 2);
             $first_name = $splitName[0];
@@ -216,5 +221,16 @@ class RegisterController extends Controller
         }
         \Session::flash('success_flash_message', 'success');
         return redirect()->route('auth.successed');
+    }
+
+    /**
+     * This function for Refresh captcha
+     * @return data Json
+     */
+
+    public function refreshCaptcha()
+    {
+        //dd(captcha_img('flat'));
+        return response()->json(['captcha'=> captcha_img('flat')]);
     }
 }

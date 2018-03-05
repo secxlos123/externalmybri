@@ -60,7 +60,8 @@ class RegisterRequest extends FormRequest
             'email' => 'required|email',
             'fullname' => 'required|string|min:4',
             'phone' => 'nullable|string|regex:/^[0-9]+$/|min:9|max:12',
-            'password' => 'required|min:6|regex:/^(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])\S*$/|confirmed'
+            'password' => 'required|min:6|regex:/^(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])\S*$/|confirmed',
+            'captcha'  => 'required'
         ];
     }
 
@@ -165,6 +166,7 @@ class RegisterRequest extends FormRequest
     {
         return [
             'password.regex' => 'Password harus berupa kombinasi huruf besar, huruf kecil dan angka',
+            'captcha.required' => 'kolom Captcha harus diisi'
         ];
     }
 }
