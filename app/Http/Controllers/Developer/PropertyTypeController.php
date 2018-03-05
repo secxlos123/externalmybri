@@ -21,7 +21,7 @@ class PropertyTypeController extends Controller
         'building_area',
         'surface_area',
         'certificate',
-        'items',
+        'items'
     ];
 
     /**
@@ -123,13 +123,14 @@ class PropertyTypeController extends Controller
                 'Authorization' => session('authenticate.token')
             ])
             ->setQuery([
+                'limit'     => $request->input('length'),
+                'sort'  => $this->columns[$sort['column']] .'|'. $sort['dir'],
                 'property_id' => $request->input('property_id'),
                 'surface_area' => $request->input('surface_area'),
                 'building_area'=> $request->input('building_area'),
                 'proyek_type'  => $request->input('proyek_type'),
                 'certificate'  => $request->input('certificate'),
-                'page'  => $request->input('page'),
-                'sort'  => $this->columns[$sort['column']] .'|'. $sort['dir'],
+                'page'      => (int) $request->input('page') + 1,
                 'search'=> $request->input('search.value'),
             ])
             ->get();
@@ -276,8 +277,8 @@ class PropertyTypeController extends Controller
                 'building_area'=> $request->input('building_area'),
                 'proyek_type'  => $request->input('proyek_type'),
                 'certificate'  => $request->input('certificate'),
-                'page'  => $request->input('page'),
-                //'sort'  => $this->columns[$sort['column']] .'|'. $sort['dir'],
+                'page'      => (int) $request->input('page') + 1,
+                'sort'  => $this->columns[$sort['column']] .'|'. $sort['dir'],
                 'search'=> $request->input('search.value'),
             ])
             ->get();

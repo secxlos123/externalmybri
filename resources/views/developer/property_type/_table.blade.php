@@ -154,7 +154,7 @@
                     d.page = Math.min(
                         Math.max(0, Math.round(d.start / api.page.len())),
                         api.page.info().pages
-                    ) + 1;
+                    );
 
                     if ($min_surface.val() != '' || $max_surface.val() != '')
                         d.surface_area  = $min_surface.val() + '|' + $max_surface.val();
@@ -174,11 +174,11 @@
                 }
             },
             aoColumns : [
-                { data: 'name', name: 'name' },
-                { data: 'building_area', name: 'building_area' },
-                { data: 'surface_area', name: 'surface_area' },
-                { data: 'certificate', name: 'certificate' },
-                { data: 'items', name: 'items' },
+                { data: 'name', name: 'name', bSortable: true },
+                { data: 'building_area', name: 'building_area', bSortable: true },
+                { data: 'surface_area', name: 'surface_area', bSortable: true },
+                { data: 'certificate', name: 'certificate', bSortable: true },
+                { data: 'items', name: 'items', bSortable: true },
                 { data: 'action', name: 'action', bSortable: false },
             ],
         });
