@@ -18,7 +18,8 @@
                                 <label class="col-md-4 control-label">NIK *:</label>
                                 <div class="col-md-8">
                                     {!! Form::text('couple_nik', old('couple_nik'), [
-                                        'class' => 'form-control numeric', 'maxlength' => 16
+                                        'class' => 'form-control', 'maxlength' => 16,
+                                        'onkeypress' => 'return goodchars(event, "1234567890 ", this)'
                                     ]) !!}
                                 </div>
                             </div>

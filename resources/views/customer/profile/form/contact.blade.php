@@ -25,7 +25,7 @@
                             <label class="col-md-4 control-label">No. Handphone *:</label>
                             <div class="col-md-8">
                                 {!! Form::text('emergency_contact', old('emergency_contact'), [
-                                    'class' => 'form-control numeric', 'minlength' => 9, 'maxlength' => 12
+                                    'class' => 'form-control', 'minlength' => 9, 'maxlength' => 12, 'onkeypress' => 'return goodchars(event, "1234567890 ", this)'
                                 ]) !!}
                             </div>
                         </div>

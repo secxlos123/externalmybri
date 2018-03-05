@@ -86,12 +86,12 @@
                             <div class="col-md-8">
                                 <div class="input-group">
                                     {!! Form::text('work_duration', old('work_duration'), [
-                                        'class' => 'form-control numeric', 'maxlength' => 2, 'id' => 'work_year'
+                                        'class' => 'form-control', 'maxlength' => 2, 'id' => 'work_year','onkeypress' => 'return goodchars(event, "1234567890 ", this)'
                                     ]) !!}
                                     <span class="input-group-addon">Tahun:</span>
 
                                     {!! Form::text('work_duration_month', old('work_duration_month'), [
-                                        'class' => 'form-control numeric', 'maxlength' => 2, 'id' => 'work_mount'
+                                        'class' => 'form-control', 'maxlength' => 2, 'id' => 'work_mount','onkeypress' => 'return goodchars(event, "1234567890 ", this)'
                                     ]) !!}
                                     <span class="input-group-addon">Bulan</span>
                                 </div>
