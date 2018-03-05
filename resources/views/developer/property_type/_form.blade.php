@@ -59,7 +59,8 @@
                 {!! Form::label('surface_area', 'Luas Tanah') !!}
                 <div class="input-group">
                     {!! Form::text('surface_area', old('surface_area'), [
-                        'class' => 'keyword-input numeric',
+                        'class' => 'keyword-input',
+                        'onkeypress' => 'return goodchars(event, "1234567890 ", this)'
                     ]) !!}
                     <span class="input-group-addon">m<sup>2</sup></span>
                 </div>
@@ -76,7 +77,8 @@
                 {!! Form::label('building_area', 'Luas Bangunan') !!}
                 <div class="input-group">
                     {!! Form::text('building_area', old('building_area'), [
-                        'class' => 'keyword-input numeric',
+                        'class' => 'keyword-input',
+                        'onkeypress' => 'return goodchars(event, "1234567890 ", this)'
                     ]) !!}
                     <span class="input-group-addon">m<sup>2</sup></span>
                 </div>
@@ -97,7 +99,8 @@
                 {!! Form::label('electrical_power', 'Daya Listrik') !!}
                 <div class="input-group">
                     {!! Form::text('electrical_power', old('electrical_power'), [
-                        'class' => 'keyword-input numeric',
+                        'class' => 'keyword-input',
+                        'onkeypress' => 'return goodchars(event, "1234567890 ", this)'
                     ]) !!}
                     <span class="input-group-addon">watt</span>
                 </div>
@@ -114,7 +117,8 @@
                 {!! Form::label('floors', 'Jumlah Lantai') !!}
                 <div class="input-group">
                     {!! Form::text('floors', old('floors'), [
-                        'class' => 'keyword-input numeric',
+                        'class' => 'keyword-input',
+                        'onkeypress' => 'return goodchars(event, "1234567890 ", this)'
                     ]) !!}
                     <span class="input-group-addon">lantai</span>
                 </div>
@@ -154,7 +158,8 @@
                 style="padding-left: unset;">
                 {!! Form::label('bedroom', 'Kamar Tidur') !!}
                 {!! Form::text('bedroom', old('bedroom'), [
-                    'class' => 'keyword-input numeric',
+                    'class' => 'keyword-input',
+                    'onkeypress' => 'return goodchars(event, "1234567890 ", this)'
                 ]) !!}
 
                 @if ($errors->has('bedroom'))
@@ -168,7 +173,8 @@
                 style="padding-right: unset;">
                 {!! Form::label('bathroom', 'Kamar Mandi') !!}
                 {!! Form::text('bathroom', old('bathroom'), [
-                    'class' => 'keyword-input numeric',
+                    'class' => 'keyword-input',
+                    'onkeypress' => 'return goodchars(event, "1234567890 ", this)'
                 ]) !!}
 
                 @if ($errors->has('bathroom'))
