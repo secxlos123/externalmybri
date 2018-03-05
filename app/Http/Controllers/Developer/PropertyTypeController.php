@@ -25,6 +25,22 @@ class PropertyTypeController extends Controller
     ];
 
     /**
+     * Avaliable columns datatables
+     *
+     * @var array
+     */
+    protected $columnss = [
+        'property_type_id',
+        'no_item',
+        'address',
+        'price',
+        'is_available',
+        'prop_status',
+        'available_status',
+        'status',
+    ];
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -231,7 +247,7 @@ class PropertyTypeController extends Controller
                 'is_available'     => $request->input('is_available'),
                 'status'           => $request->input('status'),
                 'price'            => $request->input('price'),
-              //  'sort'             => $this->columns[$sort['column']] .'|'. $sort['dir'],
+                'sort'             => $this->columnss[$sort['column']] .'|'. $sort['dir'],
                 'page'             => (int) $request->input('page') + 1,
                 'search'           => $request->input('search.value'),
             ])
@@ -272,6 +288,7 @@ class PropertyTypeController extends Controller
                 'Authorization' => session('authenticate.token')
             ])
             ->setQuery([
+                'limit'     => $request->input('length'),
                 'property_id' => $request->input('property_id'),
                 'surface_area' => $request->input('surface_area'),
                 'building_area'=> $request->input('building_area'),
