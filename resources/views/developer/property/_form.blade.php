@@ -214,7 +214,7 @@
 @include('form._input_long_lat')
 @push( 'styles' )
     {!! Html::style( 'assets/css/select2.min.css' ) !!}
-    {!! Html::script( 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAIijm1ewAfeBNX3Np3mlTDZnsCl1u9dtE&libraries=places' ) !!}
+    {!! Html::script( 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAIijm1ewAfeBNX3Np3mlTDZnsCl1u9dtE&libraries=places&sensor=true' ) !!}
 
     <style type="text/css">
         .map {
