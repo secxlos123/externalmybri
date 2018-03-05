@@ -91,6 +91,7 @@
             {!! Form::label('pic_name', 'Nama PIC Project') !!}
             {!! Form::text('pic_name', old('pic_name'), [
                 'class' => 'keyword-input',
+                'onkeypress' => 'return goodchars(event, "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ", this)',
                 'placeholder' => 'Masukkan nama PIC Project'
             ]) !!}
 

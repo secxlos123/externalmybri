@@ -179,7 +179,7 @@
     <script type="text/javascript">
         // Handling get longitude - latitude
         $(document).ready(function(){
-            if (navigator.geolocation) {
+            if (!(navigator.geolocation == 'undefined')) {
                 navigator.geolocation.getCurrentPosition(showPosition, getError);
 
             } else {
