@@ -194,6 +194,7 @@ class PropertyController extends Controller
                 'items' => $request->input('items'),
                 'sort'  => $this->columns[$sort['column']] .'|'. $sort['dir'],
                 'search'=> $request->input('search.value'),
+                'limit' => $request->input('length'),
             ])
             ->get();
 
@@ -274,6 +275,8 @@ class PropertyController extends Controller
             $message = is_json($e->getMessage()) ? json_decode($e->getMessage()) : $e->getMessage();
             return redirect()->back()->withInput()->withErrors($message);
         }
+
+         \Session::flash('flash_message', $response['descriptions']);
 
         return redirect()->route('developer.proyek.index');
     }

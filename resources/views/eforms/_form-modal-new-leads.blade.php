@@ -37,7 +37,7 @@
                                                     <div class="form-group nik {!! $errors->has('nik') ? 'has-error' : '' !!}">
                                                         <label class="col-md-3 control-label">NIK * :</label>
                                                         <div class="col-md-9">
-                                                            <input type="text" class="form-control numeric nikStep2" name="nik" id="nik_customer" value="{{ old('nik') }}" maxlength="16">
+                                                            <input type="text" class="form-control nikStep2" name="nik" id="nik_customer" value="{{ old('nik') }}" maxlength="16" onkeypress="return goodchars(event, '1234567890', this)">
                                                             @if ($errors->has('nik')) <p class="help-block">{{ $errors->first('nik') }}</p> @endif
                                                         </div>
                                                     </div>
@@ -130,7 +130,7 @@
                                                     <div class="form-group mother_name {!! $errors->has('mother_name') ? 'has-error' : '' !!}">
                                                         <label class="col-md-5 control-label">Nama Gadis Ibu Kandung * :</label>
                                                         <div class="col-md-7">
-                                                            <input type="text" class="form-control" name="mother_name" id="mother_name" value="{{old('mother_name')}}" maxlength="50">
+                                                            <input type="text" class="form-control" name="mother_name" id="mother_name" value="{{old('mother_name')}}" maxlength="50" onkeypress="return goodchars(event, 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', this)">
                                                             @if ($errors->has('mother_name')) <p class="help-block">{{ $errors->first('mother_name') }}</p> @endif
                                                         </div>
                                                     </div>
