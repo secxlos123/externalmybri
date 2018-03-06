@@ -4,7 +4,7 @@
             <label>NIK </label>
             @if ($type != 'view')
                 {!! Form::text('nik', (old('nik')) ? old('nik') : @$results['personal']['nik'], [
-                    'class' => 'form-control numeric', 'maxlength' => 16,
+                    'class' => 'form-control ', 'maxlength' => 16, 'onkeypress' => 'return goodchars(event, "1234567890 ", this)'
                 ]) !!}
             @else
                 <span class="form-control" style="border: 0px;">{{isset($results['personal']['nik']) ? $results['personal']['nik'] : ''}}</span>
@@ -86,7 +86,7 @@
             <label>NIK Pasangan </label>
             @if ($type != 'view')
                 {!! Form::text('couple_nik', (old('couple_nik')) ? old('couple_nik') : @$results['personal']['couple_nik'], [
-                    'class' => 'form-control numeric', 'maxlength' => 16,
+                    'class' => 'form-control ', 'maxlength' => 16, 'onkeypress' => 'return goodchars(event, "1234567890 ", this)'
                 ]) !!}
             @else
                 <span class="form-control" style="border: 0px;">{{isset($results['personal']['couple_nik']) ? $results['personal']['couple_nik'] : ''}}</span>
