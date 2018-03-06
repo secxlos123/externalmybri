@@ -276,6 +276,8 @@ class PropertyController extends Controller
             return redirect()->back()->withInput()->withErrors($message);
         }
 
+         \Session::flash('flash_message', $response['descriptions']);
+
         return redirect()->route('developer.proyek.index');
     }
 }
