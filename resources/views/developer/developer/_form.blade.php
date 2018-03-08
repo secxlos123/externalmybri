@@ -57,9 +57,10 @@ $name     = $result['first_name']." ".$result['last_name'];
             {!! Form::label('mobile_phone', 'No Handphone') !!}
         @if($type != 'view')
             {!! Form::text('mobile_phone', $result['mobile_phone'], [
-                'class' => 'keyword-input numeric',
+                'class' => 'keyword-input',
                 'maxlength' => 12, 'minlength' => 9,
-                'placeholder' => 'Masukkan No Handphone developer'
+                'placeholder' => 'Masukkan No Handphone developer',
+                'onkeypress' => 'return goodchars(event, "1234567890 ", this)'
             ]) !!}
         @else
             <p>{{ $result['mobile_phone'] }}</p>
@@ -146,9 +147,10 @@ $name     = $result['first_name']." ".$result['last_name'];
             {{ $errors->has('mobile_phone') ? ' has-error' : '' }}">
             {!! Form::label('mobile_phone', 'No Handphone') !!}
             {!! Form::text('mobile_phone', old('mobile_phone'), [
-                'class' => 'keyword-input numeric',
+                'class' => 'keyword-input',
                 'maxlength' => 12, 'minlength' => 9,
-                'placeholder' => 'Masukkan No Handphone agen developer'
+                'placeholder' => 'Masukkan No Handphone agen developer',
+                'onkeypress' => 'return goodchars(event, "1234567890 ", this)'
             ]) !!}
 
             @if ($errors->has('mobile_phone'))
