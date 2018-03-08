@@ -66,9 +66,10 @@ $sort = $request->input('order.0');
                 'sort'      => $this->columns[$sort['column']] .'|'. $sort['dir']
             ])
                 ->get();
-        \Log::info($results);
+        //\Log::info($results);
 
         foreach ($results['contents']['data'] as $key => $type) {
+            $type['nominal']  = 'Rp. ' . number_format($type['nominal'], 0, ',', '.');
             $type['action'] = view('layouts.actions', [
                 'show' => route('dev-sales.eform-cust', $type['id'])
             ])->render();
