@@ -105,7 +105,7 @@
     {!! Html::script( 'assets/js/jquery.gmaps.js' ) !!}
     {!! Html::script('assets/js/moment.js') !!}
     {!! Html::script('assets/js/fullcalendar.min.js') !!}
-    {!! Html::script('assets/js/jquery.fullcalendar.js') !!}
+    {!! Html::script('assets/js/jquery_fullcalendar.js') !!}
     {!! Html::script('assets/js/jquery.slimscroll.js') !!}
     {!! Html::script('assets/js/jquery.scrollTo.min.js') !!}
 
