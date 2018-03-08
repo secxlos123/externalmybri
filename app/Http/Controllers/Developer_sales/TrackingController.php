@@ -8,6 +8,20 @@ use Client;
 
 class TrackingController extends Controller
 {
+
+    /*
+     * This for field collumns data pengajuan eform
+     */
+
+    protected $columns = [
+        'ref_number',
+        'nama_pemohon',
+        'nominal',
+        'developer_name',
+        'property_name',
+        'status'
+    ];
+
     /**
      * Display a listing of the resource.
      *
@@ -103,6 +117,7 @@ class TrackingController extends Controller
      */
     public function datatables(Request $request)
     {
+        $sort = $request->input('order.0');
         $results = Client::setEndpoint('tracking')
                 ->setHeaders([
                     'Authorization' => session('authenticate.token')
@@ -110,7 +125,8 @@ class TrackingController extends Controller
                 ->setQuery([
                 'limit'     => $request->input('length'),
                 'search'    => $request->input('search.value'),
-                'page'      => ( int ) $request->input('page') + 1
+                'page'      => ( int ) $request->input('page') + 1,
+                'sort'      => $this->columns[$sort['column']] .'|'. $sort['dir']
             ])
                 ->get();
         \Log::info($results['contents']);

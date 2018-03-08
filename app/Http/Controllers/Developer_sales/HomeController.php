@@ -62,7 +62,8 @@ $sort = $request->input('order.0');
                 ->setQuery([
                 'limit'     => $request->input('length'),
                 'search'    => $request->input('search.value'),
-                'page'      => ( int ) $request->input('page') + 1
+                'page'      => ( int ) $request->input('page') + 1,
+                'sort'      => $this->columns[$sort['column']] .'|'. $sort['dir']
             ])
                 ->get();
         \Log::info($results);
