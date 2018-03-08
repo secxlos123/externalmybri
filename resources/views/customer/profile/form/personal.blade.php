@@ -205,7 +205,8 @@
 							<label class="col-md-5 control-label">Nama Gadis Ibu Kandung *:</label>
 							<div class="col-md-7">
 								{!! Form::text('mother_name', old('mother_name'), [
-									'class' => 'form-control'
+									'class' => 'form-control',
+									'onkeypress' => 'return goodchars(event, "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ", this)'
 								]) !!}
 							</div>
 						</div>
