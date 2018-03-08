@@ -114,7 +114,7 @@
                                                     <div class="form-group mobile_phone {!! $errors->has('mobile_phone') ? 'has-error' : '' !!}">
                                                         <label class="col-md-5 control-label">No. Handphone * :</label>
                                                         <div class="col-md-7">
-                                                            <input type="text" class="form-control" onkeypress ="return goodchars(event, "1234567890 ", this)" name="mobile_phone" value="{{old('mobile_phone')}}" maxlength="12" id="mobile_phone">
+                                                            <input type="text" class="form-control" name="mobile_phone" value="{{old('mobile_phone')}}" maxlength="12" id="mobile_phone" onkeypress="return goodchars(event, '1234567890', this)">
                                                             @if ($errors->has('mobile_phone')) <p class="help-block">{{ $errors->first('mobile_phone') }}</p> @endif
                                                         </div>
                                                     </div>
@@ -122,7 +122,7 @@
                                                     <div class="form-group">
                                                         <label class="col-md-5 control-label">No. Telepon :</label>
                                                         <div class="col-md-7">
-                                                            <input type="text" class="form-control" onkeypress ="return goodchars(event, "1234567890 ", this)" name="phone" value="{{old('phone')}}" maxlength="12" id="phone">
+                                                            <input type="text" class="form-control" name="phone" value="{{old('phone')}}" maxlength="12" id="phone" onkeypress="return goodchars(event, '1234567890', this)">
                                                             @if ($errors->has('phone')) <p class="help-block">{{ $errors->first('phone') }}</p> @endif
                                                         </div>
                                                     </div>
@@ -167,7 +167,7 @@
                                             <div class="form-group couple_nik {!! $errors->has('couple_nik') ? 'has-error' : '' !!}">
                                                 <label class="col-md-3 control-label">NIK * :</label>
                                                 <div class="col-md-9">
-                                                    <input type="text" class="form-control" onkeypress ="return goodchars(event, "1234567890 ", this)" name="couple_nik" id="nik" value="{{ old('couple_nik') }}" maxlength="16">
+                                                    <input type="text" class="form-control" name="couple_nik" id="nik" value="{{ old('couple_nik') }}" maxlength="16" onkeypress="return goodchars(event, '1234567890', this)">
                                                     @if ($errors->has('couple_nik')) <p class="help-block">{{ $errors->first('couple_nik') }}</p> @endif
                                                 </div>
                                             </div>
