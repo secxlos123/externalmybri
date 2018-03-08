@@ -48,7 +48,8 @@
                     long: value.longitude,
                     status: value.status,
                     guest: value.guest_name,
-                    refNum: value.ref_number
+                    refNum: value.ref_number,
+                    address: value.address
                 }
                 eventValues.push(event);
                 console.log(event);
@@ -71,7 +72,11 @@
         $("input[name='guest']").val(calEvent.guest || '');
         $("input[name='date']").val(calEvent.start.format('YYYY-MM-DD') || '');
         $("input[name='reference']").val(calEvent.refNum || '');
-        $("textarea[name='description']").val(calEvent.desc || '');
+        if(calEvent.desc == '-'){
+            $("textarea[name='description']").val(calEvent.address);    
+        }else{
+            $("textarea[name='description']").val(calEvent.desc || '');
+        }
         $("input[name='lng']").val(calEvent.long || '');
         $("input[name='lat']").val(calEvent.lat || '');
         $("input[name='id_schedule']").val(calEvent.id || '');
