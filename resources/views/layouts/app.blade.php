@@ -329,5 +329,11 @@
 
     <!-- This is place for dynamis scripts per page -->
     @stack('scripts')
+
+    <script>
+        if( window.screen.availWidth <= 768 || window.screen.width <= 768 ) {
+            $('.rev-slidebg').attr('data-bgfit', 'contain')
+        }
+    </script>
 </body>
 </html>

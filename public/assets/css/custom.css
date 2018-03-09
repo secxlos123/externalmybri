@@ -62,3 +62,9 @@ footer.footer_third.absolute-fix.csm-footer {
     margin-top: 90px;
     bottom: -5px;
 }
+
+@media only screen and (max-width: 768px) {
+    .tp-revslider-mainul, .forcefullwidth_wrapper_tp_banner {
+        height: 50vw !important;
+    }
+}
