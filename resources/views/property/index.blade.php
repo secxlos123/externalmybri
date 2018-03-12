@@ -175,7 +175,10 @@
     {!! Html::script( 'js/dropdown.min.js' ) !!}
     <script type="text/javascript">
         $( document ).ready(function() {
-            $('.select2').select2({ witdh : '100%' });
+            $('.select2').select2({ 
+                witdh : '100%',
+                allowClear: true 
+            });
             loadData(1);
             $('.city_id').dropdown('cities');
             $('.developer').dropdown('developer');
