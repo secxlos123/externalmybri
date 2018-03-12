@@ -70,7 +70,7 @@
                 <div class="col-md-3">
                     <div class="single-query form-group">
                         {!! Form::select('garage', [
-                            '' => '', 'Tidak ada', 'Ada'
+                            '' => '','0' => 'Tidak ada','1' => 'Ada'
                         ], old('garage'), [
                             'class' => 'select2 garage',
                             'data-placeholder' => 'Semua garasi'
