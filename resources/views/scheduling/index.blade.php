@@ -63,6 +63,12 @@
                                                 <textarea name="description" readonly="" class="form-control" rows="3" style="resize: none;"></textarea>
                                                 </div>
                                             </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                <label class="control-label">Alamat</label>
+                                                <textarea name="address" readonly="" class="form-control" rows="3" style="resize: none;"></textarea>
+                                                </div>
+                                            </div>
                                         </div>
                                     </form>
                                 </div>

@@ -24,7 +24,7 @@
                 <div class="col-md-4">
                     <div class="single-query form-group">
                         {!! Form::select('category', [
-                            '' => '', 'Rumah', 'Rukan / Ruko', 'Rusun',
+                            '' => '', '1' => 'Rumah Tapak','2' => 'Rumah Susun/ Apartement','3' => 'Rumah Toko',
                         ], old('category'), [
                             'class' => 'select2 category',
                             'data-placeholder' => 'Semua Kategori'
@@ -70,7 +70,7 @@
                 <div class="col-md-3">
                     <div class="single-query form-group">
                         {!! Form::select('garage', [
-                            '' => '', 'Tidak ada', 'Ada'
+                            '' => '','0' => 'Tidak ada','1' => 'Ada'
                         ], old('garage'), [
                             'class' => 'select2 garage',
                             'data-placeholder' => 'Semua garasi'
@@ -175,10 +175,13 @@
     {!! Html::script( 'js/dropdown.min.js' ) !!}
     <script type="text/javascript">
         $( document ).ready(function() {
-            $('.select2').select2({ witdh : '100%' });
+            $('.select2').select2({ 
+                witdh : '100%',
+                allowClear: true 
+            });
             loadData(1);
             $('.city_id').dropdown('cities');
-            $('.developer').dropdown('developer');
+            $('.developer').dropdown('list_developer');
 
 
             $('#findProperty').on('click', function(){
@@ -203,7 +206,7 @@
                 loadData(1, dev, city, rangePrice, rangeLand, rangeBuild, category, bedroom, bathroom, garage, type);
             });
 
-            $('.property_type').empty().dropdown('types');
+            $('.property_type').empty().dropdown('list_proptype');
             $('.nstSlider.price').nstSlider({
                 "rounding": {
                     "100": "1000",

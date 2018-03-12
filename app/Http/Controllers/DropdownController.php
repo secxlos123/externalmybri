@@ -21,6 +21,19 @@ class DropdownController extends Controller
     }
 
     /**
+     * This logic for get list of developer from api
+     *
+     * @param  Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function list_developer(Request $request)
+    {
+        $body    = [ 'id' => 'dev_id', 'text' => 'company_name' ];
+        $options = [ 'search' => $request->input('name')];
+        return $this->init('list_developer', $body, $options, 'common');
+    }
+
+    /**
 	 * This logic for get list of properties from api
 	 *
 	 * @param  Request $request
@@ -44,6 +57,19 @@ class DropdownController extends Controller
     	$body 	 = [ 'id' => 'id', 'text' => 'name' ];
     	$options = [ 'property_id' => $request->input('prop_id'), 'search' => $request->input('name'), 'dropdown' => true ];
         return $this->init('property-type', $body, $options, $this->base());
+    }
+
+    /**
+     * This logic for get list of property types from api without non-kerjasama
+     *
+     * @param  Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function list_proptype(Request $request)
+    {
+        $body    = [ 'id' => 'id', 'text' => 'name' ];
+        $options = [ 'property_id' => $request->input('prop_id'), 'search' => $request->input('name'), 'dropdown' => true ];
+        return $this->init('list_proptype', $body, $options, $this->base());
     }
 
     /**
