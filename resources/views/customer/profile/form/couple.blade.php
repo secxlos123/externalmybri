@@ -63,7 +63,8 @@
                                     {!! Form::file('couple_identity', [
                                         'class' => 'filestyle', 'data-target' => 'ktp_couple_preview',
                                         'data-buttontext' => 'Unggah', 'data-buttonname' => 'btn-default',
-                                        'data-iconname' => 'fa fa-cloud-upload', 'data-placeholder' => 'Tidak ada file'
+                                        'data-iconname' => 'fa fa-cloud-upload', 'data-placeholder' => 'Tidak ada file',
+                                        'accept'=>'image/*,application/pdf'
                                     ]) !!}
                                 </div>
                             </div>
