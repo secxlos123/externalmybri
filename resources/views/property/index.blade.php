@@ -24,7 +24,7 @@
                 <div class="col-md-4">
                     <div class="single-query form-group">
                         {!! Form::select('category', [
-                            '' => '', 'Rumah', 'Rukan / Ruko', 'Rusun',
+                            '' => '', '1' => 'Rumah Tapak','2' => 'Rumah Susun/ Apartement','3' => 'Rumah Toko',
                         ], old('category'), [
                             'class' => 'select2 category',
                             'data-placeholder' => 'Semua Kategori'
