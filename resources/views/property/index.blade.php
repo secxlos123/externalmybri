@@ -181,7 +181,7 @@
             });
             loadData(1);
             $('.city_id').dropdown('cities');
-            $('.developer').dropdown('developer');
+            $('.developer').dropdown('list_developer');
 
 
             $('#findProperty').on('click', function(){
@@ -206,7 +206,7 @@
                 loadData(1, dev, city, rangePrice, rangeLand, rangeBuild, category, bedroom, bathroom, garage, type);
             });
 
-            $('.property_type').empty().dropdown('types');
+            $('.property_type').empty().dropdown('list_proptype');
             $('.nstSlider.price').nstSlider({
                 "rounding": {
                     "100": "1000",

@@ -37,6 +37,16 @@ Route::group(['prefix' => 'dropdown', 'as' => 'dropdown.'], function () {
 	Route::get('developer', 'DropdownController@developers')->name('developer');
 
 	/**
+	 * This route for get list developer for select2 daftar property
+	 */
+	Route::get('list_developer', 'DropdownController@list_developer')->name('list_developer');
+
+	/**
+	 * This route for get list developer for select2 daftar property
+	 */
+	Route::get('list_proptype', 'DropdownController@list_proptype')->name('list_proptype');
+
+	/**
 	 * This route for get form registration simple
 	 */
 	Route::get('items', 'DropdownController@units')->name('item');
