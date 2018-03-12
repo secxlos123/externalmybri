@@ -29,6 +29,7 @@
                                             'class' => 'select2 properties',
                                             'data-placeholder' => 'Pilih Proyek'
                                         ]) !!}
+                                        <input type="hidden" name="value_prop_id" id="value_prop_id">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -114,6 +115,9 @@
                     if ($('#value_prop_type').val()) {
                         d.property_type_id = $('#value_prop_type').val();
                     }
+                    if($('#value_prop_id').val()){
+                        d.property_id = $('#value_prop_id').val();
+                    }
                 }
             },
             aoColumns : [
@@ -144,6 +148,10 @@
 
         $('.property_type').on('change', function(){
             $('#value_prop_type').val($(this).select2('data')[0]['id']);
+        });
+
+        $('.properties').on('change', function(){
+            $('#value_prop_id').val($(this).select2('data')[0]['id']);
         });
 
         $('#btn-filter').on('click', function (event) {
