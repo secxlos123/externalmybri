@@ -186,39 +186,36 @@
                                 <div class="row">
                                     <div class="col-md-6" align="center">
                                         <div class="card-box" id="identity">
-                                        @if((pathinfo(strtolower($data['other']['identity']), PATHINFO_EXTENSION) == 'jpg') || (pathinfo(strtolower($data['other']['identity']), PATHINFO_EXTENSION) == 'png') || (pathinfo((strtolower($data['other']['identity'])), PATHINFO_EXTENSION) == 'jpeg'))
-                                                 @if(strpos($data['other']['identity'], 'noimage.jpg'))
+                                        @if((pathinfo(strtolower($data['customer']['other']['identity']), PATHINFO_EXTENSION) == 'jpg') || (pathinfo(strtolower($data['customer']['other']['identity']), PATHINFO_EXTENSION) == 'png') || (pathinfo((strtolower($data['customer']['other']['identity'])), PATHINFO_EXTENSION) == 'jpeg'))
+                                                 @if(strpos($data['customer']['other']['identity'], 'noimage.jpg'))
                                                 <p>Foto KTP Kosong</p>
                                                  @else
-                                                <img src="@if(!empty($data['other']['identity'])){{$data['other']['identity']}}@endif" class="img-responsive">                           
+                                                <img src="@if(!empty($data['customer']['other']['identity'])){{$data['customer']['other']['identity']}}@endif" class="img-responsive">                           
                                                 <p>Foto KTP</p>
                                                   @endif
                                         @else
-                                                <a href="@if(!empty($data['other']['identity'])){{$data['other']['identity']}}@endif" target="_blank" class="img-responsive"><img src="{{asset('assets/images/download-logo.png')}}" class="img-responsive"></a>
+                                                <a href="@if(!empty($data['customer']['other']['identity'])){{$data['customer']['other']['identity']}}@endif" target="_blank" class="img-responsive"><img src="{{asset('assets/images/download-logo.png')}}" class="img-responsive"></a>
                                                 <p>Klik Untuk Lihat Foto KTP</p>
                                         @endif
                                         </div>
                                     </div>
-                                    <div class="col-md-6" align="center" id="couple5">
-                                        <div class="card-box" id="couple_identity">
-                                            @if(!empty($data['personal']['status_id']) &&($data['personal']['status_id'] == 2))
                                         <div class="col-md-6" align="center">
-                                        <div class="card-box">
-                                        @if((pathinfo(strtolower($data['personal']['couple_identity']), PATHINFO_EXTENSION) == 'jpg') || (pathinfo(strtolower($data['personal']['couple_identity']), PATHINFO_EXTENSION) == 'png') || (pathinfo((strtolower($data['personal']['couple_identity'])), PATHINFO_EXTENSION) == 'jpeg'))
-                                                 @if(strpos($data['personal']['couple_identity'], 'noimage.jpg'))
+                                        <div class="card-box" id="couple_identity">
+                                   
+                                        @if((pathinfo(strtolower($data['customer']['personal']['couple_identity']), PATHINFO_EXTENSION) == 'jpg') || (pathinfo(strtolower($data['customer']['personal']['couple_identity']), PATHINFO_EXTENSION) == 'png') || (pathinfo((strtolower($data['customer']['personal']['couple_identity'])), PATHINFO_EXTENSION) == 'jpeg'))
+                                                 @if(strpos($data['customer']['personal']['couple_identity'], 'noimage.jpg'))
                                                 <p>Foto KTP Kosong</p>
                                                  @else
-                                                <img src="@if(!empty($data['personal']['couple_identity'])){{$data['personal']['couple_identity']}}@endif" class="img-responsive">
+                                                <img src="@if(!empty($data['customer']['personal']['couple_identity'])){{$data['customer']['personal']['couple_identity']}}@endif" class="img-responsive">
                                                 <p>Foto KTP Pasangan</p>
                                                 @endif
                                         @else
-                                                <a href="@if(!empty($data['personal']['couple_identity'])){{$data['personal']['couple_identity']}}@endif" target="_blank" class="img-responsive"><img src="{{asset('assets/images/download-logo.png')}}" class="img-responsive"></a>
+                                                <a href="@if(!empty($data['customer']['personal']['couple_identity'])){{$data['customer']['personal']['couple_identity']}}@endif" target="_blank" class="img-responsive"><img src="{{asset('assets/images/download-logo.png')}}" class="img-responsive"></a>
                                                 <p>Klik Untuk Lihat Foto KTP Pasangan</p>
                                         @endif
-                                        </div>
+                                     
                                     </div>
                                 </div>
-                            </div>
                         </div>
                     </div>
                 </div>
