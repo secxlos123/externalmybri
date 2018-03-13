@@ -354,7 +354,7 @@
         });
 
      $('#view-modal').on('click', '#agree', function() {
-           HoldOn.open(options);
+          // HoldOn.open(options);
             // console.log('ini ini ini');
        $("#app-eform").submit();
     });
@@ -416,7 +416,7 @@
                         };
 
                         var text = $(this).find("option:selected").text();
-                        console.log(text);
+                       // console.log(text);
                     }
                 },
                 cache: true
@@ -474,9 +474,9 @@
      textColor:"white"
           };
 
-   $('#btn-save').on('click', function() {
-        HoldOn.open(options);
-     });
+   // $('#btn-save').on('click', function() {
+   //     HoldOn.open(options);
+   //   });
 
       //storing leads
 
@@ -496,10 +496,10 @@
                  url: "{{route('eform.save-customer')}}",
                  type: 'POST',
                  data: formData,
-                 async: false,
+                 async: true,
                  success: function (data) {
                       console.log(data);
-                     toastr["success"]("Data Berhasil disimpan");
+                     //toastr["success"]("Data Berhasil disimpan");
                       $('#divForm').removeClass('alert alert-success');
                       $('#divForm').html("");
 
@@ -538,14 +538,14 @@
                         , 2000);
                     }
 
-                    HoldOn.close();
+                  //  HoldOn.close();
                     $('#divForm').addClass('alert alert-success');
                     $('#divForm').append('Data Berhasil Ditambahkan');
                  },
                  error: function (response) {
                       console.log(response)
-                      toastr["error"]("Data Gagal disimpan");
-                     HoldOn.close();
+                     //  toastr["error"]("Data Gagal disimpan");
+                     // HoldOn.close();
                  },
                  cache: false,
                  contentType: false,
