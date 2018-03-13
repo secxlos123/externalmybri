@@ -181,6 +181,7 @@
                     <div class="col-md-12">
                         <div class="panel panel-primary">
                             <div class="panel-heading">
+                                <h3 class="panel-title">Identitas Nasabah</h3>
                             </div>
                             <div class="panel-body">
                                 <div class="row">
@@ -188,7 +189,7 @@
                                         <div class="card-box" id="identity">
                                         @if((pathinfo(strtolower($data['customer']['other']['identity']), PATHINFO_EXTENSION) == 'jpg') || (pathinfo(strtolower($data['customer']['other']['identity']), PATHINFO_EXTENSION) == 'png') || (pathinfo((strtolower($data['customer']['other']['identity'])), PATHINFO_EXTENSION) == 'jpeg'))
                                                  @if(strpos($data['customer']['other']['identity'], 'noimage.jpg'))
-                                                <p>Foto KTP Kosong</p>
+                                               <!--  <p>Foto KTP Kosong</p> -->
                                                  @else
                                                 <img src="@if(!empty($data['customer']['other']['identity'])){{$data['customer']['other']['identity']}}@endif" class="img-responsive">                           
                                                 <p>Foto KTP</p>
@@ -204,7 +205,7 @@
                                    
                                         @if((pathinfo(strtolower($data['customer']['personal']['couple_identity']), PATHINFO_EXTENSION) == 'jpg') || (pathinfo(strtolower($data['customer']['personal']['couple_identity']), PATHINFO_EXTENSION) == 'png') || (pathinfo((strtolower($data['customer']['personal']['couple_identity'])), PATHINFO_EXTENSION) == 'jpeg'))
                                                  @if(strpos($data['customer']['personal']['couple_identity'], 'noimage.jpg'))
-                                                <p>Foto KTP Kosong</p>
+                                               <!--  <p>Foto KTP Kosong</p> -->
                                                  @else
                                                 <img src="@if(!empty($data['customer']['personal']['couple_identity'])){{$data['customer']['personal']['couple_identity']}}@endif" class="img-responsive">
                                                 <p>Foto KTP Pasangan</p>
