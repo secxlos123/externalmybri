@@ -496,8 +496,8 @@
                  url: "{{route('eform.save-customer')}}",
                  type: 'POST',
                  data: formData,
-                 async: true,
                  success: function (data) {
+                      console.log("=========Data Ajax============");
                       console.log(data);
                      //toastr["success"]("Data Berhasil disimpan");
                       $('#divForm').removeClass('alert alert-success');

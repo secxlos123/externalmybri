@@ -130,7 +130,7 @@
                                                     <div class="form-group mother_name {!! $errors->has('mother_name') ? 'has-error' : '' !!}">
                                                         <label class="col-md-5 control-label">Nama Gadis Ibu Kandung * :</label>
                                                         <div class="col-md-7">
-                                                            <input type="text" class="form-control" name="mother_name" id="mother_name" value="{{old('mother_name')}}" maxlength="50" onkeypress="return goodchars(event, 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', this)">
+                                                            <input type="text" class="form-control" name="mother_name" id="mother_name" value="{{old('mother_name')}}" maxlength="25" onkeypress="return goodchars(event, 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ', this)">
                                                             @if ($errors->has('mother_name')) <p class="help-block">{{ $errors->first('mother_name') }}</p> @endif
                                                         </div>
                                                     </div>
