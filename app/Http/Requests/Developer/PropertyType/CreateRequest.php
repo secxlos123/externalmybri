@@ -23,7 +23,7 @@ class CreateRequest extends FormRequest
             'property_id'   => 'required',
             'surface_area'  => 'required|numeric|between:50,10000',
             'certificate'   => 'required',
-            'building_area' => 'required|numeric|between:30,500',
+            'building_area' => 'required|numeric|between:30,10000',
             'electrical_power'  => 'required',
         ];
     }
@@ -48,7 +48,7 @@ class CreateRequest extends FormRequest
             'building_area.required'  => 'Bidang isian luas bangunan harus diisi',
             'electrical_power.required'  => 'Bidang isian daya listrik harus diisi',
             'surface_area.between' => 'Bidang isian Luas Tanah minimal 50 dan maksimal 10000',
-            'building_area.between' => 'Bidang isian Luas Bangunan minimal 30 dan maksimal 500'
+            'building_area.between' => 'Bidang isian Luas Bangunan minimal 30 dan maksimal 10000'
         ];
     }
 }

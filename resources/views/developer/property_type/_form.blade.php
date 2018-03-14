@@ -60,6 +60,7 @@
                 <div class="input-group">
                     {!! Form::text('surface_area', old('surface_area'), [
                         'class' => 'keyword-input',
+                        'maxlength' => '5',
                         'onkeypress' => 'return goodchars(event, "1234567890 ", this)'
                     ]) !!}
                     <span class="input-group-addon">m<sup>2</sup></span>
@@ -78,6 +79,7 @@
                 <div class="input-group">
                     {!! Form::text('building_area', old('building_area'), [
                         'class' => 'keyword-input',
+                        'maxlength' => '5',
                         'onkeypress' => 'return goodchars(event, "1234567890 ", this)'
                     ]) !!}
                     <span class="input-group-addon">m<sup>2</sup></span>

@@ -105,7 +105,7 @@
                         <div class="rightLabel"></div>
                         <span>m<sup>2</sup></span>
                     </div>
-                    <div data-range_min="30" data-range_max="500" data-cur_min="30" data-cur_max="500" class="nstSlider build">
+                    <div data-range_min="30" data-range_max="10000" data-cur_min="30" data-cur_max="10000" class="nstSlider build">
                         <div class="bar"></div>
                         <div class="leftGrip"></div>
                         <div class="rightGrip"></div>
