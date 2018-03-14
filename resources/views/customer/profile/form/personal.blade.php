@@ -231,8 +231,10 @@
 		                    <div class="col-md-6">
 								<div class="form-group ktp_preview">
 			                    	<div class="col-md-12 col-md-offset-2">
-										<iframe src="{{$customer->identity}}" title="your_title" align="top" height="620" width="100%" frameborder="0" scrolling="auto" target="Message">
-										</iframe>
+										<!-- <iframe src="{{$customer->identity}}" title="your_title" align="top" height="620" width="100%" frameborder="0" scrolling="auto" target="Message">
+										</iframe> -->
+										 <a href="@if(!empty($customer->identity)){{$customer->identity}}@endif" target="_blank" class="img-responsive"><img src="{{asset('assets/images/download-logo.png')}}" class="img-responsive"></a>
+                                                <p>Klik Untuk Lihat Foto KTP</p>
 									</div>
 								</div>
 							</div>
