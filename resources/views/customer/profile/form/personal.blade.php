@@ -206,7 +206,8 @@
 							<div class="col-md-7">
 								{!! Form::text('mother_name', old('mother_name'), [
 									'class' => 'form-control',
-									'onkeypress' => 'return goodchars(event, "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ", this)'
+									'maxlength' => '30',
+									'onkeypress' => 'return goodchars(event, "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ", this)'
 								]) !!}
 							</div>
 						</div>
