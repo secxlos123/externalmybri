@@ -50,7 +50,7 @@
                 <div class="col-md-3">
                     <div class="single-query form-group">
                         {!! Form::select('bedroom', [
-                            '' => '', '1 Kamar', '2 Kamar', '3 Kamar', '4 Kamar', '>4 Kamar'
+                            '' => '', '1 Kamar', '2 Kamar', '3 Kamar', '>3 Kamar'
                         ], old('bedroom'), [
                             'class' => 'select2 bedroom',
                             'data-placeholder' => 'Semua kamar tidur'
