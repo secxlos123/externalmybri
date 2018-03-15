@@ -298,7 +298,7 @@
                 }
         });
 
-        $('#price_item').on('input',function()
+        $('#price_item').on('change',function()
         {
             var price = $(this).val()
             data = price.replace(/\./g,'')

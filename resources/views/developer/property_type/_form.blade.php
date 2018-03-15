@@ -240,7 +240,7 @@
         $('.select2').select2({ witdh : '100%' });
         $('.properties').dropdown('property?is_approved=true');
 
-        $('#price_type').on('input',function()
+        $('#price_type').on('change',function()
         {
             var price = $(this).val()
             data = price.replace(/\./g,'')
