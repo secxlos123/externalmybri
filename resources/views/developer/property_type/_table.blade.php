@@ -63,10 +63,12 @@
                                             <div class="input-group">
                                                 {!! Form::text('min_surface_area', old('min_surface_area'), [
                                                     'class' => 'form-control min_surface numeric',
+                                                    'maxlength'=>'5'
                                                 ]) !!}
                                                 <span class="input-group-addon">s/d</span>
                                                 {!! Form::text('max_surface_area', old('max_surface_area'), [
                                                     'class' => 'form-control max_surface numeric',
+                                                    'maxlength'=>'5'
                                                 ]) !!}
                                                 <span class="input-group-addon">m<sup>2</sup></span>
                                             </div>
@@ -78,10 +80,12 @@
                                             <div class="input-group">
                                                 {!! Form::text('min_building_area', old('min_building_area'), [
                                                     'class' => 'form-control min_building numeric',
+                                                    'maxlength'=>'5'
                                                 ]) !!}
                                                 <span class="input-group-addon">s/d</span>
                                                 {!! Form::text('max_building_area', old('max_building_area'), [
                                                     'class' => 'form-control max_building numeric',
+                                                    'maxlength'=>'5'
                                                 ]) !!}
                                                 <span class="input-group-addon">m<sup>2</sup></span>
                                             </div>
@@ -226,7 +230,7 @@
                     $('div.'+tag).append("<span style=\"color:#B0413E;\" class=\"messageError\">Nilai maksimum harus diisi.</span>");
                     return false;
                 }else{
-                    if ($min_var.val() > $max_var.val()) {
+                    if (Math.abs($min_var.val()) > Math.abs($max_var.val())) {
                         $('div.'+tag+' span.messageError').remove();
                         $('div.'+tag).append("<span style=\"color:#B0413E;\" class=\"messageError\">Nilai maksimum harus lebih besar dari minimum.</span>");
                         return false;

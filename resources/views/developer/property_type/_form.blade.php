@@ -102,7 +102,8 @@
                 <div class="input-group">
                     {!! Form::text('electrical_power', old('electrical_power'), [
                         'class' => 'keyword-input',
-                        'onkeypress' => 'return goodchars(event, "1234567890 ", this)'
+                        'onkeypress' => 'return goodchars(event, "1234567890 ", this)',
+                        'maxlength'=>'5'
                     ]) !!}
                     <span class="input-group-addon">watt</span>
                 </div>
@@ -120,7 +121,8 @@
                 <div class="input-group">
                     {!! Form::text('floors', old('floors'), [
                         'class' => 'keyword-input',
-                        'onkeypress' => 'return goodchars(event, "1234567890 ", this)'
+                        'onkeypress' => 'return goodchars(event, "1234567890 ", this)',
+                        'maxlength'=>'1'
                     ]) !!}
                     <span class="input-group-addon">lantai</span>
                 </div>
