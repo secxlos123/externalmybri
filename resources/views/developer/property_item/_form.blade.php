@@ -56,6 +56,7 @@
                 {!! Form::text('price', old('price'), [
                     'class' => 'form-control numericOnly currency',
                     'placeholder' => 'Masukkan harga properti',
+                    'id' => 'price_item',
                     'maxlength' => 15
                 ]) !!}
             </div>
@@ -295,6 +296,17 @@
                 $('#unit_size').val(size+1);
                 }
                 }
+        });
+
+        $('#price_item').on('input',function()
+        {
+            var price = $(this).val()
+            data = price.replace(/\./g,'')
+            if(Math.abs(data) >= 5000000000)
+            {
+                alert('Harga Tidak Boleh Lebih Dari Rp 5.000.000.000 ');
+                $('#price_item').val('');
+            }
         });
     </script>
 @endpush

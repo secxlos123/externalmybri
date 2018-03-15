@@ -41,7 +41,8 @@
             <div class="input-group">
                 <span class="input-group-addon">Rp</span>
                 {!! Form::text('price', old('price'), [
-                    'class' => 'keyword-input numeric currency', 'maxlength' => 15
+                    'class' => 'keyword-input numeric currency', 'maxlength' => 15,
+                    'id' => 'price_type'
                 ]) !!}
             </div>
 
@@ -238,5 +239,16 @@
     <script type="text/javascript">
         $('.select2').select2({ witdh : '100%' });
         $('.properties').dropdown('property?is_approved=true');
+
+        $('#price_type').on('input',function()
+        {
+            var price = $(this).val()
+            data = price.replace(/\./g,'')
+            if(Math.abs(data) >= 5000000000)
+            {
+                alert('Harga Tidak Boleh Lebih Dari Rp 5.000.000.000 ');
+                $('#price_type').val('');
+            }
+        });
     </script>
 @endpush
