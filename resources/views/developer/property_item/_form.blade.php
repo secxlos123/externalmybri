@@ -302,7 +302,7 @@
         {
             var price = $(this).val()
             data = price.replace(/\./g,'')
-            if(Math.abs(data) >= 5000000000)
+            if(Math.abs(data) >= 5000000001)
             {
                 alert('Harga Tidak Boleh Lebih Dari Rp 5.000.000.000 ');
                 $('#price_item').val('');
