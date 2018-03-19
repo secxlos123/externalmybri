@@ -21,9 +21,9 @@ class CreateRequest extends FormRequest
             'floors'    => 'required|numeric|between:0,4',
             'carport'   => 'required|numeric|between:0,4',
             'property_id'   => 'required',
-            'surface_area'  => 'required|numeric',
+            'surface_area'  => 'required|numeric|between:50,10000',
             'certificate'   => 'required',
-            'building_area' => 'required|numeric',
+            'building_area' => 'required|numeric|between:30,10000',
             'electrical_power'  => 'required',
         ];
     }
@@ -47,6 +47,8 @@ class CreateRequest extends FormRequest
             'certificate.required'  => 'Bidang isian jenis sertifikat harus diisi',
             'building_area.required'  => 'Bidang isian luas bangunan harus diisi',
             'electrical_power.required'  => 'Bidang isian daya listrik harus diisi',
+            'surface_area.between' => 'Bidang isian Luas Tanah minimal 50 dan maksimal 10000',
+            'building_area.between' => 'Bidang isian Luas Bangunan minimal 30 dan maksimal 10000'
         ];
     }
 }

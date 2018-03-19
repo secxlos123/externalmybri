@@ -19,6 +19,7 @@ class HomeController extends Controller
         'nik',
         'nominal',
         'status',
+        'property_name',
         'product_type',
         'ao_name',
     ];

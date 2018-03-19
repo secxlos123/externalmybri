@@ -63,7 +63,8 @@
                                     {!! Form::file('couple_identity', [
                                         'class' => 'filestyle', 'data-target' => 'ktp_couple_preview',
                                         'data-buttontext' => 'Unggah', 'data-buttonname' => 'btn-default',
-                                        'data-iconname' => 'fa fa-cloud-upload', 'data-placeholder' => 'Tidak ada file'
+                                        'data-iconname' => 'fa fa-cloud-upload', 'data-placeholder' => 'Tidak ada file',
+                                        'accept'=>'image/*,application/pdf'
                                     ]) !!}
                                 </div>
                             </div>
@@ -78,8 +79,10 @@
                             <div class="col-md-6">
                                 <div class="form-group ktp_preview">
                                     <div class="col-md-12 col-md-offset-2">
-                                        <iframe src="{{$customer->couple_identity}}" title="your_title" align="top" height="620" width="100%" frameborder="0" scrolling="auto" target="Message">
-                                        </iframe>
+                                     <!--    <iframe src="{{$customer->couple_identity}}" title="your_title" align="top" height="620" width="100%" frameborder="0" scrolling="auto" target="Message">
+                                        </iframe> -->
+                                        <a href="@if(!empty($customer->couple_identity)){{$customer->couple_identity}}@endif" target="_blank" class="img-responsive"><img src="{{asset('assets/images/download-logo.png')}}" class="img-responsive"></a>
+                                                <p>Klik Untuk Lihat Foto KTP Pasangan</p>
                                     </div>
                                 </div>
                             </div>

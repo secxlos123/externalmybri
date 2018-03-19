@@ -43,18 +43,17 @@ class HomeController extends Controller
         $response = Client::setEndpoint('get-data-dashboard-developer')
          ->setHeaders(['Authorization' => session('authenticate.token')])
         ->setBody($dataSend)->post();
+       // dd($response);
         $userList = $response['contents']['user_list'];
 
         echo " <table class='table table-striped table-bordered project-list'>
                 <thead class='bg-blue'>
                     <tr>
                         <th>No</th>
-                        <th>Nama Proyek</th>
-                        <th>Tipe Property</th>
-                        <th>Unit</th>
-                        <th>Harga Unit</th>
-                        <th>Nama Pemohon</th>
-                        <th>Status Pengajuan</th>
+                        <th>Nama Sales</th>
+                        <th>Jumlah Pengajuan</th>
+                        <th>Jumlah Terjual</th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>";
@@ -64,17 +63,14 @@ class HomeController extends Controller
                     echo "     
                         <tr>
                             <td>".$no."</td>
-                            <td>".$value['property_name']."</td>
-                            <td>".$value['unit_type']."</td>
-                            <td>".$value['address']."</td>
-                            <td>".$value['unit_price']."</td>
-                            <td>".$value['name']."</td>
-                            <td>".$value['approved_status']."</td>
-                             
+                            <td>".ucwords($value['first_name'])." ".ucwords($value['last_name'])."</td>
+                            <td>".$value['eform']."</td>
+                            <td>".$value['eform_approved']."</td>
+                            <td><button class='btn btn-sm btn-primary' title='View Detail' data-id='".$value['user_id']."' data-toggle='modal' data-target='#modalDetail' id='btnView'><i class='fa fa-eye'></i></button></td>
                         </tr>";
                     }
                   }else{
-                    echo "<td valign='top' colspan='7' >Tidak ada data di tabel ini</td>";         
+                    echo "<td valign='top' colspan='7' ><center>Tidak ada data di tabel ini</center></td>";         
                   }
                 echo"</tbody>
             </table>";

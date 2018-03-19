@@ -160,6 +160,33 @@
                     }
                 });
 
+            $dp
+                .on('input', function() {
+                    change_dp(this);
+                })
+                .on('change', function() {
+                    change_dp(this);
+                })
+                .on('blur', function() {
+                    var val = $(this).val();
+                    var dp_min = $dp.data('min');
+                    var down_payment = $('#down_payment');
+                    var request_amount = $('#request_amount');
+                    var price_without_comma = $price.val().replace(',00', '');
+                    var static_price = price_without_comma.replace(/\./g, '');
+
+                    if (val < dp_min) {
+                        val = dp_min;
+                        $(this).val(dp_min);
+                    }
+
+                    payment = (val / 100) * static_price;
+                    down_payment.val(payment);
+                    amount = static_price - payment;
+                    down_payment.val(payment);
+                    request_amount.val(amount);
+                });
+
             $down_payment
                 .on('input', function() {
                     var val = $(this).val().replace(',00', '').replace(/\./g, '');
@@ -194,55 +221,32 @@
                         }
                     }
                 })
+                
                 .on('blur', function() {
                     var val = $(this).val().replace(',00', '').replace(/\./g, '');
                     var static_price = $('#price').val().replace(',00', '').replace(/\./g, '');
                     var dp = $('#dp');
-                    var dp_min = dp.data('min');
+                    var dp_min = dp.attr('min');
                     var min = parseInt(static_price) * (dp_min/100);
 
                     if ( isNaN(parseInt(val)) ) {
                         val = 0;
                     }
+                    var real = parseInt(static_price) * (dp.val()/100);
 
                     if (parseInt(val) < min) {
-                        $(this).val(min)
+                        $(this).val(min.toFixed(0))
                         dp.val(dp_min);
-                        $request_amount.val(static_price - min);
+                        request_amount.val((static_price - min).toFixed(0));
 
                     } else {
-                        $(this).val(real);
-                        request_amount.val(static_price - real);
+                        $(this).val(real.toFixed(0));
+                        request_amount.val((static_price - real).toFixed(0));
 
                     }
                 });
 
-            $dp
-                .on('input', function() {
-                    change_dp(this);
-                })
-                .on('change', function() {
-                    change_dp(this);
-                })
-                .on('blur', function() {
-                    var val = $(this).val();
-                    var dp_min = $dp.data('min');
-                    var down_payment = $('#down_payment');
-                    var request_amount = $('#request_amount');
-                    var price_without_comma = $price.val().replace(',00', '');
-                    var static_price = price_without_comma.replace(/\./g, '');
-
-                    if (val < dp_min) {
-                        val = dp_min;
-                        $(this).val(dp_min);
-                    }
-
-                    payment = (val / 100) * static_price;
-                    down_payment.val(payment);
-                    amount = static_price - payment;
-                    down_payment.val(payment);
-                    request_amount.val(amount);
-                });
+            
 
             $category.on('change', function () {
                 switch ( $(this).val() ) {

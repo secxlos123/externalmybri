@@ -72,11 +72,11 @@
         $("input[name='guest']").val(calEvent.guest || '');
         $("input[name='date']").val(calEvent.start.format('YYYY-MM-DD') || '');
         $("input[name='reference']").val(calEvent.refNum || '');
-        if(calEvent.desc == '-'){
-            $("textarea[name='description']").val(calEvent.address);    
-        }else{
-            $("textarea[name='description']").val(calEvent.desc || '');
-        }
+        //if(calEvent.desc == '-'){
+        $("textarea[name='address']").val(calEvent.address || '');    
+        //}else{
+        $("textarea[name='description']").val(calEvent.desc || '');
+        //}
         $("input[name='lng']").val(calEvent.long || '');
         $("input[name='lat']").val(calEvent.lat || '');
         $("input[name='id_schedule']").val(calEvent.id || '');

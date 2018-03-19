@@ -41,7 +41,8 @@
             <div class="input-group">
                 <span class="input-group-addon">Rp</span>
                 {!! Form::text('price', old('price'), [
-                    'class' => 'keyword-input numeric currency', 'maxlength' => 15
+                    'class' => 'keyword-input numeric currency', 'maxlength' => 15,
+                    'id' => 'price_type'
                 ]) !!}
             </div>
 
@@ -60,6 +61,7 @@
                 <div class="input-group">
                     {!! Form::text('surface_area', old('surface_area'), [
                         'class' => 'keyword-input',
+                        'maxlength' => '5',
                         'onkeypress' => 'return goodchars(event, "1234567890 ", this)'
                     ]) !!}
                     <span class="input-group-addon">m<sup>2</sup></span>
@@ -78,6 +80,7 @@
                 <div class="input-group">
                     {!! Form::text('building_area', old('building_area'), [
                         'class' => 'keyword-input',
+                        'maxlength' => '5',
                         'onkeypress' => 'return goodchars(event, "1234567890 ", this)'
                     ]) !!}
                     <span class="input-group-addon">m<sup>2</sup></span>
@@ -100,7 +103,8 @@
                 <div class="input-group">
                     {!! Form::text('electrical_power', old('electrical_power'), [
                         'class' => 'keyword-input',
-                        'onkeypress' => 'return goodchars(event, "1234567890 ", this)'
+                        'onkeypress' => 'return goodchars(event, "1234567890 ", this)',
+                        'maxlength'=>'5'
                     ]) !!}
                     <span class="input-group-addon">watt</span>
                 </div>
@@ -118,7 +122,8 @@
                 <div class="input-group">
                     {!! Form::text('floors', old('floors'), [
                         'class' => 'keyword-input',
-                        'onkeypress' => 'return goodchars(event, "1234567890 ", this)'
+                        'onkeypress' => 'return goodchars(event, "1234567890 ", this)',
+                        'maxlength'=>'1'
                     ]) !!}
                     <span class="input-group-addon">lantai</span>
                 </div>
@@ -234,5 +239,16 @@
     <script type="text/javascript">
         $('.select2').select2({ witdh : '100%' });
         $('.properties').dropdown('property?is_approved=true');
+
+        $('#price_type').on('change',function()
+        {
+            var price = $(this).val()
+            data = price.replace(/\./g,'')
+            if(Math.abs(data) >= 5000000001)
+            {
+                alert('Harga Tidak Boleh Lebih Dari Rp 5.000.000.000 ');
+                $('#price_type').val('');
+            }
+        });
     </script>
 @endpush

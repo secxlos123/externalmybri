@@ -158,6 +158,7 @@ class ItemController extends Controller
                 'sort'             => $this->columns[$sort['column']] .'|'. $sort['dir'],
                 'page'             => (int) $request->input('page') + 1,
                 'search'           => $request->input('search.value'),
+                'property_id'      => $request->input('property_id'),
             ])
             ->get();
 

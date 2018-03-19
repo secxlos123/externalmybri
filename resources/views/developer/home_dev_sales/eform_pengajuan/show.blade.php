@@ -181,25 +181,42 @@
                     <div class="col-md-12">
                         <div class="panel panel-primary">
                             <div class="panel-heading">
+                                <h3 class="panel-title">Identitas Nasabah</h3>
                             </div>
                             <div class="panel-body">
                                 <div class="row">
                                     <div class="col-md-6" align="center">
                                         <div class="card-box" id="identity">
-                                            <img src="@if(!empty($data['customer']['other']['identity'])){{$data['customer']['other']['identity']}}@endif" class="img-responsive">
-
-                                            <p>Foto KTP</p>
+                                        @if((pathinfo(strtolower($data['customer']['other']['identity']), PATHINFO_EXTENSION) == 'jpg') || (pathinfo(strtolower($data['customer']['other']['identity']), PATHINFO_EXTENSION) == 'png') || (pathinfo((strtolower($data['customer']['other']['identity'])), PATHINFO_EXTENSION) == 'jpeg'))
+                                                 @if(strpos($data['customer']['other']['identity'], 'noimage.jpg'))
+                                               <!--  <p>Foto KTP Kosong</p> -->
+                                                 @else
+                                                <img src="@if(!empty($data['customer']['other']['identity'])){{$data['customer']['other']['identity']}}@endif" class="img-responsive">                           
+                                                <p>Foto KTP</p>
+                                                  @endif
+                                        @else
+                                                <a href="@if(!empty($data['customer']['other']['identity'])){{$data['customer']['other']['identity']}}@endif" target="_blank" class="img-responsive"><img src="{{asset('assets/images/download-logo.png')}}" class="img-responsive"></a>
+                                                <p>Klik Untuk Lihat Foto KTP</p>
+                                        @endif
                                         </div>
                                     </div>
-                                    <div class="col-md-6" align="center" id="couple5">
+                                        <div class="col-md-6" align="center">
                                         <div class="card-box" id="couple_identity">
-                                            <img src="@if(!empty($data['customer']['personal']['couple_identity'])){{$data['customer']['personal']['couple_identity']}}@endif" class="img-responsive">
-
-                                            <p>Foto KTP Pasangan</p>
-                                        </div>
+                                   
+                                        @if((pathinfo(strtolower($data['customer']['personal']['couple_identity']), PATHINFO_EXTENSION) == 'jpg') || (pathinfo(strtolower($data['customer']['personal']['couple_identity']), PATHINFO_EXTENSION) == 'png') || (pathinfo((strtolower($data['customer']['personal']['couple_identity'])), PATHINFO_EXTENSION) == 'jpeg'))
+                                                 @if(strpos($data['customer']['personal']['couple_identity'], 'noimage.jpg'))
+                                               <!--  <p>Foto KTP Kosong</p> -->
+                                                 @else
+                                                <img src="@if(!empty($data['customer']['personal']['couple_identity'])){{$data['customer']['personal']['couple_identity']}}@endif" class="img-responsive">
+                                                <p>Foto KTP Pasangan</p>
+                                                @endif
+                                        @else
+                                                <a href="@if(!empty($data['customer']['personal']['couple_identity'])){{$data['customer']['personal']['couple_identity']}}@endif" target="_blank" class="img-responsive"><img src="{{asset('assets/images/download-logo.png')}}" class="img-responsive"></a>
+                                                <p>Klik Untuk Lihat Foto KTP Pasangan</p>
+                                        @endif
+                                     
                                     </div>
                                 </div>
-                            </div>
                         </div>
                     </div>
                 </div>

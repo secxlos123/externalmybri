@@ -206,7 +206,8 @@
 							<div class="col-md-7">
 								{!! Form::text('mother_name', old('mother_name'), [
 									'class' => 'form-control',
-									'onkeypress' => 'return goodchars(event, "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ", this)'
+									'maxlength' => '30',
+									'onkeypress' => 'return goodchars(event, "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ", this)'
 								]) !!}
 							</div>
 						</div>
@@ -219,7 +220,7 @@
 						<div class="form-group">
 	                        <label class="col-md-4 control-label">Foto KTP :</label>
 	                        <div class="col-md-8">
-	                            <input type="file" class="filestyle" data-buttontext="Unggah" data-buttonname="btn-default" data-iconname="fa fa-cloud-upload" data-placeholder="Tidak ada file" name="identity" accept="image/png,image/jpeg,image/gif/pdf" id="personalKTP">
+	                            <input type="file" class="filestyle" data-buttontext="Unggah" data-buttonname="btn-default" data-iconname="fa fa-cloud-upload" data-placeholder="Tidak ada file" name="identity" accept="image/*,application/pdf" id="personalKTP">
 	                        </div>
 	                    </div>
 					</div>
@@ -231,8 +232,10 @@
 		                    <div class="col-md-6">
 								<div class="form-group ktp_preview">
 			                    	<div class="col-md-12 col-md-offset-2">
-										<iframe src="{{$customer->identity}}" title="your_title" align="top" height="620" width="100%" frameborder="0" scrolling="auto" target="Message">
-										</iframe>
+										<!-- <iframe src="{{$customer->identity}}" title="your_title" align="top" height="620" width="100%" frameborder="0" scrolling="auto" target="Message">
+										</iframe> -->
+										 <a href="@if(!empty($customer->identity)){{$customer->identity}}@endif" target="_blank" class="img-responsive"><img src="{{asset('assets/images/download-logo.png')}}" class="img-responsive"></a>
+                                                <p>Klik Untuk Lihat Foto KTP</p>
 									</div>
 								</div>
 							</div>

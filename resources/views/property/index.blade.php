@@ -24,7 +24,7 @@
                 <div class="col-md-4">
                     <div class="single-query form-group">
                         {!! Form::select('category', [
-                            '' => '', 'Rumah', 'Rukan / Ruko', 'Rusun',
+                            '' => '', '1' => 'Rumah Tapak','2' => 'Rumah Susun/ Apartement','3' => 'Rumah Toko',
                         ], old('category'), [
                             'class' => 'select2 category',
                             'data-placeholder' => 'Semua Kategori'
@@ -50,7 +50,7 @@
                 <div class="col-md-3">
                     <div class="single-query form-group">
                         {!! Form::select('bedroom', [
-                            '' => '', '1 Kamar', '2 Kamar', '3 Kamar', '4 Kamar', '>4 Kamar'
+                            '' => '', '1 Kamar', '2 Kamar', '3 Kamar', '>3 Kamar'
                         ], old('bedroom'), [
                             'class' => 'select2 bedroom',
                             'data-placeholder' => 'Semua kamar tidur'
@@ -70,7 +70,7 @@
                 <div class="col-md-3">
                     <div class="single-query form-group">
                         {!! Form::select('garage', [
-                            '' => '', 'Tidak ada', 'Ada'
+                            '' => '','0' => 'Tidak ada','1' => 'Ada'
                         ], old('garage'), [
                             'class' => 'select2 garage',
                             'data-placeholder' => 'Semua garasi'
@@ -105,7 +105,7 @@
                         <div class="rightLabel"></div>
                         <span>m<sup>2</sup></span>
                     </div>
-                    <div data-range_min="30" data-range_max="500" data-cur_min="30" data-cur_max="500" class="nstSlider build">
+                    <div data-range_min="30" data-range_max="10000" data-cur_min="30" data-cur_max="10000" class="nstSlider build">
                         <div class="bar"></div>
                         <div class="leftGrip"></div>
                         <div class="rightGrip"></div>
@@ -175,10 +175,13 @@
     {!! Html::script( 'js/dropdown.min.js' ) !!}
     <script type="text/javascript">
         $( document ).ready(function() {
-            $('.select2').select2({ witdh : '100%' });
+            $('.select2').select2({ 
+                witdh : '100%',
+                allowClear: true 
+            });
             loadData(1);
             $('.city_id').dropdown('cities');
-            $('.developer').dropdown('developer');
+            $('.developer').dropdown('list_developer');
 
 
             $('#findProperty').on('click', function(){
@@ -203,7 +206,7 @@
                 loadData(1, dev, city, rangePrice, rangeLand, rangeBuild, category, bedroom, bathroom, garage, type);
             });
 
-            $('.property_type').empty().dropdown('types');
+            $('.property_type').empty().dropdown('list_proptype');
             $('.nstSlider.price').nstSlider({
                 "rounding": {
                     "100": "1000",
