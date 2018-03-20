@@ -572,7 +572,42 @@
             }
         });
 
-        $('.cities').dropdown('cities');
+        //$('.cities').dropdown('cities');
+
+         $('.cities').select2({
+            dropdownParent: $('#leads-modal'),
+            maximumInputLength : 25,
+            witdh : '100%',
+            allowClear: true,
+            ajax : {
+                url:'{{ url("dropdown/cities") }}',
+                dataType: 'json',
+                delay: 250,
+                data: function (params) {
+
+                     return {
+                         name: params.term,
+                         page: params.page || 1
+                     };
+                 },
+                 processResults: function (data, params) {
+                         params.page = params.page || 1;
+                         console.log(data);
+                         return {
+                             results: data.results.data,
+                             pagination: {
+                                 more: (params.page * data.results.per_page) < data.results.total
+                             }
+                         };
+
+                    var text = $(this).find("option:selected").text();
+                    var id = $(this).find("option:selected").data('id');
+
+                         console.log(text);
+                 },
+                 cache: true
+             }
+         });
 
 
 
