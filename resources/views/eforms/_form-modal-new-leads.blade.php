@@ -8,7 +8,7 @@
         font-size: 14px;
     }
 </style>
-<div id="leads-modal" class="modal fade">
+<div class="modal fade" id="leads-modal"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog-custom" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -16,7 +16,7 @@
                <h4 class="modal-title">Tambah Nasabah</h4>
            </div>
             <div class="modal-body">
-                <div class="row">
+                <div class="row" id="data_personal">
                     <div class="col-md-12">
                         @if (\Session::has('error'))
                          <div class="alert alert-danger">{{ \Session::get('error') }}</div>
@@ -182,7 +182,7 @@
                                                 <label class="col-md-3 control-label">Tempat Lahir * :</label>
                                                 <div class="col-md-9">
                                                     {!! Form::select('couple_birth_place_id', ['' => ''], old('cities'), [
-                                                        'class' => 'select2 cities',
+                                                        'class' => 'select2 cities_couple',
                                                         'data-placeholder' => 'Pilih Kota',
                                                         'readonly' => true,
                                                         'style' => "width:100%"
