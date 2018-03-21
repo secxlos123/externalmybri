@@ -16,18 +16,18 @@ class DeveloperController extends Controller
      * This field data Tables
      */
     protected $columns = [
-            'user_id',
-            'first_name',
-            'last_name',
-            'email',
+            //'user_id',
+            //'first_name',
+            //'last_name',
             'full_name',
-            'phone',
+            'email',
+            //'phone',
             'mobile_phone',
-            'is_banned',
-            'last_login',
+            //'is_banned',
             'birth_date',
             'join_date',
-            'admin_developer_id'
+            'last_login'
+            //'admin_developer_id'
     ];
 
     /**

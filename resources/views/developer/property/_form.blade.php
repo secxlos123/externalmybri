@@ -122,7 +122,8 @@
             {!! Form::file('photo', [
                 'class' => 'filestyle', 'data-target' => 'ktp_preview',
                 'data-buttontext' => 'Unggah', 'data-buttonname' => 'btn-default',
-                'data-iconname' => 'fa fa-cloud-upload', 'data-placeholder' => 'Tidak ada file'
+                'data-iconname' => 'fa fa-cloud-upload', 'data-placeholder' => 'Tidak ada file',
+                'accept' => '.jpg, .png, .jpeg'
             ]) !!}
 
             @if ($errors->has('photo'))

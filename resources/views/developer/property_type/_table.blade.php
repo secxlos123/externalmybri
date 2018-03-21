@@ -229,7 +229,14 @@
                     $('div.'+tag+' span.messageError').remove();
                     $('div.'+tag).append("<span style=\"color:#B0413E;\" class=\"messageError\">Nilai maksimum harus diisi.</span>");
                     return false;
-                }else{
+                }
+                else if(Math.abs($max_var.val()) >= 10001)
+                {
+                    $('div.'+tag+' span.messageError').remove();
+                    $('div.'+tag).append("<span style=\"color:#B0413E;\" class=\"messageError\">Nilai maksimum Tidak Lebih Dari 10.0000.</span>");
+                    return false;
+                }
+                else{
                     if (Math.abs($min_var.val()) > Math.abs($max_var.val())) {
                         $('div.'+tag+' span.messageError').remove();
                         $('div.'+tag).append("<span style=\"color:#B0413E;\" class=\"messageError\">Nilai maksimum harus lebih besar dari minimum.</span>");
@@ -240,12 +247,19 @@
                     }
                 }
             }else{
-                if ($max_var.val()) {
+                if (!$min_var.val()) {
                     $('div.'+tag+' span.messageError').remove();
                     $('div.'+tag).append("<span style=\"color:#B0413E;\" class=\"messageError\">Nilai Minimum harus diisi.</span>");
                     return false;
-                }else{
-                    if ($min_var.val() > $max_var.val()) {
+                }
+                else if(Math.abs($min_var.val()) <= 31)
+                {
+                    $('div.'+tag+' span.messageError').remove();
+                    $('div.'+tag).append("<span style=\"color:#B0413E;\" class=\"messageError\">Nilai Minimum Harus Lebih Atau Sama Dengan 30.</span>");
+                    return false;
+                }
+                else{
+                    if (Math.abs($min_var.val()) > Math.abs($max_var.val())) {
                         $('div.'+tag+' span.messageError').remove();
                         $('div.'+tag).append("<span style=\"color:#B0413E;\" class=\"messageError\">Nilai maksimum harus lebih besar dari minimum.</span>");
                         return false;

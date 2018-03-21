@@ -106,6 +106,6 @@
     $( ".datepicker-date-born" ).datepicker({format: 'dd-mm-yyyy', endDate: '-17y'});
     </script>
     <script type="text/javascript">
-    $( ".datepicker-date-join" ).datepicker({format: 'dd-mm-yyyy',});
+    $( ".datepicker-date-join" ).datepicker({format: 'dd-mm-yyyy', endDate: new Date()});
     </script>
 @endpush
