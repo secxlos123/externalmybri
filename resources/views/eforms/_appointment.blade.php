@@ -29,8 +29,8 @@
 
         <div class="map" id="map">
         </div>
-
-        <div class="form-group m-t-20">
+        <hr>
+        <!-- <div class="form-group m-t-20"> -->
             {!! Form::textarea('address_location', old('address_location'), [
                 'class' => 'form-control', 'id' => 'location',
                 'rows' => 3, 'style' => 'resize: none'
@@ -45,7 +45,7 @@
                 </span>
             @endif
         </div>
-    </div>
+    <!-- </div> -->
 </div>
 
 @push( 'parent-styles' )
