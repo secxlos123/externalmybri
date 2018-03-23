@@ -63,7 +63,7 @@
                     'style' => 'resize: none'
                 ]) !!}
             @else
-            <span class="form-control" style="border: 0px;">
+            <span class="form-control" style="border: 0px; word-wrap: break-word; height: auto;">
                 {{isset($results['personal']['address']) ? $results['personal']['address'] : ''}}
             </span>
             @endif

@@ -43,7 +43,7 @@
                         <input type="button" value="Kembali" onClick="history.go(-1);" class="btn btn-primary waves-light waves-effect w-md m-b-20">
                            <a href="{{ route('developer.developer.edit', $id) }}" class="btn btn-primary waves-light waves-effect w-md m-b-20">
                                 <!-- <i class="mdi mdi-content-save"></i> --> Edit
-                            </a>           
+                            </a>
                         @endif
                         </div>
                     </div>
@@ -73,6 +73,7 @@
     });
     $( ".datepicker-date-join" ).datepicker({
         format: 'dd-mm-yyyy'
+        , endDate: new Date()
     });
     </script>
 @endpush

@@ -2,7 +2,7 @@
     <div class="sim-lar-p">
         <a class="btn-more" href="{{ url('rincian-property-type/'.$types['slug']) }}">
             <div class="image bottom20">
-                <img src="{{(!isset($types['photos'][0])) ? image_checker() : image_checker($types['photos'][0])}}" alt="image">
+                <img src="{{(!isset($types['photos'][0])) ? image_checker() : image_checker($types['photos'][0])}}" alt="image" width="30" height="250px">
             </div>
         </a>
         <div class="sim-lar-text">
