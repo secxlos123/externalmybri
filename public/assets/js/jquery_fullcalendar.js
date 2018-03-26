@@ -93,6 +93,7 @@
         var form = '';
         var today = new Date($.now());
         var $this = this;
+        var initialLocaleCode = 'id';
        
         $this.$calendarObj = $this.$calendar.fullCalendar({
             displayEventTime : false,
@@ -107,6 +108,7 @@
                 right: 'month'
         
             },
+            lang: initialLocaleCode,
             events: eventValues,
             editable: true,
             droppable: false, // this allows things to be dropped onto the calendar !!!

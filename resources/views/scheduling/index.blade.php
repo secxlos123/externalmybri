@@ -111,9 +111,14 @@
     {!! Html::script( 'assets/js/jquery.gmaps.js' ) !!}
     {!! Html::script('assets/js/moment.js') !!}
     {!! Html::script('assets/js/fullcalendar.min.js') !!}
+    {!! Html::script('assets/js/locale/id.js') !!}
     {!! Html::script('assets/js/jquery_fullcalendar.js') !!}
     {!! Html::script('assets/js/jquery.slimscroll.js') !!}
     {!! Html::script('assets/js/jquery.scrollTo.min.js') !!}
+
+    <script type="text/javascript">
+        $('#calendar').fullcalendar({});
+    </script>
 
     <script type="text/javascript">
         var map, marker;

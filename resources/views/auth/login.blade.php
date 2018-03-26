@@ -1,4 +1,4 @@
-{!! Form::open(['route' => 'auth.login', 'class' => 'callus clearfix', 'id' => 'form-login']) !!}
+{!! Form::open(['route' => 'auth.login', 'class' => 'callus clearfix', 'id' => 'form-login','autocomplete'=>'off']) !!}
 
     <div class="single-query form-group col-sm-12">
         {!! Form::email('email', old('email'), [ 'class' => 'keyword-input', 'placeholder' => 'Email' ]) !!}
@@ -21,3 +21,8 @@
         <input type="submit" value="Masuk" class="btn-slide border_radius">
     </div>
 {!! Form::close() !!}
+<script type="text/javascript">
+    $('#form-login').on('paste contextmenu', function(e) {
+    e.preventDefault();
+});
+</script>
