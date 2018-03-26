@@ -13,7 +13,7 @@
             @endif
 
             <a href="{!! route('developer.proyek-type.create') !!}" class="btn btn-primary">
-                <i class="fa fa-plus"></i> Tambah Tipe Properti
+                <i class="fa fa-plus"></i> Tambah Tipe Proyek
             </a>
         </div>
 
