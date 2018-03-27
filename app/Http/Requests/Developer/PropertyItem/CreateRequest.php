@@ -14,14 +14,14 @@ class CreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'price'  => 'required',
-            'status' => 'required',
-            'address' => 'required',
-            'property'=> 'required',
-            'property_type_id' => 'required',
-            'first_unit' => 'required|numeric',
-            'last_unit' => 'required|numeric',
-            'unit_size' => 'required|numeric'
+            'price'             => 'required',
+            'status'            => 'required',
+            'address'           => 'required',
+            'property'          => 'required',
+            'property_type_id'  => 'required',
+            'first_unit'        => 'required|numeric',
+            'last_unit'         => 'required|numeric',
+            'unit_size'         => 'required|numeric'
         ];
     }
 
@@ -33,14 +33,14 @@ class CreateRequest extends FormRequest
     public function messages()
     {
         return [
-            'price.required' => 'Bidang isian harga harus diisi',
-            'status.required'  => 'Bidang isian status harus diisi',
-            'address.required'  => 'Bidang isian alamat harus diisi',
-            'property.required'  => 'Bidang isian proyek harus diisi',
+            'price.required'             => 'Bidang isian harga harus diisi',
+            'status.required'            => 'Bidang isian status harus diisi',
+            'address.required'           => 'Bidang isian alamat harus diisi',
+            'property.required'          => 'Bidang isian proyek harus diisi',
             'property_type_id.required'  => 'Bidang isian tipe proyek harus diisi',
-            'first_unit.required' => 'Bidan isian no pertama harus diisi',
-            'last_unit.required' => 'Bidan isian no terakhir harus diisi',
-            'unit_size.required' => 'Periksa Kembali bidang isian no pertama dan terakhir'
+            'first_unit.required'        => 'Bidan isian no pertama harus diisi',
+            'last_unit.required'         => 'Bidan isian no terakhir harus diisi',
+            'unit_size.required'         => 'Periksa Kembali bidang isian no pertama dan terakhir'
         ];
     }
 }

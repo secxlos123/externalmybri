@@ -24,14 +24,14 @@ class WorkRequest extends FormRequest
     public function rules()
     {
         return [
-            'type_id'           => 'required',
-            'work_id'           => 'required',
-            'company_name'      => 'required',
-            'position_id'       => 'required',
-            'citizenship_id'    => 'required',
+            'type_id'               => 'required',
+            'work_id'               => 'required',
+            'company_name'          => 'required',
+            'position_id'           => 'required',
+            'citizenship_id'        => 'required',
             'work_duration_month'   => 'required|numeric|min:0',
-            'work_duration'     => 'required|numeric|min:0',
-            'office_address'    => 'required'
+            'work_duration'         => 'required|numeric|min:0',
+            'office_address'        => 'required'
         ];
     }
 }

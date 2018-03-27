@@ -57,11 +57,11 @@ class RegisterRequest extends FormRequest
     public function registerRules()
     {
         return [
-            'email' => 'required|email',
-            'fullname' => 'required|string|min:4',
-            'phone' => 'nullable|string|regex:/^[0-9]+$/|min:9|max:12',
-            'password' => 'required|min:6|regex:/^(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])\S*$/|confirmed',
-            'captcha'  => 'required'
+            'email'     => 'required|email',
+            'fullname'  => 'required|string|min:4',
+            'phone'     => 'nullable|string|regex:/^[0-9]+$/|min:9|max:12',
+            'password'  => 'required|min:6|regex:/^(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])\S*$/|confirmed',
+            'captcha'   => 'required'
         ];
     }
 
@@ -73,21 +73,21 @@ class RegisterRequest extends FormRequest
     public function personal()
     {
         return [
-            'personal.nik'              => 'required|numeric|digits:16',
-            'personal.first_name'       => 'required',
-            'personal.mobile_phone'     => 'required|numeric|digits:12',
-            'personal.birth_place_id'   => 'required',
-            'personal.birth_date'       => 'required|date',
-            'personal.address'          => 'required',
-            'personal.city_id'          => 'required',
-            'personal.gender'           => 'required|in:L,P',
-            'personal.citizenship_id'   => 'required',
-            'personal.status'           => 'required|in:1,2,3',
-            'personal.address_status'   => 'required|in:menetap,sementara',
-            'personal.mother_name'      => 'required',
-            'personal.identity'         => 'required|image|max:1024',
-            'personal.couple_nik'       => 'required_if:personal.status,2|numeric|digits:16',
-            'personal.couple_name'      => 'required_if:personal.status,2',
+            'personal.nik'                      => 'required|numeric|digits:16',
+            'personal.first_name'               => 'required',
+            'personal.mobile_phone'             => 'required|numeric|digits:12',
+            'personal.birth_place_id'           => 'required',
+            'personal.birth_date'               => 'required|date',
+            'personal.address'                  => 'required',
+            'personal.city_id'                  => 'required',
+            'personal.gender'                   => 'required|in:L,P',
+            'personal.citizenship_id'           => 'required',
+            'personal.status'                   => 'required|in:1,2,3',
+            'personal.address_status'           => 'required|in:menetap,sementara',
+            'personal.mother_name'              => 'required',
+            'personal.identity'                 => 'required|image|max:1024',
+            'personal.couple_nik'               => 'required_if:personal.status,2|numeric|digits:16',
+            'personal.couple_name'              => 'required_if:personal.status,2',
             'personal.couple_birth_place_id'    => 'required_if:personal.status,2',
             'personal.couple_birth_date'        => 'required_if:personal.status,2|date',
             'personal.couple_identity'          => 'required_if:personal.status,2|image|max:1024',
@@ -102,25 +102,25 @@ class RegisterRequest extends FormRequest
     public function personalComplete()
     {
         return [
-            'personal.nik'              => 'required|numeric|digits:16',
-            'personal.first_name'       => 'required',
-            'personal.mobile_phone'     => 'required|numeric|digits:12',
-            'personal.birth_place_id'   => 'required',
-            'personal.birth_date'       => 'required|date',
-            'personal.address'          => 'required',
-            'personal.city_id'          => 'required',
-            'personal.gender'           => 'required|in:L,P',
-            'personal.citizenship_id'   => 'required',
-            'personal.status'           => 'required|in:1,2,3',
-            'personal.address_status'   => 'required|in:menetap,sementara',
-            'personal.mother_name'      => 'required',
-            'personal.identity'         => 'required|image|max:1024',
-            'personal.couple_nik'       => 'required_if:personal.status,2|numeric|digits:16',
-            'personal.couple_name'      => 'required_if:personal.status,2',
+            'personal.nik'                      => 'required|numeric|digits:16',
+            'personal.first_name'               => 'required',
+            'personal.mobile_phone'             => 'required|numeric|digits:12',
+            'personal.birth_place_id'           => 'required',
+            'personal.birth_date'               => 'required|date',
+            'personal.address'                  => 'required',
+            'personal.city_id'                  => 'required',
+            'personal.gender'                   => 'required|in:L,P',
+            'personal.citizenship_id'           => 'required',
+            'personal.status'                   => 'required|in:1,2,3',
+            'personal.address_status'           => 'required|in:menetap,sementara',
+            'personal.mother_name'              => 'required',
+            'personal.identity'                 => 'required|image|max:1024',
+            'personal.couple_nik'               => 'required_if:personal.status,2|numeric|digits:16',
+            'personal.couple_name'              => 'required_if:personal.status,2',
             'personal.couple_birth_place_id'    => 'required_if:personal.status,2',
             'personal.couple_birth_date'        => 'required_if:personal.status,2|date',
             'personal.couple_identity'          => 'required_if:personal.status,2|image|max:1024',
-            'work_type'                          => 'required',
+            'work_type'                         => 'required',
             'work'                              => 'required',
             'company_name'                      => 'required',
             'work_field'                        => 'required',
@@ -131,12 +131,11 @@ class RegisterRequest extends FormRequest
             'other_salary'                      => 'required|numeric',
             'loan_installment'                  => 'required|numeric',
             'dependent_amount'                  => 'required|numeric',
-            // 'phone'                             => 'required|numeric',
             'mobile_phone'                      => 'required|numeric|digits:12',
             'emergency_contact'                 => 'required|numeric|digits:12',
             'emergency_relation'                => 'required',
             'npwp'                              => 'required|image|max:1024',
-            'image'                          => 'required|image|max:1024'
+            'image'                             => 'required|image|max:1024'
         ];
     }
 
@@ -165,8 +164,8 @@ class RegisterRequest extends FormRequest
     public function messages()
     {
         return [
-            'password.regex' => 'Password harus berupa kombinasi huruf besar, huruf kecil dan angka',
-            'captcha.required' => 'kolom Captcha harus diisi'
+            'password.regex'    => 'Password harus berupa kombinasi huruf besar, huruf kecil dan angka',
+            'captcha.required'  => 'kolom Captcha harus diisi'
         ];
     }
 }
