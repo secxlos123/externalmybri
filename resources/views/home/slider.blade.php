@@ -31,9 +31,6 @@
         data-startslide="0"
         data-endslide="5"
         style="z-index: 5;">
-        <!-- <h1>
-            <span class="t_white intro-title">My BRI kini hadir dengan<br> fitur yang lebih baik.</span>
-        </h1> -->
     </div>
 
     <div class="tp-caption tp-static-layer tp-subpost"
@@ -47,9 +44,6 @@
         data-startslide="0"
         data-endslide="5"
         style="z-index: 5;">
-        <!-- <p class="t_white intro-subtitle">
-            Dengan adanya website dan aplikasi berbasis Android,<br> kini My BRI hadir dengan beragam fitur dan produk.
-        </p> -->
     </div>
 
     <div class="tp-caption tp-static-layer"
@@ -63,7 +57,6 @@
         data-startslide="0"
         data-endslide="5"
         style="z-index: 5;">
-        <!-- <a href="#" class="btn-white border_radius uppercase">Detail</a> -->
     </div>
 </div>
 <!-- SLIDE end -->

@@ -72,12 +72,6 @@
             z-index: 9999;
             background: url('/assets/images/load.gif') no-repeat;
         }
-        /*.tp_overlay .topbar{
-            background-color: transparent !important;
-        }*/
-        /*
-         * @endtodo remove if simulation credit is work
-         */
     </style>
 @endpush
 <!-- This is styles for this page end -->
@@ -85,23 +79,6 @@
 <!-- This is scripts for this page -->
 @push('scripts')
     <script type="text/javascript">
-        // navigator.geolocation.watchPosition(properties, permission_handling);
-
-        // function permission_handling(error) {
-        //     if (error.code == error.PERMISSION_DENIED){
-        //         $('#text-nearby-property').addClass('hide');
-        //         $('#property .container').addClass('hide');
-        //         $('.denied').removeClass('hide');
-        //     }else{
-        //         $('#text-nearby-property').addClass('hide');
-        //         $('#content-galery').hide();
-        //         $('.denied').removeClass('hide');
-        //     }
-        // }
-
-        // function properties(position) {
-        // }
-
         $.ajax({
             url: '/properties'
         })
