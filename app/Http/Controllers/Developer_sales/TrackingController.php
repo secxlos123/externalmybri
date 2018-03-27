@@ -68,8 +68,7 @@ class TrackingController extends Controller
                     'Authorization' => session('authenticate.token')
                 ])
                 ->get();
-        //        dd($results['contents']);
-        \Log::info($results['contents']);
+        
         return view('tracking.show', [
             'results' => $results['contents']
             ]);
@@ -129,7 +128,6 @@ class TrackingController extends Controller
                 'sort'      => $this->columns[$sort['column']] .'|'. $sort['dir']
             ])
                 ->get();
-        \Log::info($results['contents']);
 
         foreach ($results['contents']['data'] as $key => $type) {
             $type['action'] = view('layouts.actions', [

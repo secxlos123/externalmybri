@@ -67,7 +67,6 @@ $sort = $request->input('order.0');
                 'sort'      => $this->columns[$sort['column']] .'|'. $sort['dir']
             ])
                 ->get();
-        //\Log::info($results);
 
         foreach ($results['contents']['data'] as $key => $type) {
             $type['nominal']  = 'Rp. ' . number_format($type['nominal'], 0, ',', '.');
@@ -101,8 +100,7 @@ $sort = $request->input('order.0');
                     'Authorization' => session('authenticate.token')
                     ])->get();
         $data    = $results['contents'];
-        // dd($data);
-       // return response()->json(['data' => $data]);
+        
         return view('developer.home_dev_sales.eform_pengajuan.show', [
             'data' => $data
             ]);
@@ -119,7 +117,6 @@ $sort = $request->input('order.0');
                 'page' => $request->input('page')
             ])
             ->get();
-        \Log::info($customers);
 
         foreach ($customers['contents']['data'] as $key => $cust) {
 
@@ -150,7 +147,7 @@ $sort = $request->input('order.0');
                     'Authorization' => session('authenticate.token')
                     ])->get();
         $data   = $result['contents']['personal'];
-        //dd($data);
+       
         return response()->json(['data' => $data ]);
     }
 }

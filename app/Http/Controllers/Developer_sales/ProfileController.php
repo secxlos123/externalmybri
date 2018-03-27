@@ -23,7 +23,6 @@ public function index()
         $results = Client::setEndpoint('profile')
                 ->setHeaders(['Authorization' => session('authenticate.token')])->get();
 
-        //return $results;
          return view('developer.developer_sales.edit', [
             'results'   => $results['contents'],
             'type'      =>  'view'
@@ -42,7 +41,7 @@ public function index()
     {
     	$results = Client::setEndpoint('profile')
     			->setHeaders(['Authorization' => session('authenticate.token')])->get();
-              //  dd($results);
+
         config(['jsvalidation.focus_on_error' => true]);
     	 return view('developer.developer_sales.edit', [
     	 	'results' 	=> $results['contents'],
