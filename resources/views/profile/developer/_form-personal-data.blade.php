@@ -1,11 +1,12 @@
 <div class="row top20">
     <div class="col-md-6">
         <div class="single-query form-group bottom20">
-            <label>Nama (<span alt="Kolom Nama Wajib diisi" title="Kolom Nama Wajib diisi">*</span>)</label>
+            <label>Nama (<span alt="Kolom Nama Wajib diisi!" title="Kolom Nama Wajib diisi">*</span>)</label>
             @if ($type != 'view')
                 {!! Form::text('name', @$results['developer_name'], [
                     'class' => 'form-control',
-                    'style' => "text-transform:uppercase;"
+                    'style' => "text-transform:uppercase;",
+                    'title' => 'Kolom Nama Wajib diisi!'
                 ]) !!}
             @else
                 <span class="form-control" style="border: 0px;text-transform: uppercase;">
@@ -29,12 +30,13 @@
         @endif
         </div>
         <div class="single-query form-group bottom20">
-            <label>Alamat (<span title="Kolom Alamat Wajib diisi" >*</span>)</label>
+            <label>Alamat (<span title="Kolom Alamat Wajib diisi!" >*</span>)</label>
             @if ($type != 'view')
                 {!! Form::textarea('address', (old('address')) ? old('address') : @$results['address'], [
                     'class' => 'form-control',
                     'rows'  => 3,
-                    'style' => 'resize: none'
+                    'style' => 'resize: none',
+                    'title' => 'Kolom Alamat Wajib diisi!'
                 ]) !!}
             @else
             <span class="form-control" style="border: 0px;">
@@ -48,6 +50,7 @@
              {!! Form::select('city_id', [@$results['city_id'] => @$results['city_name']], old('city_id'), [
                 'class' => 'form-control select2 cities city',
                 'data-placeholder' => 'Pilih Kota',
+                'title' => 'Kolom Kota Wajib diisi!'
             ]) !!}
             @else
             <span class="form-control" style="border: 0px;">
