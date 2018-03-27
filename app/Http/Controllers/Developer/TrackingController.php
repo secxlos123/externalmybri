@@ -53,7 +53,7 @@ class TrackingController extends Controller
                 ->setHeaders([
                     'Authorization' => session('authenticate.token')
                 ])->get();
-        dd($result);
+        
 
         return view('tracking.show', [
             'results' => $result['contents']
@@ -107,7 +107,7 @@ class TrackingController extends Controller
                     'Authorization' => session('authenticate.token')
                 ])
                 ->get();
-        \Log::info($results);
+       
 
         foreach ($results['contents']['data'] as $key => $type) {
             $type['action'] = view('layouts.actions', [

@@ -23,7 +23,6 @@ class ProfileController extends Controller
         Client::setEndpoint('users/notification/read/'.@$request->get('slug').'/'.@$request->get('type'))
                ->setHeaders([
                 'Authorization' => session('authenticate.token')
-                // , 'auditaction' => 'action name'
                 , 'is_read' => is_read()
                 , 'long' => number_format($request->get('long', env('DEF_LONG', '106.81350')), 5)
                 , 'lat' => number_format($request->get('lat', env('DEF_LAT', '-6.21670')), 5)
@@ -35,7 +34,7 @@ class ProfileController extends Controller
                 'Authorization' => session('authenticate.token')
             ])
             ->get();
-        // dd($results);
+        
         return view('profile.index', [
             'results' => $results['contents'],
             'type' => 'view',
@@ -88,7 +87,7 @@ class ProfileController extends Controller
                 'Authorization' => session('authenticate.token')
             ])
             ->get();
-        // dd($results);
+        
         return view('profile.index', [
             'results' => $results['contents'],
             'type' => 'edit',

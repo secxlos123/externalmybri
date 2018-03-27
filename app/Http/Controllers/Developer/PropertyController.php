@@ -265,11 +265,11 @@ class PropertyController extends Controller
                     ->setHeaders($headers)
                     ->setBody(array_to_multipart($request->all()))
                     ->{$method}('multipart');
-                   // dd($request->all());
+                   
             if ( ! in_array($response['code'], [200, 201]) ) {
                 $messages = count($response['contents']) > 0 ? json_encode($response['contents']) : $response['descriptions'];
                 throw new \Exception($messages, $response['code']);
-               // dd($response);
+               
             }
 
         } catch (\Exception $e) {

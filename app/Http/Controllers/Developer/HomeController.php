@@ -19,7 +19,6 @@ class HomeController extends Controller
         ->post();
         $userList = $response['contents']['user_list'];
         return view('developer.home.dashboard',compact('userList'));
-        // return view('developer.home.index');
     }
 
     public function listPropertyAgen(Request $req)
@@ -43,7 +42,7 @@ class HomeController extends Controller
         $response = Client::setEndpoint('get-data-dashboard-developer')
          ->setHeaders(['Authorization' => session('authenticate.token')])
         ->setBody($dataSend)->post();
-       // dd($response);
+       
         $userList = $response['contents']['user_list'];
 
         echo " <table class='table table-striped table-bordered project-list'>

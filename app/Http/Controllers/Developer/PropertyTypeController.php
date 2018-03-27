@@ -81,8 +81,6 @@ class PropertyTypeController extends Controller
      */
     public function show(Request $request, $slug)
     {
-       // if ( $request->ajax() ) return $this->datatables_unit($request, $slug);
-       // return view( 'developer.property_type.show' );
         if ( $request->ajax() ) {
             return $this->datatables_unit($request, $slug);
         }

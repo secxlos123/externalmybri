@@ -16,18 +16,12 @@ class DeveloperController extends Controller
      * This field data Tables
      */
     protected $columns = [
-            //'user_id',
-            //'first_name',
-            //'last_name',
             'full_name',
             'email',
-            //'phone',
             'mobile_phone',
-            //'is_banned',
             'birth_date',
             'join_date',
             'last_login'
-            //'admin_developer_id'
     ];
 
     /**
@@ -40,8 +34,6 @@ class DeveloperController extends Controller
          if ( $request->ajax() ) return $this->datatables($request);
 
          return view( 'developer.developer.index' );
-        //   $data = Client::setEndpoint('developer-agent')->setHeaders(['Authorization' => session('authenticate.token')])->get();
-        // return view( 'developer.developer.index', compact('data'));
     }
 
     /**
@@ -70,7 +62,7 @@ class DeveloperController extends Controller
             "mobile_phone"  => $request->input("mobile_phone"),
             "email" => strtolower($request->input("email"))
                 ];
-       // dd($input);
+       
         $header = [
                     'Authorization' => session('authenticate.token'),
                     'long' => $request['hidden-long'],
@@ -81,7 +73,7 @@ class DeveloperController extends Controller
            ->setHeaders($header)
            ->setBody($input)
            ->post();
-        // dd($client);
+        
         if (isset($client['code']) && $client['code'] == 201)
            {
                 \Session::flash('flash_message', $client['descriptions']);
@@ -151,7 +143,6 @@ class DeveloperController extends Controller
      */
     public function update(UpdateRequest $request, $id)
     {
-      //  $input = $request->all();
         $join_date = date('Y-m-d', strtotime($request->input("join_date")));
         $input = [
             "name" => $request->input("name"),
@@ -160,7 +151,6 @@ class DeveloperController extends Controller
             "mobile_phone"  => $request->input("mobile_phone"),
             "email" => $request->input("email")
                 ];
-       // dd($input);
           $header = [
                     'Authorization' => session('authenticate.token'),
                     'long' => $request['hidden-long'],
@@ -171,7 +161,6 @@ class DeveloperController extends Controller
             ->setHeaders($header)
             ->setBody($input)
             ->put();
-     // dd($client);
           if (isset($client['code']) && $client['code'] == 201)
            {
                 \Session::flash('flash_message', $client['descriptions']);
@@ -263,7 +252,6 @@ class DeveloperController extends Controller
                   ];
         $client = Client::setEndpoint('developer-agent/banned/'.$id)
                 ->setHeaders($headers)
-               // ->setBody($input)
                 ->get();
 
                  if (isset($client['code']) && $client['code'] == 200) {

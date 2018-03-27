@@ -218,7 +218,7 @@ class ItemController extends Controller
                 ->setHeaders($headers)
                 ->setBody(array_to_multipart($request->all()))
                 ->{$method}('multipart');
-                //dd($response);
+                
         if ( ! in_array($response['code'], [200, 201]) ) {
             Storage::disk('property-item')->deleteDirectory($dir);
             return redirect()->back()->withInput()->withError($response['descriptions']);
