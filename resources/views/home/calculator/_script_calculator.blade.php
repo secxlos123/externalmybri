@@ -111,7 +111,7 @@ $(document).ready(function(){
 });
 
 $("#dp").keyup(function(){
- $(this).inputmask('Regex', {regex: "^[0-9]{1,2}(\\.\\d{1,4})?$"});
+ $(this).inputmask('Regex', {regex: "^[0-9]{1,2}(\\.\\d{1,2})?$"});
  var dp =this.value;
  var dpPersen = dp /100;
  var price = $("#price").inputmask('unmaskedvalue');
@@ -120,6 +120,13 @@ $("#dp").keyup(function(){
 });
 
 function hitungDP(priceint,dpPersen){
+  if(dpPersen > 0.99)
+  {
+    alert('Dp tidak boleh lebih besar dari 99.99');
+    $("#dp").val('');
+    dpPersen = 0;
+    priceint = 0;
+  }
   var down_payment = priceint * dpPersen;
   var price_platform = priceint - down_payment;
   $("#down_payment").val(down_payment);
