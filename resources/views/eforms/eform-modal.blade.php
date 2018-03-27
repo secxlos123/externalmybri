@@ -22,12 +22,6 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <form class="form-horizontal" role="form">
-                                            <!-- <div class="form-group">
-                                                <label class="col-md-5 control-label">Nomor Referensi :</label>
-                                                <div class="col-md-7">
-                                                    <p class="form-control-static" id="ref_number"></p>
-                                                </div>
-                                            </div> -->
                                             <div class="form-group">
                                                 <label class="col-md-5 control-label">Jumlah Permohonan :</label>
                                                 <div class="col-md-7">

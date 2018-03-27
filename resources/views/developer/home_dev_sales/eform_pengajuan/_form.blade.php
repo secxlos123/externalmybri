@@ -81,43 +81,6 @@
                 </span>
             @endif
         </div>
-        <!--  <p class="m-t-0 header-title"><b>Kantor Cabang</b></p>
-        <p class="text-muted m-b-30 font-13">
-            Pilih kantor cabang terdekat
-        </p>
-        <div class="form-group col-md-12">
-            <label class="control-label">Jarak Kantor Terdekat : <b id="distance-office"></b> (kilometer)</label>
-            <div class="clearfix"></div>
-            <div class="col-md-10" style="padding-left: unset;">
-                <input type="range" min="1" max="20" value="10" class="slider" id="range">
-            </div>
-            <div class="col-md-2" style="padding-left: unset; top: -3px;">
-                <a href="javascript:void(0)" class="btn-xs btn-orange btn-find">
-                    <i class="fa fa-search"></i> CARI
-                </a>
-            </div>
-        </div>
-
-        <div id="office-area" {!! null !== old('branch_name') ? '' : '' !!}>
-            {!! Form::hidden('branch_name', old('branch_name'), ['id' => 'branch_name']) !!}
-            <div class="form-group col-md-12">
-                <label class="control-label">Kantor Cabang BRI *</label>
-                {!! Form::select('branch_id', ['' => ''] + [
-                    old('branch_id') => old('branch_name')
-                ], old('branch_id'), [
-                    'class' => 'form-control select2 offices',
-                    'data-option' => old('branch_id'),
-                    'data-placeholder' => 'Pilih Kota'
-                ]) !!}
-            </div>
-
-            <div class="form-group col-md-12">
-                <label class="control-label">Alamat Kantor Cabang BRI</label>
-                {!! Form::textarea('branch_office_address', old('branch_office_address'), [
-                    'class' => 'form-control', 'rows' => 3, 'style' => 'resize: none', 'readonly', 'id' => 'branch_office_address'
-                ]) !!}
-            </div>
-        </div> -->
     </div>
     <div class="col-md-5">
         <div class="single-query form-group bottom20

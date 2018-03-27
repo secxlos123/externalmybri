@@ -61,9 +61,7 @@
                 i = (i + 1) % field.form.elements.length;
                 field.form.elements[i].focus();
                 return false;
-            }
-            ;
-    // else return false
+            };
             return false;
         }
     </script>
@@ -183,8 +181,7 @@
                 navigator.geolocation.getCurrentPosition(showPosition, getError);
 
             } else {
-                alert("Geolocation is not supported by this browser.");
-                console.log("Geolocation is not supported by this browser.");
+                alert("Geolocation is not supported by this browser.");     
 
             }
         })
@@ -193,10 +190,6 @@
         function showPosition(position) {
             $('input[name="hidden-long"]').val(position.coords.longitude);
             $('input[name="hidden-lat"]').val(position.coords.latitude);
-            // $('input#lng').val(position.coords.longitude);
-            // $('input#lat').val(position.coords.latitude);
-
-            console.log("Success generate longitude" + position.coords.longitude + " - latitude : " + position.coords.latitude + ".");
         }
 
         // Fail get longitude - latitude

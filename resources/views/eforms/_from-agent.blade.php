@@ -37,16 +37,7 @@
     <div class="row m-t-30">
         <div class="col-md-12">
             <div class="" id="detail">
-                <!-- <h4 class="m-t-0 header-title"><b>Data Leads</b></h4>
--->
-                <!-- ============================================== -->
-                <!-- Space untuk Detail Leads -->
-               <!--  <p class="text-muted font-13 m-t-20" >
-                    <code>Space ini nantinya berisi detail Leads (seperti yang ada di dalam modul Leads / detail), dan akan terisi jika NIK yang diisikan pada field Cari NIK di atas ditemukan.</code>
-                </p> -->
-                <!-- End Detail Leads -->
-                <!-- ============================================== -->
-
+                
             </div>
         </div>
     </div>
@@ -164,12 +155,10 @@
             var text = $(this).find("option:selected").text();
             $('#nikSelect').val(text);
              $('#nik_customer').val(text);
-            // console.log(text);
         });
 
         //search customer by nik
         $('#search').on('click', function(e) {
-           // var id = $('#nik').val();
            var nik = $('#nik').val();
             e.preventDefault();
 
@@ -206,24 +195,9 @@
 
       //storing leads
       $(document).ready(function(e){
-      $("#form_data_personal").submit(function(){ 
-    //  $('#btn-save').on('click', function(e){       
+      $("#form_data_personal").submit(function(){        
             var formData = new FormData(this);
-
-        //     var formData = {
-        //         nik: "1212121212121212",
-        // first_name: "Ajuan Test",
-        // email: "ajuan@mailinator.com",
-        // mobile_phone: "08131207377",
-        // status: "1",
-        // mother_name: "Ibu Ajuan",
-        // birth_place_id: "022",
-        // birth_date: "1992-11-21",
-        // identity: "scan-ktp.jpg"
-        //     };
-        
-             console.log(formData);
-
+       
              $.ajax({
                  url: "{{route('eform.save-customer')}}",
                  type: 'POST',
@@ -254,7 +228,7 @@
                          setTimeout(
                              function(){
                                  $.each(data.contents, function(key, value) {
-                                     // console.log(key);
+                                  
                                      $("#form_data_personal").find(".form-group." + key).eq(0).addClass('has-error');
                                      $("#form_data_personal").find("span#"+key+"-error").eq(0).html(value);
                                  });

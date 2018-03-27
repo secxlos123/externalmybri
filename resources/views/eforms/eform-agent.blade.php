@@ -209,7 +209,7 @@
                 return $form_container.valid();
             },
             onFinished: function (event, currentIndex) {
-               // $form_container.submit();
+              
              var request_amount = $('#request_amount').val();
              var year   = $('#year').val();
              var offices = $('#offices').val();
@@ -223,7 +223,6 @@
                 url:'{{route("eform.get-cust")}}',
                 data: {nik:nik},
                 success: function(result, data){
-                   // console.log(result);
                  var nik = result.data.nik;
                  var first_name = (result.data.first_name ? result.data.first_name : '');
                  var full_name = (result.data.first_name ? result.data.first_name : '')+' '+(result.data.last_name ? result.data.last_name : '');
@@ -238,7 +237,6 @@
                  var couple_birth_date = result.data.couple_birth_date;
                  var couple_identity = result.data.couple_identity;
                  var identity = result.data.identity;
-                // var status = result.data.status;
 
                  if(result.data.status == 1)
                  {
@@ -284,8 +282,7 @@
                 $('#view-modal #status').html(status);
                 $('#view-modal #couple_birth_date').html(couple_birth_date);
                 $('#view-modal #mother_name').html(mother_name);
-                //$("#view-modal #couple_identity").html('<img src="'+couple_identity+'" class="img-responsive">');
-                //$("#view-modal #identity").html('<img src="'+identity+'" class="img-responsive">');
+                
                 var extension_couple = couple_identity.substr((couple_identity.lastIndexOf('.') +1));
                         if(extension_couple == 'pdf'){
                             $("#view-modal #couple_identity").html('<a href="'+couple_identity+'" target="_blank" class="img-responsive"><img src="{{asset("assets/images/download-logo.png")}}" class="img-responsive"></a><p>Klik Untuk Lihat Foto KTP Pasangan</p> ');
@@ -331,18 +328,6 @@
             }
         });
 
-        // $(document).on('submit', '#app-eform', function(e){
-        //     var status = $("#status").select2('data')[0]['id'];
-        //     var dob = new Date($("input[name='birth_date']").val());
-        //     var today = new Date();
-        //     var age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));
-
-        //     if (age < 21 && status == 1) {
-        //         e.preventDefault();
-        //         $("#steps-uid-0-t-1").trigger('click');
-        //         $("div.card-box").append("<div class=\"alert alert-danger\"><ul><li>Umur anda "+age+" tahun kurang memenuhi persyaratan yaitu minimum 21 tahun</li></ul></div>");
-        //     }
-        // });
     </script>
     <!-- This Jquery Eform Agent Dev -->
     {!! Html::script('assets/js/bootstrap-datepicker.min.js') !!}
@@ -354,8 +339,6 @@
         });
 
      $('#view-modal').on('click', '#agree', function() {
-          // HoldOn.open(options);
-            // console.log('ini ini ini');
        $("#app-eform").submit();
     });
 
@@ -438,12 +421,10 @@
             var text = $(this).find("option:selected").text();
             $('#nikSelect').val(text);
              $('#nik_customer').val(text);
-            // console.log(text);
         });
 
         //search customer by nik
         $('#search').on('click', function(e) {
-           // var id = $('#nik').val();
            var nik = $('#nik').val();
             e.preventDefault();
 
@@ -464,7 +445,6 @@
 
            //showing modal create leads
     $(document).on('click', '#btn-leads', function(){
-      // console.log("salah masuk");
        $('#leads-modal').modal('show');
     })
 
@@ -473,10 +453,6 @@
      message:'some cool message for your user here ! Or where the logo is ! Your skills are the only limit. ',
      textColor:"white"
           };
-
-   // $('#btn-save').on('click', function() {
-   //     HoldOn.open(options);
-   //   });
 
       //storing leads
 
@@ -489,17 +465,11 @@
 
             var formData = new FormData(this);
 
-            console.log("=========Ngirim Data Gak Yaa============");
-             console.log(formData);
-
              $.ajax({
                  url: "{{route('eform.save-customer')}}",
                  type: 'POST',
                  data: formData,
                  success: function (data) {
-                      console.log("=========Data Ajax============");
-                      console.log(data);
-                     //toastr["success"]("Data Berhasil disimpan");
                       $('#divForm').removeClass('alert alert-success');
                       $('#divForm').html("");
 
@@ -513,9 +483,6 @@
                         $("#nik").html('<option value="'+nik+'">'+nik+'</option>');
                         $("#select2-nik-container").replaceWith('<span class="select2-selection__rendered" id="select2-nik-container" title="'+nik+'"><span class="select2-selection__clear">×</span>'+nik+'</span>');
                         $("#search").click();
-                        //$('body').addClass('modal-open');
-                        //$("a[href='#finish']").click();
-
                         $('#divForm').addClass('alert alert-success');
                         $('#divForm').html('Data Berhasil Ditambahkan');
 
@@ -523,7 +490,7 @@
                         setTimeout(
                             function(){
                                 $.each(data.contents, function(key, value) {
-                                    // console.log(key);
+                                 
                                     $("#form_data_personal").find(".form-group." + key).eq(0).addClass('has-error');
 
                                     if (key == 'nik') {
@@ -538,14 +505,11 @@
                         , 2000);
                     }
 
-                  //  HoldOn.close();
                     $('#divForm').addClass('alert alert-success');
                     $('#divForm').append('Data Berhasil Ditambahkan');
                  },
                  error: function (response) {
                       console.log(response)
-                     //  toastr["error"]("Data Gagal disimpan");
-                     // HoldOn.close();
                  },
                  cache: false,
                  contentType: false,
@@ -571,8 +535,6 @@
                 $('#data_couple').hide();
             }
         });
-
-        //$('.cities').dropdown('cities');
 
          $('.cities').select2({
             dropdownParent: $('#leads-modal #data_personal'),
@@ -664,11 +626,6 @@
 
         $('#datepicker-date').datepicker("setDate",  "{{date('Y-m-d', strtotime('-21 years'))}}");
         $('#datepicker-autoclose').datepicker("setDate",  "{{date('Y-m-d', strtotime('-21 years'))}}");
-
-        // $( "#datepicker-date" ).datepicker({
-        //     format: 'dd-mm-yyyy',
-        //     endDate: '-17y'
-        //     });
     </script>
     <!-- End Script for Agent Dev -->
     @stack('parent-scripts')

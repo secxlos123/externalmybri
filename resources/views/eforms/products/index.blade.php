@@ -97,9 +97,7 @@
                 i = (i + 1) % field.form.elements.length;
                 field.form.elements[i].focus();
                 return false;
-            }
-            ;
-    // else return false
+            };
             return false;
         }
     </script>
@@ -128,7 +126,6 @@
             $kpr = $('.kpr_type_property, .kpr_type')
             $dp = $('#dp');
 
-            // $kpr.addClass('hide');
             $('.kpr_type_properties, .type_property').select2({width:'100%'});
 
             $developers

@@ -6,7 +6,6 @@
 	<h1 class="text-uppercase">Manajemen Data Pengajuan Eform</h1>
 	<p>Kelola Data anda di sini.</p>
 	<ol class="breadcrumb text-center">
-	    <!-- <li><a href="#">Dashboard</a></li> -->
 	    <li class="active">Pengajuan</li>
 	</ol>
 @endsection
@@ -17,56 +16,10 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="btn-project bottom10">
-					<!-- <a class="btn btn-primary" href="#filter" role="button" data-toggle="collapse">
-						<i class="fa fa-filter"></i> Filter
-					</a> -->
 					<a class="btn btn-primary" href="{!! route('eform.eform-agen') !!}" role="button">
 						<i class="fa fa-plus"></i>  Tambah Pengajuan Baru
 					</a>
 				</div>
-				<!-- <div id="filter" class="collapse bottom20 top20">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="panel panel-default">
-                                <div class="panel-body">
-                                    <form class="form-horizontal" role="form">
-                                        <div class="form-group">
-                                            <label class="col-sm-4 control-label">No Ref :</label>
-                                            <div class="col-sm-8">
-                                                {!! Form::select('ref_number', ['' => ''], old('ref_number'), [
-                                                    'class' => 'select2 ref_number',
-                                                    'data-placeholder' => '-- Pilih Noref --',
-                                                    'style' => 'width: 100%'
-                                                ]) !!}
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-sm-4 control-label">Leads :</label>
-                                            <div class="col-sm-8">
-                                                {!! Form::select('nik',  ['' => ''], old('nik'), [
-                                                    'class' => 'select2 nik', 'id' => 'nik',
-                                                    'data-placeholder' => 'Masukan/ Cari nomor Leads atau nik'
-                                                ]) !!}
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-sm-4 control-label">Status Pengajuan :</label>
-                                            <div class="col-sm-8">
-                                                {!! Form::text('stat_pengajuan', old('stat_pengajuan'), [
-                                                    'class' => 'form-control', 'id' => 'stat_pengajuan',
-                                                    'placeholder' => 'Status Pengajuan'
-                                                ]) !!}
-                                            </div>
-                                        </div>
-                                    </form>
-                                    <div class="text-right">
-                                        <a href="javascript:void(0)" id="btn-filter" class="btn btn-primary">Filter</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
                  <div class="table-responsive">
                     <table class="table table-striped table-bordered project-list" id="datatable">
                         <thead class="bg-blue">
@@ -140,43 +93,6 @@
         });
     </script>
     <script type="text/javascript">
-        // var table = $('#datatable').dataTable({
-        //     processing : true,
-        //     serverSide : true,
-        //     lengthMenu: [
-        //         [ 10, 25, 50, -1 ],
-        //         [ '10', '25', '50', 'All' ]
-        //     ],
-        //     language : {
-        //         infoFiltered : '(disaring dari _MAX_ data keseluruhan)'
-        //     },
-        //     ajax : {
-        //      //   url:'/datatable/eforms',
-        //         data : function(d, settings){
-
-        //             var api = new $.fn.dataTable.Api(settings);
-
-        //             d.page = Math.min(
-        //                 Math.max(0, Math.round(d.start / api.page.len())),
-        //                 api.page.info().pages
-        //             );
-
-        //             d.ref_number = $('.ref_number').val();
-        //             d.nik = $('.nik').val();
-        //             d.status = $('#status').val();
-        //         }
-        //     },
-        //     aoColumns : [
-        //         { data: 'ref_number', name: 'ref_number' },
-        //         { data: 'customer_name', name: 'customer_name' },
-        //         { data: 'nominal', name: 'nominal' },
-        //         { data: 'status', name: 'status' },
-        //         { data: 'product_type', name: 'product_type' },
-        //         // { data: 'ao_name', name: 'ao_name' },
-        //         { data: 'action', name: 'action', bSortable: false },
-        //     ],
-        // });
-
         $('#btn-filter').on('click', function () {
         	table.fnDraw();
         });

@@ -69,9 +69,6 @@ $join = date('d-m-Y', strtotime($results['userdeveloper']["join_date"]));
             <a href="{{ route('dev-sales.profile.edit') }}" class="btn btn-default waves-light waves-effect w-md m-b-20">Batalkan</a>
             <input type="submit" class="btn btn-success waves-light waves-effect w-md m-b-20" value="Simpan">
             {!! Form::close() !!}
-            <!-- <a href="#" class="btn btn-success waves-light waves-effect w-md m-b-20" data-toggle="modal" data-target="#save"><i class="mdi mdi-content-save"></i> Simpan</a> -->
         </div>
     </div>
-    <!-- </div> -->
-<!-- </div> -->
 </div>

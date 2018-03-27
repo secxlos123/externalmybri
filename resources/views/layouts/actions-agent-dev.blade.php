@@ -50,8 +50,6 @@ $(document).ready(function(){
                  //include the href duplication link here?;
                  window.location = ('{{ url("dev/developer/banned/".$user_id) }}'+urlLongLat);
             
-                 console.log({{ $user_id }});
-
                  //showProgressAnimation(); 
             } else {
                
@@ -71,8 +69,6 @@ $(document).ready(function(){
                  //include the href duplication link here?;
                  window.location = ('{{ url("dev/developer/banned/".$user_id) }}'+urlLongLat);
             
-                 console.log({{ $user_id }});
-
                  //showProgressAnimation(); 
             } else {
                

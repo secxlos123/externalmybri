@@ -81,8 +81,6 @@
     });
     $( ".datepicker-date-join" ).datepicker({
         format: 'dd-mm-yyyy',
-       // autoclose: true,
-       // startDate: 'now',
         endDate: 'now'
     });
 </script>

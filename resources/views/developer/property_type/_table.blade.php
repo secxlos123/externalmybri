@@ -199,21 +199,7 @@
         $('.properties').on('change', function(){
             $('#prop_id').val($(this).select2('data')[0]['id']);
         });
-        // $min_surface.numeric(null, 0).on('change', set_max);
-        // $min_building.numeric(null, 0).on('change', set_max);
-
-        // function set_max(e) {
-        //     value   = parseInt($(this).val());
-        //     var min = ! isNaN(value) ? value : null;
-        //     $max_field = $(e.target).hasClass('min_surface') ? $max_surface : $max_building;
-        //     $max_field.val(min).numeric(null, min).on('change', set_value_max);
-        // }
-
-        // function set_value_max(e) {
-        //     var val = parseInt($(this).val());
-        //     if (val < value) $(this).val(value).trigger('change');
-        // }
-
+        
         function filterRange(tag)
         {
             if (tag == 'building') {

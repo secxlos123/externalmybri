@@ -6,7 +6,6 @@
     <h1 class="text-uppercase">Manajemen Data Pengajuan Eform</h1>
     <p>Kelola Data anda di sini.</p>
     <ol class="breadcrumb text-center">
-        <!-- <li><a href="#">Dashboard</a></li> -->
         <li class="active">Pengajuan</li>
     </ol>
 @endsection
@@ -223,7 +222,6 @@
             </div>
             <div class="modal-footer">
                    <a href="{!! route('dev-sales.data-eform') !!}" class="btn btn-default" data-dismiss="modal" >Kembali</a>
-                   <!-- <a id="agree" href="#" class="btn btn-default" data-dismiss="modal" >Ajukan</a> -->
                </form>
            </div>
 

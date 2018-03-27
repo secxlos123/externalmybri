@@ -262,8 +262,7 @@
         {
             var first = $('#first_unit').val();
             var last = $('#last_unit').val();
-            console.log(last);
-            console.log(first);
+            
             if( Math.abs(last) < 1 ){
                 last = first;
             }

@@ -22,7 +22,6 @@
 <div class="col-md-12">
     <div class="pull-right">
         <button type="submit" class="btn btn-success waves-light waves-effect w-md m-b-20"><i class="mdi mdi-content-save"></i>Simpan</button>
-        <!-- <a href="#" class="btn btn-success waves-light waves-effect w-md m-b-20" data-toggle="modal" data-target="#save"><i class="mdi mdi-content-save"></i> Simpan</a> -->
     </div>
 </div>
 {!! Form::close() !!}

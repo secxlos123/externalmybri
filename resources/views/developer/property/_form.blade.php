@@ -278,8 +278,6 @@
 
     <!-- Laravel Javascript Validation -->
     <script type="text/javascript">
-        // CKEDITOR.replace( 'txtEditor' );
-        // CKEDITOR.replace( 'txtEditor2' );
         $('select').select2({allowClear: true});
 
         $('.cities').dropdown('cities')

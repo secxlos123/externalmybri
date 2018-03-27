@@ -217,12 +217,12 @@
 			$(`${value.class}`).dropdown(`${value.endpoint}`)
 				.on('select2:select', function (e) {
 					var data = e.params.data;
-					console.log(value.hidden, data);
+					
 					$(`${value.hidden}`).val(data.name);
 				})
 				.on('select2:unselect', function (e) {
 					var data = e.params.data;
-					console.log(value.hidden, data);
+					
 					$(`${value.hidden}`).val('');
 				})
 				.val(opt)

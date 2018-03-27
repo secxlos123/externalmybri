@@ -226,7 +226,6 @@
                         <div class="pull-right">
                         <input type="submit" name="" class="btn btn-orange" value="Simpan">
                             <a href="#" data-dismiss="modal" class="btn btn-default waves-light waves-effect w-md m-b-20">Batal</a>
-                            <!-- data-toggle="modal" <a href="#" class="btn btn-orange waves-light waves-effect w-md m-b-20" data-toggle="modal" id="btn-save"><i class="mdi mdi-content-save"></i> Simpan</a> -->
                            <button type="submit" class="btn btn-orange waves-light waves-effect w-md m-b-20" data-toggle="modal" id="btn-save"><i class="mdi mdi-content-save"></i>Simpan </button>
                         </div>
                     </div>
