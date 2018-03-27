@@ -1,7 +1,7 @@
 <div class="row top20">
     <div class="col-md-6">
         <div class="single-query form-group bottom20">
-            <label>Nama (*)</label>
+            <label>Nama (<span alt="Kolom Nama Wajib diisi" title="Kolom Nama Wajib diisi">*</span>)</label>
             @if ($type != 'view')
                 {!! Form::text('name', @$results['developer_name'], [
                     'class' => 'form-control',
@@ -29,7 +29,7 @@
         @endif
         </div>
         <div class="single-query form-group bottom20">
-            <label>Alamat (*)</label>
+            <label>Alamat (<span title="Kolom Alamat Wajib diisi" >*</span>)</label>
             @if ($type != 'view')
                 {!! Form::textarea('address', (old('address')) ? old('address') : @$results['address'], [
                     'class' => 'form-control',
@@ -43,7 +43,7 @@
             @endif
         </div>
         <div class="single-query form-group bottom20">
-            <label>Kota (*)</label>
+            <label>Kota (<span title="Kolom Kota Wajib diisi" >*</span>)</label>
             @if ($type != 'view')
              {!! Form::select('city_id', [@$results['city_id'] => @$results['city_name']], old('city_id'), [
                 'class' => 'form-control select2 cities city',

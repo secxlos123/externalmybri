@@ -239,7 +239,7 @@ function  validation_timeperiod(nilai,id){
        nilai = defaultJangkaWaktu;
     }
     $(id).val(nilai);
-    console.log(nilai);
+    
 }
 
 function isInteger(evt)
