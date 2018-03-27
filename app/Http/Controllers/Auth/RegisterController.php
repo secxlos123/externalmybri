@@ -230,7 +230,6 @@ class RegisterController extends Controller
 
     public function refreshCaptcha()
     {
-        //dd(captcha_img('flat'));
         return response()->json(['captcha'=> captcha_img('flat')]);
     }
 }

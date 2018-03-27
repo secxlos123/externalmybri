@@ -120,15 +120,6 @@ class LoginController extends Controller
      */
     protected function redirectIfCustomer()
     {
-        // @note request from client
-        // if ( ! $this->profile()['is_simple'] ) {
-        //     return redirect()->route('auth.register.simple');
-        // }
-
-        // if ( ! $this->profile()['is_completed'] ) {
-        //     return redirect()->route('auth.register.complete');
-        // }
-
         return redirect()->route('homepage');
     }
 
