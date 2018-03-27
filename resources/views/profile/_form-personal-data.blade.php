@@ -1,20 +1,21 @@
 <div class="row top20">
     <div class="col-md-6">
         <div class="single-query form-group bottom20">
-            <label>NIK </label>
+            <label>NIK (<span title="Kolom NIK wajib diisi!">*</span>)</label>
             @if ($type != 'view')
                 {!! Form::text('nik', (old('nik')) ? old('nik') : @$results['personal']['nik'], [
-                    'class' => 'form-control ', 'maxlength' => 16, 'onkeypress' => 'return goodchars(event, "1234567890 ", this)'
+                    'class' => 'form-control ', 'maxlength' => 16, 'onkeypress' => 'return goodchars(event, "1234567890 ", this)', 'title' => 'Kolom NIK wajib diisi!'
                 ]) !!}
             @else
                 <span class="form-control" style="border: 0px;">{{isset($results['personal']['nik']) ? $results['personal']['nik'] : ''}}</span>
             @endif
         </div>
         <div class="single-query form-group bottom20">
-            <label>Nama </label>
+            <label>Nama (<span title="Kolom Nama wajib diisi!">*</span>)</label>
             @if ($type != 'view')
                 {!! Form::text('name', @$results['personal']['first_name'].' '.@$results['personal']['last_name'], [
-                    'class' => 'form-control'
+                    'class' => 'form-control',
+                    'title' => 'Kolom Nama wajib diisi!'
                 ]) !!}
             @else
                 <span class="form-control" style="border: 0px">
@@ -23,7 +24,7 @@
             @endif
         </div>
         <div class="single-query form-group bottom20">
-            <label>Tempat lahir </label>
+            <label>Tempat lahir (<span title="Kolom Tempat Lahir wajib diisi!">*</span>)</label>
             @if ($type != 'view')
             {!! Form::select('birth_place_id', [@$results['personal']['birth_place_id'] => @$results['personal']['birth_place']], old('birth_place_id'), [
                 'class' => 'form-control select2 cities birth_place',
@@ -36,7 +37,7 @@
             @endif
         </div>
         <div class="single-query form-group bottom20">
-            <label>Tanggal lahir </label>
+            <label>Tanggal lahir (<span title="Kolom Tanggal Lahir wajib diisi!">*</span>)</label>
             <div>
                 <div class="input-group">
                     @if ($type != 'view')
@@ -44,6 +45,7 @@
                             $newDate = date("d-m-Y", strtotime($originalDate)); ?>
                     {!! Form::text('birth_date', (old('birth_date')) ? old('birth_date') : @$newDate, [
                     'class' => 'form-control birth-date'
+                    ,'title' => 'Kolom Tanggal Lahir wajib diisi!'
                     ]) !!}
                     <span class="input-group-addon b-0"><i class="fa fa-calendar"></i></span>
                     @else
@@ -55,12 +57,13 @@
             </div>
         </div>
         <div class="single-query form-group bottom20">
-            <label>Alamat </label>
+            <label>Alamat (<span title="Koom Alamat wajib diisi!">*</span>)</label>
             @if ($type != 'view')
                 {!! Form::textarea('address', (old('address')) ? old('address') : @$results['personal']['address'], [
                     'class' => 'form-control',
                     'rows'  => 3,
-                    'style' => 'resize: none'
+                    'style' => 'resize: none',
+                    'title' => 'Kolom Alamat wajib diisi!'
                 ]) !!}
             @else
             <span class="form-control" style="border: 0px; word-wrap: break-word; height: auto;">
@@ -69,7 +72,7 @@
             @endif
         </div>
         <div class="single-query form-group bottom20">
-            <label>Kota </label>
+            <label>Kota (<span title="Kolom Kota wajib diisi!">*</span>)</label>
             @if ($type != 'view')
             {!! Form::select('city_id', [@$results['personal']['city_id'] => @$results['personal']['city']], old('city_id'), [
                 'class' => 'form-control select2 cities city',
