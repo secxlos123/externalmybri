@@ -61,13 +61,7 @@ class ScheduleController extends Controller
      */
     public function show()
     {
-        // $client = new \GuzzleHttp\Client();
-        // $res = $client->get('https://private-694ba-mybri.apiary-mock.com/api/v1/eks/schedule/'.$id);
-        // dd(json_decode($res->getBody()));
-        // echo $res->getStatusCode();
-        // echo $res->getBody();
-        // json_decode($res->getBody()));
-        // return response()->json($results);
+        //
     }
 
     /**

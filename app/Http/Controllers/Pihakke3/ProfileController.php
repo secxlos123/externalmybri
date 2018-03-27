@@ -23,7 +23,7 @@ public function index()
         $results = Client::setEndpoint('profile')
                 ->setHeaders(['Authorization' => session('authenticate.token')])->get();
          $city    = Client::setEndpoint('city/')->get(); 
-        //return $results;
+        
          return view('pihakke3.pihakke3.edit', [
             'results'   => $results['contents'],
             'city'      => $city['contents'],

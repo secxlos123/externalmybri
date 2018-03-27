@@ -273,7 +273,6 @@ class EformController extends Controller
                 'eform'=> $request->has('eform') ? $request->input('eform') : true
             ])
             ->get();
-        \Log::info($customers);
 
         foreach ($customers['contents']['data'] as $key => $cust) {
 
@@ -297,7 +296,6 @@ class EformController extends Controller
                             'Authorization' => session('authenticate.token')
                         ])->get();
         $dataCustomer = $customerData['contents'];
-        \Log::info($customerData);
 
         if(($customerData['code'])==200){
             $view = (String)view('eforms.agent.detail-customer')
@@ -325,7 +323,6 @@ class EformController extends Controller
                     ])
                 ->get();
         $data   = $result['contents']['data'][0];
-        //dd($data);
         return response()->json(['data' => $data ]);
     }
 
@@ -337,9 +334,6 @@ class EformController extends Controller
      */
     public function saveCustomer(CustomerRequest $request)
     {
-      
-        \Log::info($request->all());
- 
         $newCustomer = $this->dataRequest($request);
         
         $client = Client::setEndpoint('customer')

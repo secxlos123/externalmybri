@@ -91,8 +91,6 @@ class ProfileController extends Controller
     public function update(Request $request, $type)
     {
         $baseRequest = $request->all();
-        \Log::info($baseRequest);
-
         $baseArray = array (
             'job_type_id' => 'type_id', 'job_type_name' => 'type'
             , 'job_id' => 'work_id', 'job_name' => 'work'
@@ -107,8 +105,6 @@ class ProfileController extends Controller
                 unset($baseRequest[$base]);
             }
         }
-        \Log::info("=======================================================");
-        \Log::info($baseRequest);
            
            $namaBagian = $this->_typeList($type);
            $results = Client::setEndpoint('profile/update/'.$type)
@@ -120,7 +116,7 @@ class ProfileController extends Controller
             ])
             ->setBody(array_to_multipart($baseRequest))
             ->put('multipart');
-            \Log::info($results);
+            
         if (isset($results['code']) && $results['code'] == 200) {
             \Session::flash('flash_message', $results['descriptions']);
             return redirect()->route('profile.index-profile', $type);
@@ -191,7 +187,7 @@ class ProfileController extends Controller
 
         if (isset($results['code']) && $results['code'] == 200) {
             \Session::flash('flash_message', $results['descriptions']);
-            // return redirect()->route('profile.index-password');
+            
             return redirect()->route('profile.index-profile', 'password');
         }
         \Session::flash('error_flash_message', $results['descriptions']);

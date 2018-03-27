@@ -28,7 +28,6 @@ class VerificationController extends Controller
         Client::setEndpoint('users/notification/read/'.@$request->get('slug').'/'.@$request->get('type'))
                ->setHeaders([
                 'Authorization' => session('authenticate.token')
-                // , 'auditaction' => 'action name'
                 , 'is_read' => is_read()
                 , 'long' => number_format($request->get('long', env('DEF_LONG', '106.81350')), 5)
                 , 'lat' => number_format($request->get('lat', env('DEF_LAT', '-6.21670')), 5)
@@ -72,7 +71,7 @@ class VerificationController extends Controller
                     'Authorization' => session('authenticate.token')
                 ])
                 ->get();
-        \Log::info($results['contents']);
+        
         return view('verification.show', [
             'results' => $results['contents']
             ]);
@@ -127,8 +126,6 @@ class VerificationController extends Controller
                 ->get();
 
         foreach ($results['contents']['data'] as $key => $type) {
-            \Log::info("=================================list eform nasabah===========================");
-            \Log::info($type);
             $type['ao_name'] = isset($type['ao']) ? $type['ao'] : '';
             $type['product'] = isset($type['product_type']) ? $type['product_type'] : '';
             $type['action'] = view('layouts.actions', [

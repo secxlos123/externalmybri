@@ -119,8 +119,6 @@ class TrackingController extends Controller
                 ->get();
 
         foreach ($results['contents']['data'] as $key => $type) {
-            \Log::info("=================================list eform nasabah===========================");
-            \Log::info($type);
             $type['ao_name'] = isset($type['ao']) ? $type['ao'] : '';
             $type['product'] = isset($type['product_type']) ? strtoupper($type['product_type']) : '';
             $type['action'] = view('layouts.actions', [

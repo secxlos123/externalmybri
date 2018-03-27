@@ -165,7 +165,7 @@ class PropertyController extends Controller
         \Session::put('prop_id_bri', $results['contents']['prop_id_bri']);
         \Session::put('category', $results['contents']['category']);
         \Session::put('status', $results['contents']['status']);
-       // dd($results);
+      
         return view("developer.property.show", [
             'property' => (object) $results['contents'],
             'role' => 'customer'
