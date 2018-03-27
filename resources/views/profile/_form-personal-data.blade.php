@@ -297,34 +297,7 @@
                 <!-- <p>Foto KTP</p> -->
                   @endif
             @else
-                <!-- <a href="@if(!empty($results['other']['identity'])){{$results['other']['identity']}}@endif" target="_blank" class="img-responsive"><img src="{{asset('assets/images/download-logo.png')}}" class="img-responsive"></a>
-                <p>Klik Untuk Lihat Foto KTP</p> -->
-              <!--   @if (str_contains($results['other']['identity'], '.pdf')) -->
-
-                           <!--  <div class="col-md-6">
-                                <div class="form-group ktp_preview">
-                                    <div class="col-md-12 col-md-offset-2"> -->
-                                        <!-- <iframe src="{{$results['other']['identity']}}" title="your_title" align="left" height="350" width="100%" frameborder="0" scrolling="auto" target="Message">
-                                        </iframe> -->
-                                   <!--  </div>
-                                </div>
-                            </div> -->
-<!--
-                        @else
-                            <div class="col-md-6">
-                                <div class="form-group ktp_preview">
-                                    <div class="col-md-12 col-md-offset-2">
-                                        {!! Html::image($results['other']['identity'] ? $results['other']['identity'] : 'assets/images/no-image.jpg', 'KTP', [
-                                            'class' => 'img-responsive', 'width' => 300, 'id' => 'ktp_preview',
-                                            'data-src' => asset('assets/images/no-image.jpg')
-                                        ]) !!}
-                                        @if ( null !== old('nik') )
-                                            <br/>Harap Upload Ulang Foto KTP
-                                        @endif
-                                    </div>
-                                </div>
-                            </div>
-                        @endif -->
+                
             @endif
             <!-- end handle -->
         @endif
@@ -333,10 +306,7 @@
 
             <div class="single-query form-group bottom20">
                 <label>Foto KTP</label>
-                <!-- {!! Html::image(image_checker(), 'KTP', [
-                    'class' => 'img-responsive', 'width' => 300, 'id' => 'ktp_preview',
-                    'data-src' => asset('assets/images/no-image.jpg')
-                ]) !!} -->
+                
                 <img src="{{ asset('assets/images/no-image.jpg') }}" data-src="{{ asset('assets/images/no-image.jpg') }}" class="img-responsive" width="300" id="ktp_preview">
             </div>
 
@@ -379,34 +349,7 @@
                 <!-- <p>Foto KTP</p> -->
                   @endif
             @else
-                <!-- <a href="@if(!empty($results['personal']['couple_identity'])){{$results['personal']['couple_identity']}}@endif" target="_blank" class="img-responsive"><img src="{{asset('assets/images/download-logo.png')}}" class="img-responsive"></a>
-                <p>Klik Untuk Lihat Foto KTP PASANGAN</p> -->
-                <!--  @if (str_contains($results['personal']['couple_identity'], '.pdf'))
- -->
-                           <!--  <div class="col-md-6">
-                                <div class="form-group ktp_preview">
-                                    <div class="col-md-12 col-md-offset-2"> -->
-                                        <!-- <iframe src="{{$results['personal']['couple_identity']}}" title="your_title" align="left" height="350" width="100%" frameborder="0" scrolling="auto" target="Message">
-                                        </iframe> -->
-                                   <!--  </div>
-                                </div>
-                            </div> -->
-
-                        <!-- @else
-                            <div class="col-md-6">
-                                <div class="form-group ktp_preview">
-                                    <div class="col-md-12 col-md-offset-2">
-                                        {!! Html::image($results['personal']['couple_identity'] ? $results['personal']['couple_identity'] : 'assets/images/no-image.jpg', 'KTP', [
-                                            'class' => 'img-responsive', 'width' => 300, 'id' => 'ktp_preview',
-                                            'data-src' => asset('assets/images/no-image.jpg')
-                                        ]) !!}
-                                        @if ( null !== old('nik') )
-                                            <br/>Harap Upload Ulang Foto KTP
-                                        @endif
-                                    </div>
-                                </div>
-                            </div>
-                        @endif -->
+                
             @endif
             <!-- end handle -->
         @endif
@@ -415,10 +358,7 @@
 
             <div class="single-query form-group bottom20 couple-selector">
                 <label>Foto KTP Pasangan</label>
-               <!--  {!! Html::image(image_checker(), 'KTPPASANGAN', [
-                    'class' => 'img-responsive', 'width' => 300, 'id' => 'ktppas_preview',
-                    'data-src' => asset('assets/images/no-image.jpg')
-                ]) !!} -->
+               
                 <img src="{{ asset('assets/images/no-image.jpg') }}" data-src="{{ asset('assets/images/no-image.jpg') }}" class="img-responsive" width="300" id="ktppas_preview">
             </div>
 

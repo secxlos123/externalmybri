@@ -14,10 +14,6 @@
 
                 <div class="single-query form-group bottom20">
                     <label>Foto NPWP</label>
-                    <!-- {!! Html::image(image_checker($results['other']['npwp']), 'npwp', [
-                        'class' => 'img-responsive', 'width' => 300, 'id' => 'npwp_preview',
-                        'data-src' => asset('assets/images/no-image.jpg')
-                    ]) !!} -->
                      @if (!(str_contains($results['other']['npwp'], '.pdf')))
                         {!! Html::image(image_checker($results['other']['npwp']), 'npwp', [
                             'class' => 'img-responsive', 'width' => 300, 'id' => 'npwp_preview',
@@ -57,10 +53,6 @@
 
                 <div class="single-query form-group bottom20">
                     <label>Foto Kartu Keluarga</label>
-                <!--     {!! Html::image(image_checker($results['other']['family_card']), 'family_card', [
-                        'class' => 'img-responsive', 'width' => 300, 'id' => 'family_card_preview',
-                        'data-src' => asset('assets/images/no-image.jpg')
-                    ]) !!} -->
                      @if (!(str_contains($results['other']['family_card'], '.pdf')))
                         {!! Html::image(image_checker($results['other']['family_card']), 'Family_Card', [
                             'class' => 'img-responsive', 'width' => 300, 'id' => 'family_card_preview',
@@ -144,10 +136,6 @@
 
                     <div class="single-query form-group bottom20">
                         <label>Foto Surat Nikah</label>
-                       <!--  {!! Html::image(image_checker($results['other']['marrital_certificate']), 'marrital_certificate', [
-                            'class' => 'img-responsive', 'width' => 300, 'id' => 'marrital_certificate_preview',
-                            'data-src' => asset('assets/images/no-image.jpg')
-                        ]) !!} -->
                      @if (!(str_contains($results['other']['marrital_certificate'], '.pdf')))
                     {!! Html::image(image_checker($results['other']['marrital_certificate']), 'marrital_certificate', [
                         'class' => 'img-responsive', 'width' => 300, 'id' => 'marrital_certificate_preview',
@@ -191,10 +179,6 @@
 
                     <div class="single-query form-group bottom20">
                         <label>Foto Surat Cerai</label>
-                       <!--  {!! Html::image(image_checker($results['other']['diforce_certificate']), 'diforce_certificate', [
-                            'class' => 'img-responsive', 'width' => 300, 'id' => 'diforce_certificate_preview',
-                            'data-src' => asset('assets/images/no-image.jpg')
-                        ]) !!} -->
                         @if (!(str_contains($results['other']['diforce_certificate'], '.pdf')))
                         {!! Html::image(image_checker($results['other']['diforce_certificate']), 'diforce_certificate', [
                             'class' => 'img-responsive', 'width' => 300, 'id' => 'diforce_certificate_preview',

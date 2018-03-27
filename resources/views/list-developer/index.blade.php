@@ -61,7 +61,6 @@
                 data: $data
             })
             .done(function (response) {
-                // console.log(response);
                 $('.contentDev').html("");
                 $('.contentDev').html(response);
             })
