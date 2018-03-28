@@ -70,7 +70,6 @@
         var dev = $('.developer').val();
         var city = $('.city_id').val();
         var id = $('ul.pager li[class=active]').text();
-        // console.log(id);
         $('ul.pager li#'+id).removeClass('active');
         loadDataPage(page, dev, city);
     });

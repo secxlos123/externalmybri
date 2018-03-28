@@ -22,7 +22,6 @@
         </div>
         <div class="col-md-2">
             <div class="select-pro-list text-center">
-                <!-- <a href="{{url('/kalkulator/'.$units['price'])}}" class="button-kpr" target="_blank"> Simulasi KPR </a> -->
                 <a href="{{route('kalkulator.simulasi.kpr',$units['price'])}}" class="button-kpr" target="_blank"> Simulasi KPR </a>
                 @if($units['is_available'] == 1)
                 <a href="{{ session('authenticate') ? url('eform').'?property_id='.Session::get('property_id').'&property_name='.Session::get('property_name').'&property_type_id='.$units['property_type_id'].'&property_type_name='.$units['property_type_name'].'&property_item_id='.$units['id'].'&developer_id='.$units['developer_id'].'&developer_name='.$units['developer_name'].'&property_item_address='.$units['address'].'&property_item_price='.$units['price'].'&prop_status='.$units['status'] : 'javascript:void(0)'}}" class="button-kpr {{ session('authenticate') ? '' : 'btn-login'}}">Ajukan KPR</a>

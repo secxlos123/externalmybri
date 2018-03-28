@@ -10,11 +10,6 @@
             <div class="col-md-12">
                 <div class="card-box title-calender">
                     <h4 class="m-t-0 header-title"><b>Modul Penjadwalan</b></h4>
-
-                    <!-- <div class='map' id='map' style='width: 100%; height: 200px;'></div> -->
-                   <!--  <p class="text-muted m-b-30">
-                        Klik pada label jadwal yg telah ada untuk diubah.
-                    </p> -->
                     <div class="row">
                         <div class="col-md-12">
                             <div id="calendar"></div>
@@ -83,7 +78,6 @@
                                 <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Batal</button>
                                 <button type="button" class="btn btn-success save-event waves-effect waves-light" id="updateSchedule">Update Jadwal</button>
                                 </div>
-                                <!-- <button type="button" class="btn btn-danger delete-event waves-effect waves-light" data-dismiss="modal">Hapus Jadwal Ini</button> -->
                             </div>
                         </div>
                     </div>
@@ -123,8 +117,6 @@
     <script type="text/javascript">
         var map, marker;
     $( document ).ready(function() {
-        // $('.fc-time').hide();
-
         function initialize() {
             var lng = $('#lng').val();
             var lat = $('#lat').val();
@@ -138,7 +130,6 @@
                 map: map,
                 position: latlng,
                 draggable: true
-                // anchorPoint: new google.maps.Point(0, -29)
             });
             var input = document.getElementById('searchInput');
             map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
@@ -187,7 +178,6 @@
 
         $('#event-modal').on('shown.bs.modal', function(event){
             setTimeout(function () {
-                // google.maps.event.addDomListener(window, 'load', initialize);
                 initialize();
                 google.maps.event.trigger(map, "resize");
             }, 2000);
@@ -197,7 +187,6 @@
         });
 
         function initializeMapPosition (event) {
-            // console.log(event.latitude);
             setTimeout(function () {
                 marker.position = new google.maps.LatLng(event.lat, event.long);
                 marker.setMap(map);

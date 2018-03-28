@@ -22,11 +22,9 @@
                                     <div class="tracking-card">
                                         <div class="card-box widget-box-three {{($results['status'] == 'Pengajuan Kredit') ? 'active' : ''}}">
                                             <div class="bg-icon">
-                                                <!-- <div class="icon_pengajuan"></div> -->
                                                 {!! Html::image('assets/images/fa_envelope_o.png', '', [
                                                     'class' => 'track-icon'
                                                 ]) !!}
-                                                <!-- <i class="fa fa-envelope"></i> -->
                                             </div>
                                             <div class="text-center">
                                                 <p class="m-t-5 text-uppercase font-600 font-secondary">Pengajuan Telah Diterima</p>
@@ -39,7 +37,6 @@
                                                 {!! Html::image('assets/images/fa_analis_o.png', '', [
                                                     'class' => 'track-icon'
                                                 ]) !!}
-                                                <!-- <i class="fa fa-crosshairs"></i> -->
                                             </div>
                                             <div class="text-center">
                                                 <p class="m-t-5 text-uppercase font-600 font-secondary">Proses Analisa Pengajuan</p>
@@ -52,7 +49,6 @@
                                                 {!! Html::image('assets/images/fa_file_o.png', '', [
                                                     'class' => 'track-icon'
                                                 ]) !!}
-                                                <!--  <i class="fa fa-hdd-o"></i> -->
                                             </div>
                                             <div class="text-center">
                                             @if ($results['status'] == 'Kredit Ditolak' || $results['status'] == 'Kredit Disetujui')
@@ -69,7 +65,6 @@
                                                 {!! Html::image('assets/images/fa_dollar_o.png', '', [
                                                     'class' => 'track-icon'
                                                 ]) !!}
-                                                <!--  <i class="fa fa-dollar"></i> -->
                                             </div>
                                             <div class="text-center">
                                                 <p class="m-t-5 text-uppercase font-600 font-secondary">Proses Pencairan</p>
@@ -266,15 +261,3 @@
     </style>
 @endpush
 <!-- This is styles for this page end -->
-
-<!-- This is scripts for this page -->
-@push('scripts')
-   <!--  <script type="text/javascript">
-    $( document ).ready(function() {
-        var dob = new Date($("input[name='createdEform']").val());
-        var today = new Date();
-        var age = Math.floor((today-dob) / (1000 * 60 * 60 * 24));
-        $('.agingVal').html(age+' Hari');
-    });
-    </script> -->
-@endpush

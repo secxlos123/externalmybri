@@ -176,10 +176,7 @@ Route::group(['prefix' => 'verification', 'as' => 'verification.', 'middleware' 
 	 * This route for send request verification list data
 	 */
 	Route::get('/', 'VerificationController@index')->name('index-verification');
-	/**
-	 * This route for send request detail verification
-	 */
-	// Route::get('/detail/{id}', 'VerificationController@show')->name('show');
+	
 });
 
 /**

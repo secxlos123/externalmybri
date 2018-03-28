@@ -202,7 +202,7 @@
                 if (bathroom) {
                     bathroom++;
                 }
-                // console.log(bathroom);
+              
                 loadData(1, dev, city, rangePrice, rangeLand, rangeBuild, category, bedroom, bathroom, garage, type);
             });
 
@@ -236,7 +236,7 @@
 
         function loadData(nextPage, dev=null, city=null, price=null, land=null, build=null, category=null, bedroom=null, bathroom=null, garage=null, type=null)
         {
-            console.log("loadData", price);
+          
             $('.contentProperty').html("");
             $('.contentProperty').append("<div style=\"height: 60px;margin: auto;padding: 10px;\"><div class=\"loader-page\" id=\"loader-page\"></div></div>");
             $.ajax({

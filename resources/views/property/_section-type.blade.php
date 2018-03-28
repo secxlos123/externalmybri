@@ -3,7 +3,7 @@
 		background-color: #191970;
 	}
 	.hwfr:hover{
-		background-color: #FF8C00; /* Green */
+		background-color: #FF8C00;
     	color: white;
 	}
 </style>

@@ -78,7 +78,6 @@
                 data : function(d, settings){
 
                     var api = new $.fn.dataTable.Api(settings);
-                    console.log(api);
                     d.page = Math.min(
                         Math.max(0, Math.round(d.start / api.page.len())),
                         api.page.info().pages
