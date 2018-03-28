@@ -319,6 +319,22 @@
                         });
                     });
         </script>
+    <!-- CHECKBOX ROBOT -->
+    <script type="text/javascript">
+        var _doc = $(document);
+        var checkList = $('#checklist');
+        var laoding = $('#loading');
+        _doc.on('change', '#checkbox_robot', function(){
+            check = $(this).prop("checked");
+            if(check){
+                laoding.show();
+                laoding.hide(1000);
+                checkList.show(1100);
+            }else{
+                checkList.hide(100);
+            }
+        });
+    </script>
 
     <!-- This is place for dynamis scripts per page -->
     @stack('scripts')

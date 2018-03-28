@@ -1,3 +1,15 @@
+<style type="text/css">
+     .check_back{
+            height: 30px;
+            background-color: #cccccc;
+            background-image: linear-gradient(orange, #D2691E);
+            border: outset;
+            text-align: center;
+        }
+     #checkbox-error{
+        color: white;
+     }
+</style>
 @if(Session::has('flash_message'))
     <div class="alert alert-danger"><em> {!! session('flash_message') !!}</em></div>
     <script>
@@ -43,22 +55,23 @@
     <div class="single-query form-group col-sm-12">
         {!! Form::password('password_confirmation', [ 'class' => 'keyword-input', 'placeholder' => 'Ulangi Kata Sandi' ]) !!}
     </div>
-     <div class="captcha single-query form-group">
+     <!-- <div class="captcha single-query form-group">
         <span id="imgCaptcha">{!! captcha_img('flat'); !!}</span>
         <button type="button" class="btn btn-success btn-refresh" title="Refresh Captcha" id="btn-refresh"><i class="fa fa-refresh"></i></button>
       </div>
     <div class="single-query form-group col-sm-12 {{ $errors->has('captcha') ? 'has-error' : '' }}">
         <input id="captcha" type="text" class="keyword-input" placeholder="Enter Captcha" name="captcha">
                           @if ($errors->has('captcha'))
-
                               <span class="help-block error-help-block">
-
-                                 <!--  <strong style="color: red;"> -->{{ $errors->first('captcha') }}<!-- </strong> -->
-
+                                 {{ $errors->first('captcha') }}
                               </span>
-
                           @endif
-      </div>
+    </div> -->
+    
+        <div class="form-group">
+            <label class="check_back" style="color: black;">&nbsp; &nbsp; &nbsp;<input type="checkbox" name="checkbox" id="checkbox_robot" value="1">&nbsp; I'm not Robot&nbsp; &nbsp;<img src="{{url('assets/images/load.gif')}}" height="18px" id="loading" style="display: none;"><span class="fa fa-check" id="checklist" style="color: green; display: none;"></span>&nbsp; &nbsp;</label>
+        </div>
+      
    @include('form._input_long_lat')
     <div class="col-md-12 col-sm-12 col-xs-12 text-center">
         <div class="query-submit-button">

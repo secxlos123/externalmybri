@@ -10,7 +10,7 @@ use Client;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use LaravelCaptcha\Lib\Captcha;
+//use LaravelCaptcha\Lib\Captcha;
 
 class RegisterController extends Controller
 {
@@ -65,9 +65,9 @@ class RegisterController extends Controller
      */
     public function register(RegisterRequest $request)
     {
-        $this->validate($request, [
-            'captcha' => 'required|captcha'
-        ],['captcha.captcha'=>'Kode Captcha tidak sesuai.']);
+        // $this->validate($request, [
+        //     'captcha' => 'required|captcha'
+        // ],['captcha.captcha'=>'Kode Captcha tidak sesuai.']);
 
         if ( 'register' == $request->input('register') ) {
             $splitName = explode(' ', $request->input('fullname'), 2);
