@@ -27,7 +27,7 @@
                 <div class="row title-box">
 
                     <div class="col-md-6 p-0 b-r-1">
-                        <h2 class="text-uppercase">{!! $property->name !!}</h2>
+                        <h1 class="text-uppercase"><b>{!! $property->name !!}</b></h1>
                         <p><i class="fa fa-map-marker"></i> {!! $property->address !!}</p>
                     </div>
 
