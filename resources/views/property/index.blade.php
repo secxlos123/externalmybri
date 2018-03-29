@@ -140,7 +140,8 @@
         <div class="row">
             <div class="col-sm-12 text-center">
                 <h2 class="uppercase">DAFTAR PROPERTI</h2>
-                <p class="heading_space">Kami Memiliki Beberapa Properti.</p>
+                <br>
+                <!-- <p class="heading_space">Kami Memiliki Beberapa Properti.</p> -->
             </div>
         </div>
         <div class="contentProperty">

@@ -5,7 +5,7 @@
         @endforeach
     @else
         <div class="col-sm-12 text-center bottom30">
-            <h2 class="uppercase"><i>TIDAK DAPAT MENEMUKAN PROPERTI</i></h2>
+            <h4 class="uppercase"><i><b>TIDAK DAPAT MENEMUKAN PROPERTI</b></i></h4>
         </div>
     @endif
 </div>
