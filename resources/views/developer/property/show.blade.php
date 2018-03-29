@@ -32,7 +32,7 @@
                     </div>
 
                     <div class="col-md-3 dev-logo text-right">
-                        {!! Html::image($property->developer_logo, 'logo', ['class' => 'img-thumbnail img-responsive']) !!}
+                        {!! Html::image($property->developer_logo, 'logo', ['class' => 'img-thumbnail img-responsive', 'align' => 'right']) !!}
                     </div>
                     <div class="col-md-3 p-0">
                         <div class="dev pull-right">
