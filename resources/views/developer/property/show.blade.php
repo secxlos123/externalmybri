@@ -35,7 +35,7 @@
                         {!! Html::image($property->developer_logo, 'logo', ['class' => 'img-thumbnail img-responsive', 'align' => 'right']) !!}
                     </div>
                     <div class="col-md-3 p-0">
-                        <div class="dev pull-right">
+                        <div class="dev pull-left">
                             <p>Oleh:</p>
                             <h2><a href="#">{!! $property->developer_name !!}</a></h2>
                         </div>
