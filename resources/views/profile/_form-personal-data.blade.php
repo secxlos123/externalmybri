@@ -1,7 +1,7 @@
 <div class="row top20">
     <div class="col-md-6">
         <div class="single-query form-group bottom20">
-            <label>NIK (<span title="Kolom NIK wajib diisi!">*</span>)</label>
+            <label>NIK @if ($type != 'view')(<span title="Kolom NIK wajib diisi!">*</span>)@endif</label>
             @if ($type != 'view')
                 {!! Form::text('nik', (old('nik')) ? old('nik') : @$results['personal']['nik'], [
                     'class' => 'form-control ', 'maxlength' => 16, 'onkeypress' => 'return goodchars(event, "1234567890 ", this)', 'title' => 'Kolom NIK wajib diisi!'
@@ -11,7 +11,7 @@
             @endif
         </div>
         <div class="single-query form-group bottom20">
-            <label>Nama (<span title="Kolom Nama wajib diisi!">*</span>)</label>
+            <label>Nama @if ($type != 'view')(<span title="Kolom Nama wajib diisi!">*</span>)@endif</label>
             @if ($type != 'view')
                 {!! Form::text('name', @$results['personal']['first_name'].' '.@$results['personal']['last_name'], [
                     'class' => 'form-control',
@@ -24,7 +24,7 @@
             @endif
         </div>
         <div class="single-query form-group bottom20">
-            <label>Tempat lahir (<span title="Kolom Tempat Lahir wajib diisi!">*</span>)</label>
+            <label>Tempat lahir @if ($type != 'view')(<span title="Kolom Tempat Lahir wajib diisi!">*</span>)@endif</label>
             @if ($type != 'view')
             {!! Form::select('birth_place_id', [@$results['personal']['birth_place_id'] => @$results['personal']['birth_place']], old('birth_place_id'), [
                 'class' => 'form-control select2 cities birth_place',
@@ -37,7 +37,7 @@
             @endif
         </div>
         <div class="single-query form-group bottom20">
-            <label>Tanggal lahir (<span title="Kolom Tanggal Lahir wajib diisi!">*</span>)</label>
+            <label>Tanggal lahir @if ($type != 'view')(<span title="Kolom Tanggal Lahir wajib diisi!">*</span>)@endif</label>
             <div>
                 <div class="input-group">
                     @if ($type != 'view')
@@ -57,7 +57,7 @@
             </div>
         </div>
         <div class="single-query form-group bottom20">
-            <label>Alamat (<span title="Koom Alamat wajib diisi!">*</span>)</label>
+            <label>Alamat @if ($type != 'view')(<span title="Koom Alamat wajib diisi!">*</span>)@endif</label>
             @if ($type != 'view')
                 {!! Form::textarea('address', (old('address')) ? old('address') : @$results['personal']['address'], [
                     'class' => 'form-control',
@@ -72,7 +72,7 @@
             @endif
         </div>
         <div class="single-query form-group bottom20">
-            <label>Kota (<span title="Kolom Kota wajib diisi!">*</span>)</label>
+            <label>Kota @if ($type != 'view')(<span title="Kolom Kota wajib diisi!">*</span>)@endif</label>
             @if ($type != 'view')
             {!! Form::select('city_id', [@$results['personal']['city_id'] => @$results['personal']['city']], old('city_id'), [
                 'class' => 'form-control select2 cities city',
@@ -86,7 +86,7 @@
         </div>
 
          <div class="single-query form-group bottom20 couple-selector">
-            <label>NIK Pasangan </label>
+            <label>NIK Pasangan @if ($type != 'view')(<span title="Kolom NIK Pasangan wajib diisi!">*</span>)@endif</label>
             @if ($type != 'view')
                 {!! Form::text('couple_nik', (old('couple_nik')) ? old('couple_nik') : @$results['personal']['couple_nik'], [
                     'class' => 'form-control ', 'maxlength' => 16, 'onkeypress' => 'return goodchars(event, "1234567890 ", this)'
