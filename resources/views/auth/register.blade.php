@@ -1,15 +1,17 @@
 <style type="text/css">
-     .check_back{
-            height: 30px;
-            background-color: #cccccc;
-            background-image: linear-gradient(orange, #D2691E);
-            border: outset;
-            text-align: center;
-        }
-     #checkbox-error{
-        color: white;
-     }
-    .white_line{
+.check_back{
+    height: 30px;
+    background-color: #cccccc;
+    background-image: linear-gradient(orange, #D2691E);
+    border: outset;
+    text-align: center;
+}
+#checkbox-error, #fullname-error, #email-error, #mobile_phone-error, #password-error, #password_confirmation-error{
+    color: white;
+    font-weight: bold;
+    font-size: 12px;
+}
+.white_line{
     background: transparent;
     border: none;
     color: white;
