@@ -65,6 +65,7 @@
 									]) !!}
 									<span class="input-group-addon b-0"><i class="fa fa-calendar"></i></span>
 								</div>
+								<span id="not" class="text-danger" hidden="hidden">Umur anda kurang dari 21 tahun</span>
 							</div>
 						</div>
 

@@ -180,5 +180,23 @@
             }
         });
     </script>
+    <script type="text/javascript">
+        var _doc = $(document);
+        var _st = $('#status');
+        _st.on('change', function(e){
+        var _stat = $('#status').select2('data')[0]['id'];
+        var _bd = new Date($("input[name='birth_date']").val());
+        var _td = new Date();
+        var _ag = Math.floor((_td-_bd) / (365.25 * 24 * 60 * 60 * 1000));
+        if(_stat == 1 && _ag < 21){
+            $('#not').show();
+            if(_stat == 1 && _ag >= 21){
+                $('#not').hide();
+            }
+        }else{
+            $('#not').hide();
+        }
+    });
+    </script>
     @stack('parent-scripts')
 @endpush

@@ -81,7 +81,7 @@ class EformRequest extends FormRequest
             'first_name'            => 'required',
             'last_name'             => '',
             'birth_place_id'        => 'required',
-            'birth_date'            => 'required|date|before:-21years',
+            'birth_date'            => 'required',
             'address'               => 'required',
             'city_id'               => 'required',
             'gender'                => 'required|in:L,P',
