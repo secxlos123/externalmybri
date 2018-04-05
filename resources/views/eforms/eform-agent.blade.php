@@ -626,6 +626,39 @@
 
         $('#datepicker-date').datepicker("setDate",  "{{date('Y-m-d', strtotime('-21 years'))}}");
         $('#datepicker-autoclose').datepicker("setDate",  "{{date('Y-m-d', strtotime('-21 years'))}}");
+        var _stat = $('#leads-modal #status');
+        _stat.on('change', function(){
+            var _st = $("#leads-modal #status").val();
+            var _bd = new Date($("input[name='birth_date']").val());
+            var _td = new Date();
+            var _ag = Math.floor((_td-_bd) / (365.25 * 24 * 60 * 60 * 1000));
+            var err = $('#valid_birth');
+            var btn = $('#btn-save');
+            if(_st == 1){
+                if(_ag < 20){
+                    err.show();
+                    btn.prop('disabled', true);
+                }
+                $('#leads-modal #datepicker-date').on('change', function() {
+                    var dt_vl = new Date($("input[name='birth_date']").val());
+                    var dt_nw = new Date();
+                    var ags = Math.floor((dt_nw-dt_vl) / (365.25 * 24 * 60 * 60 * 1000));
+                    var st = $("#leads-modal #status").val();
+                    if(_st == 1){
+                        if (ags < 20) {
+                            err.show();
+                            btn.prop('disabled', true);
+                        } else {
+                            err.hide();
+                            btn.prop('disabled', false);
+                        }
+                    }
+                });
+            }else{
+                err.hide();
+                btn.prop('disabled', false);
+            }
+        });
     </script>
     <!-- End Script for Agent Dev -->
     @stack('parent-scripts')

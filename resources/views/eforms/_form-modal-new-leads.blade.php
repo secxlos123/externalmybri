@@ -67,6 +67,7 @@
                                                                 <span class="input-group-addon b-0"><i class="mdi mdi-calendar"></i></span>
                                                                 @if ($errors->has('birth_date')) <p class="help-block">{{ $errors->first('birth_date') }}</p> @endif
                                                             </div>
+                                                            <p class="text-danger" style="display: none;" id="valid_birth">Umur anda kurang dari 21 tahun</p>
                                                         </div>
                                                     </div>
                                                     <div class="form-group gender {!! $errors->has('gender') ? 'has-error' : '' !!}">
