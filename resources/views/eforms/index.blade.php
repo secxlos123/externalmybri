@@ -188,15 +188,33 @@
         var _bd = new Date($("input[name='birth_date']").val());
         var _td = new Date();
         var _ag = Math.floor((_td-_bd) / (365.25 * 24 * 60 * 60 * 1000));
-        if(_stat == 1 && _ag < 21){
-            $('#not').show();
-            if(_stat == 1 && _ag >= 21){
-                $('#not').hide();
+        if(_stat == 1){
+            if(_ag < 20){
+                $('#not').show();
             }
-        }else{
-            $('#not').hide();
+            $('.date-birth').on('change', function() {
+                var dt_vl = new Date($("input[name='birth_date']").val());
+                var dt_nw = new Date();
+                var ags = Math.floor((dt_nw-dt_vl) / (365.25 * 24 * 60 * 60 * 1000));
+                var st = $("#leads-modal #status").val();
+                if(_stat == 1){
+                    if (ags < 20) {
+                        $("#not").show();
+                    } else {
+                        $("#not").hide();
+                    }
+                }
+            });
         }
     });
+        // if(_stat == 1 && _ag >= 20){
+            //     $('#not').hide();
+        // }else{
+        //     $('#not').hide();
+        // }
+    </script>
+    <script type="text/javascript">
+        
     </script>
     @stack('parent-scripts')
 @endpush
