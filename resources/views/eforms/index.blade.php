@@ -17,7 +17,6 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-
                     <div class="card-box">
                         @if ( $errors->any() )
                             <div class="alert alert-danger">
@@ -28,6 +27,7 @@
                                 </ul>
                             </div>
                         @endif
+                        <div class="card-box-valid-date"></div>
                     </div>
 
                     <div class="card-box">
@@ -176,7 +176,7 @@
             if (age < 21 && status == 1) {
                 e.preventDefault();
                 $("#steps-uid-0-t-1").trigger('click');
-                $("div.card-box").append("<div class=\"alert alert-danger\"><ul><li>Umur anda "+age+" tahun kurang memenuhi persyaratan yaitu minimum 21 tahun</li></ul></div>");
+                $("div.card-box-valid-date").append("<div class=\"alert alert-danger\"><ul><li>Umur anda "+age+" tahun kurang memenuhi persyaratan yaitu minimum 21 tahun</li></ul></div>");
             }
         });
     </script>
@@ -189,7 +189,9 @@
         var _td = new Date();
         var _ag = Math.floor((_td-_bd) / (365.25 * 24 * 60 * 60 * 1000));
         if(_stat == 1){
+            console.log("this stat 1");
             if(_ag < 20){
+                console.log("this age < 20");
                 $('#not').show();
             }
             $('.date-birth').on('change', function() {
@@ -198,7 +200,9 @@
                 var ags = Math.floor((dt_nw-dt_vl) / (365.25 * 24 * 60 * 60 * 1000));
                 var st = $("#leads-modal #status").val();
                 if(_stat == 1){
+                    console.log("this stat 1 part2");
                     if (ags < 20) {
+                        console.log("this age < 20 part2");
                         $("#not").show();
                     } else {
                         $("#not").hide();
