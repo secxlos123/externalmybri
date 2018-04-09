@@ -88,7 +88,7 @@ class DeveloperController extends Controller
            }
            else
            {
-                \Session::flash('error_flash_message', $client['contents']);
+                \Session::flash('error_flash_message', $client['contents'] );
                 if (isset($client['contents']['email']) && $client['contents']['email'] == 'Email sudah pernah digunakan!') {
                     $client['contents']['email'] = 'Email sudah pernah digunakan';
                     $msg = $client['contents'];

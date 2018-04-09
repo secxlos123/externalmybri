@@ -24,7 +24,7 @@
                         @elseif(Session::has('error_flash_message'))
                         <div class="alert alert-danger">
                         @foreach(session('error_flash_message') as $key => $error_message)
-                        <em> {!! $error_message !!}</em>
+                        <em> {!!  $error_message  !!}</em>
                         @endforeach
                         </div>
                     @endif
