@@ -44,7 +44,7 @@
                                                     <div class="form-group full_name {!! $errors->has('full_name') ? 'has-error' : '' !!}">
                                                         <label class="col-md-3 control-label">Nama Lengkap * :</label>
                                                         <div class="col-md-9">
-                                                            <input type="text" class="form-control" name="full_name" id="full_name" value="{{ old('full_name') }}" maxlength="50">
+                                                            <input type="text" class="form-control" name="full_name" id="full_name" value="{{ old('full_name') }}" onkeypress="return goodchars(event, 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ', this)" maxlength="50">
                                                              @if ($errors->has('full_name')) <p class="help-block">{{ $errors->first('full_name') }}</p> @endif
                                                         </div>
                                                     </div>
