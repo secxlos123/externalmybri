@@ -66,7 +66,7 @@
 </section>    
 @push('scripts')
 <script type="text/javascript">
- $("#credit-toggle").click(function(){
+ $(".base2").click(function(){
     if($("#cs_button").attr("data-arrow-clicked")%2){
       $("#cs_button").removeClass("fa-chevron-down");
       $("#cs_button").addClass("fa-chevron-up");
