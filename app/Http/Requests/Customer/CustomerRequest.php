@@ -57,6 +57,7 @@ class CustomerRequest extends FormRequest
             'status.required' => 'Kolom status pernikahan harus diisi.',
             'mother_name.required' => 'Kolom nama ibu harus diisi.',
             'mobile_phone.required' => 'Kolom nomor handphone harus diisi.',
+            'mobile_phone.regex' => 'Format Nomor Handphone tidak valid',
             'identity.required' => 'Kolom foto ktp harus diisi.',
             'couple_nik.required' => 'NIK Pasangan harus diisi.',
             'couple_name.required' => 'Nama Pasangan harus diisi.',
