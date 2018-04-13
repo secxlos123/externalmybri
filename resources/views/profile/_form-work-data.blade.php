@@ -73,9 +73,9 @@
             <label>Lama Kerja (*)</label>
             <div class="input-group bottom10">
             @if ($type != 'view')
-                <input type="number" class="form-control" name="work_duration" id="work_duration" value="{{isset($results['work']['work_duration']) ? $results['work']['work_duration'] : old('work_duration')}}" min="0" maxlength="2">
+                <input type="text" class="form-control" name="work_duration" id="work_duration" value="{{isset($results['work']['work_duration']) ? $results['work']['work_duration'] : old('work_duration')}}" min="0" maxlength="2" onkeypress = "return goodchars(event, '1234567890', this)">
                 <span class="input-group-addon">Tahun</span>
-                <input type="number" class="form-control" name="work_duration_month" id="work_duration_month" value="{{isset($results['work']['work_duration_month']) ? $results['work']['work_duration_month'] : old('work_duration_month')}}" min="0" maxlength="2">
+                <input type="text" class="form-control" name="work_duration_month" id="work_duration_month" value="{{isset($results['work']['work_duration_month']) ? $results['work']['work_duration_month'] : old('work_duration_month')}}" min="0" maxlength="2" onkeypress = "return goodchars(event, '1234567890', this)">
                 <span class="input-group-addon">Bulan</span>
             @else
             <span class="form-control" style="border: 0px;">
