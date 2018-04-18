@@ -76,9 +76,9 @@
         var garage = $('.garage').val();
         var id = $('ul.pager li[class=active]').text();
         $('ul.pager li#'+id).removeClass('active');
-        loadDataPage(page, dev, city);
+        loadDataPage(page, dev, city, type, category, bedroom, bathroom, garage);
     });
-    function loadDataPage(nextPage, dev=null, city=null)
+    function loadDataPage(nextPage, dev=null, city=null, type=null, category=null, bedroom=null, bathroom=null, garage=null)
     {
         $('.contentProperty').html("");
         $('.contentProperty').append("<div style=\"height: 60px;margin: auto;padding: 10px;\"><div class=\"loader-page\" id=\"loader-page\"></div></div>");
@@ -89,11 +89,11 @@
                     page: nextPage,
                     dev_id: dev,
                     prop_city_id: city,
+                    prop_type: type,
                     category: category,
                     bedroom: bedroom,
                     bathroom: bathroom,
-                    carport: garage,
-                    prop_type: type
+                    carport: garage
                 }
         })
         .done(function (response) {
