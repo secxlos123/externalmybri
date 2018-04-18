@@ -83,7 +83,15 @@
                     limit: 6,
                     page: nextPage,
                     dev_id: dev,
-                    prop_city_id: city
+                    prop_city_id: city,
+                    price: price,
+                    category: category,
+                    land: land,
+                    building: build,
+                    bedroom: bedroom,
+                    bathroom: bathroom,
+                    carport: garage,
+                    prop_type: type
                 }
         })
         .done(function (response) {
