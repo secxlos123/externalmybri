@@ -69,6 +69,11 @@
         var page = $(this).data('id');
         var dev = $('.developer').val();
         var city = $('.city_id').val();
+        var type = $('.property_type').val();
+        var category = $('.category').val();
+        var bedroom = $('.bedroom').val();
+        var bathroom = $('.bathroom').val();
+        var garage = $('.garage').val();
         var id = $('ul.pager li[class=active]').text();
         $('ul.pager li#'+id).removeClass('active');
         loadDataPage(page, dev, city);
@@ -84,10 +89,7 @@
                     page: nextPage,
                     dev_id: dev,
                     prop_city_id: city,
-                    price: price,
                     category: category,
-                    land: land,
-                    building: build,
                     bedroom: bedroom,
                     bathroom: bathroom,
                     carport: garage,
