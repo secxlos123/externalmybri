@@ -22,7 +22,8 @@
                                         <div class="input-group">
                                             <span class="input-group-addon">Rp</span>
                                             {!! Form::text('salary', old('salary'), [
-                                                'class' => 'form-control numeric currency', 'maxlength' => 15
+                                                'class' => 'form-control numeric currency', 'maxlength' => 15,
+                                                'placeholder' => '00'
                                             ]) !!}
                                         </div>
                                     </div>
@@ -33,7 +34,8 @@
                                         <div class="input-group">
                                             <span class="input-group-addon">Rp</span>
                                             {!! Form::text('other_salary', old('other_salary'), [
-                                                'class' => 'form-control numeric currency', 'maxlength' => 15
+                                                'class' => 'form-control numeric currency', 'maxlength' => 15,
+                                                'placeholder' => '00'
                                             ]) !!}
                                         </div>
                                     </div>
@@ -47,7 +49,8 @@
                                         <div class="input-group">
                                             <span class="input-group-addon">Rp</span>
                                             {!! Form::text('loan_installment', old('loan_installment'), [
-                                                'class' => 'form-control numeric currency', 'maxlength' => 15
+                                                'class' => 'form-control numeric currency', 'maxlength' => 15,
+                                                'placeholder' => '00'
                                             ]) !!}
                                         </div>
                                     </div>

@@ -20,5 +20,13 @@
             <i class="glyphicon glyphicon-remove"></i>
         </a>
     @endif
+
+    @if ( isset($edit_unit) )
+        @if ($available_status_unit == "available")
+            <a href="{!! $edit_unit !!}" class="btn btn-default" title="Edit">
+                <i class="glyphicon glyphicon-pencil"></i>
+            </a>
+        @endif
+    @endif
 </div>
 </center>

@@ -12,7 +12,7 @@
                     'data-placeholder' => 'Pilih Proyek'
                 ]) !!}
             @else
-                {!! Form::text('property_name', old('property_name'), ['class' => 'keyword-input', 'disabled']) !!}
+                {!! Form::text('property_name', old('property_name'), ['class' => 'keyword-input', 'disabled', 'style' => 'background-color:lavender;']) !!}
                 {!! Form::hidden('property', @$unit->property_id ,old('property_id')) !!}
             @endif
 
@@ -33,7 +33,7 @@
                     'data-placeholder' => 'Pilih Tipe Proyek'
                 ]) !!}
             @else
-                {!! Form::text('property_type_name', old('property_type_name'), ['class' => 'keyword-input', 'disabled']) !!}
+                {!! Form::text('property_type_name', old('property_type_name'), ['class' => 'keyword-input', 'disabled', 'style' => 'background-color:lavender;']) !!}
                 {!! Form::hidden('property_type_id') !!}
             @endif
 
@@ -67,7 +67,24 @@
                 </span>
             @endif
         </div>
+        @if(isset($view) == "edit")
+        <div class="single-query">
+            <div class="form-group bottom20 col-xs-6 col-sm-12 {{ $errors->has('first_unit') ? ' has-error' : '' }}"
+                style="padding-left: unset;">
 
+                {!! Form::label('no_unit', 'Nomor Unit') !!}
+                <div class="input-group">
+                    <input type="text" class="form-control numericOnly" name="no_unit" maxlength="3" value="{{ $unit->no_item ? $unit->no_item : 0 }}" readonly="readonly" style="background-color: lavender;">
+                </div>
+
+                @if ($errors->has('no_unit'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('no_unit') }}</strong>
+                    </span>
+                @endif
+            </div>
+        </div>
+        @else
          <div class="single-query">
             <div class="form-group bottom20 col-xs-6 col-sm-4 {{ $errors->has('first_unit') ? ' has-error' : '' }}"
                 style="padding-left: unset;">
@@ -130,7 +147,7 @@
             </div>
 
         </div>
-
+        @endif
         <div hidden class="single-query form-group bottom20 {{ $errors->has('status') ? ' has-error' : '' }}">
             {!! Form::label('status', 'Status') !!}
             {!! Form::select('status', [
@@ -217,6 +234,9 @@
     <!-- After that you run in console or terminal or cmd "npm run production" -->
     {!! Html::script( 'js/dropdown.min.js' ) !!}
     {!! Html::script( 'js/main-dropzone.min.js' ) !!}
+@if(isset($unit))
+    {!! JsValidator::formRequest(App\Http\Requests\Developer\PropertyItem\UpdateRequest::class, '#form-proyek-item') !!}
+@endif
     {!! JsValidator::formRequest(App\Http\Requests\Developer\PropertyItem\CreateRequest::class, '#form-proyek-item') !!}
 
     <!-- Laravel Javascript Validation -->

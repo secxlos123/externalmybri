@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Developer;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Developer\PropertyItem\CreateRequest;
+use App\Http\Requests\Developer\PropertyItem\UpdateRequest;
 use Client;
 use Storage;
 use Illuminate\Support\Facades\Log;
@@ -89,7 +90,7 @@ class ItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CreateRequest $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
         return $this->storeOrUpdate($request, 'property-item/'.$id, 'put');
     }
@@ -132,7 +133,8 @@ class ItemController extends Controller
 
         return view("developer.property_item.{$view}", [
             'unit' => (object) $unit['contents'],
-            'role' => 'developer'
+            'role' => 'developer',
+            'view' => $view
         ]);
     }
 
@@ -169,8 +171,10 @@ class ItemController extends Controller
             $unit['price']  = 'Rp. ' . number_format($unit['price'], 0, ',', '.');
             $unit['action'] = view('layouts.actions', [
                 'show' => route('developer.proyek-item.show', $unit['id']),
-                'edit' => route('developer.proyek-item.edit', $unit['id']),
-                'is_approve' => $unit['is_approved']
+                //'edit' => route('developer.proyek-item.edit', $unit['id']),
+                'edit_unit' => route('developer.proyek-item.edit', $unit['id']),
+                'is_approve_unit' => $unit['is_approved'],
+                'available_status_unit' => $unit['available_status'],
             ])->render();
             $units['contents']['data'][$key] = $unit;
         }
@@ -199,6 +203,7 @@ class ItemController extends Controller
      */
     public function storeOrUpdate(Request $request, $endpoint, $method)
     {
+        //dd($request->all());
         $dir = "tmp/{$request->get('_token')}";
         extract_dir_to_request($request, $dir, 'property-item');
         if($method=='put'){
@@ -218,8 +223,11 @@ class ItemController extends Controller
                 ->setHeaders($headers)
                 ->setBody(array_to_multipart($request->all()))
                 ->{$method}('multipart');
+
+                // dd($response);
                 
         if ( ! in_array($response['code'], [200, 201]) ) {
+            \Session::flash('flash_message', $response['descriptions']);
             Storage::disk('property-item')->deleteDirectory($dir);
             return redirect()->back()->withInput()->withError($response['descriptions']);
         }

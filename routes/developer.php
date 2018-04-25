@@ -139,6 +139,11 @@ Route::group([
 		 * This route for showing list property of developer
 		 */
 		Route::match(['put', 'patch'], '{slug}', 'ItemController@update')->name('update');
+
+		/**
+		 * This route for showing list property of developer
+		 */
+		//Route::post('{slug}', 'ItemController@update')->name('update');
 	});
 
 	/**
