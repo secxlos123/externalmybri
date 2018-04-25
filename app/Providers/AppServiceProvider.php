@@ -21,7 +21,7 @@ class AppServiceProvider extends ServiceProvider
         $host = $request->getSchemeAndHttpHost();
         $cek = substr($host, 0,8);
         \Log::info($cek);
-        if( $cek == 'https://' ){
+        if( $cek != 'http://' ){
             \Log::info("HTTPS");
             \URL::forceScheme('https');
         }
