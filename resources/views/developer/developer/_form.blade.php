@@ -109,6 +109,22 @@ $name     = $result['first_name']." ".$result['last_name'];
                 </span>
             @endif
         </div>
+        @if($type != 'view')
+        <label>Tipe Agen Developer</label>
+        <p></p>
+            <label class="radio-inline">
+            <input type="radio" name="bound_project" value="1" @if($result2['bound_project'] == TRUE ) checked="checked" @endif  >Terikat Proyek
+            </label>
+            <label class="radio-inline">
+            <input type="radio" name="bound_project" value="0"  @if($result2['bound_project'] == FALSE ) checked="checked" @endif>Tidak Terikat Proyek
+            </label>
+        @else
+        <div class="single-query form-group bottom20
+            {{ $errors->has('bound_project') ? ' has-error' : '' }}">
+            {!! Form::label('bound_project', 'Tipe Agen Developer') !!}
+        <p>@if($result2['bound_project'] == TRUE )Terikat Proyek @else Tidak Terikat Proyek @endif</p>
+        </div>
+        @endif
     </div>
 </div>
 @else
@@ -189,6 +205,14 @@ $name     = $result['first_name']." ".$result['last_name'];
                 </span>
             @endif
         </div>
+        <br>
+        <p>Tipe Agen Developer</p>
+            <label class="radio-inline">
+            <input type="radio" name="bound_project" value="1">Terikat Proyek
+            </label>
+            <label class="radio-inline">
+            <input type="radio" name="bound_project" value="0">Tidak Terikat Proyek
+            </label>
     </div>
 </div>
 @endif
