@@ -280,6 +280,34 @@
                     $('#category-hide').val($('#sess_prop_category').val()).trigger('change');
                     $('#price').val(price).trigger('change');
                 @else
+                    var rumahcom = <?= $results['userdeveloper']['bound_project'] ? $results['userdeveloper']['bound_project'] : 0 ?>;
+                    console.log(rumahcom);
+                    if(rumahcom == 0){
+                    var address = "{{isset($param['property_item_address']) ? $param['property_item_address'] : ''}}";
+                    var price = "{{isset($param['property_item_price']) ? $param['property_item_price'] : old('price')}}";
+                    var dev_id = "{{isset($param['developer_id']) ? $param['developer_id'] : ''}}";
+                    var status = "{{isset($param['prop_status']) ? $param['prop_status'] : old('status_property')}}";
+                    var prop_id = "{{isset($param['property_id']) ? $param['property_id'] : ''}}";
+                    var prop_name = "{{isset($param['property_name']) ? $param['property_name'] : ''}}";
+                    var buildingArea = $('#sess_building_area').val() ? $('#sess_building_area').val() : "{{old('building_area')}}";
+                    @if (isset($param['property_item_address']))
+                        $('#property_item_name').val(address).trigger('change');
+                        $('#home_location').val(address).trigger('change');
+                    @endif
+                    if (status) {
+                        if ($.inArray(status, ['new', '1']) !== -1) {
+                            $('.status_property').val(1).trigger('change');
+                        }else if ($.inArray(status, ['second', '2']) !== -1) {
+                            $('.status_property').val(2).trigger('change');
+                        }else if ($.inArray(status, ['3', '4', '5' ,'6', '7', '8']) !== -1) {
+                            $('.status_property').val(status).trigger('change');
+                        }
+                    }
+
+                    $('#building_area').val(buildingArea).trigger('change');
+                    $('#category-hide').val($('#sess_prop_category').val()).trigger('change');
+                    $('#price').val(price).trigger('change');
+                    }else{
                     $('.status_property').val(1).trigger('change');
                     var dev_id   = <?= $results['userdeveloper']['admin_developer_id'] ?>;
                     var dev_name = "{{ $results['developer']['company_name'] }}";
@@ -288,6 +316,7 @@
                         .dropdown('property', { dev_id: dev_id })
                         .on('select2:unselect, change', unset_property_type)
                         .on('select2:select', set_property_type);;
+                    }
                 @endif
             }
         });
