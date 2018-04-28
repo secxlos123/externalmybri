@@ -21,6 +21,7 @@ class DeveloperController extends Controller
             'mobile_phone',
             'birth_date',
             'join_date',
+            'bound_project',
             'last_login'
     ];
 
@@ -60,7 +61,8 @@ class DeveloperController extends Controller
             "birth_date" => Carbon::parse($request->input("birth_date"))->format('Y-m-d'),
             "join_date" => Carbon::parse($request->input("join_date"))->format('Y-m-d'),
             "mobile_phone"  => $request->input("mobile_phone"),
-            "email" => strtolower($request->input("email"))
+            "email" => strtolower($request->input("email")),
+            "bound_project" => $request->input("bound_project") 
                 ];
        
         $header = [
@@ -149,7 +151,8 @@ class DeveloperController extends Controller
             "birth_date" => $request->input("birth_date"),
             "join_date" =>  $join_date,
             "mobile_phone"  => $request->input("mobile_phone"),
-            "email" => $request->input("email")
+            "email" => $request->input("email"),
+            "bound_project" => $request->input("bound_project")
                 ];
           $header = [
                     'Authorization' => session('authenticate.token'),
@@ -221,6 +224,12 @@ class DeveloperController extends Controller
                 'is_banned'=> $value['is_banned'],
                 'user_id'   => $value['user_id']
             ])->render();
+            if($value['bound_project'] == TRUE){
+                $value['bound_project'] = "Terikat";
+            }else{
+                $value['bound_project'] = "Tidak Terikat";
+            }
+            
             $dev['contents']['data'][$key] = $value;
         }
 
