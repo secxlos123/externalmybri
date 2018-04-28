@@ -130,6 +130,7 @@ class TrackingController extends Controller
                 ->get();
 
         foreach ($results['contents']['data'] as $key => $type) {
+            $type['property_name'] = $type['property_name'] ? $type['property_name'] : "Non Kerjasama";
             $type['action'] = view('layouts.actions', [
                 'show' => route('dev-sales.show', $type['id'])
             ])->render();
