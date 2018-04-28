@@ -20,6 +20,7 @@
                         <th>No Handphone</th>
                         <th>Tgl lahir</th>
                         <th>Tgl gabung</th>
+                        <th>Tipe Agen</th>
                         <th>Riwayat login</th>
                         <th>Aksi</th>
                     </tr>
@@ -86,6 +87,7 @@
                 { data: 'mobile_phone', name: 'mobile_phone' },
                 { data: 'birth_date', name: 'birth_date' },
                 { data: 'join_date', name: 'join_date' },
+                { data: 'bound_project', name: 'bound_project' },
                 { data: 'last_login', name: 'last_login' },
                 { data: 'action', name: 'action', bSortable: false },
             ],
