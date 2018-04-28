@@ -70,6 +70,7 @@ $sort = $request->input('order.0');
 
         foreach ($results['contents']['data'] as $key => $type) {
             $type['nominal']  = 'Rp. ' . number_format($type['nominal'], 0, ',', '.');
+            $type['property_name'] = $type['property_name'] ? $type['property_name'] : "Non Kerjasama";
             $type['action'] = view('layouts.actions', [
                 'show' => route('dev-sales.eform-cust', $type['id'])
             ])->render();
