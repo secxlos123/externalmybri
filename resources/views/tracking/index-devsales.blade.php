@@ -11,7 +11,7 @@
 @endsection
 
 @section('content')
-<section id="property" class="padding listing1">
+<!-- <section id="property" class="padding listing1"> -->
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -43,7 +43,7 @@
             </div>
         </div>
     </div>
-</section>
+<!-- </section> -->
 @endsection
 
 <!-- This is styles for this page -->
