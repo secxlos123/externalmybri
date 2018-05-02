@@ -12,7 +12,6 @@
          <div class="form-group kpr_type {!! $errors->has('kpr_type') ? 'has-error' : '' !!}">
             <label class="control-label col-md-4">Jenis KPR *: </label>
             <div class="col-md-8">
-            <?php $rumahcom = $results['userdeveloper']['bound_project'] ? $results['userdeveloper']['bound_project'] : 0;  ?>
             @if ('developer-sales' != session('authenticate.role'))
                 {!! Form::select('status_property', array("" => "", "1" => "Baru", "2" => "Secondary", "3" => "Refinancing", "4" => "Renovasi", "5" => "Top Up", "6" => "Take Over", "7" => "Take Over Top Up", "8" => "Take Over Account In House (Cash Bertahap)"), old('status_property'), [
                     'class' => 'select2 status_property ',
@@ -22,6 +21,7 @@
                     'data-id' => 'kpr_type',
                 ]) !!}
             @else
+            <?php $rumahcom = $results['userdeveloper']['bound_project'] ? $results['userdeveloper']['bound_project'] : 0;  ?>
                 @if($rumahcom == 0)
                     {!! Form::select('status_property', array("" => "", "1" => "Baru", "2" => "Secondary", "3" => "Refinancing", "4" => "Renovasi", "5" => "Top Up", "6" => "Take Over", "7" => "Take Over Top Up", "8" => "Take Over Account In House (Cash Bertahap)"), old('status_property'), [
                     'class' => 'select2 status_property ',
