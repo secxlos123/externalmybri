@@ -3,6 +3,22 @@
 @section('title', 'Halaman Utama')
 
 @section('content')
+<style type="text/css">
+    .pribadi{
+        background-color: #DCDCDC;
+    }
+    .pribadi:hover{
+        background-color: orange;
+        color: orange;
+    }
+    .password{
+        background-color: #DCDCDC;
+    }
+    .password:hover{
+        background-color: orange;
+        color: orange;
+    }
+</style>
 <section id="property" class="padding listing1">
     <div class="container">
 
@@ -40,10 +56,13 @@
                         <div class="col-md-12 top20">
                             <ul class="nav nav-pills nav-justified nav-centered m-b-30">
                                 <li class="{{ $active != 'password' ? 'active' : '' }}">
-                                    <a href="#data-pribadi" data-toggle="tab" aria-expanded="true" class="new-class-active">DATA PRIBADI</a>
+                                    <a href="#data-pribadi" data-toggle="tab" aria-expanded="true" class="new-class-active pribadi">DATA PRIBADI</a>
+                                </li>
+                                <li>
+                                    <a href="#data-pribadi" style="display: none;" data-toggle="tab" aria-expanded="true" class="new-class-active"></a>
                                 </li>
                                 <li class="{{ $active == 'password' ? 'active' : '' }}">
-                                    <a href="#change-password" data-toggle="tab" aria-expanded="false" class="new-class-active">UBAH KATA SANDI</a>
+                                    <a href="#change-password" data-toggle="tab" aria-expanded="false" class="new-class-active password">UBAH KATA SANDI</a>
                                 </li>
                             </ul>
                             <div class="tab-content br-n pn">
