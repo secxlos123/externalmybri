@@ -2,7 +2,7 @@
     <div class="panel panel-blue">
         <div class="panel-heading" data-toggle="collapse" data-target="#emergency-contact">
             <h3 class="panel-title text-uppercase">
-                Data Keluarga / Kerabat Terdekat
+                Data Keluarga / Kerabat Terdekat (tidak tinggal dalam 1 rumah)
 
                 <div class="pull-right">
                     <i class="fa fa-chevron-down" aria-hidden="true"></i>
