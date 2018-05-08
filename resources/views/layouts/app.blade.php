@@ -162,7 +162,7 @@
     {!! Html::script('assets/js/revolution.extension.video.min.js') !!}
     {!! Html::script('assets/js/custom.js') !!}
     {!! Html::script('assets/js/functions.js') !!}
-
+    {!! Html::script('assets/js/jquery.elevatezoom.js') !!}
     {!! Html::script('vendor/jsvalidation/js/jsvalidation.js') !!}
     {!! Html::script('assets/js/jquery.inputmask.bundle.min.js') !!}
     {!! Html::script('assets/js/inputmask.numeric.extensions.js') !!}
@@ -173,6 +173,13 @@
                 document.location = $(this).data('href');
             });
     </script>
+
+    <!-- Zoom Image -->
+    <script type="text/javascript">
+        $('.zoomImage').elevateZoom({zoomWindowPosition: 14}); 
+        // $('.zoomImage').elevateZoom({zoomWindowPosition: 12});
+    </script>
+    <!-- End Zoom Image -->
 
     <script type="text/javascript">
         // Handling get longitude - latitude
