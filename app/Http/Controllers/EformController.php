@@ -74,6 +74,16 @@ class EformController extends Controller
             ]);
         }
 
+        $results = Client::setEndpoint('tracking')
+                ->setHeaders([
+                    'Authorization' => session('authenticate.token')
+                ])
+                ->get();
+
+        if(count($results['contents']['data']) > 0){
+            return view('eforms.already');
+        }
+
         config(['jsvalidation.focus_on_error' => false]);
         return view('eforms.index', [
             'customer' => (object) $this->customer(),
