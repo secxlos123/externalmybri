@@ -19,7 +19,7 @@
 		<div class="panel panel-blue">
 			<div class="panel-heading" data-toggle="collapse" data-target="#demo">
 				<h3 class="panel-title text-uppercase">
-					Pengisian Kelengkapan Data : <b class="btn-pilih">{{ $checked == 1 ? 'Isi data dibantu oleh petugas' : 'Isi data sendiri' }}</b>
+					Pengisian Kelengkapan Data memerlukan bantuan : <b class="btn-pilih">{{ $checked == 1 ? 'Ya' : 'Tidak' }}</b>
 
 					<div class="pull-right">
 						<i class="fa fa-chevron-down" aria-hidden="true"></i>
@@ -37,20 +37,22 @@
 							</div>
 							<div class="col-xs-12">
 								<div class="error-text custom-desc">
-									<h2 class="bottom10">Pengisian Kelengkapan Data</h2>
-									<p>Pilih opsi untuk mengisi data lengkap Anda :</p>
-
+									<h2 class="bottom10">Konfirmasi Pengisian Data Lanjutan</h2>
+									<!-- <p>Pilih opsi untuk mengisi data lengkap Anda :</p> -->
+									<p>Apakah Anda memerlukan bantuan untuk melengkapi data pengajuan berikutnya?</p>
 									<div class="row for-charginG-data form-group">
 										<ul>
 											<li style="display: inline-block;">
 												<input type="radio" id="full" value="0" name="selector" class="options" {{ $checked == 0 ? 'checked' : '' }} >
-												<label for="full">Isi data sendiri</label>
+												<!-- <label for="full">Isi data sendiri</label> -->
+												<label for="full">Tidak</label>
 												<div class="radiobutton"></div>
 											</li>
 
 											<li style="display: inline-block;">
 												<input type="radio" id="medium" value="1" name="selector" class="options" {{ $checked == 1 ? 'checked' : '' }}>
-												<label for="medium">Isi data dibantu oleh petugas</label>
+												<!-- <label for="medium">Isi data dibantu oleh petugas</label> -->
+												<label for="medium">Ya</label>
 												<div class="radiobutton"></div>
 											</li>
 										</ul>
