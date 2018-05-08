@@ -259,8 +259,8 @@
             @endif
         </div>
 
-
-
+        <!-- Request DCE -->
+        <div class="col-md-6">
         @if ($type != 'view')
         <div class="single-query form-group bottom20 has-upload-file">
             <label>Foto KTP</label>
@@ -271,7 +271,7 @@
             ]) !!}
         </div>
         @endif
-
+        <!-- LOGIC Identity -->
         @if ( isset($results['other']['identity']) && $results['other']['identity'])
 
             <div class="single-query form-group bottom20">
@@ -287,19 +287,19 @@
                 @endif
             </div>
         @if($type == 'view')
-             <!-- handle image or pdf -->
+            
             @if((pathinfo(strtolower($results['other']['identity']), PATHINFO_EXTENSION) == 'jpg') || (pathinfo(strtolower($results['other']['identity']), PATHINFO_EXTENSION) == 'png') || (pathinfo((strtolower($results['other']['identity'])), PATHINFO_EXTENSION) == 'jpeg'))
                  @if(strpos($results['other']['identity'], 'noimage.jpg'))
                 <p>Foto KTP Kosong</p>
                  @else
 
 
-                <!-- <p>Foto KTP</p> -->
+        
                   @endif
             @else
                 
             @endif
-            <!-- end handle -->
+          
         @endif
 
         @else
@@ -311,7 +311,10 @@
             </div>
 
         @endif
+        <!-- END LOGIC -->
+        </div>
 
+        <div class="col-md-6">
         @if ($type != 'view')
         <div class="single-query form-group bottom20 has-upload-file couple-selector">
             <label>Foto KTP Pasangan</label>
@@ -322,7 +325,7 @@
             ]) !!}
         </div>
         @endif
-
+        <!-- LOGIC Couple Identity -->
         @if ( isset($results['personal']['couple_identity']) && $results['personal']['couple_identity'])
 
             <div class="single-query form-group bottom20 couple-selector">
@@ -363,6 +366,23 @@
             </div>
 
         @endif
+        <!-- End Logic -->
+        </div>
+
+        
+
+        <!-- @if ($type != 'view')
+        <div class="single-query form-group bottom20 has-upload-file couple-selector">
+            <label>Foto KTP Pasangan</label>
+            {!! Form::file('couple_identity', [
+                'class' => 'filestyle', 'data-target' => 'ktppas_preview',
+                'data-buttontext' => 'Unggah', 'data-buttonname' => 'btn-default',
+                'data-iconname' => 'fa fa-cloud-upload', 'data-placeholder' => 'Tidak ada file'
+            ]) !!}
+        </div>
+        @endif -->
+
+        
 
     </div>
     @if ($type != 'view')
