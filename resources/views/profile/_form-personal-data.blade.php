@@ -278,11 +278,11 @@
                 <label>Foto KTP</label>
                 @if (!(str_contains($results['other']['identity'], '.pdf')))
                 {!! Html::image(image_checker($results['other']['identity']), 'KTP', [
-                    'class' => 'img-responsive', 'width' => 300, 'id' => 'ktp_preview',
+                    'class' => 'img-responsive zoomImage', 'width' => 300, 'id' => 'ktp_preview',
                     'data-src' => asset('assets/images/no-image.jpg')
                 ]) !!}
                 @else
-                  <a href="@if(!empty($results['other']['identity'])){{$results['other']['identity']}}@endif" target="_blank" class="img-responsive"><img src="{{asset('assets/images/download-logo.png')}}" id="ktp_preview" class="img-responsive" width="230"></a>
+                  <a href="@if(!empty($results['other']['identity'])){{$results['other']['identity']}}@endif" target="_blank" class="img-responsive zoomImage"><img src="{{asset('assets/images/download-logo.png')}}" id="ktp_preview" class="img-responsive zoomImage" width="230"></a>
                 <p>Klik Untuk Lihat Foto KTP</p>
                 @endif
             </div>
@@ -307,7 +307,7 @@
             <div class="single-query form-group bottom20">
                 <label>Foto KTP</label>
                 
-                <img src="{{ asset('assets/images/no-image.jpg') }}" data-src="{{ asset('assets/images/no-image.jpg') }}" class="img-responsive" width="300" id="ktp_preview">
+                <img src="{{ asset('assets/images/no-image.jpg') }}" data-src="{{ asset('assets/images/no-image.jpg') }}" class="img-responsive zoomImage" width="300" id="ktp_preview">
             </div>
 
         @endif
@@ -332,11 +332,11 @@
                 <label>Foto KTP Pasangan</label>
                 @if (!(str_contains($results['personal']['couple_identity'], '.pdf')))
                 {!! Html::image(image_checker($results['personal']['couple_identity']), 'KTPPASANGAN', [
-                    'class' => 'img-responsive', 'width' => 300, 'id' => 'ktppas_preview',
+                    'class' => 'img-responsive zoomImage', 'width' => 300, 'id' => 'ktppas_preview',
                     'data-src' => asset('assets/images/no-image.jpg')
                 ]) !!}
                 @else
-                <a href="@if(!empty($results['personal']['couple_identity'])){{$results['personal']['couple_identity']}}@endif" target="_blank" class="img-responsive"><img src="{{asset('assets/images/download-logo.png')}}" class="img-responsive" id="ktppas_preview" width="230"></a>
+                <a href="@if(!empty($results['personal']['couple_identity'])){{$results['personal']['couple_identity']}}@endif" target="_blank" class="img-responsive zoomImage"><img src="{{asset('assets/images/download-logo.png')}}" class="img-responsive zoomImage" id="ktppas_preview" width="230"></a>
                 <p>Klik Untuk Lihat Foto KTP PASANGAN</p>
                 @endif
             </div>
@@ -362,7 +362,7 @@
             <div class="single-query form-group bottom20 couple-selector">
                 <label>Foto KTP Pasangan</label>
                
-                <img src="{{ asset('assets/images/no-image.jpg') }}" data-src="{{ asset('assets/images/no-image.jpg') }}" class="img-responsive" width="300" id="ktppas_preview">
+                <img src="{{ asset('assets/images/no-image.jpg') }}" data-src="{{ asset('assets/images/no-image.jpg') }}" class="img-responsive zoomImage" width="300" id="ktppas_preview">
             </div>
 
         @endif
