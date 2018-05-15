@@ -149,7 +149,8 @@
                 {!! Form::select('gender', [
                     'L' => 'Laki-laki',
                     'P' => 'Perempuan',
-                ], (old('gender')) ? old('gender') : ($results['personal']['gender'] == 'Laki-laki' || $results['personal']['gender'] == 'L') ? 'L' : 'P', [
+                    NULL => '-'
+                ], (old('gender')) ? old('gender') : ($results['personal']['gender'] == 'Laki-laki' || $results['personal']['gender'] == 'L') ? 'L' : NULL, [
                     'class' => 'form-control select2 gender', 'id' => 'gender'
                 ]) !!}
             @else
