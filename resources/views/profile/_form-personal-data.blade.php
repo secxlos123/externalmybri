@@ -146,13 +146,35 @@
         <div class="single-query form-group bottom20">
             <label>Jenis Kelamin </label>
             @if ($type != 'view')
+                @if(isset($results['personal']['gender']))
+                @if($results['personal']['gender'] == 'Laki-laki')
+                    {!! Form::select('gender', [
+                    'L' => 'Laki-laki',
+                    'P' => 'Perempuan',
+                ], (old('gender')) ? old('gender') : 'L', [
+                    'class' => 'form-control select2 gender', 'id' => 'gender',
+                    'place-holder' => 'Pilih Jenis Kelamin'
+                ]) !!}
+                
+                @elseif($results['personal']['gender'] == 'Perempuan')
+                    {!! Form::select('gender', [
+                    'L' => 'Laki-laki',
+                    'P' => 'Perempuan',
+                ], (old('gender')) ? old('gender') : 'P', [
+                    'class' => 'form-control select2 gender', 'id' => 'gender',
+                    'place-holder' => 'Pilih Jenis Kelamin'
+                ]) !!}
+                @else
                 {!! Form::select('gender', [
                     'L' => 'Laki-laki',
                     'P' => 'Perempuan',
-                    NULL => '-'
-                ], (old('gender')) ? old('gender') : ($results['personal']['gender'] == 'Laki-laki' || $results['personal']['gender'] == 'L') ? 'L' : NULL, [
-                    'class' => 'form-control select2 gender', 'id' => 'gender'
+                    NULL => '-- Pilih jenis Kelamin --',
+                ], (old('gender')) ? old('gender') : NULL, [
+                    'class' => 'form-control select2 gender', 'id' => 'gender',
+                    'place-holder' => 'Pilih Jenis Kelamin'
                 ]) !!}
+                @endif
+                @endif
             @else
             <span class="form-control" style="border: 0px;">
                 {{isset($results['personal']['gender']) ? $results['personal']['gender'] : ''}}
