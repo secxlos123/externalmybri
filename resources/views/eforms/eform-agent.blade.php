@@ -87,6 +87,10 @@
     <p class="text-muted m-b-30 font-13">
         Cari NIK Customer atau tambah Customer baru
     </p>
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="nik_check">
+        <label class="form-check-label" for="exampleCheck1">Cari Semua Nik yang sudah pengajuan maupun yang belum pengajuan</label>
+    </div>
     <div class="row">
         <div class="col-md-6">
             <div role="form">
@@ -342,6 +346,22 @@
        $("#app-eform").submit();
     });
 
+     var _doc = $(document);
+        var _nik = $('#nik_check');
+        condition = false;
+        _doc.on('change', '#nik_check', function(){
+            check_nik = $(this).prop("checked");
+            if(check_nik){
+                console.log("===dicek nik===");
+                condition = true;
+                console.log("BOOLEAN: "+condition);
+            }else{
+                console.log("===TEU dicek nik===");
+                condition = false;
+                console.log("BOOLEAN: "+condition);
+            }
+        });
+
         $('.nikSelect').select2({
             maximumInputLength : 16,
             width : '100%',
@@ -354,7 +374,7 @@
                     return {
                         name: params.term,
                         page: params.page || 1,
-                        eform : false
+                        eform : condition
                     };
                 },
                 processResults: function (data, params) {
