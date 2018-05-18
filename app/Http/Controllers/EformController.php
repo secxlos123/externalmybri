@@ -77,11 +77,31 @@ class EformController extends Controller
         $results = Client::setEndpoint('tracking')
                 ->setHeaders([
                     'Authorization' => session('authenticate.token')
-                ])
-                ->get();
+                ])->get();
 
         if(count($results['contents']['data']) > 0){
-            return view('eforms.already');
+            $count = count($results['contents']['data']) - 1;
+            $status = $results['contents']['data'][$count]['status']; 
+            switch ($status) {
+              case 'Kredit Disetujui':
+                config(['jsvalidation.focus_on_error' => false]);
+                return view('eforms.index', [
+                    'customer' => (object) $this->customer(),
+                    'param' => $request->all()
+                ]);
+                break;
+                case 'Kredit Ditolak':
+                config(['jsvalidation.focus_on_error' => false]);
+                return view('eforms.index', [
+                    'customer' => (object) $this->customer(),
+                    'param' => $request->all()
+                ]);
+                break;
+          
+              default:
+                return view('eforms.already');
+                break;
+            }
         }
 
         config(['jsvalidation.focus_on_error' => false]);
