@@ -109,8 +109,8 @@
 
     <!-- set current longitude latitude -->
     <div class="hidden-content hide">
-        <input name="hidden-long" value="{{ env('DEF_LONG', '106.81350') }}">
-        <input name="hidden-lat" value="{{ env('DEF_LAT', '-6.21670') }}">
+        <input name="hidden-long" id="hidden-long" value="{{ env('DEF_LONG', '106.81350') }}">
+        <input name="hidden-lat" id="hidden-lat" value="{{ env('DEF_LAT', '-6.21670') }}">
 
     </div>
     <!-- end -->
@@ -197,6 +197,23 @@
         function showPosition(position) {
             $('input[name="hidden-long"]').val(position.coords.longitude);
             $('input[name="hidden-lat"]').val(position.coords.latitude);
+            $('input[name="hidden-long-new"]').val(position.coords.longitude);
+            $('input[name="hidden-lat-new"]').val(position.coords.latitude);
+
+            console.log("Success generate longitude" + position.coords.longitude + " - latitude : " + position.coords.latitude + ".");
+            
+            // This for automatic generate long lat for nearby Properties
+            $.ajax({
+                url: '/properties?long='+position.coords.longitude+'&lat='+position.coords.latitude
+            })
+            .done(function (response) {
+                $('#content-galery').html(response);
+            })
+            .fail(function (response) {
+                $('#content-galery').hide();
+                $('#text-nearby-property').addClass('hide');
+                $('.error-server').removeClass('hide');
+            });
         }
 
         // Fail get longitude - latitude
@@ -204,12 +221,14 @@
             console.log("Default longitude - latitude set.");
         }
 
-        $.ajaxSetup({
-            data: {
-                long: $('input[name="hidden-long"]').val(),
-                lat: $('input[name="hidden-lat"]').val()
-            }
-        });
+        // $.ajaxSetup({
+        //     data: {
+        //         // long: $('input[name="hidden-long"]').val(),
+        //         // lat: $('input[name="hidden-lat"]').val()
+        //         long: $('#hidden-long-new').val(),
+        //         lat: $('#hidden-lat-new').val()
+        //     }
+        // });
 
     </script>
 
