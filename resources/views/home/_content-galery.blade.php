@@ -15,7 +15,7 @@
                         <span class="tag pull-right">Rp. {!! number_format($property['prop_price'], 0, ',', '.') !!},-</span>
                     </div>
 
-                    <span class="tag_t">{{(isset($property['distance'])) ? $property['distance'] : '0'}} Km</span>
+                    <span class="tag_t">{{(isset($property['prop_distance'])) ? $property['prop_distance'] : '0'}} Km</span>
                     <span class="tag_l">{!! $property['prop_developer_name'] !!}</span>
 
                 </div>
