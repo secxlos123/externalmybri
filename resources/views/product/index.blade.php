@@ -12,7 +12,8 @@
                         'class' => 'img-responsive img-thumbnail'
                     ]) !!}
                 </div>
-                <h2 class="text-uppercase top30 bottom30">KPR (Kredit Perumahan Rakyat)</h2>
+                <!-- <h2 class="text-uppercase top30 bottom30">KPR (Kredit Perumahan Rakyat)</h2> -->
+                <h2 class="text-uppercase top30 bottom30">KPR (Kredit Pemilikan Rumah)</h2>
                 <p class="text-justify">KPR BRI memberikan solusi dan kemudahan dalam memiliki hunian yang anda inginkan.</p>
                 <p class="title-detail top20"><strong>Keunggulan</strong></p>
                 <ol class="list-detail">
