@@ -78,7 +78,7 @@
 
 <!-- This is scripts for this page -->
 @push('scripts')
-    <script type="text/javascript">
+<!--     <script type="text/javascript">
         $.ajax({
             url: '/properties'
         })
@@ -90,6 +90,6 @@
             $('#text-nearby-property').addClass('hide');
             $('.error-server').removeClass('hide');
         });
-    </script>
+    </script> -->
 @endpush
 <!-- This is scripts for this page end -->
