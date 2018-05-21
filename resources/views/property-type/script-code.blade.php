@@ -12,9 +12,15 @@
         $("#button-right").on('click', function(){
             var curPage = $("#current-page").val();
             var total = $("#last-page").val();
-            if (curPage < total) {
+            // console.log("total : "+total);
+            if (curPage >= 1) {
+                // console.log("CurPage : "+curPage);
                 curPage++;
                 loadDataPropUnit(curPage);
+            }
+            if(curPage >= total){
+                alert("Opps ini Halaman Terakhir Properti Unit");
+                loadDataPropUnit(total);
             }
         });
         function loadDataPropUnit(nextPage)
